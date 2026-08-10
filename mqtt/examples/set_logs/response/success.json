@@ -1,0 +1,6 @@
+{
+  "command": "set_logs",
+  "command_id": "req-set-logs",
+  "response": "success",
+  "payload": {}
+}

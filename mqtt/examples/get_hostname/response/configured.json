@@ -1,0 +1,8 @@
+{
+  "command": "get_hostname",
+  "command_id": "req-get-hostname",
+  "response": "success",
+  "payload": {
+    "hostName": "FXR90C60C001"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "scanType": [
+    "ble",
+    "rfid"
+  ]
+}

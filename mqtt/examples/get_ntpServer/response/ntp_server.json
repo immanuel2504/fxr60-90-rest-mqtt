@@ -1,0 +1,8 @@
+{
+  "command": "get_ntpServer",
+  "command_id": "req-get-ntpServer",
+  "response": "success",
+  "payload": {
+    "server": "time.google.com"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "appname": {
+    "in": "path",
+    "required": true,
+    "type": "string",
+    "enum": null,
+    "example": "mylogger"
+  }
+}

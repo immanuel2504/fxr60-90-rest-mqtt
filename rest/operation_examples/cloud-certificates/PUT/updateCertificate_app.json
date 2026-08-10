@@ -1,0 +1,7 @@
+{
+  "name": "userapp-cert",
+  "type": "app",
+  "url": "https://certs.example.com/userapp.pfx",
+  "authenticationType": "NONE",
+  "pfxPassword": "zebra"
+}

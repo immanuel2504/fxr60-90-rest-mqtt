@@ -1,0 +1,11 @@
+{
+  "command": "set_impinjGen2X",
+  "command_id": "req-set-impinjGen2X",
+  "payload": {
+    "tagProtect": {
+      "action": "disableTagProtection",
+      "password": "77777777",
+      "tagID": "e2801191a5030069073b426d"
+    }
+  }
+}

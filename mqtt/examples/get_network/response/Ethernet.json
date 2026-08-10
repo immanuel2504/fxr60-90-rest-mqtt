@@ -1,0 +1,31 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "response": "success",
+  "payload": {
+    "hostName": "FXR90C5F1AB",
+    "networkInterface": {
+      "eth0": {
+        "IPV4": {
+          "dhcp": true,
+          "dnsAddress": "10.233.1.200",
+          "domainName": "zlab.com",
+          "gatewayAddress": "10.233.45.2",
+          "ipAddress": "10.233.45.235",
+          "subnetMask": "255.255.255.0"
+        },
+        "IPV6": {
+          "dhcp": true,
+          "dnsAddress": "fd6c:10:233:1::201",
+          "domainName": "zlab.com",
+          "gatewayAddress": "fe80::f6ee:31ff:fe0c:5a1f",
+          "ipAddress": "fd6c:10:233:45:eab:f51f:957e:f729",
+          "prefix": 64
+        },
+        "Status": "connected",
+        "isEnabled": true,
+        "macAddress": "C8:1C:FE:C5:F1:AB"
+      }
+    }
+  }
+}

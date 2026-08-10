@@ -1,0 +1,22 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "mlan0": {
+      "accesspoint": {
+        "essid": "CorpNetwork",
+        "connect": true,
+        "autoConn": true,
+        "security": {
+          "WPA3Enterprise": {
+            "authentication": "PEAP",
+            "innerAuthentication": "MSCHAPv2",
+            "username": "john.doe",
+            "password": "secret"
+          }
+        }
+      },
+      "enable": true
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "command": "get_status",
+  "command_id": "req-get-status",
+  "response": "success",
+  "payload": {
+    "antennas": {
+      "1": "connected",
+      "2": "connected",
+      "3": "disconnected",
+      "4": "disconnected",
+      "5": "connected",
+      "6": "connected"
+    },
+    "cpu": {
+      "system": 4,
+      "user": 18
+    },
+    "flash": {
+      "platform": {
+        "free": 100,
+        "total": 200,
+        "used": 100
+      },
+      "readerConfig": {
+        "free": 50,
+        "total": 100,
+        "used": 50
+      },
+      "readerData": {
+        "free": 80,
+        "total": 100,
+        "used": 20
+      },
+      "rootFileSystem": {
+        "free": 900,
+        "total": 1200,
+        "used": 300
+      }
+    },
+    "interfaceConnectionStatus": {
+      "data": [
+        {
+          "connectionError": "",
+          "connectionStatus": "connected",
+          "description": "MQTT data",
+          "interface": "mqtt_emqx_data"
+        }
+      ]
+    },
+    "ntp": {
+      "offset": 2,
+      "reach": 377
+    },
+    "powerNegotiation": "POE+",
+    "powerSource": "POE",
+    "radioActivity": "active",
+    "radioConnection": "connected",
+    "ram": {
+      "free": 60,
+      "total": 100,
+      "used": 40
+    },
+    "systemTime": "07/08/2026 10:15",
+    "temperature": 48,
+    "uptime": "1D0H15M00S",
+    "impinjGen2X": {
+      "active": true,
+      "feature": "tagFocus"
+    },
+    "ble": {
+      "scanState": "running",
+      "scanStartTime": "2026-08-07T09:00:00.000Z",
+      "beaconCounts": {
+        "altBeacon": 10,
+        "eddystone": 0,
+        "generic": 0,
+        "iBeacon": 40,
+        "total": 50
+      }
+    }
+  }
+}

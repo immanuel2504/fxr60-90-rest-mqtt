@@ -1,0 +1,13 @@
+{
+  "command": "get_readPoints",
+  "command_id": "req-get-readPoints",
+  "response": "success",
+  "payload": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ]
+}

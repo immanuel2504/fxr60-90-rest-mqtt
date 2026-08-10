@@ -1,0 +1,9 @@
+{
+  "command": "set_appled",
+  "command_id": "req-set-appled",
+  "payload": {
+    "color": "amber",
+    "flash": true,
+    "seconds": 60
+  }
+}

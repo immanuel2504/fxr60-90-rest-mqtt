@@ -1,0 +1,7 @@
+{
+  "command": "get_mode",
+  "command_id": "req-get-mode",
+  "payload": {
+    "verbose": true
+  }
+}

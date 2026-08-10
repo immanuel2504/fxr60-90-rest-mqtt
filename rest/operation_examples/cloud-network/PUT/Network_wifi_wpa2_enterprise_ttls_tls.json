@@ -1,0 +1,17 @@
+{
+  "mlan0": {
+    "accesspoint": {
+      "essid": "CorpNetwork",
+      "connect": true,
+      "autoConn": true,
+      "security": {
+        "WPA2Enterprise": {
+          "authentication": "TTLS",
+          "innerAuthentication": "TLS",
+          "certificate": "my-client-cert"
+        }
+      }
+    },
+    "enable": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "command": "set_update_cert",
+  "command_id": "req-set-update-cert",
+  "payload": {
+    "options": {
+      "password": "zebra",
+      "username": "zebra"
+    },
+    "authenticationType": "BASIC",
+    "name": "reader",
+    "pfxPassword": "abcd12345",
+    "type": "client",
+    "url": "https://10.117.229.15/reader.pfx"
+  }
+}

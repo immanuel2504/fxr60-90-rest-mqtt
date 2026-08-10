@@ -1,0 +1,29 @@
+{
+  "command": "get_certs",
+  "command_id": "req-get-certs",
+  "response": "success",
+  "payload": [
+    {
+      "name": "reader-server-cert",
+      "type": "server",
+      "installTime": "2026-07-14T11:02:53Z",
+      "issuerName": "CN=Zebra Lab CA,O=Zebra,C=US",
+      "subjectName": "CN=FXR90C60C001,O=Zebra,C=US",
+      "serial": "0A1B2C3D4E5F6071",
+      "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----",
+      "validityStart": "2026-07-14T00:00:00Z",
+      "validityEnd": "2027-07-14T00:00:00Z"
+    },
+    {
+      "name": "mqtt-client-cert",
+      "type": "client",
+      "installTime": "2026-07-20T08:17:04Z",
+      "issuerName": "CN=Zebra Lab CA,O=Zebra,C=US",
+      "subjectName": "CN=fxr90-mqtt-client,O=Zebra,C=US",
+      "serial": "11FF22EE33DD44CC",
+      "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----",
+      "validityStart": "2026-07-20T00:00:00Z",
+      "validityEnd": "2027-07-20T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "command": "get_config",
+  "command_id": "req-get-config",
+  "payload": {}
+}

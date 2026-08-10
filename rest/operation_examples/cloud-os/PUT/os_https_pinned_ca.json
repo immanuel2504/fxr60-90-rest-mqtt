@@ -1,0 +1,13 @@
+{
+  "url": "https://builds.example.com/FXR90_2.0.10.tar.bz2",
+  "authenticationType": "NONE",
+  "transfer_protocol": "HTTPS",
+  "verifyPeer": true,
+  "verifyHost": true,
+  "installedCertificateType": "server",
+  "installedCertificateName": "reader-server-cert",
+  "retry": {
+    "count": 3,
+    "delayInSec": 30
+  }
+}

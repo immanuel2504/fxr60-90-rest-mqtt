@@ -1,0 +1,10 @@
+{
+  "command": "get_impinjGen2X",
+  "command_id": "req-get-impinjGen2X",
+  "response": "success",
+  "payload": {
+    "tagFocus": {
+      "enabled": true
+    }
+  }
+}

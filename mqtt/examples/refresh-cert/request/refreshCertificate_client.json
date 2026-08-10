@@ -1,0 +1,7 @@
+{
+  "command": "refresh-cert",
+  "command_id": "req-refresh-cert",
+  "payload": {
+    "type": "client"
+  }
+}

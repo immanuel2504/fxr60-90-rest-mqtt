@@ -1,0 +1,25 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN"
+    },
+    "RADIO_START": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER"
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "GREEN"
+      }
+    ]
+  }
+}

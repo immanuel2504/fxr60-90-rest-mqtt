@@ -1,0 +1,89 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig",
+  "payload": {
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {
+          "connections": [
+            {
+              "description": "MQTT_CONTROL",
+              "name": "MQTT_CONTROL",
+              "type": "mqtt",
+              "options": {
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR90C60C001",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 5
+                },
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "broker.emqx.io",
+                  "port": 1883,
+                  "protocol": "tcp"
+                },
+                "publishTopic": [
+                  "FXR90C60C001/rsp"
+                ],
+                "subscribeTopic": [
+                  "FXR90C60C001/cmd"
+                ]
+              }
+            }
+          ],
+          "enableLocalRest": true
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "description": "AWS",
+              "name": "AWS_8883",
+              "type": "mqtt-AWS",
+              "options": {
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR90C60C001aws",
+                  "debug": false,
+                  "keepAlive": 20,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 5
+                },
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "publishTopic": [
+                  "datacollection_aws/FXR90C60C001"
+                ],
+                "security": {
+                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "privateKeyFileLocation": "/data/aws-pvt.key",
+                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                },
+                "subscribeTopic": []
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": []
+        }
+      }
+    }
+  }
+}

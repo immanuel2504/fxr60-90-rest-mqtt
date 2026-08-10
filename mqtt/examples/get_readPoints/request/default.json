@@ -1,0 +1,5 @@
+{
+  "command": "get_readPoints",
+  "command_id": "req-get-readPoints",
+  "payload": {}
+}

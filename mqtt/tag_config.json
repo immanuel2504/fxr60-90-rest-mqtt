@@ -1,0 +1,297 @@
+{
+  "tag_groups": {
+    "Control Commands": [
+      "Control",
+      "ImpinjGen2X"
+    ],
+    "Management Commands": [
+      "System",
+      "App-led",
+      "Stack-led",
+      "Gpio",
+      "Region",
+      "Logs",
+      "Date&Time",
+      "Certificate",
+      "Network",
+      "Firmware",
+      "userapp",
+      "Ble"
+    ],
+    "Management Events": [
+      "Management-events"
+    ],
+    "Tag Data Events": [
+      "Tag-data-events"
+    ]
+  },
+  "operation_tags": {
+    "get_appled": "App-led",
+    "set_appled": "App-led",
+    "get_stackled": "Stack-led",
+    "set_stackled": "Stack-led",
+    "get_gpostatus": "Gpio",
+    "set_gpo": "Gpio",
+    "get_gpi_status": "Gpio",
+    "get_region": "Region",
+    "get_SupportedRegionList": "Region",
+    "set_region": "Region",
+    "get_mode": "Control",
+    "set_mode": "Control",
+    "start": "Control",
+    "stop": "Control",
+    "get_preSelection": "Control",
+    "set_preSelection": "Control",
+    "get_version": "System",
+    "get_status": "System",
+    "reboot": "System",
+    "get_readerCapabilities": "System",
+    "get_config": "System",
+    "set_config": "System",
+    "set_importCloudConfig": "System",
+    "set_cableLossCompensation": "System",
+    "get_cableLossCompensation": "System",
+    "set_passthru": "System",
+    "set_password": "System",
+    "get_logs": "Logs",
+    "set_logs": "Logs",
+    "get_logs_syslog": "Logs",
+    "del_syslogs": "Logs",
+    "get_radio_pkt_logs": "Logs",
+    "del_radio_pkt_logs": "Logs",
+    "get_rg_error_logs": "Logs",
+    "get_rg_warn_logs": "Logs",
+    "get_rc_log": "Logs",
+    "get_timeZone": "Date&Time",
+    "set_timeZone": "Date&Time",
+    "get_ntpServer": "Date&Time",
+    "set_ntpServer": "Date&Time",
+    "get_certs": "Certificate",
+    "del_certs": "Certificate",
+    "set_update_cert": "Certificate",
+    "refresh-cert": "Certificate",
+    "get_network": "Network",
+    "set_network": "Network",
+    "get_hostname": "System",
+    "set_hostname": "System",
+    "get_availableWifiNetworks": "Network",
+    "get_networkInterfaces": "Network",
+    "get_readPoints": "Network",
+    "get_gpsCoordinates": "Network",
+    "get_eSimConfig": "Network",
+    "set_eSimConfig": "Network",
+    "set_os": "Firmware",
+    "revertback": "Firmware",
+    "get_user_apps": "userapp",
+    "install_user_app": "userapp",
+    "uninstall-user-app": "userapp",
+    "start_user_app": "userapp",
+    "stop_user_app": "userapp",
+    "autostart_user_app": "userapp",
+    "set_req_usr_app": "userapp",
+    "set_dataToRG": "userapp",
+    "get_impinjGen2X": "ImpinjGen2X",
+    "set_impinjGen2X": "ImpinjGen2X",
+    "set_bleConfig": "Ble",
+    "get_bleConfig": "Ble",
+    "async-events": "Management-events",
+    "heartbeat": "Management-events",
+    "firmwareUpdateProgress": "Management-events",
+    "gpi": "Management-events",
+    "gpo": "Management-events",
+    "error": "Management-events",
+    "warning": "Management-events",
+    "userapp_event": "Management-events",
+    "tagDataEvents": "Tag-data-events",
+    "mode_tag_data_events": "Tag-data-events",
+    "directionality_tag_data_events": "Tag-data-events",
+    "zoneHistory": "Tag-data-events",
+    "locationHistory": "Tag-data-events",
+    "get_supportedStandardList": "Region",
+    "get_CACertificates": "Certificate",
+    "set_installCACertificate": "Certificate",
+    "del_CACertificate": "Certificate"
+  },
+  "operation_order": {
+    "Control": [
+      "get_mode",
+      "set_mode",
+      "start",
+      "stop",
+      "get_preSelection",
+      "set_preSelection"
+    ],
+    "ImpinjGen2X": [
+      "get_impinjGen2X",
+      "set_impinjGen2X"
+    ],
+    "System": [
+      "get_version",
+      "get_status",
+      "get_config",
+      "set_config",
+      "set_passthru",
+      "set_importCloudConfig",
+      "get_readerCapabilities",
+      "get_cableLossCompensation",
+      "set_cableLossCompensation",
+      "reboot",
+      "set_password",
+      "get_hostname",
+      "set_hostname"
+    ],
+    "App-led": [
+      "get_appled",
+      "set_appled"
+    ],
+    "Stack-led": [
+      "get_stackled",
+      "set_stackled"
+    ],
+    "Gpio": [
+      "get_gpostatus",
+      "set_gpo",
+      "get_gpi_status"
+    ],
+    "Region": [
+      "get_region",
+      "set_region",
+      "get_SupportedRegionList",
+      "get_supportedStandardList"
+    ],
+    "Logs": [
+      "get_logs",
+      "set_logs",
+      "get_logs_syslog",
+      "del_syslogs",
+      "get_rc_log",
+      "get_rg_warn_logs",
+      "get_rg_error_logs",
+      "get_radio_pkt_logs",
+      "del_radio_pkt_logs"
+    ],
+    "Date&Time": [
+      "get_timeZone",
+      "set_timeZone",
+      "get_ntpServer",
+      "set_ntpServer"
+    ],
+    "Certificate": [
+      "get_certs",
+      "del_certs",
+      "set_update_cert",
+      "refresh-cert",
+      "get_CACertificates",
+      "set_installCACertificate",
+      "del_CACertificate"
+    ],
+    "Network": [
+      "get_network",
+      "set_network",
+      "get_availableWifiNetworks",
+      "get_networkInterfaces",
+      "get_readPoints",
+      "get_gpsCoordinates",
+      "get_eSimConfig",
+      "set_eSimConfig"
+    ],
+    "Firmware": [
+      "set_os",
+      "revertback"
+    ],
+    "userapp": [
+      "install_user_app",
+      "start_user_app",
+      "stop_user_app",
+      "autostart_user_app",
+      "get_user_apps",
+      "set_dataToRG",
+      "set_req_usr_app",
+      "uninstall-user-app"
+    ],
+    "Ble": [
+      "get_bleConfig",
+      "set_bleConfig"
+    ],
+    "Management-events": [
+      "async-events",
+      "heartbeat",
+      "firmwareUpdateProgress",
+      "gpi",
+      "gpo",
+      "error",
+      "warning",
+      "userapp_event"
+    ],
+    "Tag-data-events": [
+      "tagDataEvents",
+      "mode_tag_data_events",
+      "directionality_tag_data_events",
+      "zoneHistory",
+      "locationHistory"
+    ]
+  },
+  "operation_subgroups": {
+    "Control": [
+      {
+        "name": "Mode",
+        "operations": [
+          "get_mode",
+          "set_mode"
+        ]
+      },
+      {
+        "name": "Inventory",
+        "operations": [
+          "start",
+          "stop"
+        ]
+      },
+      {
+        "name": "Preselection",
+        "operations": [
+          "get_preSelection",
+          "set_preSelection"
+        ]
+      }
+    ]
+  },
+  "excluded_operations": [
+    "localrest_login"
+  ],
+  "display_name_aliases": {
+    "get_supportedStandardList": "get_SupportedStandardlist"
+  },
+  "display_name_overrides": {
+    "get_preSelection": "Get Pre-Selection",
+    "set_preSelection": "Set Pre-Selection",
+    "set_password": "Change Password",
+    "set_passthru": "Pass-Through Command",
+    "get_impinjGen2X": "Get Impinj Gen2X Configuration",
+    "set_impinjGen2X": "Set Impinj Gen2X Configuration",
+    "get_bleConfig": "Get BLE Configuration",
+    "set_bleConfig": "Set BLE Configuration",
+    "get_eSimConfig": "Get eSIM Configuration",
+    "set_eSimConfig": "Set eSIM Configuration",
+    "get_availableWifiNetworks": "Get Available Wi-Fi Networks",
+    "get_networkInterfaces": "Get Network Interfaces",
+    "get_readPoints": "Get Read Points",
+    "get_gpsCoordinates": "Get GPS Coordinates",
+    "set_dataToRG": "Set Data to RG",
+    "set_region": "Set Reader Region Configuration",
+    "async-events": "Async Events",
+    "heartbeat": "Heartbeat",
+    "error": "Error Event",
+    "warning": "Warning Event",
+    "firmwareUpdateProgress": "Firmware Update Progress",
+    "tagDataEvents": "Tag Data Events",
+    "mode_tag_data_events": "Mode Tag Data Events",
+    "directionality_tag_data_events": "Directionality Tag Data Events",
+    "locationHistory": "Location History",
+    "zoneHistory": "Zone History",
+    "userapp_event": "User App Event",
+    "gpi": "GPI Event",
+    "gpo": "GPO Event"
+  },
+  "tag_descriptions": {}
+}

@@ -1,0 +1,6 @@
+{
+  "command": "refresh-cert",
+  "command_id": "req-refresh-cert",
+  "response": "success",
+  "payload": {}
+}

@@ -1,0 +1,279 @@
+{
+  "command": "get_availableWifiNetworks",
+  "command_id": "req-get-availableWifiNetworks",
+  "response": "success",
+  "payload": {
+    "availableWifiNetworks": [
+      {
+        "capabilities": [
+          "WPA2",
+          "WPA3"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "GLaDOS",
+        "signalStrength": "100%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "WPA3"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Bodhi",
+        "signalStrength": "99%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "017TB01-TNV",
+        "signalStrength": "89%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "IOT_TESTAP",
+        "signalStrength": "77%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "ZWireless",
+        "signalStrength": "75%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "ZLAB",
+        "signalStrength": "72%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "ZCorp",
+        "signalStrength": "72%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "DIRECT-TY17L11-R-7951msf9",
+        "signalStrength": "70%"
+      },
+      {
+        "capabilities": [
+          "WPA3"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Bodhi_5G",
+        "signalStrength": "65%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "SNT_WPA2_2G",
+        "signalStrength": "50%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "RFID_Aruba_WPA2PSK",
+        "signalStrength": "50%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "kawshik PC",
+        "signalStrength": "47%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "OnePlus 9 Pro 5G",
+        "signalStrength": "45%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Pranshu_17",
+        "signalStrength": "37%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VJ",
+        "signalStrength": "35%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "DIRECT-KH17L10-BGMW36-1msSL",
+        "signalStrength": "34%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "FTMLocation",
+        "signalStrength": "32%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "DIRECT-G917L11-RC7864msAJ",
+        "signalStrength": "27%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Noobie",
+        "signalStrength": "25%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "sim (domain 10.233.250.53)",
+        "signalStrength": "25%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "wpa2_tkip",
+        "signalStrength": "24%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "testdot.1x1",
+        "signalStrength": "24%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "testdot1",
+        "signalStrength": "22%"
+      },
+      {
+        "capabilities": [
+          "WPA2",
+          "802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "EAPSIM",
+        "signalStrength": "22%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "gg_wfw",
+        "signalStrength": "20%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "ManualRoam_PSK",
+        "signalStrength": "20%"
+      }
+    ]
+  }
+}

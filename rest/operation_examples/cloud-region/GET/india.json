@@ -1,0 +1,15 @@
+{
+  "FrequencyHopping": true,
+  "channelData": [
+    865700,
+    866300,
+    866900,
+    867500
+  ],
+  "country": "India",
+  "lbtEnabled": true,
+  "maxTxPowerSupported": 300,
+  "minTxPowerSupported": 100,
+  "region": "IN",
+  "regulatoryStandard": "INDIA"
+}

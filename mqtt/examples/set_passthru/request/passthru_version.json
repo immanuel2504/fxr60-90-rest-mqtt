@@ -1,0 +1,8 @@
+{
+  "command": "set_passthru",
+  "command_id": "req-set-passthru",
+  "payload": {
+    "component": "RC",
+    "payload": "version"
+  }
+}

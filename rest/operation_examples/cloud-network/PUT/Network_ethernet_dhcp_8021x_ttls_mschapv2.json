@@ -1,0 +1,13 @@
+{
+  "eth0": {
+    "security": {
+      "802_1xEAP": {
+        "authentication": "TTLS",
+        "innerAuthentication": "MSCHAPv2",
+        "username": "john.doe",
+        "password": "secret"
+      }
+    },
+    "enable": true
+  }
+}

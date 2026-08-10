@@ -1,0 +1,8 @@
+{
+  "availableNetworkInterfaces": [
+    "eth0",
+    "mlan0",
+    "bnep0",
+    "wan0"
+  ]
+}

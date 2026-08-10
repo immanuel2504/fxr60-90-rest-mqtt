@@ -1,0 +1,11 @@
+{
+  "wan0": {
+    "enable": true,
+    "activeSim": "psim",
+    "psim": {
+      "apn": "internet",
+      "preferredNetworkType": "AUTO",
+      "enableIPv6": true
+    }
+  }
+}

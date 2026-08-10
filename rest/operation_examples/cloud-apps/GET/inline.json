@@ -1,0 +1,14 @@
+[
+  {
+    "appname": "mylogger",
+    "runningStatus": true,
+    "autostart": false,
+    "metadata": "APP_TYPE: DA"
+  },
+  {
+    "appname": "sample",
+    "runningStatus": false,
+    "autostart": true,
+    "metadata": "APP_TYPE: NORMAL"
+  }
+]

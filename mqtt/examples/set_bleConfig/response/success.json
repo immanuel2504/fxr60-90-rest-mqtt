@@ -1,0 +1,6 @@
+{
+  "command": "set_bleConfig",
+  "command_id": "req-set-bleConfig",
+  "response": "success",
+  "payload": {}
+}

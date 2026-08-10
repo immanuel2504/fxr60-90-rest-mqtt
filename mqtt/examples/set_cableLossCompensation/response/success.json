@@ -1,0 +1,6 @@
+{
+  "command": "set_cableLossCompensation",
+  "command_id": "req-set-cableLossCompensation",
+  "response": "success",
+  "payload": {}
+}

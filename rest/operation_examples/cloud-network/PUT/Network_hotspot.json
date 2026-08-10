@@ -1,0 +1,10 @@
+{
+  "uap0": {
+    "ssid": "FXR90Hotspot",
+    "ssidPassword": "MyP@ssword",
+    "countryCode": "US",
+    "securityType": "WPA3Personal",
+    "isHidden": false,
+    "enable": true
+  }
+}

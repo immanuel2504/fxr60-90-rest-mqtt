@@ -1,0 +1,13 @@
+{
+  "url": "https://apps.example.com/packages/",
+  "filename": "mylogger-1.2.0.deb",
+  "authenticationType": "BASIC",
+  "options": {
+    "username": "labuser",
+    "password": "L@bu$3rs"
+  },
+  "verifyPeer": true,
+  "verifyHost": true,
+  "installedCertificateType": "server",
+  "installedCertificateName": "reader-server-cert"
+}

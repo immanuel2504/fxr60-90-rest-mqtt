@@ -1,0 +1,11 @@
+{
+  "options": {
+    "password": "zebra",
+    "username": "zebra"
+  },
+  "authenticationType": "BASIC",
+  "name": "reader",
+  "pfxPassword": "abcd12345",
+  "type": "client",
+  "url": "https://10.117.229.15/reader.pfx"
+}

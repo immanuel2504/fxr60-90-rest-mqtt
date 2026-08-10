@@ -1,0 +1,18 @@
+{
+  "mlan0": {
+    "accesspoint": {
+      "essid": "CorpNetwork",
+      "connect": true,
+      "autoConn": true,
+      "security": {
+        "WPA3Enterprise": {
+          "authentication": "TTLS",
+          "innerAuthentication": "MSCHAPv2",
+          "username": "john.doe",
+          "password": "secret"
+        }
+      }
+    },
+    "enable": true
+  }
+}

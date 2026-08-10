@@ -1,0 +1,11 @@
+{
+  "eth0": {
+    "security": {
+      "802_1xEAP": {
+        "authentication": "TLS",
+        "certificate": "my-client-cert"
+      }
+    },
+    "enable": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "command": "set_os",
+  "command_id": "req-set-os",
+  "payload": {
+    "url": "https://builds.example.com/FXR90_2.0.10.tar.bz2",
+    "authenticationType": "BASIC",
+    "options": {
+      "username": "labuser",
+      "password": "L@bu$3rs"
+    },
+    "transfer_protocol": "HTTPS"
+  }
+}

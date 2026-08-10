@@ -1,0 +1,6 @@
+{
+  "command": "set_eSimConfig",
+  "command_id": "req-set-eSimConfig",
+  "response": "success",
+  "payload": {}
+}

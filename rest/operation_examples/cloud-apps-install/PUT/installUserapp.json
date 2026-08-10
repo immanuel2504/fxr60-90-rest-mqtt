@@ -1,0 +1,9 @@
+{
+  "options": {
+    "password": "L@bu$3rs",
+    "username": "labuser"
+  },
+  "authenticationType": "BASIC",
+  "filename": "mylogger_1.0.1.deb",
+  "url": "sftp://10.117.229.15/home/labuser/EV1/"
+}

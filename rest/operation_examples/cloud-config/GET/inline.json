@@ -1,0 +1,171 @@
+{
+  "GPIO-LED": {},
+  "READER-GATEWAY": {
+    "batching": [
+      {
+        "maxPayloadSizePerReport": 256000,
+        "reportingInterval": 10000
+      }
+    ],
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {}
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "additionalOptions": {
+                "batching": {
+                  "maxPayloadSizePerReport": 256000,
+                  "reportingInterval": 10000
+                },
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 100
+                }
+              },
+              "description": "QWERTYU",
+              "name": "ASDFGHJ",
+              "options": {
+                "security": {
+                  "verifyPeer": false
+                }
+              },
+              "type": "WEBSOCKET"
+            }
+          ]
+        }
+      },
+      "management": {
+        "commandResponse": {},
+        "event": {
+          "connections": []
+        }
+      }
+    },
+    "managementEventConfig": {
+      "errors": {
+        "antenna": true,
+        "cpu": {
+          "reportIntervalInSec": 1800,
+          "threshold": 90
+        },
+        "database": true,
+        "flash": {
+          "reportIntervalInSec": 1800,
+          "threshold": 90
+        },
+        "ntp": true,
+        "radio": true,
+        "radio_control": true,
+        "ram": {
+          "reportIntervalInSec": 1800,
+          "threshold": 90
+        },
+        "reader_gateway": true,
+        "userApp": {
+          "reportIntervalInSec": 1800,
+          "threshold": 120
+        }
+      },
+      "gpiEvents": true,
+      "gpoEvents": true,
+      "heartbeat": {
+        "fields": {
+          "radio_control": [
+            "ANTENNAS",
+            "RADIO_ACTIVITY",
+            "RADIO_CONNECTION",
+            "CPU",
+            "RAM",
+            "UPTIME",
+            "NUM_ERRORS",
+            "NUM_WARNINGS",
+            "NUM_TAG_READS",
+            "NUM_TAG_READS_PER_ANTENNA",
+            "NUM_DATA_MESSAGES_TXED",
+            "NUM_RADIO_PACKETS_RXED"
+          ],
+          "reader_gateway": [
+            "NUM_DATA_MESSAGES_RXED",
+            "NUM_MANAGEMENT_EVENTS_TXED",
+            "NUM_DATA_MESSAGES_TXED",
+            "NUM_DATA_MESSAGES_RETAINED",
+            "NUM_DATA_MESSAGES_DROPPED",
+            "CPU",
+            "RAM",
+            "UPTIME",
+            "NUM_ERRORS",
+            "NUM_WARNINGS",
+            "INTERFACE_CONNECTION_STATUS",
+            "NOLOCKQ_DEPTH"
+          ],
+          "system": [
+            "CPU",
+            "FLASH",
+            "NTP",
+            "RAM",
+            "SYSTEMTIME",
+            "TEMPERATURE",
+            "UPTIME",
+            "GPO",
+            "GPI",
+            "POWER_NEGOTIATION",
+            "POWER_SOURCE",
+            "MAC_ADDRESS",
+            "HOSTNAME"
+          ],
+          "userDefined": {},
+          "userapps": [
+            "STATUS",
+            "CPU",
+            "RAM",
+            "UPTIME",
+            "NUM_DATA_MESSAGES_RXED",
+            "NUM_DATA_MESSAGES_TXED",
+            "INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING",
+            "OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING"
+          ]
+        },
+        "interval": 60
+      },
+      "userappEvents": true,
+      "warnings": {
+        "cpu": {
+          "reportIntervalInSec": 1800,
+          "threshold": 80
+        },
+        "database": true,
+        "flash": {
+          "reportIntervalInSec": 1800,
+          "threshold": 80
+        },
+        "ntp": true,
+        "radio_api": true,
+        "radio_control": true,
+        "ram": {
+          "reportIntervalInSec": 1800,
+          "threshold": 80
+        },
+        "reader_gateway": true,
+        "temperature": {
+          "ambient": 75,
+          "pa": 105
+        },
+        "userApp": {
+          "reportIntervalInSec": 1800,
+          "threshold": 60
+        }
+      }
+    },
+    "retention": [
+      {
+        "maxEventRetentionTimeInMin": 500,
+        "maxNumEvents": 150000,
+        "throttle": 100
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "command": "set_update_cert",
+  "command_id": "req-set-update-cert",
+  "payload": {
+    "name": "reader-server-cert",
+    "type": "server",
+    "url": "https://certs.example.com/server.pfx",
+    "authenticationType": "NONE",
+    "pfxPassword": "zebra",
+    "verifyPeer": true,
+    "CACertificateFileContent": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----"
+  }
+}

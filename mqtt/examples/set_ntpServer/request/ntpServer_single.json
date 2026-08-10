@@ -1,0 +1,7 @@
+{
+  "command": "set_ntpServer",
+  "command_id": "req-set-ntpServer",
+  "payload": {
+    "server": "time.google.com"
+  }
+}

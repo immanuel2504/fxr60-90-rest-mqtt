@@ -1,0 +1,7 @@
+{
+  "command": "stop_user_app",
+  "command_id": "req-stop-user-app",
+  "payload": {
+    "appname": "mylogger"
+  }
+}

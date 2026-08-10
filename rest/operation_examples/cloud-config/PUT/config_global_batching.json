@@ -1,0 +1,8 @@
+{
+  "READER-GATEWAY": {
+    "batching": {
+      "maxPayloadSizePerReport": 65536,
+      "reportingInterval": 1000
+    }
+  }
+}

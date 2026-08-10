@@ -1,0 +1,53 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "description": "azure_8883yj",
+              "name": "AZURE_8883",
+              "options": {
+                "additional": {
+                  "cleanSession": false,
+                  "clientId": "FXR90A3A2F7",
+                  "debug": true,
+                  "keepAlive": 120,
+                  "qos": 1,
+                  "reconnectDelay": 600,
+                  "reconnectDelayMax": 86400
+                },
+                "basicAuthentication": {
+                  "password": "none",
+                  "username": "VULCANIOTHUB.azure-devices.net/FXR90A3A2F7/?api-version=2018-06-30"
+                },
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "VULCANIOTHUB.azure-devices.net",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "publishTopic": [
+                  "devices/FXR90A3A2F7/messages/events/"
+                ],
+                "security": {
+                  "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "privateKeyFileLocation": "/data/apps/key.pem",
+                  "publicKeyFileLocation": "/data/apps/csr.pem",
+                  "verifyHostName": false,
+                  "verifyPeer": false
+                },
+                "subscribeTopic": [
+                  "devices/FXR90A3A2F7/messages/devicebound/#"
+                ]
+              },
+              "type": "mqtt-AZURE"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

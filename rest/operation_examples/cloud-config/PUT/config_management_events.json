@@ -1,0 +1,79 @@
+{
+  "READER-GATEWAY": {
+    "managementEventConfig": {
+      "errors": {
+        "antenna": true,
+        "cpu": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "flash": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "ram": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "radio": true,
+        "radio_control": true,
+        "reader_gateway": true,
+        "database": true
+      },
+      "warnings": {
+        "cpu": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "flash": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "ram": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "ntp": true,
+        "radio_api": true,
+        "radio_control": true,
+        "reader_gateway": true,
+        "temperature": {
+          "ambient": 75,
+          "pa": 105
+        }
+      },
+      "gpiEvents": true,
+      "userappEvents": true,
+      "heartbeat": {
+        "interval": 60,
+        "fields": {
+          "radio_control": [
+            "ANTENNAS",
+            "RADIO_ACTIVITY",
+            "CPU",
+            "RAM"
+          ],
+          "reader_gateway": [
+            "NUM_DATA_MESSAGES_RXED",
+            "NUM_DATA_MESSAGES_TXED",
+            "CPU",
+            "RAM"
+          ],
+          "system": [
+            "CPU",
+            "FLASH",
+            "RAM",
+            "SYSTEMTIME",
+            "TEMPERATURE",
+            "UPTIME"
+          ],
+          "userapps": [
+            "STATUS",
+            "CPU",
+            "RAM"
+          ]
+        }
+      }
+    }
+  }
+}

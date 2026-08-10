@@ -1,0 +1,33 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "response": "success",
+  "payload": {
+    "hostName": "FXR90C5F1AB",
+    "networkInterface": {
+      "wan0": {
+        "Status": "online",
+        "activeSim": "psim",
+        "isEnabled": true,
+        "psim": {
+          "currentDataClass": "LTE",
+          "currentServiceProvider": "Vi India",
+          "enableIPv6": false,
+          "enablePin": false,
+          "enableRoaming": false,
+          "highestAvailableDataClass": "LTE",
+          "internetAccess": true,
+          "packetServiceState": "Attached",
+          "preferredNetworkType": "AUTO",
+          "registerState": "Home",
+          "rsrp": "-103.7dBm",
+          "rsrq": "-5.5dB",
+          "rssi": "-82.7dBm",
+          "signalBar": 1,
+          "simState": "Initialized",
+          "snr": "0.0dB"
+        }
+      }
+    }
+  }
+}

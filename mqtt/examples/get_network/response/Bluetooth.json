@@ -1,0 +1,24 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "response": "success",
+  "payload": {
+    "hostName": "FXR90C5F1AB",
+    "networkInterface": {
+      "bnep0": {
+        "Status": "active",
+        "deviceDiscoverableName": "FXR90C5F1AB",
+        "dhcpEndAddress": "192.168.0.10",
+        "dhcpStartAddress": "192.168.0.2",
+        "ipAddress": "192.168.241.171",
+        "isDiscoverable": true,
+        "isEnabled": true,
+        "isPairable": true,
+        "macAddress": "48:A4:93:BF:A9:52",
+        "passKey": "1234",
+        "subnetMask": "255.255.0.0",
+        "usePassKey": true
+      }
+    }
+  }
+}

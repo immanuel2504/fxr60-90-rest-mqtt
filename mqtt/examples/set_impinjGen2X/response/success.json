@@ -1,0 +1,6 @@
+{
+  "command": "set_impinjGen2X",
+  "command_id": "req-set-impinjGen2X",
+  "response": "success",
+  "payload": {}
+}

@@ -1,0 +1,13 @@
+{
+  "command": "get_stackled",
+  "command_id": "req-get-stackled",
+  "response": "success",
+  "payload": {
+    "status": "NON_DEFAULT",
+    "color": "red",
+    "brightness": "high",
+    "flash": true,
+    "seconds": 30,
+    "seconds_remaining": 18
+  }
+}

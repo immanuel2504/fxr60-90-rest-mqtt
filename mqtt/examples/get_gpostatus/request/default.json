@@ -1,0 +1,5 @@
+{
+  "command": "get_gpostatus",
+  "command_id": "req-get-gpostatus",
+  "payload": {}
+}

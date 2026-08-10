@@ -1,0 +1,9 @@
+{
+  "region": {
+    "in": "query",
+    "required": false,
+    "type": "string",
+    "enum": null,
+    "example": "India"
+  }
+}

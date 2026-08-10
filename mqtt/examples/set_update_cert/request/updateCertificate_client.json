@@ -1,0 +1,16 @@
+{
+  "command": "set_update_cert",
+  "command_id": "req-set-update-cert",
+  "payload": {
+    "name": "mqtt-client-cert",
+    "type": "client",
+    "url": "https://certs.example.com/mqtt-client.pfx",
+    "authenticationType": "BASIC",
+    "options": {
+      "username": "zebra",
+      "password": "zebra"
+    },
+    "pfxPassword": "zebra",
+    "transfer_protocol": "HTTPS"
+  }
+}

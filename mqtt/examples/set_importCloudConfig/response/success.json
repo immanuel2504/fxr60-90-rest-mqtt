@@ -1,0 +1,6 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig",
+  "response": "success",
+  "payload": {}
+}

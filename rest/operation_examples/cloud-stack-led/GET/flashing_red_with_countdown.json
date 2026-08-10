@@ -1,0 +1,8 @@
+{
+  "status": "NON_DEFAULT",
+  "color": "red",
+  "brightness": "high",
+  "flash": true,
+  "seconds": 30,
+  "seconds_remaining": 18
+}

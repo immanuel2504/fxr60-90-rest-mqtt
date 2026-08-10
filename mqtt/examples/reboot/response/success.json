@@ -1,0 +1,6 @@
+{
+  "command": "reboot",
+  "command_id": "req-reboot",
+  "response": "success",
+  "payload": ""
+}

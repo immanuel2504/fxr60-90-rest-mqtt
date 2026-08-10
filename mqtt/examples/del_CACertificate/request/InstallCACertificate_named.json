@@ -1,0 +1,8 @@
+{
+  "command": "del_CACertificate",
+  "command_id": "req-del-CACertificate",
+  "payload": {
+    "name": "AmazonRootCA1",
+    "content": "-----BEGIN CERTIFICATE-----\nMIIDdzCCAl+gAwIBAgIEbJQz0jANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJV\n-----END CERTIFICATE-----"
+  }
+}

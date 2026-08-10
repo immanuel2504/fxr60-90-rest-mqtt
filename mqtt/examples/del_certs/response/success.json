@@ -1,0 +1,6 @@
+{
+  "command": "del_certs",
+  "command_id": "req-del-certs",
+  "response": "success",
+  "payload": {}
+}

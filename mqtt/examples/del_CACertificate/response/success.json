@@ -1,0 +1,6 @@
+{
+  "command": "del_CACertificate",
+  "command_id": "req-del-CACertificate",
+  "response": "success",
+  "payload": {}
+}

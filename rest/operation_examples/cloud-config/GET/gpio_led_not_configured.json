@@ -1,0 +1,14 @@
+{
+  "GPIO-LED": "NOT_CONFIGURED",
+  "READER-GATEWAY": {
+    "batching": {
+      "maxPayloadSizePerReport": 256000,
+      "reportingInterval": 10000
+    },
+    "retention": {
+      "maxEventRetentionTimeInMin": 1440,
+      "maxNumEvents": 150000,
+      "thresholdEventCount": 100000
+    }
+  }
+}

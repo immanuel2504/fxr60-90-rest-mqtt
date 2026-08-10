@@ -1,0 +1,6 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "response": "success",
+  "payload": {}
+}

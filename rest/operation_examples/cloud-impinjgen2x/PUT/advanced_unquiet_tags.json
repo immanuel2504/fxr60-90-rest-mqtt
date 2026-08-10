@@ -1,0 +1,34 @@
+{
+  "tagQuieting": {
+    "advanced": {
+      "preSelect": [
+        {
+          "target": "SL",
+          "action": "DEASSERTSL_NOTHING",
+          "mask": {
+            "bank": "EPC",
+            "pointer": 32,
+            "length": 96,
+            "value": "E280123456789012345678AB"
+          }
+        },
+        {
+          "target": "S2",
+          "action": "INVA_INVB",
+          "mask": {
+            "bank": "EPC",
+            "pointer": 32,
+            "length": 96,
+            "value": "E280AABBCCDDEEFF11223344"
+          }
+        }
+      ],
+      "tagQuietMasks": [
+        "SL_DEASSERT",
+        "S2A"
+      ],
+      "target": "SL",
+      "stateAwareAction": "DEASSERTSL_ASSERTSL"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "command": "get_region",
+  "command_id": "req-get-region",
+  "response": "success",
+  "payload": {
+    "FrequencyHopping": true,
+    "channelData": [
+      915250,
+      915750,
+      903250,
+      926750
+    ],
+    "country": "Canada",
+    "lbtEnabled": false,
+    "maxTxPowerSupported": 300,
+    "minTxPowerSupported": 100,
+    "region": "US",
+    "regulatoryStandard": "FCC"
+  }
+}

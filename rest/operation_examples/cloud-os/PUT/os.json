@@ -1,0 +1,8 @@
+{
+  "url": "https://10.117.229.9:9093/BUILDS/FXR90_2.0.10.tar.bz2",
+  "authenticationType": "NONE",
+  "options": {
+    "username": "test",
+    "password": "test"
+  }
+}

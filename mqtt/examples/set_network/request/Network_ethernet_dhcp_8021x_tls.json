@@ -1,0 +1,15 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "eth0": {
+      "security": {
+        "802_1xEAP": {
+          "authentication": "TLS",
+          "certificate": "my-client-cert"
+        }
+      },
+      "enable": true
+    }
+  }
+}

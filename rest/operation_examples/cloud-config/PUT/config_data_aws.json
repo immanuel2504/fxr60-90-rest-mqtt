@@ -1,0 +1,47 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "description": "AWS",
+              "name": "AWS_8883",
+              "options": {
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR90F009C9aws",
+                  "debug": false,
+                  "keepAlive": 20,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 5
+                },
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "publishTopic": [
+                  "datacollection_aws/FXR90F009C9"
+                ],
+                "security": {
+                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "privateKeyFileLocation": "/data/aws-pvt.key",
+                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                },
+                "subscribeTopic": []
+              },
+              "type": "mqtt-AWS"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

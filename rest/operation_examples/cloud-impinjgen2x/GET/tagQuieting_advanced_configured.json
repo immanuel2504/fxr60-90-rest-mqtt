@@ -1,0 +1,12 @@
+{
+  "tagQuieting": {
+    "advanced": {
+      "tagQuietMasks": [
+        "S0A",
+        "S2A"
+      ],
+      "target": "SL",
+      "stateAwareAction": "ASSERTSL"
+    }
+  }
+}

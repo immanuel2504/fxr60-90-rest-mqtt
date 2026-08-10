@@ -1,0 +1,15 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "wan0": {
+      "enable": true,
+      "activeSim": "psim",
+      "psim": {
+        "apn": "internet",
+        "preferredNetworkType": "AUTO",
+        "enableIPv6": true
+      }
+    }
+  }
+}

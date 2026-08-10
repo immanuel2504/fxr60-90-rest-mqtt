@@ -1,0 +1,6 @@
+{
+  "command": "set_timeZone",
+  "command_id": "req-set-timeZone",
+  "response": "success",
+  "payload": {}
+}
