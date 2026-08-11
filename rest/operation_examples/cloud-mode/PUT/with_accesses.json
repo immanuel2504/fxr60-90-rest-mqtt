@@ -1,0 +1,29 @@
+{
+  "type": "CUSTOM",
+  "antennas": [
+    1
+  ],
+  "transmitPower": [
+    30
+  ],
+  "query": {
+    "sel": "ALL",
+    "session": "S1",
+    "tagPopulation": 50,
+    "target": "A"
+  },
+  "accesses": [
+    {
+      "type": "READ",
+      "config": {
+        "membank": "TID",
+        "wordPointer": 0,
+        "wordCounter": 6
+      }
+    }
+  ],
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI"
+  ]
+}

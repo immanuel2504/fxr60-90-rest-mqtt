@@ -1296,6 +1296,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetModeRequest'
+            examples:
+              default_configured_only:
+                summary: 'Request: configured values only (default)'
+                value: {}
+              verbose_full:
+                summary: 'Request: entire configuration including defaults'
+                value:
+                  verbose: true
       responses:
         '200':
           description: OK
@@ -1304,9 +1312,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/operatingMode.v1'
               examples:
-                default_configured_only:
-                  summary: default configured only
-                  value: {}
                 inline:
                   summary: inline
                   value:
@@ -1462,10 +1467,6 @@ paths:
                     reportFilter:
                       duration: 0
                       type: PER_ANTENNA
-                verbose_full:
-                  summary: verbose full
-                  value:
-                    verbose: true
       security:
       - bearerAuth: []
     put:
@@ -1551,62 +1552,54 @@ paths:
             schema:
               $ref: '#/components/schemas/SetModeRequest'
             examples:
-              mode:
-                summary: mode
+              conveyor_basic:
+                summary: CONVEYOR mode baseline
                 value:
-                  antennaStopCondition:
-                    type: DURATION
-                    value: 400
+                  type: CONVEYOR
                   antennas:
                   - 1
                   - 2
                   - 3
                   - 4
-                  linkprofile: 1519
-                  query:
-                    sel: ALL
-                    session: S2
-                    tagPopulation: 2000
-                    target: AB
-                  inventoryProtocol:
-                    mode: GEN2
-                  radioStopConditions:
-                    duration: 60
-                  transmitPower: 31.5
-                  type: SIMPLE
-              mode_CONVEYOR:
-                summary: mode CONVEYOR
-                value:
-                  type: CONVEYOR
-                  antennas:
-                  - 1
-                  transmitPower: 27
-                  inventoryProtocol:
-                    mode: GEN2
-                  antennaStopCondition:
-                    type: DURATION
-                    value: 50
-                  query:
-                    sel: ALL
-                    session: S1
-                    tagPopulation: 64
-                    target: A
-                  rssiFilter:
-                    threshold: -65
-              mode_default_FXR90:
-                summary: mode default FXR90
-                value:
+                  transmitPower:
+                  - 30
+                  - 30
+                  - 30
+                  - 30
+                  environment: HIGH_INTERFERENCE
                   antennaStopCondition:
                     type: DURATION
                     value: 100
+                  query:
+                    sel: ALL
+                    session: S1
+                    tagPopulation: 200
+                    target: A
+                  inventoryProtocol:
+                    mode: GEN2
+                  tagMetaData:
+                  - ANTENNA
+                  - RSSI
+                  - SEEN_COUNT
+                  - CHANNEL
+              inventory_with_interval:
+                summary: INVENTORY mode with report interval
+                value:
+                  type: INVENTORY
+                  environment: HIGH_INTERFERENCE
                   antennas:
                   - 1
-                  component: RC
-                  delayBetweenAntennaCycles:
-                    duration: 0
-                    type: DISABLED
-                  linkProfile: 3
-                  payload: status
+                  - 2
+                  transmitPower:
+                  - 27
+                  - 27
+                  modeSpecificSettings:
+                    interval:
+                      unit: seconds
+                      value: 60
+                  antennaStopCondition:
+                    type: DURATION
+                    value: 100
                   query:
                     sel: ALL
                     session: S1
@@ -1614,82 +1607,150 @@ paths:
                     target: A
                   inventoryProtocol:
                     mode: GEN2
-                  reportFilter:
+                  delayBetweenAntennaCycles:
+                    type: DISABLED
                     duration: 0
-                    type: PER_ANTENNA
                   tagMetaData:
-                  - RSSI
-                  - PHASE
-                  - SEEN_COUNT
                   - ANTENNA
+                  - RSSI
+                  - SEEN_COUNT
                   - CHANNEL
-                  - PC
-                  - XPC
-                  - CRC
-                  transmitPower:
-                  - 17
-                  type: CUSTOM
-              mode_INVENTORY:
-                summary: mode INVENTORY
-                value:
-                  type: INVENTORY
-                  antennas:
-                  - 1
-                  - 2
-                  - 3
-                  - 4
-                  transmitPower: 30
-                  inventoryProtocol:
-                    mode: GEN2
-                  antennaStopCondition:
-                    type: DURATION
-                    value: 200
-                  query:
-                    sel: ALL
-                    session: S1
-                    tagPopulation: 512
-                    target: A
-              mode_PORTAL:
-                summary: mode PORTAL
+              portal_gpi_trigger:
+                summary: PORTAL mode with GPI start trigger
                 value:
                   type: PORTAL
                   antennas:
                   - 1
                   - 2
-                  transmitPower: 31.5
-                  inventoryProtocol:
-                    mode: GEN2
+                  transmitPower: 30
                   environment: HIGH_INTERFERENCE
-                  antennaStopCondition:
-                    type: DURATION
-                    value: 100
-                  reportFilter:
-                    duration: 0
-                    type: PER_ANTENNA
-              mode_SIMPLE_minimal:
-                summary: mode SIMPLE minimal
-                value:
-                  type: SIMPLE
-              mode_TAG_FOCUS:
-                summary: mode TAG FOCUS
-                value:
-                  type: CUSTOM
-                  antennaStopCondition:
-                    type: DURATION
-                    value: 100
-                  antennas:
-                  - 1
+                  modeSpecificSettings:
+                    startTrigger:
+                      port: 1
+                      signal: HIGH
+                    stopInterval: 5
                   query:
-                    tagpopulation: 10
-                    sel: NOT_SL
+                    sel: ALL
                     session: S1
+                    tagPopulation: 100
                     target: A
                   inventoryProtocol:
                     mode: GEN2
-                  modeSpecificSettings:
-                    interval:
-                      unit: seconds
-                      value: 0
+                  tagMetaData:
+                  - ANTENNA
+                  - RSSI
+                  - SEEN_COUNT
+              simple_basic:
+                summary: SIMPLE mode baseline
+                value:
+                  type: SIMPLE
+                  antennas:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  transmitPower: 31.5
+                  antennaStopCondition:
+                    type: DURATION
+                    value: 400
+                  query:
+                    sel: ALL
+                    session: S2
+                    tagPopulation: 2000
+                    target: AB
+                  inventoryProtocol:
+                    mode: GEN2
+                  radioStartConditions:
+                    type: GPI
+                    gpis:
+                    - port: 1
+                      signal: HIGH
+                  radioStopConditions:
+                    duration: 60
+              with_accesses:
+                summary: CUSTOM mode with READ TID access
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  transmitPower:
+                  - 30
+                  query:
+                    sel: ALL
+                    session: S1
+                    tagPopulation: 50
+                    target: A
+                  accesses:
+                  - type: READ
+                    config:
+                      membank: TID
+                      wordPointer: 0
+                      wordCounter: 6
+                  tagMetaData:
+                  - ANTENNA
+                  - RSSI
+              with_filter_prefix:
+                summary: CUSTOM mode with prefix EPC filter
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  - 2
+                  transmitPower: 27
+                  filter:
+                    value: E280
+                    match: prefix
+                    operation: include
+              with_query:
+                summary: CUSTOM mode with Gen2 query
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  transmitPower: 27
+                  query:
+                    sel: ALL
+                    session: S1
+                    tagPopulation: 256
+                    target: A
+              with_radio_stop:
+                summary: CUSTOM mode with radio stop conditions
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  - 2
+                  transmitPower:
+                  - 28
+                  - 28
+                  radioStopConditions:
+                    duration: 60
+              with_report_filter:
+                summary: CUSTOM mode with report filter
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  - 2
+                  transmitPower:
+                  - 28
+                  - 28
+                  reportFilter:
+                    duration: 5
+                    type: PER_ANTENNA
+              with_selects:
+                summary: CUSTOM mode with Gen2 selects
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  transmitPower:
+                  - 30
+                  query:
+                    sel: NOT_SL
+                    session: S1
+                    tagPopulation: 10
+                    target: A
                   selects:
                   - target: S1
                     action: INVB_NOTHING
@@ -1697,13 +1758,20 @@ paths:
                     pointer: 6
                     length: 24
                     mask: '800600'
-                  transmitPower:
-                  - 30
-                  radioStartConditions: {}
-                  radioStopConditions: {}
-                  reportFilter:
-                    duration: 1
-                    type: PER_ANTENNA
+              with_tag_metadata:
+                summary: CUSTOM mode with tag metadata fields
+                value:
+                  type: CUSTOM
+                  antennas:
+                  - 1
+                  transmitPower: 27
+                  tagMetaData:
+                  - ANTENNA
+                  - RSSI
+                  - SEEN_COUNT
+                  - CHANNEL
+                  - PC
+                  - CRC
       responses:
         '200':
           description: OK
@@ -2416,38 +2484,433 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetConfigMqttRequest'
-            example:
-              READER-GATEWAY:
-                endpointConfig:
-                  data:
-                    event:
-                      connections:
-                      - additionalOptions:
-                          batching: null
-                          retention:
-                            maxEventRetentionTimeInMin: 500
-                            maxNumEvents: 150000
-                            throttle: 100
-                        description: mqtt_data_public_emqx
-                        name: mqtt_emqx_data
-                        options:
-                          additional:
-                            cleanSession: true
-                            clientId: fxr90-reader
-                            debug: false
-                            keepAlive: 60
-                            qos: 0
-                            reconnectDelay: 1
-                            reconnectDelayMax: 5
-                          enableSecurity: false
-                          endpoint:
-                            hostName: broker.emqx.io
-                            port: 8083
-                            protocol: ws
-                          publishTopic:
-                          - /devices/fxr90-reader/events/data
-                          subscribeTopic: []
-                        type: mqtt
+            examples:
+              clear_data:
+                summary: Clear all data connections
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections: []
+              data_aws:
+                summary: Tag events over AWS IoT Core
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: DATA_AWS
+                            description: Tag events to AWS IoT Core
+                            type: mqtt-AWS
+                            options:
+                              enableSecurity: true
+                              endpoint:
+                                hostName: test-ats.iot.us-east-1.amazonaws.com
+                                port: 8883
+                                protocol: ssl
+                              additional:
+                                cleanSession: true
+                                clientId: FXR90-LAB-DATA
+                                keepAlive: 20
+                                qos: 0
+                                reconnectDelay: 1
+                                reconnectDelayMax: 30
+                              publishTopic:
+                              - datacollection_aws/FXR90-LAB
+                              subscribeTopic: []
+                              security:
+                                CACertificateFileLocation: /data/AmazonRootCA1.pem
+                                privateKeyFileLocation: /data/aws-pvt.key
+                                publicKeyFileLocation: /data/aws-pub.crt
+                                keyAlgorithm: RS256
+                                keyFormat: PEM
+                                verifyHostName: true
+                                verifyPeer: true
+              data_azure:
+                summary: Tag events over Azure IoT Hub
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: DATA_AZURE
+                            description: Tag events to Azure IoT Hub
+                            type: mqtt-Azure
+                            options:
+                              enableSecurity: true
+                              endpoint:
+                                hostName: your-hub.azure-devices.net
+                                port: 8883
+                                protocol: ssl
+                              basicAuthentication:
+                                username: your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30
+                                password: none
+                              additional:
+                                cleanSession: false
+                                clientId: FXR90-LAB-DATA
+                                keepAlive: 120
+                                qos: 1
+                                reconnectDelay: 600
+                                reconnectDelayMax: 86400
+                              publishTopic:
+                              - devices/FXR90-LAB-DATA/messages/events/
+                              subscribeTopic: []
+                              security:
+                                CACertificateFileLocation: /data/apps/cacertazure.pem
+                                privateKeyFileLocation: /data/apps/key.pem
+                                publicKeyFileLocation: /data/apps/csr.pem
+                                keyAlgorithm: RS256
+                                keyFormat: PEM
+                                verifyHostName: true
+                                verifyPeer: true
+              data_http_post:
+                summary: Tag events over HTTP POST
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: DATA_HTTP
+                            type: httpPost
+                            options:
+                              URL: https://webhook.site/your-unique-id
+                              security:
+                                authenticationType: NONE
+                                verifyHost: false
+                                verifyPeer: false
+              data_mqtt:
+                summary: MQTT data with GPIO-LED, global batching/retention, and management events
+                value:
+                  GPIO-LED:
+                    GPODefaults:
+                      '1': LOW
+                      '2': LOW
+                      '3': LOW
+                      '4': LOW
+                    LEDDefaults:
+                      '1': GREEN
+                      '2': GREEN
+                      '3': GREEN
+                    TAG_READ:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                      postActionColor: GREEN
+                      blink:
+                        'ON': 100
+                        'OFF': 100
+                        DURATION: 500
+                    - type: GPO
+                      pin: 1
+                      state: HIGH
+                      postActionState: LOW
+                      blink:
+                        'ON': 200
+                        'OFF': 200
+                        DURATION: 1000
+                    RADIO_START:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                    RADIO_STOP:
+                    - type: LED
+                      led: 1
+                      color: GREEN
+                    CLOUD_CONNECT:
+                    - type: LED
+                      led: 2
+                      color: GREEN
+                    CLOUD_DISCONNECT:
+                    - type: LED
+                      led: 2
+                      color: RED
+                  READER-GATEWAY:
+                    batching:
+                      maxPayloadSizePerReport: 65536
+                      reportingInterval: 1000
+                    retention:
+                      maxEventRetentionTimeInMin: 1440
+                      maxNumEvents: 150000
+                      throttle: 500
+                    managementEventConfig:
+                      errors:
+                        antenna: true
+                        cpu:
+                          threshold: 90
+                          reportIntervalInSec: 1800
+                        flash:
+                          threshold: 90
+                          reportIntervalInSec: 1800
+                        ram:
+                          threshold: 90
+                          reportIntervalInSec: 1800
+                        radio: true
+                        radio_control: true
+                        reader_gateway: true
+                        database: true
+                      warnings:
+                        cpu:
+                          threshold: 80
+                          reportIntervalInSec: 1800
+                        flash:
+                          threshold: 80
+                          reportIntervalInSec: 1800
+                        ram:
+                          threshold: 80
+                          reportIntervalInSec: 1800
+                        ntp: true
+                        radio_api: true
+                        radio_control: true
+                        reader_gateway: true
+                        temperature:
+                          ambient: 75
+                          pa: 105
+                      gpiEvents: true
+                      userappEvents: true
+                      heartbeat:
+                        interval: 60
+                        fields:
+                          radio_control:
+                          - ANTENNAS
+                          - RADIO_ACTIVITY
+                          - CPU
+                          - RAM
+                          reader_gateway:
+                          - NUM_DATA_MESSAGES_RXED
+                          - NUM_DATA_MESSAGES_TXED
+                          - CPU
+                          - RAM
+                          system:
+                          - CPU
+                          - FLASH
+                          - RAM
+                          - SYSTEMTIME
+                          - TEMPERATURE
+                          - UPTIME
+                          userapps:
+                          - STATUS
+                          - CPU
+                          - RAM
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: mqtt_emqx_data
+                            description: mqtt_data_public_emqx
+                            type: mqtt
+                            options:
+                              enableSecurity: false
+                              endpoint:
+                                hostName: broker.emqx.io
+                                port: 8083
+                                protocol: ws
+                              publishTopic:
+                              - /devices/fxr90-reader/events/data
+                              subscribeTopic: []
+                              additional:
+                                cleanSession: true
+                                clientId: fxr90-reader
+                                debug: false
+                                keepAlive: 60
+                                qos: 0
+                                reconnectDelay: 1
+                                reconnectDelayMax: 5
+              data_tcpip_server:
+                summary: Tag events over TCP/IP server
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: DATA_TCP
+                            description: tag_data_tcp_ip_conn
+                            type: tcpip-server
+                            options:
+                              enableSecurity: false
+                              tcpipport: '8081'
+              data_websocket:
+                summary: Tag events over WebSocket
+                value:
+                  READER-GATEWAY:
+                    endpointConfig:
+                      data:
+                        event:
+                          connections:
+                          - name: DATA_WS
+                            type: WEBSOCKET
+                            options:
+                              security:
+                                verifyPeer: false
+              gpio_led_cloud:
+                summary: GPIO-LED for cloud connect/disconnect
+                value:
+                  GPIO-LED:
+                    GPODefaults:
+                      '1': LOW
+                      '2': LOW
+                      '3': LOW
+                      '4': LOW
+                    LEDDefaults:
+                      '1': GREEN
+                      '2': GREEN
+                      '3': GREEN
+                    CLOUD_CONNECT:
+                    - type: LED
+                      led: 2
+                      color: GREEN
+                    - type: GPO
+                      pin: 2
+                      state: HIGH
+                    CLOUD_DISCONNECT:
+                    - type: LED
+                      led: 2
+                      color: RED
+                    - type: GPO
+                      pin: 2
+                      state: LOW
+              gpio_led_conditions:
+                summary: GPIO-LED actions with conditions
+                value:
+                  GPIO-LED:
+                    GPODefaults:
+                      '1': LOW
+                      '2': LOW
+                      '3': LOW
+                      '4': LOW
+                    LEDDefaults:
+                      '1': GREEN
+                      '2': GREEN
+                      '3': GREEN
+                    TAG_READ:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                      postActionColor: GREEN
+                      blink:
+                        'ON': 100
+                        'OFF': 100
+                        DURATION: 500
+                      conditions:
+                      - IS_CLOUD_CONNECTED
+                      - IS_RADIO_ONGOING
+                    RADIO_START:
+                    - type: GPO
+                      pin: 1
+                      state: HIGH
+                      conditions:
+                        operator: and
+                        operands:
+                        - IS_CLOUD_CONNECTED
+                        - IS_RADIO_ONGOING
+                    CLOUD_DISCONNECT:
+                    - type: LED
+                      led: 2
+                      color: RED
+                      conditions:
+                      - ~IS_CLOUD_CONNECTED
+                    RADIO_STOP:
+                    - type: LED
+                      led: 1
+                      color: GREEN
+                      conditions:
+                        operator: or
+                        operands:
+                        - ~IS_RADIO_ONGOING
+                        - ~IS_CLOUD_CONNECTED
+              gpio_led_gpi:
+                summary: GPIO-LED for GPI high/low events
+                value:
+                  GPIO-LED:
+                    GPODefaults:
+                      '1': LOW
+                      '2': LOW
+                      '3': LOW
+                      '4': LOW
+                    LEDDefaults:
+                      '1': GREEN
+                      '2': GREEN
+                      '3': GREEN
+                    GPI_1_H:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                    - type: GPO
+                      pin: 1
+                      state: HIGH
+                    GPI_1_L:
+                    - type: LED
+                      led: 1
+                      color: GREEN
+                    - type: GPO
+                      pin: 1
+                      state: LOW
+                    GPI_2_H:
+                    - type: LED
+                      led: 2
+                      color: AMBER
+                    GPI_2_L:
+                    - type: LED
+                      led: 2
+                      color: GREEN
+                    GPI_3_H:
+                    - type: GPO
+                      pin: 3
+                      state: HIGH
+                    GPI_3_L:
+                    - type: GPO
+                      pin: 3
+                      state: LOW
+                    GPI_4_H:
+                    - type: LED
+                      led: 3
+                      color: RED
+                    GPI_4_L:
+                    - type: LED
+                      led: 3
+                      color: GREEN
+              gpio_led_tag_radio:
+                summary: GPIO-LED for tag read and radio start/stop
+                value:
+                  GPIO-LED:
+                    GPODefaults:
+                      '1': LOW
+                      '2': LOW
+                      '3': LOW
+                      '4': LOW
+                    LEDDefaults:
+                      '1': GREEN
+                      '2': GREEN
+                      '3': GREEN
+                    TAG_READ:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                      postActionColor: GREEN
+                      blink:
+                        'ON': 100
+                        'OFF': 100
+                        DURATION: 500
+                    - type: GPO
+                      pin: 1
+                      state: HIGH
+                      postActionState: LOW
+                      blink:
+                        'ON': 200
+                        'OFF': 200
+                        DURATION: 1000
+                    RADIO_START:
+                    - type: LED
+                      led: 1
+                      color: AMBER
+                    RADIO_STOP:
+                    - type: LED
+                      led: 1
+                      color: GREEN
       responses:
         '200':
           description: OK
@@ -2734,6 +3197,35 @@ paths:
                           options:
                             security:
                               verifyPeer: false
+              management_cmd_mqtt:
+                summary: Management command/response over MQTT
+                value:
+                  endpointConfig:
+                    management:
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: MGMT_CMD_MQTT
+                          description: Management cmd/rsp
+                          type: mqtt
+                          options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-lab-mcmd
+                              debug: false
+                              keepAlive: 60
+                              qos: 0
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - fxr90-lab/mrsp
+                            subscribeTopic:
+                            - fxr90-lab/mcmd
               management_event_mqtt:
                 summary: Management events over MQTT
                 value:
@@ -5659,6 +6151,9 @@ paths:
       description: '## 1. Description
 
 
+        **Product note:** Cellular interface `wan0` is supported on **FXR90 only**. It is **not present on FXR60**. On FXR60, expect interfaces such as `eth0`, `mlan0`, `bnep0`, and `uap0` only.
+
+
         The `GET /cloud/network` REST endpoint retrieves the reader''s complete network configuration across all interfaces.
 
 
@@ -5673,7 +6168,7 @@ paths:
 
         - Bluetooth PAN (`bnep0`) configuration and status
 
-        - Cellular (`wan0`) configuration and status
+        - Cellular (`wan0`) configuration and status — **FXR90 only**
 
         - Wi-Fi hotspot (`uap0`) configuration, connected clients, and status
 
@@ -5694,7 +6189,7 @@ paths:
 
         | Communication Type | Client to Device (HTTP request/response) |
 
-        | Applies To | FXR60 / FXR90 |
+        | Applies To | FXR60 / FXR90 (`wan0` = FXR90 only) |
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
@@ -5727,7 +6222,7 @@ paths:
 
         | `mlan0` | Is Wi-Fi associated and which SSID? | Confirms the correct access point is in use for wireless deployments. |
 
-        | `wan0` | Is cellular connected and does it have a carrier? | Required for deployments relying on cellular backhaul. |
+        | `wan0` | Is cellular connected and does it have a carrier? (**FXR90 only**; absent on FXR60) | Required for deployments relying on cellular backhaul. |
 
         | `uap0` | Is the hotspot enabled and are clients connected? | Used to confirm hotspot provisioning mode is active. |
 
@@ -5865,6 +6360,9 @@ paths:
       description: '## 1. Description
 
 
+        **Product note:** Cellular interface `wan0` is supported on **FXR90 only**. It is **not present on FXR60**. Do not send a `wan0` body to an FXR60 reader.
+
+
         The `PUT /cloud/network` REST endpoint updates reader network configuration for a single interface per request.
 
 
@@ -5877,7 +6375,7 @@ paths:
 
         - Bluetooth PAN (`bnep0`) - discoverability, pairing, and DHCP address pool
 
-        - Cellular WAN (`wan0`) - SIM selection, APN, network type preference, and IPv6
+        - Cellular WAN (`wan0`) - SIM selection, APN, network type preference, and IPv6 — **FXR90 only**
 
         - Wi-Fi hotspot (`uap0`) - SSID, password, country code, and security type
 
@@ -5895,13 +6393,13 @@ paths:
 
         | Communication Type | Client to Device (HTTP request/response) |
 
-        | Applies To | FXR60 / FXR90 |
+        | Applies To | FXR60 / FXR90 (`wan0` = FXR90 only) |
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
         | Content-Type | `application/json` |
 
-        | Supported Interface Keys | `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0` |
+        | Supported Interface Keys | `eth0`, `mlan0`, `bnep0`, `wan0` (**FXR90 only**), `uap0` |
 
         | Supported Wi-Fi Security Types | `WPA2Personal`, `WPA2Enterprise`, `WPA3Personal`, `WPA3Enterprise` |
 
@@ -5920,7 +6418,9 @@ paths:
 
         |---|---|
 
-        | Interface key | Include exactly one top-level interface key: `eth0`, `mlan0`, `bnep0`, `wan0`, or `uap0`. Only one interface can be configured per request. |
+        | Interface key | Include exactly one top-level interface key: `eth0`, `mlan0`, `bnep0`, `wan0` (**FXR90 only**), or `uap0`. Only one interface can be configured per request. |
+
+        | Cellular (`wan0`) | **FXR90 only** — not supported on FXR60. |
 
         | Hotspot vs Wi-Fi client | `uap0` (hotspot) and `mlan0` (Wi-Fi client) share the same Wi-Fi radio and **cannot be active at the same time**. Enabling one disables the other. |
 
@@ -5930,7 +6430,7 @@ paths:
 
         | Wi-Fi security | For WPA2 Personal, provide the `password`. For Enterprise (WPA2/WPA3), provide the `authentication` type and either a client certificate (certificate-based) or a username and password (credential-based). See the 802.1X authentication combinations below. |
 
-        | Cellular settings | For `wan0`, set `activeSim` (`psim` or `esim`) and supply the `apn` and `preferredNetworkType` for the chosen SIM. |
+        | Cellular settings | For `wan0` (**FXR90 only**), set `activeSim` (`psim` or `esim`) and supply the `apn` and `preferredNetworkType` for the chosen SIM. |
 
         | Hotspot settings | For `uap0`, provide `ssid`, `ssidPassword`, `countryCode`, `securityType` (`WPA2Personal` or `WPA3Personal` only), and `isHidden`. |
 
@@ -6396,13 +6896,16 @@ paths:
       description: '## 1. Description
 
 
+        **Product note:** Cellular interface `wan0` appears in this list on **FXR90 only**. It is **not present on FXR60**.
+
+
         The `GET /cloud/networkInterfaces` REST endpoint retrieves the list of network interfaces available on the reader.
 
 
         This endpoint returns:
 
 
-        - The list of available network interface names, returned in `availableNetworkInterfaces` (e.g., `eth0`, `mlan0`, `wan0`, `bnep0`, `uap0`)
+        - The list of available network interface names, returned in `availableNetworkInterfaces` (e.g., `eth0`, `mlan0`, `bnep0`, `uap0`, and on **FXR90** also `wan0`)
 
 
         No request body is required.
@@ -6421,7 +6924,7 @@ paths:
 
         | Communication Type | Client to Device (HTTP request/response) |
 
-        | Applies To | FXR60 / FXR90 |
+        | Applies To | FXR60 / FXR90 (`wan0` = FXR90 only) |
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
@@ -6448,9 +6951,9 @@ paths:
 
         |---|---|---|
 
-        | `availableNetworkInterfaces` | Are all expected interfaces present (`eth0`, `mlan0`, `wan0`)? | Only interfaces returned here can be configured in `PUT /cloud/network`. |
+        | `availableNetworkInterfaces` | Are expected interfaces present (`eth0`, `mlan0`, …)? | Only interfaces returned here can be configured in `PUT /cloud/network`. |
 
-        | `wan0` presence | Is the cellular interface listed? | Confirms whether the reader hardware supports cellular connectivity. |
+        | `wan0` presence | Is the cellular interface listed? (**FXR90 only**; absent on FXR60) | Confirms whether this reader supports cellular / WAN. |
 
         '
       operationId: getNetworkinterfaces
@@ -6669,6 +7172,9 @@ paths:
       description: '## 1. Description
 
 
+        **Product note:** `eSimConfig` is supported on **FXR90 only**. It is not available on FXR60 (no eSIM / cellular modem).
+
+
         The `GET /cloud/eSimConfig` REST endpoint retrieves eSIM identity and profile information from the reader.
 
 
@@ -6757,6 +7263,9 @@ paths:
       - Network
       summary: Sets the eSIM configuration
       description: '## 1. Description
+
+
+        **Product note:** `eSimConfig` is supported on **FXR90 only**. It is not available on FXR60 (no eSIM / cellular modem).
 
 
         The `PUT /cloud/eSimConfig` REST endpoint updates the eSIM profile state on the reader.

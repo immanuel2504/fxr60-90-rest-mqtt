@@ -1,5 +1,7 @@
 ## 1. Description
 
+**Product note:** `eSimConfig` is supported on **FXR90 only**. It is not available on FXR60 (no eSIM / cellular modem).
+
 The `PUT /cloud/eSimConfig` REST endpoint updates the eSIM profile state on the reader.
 
 This endpoint allows you to configure:

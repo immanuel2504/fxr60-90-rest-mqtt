@@ -1,0 +1,29 @@
+{
+  "command": "set_mode",
+  "command_id": "req-set-mode-with-selects",
+  "payload": {
+    "type": "CUSTOM",
+    "antennas": [
+      1
+    ],
+    "transmitPower": [
+      30
+    ],
+    "query": {
+      "sel": "NOT_SL",
+      "session": "S1",
+      "tagPopulation": 10,
+      "target": "A"
+    },
+    "selects": [
+      {
+        "target": "S1",
+        "action": "INVB_NOTHING",
+        "membank": "TID",
+        "pointer": 6,
+        "length": 24,
+        "mask": "800600"
+      }
+    ]
+  }
+}

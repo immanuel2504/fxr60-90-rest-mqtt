@@ -49,6 +49,13 @@
 | **Example name** | `data_http_post` |
 | **Summary title** | `Tag events over HTTP POST` |
 
+### `PUT/management_cmd_mqtt.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `management_cmd_mqtt` |
+| **Summary title** | `Management command/response over MQTT` |
+
 ### `PUT/management_event_mqtt.json`
 
 | Field | Value |

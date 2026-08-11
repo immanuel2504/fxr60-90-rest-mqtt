@@ -1,7 +1,0 @@
-{
-  "command": "set_mode",
-  "command_id": "req-set-mode",
-  "payload": {
-    "type": "SIMPLE"
-  }
-}

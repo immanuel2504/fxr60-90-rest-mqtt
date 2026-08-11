@@ -1,0 +1,11 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    },
+    "TAG_READ": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER",
+        "postActionColor": "GREEN",
+        "blink": {
+          "ON": 100,
+          "OFF": 100,
+          "DURATION": 500
+        }
+      },
+      {
+        "type": "GPO",
+        "pin": 1,
+        "state": "HIGH",
+        "postActionState": "LOW",
+        "blink": {
+          "ON": 200,
+          "OFF": 200,
+          "DURATION": 1000
+        }
+      }
+    ],
+    "RADIO_START": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER"
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "GREEN"
+      }
+    ],
+    "CLOUD_CONNECT": [
+      {
+        "type": "LED",
+        "led": 2,
+        "color": "GREEN"
+      }
+    ],
+    "CLOUD_DISCONNECT": [
+      {
+        "type": "LED",
+        "led": 2,
+        "color": "RED"
+      }
+    ]
+  },
+  "READER-GATEWAY": {
+    "batching": {
+      "maxPayloadSizePerReport": 65536,
+      "reportingInterval": 1000
+    },
+    "retention": {
+      "maxEventRetentionTimeInMin": 1440,
+      "maxNumEvents": 150000,
+      "throttle": 500
+    },
+    "managementEventConfig": {
+      "errors": {
+        "antenna": true,
+        "cpu": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "flash": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "ram": {
+          "threshold": 90,
+          "reportIntervalInSec": 1800
+        },
+        "radio": true,
+        "radio_control": true,
+        "reader_gateway": true,
+        "database": true
+      },
+      "warnings": {
+        "cpu": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "flash": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "ram": {
+          "threshold": 80,
+          "reportIntervalInSec": 1800
+        },
+        "ntp": true,
+        "radio_api": true,
+        "radio_control": true,
+        "reader_gateway": true,
+        "temperature": {
+          "ambient": 75,
+          "pa": 105
+        }
+      },
+      "gpiEvents": true,
+      "userappEvents": true,
+      "heartbeat": {
+        "interval": 60,
+        "fields": {
+          "radio_control": [
+            "ANTENNAS",
+            "RADIO_ACTIVITY",
+            "CPU",
+            "RAM"
+          ],
+          "reader_gateway": [
+            "NUM_DATA_MESSAGES_RXED",
+            "NUM_DATA_MESSAGES_TXED",
+            "CPU",
+            "RAM"
+          ],
+          "system": [
+            "CPU",
+            "FLASH",
+            "RAM",
+            "SYSTEMTIME",
+            "TEMPERATURE",
+            "UPTIME"
+          ],
+          "userapps": [
+            "STATUS",
+            "CPU",
+            "RAM"
+          ]
+        }
+      }
+    },
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "mqtt_emqx_data",
+              "description": "mqtt_data_public_emqx",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "broker.emqx.io",
+                  "port": 8083,
+                  "protocol": "ws"
+                },
+                "publishTopic": [
+                  "/devices/fxr90-reader/events/data"
+                ],
+                "subscribeTopic": [],
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr90-reader",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 5
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

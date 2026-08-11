@@ -1,0 +1,53 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    },
+    "TAG_READ": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER",
+        "postActionColor": "GREEN",
+        "blink": {
+          "ON": 100,
+          "OFF": 100,
+          "DURATION": 500
+        }
+      },
+      {
+        "type": "GPO",
+        "pin": 1,
+        "state": "HIGH",
+        "postActionState": "LOW",
+        "blink": {
+          "ON": 200,
+          "OFF": 200,
+          "DURATION": 1000
+        }
+      }
+    ],
+    "RADIO_START": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER"
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "GREEN"
+      }
+    ]
+  }
+}

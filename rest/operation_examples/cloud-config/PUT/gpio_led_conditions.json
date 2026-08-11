@@ -1,0 +1,70 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    },
+    "TAG_READ": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "AMBER",
+        "postActionColor": "GREEN",
+        "blink": {
+          "ON": 100,
+          "OFF": 100,
+          "DURATION": 500
+        },
+        "conditions": [
+          "IS_CLOUD_CONNECTED",
+          "IS_RADIO_ONGOING"
+        ]
+      }
+    ],
+    "RADIO_START": [
+      {
+        "type": "GPO",
+        "pin": 1,
+        "state": "HIGH",
+        "conditions": {
+          "operator": "and",
+          "operands": [
+            "IS_CLOUD_CONNECTED",
+            "IS_RADIO_ONGOING"
+          ]
+        }
+      }
+    ],
+    "CLOUD_DISCONNECT": [
+      {
+        "type": "LED",
+        "led": 2,
+        "color": "RED",
+        "conditions": [
+          "~IS_CLOUD_CONNECTED"
+        ]
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "LED",
+        "led": 1,
+        "color": "GREEN",
+        "conditions": {
+          "operator": "or",
+          "operands": [
+            "~IS_RADIO_ONGOING",
+            "~IS_CLOUD_CONNECTED"
+          ]
+        }
+      }
+    ]
+  }
+}

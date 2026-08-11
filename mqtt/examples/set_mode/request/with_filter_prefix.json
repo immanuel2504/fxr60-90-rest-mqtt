@@ -1,0 +1,17 @@
+{
+  "command": "set_mode",
+  "command_id": "req-set-mode-with-filter-prefix",
+  "payload": {
+    "type": "CUSTOM",
+    "antennas": [
+      1,
+      2
+    ],
+    "transmitPower": 27,
+    "filter": {
+      "value": "E280",
+      "match": "prefix",
+      "operation": "include"
+    }
+  }
+}

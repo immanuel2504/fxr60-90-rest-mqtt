@@ -1,0 +1,14 @@
+{
+  "type": "CUSTOM",
+  "antennas": [
+    1,
+    2
+  ],
+  "transmitPower": [
+    28,
+    28
+  ],
+  "radioStopConditions": {
+    "duration": 60
+  }
+}

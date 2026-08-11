@@ -3185,90 +3185,74 @@
                                 }
                             },
                             "examples": {
-                                "mode": {
-                                    "summary": "mode",
+                                "conveyor_basic": {
+                                    "summary": "conveyor basic",
                                     "value": {
                                         "command": "set_mode",
-                                        "command_id": "req-set-mode",
+                                        "command_id": "req-set-mode-conveyor-basic",
                                         "payload": {
-                                            "antennaStopCondition": {
-                                                "type": "DURATION",
-                                                "value": 400
-                                            },
+                                            "type": "CONVEYOR",
                                             "antennas": [
                                                 1,
                                                 2,
                                                 3,
                                                 4
                                             ],
-                                            "linkProfile": 1519,
-                                            "query": {
-                                                "sel": "ALL",
-                                                "session": "S2",
-                                                "tagPopulation": 2000,
-                                                "target": "AB"
-                                            },
-                                            "inventoryProtocol": {
-                                                "mode": "GEN2"
-                                            },
-                                            "radioStopConditions": {
-                                                "duration": 60
-                                            },
-                                            "transmitPower": 31.5,
-                                            "type": "SIMPLE"
-                                        }
-                                    }
-                                },
-                                "mode_CONVEYOR": {
-                                    "summary": "mode CONVEYOR",
-                                    "value": {
-                                        "command": "set_mode",
-                                        "command_id": "req-set-mode",
-                                        "payload": {
-                                            "type": "CONVEYOR",
-                                            "antennas": [
-                                                1
+                                            "transmitPower": [
+                                                30,
+                                                30,
+                                                30,
+                                                30
                                             ],
-                                            "transmitPower": 27,
-                                            "inventoryProtocol": {
-                                                "mode": "GEN2"
-                                            },
-                                            "antennaStopCondition": {
-                                                "type": "DURATION",
-                                                "value": 50
-                                            },
-                                            "query": {
-                                                "sel": "ALL",
-                                                "session": "S1",
-                                                "tagPopulation": 64,
-                                                "target": "A"
-                                            },
-                                            "rssiFilter": {
-                                                "threshold": -65
-                                            }
-                                        }
-                                    }
-                                },
-                                "mode_default_FXR90": {
-                                    "summary": "mode default FXR90",
-                                    "value": {
-                                        "command": "set_mode",
-                                        "command_id": "req-set-mode",
-                                        "payload": {
+                                            "environment": "HIGH_INTERFERENCE",
                                             "antennaStopCondition": {
                                                 "type": "DURATION",
                                                 "value": 100
                                             },
-                                            "antennas": [
-                                                1
-                                            ],
-                                            "component": "RC",
-                                            "delayBetweenAntennaCycles": {
-                                                "duration": 0,
-                                                "type": "DISABLED"
+                                            "query": {
+                                                "sel": "ALL",
+                                                "session": "S1",
+                                                "tagPopulation": 200,
+                                                "target": "A"
                                             },
-                                            "linkProfile": 3,
-                                            "payload": "status",
+                                            "inventoryProtocol": {
+                                                "mode": "GEN2"
+                                            },
+                                            "tagMetaData": [
+                                                "ANTENNA",
+                                                "RSSI",
+                                                "SEEN_COUNT",
+                                                "CHANNEL"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "inventory_with_interval": {
+                                    "summary": "inventory with interval",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-inventory-with-interval",
+                                        "payload": {
+                                            "type": "INVENTORY",
+                                            "environment": "HIGH_INTERFERENCE",
+                                            "antennas": [
+                                                1,
+                                                2
+                                            ],
+                                            "transmitPower": [
+                                                27,
+                                                27
+                                            ],
+                                            "modeSpecificSettings": {
+                                                "interval": {
+                                                    "unit": "seconds",
+                                                    "value": 60
+                                                }
+                                            },
+                                            "antennaStopCondition": {
+                                                "type": "DURATION",
+                                                "value": 100
+                                            },
                                             "query": {
                                                 "sel": "ALL",
                                                 "session": "S1",
@@ -3278,122 +3262,235 @@
                                             "inventoryProtocol": {
                                                 "mode": "GEN2"
                                             },
-                                            "reportFilter": {
-                                                "duration": 0,
-                                                "type": "PER_ANTENNA"
+                                            "delayBetweenAntennaCycles": {
+                                                "type": "DISABLED",
+                                                "duration": 0
                                             },
                                             "tagMetaData": [
-                                                "RSSI",
-                                                "PHASE",
-                                                "SEEN_COUNT",
                                                 "ANTENNA",
-                                                "CHANNEL",
-                                                "PC",
-                                                "XPC",
-                                                "CRC"
-                                            ],
-                                            "transmitPower": [
-                                                17
-                                            ],
-                                            "type": "CUSTOM"
+                                                "RSSI",
+                                                "SEEN_COUNT",
+                                                "CHANNEL"
+                                            ]
                                         }
                                     }
                                 },
-                                "mode_INVENTORY": {
-                                    "summary": "mode INVENTORY",
+                                "portal_gpi_trigger": {
+                                    "summary": "portal gpi trigger",
                                     "value": {
                                         "command": "set_mode",
-                                        "command_id": "req-set-mode",
-                                        "payload": {
-                                            "type": "INVENTORY",
-                                            "antennas": [
-                                                1,
-                                                2,
-                                                3,
-                                                4
-                                            ],
-                                            "transmitPower": 30,
-                                            "inventoryProtocol": {
-                                                "mode": "GEN2"
-                                            },
-                                            "antennaStopCondition": {
-                                                "type": "DURATION",
-                                                "value": 200
-                                            },
-                                            "query": {
-                                                "sel": "ALL",
-                                                "session": "S1",
-                                                "tagPopulation": 512,
-                                                "target": "A"
-                                            }
-                                        }
-                                    }
-                                },
-                                "mode_PORTAL": {
-                                    "summary": "mode PORTAL",
-                                    "value": {
-                                        "command": "set_mode",
-                                        "command_id": "req-set-mode",
+                                        "command_id": "req-set-mode-portal-gpi-trigger",
                                         "payload": {
                                             "type": "PORTAL",
                                             "antennas": [
                                                 1,
                                                 2
                                             ],
-                                            "transmitPower": 31.5,
-                                            "inventoryProtocol": {
-                                                "mode": "GEN2"
-                                            },
+                                            "transmitPower": 30,
                                             "environment": "HIGH_INTERFERENCE",
-                                            "antennaStopCondition": {
-                                                "type": "DURATION",
-                                                "value": 100
+                                            "modeSpecificSettings": {
+                                                "startTrigger": {
+                                                    "port": 1,
+                                                    "signal": "HIGH"
+                                                },
+                                                "stopInterval": 5
                                             },
-                                            "reportFilter": {
-                                                "duration": 0,
-                                                "type": "PER_ANTENNA"
-                                            }
-                                        }
-                                    }
-                                },
-                                "mode_SIMPLE_minimal": {
-                                    "summary": "mode SIMPLE minimal",
-                                    "value": {
-                                        "command": "set_mode",
-                                        "command_id": "req-set-mode",
-                                        "payload": {
-                                            "type": "SIMPLE"
-                                        }
-                                    }
-                                },
-                                "mode_TAG_FOCUS": {
-                                    "summary": "mode TAG FOCUS",
-                                    "value": {
-                                        "command": "set_mode",
-                                        "command_id": "req-set-mode",
-                                        "payload": {
-                                            "type": "CUSTOM",
-                                            "antennaStopCondition": {
-                                                "type": "DURATION",
-                                                "value": 100
-                                            },
-                                            "antennas": [
-                                                1
-                                            ],
                                             "query": {
-                                                "tagpopulation": 10,
-                                                "sel": "NOT_SL",
+                                                "sel": "ALL",
                                                 "session": "S1",
+                                                "tagPopulation": 100,
                                                 "target": "A"
                                             },
                                             "inventoryProtocol": {
                                                 "mode": "GEN2"
                                             },
-                                            "modeSpecificSettings": {
-                                                "interval": {
-                                                    "unit": "seconds",
-                                                    "value": 0
+                                            "tagMetaData": [
+                                                "ANTENNA",
+                                                "RSSI",
+                                                "SEEN_COUNT"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "simple_basic": {
+                                    "summary": "simple basic",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-simple-basic",
+                                        "payload": {
+                                            "type": "SIMPLE",
+                                            "antennas": [
+                                                1,
+                                                2,
+                                                3,
+                                                4
+                                            ],
+                                            "transmitPower": 31.5,
+                                            "antennaStopCondition": {
+                                                "type": "DURATION",
+                                                "value": 400
+                                            },
+                                            "query": {
+                                                "sel": "ALL",
+                                                "session": "S2",
+                                                "tagPopulation": 2000,
+                                                "target": "AB"
+                                            },
+                                            "inventoryProtocol": {
+                                                "mode": "GEN2"
+                                            },
+                                            "radioStartConditions": {
+                                                "type": "GPI",
+                                                "gpis": [
+                                                    {
+                                                        "port": 1,
+                                                        "signal": "HIGH"
+                                                    }
+                                                ]
+                                            },
+                                            "radioStopConditions": {
+                                                "duration": 60
+                                            }
+                                        }
+                                    }
+                                },
+                                "with_accesses": {
+                                    "summary": "with accesses",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-accesses",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1
+                                            ],
+                                            "transmitPower": [
+                                                30
+                                            ],
+                                            "query": {
+                                                "sel": "ALL",
+                                                "session": "S1",
+                                                "tagPopulation": 50,
+                                                "target": "A"
+                                            },
+                                            "accesses": [
+                                                {
+                                                    "type": "READ",
+                                                    "config": {
+                                                        "membank": "TID",
+                                                        "wordPointer": 0,
+                                                        "wordCounter": 6
+                                                    }
                                                 }
+                                            ],
+                                            "tagMetaData": [
+                                                "ANTENNA",
+                                                "RSSI"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "with_filter_prefix": {
+                                    "summary": "with filter prefix",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-filter-prefix",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1,
+                                                2
+                                            ],
+                                            "transmitPower": 27,
+                                            "filter": {
+                                                "value": "E280",
+                                                "match": "prefix",
+                                                "operation": "include"
+                                            }
+                                        }
+                                    }
+                                },
+                                "with_query": {
+                                    "summary": "with query",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-query",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1
+                                            ],
+                                            "transmitPower": 27,
+                                            "query": {
+                                                "sel": "ALL",
+                                                "session": "S1",
+                                                "tagPopulation": 256,
+                                                "target": "A"
+                                            }
+                                        }
+                                    }
+                                },
+                                "with_radio_stop": {
+                                    "summary": "with radio stop",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-radio-stop",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1,
+                                                2
+                                            ],
+                                            "transmitPower": [
+                                                28,
+                                                28
+                                            ],
+                                            "radioStopConditions": {
+                                                "duration": 60
+                                            }
+                                        }
+                                    }
+                                },
+                                "with_report_filter": {
+                                    "summary": "with report filter",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-report-filter",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1,
+                                                2
+                                            ],
+                                            "transmitPower": [
+                                                28,
+                                                28
+                                            ],
+                                            "reportFilter": {
+                                                "duration": 5,
+                                                "type": "PER_ANTENNA"
+                                            }
+                                        }
+                                    }
+                                },
+                                "with_selects": {
+                                    "summary": "with selects",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-selects",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1
+                                            ],
+                                            "transmitPower": [
+                                                30
+                                            ],
+                                            "query": {
+                                                "sel": "NOT_SL",
+                                                "session": "S1",
+                                                "tagPopulation": 10,
+                                                "target": "A"
                                             },
                                             "selects": [
                                                 {
@@ -3404,16 +3501,29 @@
                                                     "length": 24,
                                                     "mask": "800600"
                                                 }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "with_tag_metadata": {
+                                    "summary": "with tag metadata",
+                                    "value": {
+                                        "command": "set_mode",
+                                        "command_id": "req-set-mode-with-tag-metadata",
+                                        "payload": {
+                                            "type": "CUSTOM",
+                                            "antennas": [
+                                                1
                                             ],
-                                            "transmitPower": [
-                                                30
-                                            ],
-                                            "radioStartConditions": {},
-                                            "radioStopConditions": {},
-                                            "reportFilter": {
-                                                "duration": 1,
-                                                "type": "PER_ANTENNA"
-                                            }
+                                            "transmitPower": 27,
+                                            "tagMetaData": [
+                                                "ANTENNA",
+                                                "RSSI",
+                                                "SEEN_COUNT",
+                                                "CHANNEL",
+                                                "PC",
+                                                "CRC"
+                                            ]
                                         }
                                     }
                                 }
@@ -11741,125 +11851,11 @@
                                 ]
                             },
                             "examples": {
-                                "config_data_aws": {
-                                    "summary": "config data aws",
+                                "clear_data": {
+                                    "summary": "clear data",
                                     "value": {
                                         "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "description": "AWS",
-                                                                    "name": "AWS_8883",
-                                                                    "options": {
-                                                                        "additional": {
-                                                                            "cleanSession": true,
-                                                                            "clientId": "FXR90F009C9aws",
-                                                                            "debug": false,
-                                                                            "keepAlive": 20,
-                                                                            "qos": 0,
-                                                                            "reconnectDelay": 1,
-                                                                            "reconnectDelayMax": 5
-                                                                        },
-                                                                        "enableSecurity": true,
-                                                                        "endpoint": {
-                                                                            "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                                                                            "port": 8883,
-                                                                            "protocol": "ssl"
-                                                                        },
-                                                                        "publishTopic": [
-                                                                            "datacollection_aws/FXR90F009C9"
-                                                                        ],
-                                                                        "security": {
-                                                                            "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                                                                            "keyAlgorithm": "RS256",
-                                                                            "keyFormat": "PEM",
-                                                                            "privateKeyFileLocation": "/data/aws-pvt.key",
-                                                                            "publicKeyFileLocation": "/data/aws-pub.crt",
-                                                                            "verifyHostName": true,
-                                                                            "verifyPeer": true
-                                                                        },
-                                                                        "subscribeTopic": []
-                                                                    },
-                                                                    "type": "mqtt-AWS"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_data_azure_mqtt": {
-                                    "summary": "config data azure mqtt",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "description": "azure_8883yj",
-                                                                    "name": "AZURE_8883",
-                                                                    "options": {
-                                                                        "additional": {
-                                                                            "cleanSession": false,
-                                                                            "clientId": "FXR90A3A2F7",
-                                                                            "debug": true,
-                                                                            "keepAlive": 120,
-                                                                            "qos": 1,
-                                                                            "reconnectDelay": 600,
-                                                                            "reconnectDelayMax": 86400
-                                                                        },
-                                                                        "basicAuthentication": {
-                                                                            "password": "none",
-                                                                            "username": "VULCANIOTHUB.azure-devices.net/FXR90A3A2F7/?api-version=2018-06-30"
-                                                                        },
-                                                                        "enableSecurity": true,
-                                                                        "endpoint": {
-                                                                            "hostName": "VULCANIOTHUB.azure-devices.net",
-                                                                            "port": 8883,
-                                                                            "protocol": "ssl"
-                                                                        },
-                                                                        "publishTopic": [
-                                                                            "devices/FXR90A3A2F7/messages/events/"
-                                                                        ],
-                                                                        "security": {
-                                                                            "CACertificateFileLocation": "/data/apps/cacertazure.pem",
-                                                                            "keyAlgorithm": "RS256",
-                                                                            "keyFormat": "PEM",
-                                                                            "privateKeyFileLocation": "/data/apps/key.pem",
-                                                                            "publicKeyFileLocation": "/data/apps/csr.pem",
-                                                                            "verifyHostName": false,
-                                                                            "verifyPeer": false
-                                                                        },
-                                                                        "subscribeTopic": [
-                                                                            "devices/FXR90A3A2F7/messages/devicebound/#"
-                                                                        ]
-                                                                    },
-                                                                    "type": "mqtt-AZURE"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_data_clear": {
-                                    "summary": "config data clear",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
+                                        "command_id": "req-set-config-clear-data",
                                         "payload": {
                                             "READER-GATEWAY": {
                                                 "endpointConfig": {
@@ -11873,11 +11869,11 @@
                                         }
                                     }
                                 },
-                                "config_data_httpPost": {
-                                    "summary": "config data httpPost",
+                                "data_aws": {
+                                    "summary": "data aws",
                                     "value": {
                                         "command": "set_config",
-                                        "command_id": "req-set-config",
+                                        "command_id": "req-set-config-data-aws",
                                         "payload": {
                                             "READER-GATEWAY": {
                                                 "endpointConfig": {
@@ -11885,15 +11881,126 @@
                                                         "event": {
                                                             "connections": [
                                                                 {
+                                                                    "name": "DATA_AWS",
+                                                                    "description": "Tag events to AWS IoT Core",
+                                                                    "type": "mqtt-AWS",
                                                                     "options": {
-                                                                        "URL": "https://webhook.site/be9d3ddc-c25d-4b87-b4c4-9162f9c75768",
+                                                                        "enableSecurity": true,
+                                                                        "endpoint": {
+                                                                            "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                                                                            "port": 8883,
+                                                                            "protocol": "ssl"
+                                                                        },
+                                                                        "additional": {
+                                                                            "cleanSession": true,
+                                                                            "clientId": "FXR90-LAB-DATA",
+                                                                            "keepAlive": 20,
+                                                                            "qos": 0,
+                                                                            "reconnectDelay": 1,
+                                                                            "reconnectDelayMax": 30
+                                                                        },
+                                                                        "publishTopic": [
+                                                                            "datacollection_aws/FXR90-LAB"
+                                                                        ],
+                                                                        "subscribeTopic": [],
+                                                                        "security": {
+                                                                            "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                                                                            "privateKeyFileLocation": "/data/aws-pvt.key",
+                                                                            "publicKeyFileLocation": "/data/aws-pub.crt",
+                                                                            "keyAlgorithm": "RS256",
+                                                                            "keyFormat": "PEM",
+                                                                            "verifyHostName": true,
+                                                                            "verifyPeer": true
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_azure": {
+                                    "summary": "data azure",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-data-azure",
+                                        "payload": {
+                                            "READER-GATEWAY": {
+                                                "endpointConfig": {
+                                                    "data": {
+                                                        "event": {
+                                                            "connections": [
+                                                                {
+                                                                    "name": "DATA_AZURE",
+                                                                    "description": "Tag events to Azure IoT Hub",
+                                                                    "type": "mqtt-Azure",
+                                                                    "options": {
+                                                                        "enableSecurity": true,
+                                                                        "endpoint": {
+                                                                            "hostName": "your-hub.azure-devices.net",
+                                                                            "port": 8883,
+                                                                            "protocol": "ssl"
+                                                                        },
+                                                                        "basicAuthentication": {
+                                                                            "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                                                                            "password": "none"
+                                                                        },
+                                                                        "additional": {
+                                                                            "cleanSession": false,
+                                                                            "clientId": "FXR90-LAB-DATA",
+                                                                            "keepAlive": 120,
+                                                                            "qos": 1,
+                                                                            "reconnectDelay": 600,
+                                                                            "reconnectDelayMax": 86400
+                                                                        },
+                                                                        "publishTopic": [
+                                                                            "devices/FXR90-LAB-DATA/messages/events/"
+                                                                        ],
+                                                                        "subscribeTopic": [],
+                                                                        "security": {
+                                                                            "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                                                                            "privateKeyFileLocation": "/data/apps/key.pem",
+                                                                            "publicKeyFileLocation": "/data/apps/csr.pem",
+                                                                            "keyAlgorithm": "RS256",
+                                                                            "keyFormat": "PEM",
+                                                                            "verifyHostName": true,
+                                                                            "verifyPeer": true
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_http_post": {
+                                    "summary": "data http post",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-data-http-post",
+                                        "payload": {
+                                            "READER-GATEWAY": {
+                                                "endpointConfig": {
+                                                    "data": {
+                                                        "event": {
+                                                            "connections": [
+                                                                {
+                                                                    "name": "DATA_HTTP",
+                                                                    "type": "httpPost",
+                                                                    "options": {
+                                                                        "URL": "https://webhook.site/your-unique-id",
                                                                         "security": {
                                                                             "authenticationType": "NONE",
                                                                             "verifyHost": false,
                                                                             "verifyPeer": false
                                                                         }
-                                                                    },
-                                                                    "type": "httpPost"
+                                                                    }
                                                                 }
                                                             ]
                                                         }
@@ -11903,237 +12010,48 @@
                                         }
                                     }
                                 },
-                                "config_data_mqtt": {
-                                    "summary": "config data mqtt",
+                                "data_mqtt": {
+                                    "summary": "data mqtt",
                                     "value": {
                                         "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "additionalOptions": {
-                                                                        "batching": null,
-                                                                        "retention": {
-                                                                            "maxEventRetentionTimeInMin": 500,
-                                                                            "maxNumEvents": 150000,
-                                                                            "throttle": 100
-                                                                        }
-                                                                    },
-                                                                    "description": "mqtt_data_public_emqx",
-                                                                    "name": "mqtt_emqx_data",
-                                                                    "options": {
-                                                                        "additional": {
-                                                                            "cleanSession": true,
-                                                                            "clientId": "fxr90-reader",
-                                                                            "debug": false,
-                                                                            "keepAlive": 60,
-                                                                            "qos": 0,
-                                                                            "reconnectDelay": 1,
-                                                                            "reconnectDelayMax": 5
-                                                                        },
-                                                                        "enableSecurity": false,
-                                                                        "endpoint": {
-                                                                            "hostName": "broker.emqx.io",
-                                                                            "port": 8083,
-                                                                            "protocol": "ws"
-                                                                        },
-                                                                        "publishTopic": [
-                                                                            "/devices/fxr90-reader/events/data"
-                                                                        ],
-                                                                        "subscribeTopic": []
-                                                                    },
-                                                                    "type": "mqtt"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_data_mqtt_async": {
-                                    "summary": "config data mqtt async",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "additionalOptions": {
-                                                                        "batching": null,
-                                                                        "retention": {
-                                                                            "maxEventRetentionTimeInMin": 500,
-                                                                            "maxNumEvents": 150000,
-                                                                            "throttle": 500
-                                                                        }
-                                                                    },
-                                                                    "description": "MQTT_TEST",
-                                                                    "name": "MQTT_TEST",
-                                                                    "options": {
-                                                                        "additional": {
-                                                                            "cleanSession": true,
-                                                                            "clientId": "EV1",
-                                                                            "debug": false,
-                                                                            "keepAlive": 60,
-                                                                            "qos": 0,
-                                                                            "reconnectDelay": 1,
-                                                                            "reconnectDelayMax": 5
-                                                                        },
-                                                                        "enableSecurity": false,
-                                                                        "endpoint": {
-                                                                            "hostName": "10.117.229.9",
-                                                                            "port": 1883,
-                                                                            "protocol": "tcp"
-                                                                        },
-                                                                        "publishTopic": [
-                                                                            "tagevents_r2c_longrun"
-                                                                        ],
-                                                                        "security": {
-                                                                            "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
-                                                                            "installedCertificateName": "Server",
-                                                                            "installedCertificateType": "server",
-                                                                            "keyAlgorithm": "RS256",
-                                                                            "keyFormat": "PEM",
-                                                                            "verifyHostName": false,
-                                                                            "verifyPeer": false
-                                                                        },
-                                                                        "subscribeTopic": []
-                                                                    },
-                                                                    "type": "mqtt"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_data_tcp_ip": {
-                                    "summary": "config data tcp ip",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "additionalOptions": {
-                                                                        "retention": {
-                                                                            "maxEventRetentionTimeInMin": 500,
-                                                                            "maxNumEvents": 150000,
-                                                                            "throttle": 100
-                                                                        }
-                                                                    },
-                                                                    "description": "tag_data_tcp_ip_conn",
-                                                                    "name": "tag_data_tcp_ip",
-                                                                    "options": {
-                                                                        "enableSecurity": false,
-                                                                        "tcpipport": "8081"
-                                                                    },
-                                                                    "type": "tcpip-server"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_data_websocket": {
-                                    "summary": "config data websocket",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "endpointConfig": {
-                                                    "data": {
-                                                        "event": {
-                                                            "connections": [
-                                                                {
-                                                                    "additionalOptions": {
-                                                                        "retention": {
-                                                                            "maxEventRetentionTimeInMin": 500,
-                                                                            "maxNumEvents": 150000,
-                                                                            "throttle": 100
-                                                                        }
-                                                                    },
-                                                                    "description": "WEBSOCKET_TEST",
-                                                                    "name": "WEBSOCKET_TEST",
-                                                                    "options": {
-                                                                        "security": {
-                                                                            "verifyPeer": false
-                                                                        }
-                                                                    },
-                                                                    "type": "WEBSOCKET"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_global_batching": {
-                                    "summary": "config global batching",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "batching": {
-                                                    "maxPayloadSizePerReport": 65536,
-                                                    "reportingInterval": 1000
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_global_retention": {
-                                    "summary": "config global retention",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
-                                            "READER-GATEWAY": {
-                                                "retention": {
-                                                    "maxEventRetentionTimeInMin": 1440,
-                                                    "maxNumEvents": 150000,
-                                                    "throttle": 500
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_gpio_led": {
-                                    "summary": "config gpio led",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
+                                        "command_id": "req-set-config-data-mqtt",
                                         "payload": {
                                             "GPIO-LED": {
                                                 "GPODefaults": {
                                                     "1": "LOW",
-                                                    "2": "LOW"
+                                                    "2": "LOW",
+                                                    "3": "LOW",
+                                                    "4": "LOW"
                                                 },
                                                 "LEDDefaults": {
-                                                    "1": "GREEN"
+                                                    "1": "GREEN",
+                                                    "2": "GREEN",
+                                                    "3": "GREEN"
                                                 },
+                                                "TAG_READ": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "AMBER",
+                                                        "postActionColor": "GREEN",
+                                                        "blink": {
+                                                            "ON": 100,
+                                                            "OFF": 100,
+                                                            "DURATION": 500
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 1,
+                                                        "state": "HIGH",
+                                                        "postActionState": "LOW",
+                                                        "blink": {
+                                                            "ON": 200,
+                                                            "OFF": 200,
+                                                            "DURATION": 1000
+                                                        }
+                                                    }
+                                                ],
                                                 "RADIO_START": [
                                                     {
                                                         "type": "LED",
@@ -12147,18 +12065,32 @@
                                                         "led": 1,
                                                         "color": "GREEN"
                                                     }
+                                                ],
+                                                "CLOUD_CONNECT": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "GREEN"
+                                                    }
+                                                ],
+                                                "CLOUD_DISCONNECT": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "RED"
+                                                    }
                                                 ]
-                                            }
-                                        }
-                                    }
-                                },
-                                "config_management_events": {
-                                    "summary": "config management events",
-                                    "value": {
-                                        "command": "set_config",
-                                        "command_id": "req-set-config",
-                                        "payload": {
+                                            },
                                             "READER-GATEWAY": {
+                                                "batching": {
+                                                    "maxPayloadSizePerReport": 65536,
+                                                    "reportingInterval": 1000
+                                                },
+                                                "retention": {
+                                                    "maxEventRetentionTimeInMin": 1440,
+                                                    "maxNumEvents": 150000,
+                                                    "throttle": 500
+                                                },
                                                 "managementEventConfig": {
                                                     "errors": {
                                                         "antenna": true,
@@ -12233,7 +12165,368 @@
                                                             ]
                                                         }
                                                     }
+                                                },
+                                                "endpointConfig": {
+                                                    "data": {
+                                                        "event": {
+                                                            "connections": [
+                                                                {
+                                                                    "name": "mqtt_emqx_data",
+                                                                    "description": "mqtt_data_public_emqx",
+                                                                    "type": "mqtt",
+                                                                    "options": {
+                                                                        "enableSecurity": false,
+                                                                        "endpoint": {
+                                                                            "hostName": "broker.emqx.io",
+                                                                            "port": 8083,
+                                                                            "protocol": "ws"
+                                                                        },
+                                                                        "publishTopic": [
+                                                                            "/devices/fxr90-reader/events/data"
+                                                                        ],
+                                                                        "subscribeTopic": [],
+                                                                        "additional": {
+                                                                            "cleanSession": true,
+                                                                            "clientId": "fxr90-reader",
+                                                                            "debug": false,
+                                                                            "keepAlive": 60,
+                                                                            "qos": 0,
+                                                                            "reconnectDelay": 1,
+                                                                            "reconnectDelayMax": 5
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
                                                 }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_tcpip_server": {
+                                    "summary": "data tcpip server",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-data-tcpip-server",
+                                        "payload": {
+                                            "READER-GATEWAY": {
+                                                "endpointConfig": {
+                                                    "data": {
+                                                        "event": {
+                                                            "connections": [
+                                                                {
+                                                                    "name": "DATA_TCP",
+                                                                    "description": "tag_data_tcp_ip_conn",
+                                                                    "type": "tcpip-server",
+                                                                    "options": {
+                                                                        "enableSecurity": false,
+                                                                        "tcpipport": "8081"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_websocket": {
+                                    "summary": "data websocket",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-data-websocket",
+                                        "payload": {
+                                            "READER-GATEWAY": {
+                                                "endpointConfig": {
+                                                    "data": {
+                                                        "event": {
+                                                            "connections": [
+                                                                {
+                                                                    "name": "DATA_WS",
+                                                                    "type": "WEBSOCKET",
+                                                                    "options": {
+                                                                        "security": {
+                                                                            "verifyPeer": false
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio_led_cloud": {
+                                    "summary": "gpio led cloud",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-gpio-led-cloud",
+                                        "payload": {
+                                            "GPIO-LED": {
+                                                "GPODefaults": {
+                                                    "1": "LOW",
+                                                    "2": "LOW",
+                                                    "3": "LOW",
+                                                    "4": "LOW"
+                                                },
+                                                "LEDDefaults": {
+                                                    "1": "GREEN",
+                                                    "2": "GREEN",
+                                                    "3": "GREEN"
+                                                },
+                                                "CLOUD_CONNECT": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "GREEN"
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 2,
+                                                        "state": "HIGH"
+                                                    }
+                                                ],
+                                                "CLOUD_DISCONNECT": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "RED"
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 2,
+                                                        "state": "LOW"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio_led_conditions": {
+                                    "summary": "gpio led conditions",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-gpio-led-conditions",
+                                        "payload": {
+                                            "GPIO-LED": {
+                                                "GPODefaults": {
+                                                    "1": "LOW",
+                                                    "2": "LOW",
+                                                    "3": "LOW",
+                                                    "4": "LOW"
+                                                },
+                                                "LEDDefaults": {
+                                                    "1": "GREEN",
+                                                    "2": "GREEN",
+                                                    "3": "GREEN"
+                                                },
+                                                "TAG_READ": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "AMBER",
+                                                        "postActionColor": "GREEN",
+                                                        "blink": {
+                                                            "ON": 100,
+                                                            "OFF": 100,
+                                                            "DURATION": 500
+                                                        },
+                                                        "conditions": [
+                                                            "IS_CLOUD_CONNECTED",
+                                                            "IS_RADIO_ONGOING"
+                                                        ]
+                                                    }
+                                                ],
+                                                "RADIO_START": [
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 1,
+                                                        "state": "HIGH",
+                                                        "conditions": {
+                                                            "operator": "and",
+                                                            "operands": [
+                                                                "IS_CLOUD_CONNECTED",
+                                                                "IS_RADIO_ONGOING"
+                                                            ]
+                                                        }
+                                                    }
+                                                ],
+                                                "CLOUD_DISCONNECT": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "RED",
+                                                        "conditions": [
+                                                            "~IS_CLOUD_CONNECTED"
+                                                        ]
+                                                    }
+                                                ],
+                                                "RADIO_STOP": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "GREEN",
+                                                        "conditions": {
+                                                            "operator": "or",
+                                                            "operands": [
+                                                                "~IS_RADIO_ONGOING",
+                                                                "~IS_CLOUD_CONNECTED"
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio_led_gpi": {
+                                    "summary": "gpio led gpi",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-gpio-led-gpi",
+                                        "payload": {
+                                            "GPIO-LED": {
+                                                "GPODefaults": {
+                                                    "1": "LOW",
+                                                    "2": "LOW",
+                                                    "3": "LOW",
+                                                    "4": "LOW"
+                                                },
+                                                "LEDDefaults": {
+                                                    "1": "GREEN",
+                                                    "2": "GREEN",
+                                                    "3": "GREEN"
+                                                },
+                                                "GPI_1_H": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "AMBER"
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 1,
+                                                        "state": "HIGH"
+                                                    }
+                                                ],
+                                                "GPI_1_L": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "GREEN"
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 1,
+                                                        "state": "LOW"
+                                                    }
+                                                ],
+                                                "GPI_2_H": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "AMBER"
+                                                    }
+                                                ],
+                                                "GPI_2_L": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 2,
+                                                        "color": "GREEN"
+                                                    }
+                                                ],
+                                                "GPI_3_H": [
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 3,
+                                                        "state": "HIGH"
+                                                    }
+                                                ],
+                                                "GPI_3_L": [
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 3,
+                                                        "state": "LOW"
+                                                    }
+                                                ],
+                                                "GPI_4_H": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 3,
+                                                        "color": "RED"
+                                                    }
+                                                ],
+                                                "GPI_4_L": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 3,
+                                                        "color": "GREEN"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio_led_tag_radio": {
+                                    "summary": "gpio led tag radio",
+                                    "value": {
+                                        "command": "set_config",
+                                        "command_id": "req-set-config-gpio-led-tag-radio",
+                                        "payload": {
+                                            "GPIO-LED": {
+                                                "GPODefaults": {
+                                                    "1": "LOW",
+                                                    "2": "LOW",
+                                                    "3": "LOW",
+                                                    "4": "LOW"
+                                                },
+                                                "LEDDefaults": {
+                                                    "1": "GREEN",
+                                                    "2": "GREEN",
+                                                    "3": "GREEN"
+                                                },
+                                                "TAG_READ": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "AMBER",
+                                                        "postActionColor": "GREEN",
+                                                        "blink": {
+                                                            "ON": 100,
+                                                            "OFF": 100,
+                                                            "DURATION": 500
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "GPO",
+                                                        "pin": 1,
+                                                        "state": "HIGH",
+                                                        "postActionState": "LOW",
+                                                        "blink": {
+                                                            "ON": 200,
+                                                            "OFF": 200,
+                                                            "DURATION": 1000
+                                                        }
+                                                    }
+                                                ],
+                                                "RADIO_START": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "AMBER"
+                                                    }
+                                                ],
+                                                "RADIO_STOP": [
+                                                    {
+                                                        "type": "LED",
+                                                        "led": 1,
+                                                        "color": "GREEN"
+                                                    }
+                                                ]
                                             }
                                         }
                                     }
@@ -13419,6 +13712,52 @@
                                                                     "security": {
                                                                         "verifyPeer": false
                                                                     }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "management_cmd_mqtt": {
+                                    "summary": "management cmd mqtt",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-mgmt-cmd",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "management": {
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_CMD_MQTT",
+                                                                "description": "Management cmd/rsp",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": false,
+                                                                    "endpoint": {
+                                                                        "hostName": "10.0.0.50",
+                                                                        "port": 1883,
+                                                                        "protocol": "tcp"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-lab-mcmd",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 0,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "fxr90-lab/mrsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "fxr90-lab/mcmd"
+                                                                    ]
                                                                 }
                                                             }
                                                         ]

@@ -1,0 +1,15 @@
+{
+  "type": "CUSTOM",
+  "antennas": [
+    1
+  ],
+  "transmitPower": 27,
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI",
+    "SEEN_COUNT",
+    "CHANNEL",
+    "PC",
+    "CRC"
+  ]
+}

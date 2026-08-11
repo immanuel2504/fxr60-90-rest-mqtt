@@ -1,0 +1,21 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_WS",
+              "type": "WEBSOCKET",
+              "options": {
+                "security": {
+                  "verifyPeer": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

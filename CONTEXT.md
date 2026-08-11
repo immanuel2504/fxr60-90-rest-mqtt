@@ -252,8 +252,26 @@ FXR-Series/reviewed-by-me/cloud-app-led/
 
 Applied reader/QA feedback across packs + Excel + REST/MQTT rebuild:
 
-- **Good / Updated:** localRestLogin, start, preSelection, impinjGen2X, version (live FXR60 body), status (one), readerCapabilities, cableLoss GET/PUT, reboot, hostName GET + one PUT, app-led, gpo/gpi, region GET/PUT (Canada one each), supported lists, timeZone GET UTC + PUT UTC/Kolkata, certificates GET (live list), certificates PUT (old `updateCertificate` only), cert refresh, wifiNetworks (live scan), networkInterfaces (fxr60 + fxr90), readPoints, pass-through (removed bad request; Success response), config PUT (one MQTT), updatePassword (`set_password` / `set_password_rfidadm`), apps start/stop/uninstall (no REST body), ble path → **`/cloud/bleConfig`**
-- **Deferred:** config GET, cloudConfig
+- **Good / Updated:** localRestLogin, start, preSelection, impinjGen2X, version (live FXR60 body), status (one), readerCapabilities, cableLoss GET/PUT, reboot, hostName GET + one PUT, app-led, gpo/gpi, region GET/PUT (Canada one each), supported lists, timeZone GET UTC + PUT UTC/Kolkata, certificates GET (live list), certificates PUT (old `updateCertificate` only), cert refresh, wifiNetworks (live scan), networkInterfaces (fxr60 + fxr90), readPoints, pass-through (removed bad request; Success response), **cloudConfig PUT** (11 examples), **config PUT** (11 examples — see below), updatePassword (`set_password` / `set_password_rfidadm`), apps start/stop/uninstall (no REST body), ble path → **`/cloud/bleConfig`**
+- **Deferred:** **GET `/cloud/config`** (work later), **GET `/cloud/mode`** (later)
+- **Updated:** **PUT `/cloud/mode`** — 11 examples from `mode_testing/PUT_cloud_mode`
+
+### PUT `/cloud/mode` (2026-08-11) — 11 examples
+
+From lab lean set (no rssiFilter / legacy):
+
+1. `simple_basic` / `inventory_with_interval` / `portal_gpi_trigger` / `conveyor_basic`
+2. `with_filter_prefix` / `with_query` / `with_selects` / `with_accesses`
+3. `with_report_filter` / `with_tag_metadata` / `with_radio_stop`
+
+### PUT `/cloud/config` (2026-08-11) — 11 examples
+
+REST `cloud-config/PUT/` + MQTT `set_config/request/`:
+
+1. `data_mqtt` — MQTT + GPIO-LED + global batching/retention + managementEventConfig  
+2. `data_aws` / `data_azure` / `data_http_post` / `data_tcpip_server` / `data_websocket`  
+3. `clear_data`  
+4. `gpio_led_tag_radio` / `gpio_led_cloud` / `gpio_led_gpi` / `gpio_led_conditions`
 - **Discuss:** stack-led (QA), ntpServer (Mayur/Dhavnesh), caCertificates (Mayur), DELETE certificates type param (QA)
 - **NEED LIVE TEST:** `PUT /cloud/os` + `PUT /cloud/apps/install` (installed cert HTTPS bodies)
 - **Need to work:** setdataToRG
