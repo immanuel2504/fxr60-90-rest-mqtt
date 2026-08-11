@@ -1,0 +1,43 @@
+{
+  "endpointConfig": {
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_MQTT_TLS",
+            "description": "Secure management/heartbeat events over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-mevents",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": ["site/dock01/mevents"],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/apps/certs/ca.pem",
+                "privateKeyFileLocation": "/data/apps/certs/client.key",
+                "publicKeyFileLocation": "/data/apps/certs/client.pem",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

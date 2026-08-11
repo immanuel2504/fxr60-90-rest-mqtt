@@ -1,6 +1,6 @@
 ## 1. Description
 
-The `PUT /cloud/ble-config` REST endpoint configures the Bluetooth Low Energy (BLE) scanner on the reader.
+The `PUT /cloud/bleConfig` REST endpoint configures the Bluetooth Low Energy (BLE) scanner on the reader.
 
 This endpoint allows you to configure:
 
@@ -25,7 +25,7 @@ Use this endpoint to:
 | Property | Value |
 |---|---|
 | Pattern Name | BLE Configuration Update |
-| REST Endpoint | `PUT /cloud/ble-config` |
+| REST Endpoint | `PUT /cloud/bleConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |

@@ -2,11 +2,16 @@
   "command": "set_os",
   "command_id": "req-set-os",
   "payload": {
-    "url": "https://10.117.229.9:9093/BUILDS/FXR90_2.0.10.tar.bz2",
+    "url": "https://builds.example.com/FXR90_2.0.10.tar.bz2",
     "authenticationType": "NONE",
-    "options": {
-      "username": "test",
-      "password": "test"
+    "transfer_protocol": "HTTPS",
+    "verifyPeer": true,
+    "verifyHost": true,
+    "installedCertificateType": "server",
+    "installedCertificateName": "reader-server-cert",
+    "retry": {
+      "count": 3,
+      "delayInSec": 30
     }
   }
 }

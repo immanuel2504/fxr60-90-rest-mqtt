@@ -1,6 +1,6 @@
 ## 1. Description
 
-The `GET /cloud/ble-config` REST endpoint retrieves the current Bluetooth Low Energy (BLE) scanner configuration from the reader.
+The `GET /cloud/bleConfig` REST endpoint retrieves the current Bluetooth Low Energy (BLE) scanner configuration from the reader.
 
 This endpoint returns:
 
@@ -15,7 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
-| REST Endpoint | `GET /cloud/ble-config` |
+| REST Endpoint | `GET /cloud/bleConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
@@ -23,12 +23,12 @@ No request body is required.
 
 ## 3. When to Use This Endpoint
 
-Use `GET /cloud/ble-config` to:
+Use `GET /cloud/bleConfig` to:
 
 - Verify BLE scanning is enabled before starting a BLE inventory scan
 - Review scan interval and RSSI filter settings before modifying them
 - Confirm iBeacon, AltBeacon, Eddystone, or generic BLE filter configuration
-- Verify the effect of a prior `PUT /cloud/ble-config` call
+- Verify the effect of a prior `PUT /cloud/bleConfig` call
 
 Key fields to check in the response:
 

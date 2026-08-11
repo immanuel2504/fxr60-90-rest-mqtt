@@ -248,31 +248,16 @@ FXR-Series/reviewed-by-me/cloud-app-led/
 `gpo`, `hostName`, `localRestLogin`, `ntpServer`, `preSelection`, `readerLocation`, `stack-led`, `timeZone`  
 (plus Tier 0 schema fixes and later Tier 2+).
 
-### NEED LIVE TEST (2026-08-09) — `PUT /cloud/os`
+### Live feedback batch (2026-08-10)
 
-**Excel status:** NEED LIVE TEST — installedCertificate vs inline CA (HTTPS OS)
+Applied reader/QA feedback across packs + Excel + REST/MQTT rebuild:
 
-For HTTPS firmware download: use `installedCertificateName`/`Type`, or `CACertificateFileContent` / `CACertificateFileLocation`? Same open question as apps/install. Do not finalize `os_https_pinned_ca.json` until tested.
-
-Details: `rest/operation_examples/cloud-os/NEED_LIVE_TEST.md`
-
-### NEED LIVE TEST (2026-08-09) — `PUT /cloud/certificates`
-
-**Excel status:** NEED LIVE TEST — PFX install
-
-Confirm PFX download/install (`type` client/server/app, NONE/BASIC, `pfxPassword`) and that GET `/cloud/certificates` shows the result. Draft packs under `cloud-certificates/PUT/` not finalized.
-
-Details: `rest/operation_examples/cloud-certificates/NEED_LIVE_TEST.md`
-
-### NEED LIVE TEST (2026-08-09) — `PUT /cloud/apps/install` + installed certificates
-
-**Excel status:** NEED LIVE TEST — installedCertificateName/Type vs CA store
-
-Can HTTPS `.deb` download use `installedCertificateName` + `installedCertificateType` from `GET /cloud/certificates` (which types: `server` / `client` / `app`), or must TLS trust come from the CA store / inline PEM (`CACertificateFileContent`)?
-
-Until confirmed: prefer SFTP + BASIC example; do not treat `installUserapp_pinned_ca.json` as final.
-
-Details: `rest/operation_examples/cloud-apps-install/NEED_LIVE_TEST.md`
+- **Good / Updated:** localRestLogin, start, preSelection, impinjGen2X, version (live FXR60 body), status (one), readerCapabilities, cableLoss GET/PUT, reboot, hostName GET + one PUT, app-led, gpo/gpi, region GET/PUT (Canada one each), supported lists, timeZone GET UTC + PUT UTC/Kolkata, certificates GET (live list), certificates PUT (old `updateCertificate` only), cert refresh, wifiNetworks (live scan), networkInterfaces (fxr60 + fxr90), readPoints, pass-through (removed bad request; Success response), config PUT (one MQTT), updatePassword (`set_password` / `set_password_rfidadm`), apps start/stop/uninstall (no REST body), ble path → **`/cloud/bleConfig`**
+- **Deferred:** config GET, cloudConfig
+- **Discuss:** stack-led (QA), ntpServer (Mayur/Dhavnesh), caCertificates (Mayur), DELETE certificates type param (QA)
+- **NEED LIVE TEST:** `PUT /cloud/os` + `PUT /cloud/apps/install` (installed cert HTTPS bodies)
+- **Need to work:** setdataToRG
+- **Product:** eSimConfig = FXR90 only; `wan0` not on FXR60 (Krishna)
 
 ### Link to this package (FXR60-90)
 

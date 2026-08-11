@@ -1,0 +1,44 @@
+{
+  "endpointConfig": {
+    "management": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "MGMT_CMD_MQTT_TLS",
+            "description": "Secure management cmd/rsp over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-mcmd",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": ["site/dock01/mrsp"],
+              "subscribeTopic": ["site/dock01/mcmd"],
+              "security": {
+                "CACertificateFileLocation": "/data/apps/certs/ca.pem",
+                "privateKeyFileLocation": "/data/apps/certs/client.key",
+                "publicKeyFileLocation": "/data/apps/certs/client.pem",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

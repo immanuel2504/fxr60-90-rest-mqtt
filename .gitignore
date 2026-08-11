@@ -19,3 +19,7 @@ _*.txt
 _*.py
 *.tmp
 ~$*.xlsx
+
+# Local certs / private keys (do not publish)
+Selected/Fixed reader Certificate/*.pem
+Selected/Fixed reader Certificate/*.key

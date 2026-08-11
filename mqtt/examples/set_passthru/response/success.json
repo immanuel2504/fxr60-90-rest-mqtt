@@ -1,0 +1,8 @@
+{
+  "command": "set_passthru",
+  "command_id": "req-set-passthru-status",
+  "response": "success",
+  "payload": {
+    "response": "Success: {\"numTagReads\": 8034512,\"numTagReadsPerAntenna\": {\"1\": 8034512,\"2\": 0,\"3\": 0,\"4\": 0},\"numRadioPacketsRxed\": 12131354,\"numDataMessagesTxed\": 8034512,\"cpuUtilization\": 0.0,\"ramUtilization\": 1.0,\"uptime\": \"140:56:48\",\"numErrors\": 9313,\"numWarnings\": 20,\"radioConnection\": \"connected\",\"radioActivity\": \"active\",\"antennas\": {\"1\": \"disconnected\",\"2\": \"disconnected\",\"3\": \"connected\",\"4\": \"disconnected\"},\"temperature\": {\"ambient\":33,\"pa\":30},\"impinjGen2X\": {\"isActive\": false,\"feature\": \"none\"}}"
+  }
+}

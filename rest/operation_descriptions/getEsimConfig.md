@@ -16,7 +16,7 @@ No request body is required.
 | Pattern Name | eSIM Configuration Query |
 | REST Endpoint | `GET /cloud/eSimConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
-| Applies To | FXR60 / FXR90 |
+| Applies To | **FXR90 only** (eSIM / cellular; not on FXR60) |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Supported Operations | Retrieve eSIM identity and installed profile details |
 

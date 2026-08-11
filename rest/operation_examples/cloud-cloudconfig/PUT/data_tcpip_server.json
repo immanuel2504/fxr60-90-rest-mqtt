@@ -1,0 +1,25 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_TCP",
+            "type": "tcpip-server",
+            "options": {
+              "enableSecurity": false,
+              "tcpipport": "8081"
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 60,
+                "maxNumEvents": 10000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

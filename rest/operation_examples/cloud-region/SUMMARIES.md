@@ -1,17 +1,18 @@
 # Example summary titles — `/cloud/region`
 
-## PUT request
+### `GET/region.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `region` |
+| **Summary title** | `Current region` |
 
 ### `PUT/region.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `region` |
-| **Summary title** | `USA FCC Part 15.247` |
-
----
-
-## PUT response
+| **Summary title** | `Set region` |
 
 ### `PUT/success.json`
 
@@ -20,7 +21,3 @@
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
 | **HTTP status** | `200` |
-
-## NEED LIVE TEST
-
-Confirm country/standardname values are accepted for this reader model (use GET supported lists first). Stop inventory before changing region.

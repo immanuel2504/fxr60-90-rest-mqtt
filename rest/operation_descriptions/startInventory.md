@@ -33,7 +33,7 @@ Make sure the relevant scanners are configured before sending this request.
 |---|---|
 | HTTPS connectivity | The reader's HTTPS endpoint must be reachable and a valid bearer token must be included in the `Authorization` header of every request. |
 | RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or default) before starting RFID inventory. |
-| BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/ble-config` with `ble.enable: true`. |
+| BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/bleConfig` with `ble.enable: true`. |
 | Gen2X configuration | If using `applyImpinjGen2X: true`, the Gen2X configuration must be saved via `PUT /cloud/impinjGen2X` beforehand. `applyImpinjGen2X` cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
 
 ## 4. What Happens After Start

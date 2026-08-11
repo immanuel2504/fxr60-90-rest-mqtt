@@ -1,9 +1,13 @@
 {
-  "options": {
-    "password": "L@bu$3rs",
-    "username": "labuser"
-  },
-  "authenticationType": "BASIC",
-  "filename": "mylogger_1.0.1.deb",
-  "url": "sftp://10.117.229.15/home/labuser/EV1/"
+    "url": "https://apps.example.com/packages/",
+    "filename": "mylogger-1.2.0.deb",
+    "authenticationType": "BASIC",
+    "options": {
+        "username": "labuser",
+        "password": "L@bu$3rs"
+    },
+    "verifyPeer": true,
+    "verifyHost": true,
+    "installedCertificateType": "server",
+    "installedCertificateName": "reader-server-cert"
 }

@@ -1,0 +1,186 @@
+{
+  "endpointConfig": {
+    "control": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "CTRL_MQTT_TLS",
+            "description": "Secure control cmd/rsp over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-ctrl",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": [
+                "site/dock01/rsp"
+              ],
+              "subscribeTopic": [
+                "site/dock01/cmd"
+              ],
+              "security": {
+                "CACertificateFileLocation": "/data/certs/ca.pem",
+                "privateKeyFileLocation": "/data/certs/client.key",
+                "publicKeyFileLocation": "/data/certs/client.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT_TLS",
+            "description": "Secure tag events over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-data",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": [
+                "site/dock01/tevents"
+              ],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/certs/ca.pem",
+                "privateKeyFileLocation": "/data/certs/client.key",
+                "publicKeyFileLocation": "/data/certs/client.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    },
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_MQTT_TLS",
+            "description": "Secure management/heartbeat events over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-mevents",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": [
+                "site/dock01/mevents"
+              ],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/certs/ca.pem",
+                "privateKeyFileLocation": "/data/certs/client.key",
+                "publicKeyFileLocation": "/data/certs/client.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      },
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "MGMT_CMD_MQTT_TLS",
+            "description": "Secure management cmd/rsp over MQTT TLS",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-mcmd",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": [
+                "site/dock01/mrsp"
+              ],
+              "subscribeTopic": [
+                "site/dock01/mcmd"
+              ],
+              "security": {
+                "CACertificateFileLocation": "/data/certs/ca.pem",
+                "privateKeyFileLocation": "/data/certs/client.key",
+                "publicKeyFileLocation": "/data/certs/client.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -200,11 +200,11 @@ Very low effort / low value (often empty-string success). Skip if busy.
 
 | Status | Endpoints |
 |--------|-----------|
-| Reviewed / Updated in Excel | `app-led` (GET + PUT), `gpi`, `gpo` (GET + PUT), `localRestLogin`, `ntpServer`, `preSelection`, `timeZone`, `DELETE caCertificates/{caname}`, `PUT cableLossCompensation`, `GET certificates`, `DELETE certificates/{certname}`, `GET eSimConfig`, `PUT logs` |
-| Need live test | `PUT /cloud/app-led` success `""`; **`PUT /cloud/apps/install`** installed certs vs CA; **`PUT /cloud/apps/{appname}/pass-through`** path + response; **`PUT /cloud/certificates`** PFX install; **`PUT /cloud/os`** installed cert vs inline CA |
-| Discuss with developer | `preSelection` GET string vs PUT boolean; `readerLocation` timestamp/no-fix; `timeZone` GET long-form vs PUT short-form; **`PUT /cloud/apps/install` — can HTTPS download use installed certs (`installedCertificateName`/`Type` from GET `/cloud/certificates`), which types (`server`/`client`/`app`), or must trust come from CA store / inline PEM?** |
-| Deferred | `GET/PUT /cloud/hostName`, `GET /cloud/readerLocation`, `GET/PUT /cloud/stack-led` (FXR60 only), **`PUT /cloud/cloudConfig`**, **`GET/PUT /cloud/mode`** |
-| Still pending Tier 1 | *(none — remaining items are deferred)* |
+| Reviewed / Updated (2026-08-10 live feedback) | localRestLogin, start, preSelection, impinjGen2X, version, status, readerCapabilities, cableLoss, reboot, hostName, app-led, gpo/gpi, region (Canada), supported lists, timeZone, certificates GET + old PUT, cert refresh, wifiNetworks, networkInterfaces (fxr60/fxr90), readPoints, pass-through, config PUT, updatePassword, apps start/stop/uninstall (no body), **bleConfig path**, eSimConfig FXR90-only, network wan0 FXR90-only |
+| Need live test | **`PUT /cloud/os`**, **`PUT /cloud/apps/install`** (installed cert HTTPS bodies) |
+| Discuss | **stack-led** (QA), **ntpServer** (Mayur/Dhavnesh), **caCertificates** (Mayur), **DELETE certificates/{certname} type param** (QA) |
+| Deferred | **GET /cloud/config**, **PUT /cloud/cloudConfig**, `GET /cloud/readerLocation`, **GET/PUT /cloud/mode** |
+| Need to work | **PUT /cloud/setdataToRG** |
 
 ---
 

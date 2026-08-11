@@ -1,0 +1,155 @@
+{
+  "command": "get_availableWifiNetworks",
+  "command_id": "req-get-availableWifiNetworks",
+  "response": "success",
+  "payload": {
+    "availableWifiNetworks": [
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": true,
+          "security": {
+            "details": {
+              "password": "********"
+            },
+            "type": "WPA2Personal"
+          }
+        },
+        "essid": "VULCAN_2.4_5_WPA2",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_2.4_WPA3",
+        "signalStrength": "89%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_24_5_ENT_802.1x",
+        "signalStrength": "89%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_FAST_ROAMING_24",
+        "signalStrength": "89%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_2.4_WPA2",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_24_5_ENT_SHA256",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_2_4_ENT_802.1x",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_24_ENT_SHA256",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA3-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_WPA3_ENT_SUITE192",
+        "signalStrength": "87%"
+      },
+      {
+        "capabilities": [
+          "WPA3"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_2.4_5_WPA3",
+        "signalStrength": "85%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_FAST_ROAMING_5",
+        "signalStrength": "69%"
+      },
+      {
+        "capabilities": [
+          "WPA2"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "VULCAN_5_WPA2",
+        "signalStrength": "69%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_5_ENT_802.1x",
+        "signalStrength": "69%"
+      },
+      {
+        "capabilities": [
+          "WPA2-802.1X"
+        ],
+        "configuration": {
+          "autoConnect": false
+        },
+        "essid": "Vulcan_WPA2_5_ENT_SHA256",
+        "signalStrength": "69%"
+      }
+    ]
+  }
+}

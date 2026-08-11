@@ -1,9 +1,0 @@
-{
-  "READER-GATEWAY": {
-    "retention": {
-      "maxEventRetentionTimeInMin": 1440,
-      "maxNumEvents": 150000,
-      "throttle": 500
-    }
-  }
-}

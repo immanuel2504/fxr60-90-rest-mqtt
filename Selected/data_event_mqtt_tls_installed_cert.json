@@ -1,0 +1,52 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT_TLS_INSTALLED",
+            "description": "Secure data MQTT using installed certificate name/type",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-data-inst",
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": ["site/dock01/tevents"],
+              "subscribeTopic": [],
+              "security": {
+                "installedCertificateName": "DOCK01_CLIENT",
+                "installedCertificateType": "client",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "batching": {
+                "reportingInterval": 1000,
+                "maxPayloadSizePerReport": 256000
+              },
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

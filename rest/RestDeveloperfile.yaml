@@ -7148,20 +7148,6 @@ paths:
       summary: Start user application
       description: MQTT API :-  set_startUserapp <br> Starts a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStartuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_startUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7186,20 +7172,6 @@ paths:
       summary: Stop user application
       description: MQTT API :-  set_stopUserapp <br> Stops a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStopuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_stopUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7406,20 +7378,6 @@ paths:
       summary: Uninstall User Application
       description: MQTT API :-  set_uninstallUserapp <br> Uninstalls a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setUninstalluserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_uninstallUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7871,7 +7829,7 @@ paths:
         - bearerAuth: []
 
 
-  /cloud/ble-config:
+  /cloud/bleConfig:
     put:
       tags:
         - Ble

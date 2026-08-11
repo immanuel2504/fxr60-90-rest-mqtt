@@ -1,0 +1,13 @@
+{
+  "command": "get_networkInterfaces",
+  "command_id": "req-get-networkInterfaces-fxr90",
+  "response": "success",
+  "payload": {
+    "availableNetworkInterfaces": [
+      "eth0",
+      "mlan0",
+      "bnep0",
+      "wan0"
+    ]
+  }
+}

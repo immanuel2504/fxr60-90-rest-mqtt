@@ -250,12 +250,12 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-apps-appname-uninstall/PUT/uninstallUserapp.json` | `uninstall-user-app/request/uninstallUserapp.json` | request payload |
 | `cloud-apps-appname-uninstall/PUT/success.json` | `uninstall-user-app/response/success.json` | response payload |
 | `—` | `get_bleConfig/request/default.json` | synthetic empty request |
-| `cloud-ble-config/GET/inline.json` | `get_bleConfig/response/inline.json` | response payload |
-| `cloud-ble-config/GET/disabled.json` | `get_bleConfig/response/disabled.json` | response payload |
-| `cloud-ble-config/PUT/enable_ble.json` | `set_bleConfig/request/enable_ble.json` | request payload |
-| `cloud-ble-config/PUT/enable_with_interval.json` | `set_bleConfig/request/enable_with_interval.json` | request payload |
-| `cloud-ble-config/PUT/enable_with_rssi_filter.json` | `set_bleConfig/request/enable_with_rssi_filter.json` | request payload |
-| `cloud-ble-config/PUT/enable_with_protocols.json` | `set_bleConfig/request/enable_with_protocols.json` | request payload |
-| `cloud-ble-config/PUT/disable_ble.json` | `set_bleConfig/request/disable_ble.json` | request payload |
+| `cloud-bleconfig/GET/inline.json` | `get_bleConfig/response/inline.json` | response payload |
+| `cloud-bleconfig/GET/disabled.json` | `get_bleConfig/response/disabled.json` | response payload |
+| `cloud-bleconfig/PUT/enable_ble.json` | `set_bleConfig/request/enable_ble.json` | request payload |
+| `cloud-bleconfig/PUT/enable_with_interval.json` | `set_bleConfig/request/enable_with_interval.json` | request payload |
+| `cloud-bleconfig/PUT/enable_with_rssi_filter.json` | `set_bleConfig/request/enable_with_rssi_filter.json` | request payload |
+| `cloud-bleconfig/PUT/enable_with_protocols.json` | `set_bleConfig/request/enable_with_protocols.json` | request payload |
+| `cloud-bleconfig/PUT/disable_ble.json` | `set_bleConfig/request/disable_ble.json` | request payload |
 | `—` | `set_bleConfig/response/success.json` | synthetic success |
 

@@ -1,18 +1,15 @@
 # Example summary titles — `/cloud/certificates`
 
-## GET responses
-
 ### `GET/installed.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `installed` |
-| **Summary title** | `Server and client certificates` |
+| **Summary title** | `Installed certificates` |
 
-## NEED LIVE TEST
+### `PUT/updateCertificate.json`
 
-Confirm on a real reader that `GET /cloud/certificates` returns this shape:
-
-- `name`, `type` (`server` / `client` / `app`)
-- `serial`, `installTime`, `issuerName`, `subjectName`
-- `validityStart`, `validityEnd`, `publickey`
+| Field | Value |
+|---|---|
+| **Example name** | `updateCertificate` |
+| **Summary title** | `Install client certificate (BASIC)` |

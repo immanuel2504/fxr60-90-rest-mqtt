@@ -1,0 +1,44 @@
+{
+  "endpointConfig": {
+    "control": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "CTRL_AWS",
+            "description": "Control cmd/rsp through AWS IoT Core",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-CTRL",
+                "debug": false,
+                "keepAlive": 30,
+                "qos": 1,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["FXR90-LAB/rsp"],
+              "subscribeTopic": ["FXR90-LAB/cmd"],
+              "security": {
+                "CACertificateFileLocation": "/data/apps/aws/aws-AmazonRootCA1.pem",
+                "privateKeyFileLocation": "/data/apps/aws/aws-private.pem.key",
+                "publicKeyFileLocation": "/data/apps/aws/aws-certificate.pem.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

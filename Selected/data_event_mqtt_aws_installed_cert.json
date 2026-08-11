@@ -1,0 +1,42 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_AWS_INSTALLED",
+            "description": "Tag events to AWS — client cert already installed",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-DATA",
+                "keepAlive": 20,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["datacollection_aws/FXR90-LAB"],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "installedCertificateName": "AWS_IOT_CLIENT",
+                "installedCertificateType": "client",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

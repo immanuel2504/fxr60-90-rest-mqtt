@@ -782,37 +782,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRegionResponse'
-              examples:
-                india:
-                  summary: india
-                  value:
-                    FrequencyHopping: true
-                    channelData:
-                    - 865700
-                    - 866300
-                    - 866900
-                    - 867500
-                    country: India
-                    lbtEnabled: true
-                    maxTxPowerSupported: 300
-                    minTxPowerSupported: 100
-                    region: IN
-                    regulatoryStandard: INDIA
-                multiple_values:
-                  summary: multiple values
-                  value:
-                    FrequencyHopping: true
-                    channelData:
-                    - 915250
-                    - 915750
-                    - 903250
-                    - 926750
-                    country: Canada
-                    lbtEnabled: false
-                    maxTxPowerSupported: 300
-                    minTxPowerSupported: 100
-                    region: US
-                    regulatoryStandard: FCC
+              example:
+                FrequencyHopping: true
+                channelData:
+                - '915750'
+                - '915250'
+                - '903250'
+                - '926750'
+                - '926250'
+                - '904250'
+                - '927250'
+                - '920250'
+                - '919250'
+                - '909250'
+                - '918750'
+                - '917750'
+                - '905250'
+                - '904750'
+                - '925250'
+                - '921750'
+                - '914750'
+                - '906750'
+                - '913750'
+                - '922250'
+                - '911250'
+                - '911750'
+                - '903750'
+                - '908750'
+                - '905750'
+                - '912250'
+                - '906250'
+                - '917250'
+                - '914250'
+                - '907250'
+                - '918250'
+                - '916250'
+                - '910250'
+                - '910750'
+                - '907750'
+                - '924750'
+                - '909750'
+                - '919750'
+                - '916750'
+                - '913250'
+                - '923750'
+                - '908250'
+                - '925750'
+                - '912750'
+                - '924250'
+                - '921250'
+                - '920750'
+                - '922750'
+                - '902750'
+                - '923250'
+                country: Canada
+                lbtEnabled: false
+                maxTxPowerSupported: 300
+                minTxPowerSupported: 0
+                region: FCC_Generic
+                regulatoryStandard: CANADA_FCC_15
       security:
       - bearerAuth: []
     put:
@@ -889,8 +917,8 @@ paths:
             schema:
               $ref: '#/components/schemas/SetRegionRequest'
             example:
-              country: USA
-              standardname: FCC_PART_15_247
+              country: Canada
+              standardname: CANADA_FCC_15
       responses:
         '200':
           description: OK
@@ -1737,7 +1765,7 @@ paths:
 
         | RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or default) before starting RFID inventory. |
 
-        | BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/ble-config` with `ble.enable: true`. |
+        | BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/bleConfig` with `ble.enable: true`. |
 
         | Gen2X configuration | If using `applyImpinjGen2X: true`, the Gen2X configuration must be saved via `PUT /cloud/impinjGen2X` beforehand. `applyImpinjGen2X` cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
 
@@ -2018,12 +2046,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetVersionResponse'
               example:
-                cloudAgentApplication: 0.6.2.25
-                model: FXR90
-                radioControlApplication: 0.2.58.6
-                radioFirmware: 2.1.57.0
-                readerApplication: 2.0.7-5
-                serialNumber: 233575230D0028
+                availableOsUpgrades: {}
+                cloudAgentApplication: 0.6.2.64
+                model: FXR60
+                radioControlApplication: 0.2.58.7
+                radioFirmware: 2.1.70.0
+                readerApplication: 5.0.3
+                revertBackFirmware: {}
+                serialNumber: 260995251E0047
       security:
       - bearerAuth: []
   /cloud/status:
@@ -2040,131 +2070,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetStatusResponse'
-              examples:
-                inline:
-                  summary: inline
-                  value:
-                    antennas:
-                      '1': disconnected
-                      '2': disconnected
-                      '3': disconnected
-                      '4': disconnected
-                      '5': connected
-                      '6': connected
-                    cpu:
-                      system: 0
-                      user: 2
-                    flash:
-                      platform:
-                        free: 0
-                        total: 0
-                        used: 0
-                      readerConfig:
-                        free: 0
-                        total: 0
-                        used: 0
-                      readerData:
-                        free: 0
-                        total: 0
-                        used: 0
-                      rootFileSystem:
-                        free: 0
-                        total: 0
-                        used: 0
-                    interfaceConnectionStatus:
-                      data:
-                      - connectionError: ''
-                        connectionStatus: connected
-                        description: WEBSOCKET_TESTs
-                        interface: WEBSOCKET_TEST
-                    ntp:
-                      offset: 0
-                      reach: 0
-                    powerNegotiation: POE+
-                    powerSource: DC
-                    radioActivity: inactive
-                    radioConnection: connected
-                    ram:
-                      free: 76
-                      total: 100
-                      used: 24
-                    systemTime: 13/06/2024 11:19
-                    temperature: 33
-                    uptime: 0D1H13M15S
-                    impinjGen2X:
-                      active: true
-                      feature: tagFocus
-                    ble:
-                      scanState: running
-                      scanStartTime: '2026-05-21T13:46:16.955Z'
-                      beaconCounts:
-                        altBeacon: 33
-                        eddystone: 0
-                        generic: 0
-                        iBeacon: 75
-                        total: 108
-                running:
-                  summary: running
-                  value:
-                    antennas:
-                      '1': connected
-                      '2': connected
-                      '3': disconnected
-                      '4': disconnected
-                      '5': connected
-                      '6': connected
-                    cpu:
-                      system: 4
-                      user: 18
-                    flash:
-                      platform:
-                        free: 100
-                        total: 200
-                        used: 100
-                      readerConfig:
-                        free: 50
-                        total: 100
-                        used: 50
-                      readerData:
-                        free: 80
-                        total: 100
-                        used: 20
-                      rootFileSystem:
-                        free: 900
-                        total: 1200
-                        used: 300
-                    interfaceConnectionStatus:
-                      data:
-                      - connectionError: ''
-                        connectionStatus: connected
-                        description: MQTT data
-                        interface: mqtt_emqx_data
-                    ntp:
-                      offset: 2
-                      reach: 377
-                    powerNegotiation: POE+
-                    powerSource: POE
-                    radioActivity: active
-                    radioConnection: connected
-                    ram:
-                      free: 60
-                      total: 100
-                      used: 40
-                    systemTime: 07/08/2026 10:15
-                    temperature: 48
-                    uptime: 1D0H15M00S
-                    impinjGen2X:
-                      active: true
-                      feature: tagFocus
-                    ble:
-                      scanState: running
-                      scanStartTime: '2026-08-07T09:00:00.000Z'
-                      beaconCounts:
-                        altBeacon: 10
-                        eddystone: 0
-                        generic: 0
-                        iBeacon: 40
-                        total: 50
+              example:
+                antennas:
+                  '1': connected
+                  '2': connected
+                  '3': disconnected
+                  '4': disconnected
+                  '5': connected
+                  '6': connected
+                cpu:
+                  system: 4
+                  user: 18
+                flash:
+                  platform:
+                    free: 100
+                    total: 200
+                    used: 100
+                  readerConfig:
+                    free: 50
+                    total: 100
+                    used: 50
+                  readerData:
+                    free: 80
+                    total: 100
+                    used: 20
+                  rootFileSystem:
+                    free: 900
+                    total: 1200
+                    used: 300
+                interfaceConnectionStatus:
+                  data:
+                  - connectionError: ''
+                    connectionStatus: connected
+                    description: MQTT data
+                    interface: mqtt_emqx_data
+                ntp:
+                  offset: 2
+                  reach: 377
+                powerNegotiation: POE+
+                powerSource: POE
+                radioActivity: active
+                radioConnection: connected
+                ram:
+                  free: 60
+                  total: 100
+                  used: 40
+                systemTime: 07/08/2026 10:15
+                temperature: 48
+                uptime: 1D0H15M00S
+                impinjGen2X:
+                  active: true
+                  feature: tagFocus
+                ble:
+                  scanState: running
+                  scanStartTime: '2026-08-07T09:00:00.000Z'
+                  beaconCounts:
+                    altBeacon: 10
+                    eddystone: 0
+                    generic: 0
+                    iBeacon: 40
+                    total: 50
       security:
       - bearerAuth: []
   /cloud/config:
@@ -2451,315 +2416,38 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetConfigMqttRequest'
-            examples:
-              config_data_aws:
-                summary: config data aws
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - description: AWS
-                            name: AWS_8883
-                            options:
-                              additional:
-                                cleanSession: true
-                                clientId: FXR90F009C9aws
-                                debug: false
-                                keepAlive: 20
-                                qos: 0
-                                reconnectDelay: 1
-                                reconnectDelayMax: 5
-                              enableSecurity: true
-                              endpoint:
-                                hostName: test-ats.iot.us-east-1.amazonaws.com
-                                port: 8883
-                                protocol: ssl
-                              publishTopic:
-                              - datacollection_aws/FXR90F009C9
-                              security:
-                                CACertificateFileLocation: /data/AmazonRootCA1.pem
-                                keyAlgorithm: RS256
-                                keyFormat: PEM
-                                privateKeyFileLocation: /data/aws-pvt.key
-                                publicKeyFileLocation: /data/aws-pub.crt
-                                verifyHostName: true
-                                verifyPeer: true
-                              subscribeTopic: []
-                            type: mqtt-AWS
-              config_data_azure_mqtt:
-                summary: config data azure mqtt
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - description: azure_8883yj
-                            name: AZURE_8883
-                            options:
-                              additional:
-                                cleanSession: false
-                                clientId: FXR90A3A2F7
-                                debug: true
-                                keepAlive: 120
-                                qos: 1
-                                reconnectDelay: 600
-                                reconnectDelayMax: 86400
-                              basicAuthentication:
-                                password: none
-                                username: VULCANIOTHUB.azure-devices.net/FXR90A3A2F7/?api-version=2018-06-30
-                              enableSecurity: true
-                              endpoint:
-                                hostName: VULCANIOTHUB.azure-devices.net
-                                port: 8883
-                                protocol: ssl
-                              publishTopic:
-                              - devices/FXR90A3A2F7/messages/events/
-                              security:
-                                CACertificateFileLocation: /data/apps/cacertazure.pem
-                                keyAlgorithm: RS256
-                                keyFormat: PEM
-                                privateKeyFileLocation: /data/apps/key.pem
-                                publicKeyFileLocation: /data/apps/csr.pem
-                                verifyHostName: false
-                                verifyPeer: false
-                              subscribeTopic:
-                              - devices/FXR90A3A2F7/messages/devicebound/#
-                            type: mqtt-AZURE
-              config_data_clear:
-                summary: config data clear
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections: []
-              config_data_httpPost:
-                summary: config data httpPost
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - options:
-                              URL: https://webhook.site/be9d3ddc-c25d-4b87-b4c4-9162f9c75768
-                              security:
-                                authenticationType: NONE
-                                verifyHost: false
-                                verifyPeer: false
-                            type: httpPost
-              config_data_mqtt:
-                summary: config data mqtt
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - additionalOptions:
-                              batching: null
-                              retention:
-                                maxEventRetentionTimeInMin: 500
-                                maxNumEvents: 150000
-                                throttle: 100
-                            description: mqtt_data_public_emqx
-                            name: mqtt_emqx_data
-                            options:
-                              additional:
-                                cleanSession: true
-                                clientId: fxr90-reader
-                                debug: false
-                                keepAlive: 60
-                                qos: 0
-                                reconnectDelay: 1
-                                reconnectDelayMax: 5
-                              enableSecurity: false
-                              endpoint:
-                                hostName: broker.emqx.io
-                                port: 8083
-                                protocol: ws
-                              publishTopic:
-                              - /devices/fxr90-reader/events/data
-                              subscribeTopic: []
-                            type: mqtt
-              config_data_mqtt_async:
-                summary: config data mqtt async
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - additionalOptions:
-                              batching: null
-                              retention:
-                                maxEventRetentionTimeInMin: 500
-                                maxNumEvents: 150000
-                                throttle: 500
-                            description: MQTT_TEST
-                            name: MQTT_TEST
-                            options:
-                              additional:
-                                cleanSession: true
-                                clientId: EV1
-                                debug: false
-                                keepAlive: 60
-                                qos: 0
-                                reconnectDelay: 1
-                                reconnectDelayMax: 5
-                              enableSecurity: false
-                              endpoint:
-                                hostName: 10.117.229.9
-                                port: 1883
-                                protocol: tcp
-                              publishTopic:
-                              - tagevents_r2c_longrun
-                              security:
-                                CACertificateFileLocation: /home/root/broker.emqx.io-ca.crt
-                                installedCertificateName: Server
-                                installedCertificateType: server
-                                keyAlgorithm: RS256
-                                keyFormat: PEM
-                                verifyHostName: false
-                                verifyPeer: false
-                              subscribeTopic: []
-                            type: mqtt
-              config_data_tcp_ip:
-                summary: config data tcp ip
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - additionalOptions:
-                              retention:
-                                maxEventRetentionTimeInMin: 500
-                                maxNumEvents: 150000
-                                throttle: 100
-                            description: tag_data_tcp_ip_conn
-                            name: tag_data_tcp_ip
-                            options:
-                              enableSecurity: false
-                              tcpipport: '8081'
-                            type: tcpip-server
-              config_data_websocket:
-                summary: config data websocket
-                value:
-                  READER-GATEWAY:
-                    endpointConfig:
-                      data:
-                        event:
-                          connections:
-                          - additionalOptions:
-                              retention:
-                                maxEventRetentionTimeInMin: 500
-                                maxNumEvents: 150000
-                                throttle: 100
-                            description: WEBSOCKET_TEST
-                            name: WEBSOCKET_TEST
-                            options:
-                              security:
-                                verifyPeer: false
-                            type: WEBSOCKET
-              config_global_batching:
-                summary: config global batching
-                value:
-                  READER-GATEWAY:
-                    batching:
-                      maxPayloadSizePerReport: 65536
-                      reportingInterval: 1000
-              config_global_retention:
-                summary: config global retention
-                value:
-                  READER-GATEWAY:
-                    retention:
-                      maxEventRetentionTimeInMin: 1440
-                      maxNumEvents: 150000
-                      throttle: 500
-              config_gpio_led:
-                summary: config gpio led
-                value:
-                  GPIO-LED:
-                    GPODefaults:
-                      '1': LOW
-                      '2': LOW
-                    LEDDefaults:
-                      '1': GREEN
-                    RADIO_START:
-                    - type: LED
-                      led: 1
-                      color: AMBER
-                    RADIO_STOP:
-                    - type: LED
-                      led: 1
-                      color: GREEN
-              config_management_events:
-                summary: config management events
-                value:
-                  READER-GATEWAY:
-                    managementEventConfig:
-                      errors:
-                        antenna: true
-                        cpu:
-                          threshold: 90
-                          reportIntervalInSec: 1800
-                        flash:
-                          threshold: 90
-                          reportIntervalInSec: 1800
-                        ram:
-                          threshold: 90
-                          reportIntervalInSec: 1800
-                        radio: true
-                        radio_control: true
-                        reader_gateway: true
-                        database: true
-                      warnings:
-                        cpu:
-                          threshold: 80
-                          reportIntervalInSec: 1800
-                        flash:
-                          threshold: 80
-                          reportIntervalInSec: 1800
-                        ram:
-                          threshold: 80
-                          reportIntervalInSec: 1800
-                        ntp: true
-                        radio_api: true
-                        radio_control: true
-                        reader_gateway: true
-                        temperature:
-                          ambient: 75
-                          pa: 105
-                      gpiEvents: true
-                      userappEvents: true
-                      heartbeat:
-                        interval: 60
-                        fields:
-                          radio_control:
-                          - ANTENNAS
-                          - RADIO_ACTIVITY
-                          - CPU
-                          - RAM
-                          reader_gateway:
-                          - NUM_DATA_MESSAGES_RXED
-                          - NUM_DATA_MESSAGES_TXED
-                          - CPU
-                          - RAM
-                          system:
-                          - CPU
-                          - FLASH
-                          - RAM
-                          - SYSTEMTIME
-                          - TEMPERATURE
-                          - UPTIME
-                          userapps:
-                          - STATUS
-                          - CPU
-                          - RAM
+            example:
+              READER-GATEWAY:
+                endpointConfig:
+                  data:
+                    event:
+                      connections:
+                      - additionalOptions:
+                          batching: null
+                          retention:
+                            maxEventRetentionTimeInMin: 500
+                            maxNumEvents: 150000
+                            throttle: 100
+                        description: mqtt_data_public_emqx
+                        name: mqtt_emqx_data
+                        options:
+                          additional:
+                            cleanSession: true
+                            clientId: fxr90-reader
+                            debug: false
+                            keepAlive: 60
+                            qos: 0
+                            reconnectDelay: 1
+                            reconnectDelayMax: 5
+                          enableSecurity: false
+                          endpoint:
+                            hostName: broker.emqx.io
+                            port: 8083
+                            protocol: ws
+                          publishTopic:
+                          - /devices/fxr90-reader/events/data
+                          subscribeTopic: []
+                        type: mqtt
       responses:
         '200':
           description: OK
@@ -2835,21 +2523,12 @@ paths:
               $ref: '#/components/schemas/SetPassthruRequest'
             examples:
               passthru:
-                summary: passthru
+                summary: RC mode command
                 value:
                   component: RC
                   payload: mode
-              passthru_version:
-                summary: passthru version
-                value:
-                  component: RC
-                  payload: version
-              rc_status:
-                summary: rc status
-                value:
-                  response: radio_state=idle,antenna_1=connected,temperature=41
               status:
-                summary: status
+                summary: RC status command
                 value:
                   component: RC
                   payload: status
@@ -2860,6 +2539,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetPassthruResponse'
+              example:
+                response: 'Success: {"numTagReads": 8034512,"numTagReadsPerAntenna": {"1": 8034512,"2": 0,"3": 0,"4": 0},"numRadioPacketsRxed": 12131354,"numDataMessagesTxed": 8034512,"cpuUtilization": 0.0,"ramUtilization": 1.0,"uptime": "140:56:48","numErrors": 9313,"numWarnings": 20,"radioConnection": "connected","radioActivity": "active","antennas": {"1": "disconnected","2": "disconnected","3": "connected","4": "disconnected"},"temperature": {"ambient":33,"pa":30},"impinjGen2X": {"isActive": false,"feature": "none"}}'
       security:
       - bearerAuth: []
   /cloud/cloudConfig:
@@ -2964,361 +2645,663 @@ paths:
             schema:
               $ref: '#/components/schemas/SetImportcloudconfigRequest'
             examples:
-              importCloudConfig:
-                summary: importCloudConfig
+              clear_data:
+                summary: Clear all data connections
                 value:
                   endpointConfig:
-                    control:
-                      commandResponse:
-                        connections:
-                        - description: MQTT_TEST
-                          name: MQTT_TEST
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FX9600FCC017
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
-                            publishTopic:
-                            - FX9600FCC017/rsp
-                            security:
-                              CACertificateFileLocation: /home/root/broker.emqx.io-ca.crt
-                              installedCertificateName: Server
-                              installedCertificateType: server
-                              keyAlgorithm: RS256
-                              keyFormat: PEM
-                              verifyHostName: false
-                              verifyPeer: false
-                            subscribeTopic:
-                            - FX9600FCC017/cmd
-                          type: mqtt
-                        enableLocalRest: true
+                    data:
+                      event:
+                        connections: []
+              data_http_post:
+                summary: Tag events over HTTP POST
+                value:
+                  endpointConfig:
                     data:
                       event:
                         connections:
-                        - additionalOptions:
-                            batching: null
+                        - name: DATA_HTTP
+                          type: httpPost
+                          options:
+                            URL: https://webhook.site/your-unique-id
+                            security:
+                              authenticationType: NONE
+                              verifyHost: false
+                              verifyPeer: false
+              data_mqtt_tls_installed_cert:
+                summary: Tag events over MQTT TLS with installed cert
+                value:
+                  endpointConfig:
+                    data:
+                      event:
+                        connections:
+                        - name: DATA_MQTT_TLS_INSTALLED
+                          description: Secure data MQTT using installed certificate name/type
+                          type: mqtt
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: mqtt.example.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-dock01-data-inst
+                              keepAlive: 60
+                              qos: 1
+                              reconnectDelay: 2
+                              reconnectDelayMax: 60
+                            publishTopic:
+                            - site/dock01/tevents
+                            subscribeTopic: []
+                            security:
+                              installedCertificateName: DOCK01_CLIENT
+                              installedCertificateType: client
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+                          additionalOptions:
                             retention:
                               maxEventRetentionTimeInMin: 500
                               maxNumEvents: 150000
                               throttle: 500
-                          description: MQTT_TEST
-                          name: MQTT_TEST
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FX9600FCC017
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
-                            publishTopic:
-                            - FX9600FCC017/tevents
-                            security:
-                              CACertificateFileLocation: /home/root/broker.emqx.io-ca.crt
-                              installedCertificateName: Server
-                              installedCertificateType: server
-                              keyAlgorithm: RS256
-                              keyFormat: PEM
-                              verifyHostName: false
-                              verifyPeer: false
-                            subscribeTopic: []
-                          type: mqtt
-                    management:
-                      commandResponse:
-                        connections:
-                        - description: MQTT_TEST
-                          name: MQTT_TEST
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FX9600FCC017
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
-                            publishTopic:
-                            - FX9600FCC017/rsp
-                            security:
-                              CACertificateFileLocation: /home/root/broker.emqx.io-ca.crt
-                              installedCertificateName: Server
-                              installedCertificateType: server
-                              keyAlgorithm: RS256
-                              keyFormat: PEM
-                              verifyHostName: false
-                              verifyPeer: false
-                            subscribeTopic:
-                            - FX9600FCC017/cmd
-                          type: mqtt
-                        enableLocalRest: true
+              data_tcpip_server:
+                summary: Tag events over TCP/IP server
+                value:
+                  endpointConfig:
+                    data:
                       event:
                         connections:
-                        - description: MQTT_TEST
-                          name: MQTT_TEST
+                        - name: DATA_TCP
+                          type: tcpip-server
                           options:
+                            enableSecurity: false
+                            tcpipport: '8081'
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 60
+                              maxNumEvents: 10000
+                              throttle: 500
+              data_websocket:
+                summary: Tag events over WebSocket
+                value:
+                  endpointConfig:
+                    data:
+                      event:
+                        connections:
+                        - name: DATA_WS
+                          type: WEBSOCKET
+                          options:
+                            security:
+                              verifyPeer: false
+              management_event_mqtt:
+                summary: Management events over MQTT
+                value:
+                  endpointConfig:
+                    management:
+                      event:
+                        connections:
+                        - name: MGMT_EVENTS_MQTT
+                          description: Management/heartbeat events
+                          type: mqtt
+                          options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
                             additional:
                               cleanSession: true
-                              clientId: FX9600FCC017
+                              clientId: fxr90-lab-mevents
                               debug: false
                               keepAlive: 60
                               qos: 0
                               reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
+                              reconnectDelayMax: 30
                             publishTopic:
-                            - FX9600FCC017/mevents
+                            - fxr90-lab/mevents
                             subscribeTopic: []
-                          type: mqtt
-              importCloudConfig_aws:
-                summary: importCloudConfig aws
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+              mqtt_all_channels:
+                summary: All channels over MQTT (no TLS)
                 value:
                   endpointConfig:
                     control:
                       commandResponse:
+                        enableLocalRest: true
                         connections:
-                        - description: MQTT_CONTROL
-                          name: MQTT_CONTROL
+                        - name: CTRL_MQTT
+                          description: Control cmd/rsp over MQTT
                           type: mqtt
                           options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
                             additional:
                               cleanSession: true
-                              clientId: FXR90C60C001
+                              clientId: fxr90-lab-ctrl
                               debug: false
                               keepAlive: 60
                               qos: 0
                               reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
+                              reconnectDelayMax: 30
                             publishTopic:
-                            - FXR90C60C001/rsp
+                            - fxr90-lab/rsp
                             subscribeTopic:
-                            - FXR90C60C001/cmd
-                        enableLocalRest: true
+                            - fxr90-lab/cmd
                     data:
                       event:
                         connections:
-                        - description: AWS
-                          name: AWS_8883
-                          type: mqtt-AWS
+                        - name: DATA_MQTT
+                          description: Tag events to MQTT
+                          type: mqtt
                           options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
                             additional:
                               cleanSession: true
-                              clientId: FXR90C60C001aws
+                              clientId: fxr90-lab-data
                               debug: false
-                              keepAlive: 20
+                              keepAlive: 60
                               qos: 0
                               reconnectDelay: 1
-                              reconnectDelayMax: 5
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - fxr90-lab/tevents
+                            subscribeTopic: []
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                    management:
+                      event:
+                        connections:
+                        - name: MGMT_EVENTS_MQTT
+                          description: Management/heartbeat events
+                          type: mqtt
+                          options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-lab-mevents
+                              debug: false
+                              keepAlive: 60
+                              qos: 0
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - fxr90-lab/mevents
+                            subscribeTopic: []
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: MGMT_CMD_MQTT
+                          description: Management cmd/rsp
+                          type: mqtt
+                          options:
+                            enableSecurity: false
+                            endpoint:
+                              hostName: 10.0.0.50
+                              port: 1883
+                              protocol: tcp
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-lab-mcmd
+                              debug: false
+                              keepAlive: 60
+                              qos: 0
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - fxr90-lab/mrsp
+                            subscribeTopic:
+                            - fxr90-lab/mcmd
+              mqtt_aws_all_channels:
+                summary: All channels over AWS IoT Core
+                value:
+                  endpointConfig:
+                    control:
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: CTRL_AWS
+                          description: Control cmd/rsp through AWS IoT Core
+                          type: mqtt-AWS
+                          options:
                             enableSecurity: true
                             endpoint:
                               hostName: test-ats.iot.us-east-1.amazonaws.com
                               port: 8883
                               protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: FXR90-LAB-CTRL
+                              keepAlive: 30
+                              qos: 1
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
                             publishTopic:
-                            - datacollection_aws/FXR90C60C001
+                            - FXR90-LAB/rsp
+                            subscribeTopic:
+                            - FXR90-LAB/cmd
                             security:
                               CACertificateFileLocation: /data/AmazonRootCA1.pem
-                              keyAlgorithm: RS256
-                              keyFormat: PEM
                               privateKeyFileLocation: /data/aws-pvt.key
                               publicKeyFileLocation: /data/aws-pub.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
                               verifyHostName: true
                               verifyPeer: true
+                    data:
+                      event:
+                        connections:
+                        - name: DATA_AWS
+                          description: Tag events to AWS IoT Core
+                          type: mqtt-AWS
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: test-ats.iot.us-east-1.amazonaws.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: FXR90-LAB-DATA
+                              keepAlive: 20
+                              qos: 0
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - datacollection_aws/FXR90-LAB
                             subscribeTopic: []
+                            security:
+                              CACertificateFileLocation: /data/AmazonRootCA1.pem
+                              privateKeyFileLocation: /data/aws-pvt.key
+                              publicKeyFileLocation: /data/aws-pub.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
                     management:
                       event:
-                        connections: []
-              importCloudConfig_azure:
-                summary: importCloudConfig azure
+                        connections:
+                        - name: MGMT_EVENTS_AWS
+                          description: Management/heartbeat events to AWS IoT Core
+                          type: mqtt-AWS
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: test-ats.iot.us-east-1.amazonaws.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: FXR90-LAB-MEVENTS
+                              keepAlive: 30
+                              qos: 1
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - FXR90-LAB/mevents
+                            subscribeTopic: []
+                            security:
+                              CACertificateFileLocation: /data/AmazonRootCA1.pem
+                              privateKeyFileLocation: /data/aws-pvt.key
+                              publicKeyFileLocation: /data/aws-pub.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: MGMT_CMD_AWS
+                          description: Management cmd/rsp through AWS IoT Core
+                          type: mqtt-AWS
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: test-ats.iot.us-east-1.amazonaws.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: FXR90-LAB-MCMD
+                              keepAlive: 30
+                              qos: 1
+                              reconnectDelay: 1
+                              reconnectDelayMax: 30
+                            publishTopic:
+                            - FXR90-LAB/mrsp
+                            subscribeTopic:
+                            - FXR90-LAB/mcmd
+                            security:
+                              CACertificateFileLocation: /data/AmazonRootCA1.pem
+                              privateKeyFileLocation: /data/aws-pvt.key
+                              publicKeyFileLocation: /data/aws-pub.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+              mqtt_azure_all_channels:
+                summary: All channels over Azure IoT Hub
                 value:
                   endpointConfig:
                     control:
                       commandResponse:
-                        connections:
-                        - description: MQTT_CONTROL
-                          name: MQTT_CONTROL
-                          type: mqtt
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FXR90C60C001
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
-                            publishTopic:
-                            - FXR90C60C001/rsp
-                            subscribeTopic:
-                            - FXR90C60C001/cmd
                         enableLocalRest: true
-                    data:
-                      event:
                         connections:
-                        - description: azure_8883
-                          name: AZURE_8883
-                          type: mqtt-AZURE
+                        - name: CTRL_AZURE
+                          description: Control cmd/rsp through Azure IoT Hub
+                          type: mqtt-Azure
                           options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: your-hub.azure-devices.net
+                              port: 8883
+                              protocol: ssl
+                            basicAuthentication:
+                              username: your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30
+                              password: none
                             additional:
                               cleanSession: false
-                              clientId: FXR90C60C001
-                              debug: true
+                              clientId: FXR90-LAB-CTRL
                               keepAlive: 120
                               qos: 1
                               reconnectDelay: 600
                               reconnectDelayMax: 86400
-                            basicAuthentication:
-                              password: SharedAccessSignature sr=...
-                              username: VULCANIOTHUB.azure-devices.net/FXR90C60C001/?api-version=2018-06-30
-                            enableSecurity: true
-                            endpoint:
-                              hostName: VULCANIOTHUB.azure-devices.net
-                              port: 8883
-                              protocol: ssl
                             publishTopic:
-                            - devices/FXR90C60C001/messages/events/
+                            - devices/FXR90-LAB-CTRL/messages/events/
+                            subscribeTopic:
+                            - devices/FXR90-LAB-CTRL/messages/devicebound/#
                             security:
                               CACertificateFileLocation: /data/apps/cacertazure.pem
+                              privateKeyFileLocation: /data/apps/key.pem
+                              publicKeyFileLocation: /data/apps/csr.pem
                               keyAlgorithm: RS256
                               keyFormat: PEM
+                              verifyHostName: false
+                              verifyPeer: false
+                    data:
+                      event:
+                        connections:
+                        - name: DATA_AZURE
+                          description: Tag events to Azure IoT Hub
+                          type: mqtt-Azure
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: your-hub.azure-devices.net
+                              port: 8883
+                              protocol: ssl
+                            basicAuthentication:
+                              username: your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30
+                              password: none
+                            additional:
+                              cleanSession: false
+                              clientId: FXR90-LAB-DATA
+                              keepAlive: 120
+                              qos: 1
+                              reconnectDelay: 600
+                              reconnectDelayMax: 86400
+                            publishTopic:
+                            - devices/FXR90-LAB-DATA/messages/events/
+                            subscribeTopic: []
+                            security:
+                              CACertificateFileLocation: /data/apps/cacertazure.pem
                               privateKeyFileLocation: /data/apps/key.pem
-                              publicKeyFileLocation: /data/apps/cert.pem
+                              publicKeyFileLocation: /data/apps/csr.pem
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: false
+                              verifyPeer: false
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                    management:
+                      event:
+                        connections:
+                        - name: MGMT_EVENTS_AZURE
+                          description: Management/heartbeat events to Azure IoT Hub
+                          type: mqtt-Azure
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: your-hub.azure-devices.net
+                              port: 8883
+                              protocol: ssl
+                            basicAuthentication:
+                              username: your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30
+                              password: none
+                            additional:
+                              cleanSession: false
+                              clientId: FXR90-LAB-MEVENTS
+                              keepAlive: 120
+                              qos: 1
+                              reconnectDelay: 600
+                              reconnectDelayMax: 86400
+                            publishTopic:
+                            - devices/FXR90-LAB-MEVENTS/messages/events/
+                            subscribeTopic: []
+                            security:
+                              CACertificateFileLocation: /data/apps/cacertazure.pem
+                              privateKeyFileLocation: /data/apps/key.pem
+                              publicKeyFileLocation: /data/apps/csr.pem
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: false
+                              verifyPeer: false
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: MGMT_CMD_AZURE
+                          description: Management cmd/rsp through Azure IoT Hub
+                          type: mqtt-Azure
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: your-hub.azure-devices.net
+                              port: 8883
+                              protocol: ssl
+                            basicAuthentication:
+                              username: your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30
+                              password: none
+                            additional:
+                              cleanSession: false
+                              clientId: FXR90-LAB-MCMD
+                              keepAlive: 120
+                              qos: 1
+                              reconnectDelay: 600
+                              reconnectDelayMax: 86400
+                            publishTopic:
+                            - devices/FXR90-LAB-MCMD/messages/events/
+                            subscribeTopic:
+                            - devices/FXR90-LAB-MCMD/messages/devicebound/#
+                            security:
+                              CACertificateFileLocation: /data/apps/cacertazure.pem
+                              privateKeyFileLocation: /data/apps/key.pem
+                              publicKeyFileLocation: /data/apps/csr.pem
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: false
+                              verifyPeer: false
+              mqtt_tls_all_channels:
+                summary: All channels over MQTT TLS
+                value:
+                  endpointConfig:
+                    control:
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: CTRL_MQTT_TLS
+                          description: Secure control cmd/rsp over MQTT TLS
+                          type: mqtt
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: mqtt.example.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-dock01-ctrl
+                              debug: false
+                              keepAlive: 60
+                              qos: 1
+                              reconnectDelay: 2
+                              reconnectDelayMax: 60
+                            publishTopic:
+                            - site/dock01/rsp
+                            subscribeTopic:
+                            - site/dock01/cmd
+                            security:
+                              CACertificateFileLocation: /data/certs/ca.pem
+                              privateKeyFileLocation: /data/certs/client.key
+                              publicKeyFileLocation: /data/certs/client.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
                               verifyHostName: true
                               verifyPeer: true
-                            subscribeTopic: []
-                    management:
-                      event:
-                        connections: []
-              importCloudConfig_httpPost:
-                summary: importCloudConfig httpPost
-                value:
-                  endpointConfig:
-                    control:
-                      commandResponse:
-                        connections:
-                        - description: MQTT_CONTROL
-                          name: MQTT_CONTROL
-                          type: mqtt
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FXR90C60C001
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
-                            publishTopic:
-                            - FXR90C60C001/rsp
-                            subscribeTopic:
-                            - FXR90C60C001/cmd
-                        enableLocalRest: true
                     data:
                       event:
                         connections:
-                        - type: httpPost
+                        - name: DATA_MQTT_TLS
+                          description: Secure tag events over MQTT TLS
+                          type: mqtt
                           options:
-                            URL: https://webhook.site/be9d3ddc-c25d-4b87-b4c4-9162f9c75768
+                            enableSecurity: true
+                            endpoint:
+                              hostName: mqtt.example.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-dock01-data
+                              debug: false
+                              keepAlive: 60
+                              qos: 1
+                              reconnectDelay: 2
+                              reconnectDelayMax: 60
+                            publishTopic:
+                            - site/dock01/tevents
+                            subscribeTopic: []
                             security:
-                              authenticationType: NONE
-                              verifyHost: false
-                              verifyPeer: false
+                              CACertificateFileLocation: /data/certs/ca.pem
+                              privateKeyFileLocation: /data/certs/client.key
+                              publicKeyFileLocation: /data/certs/client.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
                     management:
                       event:
-                        connections: []
-              importCloudConfig_mqtt:
-                summary: importCloudConfig mqtt
-                value:
-                  endpointConfig:
-                    control:
-                      commandResponse:
                         connections:
-                        - description: MQTT_CONTROL
-                          name: MQTT_CONTROL
+                        - name: MGMT_EVENTS_MQTT_TLS
+                          description: Secure management/heartbeat events over MQTT TLS
                           type: mqtt
                           options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: mqtt.example.com
+                              port: 8883
+                              protocol: ssl
                             additional:
                               cleanSession: true
-                              clientId: FXR90C60C001
+                              clientId: fxr90-dock01-mevents
                               debug: false
                               keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 1883
-                              protocol: tcp
+                              qos: 1
+                              reconnectDelay: 2
+                              reconnectDelayMax: 60
                             publishTopic:
-                            - FXR90C60C001/rsp
-                            subscribeTopic:
-                            - FXR90C60C001/cmd
-                        enableLocalRest: true
-                    data:
-                      event:
-                        connections:
-                        - description: mqtt_data_emqx
-                          name: mqtt_emqx_data
-                          type: mqtt
-                          options:
-                            additional:
-                              cleanSession: true
-                              clientId: FXR90C60C001
-                              debug: false
-                              keepAlive: 60
-                              qos: 0
-                              reconnectDelay: 1
-                              reconnectDelayMax: 5
-                            enableSecurity: false
-                            endpoint:
-                              hostName: broker.emqx.io
-                              port: 8083
-                              protocol: ws
-                            publishTopic:
-                            - /devices/FXR90C60C001/events/data
+                            - site/dock01/mevents
                             subscribeTopic: []
-                    management:
-                      event:
-                        connections: []
+                            security:
+                              CACertificateFileLocation: /data/certs/ca.pem
+                              privateKeyFileLocation: /data/certs/client.key
+                              publicKeyFileLocation: /data/certs/client.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
+                          additionalOptions:
+                            retention:
+                              maxEventRetentionTimeInMin: 500
+                              maxNumEvents: 150000
+                              throttle: 500
+                      commandResponse:
+                        enableLocalRest: true
+                        connections:
+                        - name: MGMT_CMD_MQTT_TLS
+                          description: Secure management cmd/rsp over MQTT TLS
+                          type: mqtt
+                          options:
+                            enableSecurity: true
+                            endpoint:
+                              hostName: mqtt.example.com
+                              port: 8883
+                              protocol: ssl
+                            additional:
+                              cleanSession: true
+                              clientId: fxr90-dock01-mcmd
+                              debug: false
+                              keepAlive: 60
+                              qos: 1
+                              reconnectDelay: 2
+                              reconnectDelayMax: 60
+                            publishTopic:
+                            - site/dock01/mrsp
+                            subscribeTopic:
+                            - site/dock01/mcmd
+                            security:
+                              CACertificateFileLocation: /data/certs/ca.pem
+                              privateKeyFileLocation: /data/certs/client.key
+                              publicKeyFileLocation: /data/certs/client.crt
+                              keyAlgorithm: RS256
+                              keyFormat: PEM
+                              verifyHostName: true
+                              verifyPeer: true
       responses:
         '200':
           description: OK
@@ -4019,14 +4002,14 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdatePasswordRequest'
             examples:
-              password:
-                summary: password
+              set_password:
+                summary: Set admin password
                 value:
                   userName: admin
                   currentPassword: oldPassword@123
                   newPassword: newPassword@123
-              password_rfidadm:
-                summary: password rfidadm
+              set_password_rfidadm:
+                summary: Set rfidadm password
                 value:
                   userName: rfidadm
                   currentPassword: oldPassword@123
@@ -4777,7 +4760,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/getTimeZone'
               example:
-                timeZone: (GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi
+                timeZone: UTC
       security:
       - bearerAuth: []
     put:
@@ -4839,8 +4822,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setTimeZone'
-            example:
-              timeZone: UTC
+            examples:
+              time_zone:
+                summary: Set time zone UTC
+                value:
+                  timeZone: UTC
+              time_zone_kolkata:
+                summary: Set time zone Kolkata
+                value:
+                  timeZone: Kolkata
       responses:
         '200':
           description: OK
@@ -5092,36 +5082,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetCertificatesResponse'
               example:
-              - name: reader-server-cert
-                type: server
-                installTime: '2026-07-14T11:02:53Z'
-                issuerName: CN=Zebra Lab CA,O=Zebra,C=US
-                subjectName: CN=FXR90C60C001,O=Zebra,C=US
-                serial: 0A1B2C3D4E5F6071
-                publickey: '-----BEGIN PUBLIC KEY-----
-
-                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt
-
-                  wq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz
-
-                  -----END PUBLIC KEY-----'
-                validityStart: '2026-07-14T00:00:00Z'
-                validityEnd: '2027-07-14T00:00:00Z'
-              - name: mqtt-client-cert
+              - installTime: Mon Aug 10 05:12:32 2026
+                issuerName: ZLAB-CA01
+                name: COMMON
+                publickey: ''
+                serial: '0x170000005232B0DE84B4545965000000000052'
+                subjectName: testuser1 (ZLAB)
                 type: client
-                installTime: '2026-07-20T08:17:04Z'
-                issuerName: CN=Zebra Lab CA,O=Zebra,C=US
-                subjectName: CN=fxr90-mqtt-client,O=Zebra,C=US
-                serial: 11FF22EE33DD44CC
+                validityEnd: 02/06/2027
+                validityStart: 02/06/2026
+              - installTime: Mon Aug 10 04:58:59 2026
+                issuerName: FXR609BC6A7
+                name: Server
                 publickey: '-----BEGIN PUBLIC KEY-----
 
-                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3aStW3ecimauj1ZtGfM4
 
-                  wq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz
+                  SE0pY/3Mfo6jQGI+52v0m0jt6nipngXnTZf9ZVphNOC0NcXdbONc1cKIUop5wFfT
 
-                  -----END PUBLIC KEY-----'
-                validityStart: '2026-07-20T00:00:00Z'
-                validityEnd: '2027-07-20T00:00:00Z'
+                  DfM5hUedQVvodyQKCd8TBhERNHXSpsLfR1GwzxtK9CHmNKEvIo4z3FDi9D9vQiTC
+
+                  u4Cg9wAvLhbttzq4FwYaoVgMUH5foWiIq+hozWOf99PctLAuvEaR/uXvupZr6T7a
+
+                  NTUuZY1tDKXtXWKj3Cc1SBMJ62reVVQhl75vEWIdkd3Qeav0NCxeH8td+6Bh/NNH
+
+                  zWWAJ/OghNWjvlaQwesfmTYn1ctJ1mI7jwkPCEAB2G78BmmWXDW9qIPe4H8PTt3s
+
+                  DQIDAQAB
+
+                  -----END PUBLIC KEY-----
+
+                  '
+                serial: '0x3039'
+                subjectName: FXR609BC6A7
+                type: server
+                validityEnd: 05/08/2046
+                validityStart: 10/08/2026
       security:
       - bearerAuth: []
     put:
@@ -5205,54 +5201,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetUpdatecertificateRequest'
-            examples:
-              updateCertificate:
-                summary: updateCertificate
-                value:
-                  options:
-                    password: zebra
-                    username: zebra
-                  authenticationType: BASIC
-                  name: reader
-                  pfxPassword: abcd12345
-                  type: client
-                  url: https://10.117.229.15/reader.pfx
-              updateCertificate_app:
-                summary: updateCertificate app
-                value:
-                  name: userapp-cert
-                  type: app
-                  url: https://certs.example.com/userapp.pfx
-                  authenticationType: NONE
-                  pfxPassword: zebra
-              updateCertificate_client:
-                summary: updateCertificate client
-                value:
-                  name: mqtt-client-cert
-                  type: client
-                  url: https://certs.example.com/mqtt-client.pfx
-                  authenticationType: BASIC
-                  options:
-                    username: zebra
-                    password: zebra
-                  pfxPassword: zebra
-                  transfer_protocol: HTTPS
-              updateCertificate_inline_pem:
-                summary: updateCertificate inline pem
-                value:
-                  name: reader-server-cert
-                  type: server
-                  url: https://certs.example.com/server.pfx
-                  authenticationType: NONE
-                  pfxPassword: zebra
-                  verifyPeer: true
-                  CACertificateFileContent: '-----BEGIN PUBLIC KEY-----
-
-                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt
-
-                    wq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz
-
-                    -----END PUBLIC KEY-----'
+            example:
+              options:
+                password: zebra
+                username: zebra
+              authenticationType: BASIC
+              name: reader
+              pfxPassword: abcd12345
+              type: client
+              url: https://10.117.229.15/reader.pfx
       responses:
         '200':
           description: OK
@@ -5844,8 +5801,8 @@ paths:
                         - hostName: my-laptop
                           IP: 192.168.43.2
                           MAC: AA:BB:CC:DD:EE:FF
-                WAN:
-                  summary: WAN
+                wan_fxr90:
+                  summary: FXR90 WAN (wan0) — not on FXR60
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6114,8 +6071,8 @@ paths:
                     securityType: WPA3Personal
                     isHidden: false
                     enable: true
-              Network_wan:
-                summary: Network wan
+              wan_fxr90:
+                summary: FXR90 set wan0 — not on FXR60
                 value:
                   wan0:
                     enable: true
@@ -6343,170 +6300,92 @@ paths:
                 availableWifiNetworks:
                 - capabilities:
                   - WPA2
-                  - WPA3
                   configuration:
-                    autoConnect: false
-                  essid: GLaDOS
-                  signalStrength: 100%
-                - capabilities:
-                  - WPA2
-                  - WPA3
-                  configuration:
-                    autoConnect: false
-                  essid: Bodhi
-                  signalStrength: 99%
+                    autoConnect: true
+                    security:
+                      details:
+                        password: '********'
+                      type: WPA2Personal
+                  essid: VULCAN_2.4_5_WPA2
+                  signalStrength: 87%
                 - capabilities:
                   - WPA2
                   configuration:
                     autoConnect: false
-                  essid: 017TB01-TNV
+                  essid: VULCAN_2.4_WPA3
+                  signalStrength: 89%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_5_ENT_802.1x
                   signalStrength: 89%
                 - capabilities:
                   - WPA2
                   configuration:
                     autoConnect: false
-                  essid: IOT_TESTAP
-                  signalStrength: 77%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: ZWireless
-                  signalStrength: 75%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: ZLAB
-                  signalStrength: 72%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: ZCorp
-                  signalStrength: 72%
+                  essid: VULCAN_FAST_ROAMING_24
+                  signalStrength: 89%
                 - capabilities:
                   - WPA2
                   configuration:
                     autoConnect: false
-                  essid: DIRECT-TY17L11-R-7951msf9
-                  signalStrength: 70%
+                  essid: VULCAN_2.4_WPA2
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_5_ENT_SHA256
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_2_4_ENT_802.1x
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_ENT_SHA256
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA3-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_WPA3_ENT_SUITE192
+                  signalStrength: 87%
                 - capabilities:
                   - WPA3
                   configuration:
                     autoConnect: false
-                  essid: Bodhi_5G
-                  signalStrength: 65%
+                  essid: VULCAN_2.4_5_WPA3
+                  signalStrength: 85%
                 - capabilities:
                   - WPA2
                   configuration:
                     autoConnect: false
-                  essid: SNT_WPA2_2G
-                  signalStrength: 50%
+                  essid: VULCAN_FAST_ROAMING_5
+                  signalStrength: 69%
                 - capabilities:
                   - WPA2
                   configuration:
                     autoConnect: false
-                  essid: RFID_Aruba_WPA2PSK
-                  signalStrength: 50%
+                  essid: VULCAN_5_WPA2
+                  signalStrength: 69%
                 - capabilities:
-                  - WPA2
+                  - WPA2-802.1X
                   configuration:
                     autoConnect: false
-                  essid: kawshik PC
-                  signalStrength: 47%
+                  essid: Vulcan_WPA2_5_ENT_802.1x
+                  signalStrength: 69%
                 - capabilities:
-                  - WPA2
+                  - WPA2-802.1X
                   configuration:
                     autoConnect: false
-                  essid: OnePlus 9 Pro 5G
-                  signalStrength: 45%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: Pranshu_17
-                  signalStrength: 37%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: VJ
-                  signalStrength: 35%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: DIRECT-KH17L10-BGMW36-1msSL
-                  signalStrength: 34%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: FTMLocation
-                  signalStrength: 32%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: DIRECT-G917L11-RC7864msAJ
-                  signalStrength: 27%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: Noobie
-                  signalStrength: 25%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: sim (domain 10.233.250.53)
-                  signalStrength: 25%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: wpa2_tkip
-                  signalStrength: 24%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: testdot.1x1
-                  signalStrength: 24%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: testdot1
-                  signalStrength: 22%
-                - capabilities:
-                  - WPA2
-                  - 802.1X
-                  configuration:
-                    autoConnect: false
-                  essid: EAPSIM
-                  signalStrength: 22%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: gg_wfw
-                  signalStrength: 20%
-                - capabilities:
-                  - WPA2
-                  configuration:
-                    autoConnect: false
-                  essid: ManualRoam_PSK
-                  signalStrength: 20%
+                  essid: Vulcan_WPA2_5_ENT_SHA256
+                  signalStrength: 69%
       security:
       - bearerAuth: []
   /cloud/networkInterfaces:
@@ -6582,12 +6461,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetNetworkinterfacesResponse'
-              example:
-                availableNetworkInterfaces:
-                - eth0
-                - mlan0
-                - bnep0
-                - wan0
+              examples:
+                fxr60:
+                  summary: FXR60 interfaces (no wan0)
+                  value:
+                    availableNetworkInterfaces:
+                    - eth0
+                    - mlan0
+                    - bnep0
+                    - blescan
+                    - uap0
+                fxr90:
+                  summary: FXR90 interfaces (includes wan0)
+                  value:
+                    availableNetworkInterfaces:
+                    - eth0
+                    - mlan0
+                    - bnep0
+                    - wan0
       security:
       - bearerAuth: []
   /cloud/readPoints:
@@ -6805,7 +6696,7 @@ paths:
 
         | Communication Type | Client to Device (HTTP request/response) |
 
-        | Applies To | FXR60 / FXR90 |
+        | Applies To | **FXR90 only** (eSIM / cellular; not on FXR60) |
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
@@ -6894,7 +6785,7 @@ paths:
 
         | Communication Type | Client to Device (HTTP request/response) |
 
-        | Applies To | FXR60 / FXR90 |
+        | Applies To | **FXR90 only** (eSIM / cellular; not on FXR60) |
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
@@ -7037,46 +6928,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetOsRequest'
-            examples:
-              os:
-                summary: os
-                value:
-                  url: https://10.117.229.9:9093/BUILDS/FXR90_2.0.10.tar.bz2
-                  authenticationType: NONE
-                  options:
-                    username: test
-                    password: test
-              os_basic_auth:
-                summary: os basic auth
-                value:
-                  url: https://builds.example.com/FXR90_2.0.10.tar.bz2
-                  authenticationType: BASIC
-                  options:
-                    username: labuser
-                    password: L@bu$3rs
-                  transfer_protocol: HTTPS
-              os_https_pinned_ca:
-                summary: os https pinned ca
-                value:
-                  url: https://builds.example.com/FXR90_2.0.10.tar.bz2
-                  authenticationType: NONE
-                  transfer_protocol: HTTPS
-                  verifyPeer: true
-                  verifyHost: true
-                  installedCertificateType: server
-                  installedCertificateName: reader-server-cert
-                  retry:
-                    count: 3
-                    delayInSec: 30
-              os_scp:
-                summary: os scp
-                value:
-                  url: scp://10.117.229.9/BUILDS/FXR90_2.0.10.tar.bz2
-                  authenticationType: BASIC
-                  options:
-                    username: labuser
-                    password: L@bu$3rs
-                  transfer_protocol: SCP
+            example:
+              url: https://builds.example.com/FXR90_2.0.10.tar.bz2
+              authenticationType: NONE
+              transfer_protocol: HTTPS
+              verifyPeer: true
+              verifyHost: true
+              installedCertificateType: server
+              installedCertificateName: reader-server-cert
+              retry:
+                count: 3
+                delayInSec: 30
       responses:
         '200':
           description: OK
@@ -7218,35 +7080,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetInstalluserappRequest'
-            examples:
-              installUserapp:
-                summary: installUserapp
-                value:
-                  options:
-                    password: L@bu$3rs
-                    username: labuser
-                  authenticationType: BASIC
-                  filename: mylogger_1.0.1.deb
-                  url: sftp://10.117.229.15/home/labuser/EV1/
-              installUserapp_no_auth:
-                summary: installUserapp no auth
-                value:
-                  url: https://apps.example.com/packages/
-                  filename: mylogger-1.2.0.deb
-                  authenticationType: NONE
-              installUserapp_pinned_ca:
-                summary: installUserapp pinned ca
-                value:
-                  url: https://apps.example.com/packages/
-                  filename: mylogger-1.2.0.deb
-                  authenticationType: BASIC
-                  options:
-                    username: labuser
-                    password: L@bu$3rs
-                  verifyPeer: true
-                  verifyHost: true
-                  installedCertificateType: server
-                  installedCertificateName: reader-server-cert
+            example:
+              url: https://apps.example.com/packages/
+              filename: mylogger-1.2.0.deb
+              authenticationType: BASIC
+              options:
+                username: labuser
+                password: L@bu$3rs
+              verifyPeer: true
+              verifyHost: true
+              installedCertificateType: server
+              installedCertificateName: reader-server-cert
       responses:
         '200':
           description: OK
@@ -7305,19 +7149,6 @@ paths:
 
         '
       operationId: setStartuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetStartuserappRequest'
-            examples:
-              startUserapp:
-                summary: startUserapp
-                value:
-                  appname: mylogger
-              success:
-                summary: success
-                value: ''
       responses:
         '200':
           description: OK
@@ -7325,6 +7156,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetStartuserappResponse'
+              example: ''
       security:
       - bearerAuth: []
     parameters:
@@ -7380,19 +7212,6 @@ paths:
 
         '
       operationId: setStopuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetStopuserappRequest'
-            examples:
-              stopUserapp:
-                summary: stopUserapp
-                value:
-                  appname: mylogger
-              success:
-                summary: success
-                value: ''
       responses:
         '200':
           description: OK
@@ -7400,6 +7219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetStopuserappResponse'
+              example: ''
       security:
       - bearerAuth: []
     parameters:
@@ -7777,19 +7597,6 @@ paths:
 
         '
       operationId: setUninstalluserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetUninstalluserappRequest'
-            examples:
-              success:
-                summary: success
-                value: ''
-              uninstallUserapp:
-                summary: uninstallUserapp
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7797,6 +7604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetUninstalluserappResponse'
+              example: ''
       security:
       - bearerAuth: []
     parameters:
@@ -7941,15 +7749,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetHostNameRequest'
-            examples:
-              hostName:
-                summary: hostName
-                value:
-                  hostname: FXR90C60C001
-              hostName_lab:
-                summary: hostName lab
-                value:
-                  hostname: fxr90-lab-01
+            example:
+              hostname: FXR90C60C001
       responses:
         '200':
           description: OK
@@ -8236,7 +8037,7 @@ paths:
                 $ref: '#/components/schemas/SetImpinjGen2XResponse500'
       security:
       - bearerAuth: []
-  /cloud/ble-config:
+  /cloud/bleConfig:
     put:
       tags:
       - Ble
@@ -8244,7 +8045,7 @@ paths:
       description: '## 1. Description
 
 
-        The `PUT /cloud/ble-config` REST endpoint configures the Bluetooth Low Energy (BLE) scanner on the reader.
+        The `PUT /cloud/bleConfig` REST endpoint configures the Bluetooth Low Energy (BLE) scanner on the reader.
 
 
         This endpoint allows you to configure:
@@ -8274,7 +8075,7 @@ paths:
 
         | Pattern Name | BLE Configuration Update |
 
-        | REST Endpoint | `PUT /cloud/ble-config` |
+        | REST Endpoint | `PUT /cloud/bleConfig` |
 
         | Communication Type | Client to Device (HTTP request/response) |
 
@@ -8419,7 +8220,7 @@ paths:
       description: '## 1. Description
 
 
-        The `GET /cloud/ble-config` REST endpoint retrieves the current Bluetooth Low Energy (BLE) scanner configuration from the reader.
+        The `GET /cloud/bleConfig` REST endpoint retrieves the current Bluetooth Low Energy (BLE) scanner configuration from the reader.
 
 
         This endpoint returns:
@@ -8444,7 +8245,7 @@ paths:
 
         |---|---|
 
-        | REST Endpoint | `GET /cloud/ble-config` |
+        | REST Endpoint | `GET /cloud/bleConfig` |
 
         | Communication Type | Client to Device (HTTP request/response) |
 
@@ -8458,7 +8259,7 @@ paths:
         ## 3. When to Use This Endpoint
 
 
-        Use `GET /cloud/ble-config` to:
+        Use `GET /cloud/bleConfig` to:
 
 
         - Verify BLE scanning is enabled before starting a BLE inventory scan
@@ -8467,7 +8268,7 @@ paths:
 
         - Confirm iBeacon, AltBeacon, Eddystone, or generic BLE filter configuration
 
-        - Verify the effect of a prior `PUT /cloud/ble-config` call
+        - Verify the effect of a prior `PUT /cloud/bleConfig` call
 
 
         Key fields to check in the response:
@@ -14109,21 +13910,9 @@ components:
     SetInstalluserappResponse:
       type: string
       description: Returns an empty string on success.
-    SetStartuserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path parameter instead).
     SetStartuserappResponse:
       type: string
       description: Returns an empty string on success.
-    SetStopuserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path parameter instead).
     SetStopuserappResponse:
       type: string
       description: Returns an empty string on success.
@@ -14195,12 +13984,6 @@ components:
     SetReqtouserappResponse:
       type: object
       description: Response payload returned by the user application. Structure is application-defined and not fixed.
-    SetUninstalluserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path parameter instead).
     SetUninstalluserappResponse:
       type: string
       description: Returns an empty string on success.

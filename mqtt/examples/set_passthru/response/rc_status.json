@@ -1,8 +1,0 @@
-{
-  "command": "set_passthru",
-  "command_id": "req-set-passthru",
-  "response": "success",
-  "payload": {
-    "response": "radio_state=idle,antenna_1=connected,temperature=41"
-  }
-}

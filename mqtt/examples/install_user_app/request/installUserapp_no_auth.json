@@ -1,9 +1,0 @@
-{
-  "command": "install_user_app",
-  "command_id": "req-install-user-app",
-  "payload": {
-    "url": "https://apps.example.com/packages/",
-    "filename": "mylogger-1.2.0.deb",
-    "authenticationType": "NONE"
-  }
-}

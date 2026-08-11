@@ -5605,19 +5605,21 @@
                                     }
                                 },
                                 "examples": {
-                                    "inline": {
-                                        "summary": "inline",
+                                    "version": {
+                                        "summary": "version",
                                         "value": {
                                             "command": "get_version",
                                             "command_id": "req-get-version",
                                             "response": "success",
                                             "payload": {
-                                                "cloudAgentApplication": "0.6.2.25",
-                                                "model": "FXR90",
-                                                "radioControlApplication": "0.2.58.6",
-                                                "radioFirmware": "2.1.57.0",
-                                                "readerApplication": "2.0.7-5",
-                                                "serialNumber": "233575230D0028"
+                                                "availableOsUpgrades": {},
+                                                "cloudAgentApplication": "0.6.2.64",
+                                                "model": "FXR60",
+                                                "radioControlApplication": "0.2.58.7",
+                                                "radioFirmware": "2.1.70.0",
+                                                "readerApplication": "5.0.3",
+                                                "revertBackFirmware": {},
+                                                "serialNumber": "260995251E0047"
                                             }
                                         }
                                     }
@@ -6071,93 +6073,8 @@
                                     ]
                                 },
                                 "examples": {
-                                    "inline": {
-                                        "summary": "inline",
-                                        "value": {
-                                            "command": "get_status",
-                                            "command_id": "req-get-status",
-                                            "response": "success",
-                                            "payload": {
-                                                "antennas": {
-                                                    "1": "disconnected",
-                                                    "2": "disconnected",
-                                                    "3": "disconnected",
-                                                    "4": "disconnected",
-                                                    "5": "connected",
-                                                    "6": "connected"
-                                                },
-                                                "cpu": {
-                                                    "system": 0,
-                                                    "user": 2
-                                                },
-                                                "flash": {
-                                                    "platform": {
-                                                        "free": 0,
-                                                        "total": 0,
-                                                        "used": 0
-                                                    },
-                                                    "readerConfig": {
-                                                        "free": 0,
-                                                        "total": 0,
-                                                        "used": 0
-                                                    },
-                                                    "readerData": {
-                                                        "free": 0,
-                                                        "total": 0,
-                                                        "used": 0
-                                                    },
-                                                    "rootFileSystem": {
-                                                        "free": 0,
-                                                        "total": 0,
-                                                        "used": 0
-                                                    }
-                                                },
-                                                "interfaceConnectionStatus": {
-                                                    "data": [
-                                                        {
-                                                            "connectionError": "",
-                                                            "connectionStatus": "connected",
-                                                            "description": "WEBSOCKET_TESTs",
-                                                            "interface": "WEBSOCKET_TEST"
-                                                        }
-                                                    ]
-                                                },
-                                                "ntp": {
-                                                    "offset": 0,
-                                                    "reach": 0
-                                                },
-                                                "powerNegotiation": "POE+",
-                                                "powerSource": "DC",
-                                                "radioActivity": "inactive",
-                                                "radioConnection": "connected",
-                                                "ram": {
-                                                    "free": 76,
-                                                    "total": 100,
-                                                    "used": 24
-                                                },
-                                                "systemTime": "13/06/2024 11:19",
-                                                "temperature": 33,
-                                                "uptime": "0D1H13M15S",
-                                                "impinjGen2X": {
-                                                    "active": true,
-                                                    "feature": "tagFocus"
-                                                },
-                                                "ble": {
-                                                    "scanState": "running",
-                                                    "scanStartTime": "2026-05-21T13:46:16.955Z",
-                                                    "beaconCounts": {
-                                                        "altBeacon": 33,
-                                                        "eddystone": 0,
-                                                        "generic": 0,
-                                                        "iBeacon": 75,
-                                                        "total": 108
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "running": {
-                                        "summary": "running",
+                                    "status": {
+                                        "summary": "status",
                                         "value": {
                                             "command": "get_status",
                                             "command_id": "req-get-status",
@@ -12496,22 +12413,11 @@
                                         }
                                     }
                                 },
-                                "passthru_version": {
-                                    "summary": "passthru version",
-                                    "value": {
-                                        "command": "set_passthru",
-                                        "command_id": "req-set-passthru",
-                                        "payload": {
-                                            "component": "RC",
-                                            "payload": "version"
-                                        }
-                                    }
-                                },
                                 "status": {
                                     "summary": "status",
                                     "value": {
                                         "command": "set_passthru",
-                                        "command_id": "req-set-passthru",
+                                        "command_id": "req-set-passthru-status",
                                         "payload": {
                                             "component": "RC",
                                             "payload": "status"
@@ -12599,14 +12505,14 @@
                                     ]
                                 },
                                 "examples": {
-                                    "rc_status": {
-                                        "summary": "rc status",
+                                    "success": {
+                                        "summary": "success",
                                         "value": {
                                             "command": "set_passthru",
-                                            "command_id": "req-set-passthru",
+                                            "command_id": "req-set-passthru-status",
                                             "response": "success",
                                             "payload": {
-                                                "response": "radio_state=idle,antenna_1=connected,temperature=41"
+                                                "response": "Success: {\"numTagReads\": 8034512,\"numTagReadsPerAntenna\": {\"1\": 8034512,\"2\": 0,\"3\": 0,\"4\": 0},\"numRadioPacketsRxed\": 12131354,\"numDataMessagesTxed\": 8034512,\"cpuUtilization\": 0.0,\"ramUtilization\": 1.0,\"uptime\": \"140:56:48\",\"numErrors\": 9313,\"numWarnings\": 20,\"radioConnection\": \"connected\",\"radioActivity\": \"active\",\"antennas\": {\"1\": \"disconnected\",\"2\": \"disconnected\",\"3\": \"connected\",\"4\": \"disconnected\"},\"temperature\": {\"ambient\":33,\"pa\":30},\"impinjGen2X\": {\"isActive\": false,\"feature\": \"none\"}}"
                                             }
                                         }
                                     }
@@ -13362,268 +13268,14 @@
                                 ]
                             },
                             "examples": {
-                                "importCloudConfig": {
-                                    "summary": "importCloudConfig",
+                                "clear_data": {
+                                    "summary": "clear data",
                                     "value": {
                                         "command": "set_importCloudConfig",
-                                        "command_id": "req-set-importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-clear-data",
                                         "payload": {
                                             "endpointConfig": {
-                                                "control": {
-                                                    "commandResponse": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_TEST",
-                                                                "name": "MQTT_TEST",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FX9600FCC017",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FX9600FCC017/rsp"
-                                                                    ],
-                                                                    "security": {
-                                                                        "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
-                                                                        "installedCertificateName": "Server",
-                                                                        "installedCertificateType": "server",
-                                                                        "keyAlgorithm": "RS256",
-                                                                        "keyFormat": "PEM",
-                                                                        "verifyHostName": false,
-                                                                        "verifyPeer": false
-                                                                    },
-                                                                    "subscribeTopic": [
-                                                                        "FX9600FCC017/cmd"
-                                                                    ]
-                                                                },
-                                                                "type": "mqtt"
-                                                            }
-                                                        ],
-                                                        "enableLocalRest": true
-                                                    }
-                                                },
                                                 "data": {
-                                                    "event": {
-                                                        "connections": [
-                                                            {
-                                                                "additionalOptions": {
-                                                                    "batching": null,
-                                                                    "retention": {
-                                                                        "maxEventRetentionTimeInMin": 500,
-                                                                        "maxNumEvents": 150000,
-                                                                        "throttle": 500
-                                                                    }
-                                                                },
-                                                                "description": "MQTT_TEST",
-                                                                "name": "MQTT_TEST",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FX9600FCC017",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FX9600FCC017/tevents"
-                                                                    ],
-                                                                    "security": {
-                                                                        "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
-                                                                        "installedCertificateName": "Server",
-                                                                        "installedCertificateType": "server",
-                                                                        "keyAlgorithm": "RS256",
-                                                                        "keyFormat": "PEM",
-                                                                        "verifyHostName": false,
-                                                                        "verifyPeer": false
-                                                                    },
-                                                                    "subscribeTopic": []
-                                                                },
-                                                                "type": "mqtt"
-                                                            }
-                                                        ]
-                                                    }
-                                                },
-                                                "management": {
-                                                    "commandResponse": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_TEST",
-                                                                "name": "MQTT_TEST",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FX9600FCC017",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FX9600FCC017/rsp"
-                                                                    ],
-                                                                    "security": {
-                                                                        "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
-                                                                        "installedCertificateName": "Server",
-                                                                        "installedCertificateType": "server",
-                                                                        "keyAlgorithm": "RS256",
-                                                                        "keyFormat": "PEM",
-                                                                        "verifyHostName": false,
-                                                                        "verifyPeer": false
-                                                                    },
-                                                                    "subscribeTopic": [
-                                                                        "FX9600FCC017/cmd"
-                                                                    ]
-                                                                },
-                                                                "type": "mqtt"
-                                                            }
-                                                        ],
-                                                        "enableLocalRest": true
-                                                    },
-                                                    "event": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_TEST",
-                                                                "name": "MQTT_TEST",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FX9600FCC017",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FX9600FCC017/mevents"
-                                                                    ],
-                                                                    "subscribeTopic": []
-                                                                },
-                                                                "type": "mqtt"
-                                                            }
-                                                        ]
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "importCloudConfig_aws": {
-                                    "summary": "importCloudConfig aws",
-                                    "value": {
-                                        "command": "set_importCloudConfig",
-                                        "command_id": "req-set-importCloudConfig",
-                                        "payload": {
-                                            "endpointConfig": {
-                                                "control": {
-                                                    "commandResponse": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_CONTROL",
-                                                                "name": "MQTT_CONTROL",
-                                                                "type": "mqtt",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FXR90C60C001/rsp"
-                                                                    ],
-                                                                    "subscribeTopic": [
-                                                                        "FXR90C60C001/cmd"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ],
-                                                        "enableLocalRest": true
-                                                    }
-                                                },
-                                                "data": {
-                                                    "event": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "AWS",
-                                                                "name": "AWS_8883",
-                                                                "type": "mqtt-AWS",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001aws",
-                                                                        "debug": false,
-                                                                        "keepAlive": 20,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": true,
-                                                                    "endpoint": {
-                                                                        "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                                                                        "port": 8883,
-                                                                        "protocol": "ssl"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "datacollection_aws/FXR90C60C001"
-                                                                    ],
-                                                                    "security": {
-                                                                        "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                                                                        "keyAlgorithm": "RS256",
-                                                                        "keyFormat": "PEM",
-                                                                        "privateKeyFileLocation": "/data/aws-pvt.key",
-                                                                        "publicKeyFileLocation": "/data/aws-pub.crt",
-                                                                        "verifyHostName": true,
-                                                                        "verifyPeer": true
-                                                                    },
-                                                                    "subscribeTopic": []
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                },
-                                                "management": {
                                                     "event": {
                                                         "connections": []
                                                     }
@@ -13632,151 +13284,21 @@
                                         }
                                     }
                                 },
-                                "importCloudConfig_azure": {
-                                    "summary": "importCloudConfig azure",
+                                "data_http_post": {
+                                    "summary": "data http post",
                                     "value": {
                                         "command": "set_importCloudConfig",
-                                        "command_id": "req-set-importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-data-http-post",
                                         "payload": {
                                             "endpointConfig": {
-                                                "control": {
-                                                    "commandResponse": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_CONTROL",
-                                                                "name": "MQTT_CONTROL",
-                                                                "type": "mqtt",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FXR90C60C001/rsp"
-                                                                    ],
-                                                                    "subscribeTopic": [
-                                                                        "FXR90C60C001/cmd"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ],
-                                                        "enableLocalRest": true
-                                                    }
-                                                },
                                                 "data": {
                                                     "event": {
                                                         "connections": [
                                                             {
-                                                                "description": "azure_8883",
-                                                                "name": "AZURE_8883",
-                                                                "type": "mqtt-AZURE",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": false,
-                                                                        "clientId": "FXR90C60C001",
-                                                                        "debug": true,
-                                                                        "keepAlive": 120,
-                                                                        "qos": 1,
-                                                                        "reconnectDelay": 600,
-                                                                        "reconnectDelayMax": 86400
-                                                                    },
-                                                                    "basicAuthentication": {
-                                                                        "password": "SharedAccessSignature sr=...",
-                                                                        "username": "VULCANIOTHUB.azure-devices.net/FXR90C60C001/?api-version=2018-06-30"
-                                                                    },
-                                                                    "enableSecurity": true,
-                                                                    "endpoint": {
-                                                                        "hostName": "VULCANIOTHUB.azure-devices.net",
-                                                                        "port": 8883,
-                                                                        "protocol": "ssl"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "devices/FXR90C60C001/messages/events/"
-                                                                    ],
-                                                                    "security": {
-                                                                        "CACertificateFileLocation": "/data/apps/cacertazure.pem",
-                                                                        "keyAlgorithm": "RS256",
-                                                                        "keyFormat": "PEM",
-                                                                        "privateKeyFileLocation": "/data/apps/key.pem",
-                                                                        "publicKeyFileLocation": "/data/apps/cert.pem",
-                                                                        "verifyHostName": true,
-                                                                        "verifyPeer": true
-                                                                    },
-                                                                    "subscribeTopic": []
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                },
-                                                "management": {
-                                                    "event": {
-                                                        "connections": []
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "importCloudConfig_httpPost": {
-                                    "summary": "importCloudConfig httpPost",
-                                    "value": {
-                                        "command": "set_importCloudConfig",
-                                        "command_id": "req-set-importCloudConfig",
-                                        "payload": {
-                                            "endpointConfig": {
-                                                "control": {
-                                                    "commandResponse": {
-                                                        "connections": [
-                                                            {
-                                                                "description": "MQTT_CONTROL",
-                                                                "name": "MQTT_CONTROL",
-                                                                "type": "mqtt",
-                                                                "options": {
-                                                                    "additional": {
-                                                                        "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001",
-                                                                        "debug": false,
-                                                                        "keepAlive": 60,
-                                                                        "qos": 0,
-                                                                        "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 1883,
-                                                                        "protocol": "tcp"
-                                                                    },
-                                                                    "publishTopic": [
-                                                                        "FXR90C60C001/rsp"
-                                                                    ],
-                                                                    "subscribeTopic": [
-                                                                        "FXR90C60C001/cmd"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ],
-                                                        "enableLocalRest": true
-                                                    }
-                                                },
-                                                "data": {
-                                                    "event": {
-                                                        "connections": [
-                                                            {
+                                                                "name": "DATA_HTTP",
                                                                 "type": "httpPost",
                                                                 "options": {
-                                                                    "URL": "https://webhook.site/be9d3ddc-c25d-4b87-b4c4-9162f9c75768",
+                                                                    "URL": "https://webhook.site/your-unique-id",
                                                                     "security": {
                                                                         "authenticationType": "NONE",
                                                                         "verifyHost": false,
@@ -13786,85 +13308,252 @@
                                                             }
                                                         ]
                                                     }
-                                                },
-                                                "management": {
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_mqtt_tls_installed_cert": {
+                                    "summary": "data mqtt tls installed cert",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-data-mqtt-tls-installed-cert",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "data": {
                                                     "event": {
-                                                        "connections": []
+                                                        "connections": [
+                                                            {
+                                                                "name": "DATA_MQTT_TLS_INSTALLED",
+                                                                "description": "Secure data MQTT using installed certificate name/type",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "mqtt.example.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-dock01-data-inst",
+                                                                        "keepAlive": 60,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 2,
+                                                                        "reconnectDelayMax": 60
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "site/dock01/tevents"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "installedCertificateName": "DOCK01_CLIENT",
+                                                                        "installedCertificateType": "client",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             }
                                         }
                                     }
                                 },
-                                "importCloudConfig_mqtt": {
-                                    "summary": "importCloudConfig mqtt",
+                                "data_tcpip_server": {
+                                    "summary": "data tcpip server",
                                     "value": {
                                         "command": "set_importCloudConfig",
-                                        "command_id": "req-set-importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-data-tcpip-server",
                                         "payload": {
                                             "endpointConfig": {
-                                                "control": {
-                                                    "commandResponse": {
+                                                "data": {
+                                                    "event": {
                                                         "connections": [
                                                             {
-                                                                "description": "MQTT_CONTROL",
-                                                                "name": "MQTT_CONTROL",
+                                                                "name": "DATA_TCP",
+                                                                "type": "tcpip-server",
+                                                                "options": {
+                                                                    "enableSecurity": false,
+                                                                    "tcpipport": "8081"
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 60,
+                                                                        "maxNumEvents": 10000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "data_websocket": {
+                                    "summary": "data websocket",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-data-websocket",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "data": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "DATA_WS",
+                                                                "type": "WEBSOCKET",
+                                                                "options": {
+                                                                    "security": {
+                                                                        "verifyPeer": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "management_event_mqtt": {
+                                    "summary": "management event mqtt",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-management-event-mqtt",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "management": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_EVENTS_MQTT",
+                                                                "description": "Management/heartbeat events",
                                                                 "type": "mqtt",
                                                                 "options": {
+                                                                    "enableSecurity": false,
+                                                                    "endpoint": {
+                                                                        "hostName": "10.0.0.50",
+                                                                        "port": 1883,
+                                                                        "protocol": "tcp"
+                                                                    },
                                                                     "additional": {
                                                                         "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001",
+                                                                        "clientId": "fxr90-lab-mevents",
                                                                         "debug": false,
                                                                         "keepAlive": 60,
                                                                         "qos": 0,
                                                                         "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
+                                                                        "reconnectDelayMax": 30
                                                                     },
+                                                                    "publishTopic": [
+                                                                        "fxr90-lab/mevents"
+                                                                    ],
+                                                                    "subscribeTopic": []
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "mqtt_all_channels": {
+                                    "summary": "mqtt all channels",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-mqtt-all-channels",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "control": {
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "CTRL_MQTT",
+                                                                "description": "Control cmd/rsp over MQTT",
+                                                                "type": "mqtt",
+                                                                "options": {
                                                                     "enableSecurity": false,
                                                                     "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
+                                                                        "hostName": "10.0.0.50",
                                                                         "port": 1883,
                                                                         "protocol": "tcp"
                                                                     },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-lab-ctrl",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 0,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
                                                                     "publishTopic": [
-                                                                        "FXR90C60C001/rsp"
+                                                                        "fxr90-lab/rsp"
                                                                     ],
                                                                     "subscribeTopic": [
-                                                                        "FXR90C60C001/cmd"
+                                                                        "fxr90-lab/cmd"
                                                                     ]
                                                                 }
                                                             }
-                                                        ],
-                                                        "enableLocalRest": true
+                                                        ]
                                                     }
                                                 },
                                                 "data": {
                                                     "event": {
                                                         "connections": [
                                                             {
-                                                                "description": "mqtt_data_emqx",
-                                                                "name": "mqtt_emqx_data",
+                                                                "name": "DATA_MQTT",
+                                                                "description": "Tag events to MQTT",
                                                                 "type": "mqtt",
                                                                 "options": {
+                                                                    "enableSecurity": false,
+                                                                    "endpoint": {
+                                                                        "hostName": "10.0.0.50",
+                                                                        "port": 1883,
+                                                                        "protocol": "tcp"
+                                                                    },
                                                                     "additional": {
                                                                         "cleanSession": true,
-                                                                        "clientId": "FXR90C60C001",
+                                                                        "clientId": "fxr90-lab-data",
                                                                         "debug": false,
                                                                         "keepAlive": 60,
                                                                         "qos": 0,
                                                                         "reconnectDelay": 1,
-                                                                        "reconnectDelayMax": 5
-                                                                    },
-                                                                    "enableSecurity": false,
-                                                                    "endpoint": {
-                                                                        "hostName": "broker.emqx.io",
-                                                                        "port": 8083,
-                                                                        "protocol": "ws"
+                                                                        "reconnectDelayMax": 30
                                                                     },
                                                                     "publishTopic": [
-                                                                        "/devices/FXR90C60C001/events/data"
+                                                                        "fxr90-lab/tevents"
                                                                     ],
                                                                     "subscribeTopic": []
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
                                                                 }
                                                             }
                                                         ]
@@ -13872,7 +13561,661 @@
                                                 },
                                                 "management": {
                                                     "event": {
-                                                        "connections": []
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_EVENTS_MQTT",
+                                                                "description": "Management/heartbeat events",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": false,
+                                                                    "endpoint": {
+                                                                        "hostName": "10.0.0.50",
+                                                                        "port": 1883,
+                                                                        "protocol": "tcp"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-lab-mevents",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 0,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "fxr90-lab/mevents"
+                                                                    ],
+                                                                    "subscribeTopic": []
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_CMD_MQTT",
+                                                                "description": "Management cmd/rsp",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": false,
+                                                                    "endpoint": {
+                                                                        "hostName": "10.0.0.50",
+                                                                        "port": 1883,
+                                                                        "protocol": "tcp"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-lab-mcmd",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 0,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "fxr90-lab/mrsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "fxr90-lab/mcmd"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "mqtt_aws_all_channels": {
+                                    "summary": "mqtt aws all channels",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-mqtt-aws-all-channels",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "control": {
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "CTRL_AWS",
+                                                                "description": "Control cmd/rsp through AWS IoT Core",
+                                                                "type": "mqtt-AWS",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "FXR90-LAB-CTRL",
+                                                                        "keepAlive": 30,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "FXR90-LAB/rsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "FXR90-LAB/cmd"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                                                                        "privateKeyFileLocation": "/data/aws-pvt.key",
+                                                                        "publicKeyFileLocation": "/data/aws-pub.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "data": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "DATA_AWS",
+                                                                "description": "Tag events to AWS IoT Core",
+                                                                "type": "mqtt-AWS",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "FXR90-LAB-DATA",
+                                                                        "keepAlive": 20,
+                                                                        "qos": 0,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "datacollection_aws/FXR90-LAB"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                                                                        "privateKeyFileLocation": "/data/aws-pvt.key",
+                                                                        "publicKeyFileLocation": "/data/aws-pub.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "management": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_EVENTS_AWS",
+                                                                "description": "Management/heartbeat events to AWS IoT Core",
+                                                                "type": "mqtt-AWS",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "FXR90-LAB-MEVENTS",
+                                                                        "keepAlive": 30,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "FXR90-LAB/mevents"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                                                                        "privateKeyFileLocation": "/data/aws-pvt.key",
+                                                                        "publicKeyFileLocation": "/data/aws-pub.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_CMD_AWS",
+                                                                "description": "Management cmd/rsp through AWS IoT Core",
+                                                                "type": "mqtt-AWS",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "FXR90-LAB-MCMD",
+                                                                        "keepAlive": 30,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 1,
+                                                                        "reconnectDelayMax": 30
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "FXR90-LAB/mrsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "FXR90-LAB/mcmd"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                                                                        "privateKeyFileLocation": "/data/aws-pvt.key",
+                                                                        "publicKeyFileLocation": "/data/aws-pub.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "mqtt_azure_all_channels": {
+                                    "summary": "mqtt azure all channels",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-mqtt-azure-all-channels",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "control": {
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "CTRL_AZURE",
+                                                                "description": "Control cmd/rsp through Azure IoT Hub",
+                                                                "type": "mqtt-Azure",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "your-hub.azure-devices.net",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "basicAuthentication": {
+                                                                        "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                                                                        "password": "none"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": false,
+                                                                        "clientId": "FXR90-LAB-CTRL",
+                                                                        "keepAlive": 120,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 600,
+                                                                        "reconnectDelayMax": 86400
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "devices/FXR90-LAB-CTRL/messages/events/"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "devices/FXR90-LAB-CTRL/messages/devicebound/#"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                                                                        "privateKeyFileLocation": "/data/apps/key.pem",
+                                                                        "publicKeyFileLocation": "/data/apps/csr.pem",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": false,
+                                                                        "verifyPeer": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "data": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "DATA_AZURE",
+                                                                "description": "Tag events to Azure IoT Hub",
+                                                                "type": "mqtt-Azure",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "your-hub.azure-devices.net",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "basicAuthentication": {
+                                                                        "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                                                                        "password": "none"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": false,
+                                                                        "clientId": "FXR90-LAB-DATA",
+                                                                        "keepAlive": 120,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 600,
+                                                                        "reconnectDelayMax": 86400
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "devices/FXR90-LAB-DATA/messages/events/"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                                                                        "privateKeyFileLocation": "/data/apps/key.pem",
+                                                                        "publicKeyFileLocation": "/data/apps/csr.pem",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": false,
+                                                                        "verifyPeer": false
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "management": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_EVENTS_AZURE",
+                                                                "description": "Management/heartbeat events to Azure IoT Hub",
+                                                                "type": "mqtt-Azure",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "your-hub.azure-devices.net",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "basicAuthentication": {
+                                                                        "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                                                                        "password": "none"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": false,
+                                                                        "clientId": "FXR90-LAB-MEVENTS",
+                                                                        "keepAlive": 120,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 600,
+                                                                        "reconnectDelayMax": 86400
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "devices/FXR90-LAB-MEVENTS/messages/events/"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                                                                        "privateKeyFileLocation": "/data/apps/key.pem",
+                                                                        "publicKeyFileLocation": "/data/apps/csr.pem",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": false,
+                                                                        "verifyPeer": false
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_CMD_AZURE",
+                                                                "description": "Management cmd/rsp through Azure IoT Hub",
+                                                                "type": "mqtt-Azure",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "your-hub.azure-devices.net",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "basicAuthentication": {
+                                                                        "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                                                                        "password": "none"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": false,
+                                                                        "clientId": "FXR90-LAB-MCMD",
+                                                                        "keepAlive": 120,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 600,
+                                                                        "reconnectDelayMax": 86400
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "devices/FXR90-LAB-MCMD/messages/events/"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "devices/FXR90-LAB-MCMD/messages/devicebound/#"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                                                                        "privateKeyFileLocation": "/data/apps/key.pem",
+                                                                        "publicKeyFileLocation": "/data/apps/csr.pem",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": false,
+                                                                        "verifyPeer": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "mqtt_tls_all_channels": {
+                                    "summary": "mqtt tls all channels",
+                                    "value": {
+                                        "command": "set_importCloudConfig",
+                                        "command_id": "req-set-importCloudConfig-mqtt-tls-all-channels",
+                                        "payload": {
+                                            "endpointConfig": {
+                                                "control": {
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "CTRL_MQTT_TLS",
+                                                                "description": "Secure control cmd/rsp over MQTT TLS",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "mqtt.example.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-dock01-ctrl",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 2,
+                                                                        "reconnectDelayMax": 60
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "site/dock01/rsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "site/dock01/cmd"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/certs/ca.pem",
+                                                                        "privateKeyFileLocation": "/data/certs/client.key",
+                                                                        "publicKeyFileLocation": "/data/certs/client.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "data": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "DATA_MQTT_TLS",
+                                                                "description": "Secure tag events over MQTT TLS",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "mqtt.example.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-dock01-data",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 2,
+                                                                        "reconnectDelayMax": 60
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "site/dock01/tevents"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/certs/ca.pem",
+                                                                        "privateKeyFileLocation": "/data/certs/client.key",
+                                                                        "publicKeyFileLocation": "/data/certs/client.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "management": {
+                                                    "event": {
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_EVENTS_MQTT_TLS",
+                                                                "description": "Secure management/heartbeat events over MQTT TLS",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "mqtt.example.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-dock01-mevents",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 2,
+                                                                        "reconnectDelayMax": 60
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "site/dock01/mevents"
+                                                                    ],
+                                                                    "subscribeTopic": [],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/certs/ca.pem",
+                                                                        "privateKeyFileLocation": "/data/certs/client.key",
+                                                                        "publicKeyFileLocation": "/data/certs/client.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                },
+                                                                "additionalOptions": {
+                                                                    "retention": {
+                                                                        "maxEventRetentionTimeInMin": 500,
+                                                                        "maxNumEvents": 150000,
+                                                                        "throttle": 500
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "commandResponse": {
+                                                        "enableLocalRest": true,
+                                                        "connections": [
+                                                            {
+                                                                "name": "MGMT_CMD_MQTT_TLS",
+                                                                "description": "Secure management cmd/rsp over MQTT TLS",
+                                                                "type": "mqtt",
+                                                                "options": {
+                                                                    "enableSecurity": true,
+                                                                    "endpoint": {
+                                                                        "hostName": "mqtt.example.com",
+                                                                        "port": 8883,
+                                                                        "protocol": "ssl"
+                                                                    },
+                                                                    "additional": {
+                                                                        "cleanSession": true,
+                                                                        "clientId": "fxr90-dock01-mcmd",
+                                                                        "debug": false,
+                                                                        "keepAlive": 60,
+                                                                        "qos": 1,
+                                                                        "reconnectDelay": 2,
+                                                                        "reconnectDelayMax": 60
+                                                                    },
+                                                                    "publishTopic": [
+                                                                        "site/dock01/mrsp"
+                                                                    ],
+                                                                    "subscribeTopic": [
+                                                                        "site/dock01/mcmd"
+                                                                    ],
+                                                                    "security": {
+                                                                        "CACertificateFileLocation": "/data/certs/ca.pem",
+                                                                        "privateKeyFileLocation": "/data/certs/client.key",
+                                                                        "publicKeyFileLocation": "/data/certs/client.crt",
+                                                                        "keyAlgorithm": "RS256",
+                                                                        "keyFormat": "PEM",
+                                                                        "verifyHostName": true,
+                                                                        "verifyPeer": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             }
@@ -15551,8 +15894,8 @@
                                 }
                             },
                             "examples": {
-                                "password": {
-                                    "summary": "password",
+                                "set_password": {
+                                    "summary": "set password",
                                     "value": {
                                         "command": "set_password",
                                         "command_id": "req-set-password",
@@ -15563,11 +15906,11 @@
                                         }
                                     }
                                 },
-                                "password_rfidadm": {
-                                    "summary": "password rfidadm",
+                                "set_password_rfidadm": {
+                                    "summary": "set password rfidadm",
                                     "value": {
                                         "command": "set_password",
-                                        "command_id": "req-set-password",
+                                        "command_id": "req-set-password-rfidadm",
                                         "payload": {
                                             "userName": "rfidadm",
                                             "currentPassword": "oldPassword@123",
@@ -15882,16 +16225,6 @@
                                         "command_id": "req-set-hostname",
                                         "payload": {
                                             "hostname": "FXR90C60C001"
-                                        }
-                                    }
-                                },
-                                "hostName_lab": {
-                                    "summary": "hostName lab",
-                                    "value": {
-                                        "command": "set_hostname",
-                                        "command_id": "req-set-hostname",
-                                        "payload": {
-                                            "hostname": "fxr90-lab-01"
                                         }
                                     }
                                 }
@@ -17379,8 +17712,8 @@
                                     ]
                                 },
                                 "examples": {
-                                    "india": {
-                                        "summary": "india",
+                                    "region": {
+                                        "summary": "region",
                                         "value": {
                                             "command": "get_region",
                                             "command_id": "req-get-region",
@@ -17388,40 +17721,63 @@
                                             "payload": {
                                                 "FrequencyHopping": true,
                                                 "channelData": [
-                                                    865700,
-                                                    866300,
-                                                    866900,
-                                                    867500
-                                                ],
-                                                "country": "India",
-                                                "lbtEnabled": true,
-                                                "maxTxPowerSupported": 300,
-                                                "minTxPowerSupported": 100,
-                                                "region": "IN",
-                                                "regulatoryStandard": "INDIA"
-                                            }
-                                        }
-                                    },
-                                    "multiple_values": {
-                                        "summary": "multiple values",
-                                        "value": {
-                                            "command": "get_region",
-                                            "command_id": "req-get-region",
-                                            "response": "success",
-                                            "payload": {
-                                                "FrequencyHopping": true,
-                                                "channelData": [
-                                                    915250,
-                                                    915750,
-                                                    903250,
-                                                    926750
+                                                    "915750",
+                                                    "915250",
+                                                    "903250",
+                                                    "926750",
+                                                    "926250",
+                                                    "904250",
+                                                    "927250",
+                                                    "920250",
+                                                    "919250",
+                                                    "909250",
+                                                    "918750",
+                                                    "917750",
+                                                    "905250",
+                                                    "904750",
+                                                    "925250",
+                                                    "921750",
+                                                    "914750",
+                                                    "906750",
+                                                    "913750",
+                                                    "922250",
+                                                    "911250",
+                                                    "911750",
+                                                    "903750",
+                                                    "908750",
+                                                    "905750",
+                                                    "912250",
+                                                    "906250",
+                                                    "917250",
+                                                    "914250",
+                                                    "907250",
+                                                    "918250",
+                                                    "916250",
+                                                    "910250",
+                                                    "910750",
+                                                    "907750",
+                                                    "924750",
+                                                    "909750",
+                                                    "919750",
+                                                    "916750",
+                                                    "913250",
+                                                    "923750",
+                                                    "908250",
+                                                    "925750",
+                                                    "912750",
+                                                    "924250",
+                                                    "921250",
+                                                    "920750",
+                                                    "922750",
+                                                    "902750",
+                                                    "923250"
                                                 ],
                                                 "country": "Canada",
                                                 "lbtEnabled": false,
                                                 "maxTxPowerSupported": 300,
-                                                "minTxPowerSupported": 100,
-                                                "region": "US",
-                                                "regulatoryStandard": "FCC"
+                                                "minTxPowerSupported": 0,
+                                                "region": "FCC_Generic",
+                                                "regulatoryStandard": "CANADA_FCC_15"
                                             }
                                         }
                                     }
@@ -17503,8 +17859,8 @@
                                         "command": "set_region",
                                         "command_id": "req-set-region",
                                         "payload": {
-                                            "country": "USA",
-                                            "standardname": "FCC_PART_15_247"
+                                            "country": "Canada",
+                                            "standardname": "CANADA_FCC_15"
                                         }
                                     }
                                 }
@@ -19849,7 +20205,7 @@
                                             "command_id": "req-get-timeZone",
                                             "response": "success",
                                             "payload": {
-                                                "timeZone": "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+                                                "timeZone": "UTC"
                                             }
                                         }
                                     }
@@ -20171,6 +20527,16 @@
                                         "command_id": "req-set-timeZone",
                                         "payload": {
                                             "timeZone": "UTC"
+                                        }
+                                    }
+                                },
+                                "time_zone_kolkata": {
+                                    "summary": "time zone kolkata",
+                                    "value": {
+                                        "command": "set_timeZone",
+                                        "command_id": "req-set-timeZone-kolkata",
+                                        "payload": {
+                                            "timeZone": "Kolkata"
                                         }
                                     }
                                 }
@@ -20856,26 +21222,26 @@
                                             "response": "success",
                                             "payload": [
                                                 {
-                                                    "name": "reader-server-cert",
-                                                    "type": "server",
-                                                    "installTime": "2026-07-14T11:02:53Z",
-                                                    "issuerName": "CN=Zebra Lab CA,O=Zebra,C=US",
-                                                    "subjectName": "CN=FXR90C60C001,O=Zebra,C=US",
-                                                    "serial": "0A1B2C3D4E5F6071",
-                                                    "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----",
-                                                    "validityStart": "2026-07-14T00:00:00Z",
-                                                    "validityEnd": "2027-07-14T00:00:00Z"
+                                                    "installTime": "Mon Aug 10 05:12:32 2026",
+                                                    "issuerName": "ZLAB-CA01",
+                                                    "name": "COMMON",
+                                                    "publickey": "",
+                                                    "serial": "0x170000005232B0DE84B4545965000000000052",
+                                                    "subjectName": "testuser1 (ZLAB)",
+                                                    "type": "client",
+                                                    "validityEnd": "02/06/2027",
+                                                    "validityStart": "02/06/2026"
                                                 },
                                                 {
-                                                    "name": "mqtt-client-cert",
-                                                    "type": "client",
-                                                    "installTime": "2026-07-20T08:17:04Z",
-                                                    "issuerName": "CN=Zebra Lab CA,O=Zebra,C=US",
-                                                    "subjectName": "CN=fxr90-mqtt-client,O=Zebra,C=US",
-                                                    "serial": "11FF22EE33DD44CC",
-                                                    "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----",
-                                                    "validityStart": "2026-07-20T00:00:00Z",
-                                                    "validityEnd": "2027-07-20T00:00:00Z"
+                                                    "installTime": "Mon Aug 10 04:58:59 2026",
+                                                    "issuerName": "FXR609BC6A7",
+                                                    "name": "Server",
+                                                    "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3aStW3ecimauj1ZtGfM4\nSE0pY/3Mfo6jQGI+52v0m0jt6nipngXnTZf9ZVphNOC0NcXdbONc1cKIUop5wFfT\nDfM5hUedQVvodyQKCd8TBhERNHXSpsLfR1GwzxtK9CHmNKEvIo4z3FDi9D9vQiTC\nu4Cg9wAvLhbttzq4FwYaoVgMUH5foWiIq+hozWOf99PctLAuvEaR/uXvupZr6T7a\nNTUuZY1tDKXtXWKj3Cc1SBMJ62reVVQhl75vEWIdkd3Qeav0NCxeH8td+6Bh/NNH\nzWWAJ/OghNWjvlaQwesfmTYn1ctJ1mI7jwkPCEAB2G78BmmWXDW9qIPe4H8PTt3s\nDQIDAQAB\n-----END PUBLIC KEY-----\n",
+                                                    "serial": "0x3039",
+                                                    "subjectName": "FXR609BC6A7",
+                                                    "type": "server",
+                                                    "validityEnd": "05/08/2046",
+                                                    "validityStart": "10/08/2026"
                                                 }
                                             ]
                                         }
@@ -21246,55 +21612,6 @@
                                             "pfxPassword": "abcd12345",
                                             "type": "client",
                                             "url": "https://10.117.229.15/reader.pfx"
-                                        }
-                                    }
-                                },
-                                "updateCertificate_app": {
-                                    "summary": "updateCertificate app",
-                                    "value": {
-                                        "command": "set_update_cert",
-                                        "command_id": "req-set-update-cert",
-                                        "payload": {
-                                            "name": "userapp-cert",
-                                            "type": "app",
-                                            "url": "https://certs.example.com/userapp.pfx",
-                                            "authenticationType": "NONE",
-                                            "pfxPassword": "zebra"
-                                        }
-                                    }
-                                },
-                                "updateCertificate_client": {
-                                    "summary": "updateCertificate client",
-                                    "value": {
-                                        "command": "set_update_cert",
-                                        "command_id": "req-set-update-cert",
-                                        "payload": {
-                                            "name": "mqtt-client-cert",
-                                            "type": "client",
-                                            "url": "https://certs.example.com/mqtt-client.pfx",
-                                            "authenticationType": "BASIC",
-                                            "options": {
-                                                "username": "zebra",
-                                                "password": "zebra"
-                                            },
-                                            "pfxPassword": "zebra",
-                                            "transfer_protocol": "HTTPS"
-                                        }
-                                    }
-                                },
-                                "updateCertificate_inline_pem": {
-                                    "summary": "updateCertificate inline pem",
-                                    "value": {
-                                        "command": "set_update_cert",
-                                        "command_id": "req-set-update-cert",
-                                        "payload": {
-                                            "name": "reader-server-cert",
-                                            "type": "server",
-                                            "url": "https://certs.example.com/server.pfx",
-                                            "authenticationType": "NONE",
-                                            "pfxPassword": "zebra",
-                                            "verifyPeer": true,
-                                            "CACertificateFileContent": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx3Kd8FqQ0mYyR1vZ7pJt\nwq2LhNfV6cGbXsA9EoT4jRuP1yKmZdWnCvB8sHlLxYaQ2eF7gDkM0rNtIuOpVcXz\n-----END PUBLIC KEY-----"
                                         }
                                     }
                                 }
@@ -24667,8 +24984,8 @@
                                     ]
                                 },
                                 "examples": {
-                                    "inline": {
-                                        "summary": "inline",
+                                    "wifi_networks": {
+                                        "summary": "wifi networks",
                                         "value": {
                                             "command": "get_availableWifiNetworks",
                                             "command_id": "req-get-availableWifiNetworks",
@@ -24677,25 +24994,19 @@
                                                 "availableWifiNetworks": [
                                                     {
                                                         "capabilities": [
-                                                            "WPA2",
-                                                            "WPA3"
+                                                            "WPA2"
                                                         ],
                                                         "configuration": {
-                                                            "autoConnect": false
+                                                            "autoConnect": true,
+                                                            "security": {
+                                                                "details": {
+                                                                    "password": "********"
+                                                                },
+                                                                "type": "WPA2Personal"
+                                                            }
                                                         },
-                                                        "essid": "GLaDOS",
-                                                        "signalStrength": "100%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "WPA3"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "Bodhi",
-                                                        "signalStrength": "99%"
+                                                        "essid": "VULCAN_2.4_5_WPA2",
+                                                        "signalStrength": "87%"
                                                     },
                                                     {
                                                         "capabilities": [
@@ -24704,7 +25015,17 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "017TB01-TNV",
+                                                        "essid": "VULCAN_2.4_WPA3",
+                                                        "signalStrength": "89%"
+                                                    },
+                                                    {
+                                                        "capabilities": [
+                                                            "WPA2-802.1X"
+                                                        ],
+                                                        "configuration": {
+                                                            "autoConnect": false
+                                                        },
+                                                        "essid": "Vulcan_WPA2_24_5_ENT_802.1x",
                                                         "signalStrength": "89%"
                                                     },
                                                     {
@@ -24714,41 +25035,8 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "IOT_TESTAP",
-                                                        "signalStrength": "77%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "ZWireless",
-                                                        "signalStrength": "75%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "ZLAB",
-                                                        "signalStrength": "72%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "ZCorp",
-                                                        "signalStrength": "72%"
+                                                        "essid": "VULCAN_FAST_ROAMING_24",
+                                                        "signalStrength": "89%"
                                                     },
                                                     {
                                                         "capabilities": [
@@ -24757,8 +25045,48 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "DIRECT-TY17L11-R-7951msf9",
-                                                        "signalStrength": "70%"
+                                                        "essid": "VULCAN_2.4_WPA2",
+                                                        "signalStrength": "87%"
+                                                    },
+                                                    {
+                                                        "capabilities": [
+                                                            "WPA2-802.1X"
+                                                        ],
+                                                        "configuration": {
+                                                            "autoConnect": false
+                                                        },
+                                                        "essid": "Vulcan_WPA2_24_5_ENT_SHA256",
+                                                        "signalStrength": "87%"
+                                                    },
+                                                    {
+                                                        "capabilities": [
+                                                            "WPA2-802.1X"
+                                                        ],
+                                                        "configuration": {
+                                                            "autoConnect": false
+                                                        },
+                                                        "essid": "Vulcan_WPA2_2_4_ENT_802.1x",
+                                                        "signalStrength": "87%"
+                                                    },
+                                                    {
+                                                        "capabilities": [
+                                                            "WPA2-802.1X"
+                                                        ],
+                                                        "configuration": {
+                                                            "autoConnect": false
+                                                        },
+                                                        "essid": "Vulcan_WPA2_24_ENT_SHA256",
+                                                        "signalStrength": "87%"
+                                                    },
+                                                    {
+                                                        "capabilities": [
+                                                            "WPA3-802.1X"
+                                                        ],
+                                                        "configuration": {
+                                                            "autoConnect": false
+                                                        },
+                                                        "essid": "VULCAN_WPA3_ENT_SUITE192",
+                                                        "signalStrength": "87%"
                                                     },
                                                     {
                                                         "capabilities": [
@@ -24767,8 +25095,8 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "Bodhi_5G",
-                                                        "signalStrength": "65%"
+                                                        "essid": "VULCAN_2.4_5_WPA3",
+                                                        "signalStrength": "85%"
                                                     },
                                                     {
                                                         "capabilities": [
@@ -24777,8 +25105,8 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "SNT_WPA2_2G",
-                                                        "signalStrength": "50%"
+                                                        "essid": "VULCAN_FAST_ROAMING_5",
+                                                        "signalStrength": "69%"
                                                     },
                                                     {
                                                         "capabilities": [
@@ -24787,163 +25115,28 @@
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "RFID_Aruba_WPA2PSK",
-                                                        "signalStrength": "50%"
+                                                        "essid": "VULCAN_5_WPA2",
+                                                        "signalStrength": "69%"
                                                     },
                                                     {
                                                         "capabilities": [
-                                                            "WPA2"
+                                                            "WPA2-802.1X"
                                                         ],
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "kawshik PC",
-                                                        "signalStrength": "47%"
+                                                        "essid": "Vulcan_WPA2_5_ENT_802.1x",
+                                                        "signalStrength": "69%"
                                                     },
                                                     {
                                                         "capabilities": [
-                                                            "WPA2"
+                                                            "WPA2-802.1X"
                                                         ],
                                                         "configuration": {
                                                             "autoConnect": false
                                                         },
-                                                        "essid": "OnePlus 9 Pro 5G",
-                                                        "signalStrength": "45%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "Pranshu_17",
-                                                        "signalStrength": "37%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "VJ",
-                                                        "signalStrength": "35%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "DIRECT-KH17L10-BGMW36-1msSL",
-                                                        "signalStrength": "34%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "FTMLocation",
-                                                        "signalStrength": "32%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "DIRECT-G917L11-RC7864msAJ",
-                                                        "signalStrength": "27%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "Noobie",
-                                                        "signalStrength": "25%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "sim (domain 10.233.250.53)",
-                                                        "signalStrength": "25%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "wpa2_tkip",
-                                                        "signalStrength": "24%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "testdot.1x1",
-                                                        "signalStrength": "24%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "testdot1",
-                                                        "signalStrength": "22%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2",
-                                                            "802.1X"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "EAPSIM",
-                                                        "signalStrength": "22%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "gg_wfw",
-                                                        "signalStrength": "20%"
-                                                    },
-                                                    {
-                                                        "capabilities": [
-                                                            "WPA2"
-                                                        ],
-                                                        "configuration": {
-                                                            "autoConnect": false
-                                                        },
-                                                        "essid": "ManualRoam_PSK",
-                                                        "signalStrength": "20%"
+                                                        "essid": "Vulcan_WPA2_5_ENT_SHA256",
+                                                        "signalStrength": "69%"
                                                     }
                                                 ]
                                             }
@@ -25075,10 +25268,29 @@
                                     ]
                                 },
                                 "examples": {
-                                    "example1": {
+                                    "fxr60": {
+                                        "summary": "fxr60",
                                         "value": {
                                             "command": "get_networkInterfaces",
-                                            "command_id": "a12cb345654",
+                                            "command_id": "req-get-networkInterfaces-fxr60",
+                                            "response": "success",
+                                            "payload": {
+                                                "availableNetworkInterfaces": [
+                                                    "eth0",
+                                                    "mlan0",
+                                                    "bnep0",
+                                                    "blescan",
+                                                    "uap0"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "fxr90": {
+                                        "summary": "fxr90",
+                                        "value": {
+                                            "command": "get_networkInterfaces",
+                                            "command_id": "req-get-networkInterfaces-fxr90",
+                                            "response": "success",
                                             "payload": {
                                                 "availableNetworkInterfaces": [
                                                     "eth0",
@@ -25086,8 +25298,7 @@
                                                     "bnep0",
                                                     "wan0"
                                                 ]
-                                            },
-                                            "response": "success"
+                                            }
                                         }
                                     }
                                 }
@@ -25954,37 +26165,6 @@
                                         "command": "set_os",
                                         "command_id": "req-set-os",
                                         "payload": {
-                                            "url": "https://10.117.229.9:9093/BUILDS/FXR90_2.0.10.tar.bz2",
-                                            "authenticationType": "NONE",
-                                            "options": {
-                                                "username": "test",
-                                                "password": "test"
-                                            }
-                                        }
-                                    }
-                                },
-                                "os_basic_auth": {
-                                    "summary": "os basic auth",
-                                    "value": {
-                                        "command": "set_os",
-                                        "command_id": "req-set-os",
-                                        "payload": {
-                                            "url": "https://builds.example.com/FXR90_2.0.10.tar.bz2",
-                                            "authenticationType": "BASIC",
-                                            "options": {
-                                                "username": "labuser",
-                                                "password": "L@bu$3rs"
-                                            },
-                                            "transfer_protocol": "HTTPS"
-                                        }
-                                    }
-                                },
-                                "os_https_pinned_ca": {
-                                    "summary": "os https pinned ca",
-                                    "value": {
-                                        "command": "set_os",
-                                        "command_id": "req-set-os",
-                                        "payload": {
                                             "url": "https://builds.example.com/FXR90_2.0.10.tar.bz2",
                                             "authenticationType": "NONE",
                                             "transfer_protocol": "HTTPS",
@@ -25996,22 +26176,6 @@
                                                 "count": 3,
                                                 "delayInSec": 30
                                             }
-                                        }
-                                    }
-                                },
-                                "os_scp": {
-                                    "summary": "os scp",
-                                    "value": {
-                                        "command": "set_os",
-                                        "command_id": "req-set-os",
-                                        "payload": {
-                                            "url": "scp://10.117.229.9/BUILDS/FXR90_2.0.10.tar.bz2",
-                                            "authenticationType": "BASIC",
-                                            "options": {
-                                                "username": "labuser",
-                                                "password": "L@bu$3rs"
-                                            },
-                                            "transfer_protocol": "SCP"
                                         }
                                     }
                                 }
@@ -26380,34 +26544,6 @@
                             "examples": {
                                 "installUserapp": {
                                     "summary": "installUserapp",
-                                    "value": {
-                                        "command": "install_user_app",
-                                        "command_id": "req-install-user-app",
-                                        "payload": {
-                                            "options": {
-                                                "password": "L@bu$3rs",
-                                                "username": "labuser"
-                                            },
-                                            "authenticationType": "BASIC",
-                                            "filename": "mylogger_1.0.1.deb",
-                                            "url": "sftp://10.117.229.15/home/labuser/EV1/"
-                                        }
-                                    }
-                                },
-                                "installUserapp_no_auth": {
-                                    "summary": "installUserapp no auth",
-                                    "value": {
-                                        "command": "install_user_app",
-                                        "command_id": "req-install-user-app",
-                                        "payload": {
-                                            "url": "https://apps.example.com/packages/",
-                                            "filename": "mylogger-1.2.0.deb",
-                                            "authenticationType": "NONE"
-                                        }
-                                    }
-                                },
-                                "installUserapp_pinned_ca": {
-                                    "summary": "installUserapp pinned ca",
                                     "value": {
                                         "command": "install_user_app",
                                         "command_id": "req-install-user-app",

@@ -1,52 +1,20 @@
 # `/cloud/cloudConfig`
 
-- **PUT** - Import cloud endpoint configuration (`setImportcloudconfig`)
+- **PUT** — Import cloud endpoint configuration (`set_importCloudConfig`)
 
-1 example(s) exported from the spec, 4 proposed.
+## Examples
 
-> **Note.** priority: only one import sample in the spec. Proposed MQTT / AWS / Azure / httpPost variants mirror PUT /cloud/config connection types under endpointConfig.
+| File | Example name | Summary |
+|---|---|---|
+| `PUT/mqtt_all_channels.json` | `mqtt_all_channels` | All channels over MQTT (no TLS) |
+| `PUT/mqtt_tls_all_channels.json` | `mqtt_tls_all_channels` | All channels over MQTT TLS |
+| `PUT/mqtt_aws_all_channels.json` | `mqtt_aws_all_channels` | All channels over AWS IoT Core |
+| `PUT/mqtt_azure_all_channels.json` | `mqtt_azure_all_channels` | All channels over Azure IoT Hub |
+| `PUT/data_tcpip_server.json` | `data_tcpip_server` | Tag events over TCP/IP server |
+| `PUT/data_websocket.json` | `data_websocket` | Tag events over WebSocket |
+| `PUT/data_http_post.json` | `data_http_post` | Tag events over HTTP POST |
+| `PUT/management_event_mqtt.json` | `management_event_mqtt` | Management events over MQTT |
+| `PUT/clear_data.json` | `clear_data` | Clear all data connections |
+| `PUT/data_mqtt_tls_installed_cert.json` | `data_mqtt_tls_installed_cert` | Tag events over MQTT TLS with installed cert |
 
-## Method folders
-
-Examples are split by HTTP method:
-
-```
-cloud-cloudconfig/
-  GET/     # GET request/response examples
-  PUT/     # PUT request/response examples
-  DELETE/  # when present
-```
-| File | Method | Direction | Example name | Origin | Valid | Summary |
-|---|---|---|---|---|---|---|
-| `PUT/importCloudConfig.json` | PUT | request | `importCloudConfig` | in-spec | yes |  |
-| `PUT/importCloudConfig_mqtt.json` | PUT | request | `importCloudConfig_mqtt` | proposed | yes | MQTT data plane import |
-| `PUT/importCloudConfig_aws.json` | PUT | request | `importCloudConfig_aws` | proposed | yes | AWS IoT mqtt-AWS data plane |
-| `PUT/importCloudConfig_azure.json` | PUT | request | `importCloudConfig_azure` | proposed | yes | Azure IoT Hub mqtt-AZURE data plane |
-| `PUT/importCloudConfig_httpPost.json` | PUT | request | `importCloudConfig_httpPost` | proposed | yes | HTTP POST webhook data plane |
-
-## Trying these against a reader
-
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X PUT "https://$READER/cloud/cloudConfig" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @PUT/importCloudConfig.json
-
-```
-
-## Folding a file back into the spec
-
-Add under the operation `examples:` map in `FXR90-rest-api.yaml`:
-
-```yaml
-      examples:
-        <example_name>:
-          summary: <summary from the table>
-          value:
-            # contents of the .json file
-```
-
-Then run `python ../validate_pack.py cloud-cloudconfig`.
+See **`SUMMARIES.md`**.

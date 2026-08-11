@@ -1,0 +1,182 @@
+{
+  "endpointConfig": {
+    "control": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "CTRL_AWS",
+            "description": "Control cmd/rsp through AWS IoT Core",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-CTRL",
+                "keepAlive": 30,
+                "qos": 1,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "FXR90-LAB/rsp"
+              ],
+              "subscribeTopic": [
+                "FXR90-LAB/cmd"
+              ],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "privateKeyFileLocation": "/data/aws-pvt.key",
+                "publicKeyFileLocation": "/data/aws-pub.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_AWS",
+            "description": "Tag events to AWS IoT Core",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-DATA",
+                "keepAlive": 20,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "datacollection_aws/FXR90-LAB"
+              ],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "privateKeyFileLocation": "/data/aws-pvt.key",
+                "publicKeyFileLocation": "/data/aws-pub.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    },
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_AWS",
+            "description": "Management/heartbeat events to AWS IoT Core",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-MEVENTS",
+                "keepAlive": 30,
+                "qos": 1,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "FXR90-LAB/mevents"
+              ],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "privateKeyFileLocation": "/data/aws-pvt.key",
+                "publicKeyFileLocation": "/data/aws-pub.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      },
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "MGMT_CMD_AWS",
+            "description": "Management cmd/rsp through AWS IoT Core",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-MCMD",
+                "keepAlive": 30,
+                "qos": 1,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "FXR90-LAB/mrsp"
+              ],
+              "subscribeTopic": [
+                "FXR90-LAB/mcmd"
+              ],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "privateKeyFileLocation": "/data/aws-pvt.key",
+                "publicKeyFileLocation": "/data/aws-pub.crt",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

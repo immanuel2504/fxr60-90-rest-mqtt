@@ -1,6 +1,6 @@
 {
   "command": "set_passthru",
-  "command_id": "req-set-passthru",
+  "command_id": "req-set-passthru-status",
   "payload": {
     "component": "RC",
     "payload": "status"

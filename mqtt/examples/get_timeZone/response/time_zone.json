@@ -3,6 +3,6 @@
   "command_id": "req-get-timeZone",
   "response": "success",
   "payload": {
-    "timeZone": "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+    "timeZone": "UTC"
   }
 }
