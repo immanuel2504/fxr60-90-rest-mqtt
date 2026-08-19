@@ -1,0 +1,64 @@
+{
+  "_comment": [
+    "Data-event endpoint config for pointing a real FXR60/FXR90 at this lab broker.",
+    "Send with: PUT /cloud/config  (operationId setConfigMqtt).",
+    "hostName is this PC's LAN IP, which is also in the broker certificate SAN.",
+    "The three file locations must already exist on the reader; /data/apps/certs",
+    "is the user-app area, so the files arrive with an installed app. If the CA",
+    "cannot be placed on the reader, use reader_config_tls_noverify.json instead."
+  ],
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT_TLS_LAB",
+            "description": "Lab broker, mutual TLS, Zebra private CA",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "10.117.129.205",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr-reader-01",
+                "debug": true,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": [
+                "site/dock01/tevents"
+              ],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/apps/certs/ca.pem",
+                "privateKeyFileLocation": "/data/apps/certs/client.key",
+                "publicKeyFileLocation": "/data/apps/certs/client.pem",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "batching": {
+                "reportingInterval": 1000,
+                "maxPayloadSizePerReport": 256000
+              },
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

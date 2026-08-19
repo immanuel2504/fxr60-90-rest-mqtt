@@ -1,0 +1,10 @@
+{
+  "command": "stop",
+  "command_id": "req-stop",
+  "payload": {
+    "scanType": [
+      "ble",
+      "rfid"
+    ]
+  }
+}

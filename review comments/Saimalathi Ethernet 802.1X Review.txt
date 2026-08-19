@@ -1,0 +1,123 @@
+Saimalathi — Ethernet / 802.1X / Certificate review comments
+Owner: saimalathi
+API: PUT /cloud/network (eth0, 802.1X), GET /cloud/network
+Build: 4.10.12 (from Book.xlsx Sheet2)
+
+Not applied yet. Work these after this file is agreed.
+
+------------------------------------------------------------------------------
+1. IP addressing — IPv6 configuration
+------------------------------------------------------------------------------
+
+The guide explains IPv4 addressing well:
+
+  Use IPV4.dhcp: true for dynamic addressing, or supply ipAddress, subnetMask,
+  gatewayAddress, and dnsAddress for static.
+
+IPv6 is missing. Document how to configure a static IPv6 address and how the
+prefix field should be used.
+
+------------------------------------------------------------------------------
+2. Response data for PUT /cloud/network
+------------------------------------------------------------------------------
+
+The response body for PUT /cloud/network is not documented. The actual
+response returns empty data. Include the expected response so users know how
+to confirm the change was applied.
+
+------------------------------------------------------------------------------
+3. 802.1X combinations — server-support note
+------------------------------------------------------------------------------
+
+The table lists TTLS-TLS and PEAP-TLS. These combinations are non-standard
+and are commonly unsupported on the server side:
+
+  - Cisco ISE does not support TTLS-TLS
+  - FreeRADIUS does not support PEAP-TLS
+
+Add a note advising users to confirm RADIUS-server support before using them.
+
+------------------------------------------------------------------------------
+4. Payload consistency between the working request and the documentation
+------------------------------------------------------------------------------
+
+During testing, this credential-based payload (TTLS-MSCHAPv2) worked:
+
+{
+  "eth0": {
+    "enable": true,
+    "security": {
+      "enable": true,
+      "802_1XEAP": {
+        "authentication": "TTLS",
+        "innerAuthentication": "MSCHAPV2",
+        "username": "testuser1",
+        "password": "X!k78@rH0nL1"
+      }
+    }
+  }
+}
+
+The documented example uses a different structure, key casing, and is missing
+security.enable:
+
+{
+  "eth0": {
+    "security": {
+      "802_1xEAP": {
+        "authentication": "PEAP",
+        "innerAuthentication": "MSCHAPv2",
+        "username": "john.doe",
+        "password": "secret"
+      }
+    },
+    "enable": true
+  }
+}
+
+Align the documented example with the working payload so users can follow it
+directly.
+
+------------------------------------------------------------------------------
+5. 802_1xEAP vs 802_1XEAP — key casing
+------------------------------------------------------------------------------
+
+Inconsistency in the key spelling:
+
+  - documentation: 802_1xEAP
+  - working payload: 802_1XEAP
+
+JSON keys are case-sensitive. Use one consistent, correct spelling across all
+examples.
+
+------------------------------------------------------------------------------
+6. security.enable
+------------------------------------------------------------------------------
+
+Clarify whether security.enable is required, how it relates to the
+interface-level enable, and show it consistently in the examples.
+
+------------------------------------------------------------------------------
+7. innerAuthentication
+------------------------------------------------------------------------------
+
+Clarify that innerAuthentication carries the inner method for TTLS/PEAP and
+is left empty for TLS. Reflect this in the examples.
+
+------------------------------------------------------------------------------
+8. Ethernet 802.1X — extend to other interfaces
+------------------------------------------------------------------------------
+
+802.1X configuration is currently shown only for Ethernet (eth0). Provide
+equivalent usage examples for the other applicable interfaces (for example,
+mlan0).
+
+------------------------------------------------------------------------------
+9. "Supported 802.1X Inner Methods" row
+------------------------------------------------------------------------------
+
+The table currently lists the outer methods (TLS, TTLS, PEAP) but not the
+inner methods. Add the inner methods so both are included:
+
+  - TLS — certificate-based
+  - MSCHAPv2 — credential-based

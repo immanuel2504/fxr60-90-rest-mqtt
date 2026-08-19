@@ -1,0 +1,5 @@
+{
+  "command": "get_rg_error_logs",
+  "command_id": "req-get-rg-error-logs",
+  "payload": {}
+}

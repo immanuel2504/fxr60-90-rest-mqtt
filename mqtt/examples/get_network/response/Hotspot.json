@@ -1,0 +1,24 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "payload": {
+    "hostName": "FXR90C5F1AB",
+    "networkInterface": {
+      "uap0": {
+        "Clients": [
+          {
+            "IP": "192.168.12.174",
+            "MAC": "90:75:de:14:fa:26",
+            "hostName": "FXR609BC6A7"
+          }
+        ],
+        "isEnabled": true,
+        "isHidden": false,
+        "securityType": "WPA2Personal",
+        "ssid": "VULCAN_HOTSPOT",
+        "ssidPassword": "12345678"
+      }
+    }
+  },
+  "response": "success"
+}

@@ -1,0 +1,11 @@
+{
+  "command": "get_gpi_status",
+  "command_id": "req-get-gpi-status",
+  "payload": {
+    "1": "LOW",
+    "2": "LOW",
+    "3": "HIGH",
+    "4": "LOW"
+  },
+  "response": "success"
+}

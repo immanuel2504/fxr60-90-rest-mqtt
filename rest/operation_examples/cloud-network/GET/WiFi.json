@@ -1,0 +1,35 @@
+{
+  "hostName": "FXR90C5F1AB",
+  "networkInterface": {
+    "mlan0": {
+      "IPV4": {
+        "dhcp": true,
+        "dnsAddress": "10.117.226.5",
+        "domainName": "117asd.zebra.lan",
+        "gatewayAddress": "10.117.228.1",
+        "ipAddress": "10.117.228.251",
+        "subnetMask": "255.255.255.0"
+      },
+      "IPV6": {
+        "dhcp": true,
+        "dnsAddress": "fd6c:0:75e2::5",
+        "domainName": "117asd.zebra.lan",
+        "gatewayAddress": "fe80:0:75e4::1",
+        "ipAddress": "fd6c:0:75e4:0:ffff:ffff:ffff:ff92",
+        "prefix": "128"
+      },
+      "Status": "connected",
+      "accesspoint": {
+        "autoConn": true,
+        "essid": "Vulcan_WPA2_24_ENT_SHA256",
+        "security": {
+          "authentication": "PEAP",
+          "innerAuthentication": "MSCHAPV2",
+          "password": "************",
+          "securityType": "WPA2Enterprise",
+          "userName": "testuser1"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "command": "set_timeZone",
+  "command_id": "req-set-timeZone-kolkata",
+  "payload": {
+    "timeZone": "Kolkata"
+  }
+}

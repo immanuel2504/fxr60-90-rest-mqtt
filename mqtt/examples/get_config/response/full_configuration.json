@@ -1,0 +1,334 @@
+{
+  "command": "get_config",
+  "command_id": "req-get-config",
+  "payload": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "LEDDefaults": {
+        "1": "GREEN",
+        "2": "GREEN",
+        "3": "GREEN"
+      },
+      "RADIO_START": [
+        {
+          "color": "AMBER",
+          "led": 3,
+          "type": "LED"
+        }
+      ],
+      "RADIO_STOP": [
+        {
+          "color": "GREEN",
+          "led": 3,
+          "type": "LED"
+        }
+      ],
+      "TAG_READ": [
+        {
+          "blink": {
+            "DURATION": 500,
+            "OFF": 100,
+            "ON": 100
+          },
+          "color": "AMBER",
+          "led": 3,
+          "postActionColor": "GREEN",
+          "type": "LED"
+        },
+        {
+          "blink": {
+            "DURATION": 1000,
+            "OFF": 200,
+            "ON": 200
+          },
+          "pin": 1,
+          "postActionState": "LOW",
+          "state": "HIGH",
+          "type": "GPO"
+        }
+      ]
+    },
+    "READER-GATEWAY": {
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 0,
+          "reportingInterval": 0
+        }
+      ],
+      "endpointConfig": {
+        "control": {
+          "commandResponse": {
+            "connections": [
+              {
+                "description": "Control cmd/rsp over MQTT",
+                "name": "CTRL_MQTT",
+                "options": {
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr90-lab-ctrl",
+                    "debug": false,
+                    "keepAlive": 60,
+                    "qos": 0,
+                    "reconnectDelay": 1,
+                    "reconnectDelayMax": 30
+                  },
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.117.229.9",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "publishTopic": [
+                    "fxr90-lab/rsp"
+                  ],
+                  "subscribeTopic": [
+                    "fxr90-lab/cmd"
+                  ]
+                },
+                "type": "mqtt"
+              }
+            ]
+          }
+        },
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "additionalOptions": {
+                  "retention": {
+                    "maxEventRetentionTimeInMin": 500,
+                    "maxNumEvents": 150000,
+                    "throttle": 500
+                  }
+                },
+                "description": "Tag events to MQTT",
+                "name": "DATA_MQTT",
+                "options": {
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr90-lab-data",
+                    "debug": false,
+                    "keepAlive": 60,
+                    "qos": 0,
+                    "reconnectDelay": 1,
+                    "reconnectDelayMax": 30
+                  },
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.117.229.9",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "publishTopic": [
+                    "fxr90-lab/tevents"
+                  ],
+                  "subscribeTopic": []
+                },
+                "type": "mqtt"
+              }
+            ]
+          }
+        },
+        "management": {
+          "commandResponse": {
+            "connections": [
+              {
+                "description": "Management cmd/rsp",
+                "name": "MGMT_CMD_MQTT",
+                "options": {
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr90-lab-mcmd",
+                    "debug": false,
+                    "keepAlive": 60,
+                    "qos": 0,
+                    "reconnectDelay": 1,
+                    "reconnectDelayMax": 30
+                  },
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.117.229.9",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "publishTopic": [
+                    "fxr90-lab/mrsp"
+                  ],
+                  "subscribeTopic": [
+                    "fxr90-lab/mcmd"
+                  ]
+                },
+                "type": "mqtt"
+              }
+            ]
+          },
+          "event": {
+            "connections": [
+              {
+                "additionalOptions": {
+                  "retention": {
+                    "maxEventRetentionTimeInMin": 500,
+                    "maxNumEvents": 150000,
+                    "throttle": 500
+                  }
+                },
+                "description": "Management/heartbeat events",
+                "name": "MGMT_EVENTS_MQTT",
+                "options": {
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr90-lab-mevents",
+                    "debug": false,
+                    "keepAlive": 60,
+                    "qos": 0,
+                    "reconnectDelay": 1,
+                    "reconnectDelayMax": 30
+                  },
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.117.229.9",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "publishTopic": [
+                    "fxr90-lab/mevents"
+                  ],
+                  "subscribeTopic": []
+                },
+                "type": "mqtt"
+              }
+            ]
+          }
+        }
+      },
+      "managementEventConfig": {
+        "errors": {
+          "antenna": true,
+          "cpu": {
+            "reportIntervalInSec": 1800,
+            "threshold": 90
+          },
+          "database": true,
+          "flash": {
+            "reportIntervalInSec": 1800,
+            "threshold": 90
+          },
+          "ntp": true,
+          "radio": true,
+          "radio_control": true,
+          "ram": {
+            "reportIntervalInSec": 1800,
+            "threshold": 90
+          },
+          "reader_gateway": true,
+          "userApp": {
+            "reportIntervalInSec": 1800,
+            "threshold": 120
+          }
+        },
+        "gpiEvents": true,
+        "gpoEvents": true,
+        "heartbeat": {
+          "fields": {
+            "radio_control": [
+              "ANTENNAS",
+              "RADIO_ACTIVITY",
+              "RADIO_CONNECTION",
+              "CPU",
+              "RAM",
+              "UPTIME",
+              "NUM_ERRORS",
+              "NUM_WARNINGS",
+              "NUM_TAG_READS",
+              "NUM_TAG_READS_PER_ANTENNA",
+              "NUM_DATA_MESSAGES_TXED",
+              "NUM_RADIO_PACKETS_RXED"
+            ],
+            "reader_gateway": [
+              "NUM_DATA_MESSAGES_RXED",
+              "NUM_MANAGEMENT_EVENTS_TXED",
+              "NUM_DATA_MESSAGES_TXED",
+              "NUM_DATA_MESSAGES_RETAINED",
+              "NUM_DATA_MESSAGES_DROPPED",
+              "CPU",
+              "RAM",
+              "UPTIME",
+              "NUM_ERRORS",
+              "NUM_WARNINGS",
+              "INTERFACE_CONNECTION_STATUS",
+              "NOLOCKQ_DEPTH"
+            ],
+            "system": [
+              "CPU",
+              "FLASH",
+              "NTP",
+              "RAM",
+              "SYSTEMTIME",
+              "TEMPERATURE",
+              "UPTIME",
+              "GPO",
+              "GPI",
+              "POWER_NEGOTIATION",
+              "POWER_SOURCE",
+              "MAC_ADDRESS",
+              "HOSTNAME"
+            ],
+            "userDefined": {},
+            "userapps": [
+              "STATUS",
+              "CPU",
+              "RAM",
+              "UPTIME",
+              "NUM_DATA_MESSAGES_RXED",
+              "NUM_DATA_MESSAGES_TXED",
+              "INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING",
+              "OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING"
+            ]
+          },
+          "interval": 60
+        },
+        "userappEvents": true,
+        "warnings": {
+          "cpu": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "database": true,
+          "flash": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "ntp": true,
+          "radio_api": true,
+          "radio_control": true,
+          "ram": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "reader_gateway": true,
+          "temperature": {
+            "ambient": 75,
+            "pa": 105
+          },
+          "userApp": {
+            "reportIntervalInSec": 1800,
+            "threshold": 60
+          }
+        }
+      },
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 500,
+          "maxNumEvents": 150000,
+          "throttle": 100
+        }
+      ]
+    }
+  },
+  "response": "success"
+}

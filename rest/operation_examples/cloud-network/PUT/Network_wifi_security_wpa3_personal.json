@@ -1,0 +1,16 @@
+{
+  "mlan0": {
+    "enable": true,
+    "accesspoint": {
+      "autoConn": true,
+      "connect": true,
+      "essid": "VULCAN_2.4_WPA3",
+      "security": {
+        "enable": true,
+        "WPA3Personal": {
+          "password": "krishna1234567"
+        }
+      }
+    }
+  }
+}

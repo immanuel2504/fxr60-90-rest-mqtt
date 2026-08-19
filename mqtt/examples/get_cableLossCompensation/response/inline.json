@@ -1,0 +1,23 @@
+{
+  "command": "get_cableLossCompensation",
+  "command_id": "req-get-cableLossCompensation",
+  "payload": {
+    "1": {
+      "cableLength": 10,
+      "cableLossPerHundredFt": 10
+    },
+    "2": {
+      "cableLength": 10,
+      "cableLossPerHundredFt": 10
+    },
+    "3": {
+      "cableLength": 10,
+      "cableLossPerHundredFt": 10
+    },
+    "4": {
+      "cableLength": 10,
+      "cableLossPerHundredFt": 10
+    }
+  },
+  "response": "success"
+}

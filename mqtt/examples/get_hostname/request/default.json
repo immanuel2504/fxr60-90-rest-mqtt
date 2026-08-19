@@ -1,0 +1,5 @@
+{
+  "command": "get_hostname",
+  "command_id": "req-get-hostname",
+  "payload": {}
+}

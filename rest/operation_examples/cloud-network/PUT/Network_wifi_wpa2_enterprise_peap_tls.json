@@ -1,0 +1,18 @@
+{
+  "mlan0": {
+    "enable": true,
+    "accesspoint": {
+      "autoConn": true,
+      "connect": true,
+      "essid": "Vulcan_WPA2_5_ENT_802.1x",
+      "security": {
+        "enable": true,
+        "WPA2Enterprise": {
+          "authentication": "PEAP",
+          "innerAuthentication": "TLS",
+          "certificate": "COMMON"
+        }
+      }
+    }
+  }
+}

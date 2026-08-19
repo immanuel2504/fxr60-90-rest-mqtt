@@ -1,0 +1,15 @@
+{
+  "command": "set_update_cert",
+  "command_id": "req-set-update-cert",
+  "payload": {
+    "authenticationOptions": {
+      "password": "L@bu$3rs",
+      "username": "labuser"
+    },
+    "authenticationType": "BASIC",
+    "name": "DOCK01",
+    "pfxPassword": "password123456",
+    "type": "client",
+    "url": "sftp://10.117.229.15/data2/home/labuser/Certs/testuser-2026.pfx"
+  }
+}

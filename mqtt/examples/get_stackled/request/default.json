@@ -1,0 +1,5 @@
+{
+  "command": "get_stackled",
+  "command_id": "req-get-stackled",
+  "payload": {}
+}

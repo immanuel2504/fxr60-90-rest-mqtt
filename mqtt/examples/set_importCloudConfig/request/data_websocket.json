@@ -1,0 +1,31 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig-data-websocket",
+  "payload": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_WS",
+              "description": "Tag events over WebSocket",
+              "type": "WEBSOCKET",
+              "options": {
+                "security": {
+                  "verifyPeer": false
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 100
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

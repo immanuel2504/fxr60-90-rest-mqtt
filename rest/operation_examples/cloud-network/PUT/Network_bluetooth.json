@@ -1,0 +1,11 @@
+{
+  "bnep0": {
+    "dhcpEndAddress": "192.168.0.10",
+    "dhcpStartAddress": "192.168.0.2",
+    "discoverable": true,
+    "pairable": true,
+    "passKey": "1233",
+    "usePassKey": false,
+    "enable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "command": "get_timeZone",
+  "command_id": "req-get-timeZone",
+  "payload": {
+    "timeZone": "UTC"
+  },
+  "response": "success"
+}

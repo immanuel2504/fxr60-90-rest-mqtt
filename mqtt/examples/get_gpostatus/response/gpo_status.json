@@ -1,0 +1,11 @@
+{
+  "command": "get_gpostatus",
+  "command_id": "req-get-gpostatus",
+  "payload": {
+    "1": "LOW",
+    "2": "LOW",
+    "3": "HIGH",
+    "4": "LOW"
+  },
+  "response": "success"
+}

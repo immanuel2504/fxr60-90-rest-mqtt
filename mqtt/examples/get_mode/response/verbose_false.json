@@ -1,0 +1,39 @@
+{
+  "command": "get_mode",
+  "command_id": "req-get-mode",
+  "payload": {
+    "antennaStopCondition": {
+      "type": "DURATION",
+      "value": 100
+    },
+    "antennas": [
+      1,
+      2
+    ],
+    "delayBetweenAntennaCycles": {
+      "duration": 0,
+      "type": "DISABLED"
+    },
+    "modeSpecificSettings": {
+      "interval": {
+        "unit": "seconds",
+        "value": 60
+      }
+    },
+    "query": {
+      "tagPopulation": 256
+    },
+    "tagMetaData": [
+      "ANTENNA",
+      "RSSI",
+      "CHANNEL",
+      "SEEN_COUNT"
+    ],
+    "transmitPower": [
+      27,
+      27
+    ],
+    "type": "INVENTORY"
+  },
+  "response": "success"
+}

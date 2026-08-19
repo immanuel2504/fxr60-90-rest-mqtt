@@ -1,0 +1,18 @@
+{
+  "eid": "89049032005008882600033489161010",
+  "imei": "356938035643809",
+  "profiles": [
+    {
+      "enabled": true,
+      "iccid": "8991101200003204510",
+      "profileNickName": "gnd1",
+      "provider": "Airtel"
+    },
+    {
+      "enabled": false,
+      "iccid": "8944501012345678903",
+      "profileNickName": "gnd2",
+      "provider": "Vodafone"
+    }
+  ]
+}

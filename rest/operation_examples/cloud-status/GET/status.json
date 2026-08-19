@@ -1,0 +1,83 @@
+{
+  "antennas": {
+    "1": "disconnected",
+    "2": "disconnected",
+    "3": "disconnected",
+    "4": "disconnected",
+    "5": "connected",
+    "6": "connected"
+  },
+  "ble": {
+    "beaconCounts": {
+      "altBeacon": 0,
+      "eddystone": 0,
+      "generic": 0,
+      "iBeacon": 0,
+      "total": 0
+    },
+    "scanStartTime": "",
+    "scanState": "stopped"
+  },
+  "cpu": {
+    "system": 0,
+    "user": 8
+  },
+  "flash": {
+    "platform": {
+      "free": 0,
+      "total": 0,
+      "used": 0
+    },
+    "readerConfig": {
+      "free": 0,
+      "total": 0,
+      "used": 0
+    },
+    "readerData": {
+      "free": 0,
+      "total": 0,
+      "used": 0
+    },
+    "rootFileSystem": {
+      "free": 0,
+      "total": 0,
+      "used": 0
+    }
+  },
+  "impinjGen2X": {
+    "feature": "none",
+    "isActive": false
+  },
+  "interfaceConnectionStatus": {
+    "data": [
+      {
+        "connectionError": "",
+        "connectionStatus": "connected",
+        "description": "awsend1",
+        "interface": "Mqqtendpoint"
+      },
+      {
+        "connectionError": "",
+        "connectionStatus": "disconnected",
+        "description": "WEBSOCKET",
+        "interface": "WEBSOCKET"
+      }
+    ]
+  },
+  "ntp": {
+    "offset": 0.005446,
+    "reach": 377
+  },
+  "powerNegotiation": "POE+",
+  "powerSource": "PWR_BRICK",
+  "radioActivity": "active",
+  "radioConnection": "disconnected",
+  "ram": {
+    "free": 58,
+    "total": 100,
+    "used": 42
+  },
+  "systemTime": "12/08/2026 08:02",
+  "temperature": 37,
+  "uptime": "36D3H12M26S"
+}

@@ -1,0 +1,19 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "mlan0": {
+      "accesspoint": {
+        "autoConn": true,
+        "connect": true,
+        "essid": "Redmi Note 12 5G",
+        "security": {
+          "WPA2Personal": {
+            "password": "12345678"
+          }
+        }
+      },
+      "enable": true
+    }
+  }
+}

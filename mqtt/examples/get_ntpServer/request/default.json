@@ -1,0 +1,5 @@
+{
+  "command": "get_ntpServer",
+  "command_id": "req-get-ntpServer",
+  "payload": {}
+}

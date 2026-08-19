@@ -1,0 +1,54 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT_TLS",
+            "description": "Secure tag events over MQTT TLS (fixed reader cert files)",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-data",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": ["site/dock01/tevents"],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/apps/certs/ca9.pem",
+                "privateKeyFileLocation": "/data/apps/certs/client5.key",
+                "publicKeyFileLocation": "/data/apps/certs/client4.pem",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": false,
+                "verifyPeer": false
+              }
+            },
+            "additionalOptions": {
+              "batching": {
+                "reportingInterval": 1000,
+                "maxPayloadSizePerReport": 256000
+              },
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

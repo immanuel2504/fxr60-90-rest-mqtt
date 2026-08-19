@@ -1,0 +1,35 @@
+{
+  "endpointConfig": {
+    "management": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "MGMT_CMD_MQTT",
+            "description": "Management cmd/rsp over standard MQTT",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-mcmd-plain",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["site/dock01/mrsp"],
+              "subscribeTopic": ["site/dock01/mcmd"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

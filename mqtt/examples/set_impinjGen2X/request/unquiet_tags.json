@@ -1,0 +1,14 @@
+{
+  "command": "set_impinjGen2X",
+  "command_id": "req-set-impinjGen2X",
+  "payload": {
+    "tagQuieting": {
+      "basic": {
+        "action": "unquiet",
+        "tagIDs": [
+          "e2801191a5030069073b426d"
+        ]
+      }
+    }
+  }
+}

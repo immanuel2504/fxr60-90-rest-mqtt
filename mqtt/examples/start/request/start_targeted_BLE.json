@@ -1,0 +1,10 @@
+{
+  "command": "start",
+  "command_id": "req-start",
+  "payload": {
+    "scanType": {
+      "dataEndpoint1": ["ble"],
+      "dataEndpoint2": ["ble"]
+    }
+  }
+}

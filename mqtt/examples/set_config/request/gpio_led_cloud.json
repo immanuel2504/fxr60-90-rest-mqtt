@@ -1,0 +1,43 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-gpio-led-cloud",
+  "payload": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "LEDDefaults": {
+        "1": "GREEN",
+        "2": "GREEN",
+        "3": "GREEN"
+      },
+      "CLOUD_CONNECT": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "GREEN"
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH"
+        }
+      ],
+      "CLOUD_DISCONNECT": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "RED"
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "LOW"
+        }
+      ]
+    }
+  }
+}

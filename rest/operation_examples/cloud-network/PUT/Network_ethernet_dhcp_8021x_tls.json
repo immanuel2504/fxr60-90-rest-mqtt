@@ -1,0 +1,13 @@
+{
+  "eth0": {
+    "enable": true,
+    "security": {
+      "enable": true,
+      "802_1XEAP": {
+        "authentication": "TLS",
+        "innerAuthentication": "",
+        "certificate": "COMMON"
+      }
+    }
+  }
+}

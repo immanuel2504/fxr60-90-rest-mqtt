@@ -1,0 +1,45 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              },
+              "description": "Tag events to MQTT",
+              "name": "DATA_MQTT",
+              "options": {
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr90-lab-data",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30
+                },
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.9",
+                  "port": 1883,
+                  "protocol": "tcp"
+                },
+                "publishTopic": [
+                  "fxr90-lab/tevents"
+                ],
+                "subscribeTopic": []
+              },
+              "type": "mqtt"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

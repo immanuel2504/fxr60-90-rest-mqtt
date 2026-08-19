@@ -1,0 +1,45 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT_01",
+            "description": "01 - Tag events to MQTT",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-data",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["fxr90-lab/data2"],
+              "subscribeTopic": []
+            },
+            "additionalOptions": {
+              "batching": {
+                "reportingInterval": 1000,
+                "maxPayloadSizePerReport": 256000
+              },
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

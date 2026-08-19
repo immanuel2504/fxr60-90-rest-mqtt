@@ -1,0 +1,27 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig-data-http-post",
+  "payload": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_HTTP",
+              "description": "Tag events over HTTP POST",
+              "type": "httpPost",
+              "options": {
+                "URL": "https://webhook.site/your-unique-id",
+                "security": {
+                  "authenticationType": "NONE",
+                  "verifyHost": false,
+                  "verifyPeer": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

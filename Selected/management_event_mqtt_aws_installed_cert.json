@@ -1,0 +1,42 @@
+{
+  "endpointConfig": {
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_AWS_INSTALLED",
+            "description": "Management events to AWS — cert already installed",
+            "type": "mqtt-AWS",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "test-ats.iot.us-east-1.amazonaws.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "FXR90-LAB-MEVENTS",
+                "keepAlive": 30,
+                "qos": 1,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["FXR90-LAB/mevents"],
+              "subscribeTopic": [],
+              "security": {
+                "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
+                "installedCertificateName": "AWS_IOT_CLIENT",
+                "installedCertificateType": "client",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

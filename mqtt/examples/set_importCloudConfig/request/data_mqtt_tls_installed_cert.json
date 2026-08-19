@@ -1,0 +1,54 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig-data-mqtt-tls-installed-cert",
+  "payload": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT_TLS_INSTALLED",
+              "description": "Secure data MQTT using installed certificate name/type",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "mqtt.example.com",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr90-dock01-data-inst",
+                  "keepAlive": 60,
+                  "qos": 1,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "site/dock01/tevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "DOCK01_CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

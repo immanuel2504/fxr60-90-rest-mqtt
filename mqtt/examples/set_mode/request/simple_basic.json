@@ -1,0 +1,27 @@
+{
+  "command": "set_mode",
+  "command_id": "req-set-mode-simple-basic",
+  "payload": {
+    "type": "SIMPLE",
+    "antennas": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "transmitPower": 31.5,
+    "antennaStopCondition": {
+      "type": "DURATION",
+      "value": 400
+    },
+    "query": {
+      "sel": "ALL",
+      "session": "S2",
+      "tagPopulation": 2000,
+      "target": "AB"
+    },
+    "inventoryProtocol": {
+      "mode": "GEN2"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+1. The getenetworkinfo payload has slight changes. The following response would be the appropriate one:
+	{
+	  "mlan0": {
+		"IPV4": {
+		  "dhcp": true,
+		  "dnsAddress": "10.117.226.5",
+		  "domainName": "117asd.zebra.lan",
+		  "gatewayAddress": "10.117.228.1",
+		  "ipAddress": "10.117.228.251",
+		  "subnetMask": "255.255.255.0"
+		},
+		"IPV6": {
+		  "dhcp": true,
+		  "dnsAddress": "fd6c:0:75e2::5",
+		  "domainName": "117asd.zebra.lan",
+		  "gatewayAddress": "fe80:0:75e4::1",
+		  "ipAddress": "fd6c:0:75e4:0:ffff:ffff:ffff:ff92",
+		  "prefix": "128"
+		},
+		"Status": "connected",
+		"accesspoint": {
+		  "autoConn": true,
+		  "essid": "Vulcan_WPA2_24_ENT_SHA256",
+		  "security": {
+			"authentication": "PEAP",
+			"innerAuthentication": "MSCHAPV2",
+			"password": "************",
+			"securityType": "WPA2Enterprise",
+			"userName": "testuser1"
+		  }
+		}
+	  }
+	}
+
+2. apn key and value missing in wan getnetworkinfo response example, right response format is as follows:
+
+	{
+	  "wan0": {
+		"Status": "offline",
+		"activeSim": "esim",
+		"esim": {
+		  "apn": "jionet",
+		  "currentDataClass": "5G",
+		  "currentServiceProvider": "Jio True5G",
+		  "enableIPv6": true,
+		  "enablePin": false,
+		  "enableRoaming": false,
+		  "highestAvailableDataClass": "5G",
+		  "internetAccess": false,
+		  "packetServiceState": "Attached",
+		  "preferredNetworkType": "AUTO",
+		  "registerState": "Home",
+		  "rsrp": "-110.0dBm",
+		  "rsrq": "-12.0dB",
+		  "rssi": "0.0dBm",
+		  "signalBar": 2,
+		  "simState": "Initialized",
+		  "snr": "10.5dB"
+		},
+		"isEnabled": true
+	  }
+	}
+
+3. Macaddress not required in the hotspot getnetworkinfo response, right response is as follows:
+
+	{
+	  "uap0": {
+		"Clients": [
+		  {
+			"IP": "192.168.12.174",
+			"MAC": "90:75:de:14:fa:26",
+			"hostName": "FXR609BC6A7"
+		  }
+		],
+		"isEnabled": true,
+		"isHidden": false,
+		"securityType": "WPA2Personal",
+		"ssid": "VULCAN_HOTSPOT",
+		"ssidPassword": "12345678"
+	  }
+	}
+
+4. Sending uap0 with enable: true while mlan0 is connected drops the Wi-Fi client connection, and vice versa. This isn't true. When mlan0 is connected and we send uap0 set API with enable as true then we get an error message: 
+
+	{  "code": 3,  "message": "CS:'setNetworkInfoReq' failed,Reason: Disable WiFi to enable Hotspot"}
+
+	Same in the vice versa scenario as well 
+	 
+	If the reader's only route to your network is mlan0, enabling the hotspot will disconnect it. This line also has to be removed, because this isnt the correct working situation.
+	
+	The right description would be: if hotspot needs to be enabled then disable mlan0 first, and vice versa.
+	
+
+5. WPA3 Personal set example is missing, payload for that would be as follows:
+
+	{
+		"mlan0": {
+			"enable": true,
+			"accesspoint": {
+				"autoConn": true,
+				"connect": true,
+				"essid": "VULCAN_2.4_WPA3",
+				"security": {
+					"enable": true,
+					"WPA3Personal": {
+						"password": "krishna1234567"
+					}
+				}
+			}
+		}
+	}
+	
+6. esim disable operation set payload missing in eth /cloud/esimConfig API:
+ 
+	{
+	  "operation": "disable",
+	  "profileNickName": "gnd1"
+	}
+	
+	The disable is mentioned as supported operations.
+	
+7. blescan mentioned as an interface in the FXR60, which isnt correct. blescan is a feature built over Bluetooth(blescan) interface
+

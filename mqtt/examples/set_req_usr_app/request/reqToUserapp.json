@@ -1,0 +1,10 @@
+{
+  "command": "set_req_usr_app",
+  "command_id": "req-set-req-usr-app",
+  "payload": {
+    "command": {
+      "message": "Hello World!!!"
+    },
+    "userapp": "mylogger"
+  }
+}

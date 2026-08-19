@@ -1,0 +1,11 @@
+{
+  "wan0": {
+    "enable": true,
+    "activeSim": "esim",
+    "esim": {
+      "apn": "jionet",
+      "preferredNetworkType": "AUTO",
+      "enableIPv6": true
+    }
+  }
+}

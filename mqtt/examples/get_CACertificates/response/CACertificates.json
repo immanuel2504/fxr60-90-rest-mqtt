@@ -1,0 +1,9 @@
+{
+  "command": "get_CACertificates",
+  "command_id": "req-get-CACertificates",
+  "payload": [
+    "AmazonRootCA1",
+    "broker.emqx.io-ca"
+  ],
+  "response": "success"
+}

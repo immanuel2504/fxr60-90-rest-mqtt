@@ -1,0 +1,150 @@
+{
+  "endpointConfig": {
+    "control": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "CTRL_MQTT",
+            "description": "Control cmd/rsp over MQTT",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.0.0.50",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-ctrl",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "fxr90-lab/rsp"
+              ],
+              "subscribeTopic": [
+                "fxr90-lab/cmd"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_MQTT",
+            "description": "Tag events to MQTT",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.0.0.50",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-data",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "fxr90-lab/tevents"
+              ],
+              "subscribeTopic": []
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    },
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_MQTT",
+            "description": "Management/heartbeat events",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.0.0.50",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-mevents",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "fxr90-lab/mevents"
+              ],
+              "subscribeTopic": []
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      },
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "MGMT_CMD_MQTT",
+            "description": "Management cmd/rsp",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.0.0.50",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-mcmd",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": [
+                "fxr90-lab/mrsp"
+              ],
+              "subscribeTopic": [
+                "fxr90-lab/mcmd"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

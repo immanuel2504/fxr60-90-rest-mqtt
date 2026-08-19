@@ -1,0 +1,15 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "eth0": {
+      "IPV4": {
+        "dhcp": true
+      },
+      "IPV6": {
+        "dhcp": true
+      },
+      "enable": true
+    }
+  }
+}

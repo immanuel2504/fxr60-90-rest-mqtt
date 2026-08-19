@@ -1,0 +1,9 @@
+{
+  "ble": {
+    "enable": true,
+    "scanIntervalSec": 10,
+    "additionalFilters": {
+      "rssi": -70
+    }
+  }
+}

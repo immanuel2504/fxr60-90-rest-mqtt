@@ -1,0 +1,6 @@
+{
+  "command": "stop",
+  "command_id": "req-stop",
+  "payload": {},
+  "response": "success"
+}

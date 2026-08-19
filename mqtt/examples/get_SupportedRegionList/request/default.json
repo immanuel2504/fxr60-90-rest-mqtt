@@ -1,0 +1,5 @@
+{
+  "command": "get_SupportedRegionList",
+  "command_id": "req-get-SupportedRegionList",
+  "payload": {}
+}

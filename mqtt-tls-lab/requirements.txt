@@ -1,0 +1,3 @@
+# broker.py needs nothing beyond the standard library.
+# listener.py and fake_reader.py use paho as the MQTT client.
+paho-mqtt>=2.0

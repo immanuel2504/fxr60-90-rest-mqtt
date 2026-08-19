@@ -1,0 +1,10 @@
+{
+  "command": "set_bleConfig",
+  "command_id": "req-set-bleConfig",
+  "payload": {
+    "ble": {
+      "enable": true,
+      "scanIntervalSec": 5
+    }
+  }
+}

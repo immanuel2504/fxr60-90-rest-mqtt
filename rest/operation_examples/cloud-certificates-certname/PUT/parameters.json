@@ -1,0 +1,19 @@
+{
+  "certname": {
+    "in": "path",
+    "required": true,
+    "type": "string",
+    "enum": null,
+    "example": "reader-server-cert"
+  },
+  "type": {
+    "in": "query",
+    "required": true,
+    "type": "string",
+    "enum": [
+      "client",
+      "app"
+    ],
+    "example": "client"
+  }
+}

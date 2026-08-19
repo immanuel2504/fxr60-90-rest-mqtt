@@ -1,0 +1,18 @@
+{
+  "1": {
+    "cableLength": 90,
+    "cableLossPerHundredFt": 18
+  },
+  "2": {
+    "cableLength": 18,
+    "cableLossPerHundredFt": 19
+  },
+  "3": {
+    "cableLength": 10,
+    "cableLossPerHundredFt": 11
+  },
+  "4": {
+    "cableLength": 10,
+    "cableLossPerHundredFt": 70
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "command": "get_rg_error_logs",
+  "command_id": "req-get-rg-error-logs",
+  "payload": {
+    "binary": "H4sIAAAAAAAAA+3RQQqAIBBA0a8E7VtEUdEBOoEHEBWKQCJt0e3Ldm3atGjxHwzDMMPAyFI=",
+    "filename": "rg_error.log.gz"
+  },
+  "response": "success"
+}

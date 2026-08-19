@@ -1,0 +1,202 @@
+{
+  "command": "set_importCloudConfig",
+  "command_id": "req-set-importCloudConfig-mqtt-azure-all-channels",
+  "payload": {
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "CTRL_AZURE",
+              "description": "Control cmd/rsp through Azure IoT Hub",
+              "type": "mqtt-Azure",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "your-hub.azure-devices.net",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "basicAuthentication": {
+                  "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                  "password": "none"
+                },
+                "additional": {
+                  "cleanSession": false,
+                  "clientId": "FXR90-LAB-CTRL",
+                  "keepAlive": 120,
+                  "qos": 1,
+                  "reconnectDelay": 600,
+                  "reconnectDelayMax": 86400
+                },
+                "publishTopic": [
+                  "devices/FXR90-LAB-CTRL/messages/events/"
+                ],
+                "subscribeTopic": [
+                  "devices/FXR90-LAB-CTRL/messages/devicebound/#"
+                ],
+                "security": {
+                  "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                  "privateKeyFileLocation": "/data/apps/key.pem",
+                  "publicKeyFileLocation": "/data/apps/csr.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": false,
+                  "verifyPeer": false
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_AZURE",
+              "description": "Tag events to Azure IoT Hub",
+              "type": "mqtt-Azure",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "your-hub.azure-devices.net",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "basicAuthentication": {
+                  "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                  "password": "none"
+                },
+                "additional": {
+                  "cleanSession": false,
+                  "clientId": "FXR90-LAB-DATA",
+                  "keepAlive": 120,
+                  "qos": 1,
+                  "reconnectDelay": 600,
+                  "reconnectDelayMax": 86400
+                },
+                "publishTopic": [
+                  "devices/FXR90-LAB-DATA/messages/events/"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                  "privateKeyFileLocation": "/data/apps/key.pem",
+                  "publicKeyFileLocation": "/data/apps/csr.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": false,
+                  "verifyPeer": false
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": [
+            {
+              "name": "MGMT_EVENTS_AZURE",
+              "description": "Management/heartbeat events to Azure IoT Hub",
+              "type": "mqtt-Azure",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "your-hub.azure-devices.net",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "basicAuthentication": {
+                  "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                  "password": "none"
+                },
+                "additional": {
+                  "cleanSession": false,
+                  "clientId": "FXR90-LAB-MEVENTS",
+                  "keepAlive": 120,
+                  "qos": 1,
+                  "reconnectDelay": 600,
+                  "reconnectDelayMax": 86400
+                },
+                "publishTopic": [
+                  "devices/FXR90-LAB-MEVENTS/messages/events/"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                  "privateKeyFileLocation": "/data/apps/key.pem",
+                  "publicKeyFileLocation": "/data/apps/csr.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": false,
+                  "verifyPeer": false
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        },
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_AZURE",
+              "description": "Management cmd/rsp through Azure IoT Hub",
+              "type": "mqtt-Azure",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "your-hub.azure-devices.net",
+                  "port": 8883,
+                  "protocol": "ssl"
+                },
+                "basicAuthentication": {
+                  "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                  "password": "none"
+                },
+                "additional": {
+                  "cleanSession": false,
+                  "clientId": "FXR90-LAB-MCMD",
+                  "keepAlive": 120,
+                  "qos": 1,
+                  "reconnectDelay": 600,
+                  "reconnectDelayMax": 86400
+                },
+                "publishTopic": [
+                  "devices/FXR90-LAB-MCMD/messages/events/"
+                ],
+                "subscribeTopic": [
+                  "devices/FXR90-LAB-MCMD/messages/devicebound/#"
+                ],
+                "security": {
+                  "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                  "privateKeyFileLocation": "/data/apps/key.pem",
+                  "publicKeyFileLocation": "/data/apps/csr.pem",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": false,
+                  "verifyPeer": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

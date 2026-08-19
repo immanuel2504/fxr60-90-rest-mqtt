@@ -1,0 +1,45 @@
+{
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT_LAB",
+              "description": "Tag events to lab broker (plain MQTT test)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.129.205",
+                  "port": 1884,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-9BC71A",
+                  "debug": true,
+                  "keepAlive": 60,
+                  "qos": 1,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 30
+                },
+                "publishTopic": [
+                  "site/dock01/tevents"
+                ],
+                "subscribeTopic": []
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

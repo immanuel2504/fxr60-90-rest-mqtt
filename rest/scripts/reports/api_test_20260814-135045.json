@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "host": "10.233.46.162",
+    "user": "admin",
+    "tiers": [
+      "read"
+    ],
+    "started": "2026-08-14 13:50:45",
+    "spec": "FXR_60-90_rest_api.yaml"
+  },
+  "results": [
+    {
+      "operationId": "getVersion",
+      "method": "GET",
+      "path": "/cloud/version",
+      "url_path": "/cloud/version",
+      "tier": "read",
+      "summary": "Retrieves reader component version information",
+      "query": {},
+      "body_source": null,
+      "status": 200,
+      "ms": 18.5,
+      "verdict": "WARN",
+      "notes": [],
+      "response_preview": "{\"availableOsUpgrades\": {}, \"cloudAgentApplication\": \"0.6.2.64\", \"model\": \"FXR60\", \"radioControlApplication\": \"0.2.58.7\", \"radioFirmware\": \"2.1.70.0\", \"readerApplication\": \"5.0.1\", \"revertBackFirmware\": {}, \"serialNumber\": \"260945251E0013\"}",
+      "schema_violations": [
+        "$.model: 'FXR60' not in enum ['FXR90']"
+      ],
+      "undocumented_fields": [
+        "$.availableOsUpgrades",
+        "$.revertBackFirmware"
+      ],
+      "missing_fields": [],
+      "content_type": "application/json"
+    }
+  ],
+  "flow": []
+}

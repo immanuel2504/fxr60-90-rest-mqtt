@@ -1,0 +1,1 @@
+{"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"query":{"tagPopulation":256},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["ANTENNA","RSSI","CHANNEL","PC","XPC","CRC","SEEN_COUNT","PHASE"],"transmitPower":[17],"type":"CUSTOM"}

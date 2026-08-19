@@ -1,0 +1,21 @@
+{
+  "eth0": {
+    "IPV4": {
+      "dhcp": false,
+      "dnsAddress": "10.233.1.200",
+      "domainName": "zlab.com",
+      "gatewayAddress": "10.233.46.2",
+      "ipAddress": "10.233.46.47",
+      "subnetMask": "255.255.255.0"
+    },
+    "IPV6": {
+      "dhcp": false,
+      "dnsAddress": "2001:4860:4860::9999",
+      "domainName": "example.ee.com",
+      "gatewayAddress": "fe80::1643:8376:b32:4a16",
+      "ipAddress": "2001:db8:1:0:8731:2eb1:cd28:f0cd",
+      "prefix": 64
+    },
+    "enable": true
+  }
+}

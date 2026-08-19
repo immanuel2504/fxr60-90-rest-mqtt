@@ -1,0 +1,17 @@
+{
+  "command": "set_mode",
+  "command_id": "req-set-mode-with-query",
+  "payload": {
+    "type": "CUSTOM",
+    "antennas": [
+      1
+    ],
+    "transmitPower": 27,
+    "query": {
+      "sel": "ALL",
+      "session": "S1",
+      "tagPopulation": 256,
+      "target": "A"
+    }
+  }
+}

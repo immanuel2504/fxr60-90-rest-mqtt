@@ -1,0 +1,22 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "mlan0": {
+      "enable": true,
+      "accesspoint": {
+        "autoConn": true,
+        "connect": true,
+        "essid": "Vulcan_WPA2_5_ENT_802.1x",
+        "security": {
+          "enable": true,
+          "WPA2Enterprise": {
+            "authentication": "TTLS",
+            "innerAuthentication": "TLS",
+            "certificate": "COMMON"
+          }
+        }
+      }
+    }
+  }
+}

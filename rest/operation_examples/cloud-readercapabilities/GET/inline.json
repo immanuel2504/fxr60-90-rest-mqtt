@@ -1,0 +1,201 @@
+{
+  "capabilities": {
+    "antennas": [
+      {
+        "port": 1,
+        "type": "external"
+      },
+      {
+        "port": 2,
+        "type": "external"
+      },
+      {
+        "port": 3,
+        "type": "external"
+      },
+      {
+        "port": 4,
+        "type": "external"
+      }
+    ],
+    "apiSupported": {
+      "versions": [
+        {
+          "documentation": "https://zebradevs.github.io/rfid-ziotc-docs/index.html",
+          "version": "v1"
+        }
+      ]
+    },
+    "appLEDColors": [
+      "RED",
+      "GREEN",
+      "AMBER"
+    ],
+    "asyncManagementEventsSupported": true,
+    "beepersSupported": false,
+    "clockSupport": true,
+    "daAppPackageFormat": [
+      "DEBIAN"
+    ],
+    "daAppsSupported": true,
+    "daLanguageBindings": [
+      "PYTHON",
+      "NODEJS"
+    ],
+    "directionalitySupported": false,
+    "endpointTypesSupported": [
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "MTLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": false,
+        "retentionSupported": true,
+        "type": "MQTT"
+      },
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "MTLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": false,
+        "retentionSupported": true,
+        "type": "MQTT_WS"
+      },
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "MTLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": true,
+        "retentionSupported": true,
+        "type": "TCPIP"
+      },
+      {
+        "SSLSupported": false,
+        "authenticationTypesSupported": [
+          "TLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": true,
+        "retentionSupported": true,
+        "type": "WEBSOCKET"
+      },
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "MTLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": false,
+        "retentionSupported": true,
+        "type": "AWS_IOT_CORE"
+      },
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "TLS"
+        ],
+        "batchingSupported": true,
+        "dataOnly": false,
+        "retentionSupported": true,
+        "type": "AZURE_IOT_HUB"
+      },
+      {
+        "SSLSupported": true,
+        "authenticationTypesSupported": [
+          "BASIC",
+          "DIGEST",
+          "NTLM",
+          "TLS",
+          "ONLY",
+          "DIGEST_IE",
+          "NTLM_WB",
+          "ANY",
+          "ANYSAFE"
+        ],
+        "batchingSupported": true,
+        "dataOnly": true,
+        "retentionSupported": true,
+        "type": "HTTP"
+      }
+    ],
+    "externalSerialPort": [
+      "USER",
+      "DEBUG"
+    ],
+    "keypadSupport": [
+      "NONE"
+    ],
+    "llrpSupported": true,
+    "maxAppLEDs": 1,
+    "maxDataEndpoints": 2,
+    "maxNumOperationsInAccessSequence": 32,
+    "maxNumPreFilters": 32,
+    "messageFormatsSupported": [
+      "JSON"
+    ],
+    "networkInterfaces": [
+      {
+        "type": "ETHERNET",
+        "internal": true,
+        "ipStack": [
+          "IPv4",
+          "IPv6"
+        ],
+        "ipAssignment": [
+          "STATIC",
+          "DHCP"
+        ],
+        "802.1x": true
+      },
+      {
+        "type": "WIFI",
+        "internal": false,
+        "ipStack": [
+          "IPv4",
+          "IPv6"
+        ],
+        "ipAssignment": [
+          "STATIC",
+          "DHCP"
+        ],
+        "802.1x": true
+      },
+      {
+        "type": "BLUETOOTH",
+        "internal": false,
+        "ipStack": [
+          "IPv4"
+        ],
+        "ipAssignment": [
+          "DHCP"
+        ],
+        "802.1x": false
+      }
+    ],
+    "numGPIs": 4,
+    "numGPOs": 4,
+    "restAPISupported": true,
+    "rssiFilterSupported": true,
+    "supportedDisplayType": [
+      "NONE"
+    ],
+    "supportedPowerSource": [
+      "POWERBRICK",
+      "POE",
+      "POE+"
+    ],
+    "supportedTagDataFormat": [
+      "GS1",
+      "HEX"
+    ],
+    "tagLocationingSupported": false,
+    "triggers": [
+      "GPI"
+    ]
+  }
+}

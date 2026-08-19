@@ -1,0 +1,54 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-data-azure",
+  "payload": {
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "name": "DATA_AZURE",
+                "description": "Tag events to Azure IoT Hub",
+                "type": "mqtt-Azure",
+                "options": {
+                  "enableSecurity": true,
+                  "endpoint": {
+                    "hostName": "your-hub.azure-devices.net",
+                    "port": 8883,
+                    "protocol": "ssl"
+                  },
+                  "basicAuthentication": {
+                    "username": "your-hub.azure-devices.net/DEVICE/?api-version=2018-06-30",
+                    "password": "none"
+                  },
+                  "additional": {
+                    "cleanSession": false,
+                    "clientId": "FXR90-LAB-DATA",
+                    "keepAlive": 120,
+                    "qos": 1,
+                    "reconnectDelay": 600,
+                    "reconnectDelayMax": 86400
+                  },
+                  "publishTopic": [
+                    "devices/FXR90-LAB-DATA/messages/events/"
+                  ],
+                  "subscribeTopic": [],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/cacertazure.pem",
+                    "privateKeyFileLocation": "/data/apps/key.pem",
+                    "publicKeyFileLocation": "/data/apps/csr.pem",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

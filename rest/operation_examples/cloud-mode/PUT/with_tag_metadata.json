@@ -1,0 +1,23 @@
+{
+  "type": "CUSTOM",
+  "antennas": [
+    1
+  ],
+  "transmitPower": 27,
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI",
+    "PHASE",
+    "SEEN_COUNT",
+    "CHANNEL",
+    "PC",
+    "XPC",
+    "CRC",
+    "EPC",
+    "TID",
+    "USER",
+    "MAC",
+    "HOSTNAME",
+    "READER_LOCATION"
+  ]
+}

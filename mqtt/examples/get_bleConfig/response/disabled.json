@@ -1,0 +1,10 @@
+{
+  "command": "get_bleConfig",
+  "command_id": "req-get-bleConfig",
+  "payload": {
+    "ble": {
+      "enable": false
+    }
+  },
+  "response": "success"
+}

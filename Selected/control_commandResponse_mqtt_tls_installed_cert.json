@@ -1,0 +1,43 @@
+{
+  "endpointConfig": {
+    "control": {
+      "commandResponse": {
+        "enableLocalRest": true,
+        "connections": [
+          {
+            "name": "CTRL_MQTT_TLS_INSTALLED",
+            "description": "Secure control MQTT — cert already installed on reader",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "mqtt.example.com",
+                "port": 8883,
+                "protocol": "ssl"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-dock01-ctrl-inst",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 1,
+                "reconnectDelay": 2,
+                "reconnectDelayMax": 60
+              },
+              "publishTopic": ["site/dock01/rsp"],
+              "subscribeTopic": ["site/dock01/cmd"],
+              "security": {
+                "installedCertificateName": "DOCK01_CLIENT",
+                "installedCertificateType": "client",
+                "keyAlgorithm": "RS256",
+                "keyFormat": "PEM",
+                "verifyHostName": true,
+                "verifyPeer": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

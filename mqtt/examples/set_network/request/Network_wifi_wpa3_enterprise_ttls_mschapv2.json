@@ -1,0 +1,23 @@
+{
+  "command": "set_network",
+  "command_id": "req-set-network",
+  "payload": {
+    "mlan0": {
+      "enable": true,
+      "accesspoint": {
+        "autoConn": true,
+        "connect": true,
+        "essid": "Vulcan_WPA3_5_ENT_802.1x",
+        "security": {
+          "enable": true,
+          "WPA3Enterprise": {
+            "authentication": "TTLS",
+            "innerAuthentication": "MSCHAPV2",
+            "username": "testuser1",
+            "password": "X!k78@rH0nL1"
+          }
+        }
+      }
+    }
+  }
+}

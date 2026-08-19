@@ -1,0 +1,6 @@
+{
+  "command": "set_installCACertificate",
+  "command_id": "req-set-installCACertificate",
+  "payload": {},
+  "response": "success"
+}

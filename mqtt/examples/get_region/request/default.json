@@ -1,0 +1,5 @@
+{
+  "command": "get_region",
+  "command_id": "req-get-region",
+  "payload": {}
+}

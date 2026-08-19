@@ -1,0 +1,5 @@
+{
+  "command": "set_dataToRG",
+  "command_id": "req-set-dataToRG",
+  "payload": {}
+}

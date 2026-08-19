@@ -1,0 +1,5 @@
+{
+  "command": "get_preSelection",
+  "command_id": "req-get-preSelection",
+  "payload": {}
+}

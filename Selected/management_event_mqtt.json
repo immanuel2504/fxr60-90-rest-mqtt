@@ -1,0 +1,45 @@
+{
+  "endpointConfig": {
+    "management": {
+      "event": {
+        "connections": [
+          {
+            "name": "MGMT_EVENTS_MQTT",
+            "description": "Management/heartbeat events",
+            "type": "mqtt",
+            "options": {
+              "enableSecurity": false,
+              "endpoint": {
+                "hostName": "10.117.229.9",
+                "port": 1883,
+                "protocol": "tcp"
+              },
+              "additional": {
+                "cleanSession": true,
+                "clientId": "fxr90-lab-mevents",
+                "debug": false,
+                "keepAlive": 60,
+                "qos": 0,
+                "reconnectDelay": 1,
+                "reconnectDelayMax": 30
+              },
+              "publishTopic": ["fxr90-lab/mevents"],
+              "subscribeTopic": []
+            },
+            "additionalOptions": {
+              "batching": {
+                "reportingInterval": 1000,
+                "maxPayloadSizePerReport": 256000
+              },
+              "retention": {
+                "throttle": 500,
+                "maxNumEvents": 150000,
+                "maxEventRetentionTimeInMin": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

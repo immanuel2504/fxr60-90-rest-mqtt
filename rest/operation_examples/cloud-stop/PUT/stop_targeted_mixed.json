@@ -1,0 +1,6 @@
+{
+  "scanType": {
+    "dataEndpoint1": ["ble"],
+    "dataEndpoint2": ["rfid"]
+  }
+}

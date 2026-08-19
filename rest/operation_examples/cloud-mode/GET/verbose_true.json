@@ -1,0 +1,47 @@
+{
+  "antennaStopCondition": {
+    "type": "DURATION",
+    "value": 100
+  },
+  "antennas": [
+    1,
+    2
+  ],
+  "delayAfterSelects": 0,
+  "delayBetweenAntennaCycles": {
+    "duration": 0,
+    "type": "DISABLED"
+  },
+  "environment": "HIGH_INTERFERENCE",
+  "inventoryProtocol": {
+    "mode": "GEN2"
+  },
+  "modeSpecificSettings": {
+    "interval": {
+      "unit": "seconds",
+      "value": 60
+    }
+  },
+  "query": {
+    "sel": "ALL",
+    "session": "S1",
+    "tagPopulation": 256,
+    "target": "A"
+  },
+  "radioStartConditions": {},
+  "radioStopConditions": {},
+  "rssiFilter": {
+    "threshold": -128
+  },
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI",
+    "CHANNEL",
+    "SEEN_COUNT"
+  ],
+  "transmitPower": [
+    27,
+    27
+  ],
+  "type": "INVENTORY"
+}

@@ -1,0 +1,29 @@
+{
+  "hostName": "FXR90C5F1AB",
+  "networkInterface": {
+    "wan0": {
+      "Status": "offline",
+      "activeSim": "esim",
+      "esim": {
+        "apn": "jionet",
+        "currentDataClass": "5G",
+        "currentServiceProvider": "Jio True5G",
+        "enableIPv6": true,
+        "enablePin": false,
+        "enableRoaming": false,
+        "highestAvailableDataClass": "5G",
+        "internetAccess": false,
+        "packetServiceState": "Attached",
+        "preferredNetworkType": "AUTO",
+        "registerState": "Home",
+        "rsrp": "-110.0dBm",
+        "rsrq": "-12.0dB",
+        "rssi": "0.0dBm",
+        "signalBar": 2,
+        "simState": "Initialized",
+        "snr": "10.5dB"
+      },
+      "isEnabled": true
+    }
+  }
+}

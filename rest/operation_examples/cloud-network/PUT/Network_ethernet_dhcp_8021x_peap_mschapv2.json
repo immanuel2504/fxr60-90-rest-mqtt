@@ -1,0 +1,14 @@
+{
+  "eth0": {
+    "enable": true,
+    "security": {
+      "enable": true,
+      "802_1XEAP": {
+        "authentication": "PEAP",
+        "innerAuthentication": "MSCHAPV2",
+        "username": "testuser1",
+        "password": "X!k78@rH0nL1"
+      }
+    }
+  }
+}

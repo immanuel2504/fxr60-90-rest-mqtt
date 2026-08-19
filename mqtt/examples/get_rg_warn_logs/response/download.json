@@ -1,0 +1,9 @@
+{
+  "command": "get_rg_warn_logs",
+  "command_id": "req-get-rg-warn-logs",
+  "payload": {
+    "binary": "H4sIAAAAAAAAA+3RQQqAIBBA0a8E7VtEUdEBOoEHEBWKQCJt0e3Ldm3atGjxHwzDMMPAyFI=",
+    "filename": "rg_warning.log.gz"
+  },
+  "response": "success"
+}

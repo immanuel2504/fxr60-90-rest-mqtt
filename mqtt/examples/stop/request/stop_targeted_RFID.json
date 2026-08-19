@@ -1,0 +1,10 @@
+{
+  "command": "stop",
+  "command_id": "req-stop",
+  "payload": {
+    "scanType": {
+      "dataEndpoint1": ["rfid"],
+      "dataEndpoint2": ["rfid"]
+    }
+  }
+}

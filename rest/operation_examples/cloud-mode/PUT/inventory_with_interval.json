@@ -1,0 +1,41 @@
+{
+  "type": "INVENTORY",
+  "environment": "HIGH_INTERFERENCE",
+  "antennas": [
+    1,
+    2
+  ],
+  "transmitPower": [
+    27,
+    27
+  ],
+  "modeSpecificSettings": {
+    "interval": {
+      "unit": "seconds",
+      "value": 60
+    }
+  },
+  "antennaStopCondition": {
+    "type": "DURATION",
+    "value": 100
+  },
+  "query": {
+    "sel": "ALL",
+    "session": "S1",
+    "tagPopulation": 256,
+    "target": "A"
+  },
+  "inventoryProtocol": {
+    "mode": "GEN2"
+  },
+  "delayBetweenAntennaCycles": {
+    "type": "DISABLED",
+    "duration": 0
+  },
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI",
+    "SEEN_COUNT",
+    "CHANNEL"
+  ]
+}

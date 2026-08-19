@@ -1,0 +1,5 @@
+{
+  "command": "get_availableWifiNetworks",
+  "command_id": "req-get-availableWifiNetworks",
+  "payload": {}
+}

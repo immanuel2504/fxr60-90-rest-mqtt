@@ -1,0 +1,6 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config",
+  "payload": {},
+  "response": "success"
+}

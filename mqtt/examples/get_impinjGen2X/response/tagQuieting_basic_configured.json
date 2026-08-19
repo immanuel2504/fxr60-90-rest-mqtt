@@ -1,0 +1,15 @@
+{
+  "command": "get_impinjGen2X",
+  "command_id": "req-get-impinjGen2X",
+  "payload": {
+    "tagQuieting": {
+      "basic": {
+        "action": "quiet",
+        "tagIDs": [
+          "e2801191a5030069073b426d"
+        ]
+      }
+    }
+  },
+  "response": "success"
+}

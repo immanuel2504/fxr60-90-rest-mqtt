@@ -1,0 +1,29 @@
+{
+  "command": "get_certs",
+  "command_id": "req-get-certs",
+  "payload": [
+    {
+      "installTime": "Mon Aug 10 05:12:32 2026",
+      "issuerName": "ZLAB-CA01",
+      "name": "COMMON",
+      "publickey": "",
+      "serial": "0x170000005232B0DE84B4545965000000000052",
+      "subjectName": "testuser1 (ZLAB)",
+      "type": "client",
+      "validityEnd": "02/06/2027",
+      "validityStart": "02/06/2026"
+    },
+    {
+      "installTime": "Mon Aug 10 04:58:59 2026",
+      "issuerName": "FXR609BC6A7",
+      "name": "Server",
+      "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3aStW3ecimauj1ZtGfM4\nSE0pY/3Mfo6jQGI+52v0m0jt6nipngXnTZf9ZVphNOC0NcXdbONc1cKIUop5wFfT\nDfM5hUedQVvodyQKCd8TBhERNHXSpsLfR1GwzxtK9CHmNKEvIo4z3FDi9D9vQiTC\nu4Cg9wAvLhbttzq4FwYaoVgMUH5foWiIq+hozWOf99PctLAuvEaR/uXvupZr6T7a\nNTUuZY1tDKXtXWKj3Cc1SBMJ62reVVQhl75vEWIdkd3Qeav0NCxeH8td+6Bh/NNH\nzWWAJ/OghNWjvlaQwesfmTYn1ctJ1mI7jwkPCEAB2G78BmmWXDW9qIPe4H8PTt3s\nDQIDAQAB\n-----END PUBLIC KEY-----\n",
+      "serial": "0x3039",
+      "subjectName": "FXR609BC6A7",
+      "type": "server",
+      "validityEnd": "05/08/2046",
+      "validityStart": "10/08/2026"
+    }
+  ],
+  "response": "success"
+}
