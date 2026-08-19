@@ -1,0 +1,42 @@
+{
+  "command": "get_mode",
+  "command_id": "req-get-mode",
+  "response": "success",
+  "payload": {
+    "type": "PORTAL",
+    "antennas": [
+      1,
+      2
+    ],
+    "transmitPower": [
+      31.5,
+      31.5
+    ],
+    "inventoryProtocol": {
+      "mode": "GEN2"
+    },
+    "environment": "HIGH_INTERFERENCE",
+    "antennaStopCondition": [
+      {
+        "type": "DURATION",
+        "value": 100
+      }
+    ],
+    "query": [
+      {
+        "sel": "ALL",
+        "session": "S2",
+        "tagPopulation": 256,
+        "target": "AB"
+      }
+    ],
+    "reportFilter": {
+      "duration": 0,
+      "type": "PER_ANTENNA"
+    },
+    "delayBetweenAntennaCycles": {
+      "duration": 0,
+      "type": "DISABLED"
+    }
+  }
+}
