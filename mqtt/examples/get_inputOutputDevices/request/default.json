@@ -1,0 +1,5 @@
+{
+  "command": "get_inputOutputDevices",
+  "command_id": "req-get-inputOutputDevices",
+  "payload": {}
+}

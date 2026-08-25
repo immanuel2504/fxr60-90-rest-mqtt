@@ -40,6 +40,7 @@ tags:
 - name: System
 - name: App-led
 - name: Stack-led
+- name: Display
 - name: Gpio
 - name: Region
 - name: Logs
@@ -114,6 +115,301 @@ paths:
                 message: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTc1NDU2NzIwMH0.Ck7mQ0Xw1t9nB3lZP2sVhYqR8jJdT6uF4aG1cN5eK0s
       security:
       - basicAuth: []
+  /cloud/displayConfig:
+    get:
+      tags:
+      - Display
+      summary: Retrieves display configuration
+      description: '## 1. Description
+
+
+        The `GET /cloud/displayConfig` REST endpoint retrieves the currently active display configuration from the device.
+
+
+        This endpoint returns:
+
+
+        - Whether the display rendering engine is enabled
+
+        - On-screen keyboard, start URL, resolution, idle timeout, orientation, and keyboard layout
+
+
+        No request body is required.
+
+
+        ## 2. Endpoint Details
+
+
+        | Property | Value |
+
+        |---|---|
+
+        | REST Endpoint | `GET /cloud/displayConfig` |
+
+        | Communication Type | Client to Device (HTTP request/response) |
+
+        | Applies To | FXR60 / FXR90 |
+
+        | Authentication | Bearer token (`Authorization: Bearer <token>`) |
+
+        | Related Endpoint | `PUT /cloud/displayConfig` |
+
+        | MQTT Command | `get_displayConfig` |
+
+
+        ## 3. When to Use This Endpoint
+
+
+        Use `GET /cloud/displayConfig` to:
+
+
+        - Confirm the display is on and showing the expected URL
+
+        - Read the active resolution, orientation, and keyboard layout
+
+        - Verify the effect of a prior `PUT /cloud/displayConfig` call
+
+
+        Key fields to check in the response:
+
+
+        | Field | What to Check | Why It Matters |
+
+        |---|---|---|
+
+        | `enable` | Is the display engine on? | `false` means the panel is not rendering. |
+
+        | `startUrl` | Which URL is loaded? | Confirms the kiosk or local UI target. |
+
+        | `resolution` | Is it `WidthxHeight` as expected? | Must match a resolution the monitor supports. |
+
+        | `screenTimeoutSec` | Idle timeout, or `0` for always on | `0` keeps the screen awake; maximum is 3600 seconds. |
+
+        | `orientation` | `landscape`, `portrait`, or a flipped variant | Controls how content is rotated. |
+
+        | `keyboardLayout` | Physical layout such as `English-US` | Must match the attached keyboard. |
+
+        '
+      operationId: getDisplayConfig
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDisplayConfigResponse'
+              example:
+                enable: true
+                enableOnscreenKeyboard: false
+                startUrl: https://localhost/
+                resolution: 1920x1080
+                screenTimeoutSec: 300
+                orientation: landscape
+                keyboardLayout: English-US
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - Display
+      summary: Sets display configuration
+      description: '## 1. Description
+
+
+        The `PUT /cloud/displayConfig` REST endpoint updates display configuration on the device.
+
+
+        This endpoint allows you to configure:
+
+
+        - Display engine on or off through `enable`
+
+        - On-screen keyboard through `enableOnscreenKeyboard`
+
+        - Start URL, resolution, idle timeout, orientation, and keyboard layout
+
+
+        All request fields are optional. Send only the settings you want to change.
+
+
+        ## 2. Endpoint Details
+
+
+        | Property | Value |
+
+        |---|---|
+
+        | REST Endpoint | `PUT /cloud/displayConfig` |
+
+        | Communication Type | Client to Device (HTTP request/response) |
+
+        | Applies To | FXR60 / FXR90 |
+
+        | Authentication | Bearer token (`Authorization: Bearer <token>`) |
+
+        | Content-Type | `application/json` |
+
+        | Related Endpoint | `GET /cloud/displayConfig` |
+
+        | MQTT Command | `set_displayConfig` |
+
+
+        ## 3. Before You Begin
+
+
+        Decide which display settings to change before sending this request.
+
+
+        | What You Need | Details |
+
+        |---|---|
+
+        | Enable | `true` turns the display rendering engine on; `false` turns it off. |
+
+        | Start URL | URL opened when the display is enabled, for example `https://localhost/`. |
+
+        | Resolution | Preferred monitor mode as `WidthxHeight`, for example `1920x1080`. |
+
+        | Idle timeout | `screenTimeoutSec`: `0` for always on, maximum `3600` (1 hour). |
+
+        | Orientation | `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`. |
+
+        | Keyboard layout | One of `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, `Japanese`. |
+
+
+        A successful response is an empty JSON object `{}`.
+
+
+        Use `GET /cloud/inputOutputDevices` to confirm a monitor is connected and which resolutions it supports before setting `resolution`.
+
+        '
+      operationId: setDisplayConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetDisplayConfigRequest'
+            example:
+              enable: true
+              enableOnscreenKeyboard: false
+              startUrl: https://localhost/
+              resolution: 1920x1080
+              screenTimeoutSec: 300
+              orientation: landscape
+              keyboardLayout: English-US
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetDisplayConfigResponse'
+              example: {}
+      security:
+      - bearerAuth: []
+  /cloud/inputOutputDevices:
+    get:
+      tags:
+      - Display
+      summary: Retrieves input/output device information
+      description: '## 1. Description
+
+
+        The `GET /cloud/inputOutputDevices` REST endpoint retrieves the connection status and capabilities of input/output devices attached to the reader.
+
+
+        This endpoint returns:
+
+
+        - Keyboard status and active layout
+
+        - Mouse and touch connection status
+
+        - Monitor status, including manufacturer, model, current resolution, sleep state, orientation, and supported resolutions
+
+
+        No request body is required.
+
+
+        ## 2. Endpoint Details
+
+
+        | Property | Value |
+
+        |---|---|
+
+        | REST Endpoint | `GET /cloud/inputOutputDevices` |
+
+        | Communication Type | Client to Device (HTTP request/response) |
+
+        | Applies To | FXR60 / FXR90 |
+
+        | Authentication | Bearer token (`Authorization: Bearer <token>`) |
+
+        | Related Endpoint | `GET /cloud/displayConfig` |
+
+        | MQTT Command | `get_inputOutputDevices` |
+
+
+        ## 3. When to Use This Endpoint
+
+
+        Use `GET /cloud/inputOutputDevices` to:
+
+
+        - Confirm a keyboard, mouse, touch screen, or monitor is connected
+
+        - Read supported monitor resolutions before calling `PUT /cloud/displayConfig`
+
+        - Check whether the monitor is awake (`screenActive: true`) or asleep
+
+
+        Key fields to check in the response:
+
+
+        | Field | What to Check | Why It Matters |
+
+        |---|---|---|
+
+        | `keyboard.status` / `mouse.status` / `touch.status` / `monitor.status` | `connected` or `disconnected` | Tells you which peripherals are present. |
+
+        | `keyboard.keyboardLayout` | Active layout such as `English-US` | Should match `displayConfig.keyboardLayout` when a keyboard is attached. |
+
+        | `monitor.details[].currentResolution` | Active `WidthxHeight` | Compare with `GET /cloud/displayConfig` `resolution`. |
+
+        | `monitor.details[].supportedResolutions` | List of modes the hardware allows | Use a value from this list in `PUT /cloud/displayConfig`. |
+
+        | `monitor.details[].screenActive` | Awake vs sleep | `false` means the panel is asleep. |
+
+        '
+      operationId: getInputOutputDevices
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInputOutputDevicesResponse'
+              example:
+                keyboard:
+                  status: connected
+                  keyboardLayout: English-US
+                mouse:
+                  status: disconnected
+                touch:
+                  status: disconnected
+                monitor:
+                  status: connected
+                  details:
+                  - manufacturer: HPN
+                    model: HP Z24n G2
+                    currentResolution: 1920x1080
+                    screenActive: true
+                    orientation: landscape
+                    supportedResolutions:
+                    - 1920x1080
+                    - 1600x900
+      security:
+      - bearerAuth: []
   /cloud/app-led:
     get:
       tags:
@@ -1316,6 +1612,161 @@ paths:
               schema:
                 $ref: '#/components/schemas/operatingMode.v1'
               examples:
+                inline:
+                  summary: inline
+                  value:
+                    modeSpecificSettings:
+                      interval:
+                        unit: seconds
+                        value: 1
+                    antennaStopCondition:
+                    - type: DURATION
+                      value: 100
+                    - type: DURATION
+                      value: 100
+                    - type: DURATION
+                      value: 100
+                    antennas:
+                    - 1
+                    - 5
+                    - 6
+                    delayBetweenAntennaCycles:
+                      duration: 0
+                      type: DISABLED
+                    query:
+                    - tagPopulation: 256
+                    - tagPopulation: 256
+                    - tagPopulation: 256
+                    inventoryProtocol:
+                      mode: GEN2
+                    reportFilter:
+                      duration: 0
+                      type: PER_ANTENNA
+                    filter:
+                      value: 3008.*
+                      match: regex
+                      operation: include
+                    selects:
+                    - target: S1
+                      action: INVB_NOTHING
+                      membank: TID
+                      pointer: 6
+                      length: 24
+                      mask: "800600"
+                    tagMetaData:
+                    - ANTENNA
+                    - RSSI
+                    - CHANNEL
+                    - PC
+                    - XPC
+                    - CRC
+                    - SEEN_COUNT
+                    - PHASE
+                    - gpsCoordinates:
+                        latitude: 12.9703
+                        longitude: 77.7101
+                    transmitPower:
+                    - 20
+                    - 20
+                    - 20
+                    rssiFilter:
+                      threshold: -72
+                    type: CUSTOM
+                    environment: HIGH_INTERFERENCE
+                INVENTORY:
+                  summary: INVENTORY
+                  value:
+                    type: INVENTORY
+                    antennas:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    transmitPower:
+                    - 30
+                    - 30
+                    - 30
+                    - 30
+                    inventoryProtocol:
+                      mode: GEN2
+                    antennaStopCondition:
+                    - type: DURATION
+                      value: 200
+                    query:
+                    - sel: ALL
+                      session: S1
+                      tagPopulation: 512
+                      target: A
+                    tagMetaData:
+                    - ANTENNA
+                    - RSSI
+                    - CHANNEL
+                    - PC
+                    - CRC
+                    - SEEN_COUNT
+                    delayBetweenAntennaCycles:
+                      duration: 0
+                      type: DISABLED
+                    reportFilter:
+                      duration: 0
+                      type: PER_ANTENNA
+                PORTAL:
+                  summary: PORTAL
+                  value:
+                    type: PORTAL
+                    antennas:
+                    - 1
+                    - 2
+                    transmitPower:
+                    - 31.5
+                    - 31.5
+                    inventoryProtocol:
+                      mode: GEN2
+                    environment: HIGH_INTERFERENCE
+                    antennaStopCondition:
+                    - type: DURATION
+                      value: 100
+                    query:
+                    - sel: ALL
+                      session: S2
+                      tagPopulation: 256
+                      target: AB
+                    reportFilter:
+                      duration: 0
+                      type: PER_ANTENNA
+                    delayBetweenAntennaCycles:
+                      duration: 0
+                      type: DISABLED
+                SIMPLE:
+                  summary: SIMPLE
+                  value:
+                    type: SIMPLE
+                    antennas:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    transmitPower:
+                    - 30
+                    - 30
+                    - 30
+                    - 30
+                    inventoryProtocol:
+                      mode: GEN2
+                    antennaStopCondition:
+                    - type: DURATION
+                      value: 200
+                    query:
+                    - sel: ALL
+                      session: S1
+                      tagPopulation: 512
+                      target: A
+                    delayBetweenAntennaCycles:
+                      duration: 0
+                      type: DISABLED
+                    reportFilter:
+                      duration: 0
+                      type: PER_ANTENNA
                 verbose_false:
                   summary: 'Response: verbose false — configured values only'
                   value:
@@ -2687,6 +3138,139 @@ paths:
                                 - fxr90-lab/mevents
                                 subscribeTopic: []
                               type: mqtt
+                      managementEventConfig:
+                        errors:
+                          antenna: true
+                          cpu:
+                            reportIntervalInSec: 1800
+                            threshold: 90
+                          database: true
+                          flash:
+                            reportIntervalInSec: 1800
+                            threshold: 90
+                          ntp: true
+                          radio: true
+                          radio_control: true
+                          ram:
+                            reportIntervalInSec: 1800
+                            threshold: 90
+                          reader_gateway: true
+                          userApp:
+                            reportIntervalInSec: 1800
+                            threshold: 120
+                        gpiEvents: true
+                        gpoEvents: true
+                        heartbeat:
+                          fields:
+                            radio_control:
+                            - ANTENNAS
+                            - RADIO_ACTIVITY
+                            - RADIO_CONNECTION
+                            - CPU
+                            - RAM
+                            - UPTIME
+                            - NUM_ERRORS
+                            - NUM_WARNINGS
+                            - NUM_TAG_READS
+                            - NUM_TAG_READS_PER_ANTENNA
+                            - NUM_DATA_MESSAGES_TXED
+                            - NUM_RADIO_PACKETS_RXED
+                            reader_gateway:
+                            - NUM_DATA_MESSAGES_RXED
+                            - NUM_MANAGEMENT_EVENTS_TXED
+                            - NUM_DATA_MESSAGES_TXED
+                            - NUM_DATA_MESSAGES_RETAINED
+                            - NUM_DATA_MESSAGES_DROPPED
+                            - CPU
+                            - RAM
+                            - UPTIME
+                            - NUM_ERRORS
+                            - NUM_WARNINGS
+                            - INTERFACE_CONNECTION_STATUS
+                            - NOLOCKQ_DEPTH
+                            system:
+                            - CPU
+                            - FLASH
+                            - NTP
+                            - RAM
+                            - SYSTEMTIME
+                            - TEMPERATURE
+                            - UPTIME
+                            - GPO
+                            - GPI
+                            - POWER_NEGOTIATION
+                            - POWER_SOURCE
+                            - MAC_ADDRESS
+                            - HOSTNAME
+                            userDefined: {}
+                            userapps:
+                            - STATUS
+                            - CPU
+                            - RAM
+                            - UPTIME
+                            - NUM_DATA_MESSAGES_RXED
+                            - NUM_DATA_MESSAGES_TXED
+                            - INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING
+                            - OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING
+                          interval: 60
+                        userappEvents: true
+                        warnings:
+                          cpu:
+                            reportIntervalInSec: 1800
+                            threshold: 80
+                          database: true
+                          flash:
+                            reportIntervalInSec: 1800
+                            threshold: 80
+                          ntp: true
+                          radio_api: true
+                          radio_control: true
+                          ram:
+                            reportIntervalInSec: 1800
+                            threshold: 80
+                          reader_gateway: true
+                          temperature:
+                            ambient: 75
+                            pa: 105
+                          userApp:
+                            reportIntervalInSec: 1800
+                            threshold: 60
+                      retention:
+                      - maxEventRetentionTimeInMin: 500
+                        maxNumEvents: 150000
+                        throttle: 100
+                inline:
+                  summary: inline
+                  value:
+                    GPIO-LED: {}
+                    READER-GATEWAY:
+                      batching:
+                      - maxPayloadSizePerReport: 256000
+                        reportingInterval: 10000
+                      endpointConfig:
+                        control:
+                          commandResponse: {}
+                        data:
+                          event:
+                            connections:
+                            - additionalOptions:
+                                batching:
+                                  maxPayloadSizePerReport: 256000
+                                  reportingInterval: 10000
+                                retention:
+                                  maxEventRetentionTimeInMin: 500
+                                  maxNumEvents: 150000
+                                  throttle: 100
+                              description: QWERTYU
+                              name: ASDFGHJ
+                              options:
+                                security:
+                                  verifyPeer: false
+                              type: WEBSOCKET
+                        management:
+                          commandResponse: {}
+                          event:
+                            connections: []
                       managementEventConfig:
                         errors:
                           antenna: true
@@ -6871,6 +7455,18 @@ paths:
                       apn: jionet
                       preferredNetworkType: AUTO
                       enableIPv6: true
+              Network_wifi_dhcp:
+                summary: Network wifi dhcp
+                value:
+                  mlan0:
+                    accesspoint:
+                      autoConn: true
+                      connect: true
+                      essid: Redmi Note 12 5G
+                      security:
+                        WPA3Personal:
+                          password: "12345678"
+                    enable: true
               Network_wifi_security_wpa2_personal:
                 summary: WiFi — WPA2 Personal
                 value:
@@ -11043,6 +11639,166 @@ components:
           type: number
         message:
           type: string
+    GetDisplayConfigResponse:
+      type: object
+      properties:
+        enable:
+          type: boolean
+          description: Indicates if the display is enabled or disabled.
+        enableOnscreenKeyboard:
+          type: boolean
+          description: Indicates if the virtual onscreen keyboard is enabled or disabled.
+        startUrl:
+          type: string
+          description: The current URL loaded.
+        resolution:
+          type: string
+          description: The currently active display resolution.
+        screenTimeoutSec:
+          type: integer
+          description: Current screen idle timeout in seconds.
+        orientation:
+          type: string
+          description: Current rotation of the screen content.
+          enum:
+          - landscape
+          - portrait
+          - landscape-flipped
+          - portrait-flipped
+        keyboardLayout:
+          type: string
+          description: Current physical layout of the keyboard.
+          enum:
+          - English-US
+          - English-UK
+          - German
+          - Spanish
+          - Italian
+          - French
+          - Brazilian
+          - Swedish
+          - Japanese
+    SetDisplayConfigRequest:
+      type: object
+      properties:
+        enable:
+          type: boolean
+          description: Turns the display rendering engine on (true) or off (false).
+        enableOnscreenKeyboard:
+          type: boolean
+          description: Enable or disable the virtual touch onscreen keyboard.
+        startUrl:
+          type: string
+          description: URL to be opened when the display is enabled.
+        resolution:
+          type: string
+          description: Preferred monitor resolution in pixels(WidthxHeight).
+        screenTimeoutSec:
+          type: integer
+          description: The amount of idle time in seconds before the screen goes to sleep. Use 0 for always on, maximum 3600 seconds (1 hour).
+        orientation:
+          type: string
+          description: Controls the rotation of the screen content.
+          enum:
+          - landscape
+          - portrait
+          - landscape-flipped
+          - portrait-flipped
+        keyboardLayout:
+          type: string
+          description: The physical layout of the keyboard.
+          enum:
+          - English-US
+          - English-UK
+          - German
+          - Spanish
+          - Italian
+          - French
+          - Brazilian
+          - Swedish
+          - Japanese
+    SetDisplayConfigResponse:
+      type: object
+      description: Empty success object.
+    GetInputOutputDevicesResponse:
+      type: object
+      properties:
+        keyboard:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - connected
+              - disconnected
+            keyboardLayout:
+              type: string
+              description: The active physical keyboard layout.
+              enum:
+              - English-US
+              - English-UK
+              - German
+              - Spanish
+              - Italian
+              - French
+              - Brazilian
+              - Swedish
+              - Japanese
+        mouse:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - connected
+              - disconnected
+        touch:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - connected
+              - disconnected
+        monitor:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - connected
+              - disconnected
+            details:
+              type: array
+              description: A list containing hardware specifications for each connected monitor.
+              items:
+                type: object
+                properties:
+                  manufacturer:
+                    type: string
+                    description: Manufacturer name of the monitor.
+                  model:
+                    type: string
+                    description: Model name of the monitor.
+                  currentResolution:
+                    type: string
+                    description: The currently active display resolution.
+                  screenActive:
+                    type: boolean
+                    description: Indicates if the monitor is awake (true) or sleep (false).
+                  orientation:
+                    type: string
+                    description: The current rotation of the screen content.
+                    enum:
+                    - landscape
+                    - portrait
+                    - landscape-flipped
+                    - portrait-flipped
+                  supportedResolutions:
+                    type: array
+                    description: A list of all resolutions supported by the monitor hardware.
+                    items:
+                      type: string
     GetAppledResponse:
       type: object
       properties:

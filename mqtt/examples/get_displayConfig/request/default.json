@@ -1,0 +1,5 @@
+{
+  "command": "get_displayConfig",
+  "command_id": "req-get-displayConfig",
+  "payload": {}
+}

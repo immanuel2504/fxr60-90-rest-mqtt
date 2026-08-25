@@ -1,0 +1,30 @@
+{
+  "command": "get_inputOutputDevices",
+  "command_id": "req-get-inputOutputDevices",
+  "payload": {
+    "keyboard": {
+      "status": "connected",
+      "keyboardLayout": "English-US"
+    },
+    "mouse": {
+      "status": "disconnected"
+    },
+    "touch": {
+      "status": "disconnected"
+    },
+    "monitor": {
+      "status": "connected",
+      "details": [
+        {
+          "manufacturer": "HPN",
+          "model": "HP Z24n G2",
+          "currentResolution": "1920x1080",
+          "screenActive": true,
+          "orientation": "landscape",
+          "supportedResolutions": ["1920x1080", "1600x900"]
+        }
+      ]
+    }
+  },
+  "response": "success"
+}

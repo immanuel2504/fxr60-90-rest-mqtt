@@ -8,6 +8,7 @@
       "System",
       "App-led",
       "Stack-led",
+      "Display",
       "Gpio",
       "Region",
       "Logs",
@@ -110,7 +111,10 @@
     "get_supportedStandardList": "Region",
     "get_CACertificates": "Certificate",
     "set_installCACertificate": "Certificate",
-    "del_CACertificate": "Certificate"
+    "del_CACertificate": "Certificate",
+    "get_displayConfig": "Display",
+    "set_displayConfig": "Display",
+    "get_inputOutputDevices": "Display"
   },
   "operation_order": {
     "Control": [
@@ -229,6 +233,11 @@
       "directionality_tag_data_events",
       "zoneHistory",
       "locationHistory"
+    ],
+    "Display": [
+      "get_displayConfig",
+      "set_displayConfig",
+      "get_inputOutputDevices"
     ]
   },
   "operation_subgroups": {
@@ -291,7 +300,10 @@
     "zoneHistory": "Zone History",
     "userapp_event": "User App Event",
     "gpi": "GPI Event",
-    "gpo": "GPO Event"
+    "gpo": "GPO Event",
+    "get_displayConfig": "Get Display Configuration",
+    "set_displayConfig": "Set Display Configuration",
+    "get_inputOutputDevices": "Get Input/Output Devices"
   },
   "tag_descriptions": {}
 }
