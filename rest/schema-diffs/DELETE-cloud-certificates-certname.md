@@ -23,8 +23,8 @@ Both specs require `type` = `client` or `app` (server certificates cannot be del
 
 | Spec | Where `type` goes |
 |---|---|
-| Developer | **Request body** `{ "type": "client" }` |
-| RestDeveloperfile | Required **query** `?type=client` |
+| Developer | **Request body** `{ "type": "client" }` — **matches the reader (26 Aug 2026)** |
+| RestDeveloperfile | **Request body** `{ "type": "client" }` (was query; now aligned) |
 
 MQTT has no query string, so the developer REST body matches MQTT payload shape.
 
@@ -88,4 +88,4 @@ The generator only saw the body. The matching RestDeveloperfile query param is t
 
 ## Docs work still to do (not applied yet)
 
-Nothing has been merged into `RestDeveloperfile.yaml`. Align with the developer column when firmware is the source of truth, then update `rest/operation_descriptions/`, `rest/operation_examples/`, MQTT `openapi_md.json`, and rebuild.
+**5 Final (26 Aug 2026).** `type` is in the JSON body. Query `?type=` was removed. Build script keeps this DELETE body (does not convert it to query).

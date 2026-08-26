@@ -19,6 +19,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_appled` |
 | Pattern Name | Application LED Control |
 | REST Endpoint | `PUT /cloud/app-led` |
 | Communication Type | Client to Device (HTTP request/response) |

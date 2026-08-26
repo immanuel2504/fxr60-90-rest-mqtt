@@ -16,6 +16,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_hostName` |
 | Pattern Name | Hostname Configuration |
 | REST Endpoint | `PUT /cloud/hostName` |
 | Communication Type | Client to Device (HTTP request/response) |

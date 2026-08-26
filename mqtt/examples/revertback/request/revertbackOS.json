@@ -1,5 +1,5 @@
 {
-  "command": "revertback",
+  "command": "set_revertbackOS",
   "command_id": "req-revertback",
   "payload": {}
 }

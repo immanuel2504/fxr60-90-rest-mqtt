@@ -1,8 +1,10 @@
 # PUT `/cloud/apps/{appname}/pass-through` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (align to developer)  
 **operationId:** `setReqtouserapp`  
-**MQTT:** `set_reqToUserapp`
+**MQTT:** `set_reqToUserapp`  
+**Decisions:** [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md)
 
 Compared:
 
@@ -11,18 +13,18 @@ Compared:
 | `rest/openAPISpec 10.yaml` | Developer spec (source of truth for firmware) |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
-The **path is the same**. **Which body field is required** disagrees.
+The **path is the same**. Docs now match the developer request body: `userapp` required, `command` optional.
 
 ---
 
 ## What is happening
 
+Docs now match the developer spec.
+
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `command` | object, **not** required | object, **required** |
-| `userapp` | string, **required** | string, optional (MQTT only; REST uses `{appname}`) |
-
-Developer requires `userapp` even on REST (redundant with the path). Ours requires `command` and treats `userapp` as MQTT-only.
+| `command` | object, **not** required | same |
+| `userapp` | string, **required** | same |
 
 ---
 
@@ -39,12 +41,7 @@ PUT /cloud/apps/{appname}/pass-through
 
 ### RestDeveloperfile
 
-```
-PUT /cloud/apps/{appname}/pass-through
-├── command                     object   required
-│   └── message                 string
-└── userapp                     string              MQTT only
-```
+Same as developer: `userapp` required, `command` optional.
 
 ---
 
@@ -59,11 +56,12 @@ PUT /cloud/apps/{appname}/pass-through
 }
 ```
 
-### RestDeveloperfile
+### Ours (now matches developer)
 
 ```json
 {
-  "command": { "message": "status" }
+  "userapp": "mylogger",
+  "command": { "message": "Hello World!!!" }
 }
 ```
 
@@ -78,6 +76,6 @@ PUT /cloud/apps/{appname}/pass-through
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. For local REST, requiring `command` and ignoring `userapp` matches how autostart documents MQTT vs path. Confirm with firmware whether REST rejects a body that omits `userapp`.
+**Align to developer.** Body requires `userapp`. `command` is optional. REST still uses `{appname}` in the path.

@@ -1,6 +1,7 @@
 # GET `/cloud/version` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (align to developer)  
 **operationId:** `getVersion`  
 **MQTT:** `get_version`
 
@@ -11,7 +12,7 @@ Compared:
 | `rest/openAPISpec 10.yaml` | Developer spec (source of truth for firmware) |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
-The **path is the same**. `model` enum is platform vs FXR-only. Upgrade objects are unconstrained vs `additionalProperties`.
+The **path is the same**. Docs now match the developer spec.
 
 ---
 
@@ -19,24 +20,18 @@ The **path is the same**. `model` enum is platform vs FXR-only. Upgrade objects 
 
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `model` | `FXR90` \| `FX7500` \| `FX9600` \| `ATR7000` \| `FXR60` | `FXR60` \| `FXR90` |
-| `availableOsUpgrades` | object | object + `additionalProperties: true` |
-| `revertBackFirmware` | object | object + `additionalProperties: true` (empty on FXR) |
-
-FXR docs correctly drop FX7500 / FX9600 / ATR7000 from `model`. That is product scope, not a firmware field change.
+| `model` | `FXR90` \| `FX7500` \| `FX9600` \| `ATR7000` \| `FXR60` | same |
+| `availableOsUpgrades` | object | same |
+| `revertBackFirmware` | object | same |
 
 ---
 
 ## Trees
 
 ```
-model
-    developer:          FXR90 | FX7500 | FX9600 | ATR7000 | FXR60
-    RestDeveloperfile:  FXR60 | FXR90
-
-availableOsUpgrades / revertBackFirmware
-    developer:          object
-    RestDeveloperfile:  object additionalProperties
+model                           FXR90 | FX7500 | FX9600 | ATR7000 | FXR60
+availableOsUpgrades             object
+revertBackFirmware              object
 ```
 
 ---
@@ -50,6 +45,6 @@ availableOsUpgrades / revertBackFirmware
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Keep FXR-only `model` unless these docs must cover the shared platform.
+**Align to developer.** `model` includes `FXR90`, `FX7500`, `FX9600`, `ATR7000`, `FXR60`. `availableOsUpgrades` and `revertBackFirmware` are plain objects.

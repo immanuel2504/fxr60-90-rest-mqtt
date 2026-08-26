@@ -20,6 +20,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_impinjGen2X` |
 | Pattern Name | Impinj Gen2X Configuration |
 | REST Endpoint | `PUT /cloud/impinjGen2X` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -44,7 +45,7 @@ Decide which Gen2X feature to configure before sending this request. At least on
 | What You Need | Details |
 |---|---|
 | Feature selection | At least one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` must be present - an empty request body will be rejected. Choose only one reader-scoped feature (`fastID`, `tagFocus`, or `tagQuieting`) per request; `tagProtect` is tag-scoped and can be configured independently. |
-| FastID | Decide whether to enable or disable TID embedding. Optionally specify a TID word selector (`TID[0]`-`TID[3]`). |
+| FastID | Decide whether to enable or disable TID embedding. |
 | TagProtect action | Choose one of: `enableTagProtection` (protect a specific tag), `disableTagProtection` (remove protection from a tag), `enableTagVisibility` (allow reading protected tags), `disableTagVisibility` (block reading protected tags). |
 | TagProtect password | An 8-character hex string (32-bit) is required for all TagProtect actions. |
 | TagProtect tag EPC | `tagID` (hex EPC) is required for `enableTagProtection` and `disableTagProtection`. It must be omitted for `enableTagVisibility` and `disableTagVisibility`. |

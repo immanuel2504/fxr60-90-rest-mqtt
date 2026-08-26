@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_gpoStatus` |
 | REST Endpoint | `GET /cloud/gpo` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |

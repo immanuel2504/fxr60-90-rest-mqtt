@@ -2,7 +2,7 @@
 
 > **Product applicability: FXR60 Premium only.** The stack LED (stack light) is an FXR60 Premium feature; it is not available on other FXR60 variants, and the FXR90.
 
-The `PUT /cloud/stack-led` REST endpoint updates the stack LED state on the reader.
+The `PUT /cloud/stack-led` REST endpoint sets the reader stack LED to the specified color.
 
 Supported colors: `red`, `amber`, `green`, `blue`, `off`.
 
@@ -14,6 +14,7 @@ Supported brightness: `low`, `med`, `high` (defaults to `low`).
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_stackled` |
 | REST Endpoint | `PUT /cloud/stack-led` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | **FXR60 Premium** — not on other FXR60 variants; the FXR90 has no stack light |
@@ -30,6 +31,8 @@ Supported brightness: `low`, `med`, `high` (defaults to `low`).
 | `seconds` | integer | Duration in seconds; use `0` for indefinite |
 
 ## 4. When to Use This Endpoint
+
+Success (`200`) is an empty string. The request body is not returned.
 
 Use `PUT /cloud/stack-led` to:
 

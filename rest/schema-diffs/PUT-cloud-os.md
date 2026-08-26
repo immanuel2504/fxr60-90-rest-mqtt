@@ -5,7 +5,6 @@
 **MQTT:** `set_os`
 
 Compared:
-
 | File | Role |
 |---|---|
 | `rest/openAPISpec 10.yaml` | Developer spec (source of truth for firmware) |
@@ -19,10 +18,10 @@ Related: [PUT `/cloud/apps/install`](PUT-cloud-apps-install.md), [PUT `/cloud/ce
 
 ## What is happening
 
-| Client follows | Body keys | What the reader does (developer spec) |
+| Client follows | Body keys | What the reader does |
 |---|---|---|
-| RestDeveloperfile (old) | `authenticationOptions` | Key is not in the developer schema. |
-| openAPISpec 10 (new) | `options`, optional `retry` + `timeouts` on HTTPS | Matches current download contract. |
+| RestDeveloperfile | `authenticationOptions` | **Works** (`options` does not). Keep this key. |
+| openAPISpec 10 | `options`, optional `retry` + `timeouts` on HTTPS | Retry/timeouts aligned in our docs (4b). Credentials stay `authenticationOptions`. |
 
 Required fields are unchanged: `url`, `authenticationType`.
 
@@ -154,4 +153,5 @@ No `retry`. No `timeouts`.
 
 ## Docs work still to do (not applied yet)
 
-Nothing has been merged into `RestDeveloperfile.yaml`. Align with the developer column when firmware is the source of truth, then update `rest/operation_descriptions/`, `rest/operation_examples/`, MQTT `openapi_md.json`, and rebuild.
+1. **`authenticationOptions` stays** (4a Final). Do not rename to `options`. Talk to the developer.
+2. **4b done.** HTTPS `retry` / `timeouts` added. OS documented as always asynchronous.

@@ -21,14 +21,16 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-start/PUT/start_Inventory.json` | `start/request/start_Inventory.json` | request payload |
 | `cloud-start/PUT/start_Inventory_with_AutoStart.json` | `start/request/start_Inventory with AutoStart.json` | request payload |
 | `cloud-start/PUT/start_Inventory_with_ImpinjGen2X.json` | `start/request/start_Inventory with ImpinjGen2X.json` | request payload |
-| `cloud-start/PUT/start_BLE_only.json` | `start/request/start_BLE_only.json` | request payload |
-| `cloud-start/PUT/start_RFID_only.json` | `start/request/start_RFID_only.json` | request payload |
-| `cloud-start/PUT/start_BLE_and_RFID.json` | `start/request/start_BLE_and_RFID.json` | request payload |
+| `cloud-start/PUT/start_Global_BLE_only.json` | `start/request/start_Global_BLE_only.json` | request payload |
+| `cloud-start/PUT/start_Global_RFID_only.json` | `start/request/start_Global_RFID_only.json` | request payload |
+| `cloud-start/PUT/start_Global_BLE_and_RFID.json` | `start/request/start_Global_BLE_and_RFID.json` | request payload |
+| `cloud-start/PUT/start_Targeted.json` | `start/request/start_Targeted.json` | request payload |
 | `—` | `start/response/success.json` | synthetic success |
 | `cloud-stop/PUT/stop_RFID_default.json` | `stop/request/stop_RFID_default.json` | request payload |
-| `cloud-stop/PUT/stop_RFID_explicit.json` | `stop/request/stop_RFID_explicit.json` | request payload |
-| `cloud-stop/PUT/stop_BLE_only.json` | `stop/request/stop_BLE_only.json` | request payload |
-| `cloud-stop/PUT/stop_BLE_and_RFID.json` | `stop/request/stop_BLE_and_RFID.json` | request payload |
+| `cloud-stop/PUT/stop_Global_RFID_only.json` | `stop/request/stop_Global_RFID_only.json` | request payload |
+| `cloud-stop/PUT/stop_Global_BLE_only.json` | `stop/request/stop_Global_BLE_only.json` | request payload |
+| `cloud-stop/PUT/stop_Global_BLE_and_RFID.json` | `stop/request/stop_Global_BLE_and_RFID.json` | request payload |
+| `cloud-stop/PUT/stop_Targeted.json` | `stop/request/stop_Targeted.json` | request payload |
 | `—` | `stop/response/success.json` | synthetic success |
 | `—` | `get_preSelection/request/default.json` | synthetic empty request |
 | `cloud-preselection/GET/pre_selection.json` | `get_preSelection/response/pre_selection.json` | response payload |
@@ -62,8 +64,10 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-status/GET/inline.json` | `get_status/response/inline.json` | response payload |
 | `cloud-status/GET/running.json` | `get_status/response/running.json` | response payload |
 | `—` | `get_config/request/default.json` | synthetic empty request |
+| `cloud-config/GET/full_configuration.json` | `get_config/response/full_configuration.json` | response payload |
 | `cloud-config/GET/inline.json` | `get_config/response/inline.json` | response payload |
 | `cloud-config/GET/gpio_led_not_configured.json` | `get_config/response/gpio_led_not_configured.json` | response payload |
+| `cloud-config/PUT/xml.json` | `set_config/request/xml.json` | request payload |
 | `cloud-config/PUT/config_data_mqtt_async.json` | `set_config/request/config_data_mqtt_async.json` | request payload |
 | `cloud-config/PUT/config_data_aws.json` | `set_config/request/config_data_aws.json` | request payload |
 | `cloud-config/PUT/config_data_azure_mqtt.json` | `set_config/request/config_data_azure_mqtt.json` | request payload |
@@ -166,6 +170,7 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-certificates-certname/PUT/refreshCertificate_client.json` | `del_certs/request/refreshCertificate_client.json` | request payload |
 | `—` | `del_certs/response/success.json` | synthetic success |
 | `cloud-certificates/PUT/updateCertificate.json` | `set_update_cert/request/updateCertificate.json` | request payload |
+| `cloud-certificates/PUT/updateCertificate_async.json` | `set_update_cert/request/updateCertificate_async.json` | request payload |
 | `cloud-certificates/PUT/updateCertificate_client.json` | `set_update_cert/request/updateCertificate_client.json` | request payload |
 | `cloud-certificates/PUT/updateCertificate_app.json` | `set_update_cert/request/updateCertificate_app.json` | request payload |
 | `cloud-certificates/PUT/updateCertificate_inline_pem.json` | `set_update_cert/request/updateCertificate_inline_pem.json` | request payload |
@@ -181,7 +186,8 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-cacertificates-caname/PUT/InstallCACertificate.json` | `del_CACertificate/request/InstallCACertificate.json` | request payload |
 | `cloud-cacertificates-caname/PUT/InstallCACertificate_named.json` | `del_CACertificate/request/InstallCACertificate_named.json` | request payload |
 | `—` | `del_CACertificate/response/success.json` | synthetic success |
-| `—` | `get_network/request/default.json` | synthetic empty request |
+| `cloud-network/GET/request_all.json` | `get_network/request/default.json` | request payload |
+| `cloud-network/GET/request_eth0.json` | `get_network/request/eth0.json` | request payload |
 | `cloud-network/GET/Ethernet.json` | `get_network/response/Ethernet.json` | response payload |
 | `cloud-network/GET/WiFi.json` | `get_network/response/WiFi.json` | response payload |
 | `cloud-network/GET/Bluetooth.json` | `get_network/response/Bluetooth.json` | response payload |
@@ -222,6 +228,7 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-esimconfig/PUT/eSimConfig_delete.json` | `set_eSimConfig/request/eSimConfig_delete.json` | request payload |
 | `—` | `set_eSimConfig/response/success.json` | synthetic success |
 | `cloud-os/PUT/os.json` | `set_os/request/os.json` | request payload |
+| `cloud-os/PUT/os_https_retry.json` | `set_os/request/os_https_retry.json` | request payload |
 | `cloud-os/PUT/os_basic_auth.json` | `set_os/request/os_basic_auth.json` | request payload |
 | `cloud-os/PUT/os_scp.json` | `set_os/request/os_scp.json` | request payload |
 | `cloud-os/PUT/os_https_pinned_ca.json` | `set_os/request/os_https_pinned_ca.json` | request payload |
@@ -229,6 +236,7 @@ Auto-generated from `grok-examples/` + `mqtt/openapi_md.json`.
 | `cloud-revertbackos/PUT/revertbackOS.json` | `revertback/request/revertbackOS.json` | request payload |
 | `—` | `revertback/response/success.json` | synthetic success |
 | `cloud-apps-install/PUT/installUserapp.json` | `install_user_app/request/installUserapp.json` | request payload |
+| `cloud-apps-install/PUT/installUserapp_async.json` | `install_user_app/request/installUserapp_async.json` | request payload |
 | `cloud-apps-install/PUT/installUserapp_no_auth.json` | `install_user_app/request/installUserapp_no_auth.json` | request payload |
 | `cloud-apps-install/PUT/installUserapp_pinned_ca.json` | `install_user_app/request/installUserapp_pinned_ca.json` | request payload |
 | `—` | `install_user_app/response/success.json` | synthetic success |

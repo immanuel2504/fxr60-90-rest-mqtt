@@ -20,10 +20,10 @@ The **path is the same**. Ethernet 802.1X **JSON key casing**, where **enable** 
 Three client-visible disagreements:
 
 1. **802.1X object key** on `eth0.security`: developer `802_1xEAP` vs ours `802_1XEAP`.
-2. **Enable flags**: developer puts Wi-Fi enable on `mlan0.accesspoint.enable`. Ours puts `mlan0.enable`, plus extra `eth0.security.enable` and `mlan0.accesspoint.security.enable`.
-3. **Inner authentication spelling**: developer `MSCHAPv2` vs ours `MSCHAPV2` (and ours also allows `""` for outer TLS).
+2. **Enable flags**: developer puts Wi-Fi enable on `mlan0.accesspoint.enable`. Ours puts `mlan0.enable`, plus extra `eth0.security.enable` and `mlan0.accesspoint.security.enable`. **Device (26 Aug 2026):** our locations work. Keep our docs.
+3. **Inner authentication spelling**: developer `MSCHAPv2` vs ours `MSCHAPV2` (and ours also allows `""` for outer TLS). **Device (26 Aug 2026):** `MSCHAPV2` works; `MSCHAPv2` does not. Keep our spelling.
 
-Sending the RestDeveloperfile key `802_1XEAP` will not match the developer schema.
+Sending the RestDeveloperfile key `802_1XEAP` **works on the reader** (26 Aug 2026). Developer YAML lists `802_1xEAP`. Keep our spelling. Ask the developer to change the spec.
 
 ---
 

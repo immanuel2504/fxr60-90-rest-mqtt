@@ -17,6 +17,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_region` |
 | Pattern Name | Region Configuration Query |
 | REST Endpoint | `GET /cloud/region` |
 | Communication Type | Client to Device (HTTP request/response) |

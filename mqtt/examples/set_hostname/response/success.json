@@ -1,5 +1,5 @@
 {
-  "command": "set_hostname",
+  "command": "set_hostName",
   "command_id": "req-set-hostname",
   "payload": {},
   "response": "success"

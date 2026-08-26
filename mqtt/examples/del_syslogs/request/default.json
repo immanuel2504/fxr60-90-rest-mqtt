@@ -1,5 +1,5 @@
 {
-  "command": "del_syslogs",
+  "command": "del_logs_syslog",
   "command_id": "req-del-syslogs",
   "payload": {}
 }

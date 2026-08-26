@@ -242,12 +242,20 @@ def sanitize_for_swagger_ui(doc: dict) -> dict:
 
 
 def fix_delete_request_bodies(paths: dict, schemas: dict | None = None) -> int:
-    """A DELETE must not carry a body; move its properties to query parameters."""
+    """Move DELETE JSON bodies to query parameters, except firmware APIs that use a body.
+
+    HTTP clients often avoid DELETE bodies, so most log-delete operations are documented
+    as query parameters. ``DELETE /cloud/certificates/{certname}`` is an exception: the
+    reader expects ``type`` in the JSON body (confirmed on device 26 Aug 2026).
+    """
     schemas = schemas or {}
+    keep_delete_body_paths = frozenset({"/cloud/certificates/{certname}"})
     fixed = 0
 
-    for path_item in paths.values():
+    for path, path_item in paths.items():
         if not isinstance(path_item, dict):
+            continue
+        if path in keep_delete_body_paths:
             continue
         for method, operation in path_item.items():
             if method != "delete" or not isinstance(operation, dict):

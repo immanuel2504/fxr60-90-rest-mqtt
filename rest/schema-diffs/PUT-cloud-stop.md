@@ -1,6 +1,7 @@
 # PUT `/cloud/stop` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (align to developer)  
 **operationId:** `stopInventory`  
 **MQTT:** `stop`
 
@@ -20,7 +21,7 @@ Same `scanType` shape difference as [PUT `/cloud/start`](PUT-cloud-start.md).
 | Spec | Targeted `scanType` object |
 |---|---|
 | Developer | Any endpoint name (`additionalProperties`). |
-| RestDeveloperfile | Named `dataEndpoint1` / `dataEndpoint2` plus the same `additionalProperties`. |
+| RestDeveloperfile | Same |
 
 ---
 
@@ -35,12 +36,7 @@ scanType (object)
 
 ### RestDeveloperfile
 
-```
-scanType (object)
-├── dataEndpoint1               array   ble | rfid
-├── dataEndpoint2               array   ble | rfid
-└── *                           array   ble | rfid
-```
+Same as developer.
 
 ---
 
@@ -67,6 +63,6 @@ scanType (object)
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Same decision as start: keep named endpoints as FXR docs, or drop them and rely on `additionalProperties` only.
+**Align to developer.** Same as start: `additionalProperties` only. Example names: `stop_Global_*`, `stop_Targeted`.

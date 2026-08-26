@@ -21,12 +21,12 @@ On this GET operation’s inline schema:
 
 | Spec | `supportedPowerSource` enum |
 |---|---|
-| Developer | `DC` \| `POE` \| `POE+` \| `POWERBRICK` \| `BATTERY` |
-| RestDeveloperfile | `POE` \| `POE+` \| `POWERBRICK` \| `BATTERY` |
+| Developer GET | `DC` \| `POE` \| `POE+` \| `POWERBRICK` \| `BATTERY` |
+| RestDeveloperfile | same |
 
-Ours dropped `DC` (FXR uses `PWR_BRICK` / `POWERBRICK`, not `DC` — see also [GET `/cloud/status`](GET-cloud-status.md)).
+FXR examples still show `POWERBRICK`, `POE`, `POE+`. `DC` is listed because the developer GET enum includes it.
 
-Note: developer **components** schema for the same field is `DC` \| `POE` \| `POE+` \| `BATTERY` (no `POWERBRICK`). The GET path and the shared component are not identical inside the developer file.
+Note: developer **components** schema for the same field is `DC` \| `POE` \| `POE+` \| `BATTERY` (no `POWERBRICK`). Our GET path and shared component keep `POWERBRICK` (as on the developer GET path) and now also include `DC`.
 
 ---
 
@@ -34,8 +34,7 @@ Note: developer **components** schema for the same field is `DC` \| `POE` \| `PO
 
 ```
 capabilities.supportedPowerSource[]
-    developer GET:      DC | POE | POE+ | POWERBRICK | BATTERY
-    RestDeveloperfile:  POE | POE+ | POWERBRICK | BATTERY
+    DC | POE | POE+ | POWERBRICK | BATTERY
 ```
 
 ---
@@ -49,6 +48,4 @@ capabilities.supportedPowerSource[]
 
 ---
 
-## Docs work still to do (not applied yet)
-
-Nothing has been merged. Keep FXR enums unless these docs must list `DC` for shared-platform readers.
+**Align to developer.** GET `supportedPowerSource` includes `DC`.

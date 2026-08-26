@@ -20,6 +20,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_password` |
 | Pattern Name | Password Change |
 | REST Endpoint | `PUT /cloud/updatePassword` |
 | Communication Type | Client to Device (HTTP request/response) |

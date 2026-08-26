@@ -14,6 +14,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `del_certificate` |
 | Pattern Name | Certificate Deletion |
 | REST Endpoint | `DELETE /cloud/certificates/{certname}` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -21,8 +22,19 @@ Use this endpoint to:
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
 | Path Parameter | `certname` (the certificate name to delete) |
-| Required Request Fields | `type` |
+| Required Request Fields | `type` in the JSON request body |
 | Supported Certificate Types | `client`, `app` (the `server` certificate cannot be deleted) |
+
+Send:
+
+```http
+DELETE /cloud/certificates/{certname}
+Content-Type: application/json
+
+{ "type": "client" }
+```
+
+Do not put `type` in the URL query string.
 
 ## 3. Before You Begin
 

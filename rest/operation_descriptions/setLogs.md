@@ -18,6 +18,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_logs` |
 | Pattern Name | Log Configuration |
 | REST Endpoint | `PUT /cloud/logs` |
 | Communication Type | Client to Device (HTTP request/response) |

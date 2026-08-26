@@ -6,7 +6,7 @@ Stable `command_id`: `req-del-certs`
 
 | File | Direction | Example | REST mapping | Summary |
 |---|---|---|---|---|
-| `request/del_certs.json` | request | `del_certs` | path `certname` + query `type` | Delete client certificate |
+| `request/del_certs.json` | request | `del_certs` | path `certname` + body `{ "type" }` | Delete client certificate |
 | `response/success.json` | response | `success` | `""` | Command succeeded |
 
-Name and type are both in the MQTT payload (`name` ↔ REST path, `type` ↔ REST query). Server certificates cannot be deleted.
+Name and type are both in the MQTT payload (`name` ↔ REST path, `type` ↔ REST **request body**). Server certificates cannot be deleted.

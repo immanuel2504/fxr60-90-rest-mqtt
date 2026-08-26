@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_revertbackOS` |
 | Pattern Name | Firmware Rollback |
 | REST Endpoint | `PUT /cloud/revertbackOS` |
 | Communication Type | Client to Device (HTTP request/response) |

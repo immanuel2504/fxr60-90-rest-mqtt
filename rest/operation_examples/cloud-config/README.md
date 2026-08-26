@@ -1,12 +1,13 @@
 # `/cloud/config`
 
-- **GET** - Retrieves reader configuration (`getConfig`) — deferred
-- **PUT** - Updates reader configuration (`setConfigMqtt`)
+- **GET** - Retrieves reader configuration (`getConfig`). Optional `xml` (Cloud Connect RFID profile). GPIO-LED unset is `{}`.
+- **PUT** - Updates reader configuration (`setConfigMqtt`). Send at least one of `xml`, `GPIO-LED`, or `READER-GATEWAY`. LED actions may use `led` 1, 2, or 3. `postActionColor` is `GREEN`, `RED`, or `AMBER` (`OFF` is rejected).
 
-## PUT examples (11)
+## PUT examples (12)
 
 | File | Example name | Summary |
 |---|---|---|
+| `PUT/xml.json` | `xml` | Cloud Connect RFID XML profile |
 | `PUT/data_mqtt.json` | `data_mqtt` | MQTT data with GPIO-LED, global batching/retention, and management events |
 | `PUT/data_aws.json` | `data_aws` | Tag events over AWS IoT Core |
 | `PUT/data_azure.json` | `data_azure` | Tag events over Azure IoT Hub |

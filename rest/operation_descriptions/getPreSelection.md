@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_preSelection` |
 | Pattern Name | rxSawFilter Status Query |
 | REST Endpoint | `GET /cloud/preSelection` |
 | Communication Type | Client to Device (HTTP request/response) |

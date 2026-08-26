@@ -13,6 +13,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs_rgErrorLog` |
 | Pattern Name | Reader-Gateway Error Log Retrieval |
 | REST Endpoint | `GET /cloud/logs/RgErrorLog` |
 | Communication Type | Client to Device (HTTP request/response) |

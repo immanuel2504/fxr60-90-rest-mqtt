@@ -1,5 +1,5 @@
 {
-  "command": "get_rc_log",
+  "command": "get_logs_rcLog",
   "command_id": "req-get-rc-log",
   "payload": {}
 }

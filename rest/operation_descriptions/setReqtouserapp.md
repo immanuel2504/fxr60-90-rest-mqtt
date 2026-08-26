@@ -1,10 +1,13 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a custom request or data payload to a user application running on the reader. The application is identified by the `{appname}` path parameter.
+The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a custom request or data payload to a user application running on the reader.
 
 This endpoint allows you to configure:
 
+- The target user application through `userapp`
 - The command or data payload to deliver through `command`
+
+The `{appname}` path parameter is required for local REST. MQTT uses the payload `userapp` field instead.
 
 Use this endpoint to:
 
@@ -16,14 +19,15 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_reqToUserapp` |
 | Pattern Name | User Application Request |
 | REST Endpoint | `PUT /cloud/apps/{appname}/pass-through` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Path Parameter | `appname` (the target application) |
-| Required Request Fields | `command` |
+| Path Parameter | `appname` (the target application; local REST) |
+| Required Request Fields | `userapp` |
 
 ## 3. Before You Begin
 
@@ -31,6 +35,6 @@ Confirm the target user application is installed and running before sending this
 
 | What You Need | Details |
 |---|---|
-| Application name | The exact `appname`, supplied as the `{appname}` path parameter, as returned by `GET /cloud/apps`. |
-| Command or data | The `command` object to pass to the user application (for example, `command.message`). The expected structure is defined by the user application, not by the reader API. |
+| Application name | The exact name from `GET /cloud/apps`. On REST send it as `{appname}` in the path **and** as `userapp` in the body. MQTT uses payload `userapp` only. |
+| Command or data | Optional `command` object to pass to the user application (for example, `command.message`). The expected structure is defined by the user application, not by the reader API. |
 | Application state | Use `GET /cloud/apps` to confirm the target application is running (`runningStatus: true`) before sending. A stopped application may not be able to process the request. |

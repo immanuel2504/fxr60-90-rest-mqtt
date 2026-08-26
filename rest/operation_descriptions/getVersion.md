@@ -7,7 +7,8 @@ This endpoint returns:
 - Reader application, radio firmware, and cloud agent versions
 - Radio control application version
 - Reader model and serial number
-- Available OS upgrade paths (`availableOsUpgrades`; empty when none). The backup OS version is not returned.
+- Available OS upgrade paths (`availableOsUpgrades`; empty when none)
+- Firmware revert information (`revertBackFirmware`)
 
 No request body is required.
 
@@ -15,6 +16,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_version` |
 | Pattern Name | Version Query |
 | REST Endpoint | `GET /cloud/version` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -38,7 +40,7 @@ Key fields to check in the response:
 | `readerApplication` | Current reader software version | Determines which features and API operations are available. |
 | `radioFirmware` | Firmware running on the radio module | Affects RF behavior, read performance, and hardware compatibility. |
 | `cloudAgentApplication` | Cloud agent version | Governs device-to-cloud messaging behavior and cloud connectivity. |
-| `model` | Reader model identifier | Drives physical capabilities, antenna limits, and model-specific settings. |
+| `model` | `FXR90`, `FX7500`, `FX9600`, `ATR7000`, or `FXR60` | Drives physical capabilities and model-specific settings. |
 | `serialNumber` | Unique reader serial number | Identifies the device for support cases and asset records. |
 | `availableOsUpgrades` | Is the object empty or populated? | A populated object means a downloaded OS upgrade is ready to install. An empty object `{}` means none is waiting. |
-| `revertBackFirmware` | Typically `{}` | FXR60 / FXR90 do not report the backup OS version through this field. |
+| `revertBackFirmware` | Object | Versions available for reverting the reader firmware. |

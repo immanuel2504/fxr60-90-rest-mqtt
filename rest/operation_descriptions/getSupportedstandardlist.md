@@ -15,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_SupportedStandardList` |
 | Pattern Name | Supported Standard Query |
 | REST Endpoint | `GET /cloud/supportedStandardList` |
 | Communication Type | Client to Device (HTTP request/response) |

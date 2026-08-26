@@ -21,7 +21,7 @@ No new request keys. Ours constrains GPI / antenna-stop **port** to `1`–`4`. D
 
 Same nested fields as [GET `/cloud/mode`](GET-cloud-mode.md).
 
-`tagMetaData[]` was flagged by schema walk; enum names match. Ignore unless a concrete value is missing.
+`tagMetaData`: our docs include **`READER_LOCATION`**; developer spec does not. Same questions as GET `/cloud/mode` — see [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
 ---
 
@@ -55,6 +55,6 @@ operatingMode
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Port enums are FXR-facing documentation. Keep them if firmware only exposes ports 1–4; drop them if the shared platform spec must stay unconstrained.
+**Keep docs.** Ports 1–4 and `READER_LOCATION` stay until the developer replies. Same questions as GET `/cloud/mode` — copy-paste in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).

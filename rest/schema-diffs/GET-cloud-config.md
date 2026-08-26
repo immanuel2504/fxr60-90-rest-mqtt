@@ -19,8 +19,8 @@ The **path is the same**. Developer adds `xml` on the 200 body. GPIO-LED empty-s
 
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `xml` | string — RFID operational XML profile (“Cloud Connect” RFID profile). Returned only on supported models (developer text mentions STARFISH/FX series). | not present |
-| `GPIO-LED` | `oneOf`: string `"NOT_CONFIGURED"` when unset. (Developer GET schema does not `$ref` the full GPIOLEDConfig object in this oneOf.) | `allOf` `$ref` GPIOLEDConfig. Empty object `{}` when unset. |
+| `xml` | string — RFID operational XML profile (“Cloud Connect” RFID profile) | **Same (8a Final).** Optional when present. |
+| `GPIO-LED` | string `"NOT_CONFIGURED"` when unset | **Keep `{}` (8b Final).** `allOf` GPIOLEDConfig object. |
 
 READER-GATEWAY matches.
 
@@ -32,7 +32,7 @@ READER-GATEWAY matches.
 
 ```
 GET /cloud/config
-├── xml                         string              [developer only]
+├── xml                         string
 ├── GPIO-LED                    string              "NOT_CONFIGURED" when unset
 └── READER-GATEWAY              object
 ```
@@ -41,6 +41,7 @@ GET /cloud/config
 
 ```
 GET /cloud/config
+├── xml                         string              optional Cloud Connect RFID profile
 ├── GPIO-LED                    object              GPIOLEDConfig; {} when unset
 └── READER-GATEWAY              object
 ```
@@ -55,7 +56,7 @@ GET /cloud/config
 { "GPIO-LED": "NOT_CONFIGURED" }
 ```
 
-### RestDeveloperfile — GPIO-LED not configured
+### RestDeveloperfile — GPIO-LED not configured (8b)
 
 ```json
 { "GPIO-LED": {} }
@@ -73,6 +74,7 @@ GET /cloud/config
 
 ---
 
-## Docs work still to do (not applied yet)
+## Status
 
-Nothing has been merged. Add `xml` if FXR firmware returns it. Confirm the unset GPIO-LED value (`"NOT_CONFIGURED"` vs `{}`) on a real reader before changing examples.
+**8a Final.** Optional `xml` is in the docs (GET / MQTT `get_config`).  
+**8b Final.** Device (26 Aug 2026): unset GPIO-LED is `{}`. Ask developer to drop `"NOT_CONFIGURED"`.

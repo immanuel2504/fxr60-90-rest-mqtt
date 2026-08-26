@@ -1,8 +1,10 @@
 # GET `/cloud/mode` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (device test)  
 **operationId:** `getMode`  
-**MQTT:** `get_mode`
+**MQTT:** `get_mode`  
+**Decisions:** [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md)
 
 Compared:
 
@@ -22,17 +24,21 @@ The **path is the same**. Ours documents an optional GET body `{ "verbose": true
 | Developer | None. Always returns the current operating mode. |
 | RestDeveloperfile | Optional `{ "verbose": true }` → full config including defaults. Omitted / `false` → configured values only. |
 
-If firmware does not implement `verbose`, that body is docs-only and should not be published as a reader contract.
+**Device test (26 August 2026):** sending `{ "verbose": true }` on GET `/cloud/mode` **works**. Keep `verbose` in our docs. Ask the developer to add it to their spec.
 
 Nested response fields (same operatingMode object as PUT):
 
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `antennaStopCondition[].value.port` | integer | integer enum `1`–`4` |
-| `radioStartConditions.gpis[].port` | integer | integer enum `1`–`4` |
-| `radioStopConditions.gpis[].port` | integer | integer enum `1`–`4` |
+| `antennaStopCondition[].value.port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
+| `radioStartConditions.gpis[].port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
+| `radioStopConditions.gpis[].port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
 
-`tagMetaData[]` was flagged as changed by schema walk (string/object composition). Enum values match (RSSI, PHASE, ANTENNA, … plus `gpsCoordinates` object). Treat as a shape-walk noise unless a named enum actually diverges.
+GET `/cloud/gpi` in the same developer file already has ports 1–4. Our docs keep 1–4 until firmware answers.
+
+`tagMetaData`: same names except our docs also list **`READER_LOCATION`** (developer YAML does not). Keep it until they answer.
+
+Copy-paste questions: [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
 ---
 
@@ -86,4 +92,4 @@ GET with no body.
 
 ## Docs work still to do (not applied yet)
 
-Nothing has been merged into `RestDeveloperfile.yaml`. Confirm with firmware whether `verbose` is a real GET parameter. Nested port enums are FXR-facing docs and can stay if firmware only exposes ports 1–4. Then update overlays and rebuild if the GET body is dropped or kept.
+`verbose` stays. Ports stay 1–4. `READER_LOCATION` stays. Nothing merged until rows in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md) are Final.

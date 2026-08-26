@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_SupportedRegionList` |
 | Pattern Name | Supported Region Query |
 | REST Endpoint | `GET /cloud/supportedRegionList` |
 | Communication Type | Client to Device (HTTP request/response) |

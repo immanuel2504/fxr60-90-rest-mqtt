@@ -20,7 +20,7 @@ The **path is the same**. Developer added an optional GET **request body** to re
 | Spec | GET behaviour |
 |---|---|
 | Developer | No body → all interfaces. Body `{ "interface": "<name>" }` → that interface only. |
-| RestDeveloperfile | No GET body. Always all interfaces. |
+| RestDeveloperfile | **Same (7a Final).** Response `securityType` stays `802_1XEAP`. |
 
 Supported interface names in the developer body: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`.
 
@@ -46,7 +46,7 @@ Omit the body (or send `{}`) to return every interface.
 
 ### RestDeveloperfile
 
-No request body.
+Same optional `interface` body as the developer spec. Response `securityType` stays `802_1XEAP`.
 
 ---
 
@@ -82,7 +82,7 @@ or
 
 ### RestDeveloperfile
 
-GET with no body. No per-interface filter in the spec.
+Same as developer: omit body / `{}` for all interfaces, or `{ "interface": "eth0" }` for one.
 
 ---
 
@@ -96,6 +96,7 @@ GET with no body. No per-interface filter in the spec.
 
 ---
 
-## Docs work still to do (not applied yet)
+## Status
 
-Nothing has been merged into `RestDeveloperfile.yaml`. Align with the developer column when firmware is the source of truth, then update `rest/operation_descriptions/`, `rest/operation_examples/`, MQTT `openapi_md.json`, and rebuild.
+**7a Final.** Optional GET / MQTT body `{ "interface": "<name>" }` is in the docs.  
+**7b Final.** Response `securityType` stays `802_1XEAP`.

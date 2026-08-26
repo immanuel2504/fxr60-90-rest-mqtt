@@ -13,6 +13,7 @@ No request body is required. If no Gen2X configuration has been saved, the respo
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_impinjGen2X` |
 | Pattern Name | Impinj Gen2X Configuration Query |
 | REST Endpoint | `GET /cloud/impinjGen2X` |
 | Communication Type | Client to Device (HTTP request/response) |

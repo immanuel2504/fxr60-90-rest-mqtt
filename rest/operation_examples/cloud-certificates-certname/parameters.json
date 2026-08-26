@@ -4,12 +4,5 @@
     "required": true,
     "type": "string",
     "example": "mqtt-client-cert"
-  },
-  "type": {
-    "in": "query",
-    "required": true,
-    "type": "string",
-    "enum": ["client", "app"],
-    "example": "client"
   }
 }

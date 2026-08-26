@@ -3,12 +3,12 @@
   "command_id": "req-get-displayConfig",
   "payload": {
     "enable": true,
-    "enableOnscreenKeyboard": false,
+    "enableOnscreenKeyboard": true,
     "startUrl": "https://localhost/",
     "resolution": "1920x1080",
-    "screenTimeoutSec": 300,
     "orientation": "landscape",
-    "keyboardLayout": "English-US"
+    "screenTimeoutSec": 300,
+    "keyboardLayout": "Japanese"
   },
   "response": "success"
 }

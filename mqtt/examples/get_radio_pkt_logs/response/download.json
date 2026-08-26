@@ -1,5 +1,5 @@
 {
-  "command": "get_radio_pkt_logs",
+  "command": "get_logs_radioPacketLog",
   "command_id": "req-get-radio-pkt-logs",
   "payload": {
     "binary": "H4sIAAAAAAAAA+3RQQqAIBBA0a8E7VtEUdEBOoEHEBWKQCJt0e3Ldm3atGjxHwzDMMPAyFI=",

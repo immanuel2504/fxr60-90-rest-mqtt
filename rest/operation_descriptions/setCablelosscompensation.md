@@ -16,6 +16,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_cableLossCompensation` |
 | Pattern Name | Cable Loss Compensation Configuration |
 | REST Endpoint | `PUT /cloud/cableLossCompensation` |
 | Communication Type | Client to Device (HTTP request/response) |

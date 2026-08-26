@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `del_logs_syslog` |
 | Pattern Name | Syslog Purge |
 | REST Endpoint | `DELETE /cloud/logs/syslog` |
 | Communication Type | Client to Device (HTTP request/response) |

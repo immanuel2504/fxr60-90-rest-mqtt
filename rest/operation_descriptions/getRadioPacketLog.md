@@ -13,6 +13,7 @@ No request body is required. Radio packet logging must be enabled via `PUT /clou
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs_radioPacketLog` |
 | Pattern Name | Radio Packet Log Retrieval |
 | REST Endpoint | `GET /cloud/logs/radioPacketLog` |
 | Communication Type | Client to Device (HTTP request/response) |

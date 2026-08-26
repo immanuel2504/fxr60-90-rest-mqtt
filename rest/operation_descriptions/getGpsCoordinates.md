@@ -16,6 +16,7 @@ No request body is required. The returned values represent the most recent locat
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_gpsCoordinates` |
 | Pattern Name | GPS Coordinates Query |
 | REST Endpoint | `GET /cloud/readerLocation` |
 | Communication Type | Client to Device (HTTP request/response) |

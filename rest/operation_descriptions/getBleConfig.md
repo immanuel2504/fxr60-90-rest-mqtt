@@ -15,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_bleConfig` |
 | REST Endpoint | `GET /cloud/bleConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |

@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `del_logs_radioPacketLog` |
 | Pattern Name | Radio Packet Log Purge |
 | REST Endpoint | `DELETE /cloud/logs/radioPacketLog` |
 | Communication Type | Client to Device (HTTP request/response) |

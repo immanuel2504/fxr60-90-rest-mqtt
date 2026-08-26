@@ -24,6 +24,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_network` |
 | Pattern Name | Network Configuration |
 | REST Endpoint | `PUT /cloud/network` |
 | Communication Type | Client to Device (HTTP request/response) |

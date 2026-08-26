@@ -50,6 +50,7 @@
       }
     ]
   },
+  "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>",
   "READER-GATEWAY": {
     "batching": [
       {

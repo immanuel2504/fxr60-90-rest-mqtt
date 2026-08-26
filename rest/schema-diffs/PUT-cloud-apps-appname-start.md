@@ -1,8 +1,10 @@
 # PUT `/cloud/apps/{appname}/start` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (device test)  
 **operationId:** `setStartuserapp`  
-**MQTT:** `set_startUserapp`
+**MQTT:** `set_startUserapp`  
+**Decisions:** [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md)
 
 Compared:
 
@@ -68,6 +70,6 @@ PUT /cloud/apps/mylogger/start
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Adding the optional REST body documents MQTT without changing local REST. Mirror autostart if you want REST/MQTT parity in RestDeveloperfile.
+**Keep docs.** Device (26 Aug 2026): REST start works with no body. App name stays in the path. MQTT still uses payload `appname`.

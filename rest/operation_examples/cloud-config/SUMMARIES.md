@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `full_configuration` |
-| **Summary title** | `Full configuration with GPIO-LED applied` |
+| **Summary title** | `Full configuration with GPIO-LED and xml profile` |
 
 ### `GET/gpio_led_not_configured.json`
 
@@ -13,6 +13,13 @@
 |---|---|
 | **Example name** | `gpio_led_not_configured` |
 | **Summary title** | `GPIO-LED not configured (empty object)` |
+
+### `PUT/xml.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `xml` |
+| **Summary title** | `Cloud Connect RFID XML profile` |
 
 ### `PUT/data_mqtt.json`
 

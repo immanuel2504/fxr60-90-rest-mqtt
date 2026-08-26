@@ -21,10 +21,13 @@ This is the same pattern as [PUT `/cloud/apps/install`](PUT-cloud-apps-install.m
 
 Firmware changed how download **credentials**, **retry**, and **timeouts** are sent.
 
-| Client follows | Body keys | What the reader does (developer spec) |
+| Client follows | Body keys | What the reader does |
 |---|---|---|
-| RestDeveloperfile (old) | `authenticationOptions`, `retry.count`, `retry.delayInSec` | These keys are not in the developer schema. Likely ignored or rejected. |
-| openAPISpec 10 (new) | `options`, `retry.type` / `policy`, `timeouts` | Matches current download/retry contract. |
+|---|---|---|
+| RestDeveloperfile | `authenticationOptions` | **Works** (same as install; `options` does not) |
+| openAPISpec 10 | `options` | **Does not work** on the reader |
+
+**3a Final:** keep `authenticationOptions`. Do not rename to `options`. See [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
 Required fields are unchanged: `url`, `type`, `name`.
 
@@ -196,4 +199,5 @@ No `timeouts`. No `retry.type` / `policy`.
 
 ## Docs work still to do (not applied yet)
 
-Nothing has been merged into `RestDeveloperfile.yaml`. Align with the developer column when firmware is the source of truth, then update `rest/operation_descriptions/`, `rest/operation_examples/`, MQTT `openapi_md.json`, and rebuild.
+1. **`authenticationOptions` stays** (3a Final). Do not rename to `options`.
+2. **3b done.** Retry / timeouts / `headers.Authorization` aligned to developer.

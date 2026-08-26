@@ -50,10 +50,11 @@
           "postActionState": "LOW",
           "state": "HIGH",
           "type": "GPO"
-        }
-      ]
-    },
-    "READER-GATEWAY": {
+      }
+    ]
+  },
+  "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>",
+  "READER-GATEWAY": {
       "batching": [
         {
           "maxPayloadSizePerReport": 0,

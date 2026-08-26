@@ -17,13 +17,13 @@ The **path is the same**. Developer adds request field `xml`. GPIO-LED **LED num
 
 ## What is happening
 
-1. **`xml`** — raw RFID reader configuration string. Developer: at least one of `xml`, `GPIO-LED`, or `READER-GATEWAY` must be sent. Ours has no `xml`.
+1. **`xml`** — **9a Final.** Optional Cloud Connect RFID XML string. At least one of `xml`, `GPIO-LED`, or `READER-GATEWAY`.
 2. **LED action enums** (same change repeated on every GPIO-LED event):
 
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `led` | `1` \| `2` \| `3` | `3` only (FXR60 / FXR90) |
-| `postActionColor` | `GREEN` \| `RED` \| `AMBER` | same plus `OFF` |
+| `led` | `1` \| `2` \| `3` | **Same (9b Final).** Device: 1, 2, and 3 all work. |
+| `postActionColor` | `GREEN` \| `RED` \| `AMBER` | **Same (9c Final).** Device rejects `OFF`. |
 
 READER-GATEWAY fields match.
 
@@ -35,7 +35,7 @@ READER-GATEWAY fields match.
 
 ```
 PUT /cloud/config
-├── xml                         string              [developer only]
+├── xml                         string
 ├── GPIO-LED                    GPIOLEDConfig
 │   └── <event>[] / LED action
 │       ├── led                 1 | 2 | 3
@@ -47,10 +47,11 @@ PUT /cloud/config
 
 ```
 PUT /cloud/config
+├── xml                         string              Cloud Connect RFID profile (9a Final)
 ├── GPIO-LED                    GPIOLEDConfig
 │   └── <event>[] / LED action
-│       ├── led                 3
-│       └── postActionColor     GREEN | RED | AMBER | OFF
+│       ├── led                 1 | 2 | 3           (9b Final)
+│       └── postActionColor     GREEN | RED | AMBER   (9c Final; OFF rejected)
 └── READER-GATEWAY              object
 ```
 
@@ -60,22 +61,22 @@ The spreadsheet listed `led` / `postActionColor` once per event (CLOUD_CONNECT, 
 
 ## Examples
 
-### Developer — XML only
+### XML only (9a)
 
 ```json
 {
-  "xml": "<RFID …>"
+  "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>"
 }
 ```
 
-### LED action (developer vs ours)
+### LED action — 9b Final (`1` \| `2` \| `3`); 9c Final (`OFF` rejected)
 
 ```json
 { "type": "LED", "led": 1, "color": "GREEN", "postActionColor": "AMBER" }
 ```
 
 ```json
-{ "type": "LED", "led": 3, "color": "GREEN", "postActionColor": "OFF" }
+{ "type": "LED", "led": 3, "color": "GREEN", "postActionColor": "GREEN" }
 ```
 
 ---
@@ -90,6 +91,8 @@ The spreadsheet listed `led` / `postActionColor` once per event (CLOUD_CONNECT, 
 
 ---
 
-## Docs work still to do (not applied yet)
+## Status
 
-Nothing has been merged. Add `xml` if FXR firmware accepts it. LED `3` + `OFF` are FXR-facing constraints; keep them if that is the product, or widen to 1–3 if docs must match the platform GPIO-LED schema.
+**9a Final.** Optional PUT / MQTT `xml` is in the docs.  
+**9b Final.** `led` 1, 2, or 3. Device: all three work.  
+**9c Final.** Dropped `OFF`. Device rejects it. Ask why.

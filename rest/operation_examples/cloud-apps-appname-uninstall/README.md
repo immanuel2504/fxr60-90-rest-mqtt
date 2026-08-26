@@ -27,9 +27,7 @@ READER=10.0.0.42
 TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
 
 curl -sk -X PUT "https://$READER/cloud/apps/mylogger/uninstall" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @PUT/uninstallUserapp.json
+  -H "Authorization: Bearer $TOKEN"
 
 ```
 

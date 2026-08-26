@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_timeZone` |
 | Pattern Name | Time Zone Query |
 | REST Endpoint | `GET /cloud/timeZone` |
 | Communication Type | Client to Device (HTTP request/response) |

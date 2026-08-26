@@ -1,5 +1,5 @@
 {
-  "command": "get_certs",
+  "command": "get_certificates",
   "command_id": "req-get-certs",
   "payload": [
     {

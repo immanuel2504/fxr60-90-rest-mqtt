@@ -18,6 +18,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_ntpServer` |
 | Pattern Name | NTP Server Configuration |
 | REST Endpoint | `PUT /cloud/ntpServer` |
 | Communication Type | Client to Device (HTTP request/response) |

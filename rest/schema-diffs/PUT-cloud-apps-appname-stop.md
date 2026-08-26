@@ -60,6 +60,6 @@ PUT /cloud/apps/mylogger/stop
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Same decision as start/uninstall.
+**Keep docs.** Same as start (10): REST is path only. No body.

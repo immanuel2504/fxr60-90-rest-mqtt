@@ -15,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_readerCapabilities` |
 | Pattern Name | Reader Capability Query |
 | REST Endpoint | `GET /cloud/readerCapabilities` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -41,3 +42,4 @@ Key fields to check in the response:
 | `capabilities.llrpSupported` | Is LLRP supported? | Determines whether the reader can be managed via LLRP-based tools. |
 | `capabilities.endpointTypesSupported` | Which endpoint types are supported? | Governs which data delivery options can be configured in `PUT /cloud/config`. |
 | `capabilities.apiSupported.versions` | Which API versions are accepted? | Ensures the management application targets a compatible API version. |
+| `capabilities.supportedPowerSource` | Which power sources does this model support? | Values may be `DC`, `POE`, `POE+`, `POWERBRICK`, and `BATTERY`. FXR60/FXR90 typically report `POWERBRICK`, `POE`, and `POE+`. |

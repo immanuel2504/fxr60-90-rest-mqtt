@@ -23,6 +23,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_eSimConfig` |
 | Pattern Name | eSIM Configuration |
 | REST Endpoint | `PUT /cloud/eSimConfig` |
 | Communication Type | Client to Device (HTTP request/response) |

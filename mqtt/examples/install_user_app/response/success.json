@@ -1,5 +1,5 @@
 {
-  "command": "install_user_app",
+  "command": "set_installUserapp",
   "command_id": "req-install-user-app",
   "payload": {},
   "response": "success"

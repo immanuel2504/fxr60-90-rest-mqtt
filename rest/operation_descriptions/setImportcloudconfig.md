@@ -21,6 +21,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_importCloudConfig` |
 | Pattern Name | Cloud Endpoint Configuration Import |
 | REST Endpoint | `PUT /cloud/cloudConfig` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -1,5 +1,5 @@
 {
-  "command": "get_supportedStandardList",
+  "command": "get_SupportedStandardList",
   "command_id": "req-get-supportedStandardList",
   "payload": {}
 }

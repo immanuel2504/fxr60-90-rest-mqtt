@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_readPoints` |
 | Pattern Name | Read Point Query |
 | REST Endpoint | `GET /cloud/readPoints` |
 | Communication Type | Client to Device (HTTP request/response) |

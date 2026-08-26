@@ -13,6 +13,7 @@ No request body is required. Values are returned using read-point keys `1` throu
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_cableLossCompensation` |
 | Pattern Name | Cable Loss Compensation Query |
 | REST Endpoint | `GET /cloud/cableLossCompensation` |
 | Communication Type | Client to Device (HTTP request/response) |

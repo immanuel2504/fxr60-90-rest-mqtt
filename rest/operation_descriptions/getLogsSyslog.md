@@ -13,6 +13,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs_syslog` |
 | Pattern Name | Syslog Retrieval |
 | REST Endpoint | `GET /cloud/logs/syslog` |
 | Communication Type | Client to Device (HTTP request/response) |

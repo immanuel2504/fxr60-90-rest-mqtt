@@ -6,10 +6,6 @@
 
 | File | Example name | Summary |
 |---|---|---|
-| `PUT/pass_through.json` | `pass_through` | Send status to mylogger |
+| `PUT/pass_through.json` | `pass_through` | Send Hello World to mylogger |
 
-Path: `appname` = `mylogger`
-
-## NEED LIVE TEST
-
-Confirm path-only app name, request accepted, and real response body from the user app.
+Path: `appname` = `mylogger`. Body requires `userapp` (developer spec). `command` is optional.

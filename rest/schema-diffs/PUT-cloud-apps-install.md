@@ -1,8 +1,10 @@
 # PUT `/cloud/apps/install` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (device test)  
 **operationId:** `setInstalluserapp`  
-**MQTT:** `set_installUserapp`
+**MQTT:** `set_installUserapp`  
+**Decisions:** [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md)
 
 Compared:
 
@@ -19,10 +21,12 @@ The **path is the same**. The **request-body schema for HTTPS download control i
 
 The reader still installs a user application from `url` using `filename`. Firmware changed how download **credentials**, **retry**, and **timeouts** are sent.
 
-| Client follows | Body keys | What the reader does (developer spec) |
+| Client follows | Body keys | What the reader does |
 |---|---|---|
-| RestDeveloperfile (old) | `authenticationOptions`, `retry.count`, `retry.delayInSec` | These keys are not in the developer schema. Likely ignored or rejected. |
-| openAPISpec 10 (new) | `options`, `retry.type` / `policy`, `timeouts` | Matches current download/retry contract. |
+| RestDeveloperfile | `options` | **Works** (HTTPS install, later 26 Aug 2026) |
+| openAPISpec 10 | `options` | **Works** |
+
+Install (2a + 2b): aligned to developer. BASIC credentials are `options`. Certificates and OS still use `authenticationOptions` — [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
 Required fields are unchanged in both files: `url`, `filename`, `authenticationType`.
 
@@ -95,32 +99,7 @@ PUT /cloud/apps/install
 
 ## Request-body tree — ours (`RestDeveloperfile.yaml`)
 
-```
-PUT /cloud/apps/install
-├── authenticationType          string   required   NONE | BASIC
-├── authenticationOptions       object              BASIC credentials  [OLD KEY]
-│   ├── username                string   required
-│   └── password                string   required
-├── filename                    string   required
-├── url                         string   required
-├── verifyPeer                  boolean
-├── verifyHost                  boolean
-├── CACertificateFileLocation   string
-├── CACertificateFileContent    string
-├── publicKeyFileLocation       string
-├── publicKeyFileContent        string
-├── privateKeyFileLocation      string
-├── privateKeyFileContent       string
-├── installedCertificateType    string
-├── installedCertificateName    string
-├── headers                     object              additionalProperties (any name)
-│   └── <any header name>       string
-└── retry                       object              [OLD SHAPE]
-    ├── count                   integer
-    └── delayInSec              integer
-```
-
-Missing versus developer: `options`, `retry.type`, `retry.policy`, `timeouts`.
+Now matches developer: `options`, `retry.type` / `retry.policy`, `timeouts`, named `headers.Authorization`.
 
 ---
 
@@ -128,9 +107,9 @@ Missing versus developer: `options`, `retry.type`, `retry.policy`, `timeouts`.
 
 | Developer JSON path | RestDeveloperfile JSON path | Notes |
 |---|---|---|
-| `options` | `authenticationOptions` | Same object, **renamed key** |
-| `options.username` | `authenticationOptions.username` | Same |
-| `options.password` | `authenticationOptions.password` | Same |
+| `options` | `options` | Same. Device (HTTPS, later 26 Aug 2026) accepts `options` |
+| `options.username` | `options.username` | Same |
+| `options.password` | `options.password` | Same |
 | `retry.type` | — | New. Must be `randomWait` |
 | `retry.policy.retries` | `retry.count` | Closest old field |
 | `retry.policy.wait.min` | `retry.delayInSec` | Not 1:1. Old = fixed delay. New = random range |
@@ -152,7 +131,7 @@ Unchanged in both:
 ```json
 {
   "authenticationType": "BASIC",
-  "authenticationOptions": {
+  "options": {
     "username": "labuser",
     "password": "L@bu$3rs"
   },
@@ -161,7 +140,7 @@ Unchanged in both:
 }
 ```
 
-No async example. Retry, if sent, would be `{ "count": 3, "delayInSec": 10 }`.
+Async HTTPS example: `installUserapp_async.json` (`retry` + `timeouts`).
 
 ### Developer — synchronous (no `retry`)
 
@@ -219,19 +198,15 @@ From `FXR-REST-Schema-by-endpoint_2026-08-25.xlsx`:
 
 ## Same pattern on other endpoints
 
-Update these the same way when install is aligned:
+Certificates and OS already have the retry/timeouts shape. BASIC credentials there stay `authenticationOptions` until retested:
 
 - `PUT /cloud/certificates` (`setUpdatecertificate`)
 - `PUT /cloud/os` (`setOs`)
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-1. In `RestDeveloperfile.yaml`, rename `authenticationOptions` → `options`.
-2. Replace `retry.count` / `delayInSec` with `retry.type` + `retry.policy`.
-3. Add `timeouts`.
-4. Document `headers.Authorization`.
-5. Document sync vs async in the operation description.
-6. Add sync and async examples (YAML + `rest/operation_examples/` + MQTT).
-7. Rebuild REST Swagger and MQTT.
+1. **2a done.** Install BASIC credentials are `options` (HTTPS device test, later 26 Aug 2026).
+2. **2b done.** Retry / timeouts / `headers.Authorization` aligned to developer.
+3. Certificates and OS still use `authenticationOptions` until those endpoints are retested.

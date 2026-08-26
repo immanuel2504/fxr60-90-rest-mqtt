@@ -14,6 +14,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_networkInterfaces` |
 | Pattern Name | Network Interface Query |
 | REST Endpoint | `GET /cloud/networkInterfaces` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -4,7 +4,8 @@ The `GET /cloud/config` REST endpoint retrieves the reader's full configuration,
 
 This endpoint returns:
 
-- GPIO and LED trigger configuration (`GPIO-LED`), including GPO and LED defaults; returned as an empty object `{}` when unset
+- RFID operational XML profile (`xml`) when present — the Cloud Connect RFID profile
+- GPIO and LED trigger configuration (`GPIO-LED`), including GPO and LED defaults; returned as an empty object `{}` when unset (not the string `"NOT_CONFIGURED"`)
 - Reader-gateway settings including tag data retention, batching, and endpoint configuration
 
 No request body is required.
@@ -13,6 +14,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_config` |
 | Pattern Name | Reader Configuration Query |
 | REST Endpoint | `GET /cloud/config` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -33,6 +35,8 @@ Key fields to check in the response:
 
 | Field | What to Check | Why It Matters |
 |---|---|---|
+| `xml` | Is the Cloud Connect RFID profile present? | Operational RFID XML used by Cloud Connect. |
 | `READER-GATEWAY` | Are endpoint URLs and credentials correct? | Determines where tag data is delivered and how the reader authenticates. |
 | `GPIO-LED.GPODefaults` | What are the default GPO states? | Ensures GPO-triggered logic starts from the expected initial state. |
 | `GPIO-LED.LEDDefaults` | What are the LED default states? | Confirms expected LED behavior on startup and after a reboot. |
+| `GPIO-LED` unset | Is the value `{}`? | Empty object means GPIO-LED is not configured. |

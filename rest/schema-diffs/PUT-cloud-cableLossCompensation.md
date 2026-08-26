@@ -11,7 +11,7 @@ Compared:
 | `rest/openAPISpec 10.yaml` | Developer spec (source of truth for firmware) |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
-Same `oneOf`: **All** ports vs **Each** port. The “Each” branch wrapper differs (`patternProperties` vs `cableLossPort.v1`).
+Same `oneOf`: **All** ports vs **Each** port. Docs now match the developer Each-branch wrapper.
 
 ---
 
@@ -20,9 +20,7 @@ Same `oneOf`: **All** ports vs **Each** port. The “Each” branch wrapper diff
 | Branch | Developer | RestDeveloperfile |
 |---|---|---|
 | All | `{ cableLength, cableLossPerHundredFt }` | same |
-| Each | `patternProperties '^[1-8]$'` + `additionalProperties: false` | `additionalProperties` → `cableLossPort.v1` |
-
-JSON a client sends is the same.
+| Each | `patternProperties '^[1-8]$'` + `additionalProperties: false` | same |
 
 ---
 
@@ -37,10 +35,7 @@ oneOf[1]                        object
 
 ### RestDeveloperfile
 
-```
-oneOf[1]                        object additionalProperties
-└── *                           $ref cableLossPort.v1
-```
+Same as developer.
 
 ---
 
@@ -72,6 +67,4 @@ Per port:
 
 ---
 
-## Docs work still to do (not applied yet)
-
-Nothing has been merged. Wrapper-only, same as GET.
+**Align to developer.** Each branch uses `patternProperties: '^[1-8]$'` and `additionalProperties: false`.

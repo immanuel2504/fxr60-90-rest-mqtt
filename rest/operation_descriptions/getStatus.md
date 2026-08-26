@@ -22,6 +22,7 @@ The `ble` section is present only when BLE is supported and its status is availa
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_status` |
 | Pattern Name | Reader Status Query |
 | REST Endpoint | `GET /cloud/status` |
 | Communication Type | Client to Device (HTTP request/response) |

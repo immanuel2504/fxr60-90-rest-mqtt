@@ -24,6 +24,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_bleConfig` |
 | Pattern Name | BLE Configuration Update |
 | REST Endpoint | `PUT /cloud/bleConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -35,7 +36,7 @@ Use this endpoint to:
 | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds this endpoint is not available. |
 | Supported Address Types | `public`, `random` |
 | RSSI Filter Range | `-127` to `0` dBm |
-| Scan Interval Minimum | 1 second |
+| Scan Interval | `0` to `300` seconds |
 
 ## 3. Before You Begin
 
@@ -44,7 +45,7 @@ Decide which BLE behavior you need to configure before sending this request. A m
 | What You Need | Details |
 |---|---|
 | Enable decision | `ble.enable` is required in every request. Set to `true` to activate scanning, or `false` to disable it. |
-| Scan interval | How often the reader collects BLE scan results (`scanIntervalSec`). Minimum value is `1` second. Shorter intervals increase responsiveness; longer intervals reduce data volume. |
+| Scan interval | How often the reader collects BLE scan results (`scanIntervalSec`). Range is `0` to `300` seconds. Shorter intervals increase responsiveness; longer intervals reduce data volume. |
 | RSSI threshold | Set `additionalFilters.rssi` to drop weak advertisements. Range is `-127` to `0` dBm; values closer to zero indicate stronger signals. |
 | Service UUID filters | Prepare 16-bit (`serviceUuids16`) or 128-bit (`serviceUuids128`) UUID lists to filter by advertised services. |
 | iBeacon details | UUID, major, minor, and txPower values for each iBeacon filter entry. |

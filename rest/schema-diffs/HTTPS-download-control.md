@@ -10,19 +10,21 @@ Three REST APIs share one documentation problem: `RestDeveloperfile.yaml` still 
 | Certificates | `PUT /cloud/certificates` | [PUT-cloud-certificates.md](PUT-cloud-certificates.md) |
 | OS | `PUT /cloud/os` | [PUT-cloud-os.md](PUT-cloud-os.md) |
 
-Nothing in this note has been merged into RestDeveloperfile.
+Install retry/timeouts/`options` are merged. Certificates and OS still document `authenticationOptions`.
 
 ---
 
 ## 1. The common problem
 
-The biggest common change:
+The biggest common change in the developer YAML:
 
 ```
-OLD                         NEW
-────────────────────────────────────
-authenticationOptions   →   options
+Our docs / reader — certs and OS           Developer YAML / install
+────────────────────────────────────────────────────────
+authenticationOptions                     options
 ```
+
+**PUT `/cloud/apps/install` (HTTPS, later 26 Aug 2026):** `options` works. Docs aligned. Certificates and OS still use `authenticationOptions`. Decisions: [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
 The new specification also introduces HTTPS download controls:
 
@@ -173,24 +175,9 @@ The client **does not keep the original HTTP request waiting** for the entire do
 
 ## 5. The documentation problem
 
-Current docs tell developers the **old contract**:
+**Credentials:** PUT `/cloud/apps/install` uses `options` (HTTPS, later 26 Aug 2026). PUT `/cloud/certificates` and PUT `/cloud/os` still use `authenticationOptions`. See [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
-```
-authenticationOptions
-retry.count
-retry.delayInSec
-```
-
-Firmware follows the **new contract**:
-
-```
-options
-retry.type
-retry.policy
-timeouts
-```
-
-Documentation needs to be aligned with the developer specification.
+Retry / timeouts (install, certificates, and OS, 26 Aug 2026): **aligned to developer**. OS is always asynchronous.
 
 ---
 
@@ -207,9 +194,9 @@ Documentation needs to be aligned with the developer specification.
                      │
               SAME SCHEMA ISSUE
                      │
-        authenticationOptions
+        authenticationOptions  (certs / OS)
                   ↓
-                options
+                options         (install aligned)
                      │
               HTTPS controls
                      │
@@ -231,4 +218,4 @@ Documentation needs to be aligned with the developer specification.
 
 ## In one sentence
 
-All three APIs have an outdated documentation/schema problem, especially `authenticationOptions` → `options` and the newer HTTPS `retry`/`timeouts` model; apps and certificates become asynchronous when HTTPS retry is configured, while OS updates are always asynchronous.
+Install uses `options` and the new HTTPS `retry`/`timeouts` model. Certificates and OS still document `authenticationOptions`; apps and certificates become asynchronous when HTTPS retry is configured, while OS updates are always asynchronous.

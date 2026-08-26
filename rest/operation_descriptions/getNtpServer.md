@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_ntpServer` |
 | Pattern Name | NTP Server Query |
 | REST Endpoint | `GET /cloud/ntpServer` |
 | Communication Type | Client to Device (HTTP request/response) |

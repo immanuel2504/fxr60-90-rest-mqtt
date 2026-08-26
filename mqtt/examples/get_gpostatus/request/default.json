@@ -1,5 +1,5 @@
 {
-  "command": "get_gpostatus",
+  "command": "get_gpoStatus",
   "command_id": "req-get-gpostatus",
   "payload": {}
 }

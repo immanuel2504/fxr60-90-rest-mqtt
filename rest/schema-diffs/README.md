@@ -9,7 +9,9 @@ One file per operation that still differs between developer firmware spec and th
 | `rest/openAPISpec 10.yaml` | Developer spec |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
-Nothing in these notes has been merged. Start with the client-breaking download and network keys if you align RestDeveloperfile next.
+Nothing in these per-endpoint notes has been merged unless a row in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md) is marked **Final**.
+
+**Working session (questions, device tests, keep/align):** [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md)
 
 **Overview of the three download APIs** (apps, certificates, OS): [HTTPS-download-control.md](HTTPS-download-control.md)
 

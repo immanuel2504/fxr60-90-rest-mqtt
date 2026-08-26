@@ -17,6 +17,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_gpo` |
 | Pattern Name | GPO Control |
 | REST Endpoint | `PUT /cloud/gpo` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_uninstallUserapp` |
 | Pattern Name | User Application Removal |
 | REST Endpoint | `PUT /cloud/apps/{appname}/uninstall` |
 | Communication Type | Client to Device (HTTP request/response) |

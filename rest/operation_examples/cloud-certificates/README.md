@@ -25,6 +25,7 @@ cloud-certificates/
 |---|---|---|---|---|---|---|
 | `GET/installed.json` | GET | response 200 | `installed` | reviewed | yes | Server and client certificates |
 | `PUT/updateCertificate.json` | PUT | request | `updateCertificate` | in-spec | yes |  |
+| `PUT/updateCertificate_async.json` | PUT | request | `updateCertificate_async` | proposed | yes | Install certificate over HTTPS with retry (async) |
 | `PUT/updateCertificate_client.json` | PUT | request | `updateCertificate_client` | proposed | yes | Client cert for mTLS MQTT |
 | `PUT/updateCertificate_app.json` | PUT | request | `updateCertificate_app` | proposed | yes | App certificate, no download auth |
 | `PUT/updateCertificate_inline_pem.json` | PUT | request | `updateCertificate_inline_pem` | proposed | yes | Inline CA content |

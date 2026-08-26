@@ -1,5 +1,5 @@
 {
-  "command": "get_gpi_status",
+  "command": "get_gpiStatus",
   "command_id": "req-get-gpi-status",
   "payload": {
     "1": "LOW",

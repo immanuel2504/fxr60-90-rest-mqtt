@@ -20,6 +20,7 @@ Typical uses: join a Wi-Fi access point, switch Ethernet from DHCP to static IP,
 
 | Property | Value |
 | --- | --- |
+| MQTT Command | `set_network` |
 | Pattern name | Network Configuration |
 | REST endpoint | `PUT /cloud/network` |
 | Communication type | Client to device (HTTP request/response) |

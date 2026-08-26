@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_hostName` |
 | Pattern Name | Hostname Query |
 | REST Endpoint | `GET /cloud/hostName` |
 | Communication Type | Client to Device (HTTP request/response) |

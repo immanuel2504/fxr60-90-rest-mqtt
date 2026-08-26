@@ -1,5 +1,5 @@
 {
-  "command": "del_radio_pkt_logs",
+  "command": "del_logs_radioPacketLog",
   "command_id": "req-del-radio-pkt-logs",
   "payload": {}
 }

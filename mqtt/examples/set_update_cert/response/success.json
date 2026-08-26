@@ -1,5 +1,5 @@
 {
-  "command": "set_update_cert",
+  "command": "set_updateCertificate",
   "command_id": "req-set-update-cert",
   "payload": {},
   "response": "success"

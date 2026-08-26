@@ -1,4 +1,4 @@
-Retrieves the reader's complete network configuration across all interfaces. No request body is required.
+Retrieves the reader's network configuration. Omit the body (or send `{}`) for all interfaces. Send `{"interface": "eth0"}` (or `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`) for one interface.
 
 > [!warning]
 > Cellular interface `wan0` is supported on **FXR90 only**. It is not present on FXR60. On FXR60, expect interfaces such as `eth0`, `mlan0`, `bnep0`, and `uap0` only.
@@ -13,18 +13,19 @@ The response includes:
 - Wi-Fi hotspot (`uap0`) configuration, connected clients, and status
 
 > [!tip]
-> Call this endpoint after `PUT /cloud/network`. The PUT success body is an empty string (`""`); this GET is how you confirm the change.
+> Call this endpoint after `PUT /cloud/network`. The PUT success body is an empty string (`""`); this GET is how you confirm the change. To confirm one interface only, send `{"interface": "<name>"}`.
 
 ## Endpoint details
 
 | Property | Value |
 | --- | --- |
+| MQTT Command | `get_network` |
 | Pattern name | Network Configuration Query |
 | REST endpoint | `GET /cloud/network` |
 | Communication type | Client to device (HTTP request/response) |
 | Applies to | FXR60 / FXR90 (`wan0` = FXR90 only) |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported operations | Retrieve active network configuration for all interfaces |
+| Supported operations | Retrieve all interfaces, or one interface via `interface` |
 
 ## When to use this endpoint
 

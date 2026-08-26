@@ -23,6 +23,7 @@ cloud-os/
 | File | Method | Direction | Example name | Origin | Valid | Summary |
 |---|---|---|---|---|---|---|
 | `PUT/os.json` | PUT | request | `os` | in-spec | yes |  |
+| `PUT/os_https_retry.json` | PUT | request | `os_https_retry` | proposed | yes | HTTPS OS update with retry (always async) |
 | `PUT/os_basic_auth.json` | PUT | request | `os_basic_auth` | proposed | yes | HTTPS + BASIC |
 | `PUT/os_scp.json` | PUT | request | `os_scp` | proposed | yes | SCP transfer |
 | `PUT/os_https_pinned_ca.json` | PUT | request | `os_https_pinned_ca` | proposed | yes | HTTPS with pinned CA + retry |

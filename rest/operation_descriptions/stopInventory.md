@@ -4,10 +4,7 @@ The `PUT /cloud/stop` REST endpoint stops RFID inventory, BLE scanning, or both.
 
 By default, if the request body is empty or `scanType` is not provided, the reader stops RFID inventory only.
 
-`scanType` can be:
-
-- An **array** — global stop on every data endpoint
-- An **object** — targeted stop per data endpoint (`dataEndpoint1`, `dataEndpoint2`)
+`scanType` can be an **array** (global stop on every data endpoint) or an **object** (targeted stop per data endpoint).
 
 Use this endpoint to:
 
@@ -20,6 +17,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `stop` |
 | Pattern Name | Scan Control - Stop |
 | REST Endpoint | `PUT /cloud/stop` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -31,23 +29,29 @@ Use this endpoint to:
 
 ## 3. Stop Behavior
 
-**Global stop** — send an array. The same scan types are stopped on every data endpoint.
+`scanType` is either:
 
-| Request Body | Result |
+- An **array** — **global stop**. The same scan types are stopped on **every** data endpoint.
+- An **object** — **targeted stop**. Keys are data endpoint names; values are the scan types to stop on that endpoint.
+
+**Global stop** (array). Example — BLE on all endpoints:
+
+```json
+{ "scanType": ["ble"] }
+```
+
+| Request body | Result |
 |---|---|
 | `{}` | Stops RFID inventory only. This is the default behavior. |
-| `{ "scanType": ["rfid"] }` | Stops RFID inventory explicitly. BLE scanning continues if active. |
-| `{ "scanType": ["ble"] }` | Stops BLE scanning only. RFID inventory continues if active. |
-| `{ "scanType": ["ble", "rfid"] }` | Stops both BLE scanning and RFID inventory. |
+| `{ "scanType": ["rfid"] }` | Stops RFID inventory on every data endpoint. BLE scanning continues if active. |
+| `{ "scanType": ["ble"] }` | Stops BLE scanning on every data endpoint. RFID inventory continues if active. |
+| `{ "scanType": ["ble", "rfid"] }` | Stops both on every data endpoint. |
 
-**Targeted stop** — send an object. Keys are data endpoints; values are the scan types to stop on that endpoint.
+**Targeted stop** (object with data-endpoint fields):
 
-| `scanType` | Result |
-|---|---|
-| `{ "dataEndpoint1": ["rfid"], "dataEndpoint2": ["rfid"] }` | Stop RFID on both endpoints. |
-| `{ "dataEndpoint1": ["ble"], "dataEndpoint2": ["ble"] }` | Stop BLE on both endpoints. |
-| `{ "dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["ble", "rfid"] }` | Stop BLE and RFID on both endpoints. |
-| `{ "dataEndpoint1": ["ble"], "dataEndpoint2": ["rfid"] }` | Stop BLE on endpoint 1, RFID on endpoint 2. |
+```json
+{ "scanType": { "dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"] } }
+```
 
 > Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, `scanType` is not supported: send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
 

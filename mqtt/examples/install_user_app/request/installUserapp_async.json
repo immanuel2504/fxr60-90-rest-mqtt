@@ -1,0 +1,27 @@
+{
+  "command": "set_installUserapp",
+  "command_id": "req-install-user-app",
+  "payload": {
+    "authenticationType": "BASIC",
+    "filename": "sample-app.deb",
+    "options": {
+      "username": "demo-user",
+      "password": "demo-password"
+    },
+    "url": "https://example.com/packages/sample-app.deb",
+    "retry": {
+      "type": "randomWait",
+      "policy": {
+        "retries": 3,
+        "wait": {
+          "min": 10,
+          "max": 30
+        }
+      }
+    },
+    "timeouts": {
+      "connection": 5,
+      "read": 20
+    }
+  }
+}

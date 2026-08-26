@@ -22,6 +22,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_mode` |
 | Pattern Name | Operating Mode Configuration |
 | REST Endpoint | `PUT /cloud/mode` |
 | Communication Type | Client to Device (HTTP request/response) |

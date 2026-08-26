@@ -56,6 +56,6 @@ powerSource                     PWR_BRICK | POE | POE+
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Antenna map + FXR enums are docs polish. Add `none` to developer Gen2X feature only if firmware returns it when idle.
+**Keep docs** until the developer replies. Copy-paste: [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).

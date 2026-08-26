@@ -16,6 +16,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_preSelection` |
 | Pattern Name | rxSawFilter Configuration |
 | REST Endpoint | `PUT /cloud/preSelection` |
 | Communication Type | Client to Device (HTTP request/response) |

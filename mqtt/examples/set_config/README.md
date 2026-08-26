@@ -4,6 +4,7 @@ REST: `PUT /cloud/config` → `cloud-config/`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
+| `request/xml.json` | request | `xml` | `cloud-config/PUT/xml.json` | Cloud Connect RFID XML profile |
 | `request/data_mqtt.json` | request | `data_mqtt` | `cloud-config/PUT/data_mqtt.json` | MQTT data with GPIO-LED, global batching/retention, and management events |
 | `request/data_aws.json` | request | `data_aws` | `cloud-config/PUT/data_aws.json` | Tag events over AWS IoT Core |
 | `request/data_azure.json` | request | `data_azure` | `cloud-config/PUT/data_azure.json` | Tag events over Azure IoT Hub |

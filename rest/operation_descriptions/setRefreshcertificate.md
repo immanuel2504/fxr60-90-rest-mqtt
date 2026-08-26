@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_refreshCertificate` |
 | Pattern Name | Certificate Refresh |
 | REST Endpoint | `PUT /cloud/certificates/{certname}` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -1,0 +1,7 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-xml",
+  "payload": {
+    "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>"
+  }
+}

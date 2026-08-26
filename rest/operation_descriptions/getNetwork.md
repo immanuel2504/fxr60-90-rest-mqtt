@@ -2,7 +2,15 @@
 
 **Product note:** Cellular interface `wan0` is supported on **FXR90 only**. It is **not present on FXR60**. On FXR60, expect interfaces such as `eth0`, `mlan0`, `bnep0`, and `uap0` only.
 
-The `GET /cloud/network` REST endpoint retrieves the reader's complete network configuration across all interfaces.
+The `GET /cloud/network` REST endpoint retrieves the reader's network configuration.
+
+Omit the request body (or send `{}`) to return **all** interfaces. To return one interface, send:
+
+```json
+{ "interface": "eth0" }
+```
+
+Supported `interface` values: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`. `wan0` is **FXR90 only**.
 
 This endpoint returns:
 
@@ -12,19 +20,19 @@ This endpoint returns:
 - Bluetooth PAN (`bnep0`) configuration and status
 - Cellular (`wan0`) configuration and status — **FXR90 only**
 - Wi-Fi hotspot (`uap0`) configuration, connected clients, and status
-
-No request body is required.
+- BLE scan (`blescan`) when requested
 
 ## 2. Endpoint Details
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_network` |
 | Pattern Name | Network Configuration Query |
 | REST Endpoint | `GET /cloud/network` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 (`wan0` = FXR90 only) |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Operations | Retrieve active network configuration for all interfaces |
+| Supported Operations | Retrieve network configuration for all interfaces, or one interface via `interface` |
 
 ## 3. When to Use This Endpoint
 

@@ -7,4 +7,4 @@
 | Field | Value |
 |---|---|
 | **Example name** | `devices` |
-| **Summary title** | `Keyboard and monitor connected` |
+| **Summary title** | `Monitor connected; keyboard disconnected` |

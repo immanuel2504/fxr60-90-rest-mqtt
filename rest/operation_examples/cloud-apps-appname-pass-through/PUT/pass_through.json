@@ -1,5 +1,6 @@
 {
+  "userapp": "mylogger",
   "command": {
-    "message": "status"
+    "message": "Hello World!!!"
   }
 }

@@ -18,6 +18,20 @@ though every example sends it one level up.
 
 ## GET
 
+### `GET/request_all.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `get_network_all` |
+| **Summary title** | `Request — all interfaces` |
+
+### `GET/request_eth0.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `get_network_eth0` |
+| **Summary title** | `Request — Ethernet (eth0)` |
+
 ### `GET/WiFi.json`
 
 | Field | Value |

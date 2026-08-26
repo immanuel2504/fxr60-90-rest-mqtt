@@ -4,7 +4,10 @@
 
 The `GET /cloud/stack-led` REST endpoint retrieves the current state of the stack LED on the reader.
 
-This endpoint returns status, color, brightness, flash state, configured duration, and remaining time.
+This endpoint returns:
+
+- Status (`DEFAULT` or `NON_DEFAULT`)
+- Color, brightness, flash state, configured duration, and remaining time
 
 No request body is required.
 
@@ -12,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_stackled` |
 | REST Endpoint | `GET /cloud/stack-led` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | **FXR60 Premium** — not on other FXR60 variants; the FXR90 has no stack light |

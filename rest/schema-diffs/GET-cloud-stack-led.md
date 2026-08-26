@@ -46,6 +46,6 @@ status / color / brightness
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Enums are docs polish aligned with PUT. Keep them for FXR; they do not require a firmware schema change.
+**Keep docs.** Developer confirmed `status` is `DEFAULT` or `NON_DEFAULT`. Color and brightness stay the same lists as PUT.

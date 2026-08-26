@@ -12,6 +12,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_CACertificates` |
 | Pattern Name | CA Certificate Inventory Query |
 | REST Endpoint | `GET /cloud/caCertificates` |
 | Communication Type | Client to Device (HTTP request/response) |

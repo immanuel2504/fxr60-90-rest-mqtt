@@ -1,5 +1,5 @@
 {
-  "command": "set_req_usr_app",
+  "command": "set_reqToUserapp",
   "command_id": "req-set-req-usr-app",
   "payload": {
     "userapp": "mylogger",

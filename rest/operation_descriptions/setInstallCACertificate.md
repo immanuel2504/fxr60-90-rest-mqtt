@@ -17,6 +17,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_InstallCACertificate` |
 | Pattern Name | CA Certificate Installation |
 | REST Endpoint | `PUT /cloud/caCertificates/{caname}` |
 | Communication Type | Client to Device (HTTP request/response) |

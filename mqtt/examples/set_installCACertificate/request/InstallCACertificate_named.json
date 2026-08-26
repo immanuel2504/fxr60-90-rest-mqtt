@@ -1,5 +1,5 @@
 {
-  "command": "set_installCACertificate",
+  "command": "set_InstallCACertificate",
   "command_id": "req-set-installCACertificate",
   "payload": {
     "name": "AmazonRootCA1",

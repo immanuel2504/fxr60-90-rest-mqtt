@@ -1,6 +1,7 @@
 # PUT `/cloud/start` — schema difference
 
 **Date:** 25 August 2026  
+**Updated:** 26 August 2026 (align to developer)  
 **operationId:** `startInventory`  
 **MQTT:** `start`
 
@@ -19,12 +20,12 @@ The **path is the same**. Both support `scanType` as an **array** (global) or an
 
 Behaviour is the same: omit `scanType` → RFID only; array → same scan types on every data endpoint; object → scan types per endpoint name.
 
+Docs now match the developer spec.
+
 | Spec | Targeted object keys |
 |---|---|
 | Developer | Any endpoint name (`additionalProperties` of `ble`/`rfid` arrays). Example uses `dataEndpoint1` / `dataEndpoint2`. |
-| RestDeveloperfile | Same `additionalProperties`, **plus** named properties `dataEndpoint1` / `dataEndpoint2`. Extra targeted examples (BLE-only, RFID-only, mixed). |
-
-Clients sending `dataEndpoint1` / `dataEndpoint2` match both. Other connection names are valid in the developer schema; ours documents the two default names explicitly.
+| RestDeveloperfile | Same |
 
 Do not document `nw-mngr` / `ipc:///tmp/nw-mngr-data-pub` as public endpoint names.
 
@@ -42,13 +43,7 @@ scanType                        array | object
 
 ### RestDeveloperfile — `scanType` object branch
 
-```
-scanType                        array | object
-└── (object)
-    ├── dataEndpoint1           array   ble | rfid     [named]
-    ├── dataEndpoint2           array   ble | rfid     [named]
-    └── *                       array   ble | rfid     additionalProperties
-```
+Same as developer: `additionalProperties` only.
 
 ---
 
@@ -83,6 +78,6 @@ YAML example **names** differ (`start_Global_BLE_only` vs `start_BLE_only`). Tha
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-Nothing has been merged. Named `dataEndpoint1` / `dataEndpoint2` can stay as documentation of the default connections if firmware still uses those names. Align example names with the developer file if you want YAML parity.
+**Align to developer.** Targeted `scanType` is `additionalProperties` only. Named `dataEndpoint1` / `dataEndpoint2` stay as examples, not schema properties. Example names: `start_Global_*`, `start_Targeted`.

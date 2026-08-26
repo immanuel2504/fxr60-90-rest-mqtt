@@ -1,5 +1,5 @@
 {
-  "command": "get_radio_pkt_logs",
+  "command": "get_logs_radioPacketLog",
   "command_id": "req-get-radio-pkt-logs",
   "payload": {}
 }

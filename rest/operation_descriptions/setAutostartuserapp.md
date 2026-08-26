@@ -16,6 +16,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_autostartUserapp` |
 | Pattern Name | User Application Autostart Configuration |
 | REST Endpoint | `PUT /cloud/apps/{appname}/autostart` |
 | Communication Type | Client to Device (HTTP request/response) |

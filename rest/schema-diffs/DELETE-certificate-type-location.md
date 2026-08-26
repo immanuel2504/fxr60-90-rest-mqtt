@@ -10,6 +10,8 @@ Per-endpoint schema note: [DELETE-cloud-certificates-certname.md](DELETE-cloud-c
 
 Nothing in this note has been merged into RestDeveloperfile.
 
+**Updated 26 August 2026:** Device test confirms `type` in the request body. Docs aligned. See [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md) item 5.
+
 ---
 
 ## Scenario: you want to delete a certificate from the reader

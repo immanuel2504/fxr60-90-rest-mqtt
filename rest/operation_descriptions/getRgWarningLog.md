@@ -13,6 +13,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs_rgWarningLog` |
 | Pattern Name | Reader-Gateway Warning Log Retrieval |
 | REST Endpoint | `GET /cloud/logs/RgWarningLog` |
 | Communication Type | Client to Device (HTTP request/response) |

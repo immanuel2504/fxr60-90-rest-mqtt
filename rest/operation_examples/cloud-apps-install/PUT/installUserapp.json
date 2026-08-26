@@ -2,7 +2,7 @@
   "url": "sftp://10.117.229.15/home/labuser/EV1/",
   "filename": "mylogger_1.0.1.deb",
   "authenticationType": "BASIC",
-  "authenticationOptions": {
+  "options": {
     "username": "labuser",
     "password": "L@bu$3rs"
   }

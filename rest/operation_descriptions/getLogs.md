@@ -13,6 +13,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs` |
 | Pattern Name | Log Configuration Query |
 | REST Endpoint | `GET /cloud/logs` |
 | Communication Type | Client to Device (HTTP request/response) |

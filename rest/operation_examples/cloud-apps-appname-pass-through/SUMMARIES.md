@@ -7,14 +7,8 @@
 | Field | Value |
 |---|---|
 | **Example name** | `pass_through` |
-| **Summary title** | `Send status to mylogger` |
+| **Summary title** | `Send Hello World to mylogger` |
 
 Path parameter: `appname` = `mylogger`
 
-## NEED LIVE TEST
-
-**Excel status:** NEED LIVE TEST — path appname + app response shape
-
-1. Confirm REST body is `command` only (no `userapp` — name is in the path).
-2. Confirm real app response shape (app-defined JSON).
-3. App must be installed and running (`GET /cloud/apps`).
+Docs follow the developer spec: body requires `userapp`; `command` is optional.

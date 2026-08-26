@@ -28,6 +28,7 @@ An empty body (`{}`) behaves the same as `verbose: false`.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_mode` |
 | Pattern Name | Operating Mode Query |
 | REST Endpoint | `GET /cloud/mode` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_stopUserapp` |
 | Pattern Name | User Application Control — Stop |
 | REST Endpoint | `PUT /cloud/apps/{appname}/stop` |
 | Communication Type | Client to Device (HTTP request/response) |

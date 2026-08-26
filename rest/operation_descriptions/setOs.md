@@ -8,6 +8,7 @@ This endpoint allows you to configure:
 - The download authentication method through `authenticationType`
 - Download credentials through `authenticationOptions`
 - Optional custom HTTP headers through `headers`
+- Optional HTTPS download retry through `retry` and timeouts through `timeouts`
 
 Use this endpoint to:
 
@@ -15,10 +16,15 @@ Use this endpoint to:
 - Deploy firmware from an internal HTTP(S) artifact repository
 - Perform a scheduled firmware update across a fleet of readers
 
+**Always asynchronous.** The reader acknowledges this call immediately. Download and install run in the background. Final success or failure is on the management events channel, or use `GET /cloud/status`. Sending `retry` does **not** change that — it only sets HTTPS backoff.
+
+`retry` and `timeouts` are HTTPS only. Do not send them for SCP, SFTP, or FTPS.
+
 ## 2. Endpoint Details
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_os` |
 | Pattern Name | OS Firmware Update |
 | REST Endpoint | `PUT /cloud/os` |
 | Communication Type | Client to Device (HTTP request/response) |
@@ -38,6 +44,8 @@ Gather all firmware download details before sending this request. A failed OS up
 | Firmware URL | The URL of the firmware directory on a server the reader can reach over `HTTPS`, `SFTP`, `SCP`, or `FTPS`. The reader fetches a file list from this URL, then downloads the appropriate build. |
 | Authentication type | `NONE` if no download credentials are required, or `BASIC` for username/password HTTP authentication. |
 | Download credentials | Required when `authenticationType` is `BASIC`. Provide `authenticationOptions.username` and `authenticationOptions.password`. |
+| HTTPS retry | Optional. `retry.type` is `randomWait`. HTTPS only. Does not change async behaviour. |
+| HTTPS timeouts | Optional. `timeouts.connection` and `timeouts.read` in seconds (1–3600). HTTPS only. |
 | JWT bearer token | Optional - supply a JWT in `headers.Authorization` for token-based authentication, regardless of `authenticationType`. |
 | Network reachability | The reader must be able to reach the firmware URL on the network. Confirm firewall rules allow the chosen protocol (`HTTPS`, `SFTP`, `SCP`, or `FTPS`) outbound on the port used by the firmware server. |
 | Current firmware version | Use `GET /cloud/version` to confirm the reader's current build before initiating an update. |

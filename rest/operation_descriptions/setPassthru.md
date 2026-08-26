@@ -17,6 +17,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_passthru` |
 | Pattern Name | Pass-Through Command |
 | REST Endpoint | `PUT /cloud/pass-through` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -18,6 +18,7 @@ Confirm that both the user application and the reader gateway are in place befor
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_dataToRG` |
 | REST Endpoint | `PUT /cloud/setdataToRG` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |

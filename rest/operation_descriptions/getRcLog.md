@@ -13,6 +13,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_logs_rcLog` |
 | Pattern Name | Radio-Control Log Retrieval |
 | REST Endpoint | `GET /cloud/logs/RcLog` |
 | Communication Type | Client to Device (HTTP request/response) |

@@ -17,6 +17,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_timeZone` |
 | Pattern Name | Time Zone Configuration |
 | REST Endpoint | `PUT /cloud/timeZone` |
 | Communication Type | Client to Device (HTTP request/response) |

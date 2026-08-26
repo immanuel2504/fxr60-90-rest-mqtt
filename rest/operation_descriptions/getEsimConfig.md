@@ -15,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_eSimConfig` |
 | Pattern Name | eSIM Configuration Query |
 | REST Endpoint | `GET /cloud/eSimConfig` |
 | Communication Type | Client to Device (HTTP request/response) |

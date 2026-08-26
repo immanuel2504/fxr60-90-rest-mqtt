@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `del_CACertificate` |
 | Pattern Name | CA Certificate Deletion |
 | REST Endpoint | `DELETE /cloud/caCertificates/{caname}` |
 | Communication Type | Client to Device (HTTP request/response) |

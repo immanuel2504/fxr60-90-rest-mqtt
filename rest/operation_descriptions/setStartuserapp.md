@@ -12,6 +12,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `set_startUserapp` |
 | Pattern Name | User Application Control — Start |
 | REST Endpoint | `PUT /cloud/apps/{appname}/start` |
 | Communication Type | Client to Device (HTTP request/response) |

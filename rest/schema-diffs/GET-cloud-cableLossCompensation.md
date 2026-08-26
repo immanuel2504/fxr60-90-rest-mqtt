@@ -11,7 +11,7 @@ Compared:
 | `rest/openAPISpec 10.yaml` | Developer spec (source of truth for firmware) |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
-The **path and JSON values are the same**. How per-port objects are declared in OpenAPI differs.
+The **path and JSON values are the same**. Docs now match the developer OpenAPI map.
 
 ---
 
@@ -22,9 +22,7 @@ Both return a map keyed by read-point `"1"` … `"8"` with `cableLength` and `ca
 | Spec | How the map is typed |
 |---|---|
 | Developer | `patternProperties: '^[1-8]$'` + `additionalProperties: false` |
-| RestDeveloperfile | `additionalProperties` → helper schema `cableLossPort.v1` |
-
-Same numbers. Ours is easier to `$ref` from PUT. Not a client-breaking field change.
+| RestDeveloperfile | same |
 
 ---
 
@@ -39,10 +37,7 @@ Same numbers. Ours is easier to `$ref` from PUT. Not a client-breaking field cha
 
 ### RestDeveloperfile 200
 
-```
-*  (additionalProperties)
-└── $ref cableLossPort.v1   required [cableLength, cableLossPerHundredFt]
-```
+Same as developer.
 
 ---
 
@@ -66,6 +61,4 @@ Same numbers. Ours is easier to `$ref` from PUT. Not a client-breaking field cha
 
 ---
 
-## Docs work still to do (not applied yet)
-
-Nothing has been merged. Wrapper-only. Keep `cableLossPort.v1` unless you need byte-for-byte OpenAPI parity with `patternProperties`.
+**Align to developer.** Per-port map uses `patternProperties: '^[1-8]$'` and `additionalProperties: false`.

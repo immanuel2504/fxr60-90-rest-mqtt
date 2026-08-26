@@ -15,6 +15,7 @@ No request body is required.
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_availableWifiNetworks` |
 | Pattern Name | Wi-Fi Site Survey |
 | REST Endpoint | `GET /cloud/wifiNetworks` |
 | Communication Type | Client to Device (HTTP request/response) |

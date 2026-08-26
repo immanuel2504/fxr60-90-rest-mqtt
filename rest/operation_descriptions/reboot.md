@@ -16,6 +16,7 @@ Use this endpoint to:
 
 | Property | Value |
 |---|---|
+| MQTT Command | `reboot` |
 | Pattern Name | Reader Restart |
 | REST Endpoint | `PUT /cloud/reboot` |
 | Communication Type | Client to Device (HTTP request/response) |
