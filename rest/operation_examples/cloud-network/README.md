@@ -2,6 +2,8 @@
 
 - **GET / PUT** — reader network configuration
 
+How-to: [Bluetooth PAN (`bnep0`) — reach the reader without Ethernet or Wi-Fi](BLUETOOTH-PAN.md)
+
 ## Product note (Krishna)
 
 `wan0` (cellular WAN) is **not supported on FXR60**. Keep WAN examples for **FXR90** only.

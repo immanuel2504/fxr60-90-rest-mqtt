@@ -32,6 +32,20 @@ though every example sends it one level up.
 | **Example name** | `get_network_eth0` |
 | **Summary title** | `Request — Ethernet (eth0)` |
 
+### `GET/request_bnep0.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `get_network_bnep0` |
+| **Summary title** | `Request — Bluetooth PAN (bnep0)` |
+
+### `GET/Bluetooth.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `Bluetooth` |
+| **Summary title** | `bnep0 Interface — live FXR60 FXR609BE34A` |
+
 ### `GET/WiFi.json`
 
 | Field | Value |

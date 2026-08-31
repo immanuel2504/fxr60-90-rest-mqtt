@@ -1,19 +1,19 @@
 {
-  "hostName": "FXR90C5F1AB",
+  "hostName": "FXR609BE34A",
   "networkInterface": {
     "bnep0": {
       "Status": "active",
-      "deviceDiscoverableName": "FXR90C5F1AB",
+      "deviceDiscoverableName": "FXR609BE34A",
       "dhcpEndAddress": "192.168.0.10",
       "dhcpStartAddress": "192.168.0.2",
-      "ipAddress": "192.168.241.171",
+      "ipAddress": "192.168.227.74",
       "isDiscoverable": true,
       "isEnabled": true,
       "isPairable": true,
-      "macAddress": "48:A4:93:BF:A9:52",
-      "passKey": "1234",
+      "macAddress": "90:75:DE:14:FC:FB",
+      "passKey": "1233",
       "subnetMask": "255.255.0.0",
-      "usePassKey": true
+      "usePassKey": false
     }
   }
 }
