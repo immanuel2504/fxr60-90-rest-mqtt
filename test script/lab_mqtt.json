@@ -1,0 +1,24 @@
+{
+  "broker": "10.117.229.9",
+  "port": 1883,
+  "tls": false,
+  "qos": 0,
+  "management": {
+    "cmd": "fxr60-lab/mcmd",
+    "rsp": "fxr60-lab/mrsp"
+  },
+  "control": {
+    "cmd": "fxr60-lab/cmd",
+    "rsp": "fxr60-lab/rsp"
+  },
+  "do_not_publish_commands_on": [
+    "fxr60-lab/tevents",
+    "fxr60-lab/mevents"
+  ],
+  "do_not_reuse_reader_client_ids": [
+    "fxr60-lab-ctrl",
+    "fxr60-lab-data",
+    "fxr60-lab-mcmd",
+    "fxr60-lab-mevents"
+  ]
+}
