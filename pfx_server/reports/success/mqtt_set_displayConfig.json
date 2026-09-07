@@ -1,0 +1,12 @@
+{
+  "command": "set_displayConfig",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 4207.4,
+  "note": "",
+  "request_id": "test-set_displayConfig-0e2cb8a752",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_displayConfig\", \"command_id\": \"test-set_displayConfig-0e2cb8a752\", \"payload\": {}, \"response\": \"success\"}"
+}

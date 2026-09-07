@@ -1,0 +1,22 @@
+logs GET 01 - read the reader's log configuration
+RESULT: HTTP 200, JSON as documented
+
+This is the reader's state at the start of testing, and the value it was restored
+to at the end - byte-identical.
+
+Reports exactly TWO components:
+    radio_control
+    reader_gateway
+
+The PUT schema documents FIVE accepted componentName values (radio_control, RC,
+cloud_agent, reader_gateway, RG). Of those, "cloud_agent" never appears in this
+response, and neither alias does - as expected for aliases. See
+../cloud-logs-PUT/02-all-component-names-write-to-reader-gateway/ for what each
+name actually writes to.
+
+The spec defines no response schema for this GET, only the request schema for the
+PUT. The shape above is the observed response and matches the PUT body shape,
+which makes read-modify-write straightforward - with the caveat in
+../cloud-logs-PUT/07-omitting-radiopacketlog-resets-it-to-false/.
+
+Auth is enforced: without a bearer token this returns HTTP 401 Unauthorized.

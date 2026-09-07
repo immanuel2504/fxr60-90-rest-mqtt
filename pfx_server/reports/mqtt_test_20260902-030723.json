@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "broker": "10.117.229.9",
+    "port": 1883,
+    "cmd_topic": "fxr60-lab/mcmd",
+    "rsp_topic": "fxr60-lab/mrsp",
+    "tiers": [
+      "write"
+    ],
+    "started": "2026-09-02 03:07:23"
+  },
+  "results": [
+    {
+      "command": "set_bleConfig",
+      "channel": "management",
+      "source": "request/enable_ble.json",
+      "tier": "write",
+      "verdict": "PASS",
+      "ms": 50.2,
+      "note": "",
+      "request_id": "test-set_bleConfig-93dccbdabe",
+      "response": "success",
+      "response_preview": "{\"command\": \"set_bleConfig\", \"command_id\": \"test-set_bleConfig-93dccbdabe\", \"payload\": {}, \"response\": \"success\"}"
+    }
+  ]
+}

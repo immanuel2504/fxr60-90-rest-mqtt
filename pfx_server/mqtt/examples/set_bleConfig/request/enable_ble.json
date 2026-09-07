@@ -1,0 +1,16 @@
+{
+  "command": "set_bleConfig",
+  "payload": {
+    "ble": {
+      "enable": true,
+      "scanIntervalSec": 0,
+      "protocols": {
+        "iBeacon": { "enabled": true, "filters": [] },
+        "altBeacon": { "enabled": true, "filters": [] },
+        "eddystone": { "enabled": true, "filters": [] },
+        "generic": { "enabled": true, "filters": [] }
+      },
+      "additionalFilters": {}
+    }
+  }
+}

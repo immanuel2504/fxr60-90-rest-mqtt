@@ -1,0 +1,75 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 1 - write the 32-bit access password using set_mode WRITE access
+RESULT: HTTP 200, and the WRITE executed - 76 SUCCESS results
+
+*** THIS IS THE PREREQUISITE STEP ***
+
+The tagProtect documentation states the target tag must already have a valid
+32-bit Access Password. It does NOT say how to set one. This is how: a Gen2
+WRITE access operation through PUT /cloud/mode.
+
+WHERE THE PASSWORD LIVES - Gen2 RESERVED bank layout (EPC Gen2 spec):
+
+    word 0-1   Kill password    (32 bits)
+    word 2-3   ACCESS password  (32 bits)   <-- wordPointer 2
+
+So writing 8 hex characters (= 2 words = 32 bits) at wordPointer 2 sets the
+access password.
+
+THE PAYLOAD THAT WORKS:
+
+    {"type":"CUSTOM","antennas":[1],"transmitPower":30,
+     "filter":{"value":"333311112222333344445555","match":"prefix","operation":"include"},
+     "accesses":[{"type":"WRITE",
+                  "config":{"membank":"RESERVED","wordPointer":2,"data":"A1B2C3D4"}}],
+     "tagMetaData":["ANTENNA","RSSI"]}
+
+THE FILTER IS ESSENTIAL. Without it the WRITE is applied to EVERY tag in the
+field - there were 24 tags present here, and all of them would have had their
+access password set. Using the full EPC as a "prefix" match targets exactly one
+tag.
+
+THEN RUN AN INVENTORY. The access operation does not execute on the PUT; it
+executes when tags are singulated:
+
+    PUT /cloud/start   {}
+    (wait ~12 s)
+    PUT /cloud/stop
+
+WRITE RESULTS observed in the tag stream (accessResults field):
+
+    x76  ["SUCCESS"]
+    x4   ["Error after 0 successful words written: CRC error in tag response"]
+    x2   ["Error after 0 successful words written: Tag did not respond"]
+    x2   ["Error after 1 successful words written: Tag did not respond"]
+
+The retries are normal RF behaviour; 76 successes confirm the write landed.
+
+*** GOTCHAS FOUND ***
+
+1. filter.match does NOT accept "equals". Only prefix, suffix, regex:
+     "Failure: mode json payload mode \"filter\"\\\"match\" must be a must be
+      prefix, suffix, or regex (equals entered)"
+   (note the mangled message text - two "must be a must be" and stray escapes)
+
+2. filter and query cannot be combined when match is prefix:
+     "Failure: \"query\" and \"filter\" with \"prefix\" cannot be configured at
+      the same time"
+   So drop "query" from the payload. This is a documented constraint, confirmed.
+
+3. On the Monza X-2K, writing at wordPointer 2 resulted in BOTH the kill and
+   access passwords reading back as a1b2c3d4 (see step 02). On the Monza R6 and
+   the non-Impinj tag, only the access password changed. Chip-dependent
+   behaviour worth knowing before writing to RESERVED on unknown stock.
+
+Evidence: ../evidence/x2k_write.ndjson (raw tag stream)

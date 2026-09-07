@@ -26,6 +26,7 @@ Needs a PC that can open `https://10.233.48.36`.
 cd "test script"
 py -3 test_rest_api.py --only "/cloud/status"
 py -3 test_rest_api.py
+py -3 test_impinj_gen2x_roundtrip.py
 ```
 
 Host and password come from `lab_rest.json`. The script logs in for a fresh token.

@@ -1,0 +1,8 @@
+{
+  "command": "get_appled",
+  "command_id": "req-get-appled",
+  "payload": {
+    "status": "NON_DEFAULT"
+  },
+  "response": "success"
+}

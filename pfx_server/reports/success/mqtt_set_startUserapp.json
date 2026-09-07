@@ -1,0 +1,12 @@
+{
+  "command": "set_startUserapp",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 150.5,
+  "note": "",
+  "request_id": "test-set_startUserapp-99df65df77",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_startUserapp\", \"command_id\": \"test-set_startUserapp-99df65df77\", \"payload\": {}, \"response\": \"success\"}"
+}

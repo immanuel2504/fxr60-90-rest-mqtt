@@ -1,0 +1,19 @@
+CONFIRMED WORKING - and this test demonstrated CONDITIONS ACTUALLY BEING ENFORCED, which is the most interesting result of the combined set.
+
+httpPost data endpoint + GPIO-LED with conditions, in one request.
+
+DATA HALF PROVEN: httpPost receiver log grew 27 -> 46 lines, 19 new POSTs of real tag data during the inventory.
+
+GPIO HALF - two actions behaved DIFFERENTLY, exactly as their conditions dictate:
+  before : {"1":"LOW","2":"LOW","3":"HIGH","4":"LOW"}
+  start  : {"1":"HIGH","2":"LOW", "3":"HIGH","4":"LOW"}
+  stop   : {"1":"LOW", "2":"LOW", "3":"HIGH","4":"LOW"}
+
+  pin 1 (TAG_READ, conditions [IS_CLOUD_CONNECTED, IS_RADIO_ONGOING]) -> FIRED
+  pin 2 (RADIO_START, condition [IS_CLOUD_CONNECTED])                -> DID NOT FIRE
+
+Both were stored correctly (verified via GET /cloud/config), so this is the condition engine suppressing an action rather than a fault.
+
+OBSERVATION, NOT A CONCLUSION: pin 2's single condition IS_CLOUD_CONNECTED evaluated false, while the data interface reported connectionStatus 'connected' (DATA_HTTP_COMBINED). So IS_CLOUD_CONNECTED appears to track something narrower than the data endpoint - most likely the management/control cloud channel, which at the time was pointed at a local broker rather than a cloud service. Not verified directly.
+
+Puzzling detail worth noting: pin 1's conditions INCLUDE IS_CLOUD_CONNECTED and it DID fire. Either the two conditions are evaluated differently, or the state changed between the two events. Unresolved - flagged rather than explained away.

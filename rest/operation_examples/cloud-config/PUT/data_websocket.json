@@ -5,25 +5,31 @@
         "event": {
           "connections": [
             {
-              "name": "DATA_WS",
-              "description": "Tag events over WebSocket",
+              "name": "DATA_WS_VIA_CONFIG",
+              "description": "Tag events over WebSocket, set via PUT /cloud/config",
               "type": "WEBSOCKET",
               "options": {
                 "security": {
                   "verifyPeer": false
-                }
-              },
-              "additionalOptions": {
-                "retention": {
-                  "maxEventRetentionTimeInMin": 500,
-                  "maxNumEvents": 150000,
-                  "throttle": 100
                 }
               }
             }
           ]
         }
       }
-    }
+    },
+    "batching": [
+      {
+        "maxPayloadSizePerReport": 256000,
+        "reportingInterval": 2000
+      }
+    ],
+    "retention": [
+      {
+        "maxEventRetentionTimeInMin": 500,
+        "maxNumEvents": 150000,
+        "throttle": 500
+      }
+    ]
   }
 }

@@ -1,0 +1,7 @@
+stop 02 - spec example "stop_RFID_explicit"
+RESULT: HTTP 200 - CONFIRMED
+
+  before: radio=active    ble=stopped
+  after:  radio=inactive  ble=stopped
+
+Explicit equivalent of test 01.

@@ -1,6 +1,6 @@
 {
   "command": "set_importCloudConfig",
-  "command_id": "req-set-importCloudConfig-mgmt-cmd",
+  "command_id": "req-set-importCloudConfig-management-cmd-mqtt",
   "payload": {
     "endpointConfig": {
       "management": {
@@ -9,29 +9,29 @@
           "connections": [
             {
               "name": "MGMT_CMD_MQTT",
-              "description": "Management cmd/rsp",
+              "description": "Management cmd/rsp (MQTT)",
               "type": "mqtt",
               "options": {
                 "enableSecurity": false,
                 "endpoint": {
-                  "hostName": "10.0.0.50",
+                  "hostName": "10.117.229.18",
                   "port": 1883,
                   "protocol": "tcp"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "fxr90-lab-mcmd",
+                  "clientId": "fxr60-lab-mcmd",
                   "debug": false,
                   "keepAlive": 60,
                   "qos": 0,
-                  "reconnectDelay": 1,
-                  "reconnectDelayMax": 30
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
                 },
                 "publishTopic": [
-                  "fxr90-lab/mrsp"
+                  "fxr60-lab/mrsp"
                 ],
                 "subscribeTopic": [
-                  "fxr90-lab/mcmd"
+                  "fxr60-lab/mcmd"
                 ]
               }
             }

@@ -1,0 +1,7 @@
+ACCEPTED (HTTP 200). Combined GPO and LED actions per event:
+  CLOUD_CONNECT    -> GPO 1 pulses HIGH 200/200ms for 1s then LOW; LED 2 GREEN
+  CLOUD_DISCONNECT -> GPO 2 blinks HIGH 500/500ms forever (DURATION 0); LED 2 RED
+
+Confirms two things: a single event can carry BOTH a GPO and an LED action in its array, executed sequentially; and DURATION 0 (blink indefinitely) is accepted.
+
+NOT PHYSICALLY CONFIRMED - GPO pin states and LED colours were not observed.

@@ -1,0 +1,12 @@
+{
+  "command": "get_certificates",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 150.4,
+  "note": "",
+  "request_id": "test-get_certificates-43604d4efc",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_certificates\", \"command_id\": \"test-get_certificates-43604d4efc\", \"payload\": [{\"installTime\": \"Tue Sep  1 07:22:33 2026\", \"issuerName\": \"Local RFID Test CA\", \"name\": \"scenario-basic\", \"publickey\": \"\", \"serial\": \"0x38141BD9C6FF08A122F7A70D0B6C1BCBFCD9518B\", \"subjectName\": \"reader\", \"type\": \"client\", \"validityEnd\": \"03/12/2028\", \"validityStart\": \"31/08/2026\"}, {\"installTime\": \"Tue Sep  1 07:28:07 2026\", \"issuerName\": \"Local RFID Test CA\", \"name\": \"FXR60_CLIENT_RETRY_TEST\", \"publick"
+}

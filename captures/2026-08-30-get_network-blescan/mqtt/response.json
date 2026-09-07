@@ -1,0 +1,9 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "payload": {
+    "code": 1,
+    "message": "invalid interface for get network api.Expeected interface 'eth0/mlan0/bnep0/wan0/uap0/all'"
+  },
+  "response": "failure"
+}

@@ -43,18 +43,13 @@ The start body may include these flags. Each is explained below.
 
 | Flag | What it does |
 |---|---|
-| `scanType` | Which scanners to start, and on which data endpoints. |
+| `scanType` | Which scanners to start. |
 | `applyImpinjGen2X` | Apply the Gen2X configuration saved with `PUT /cloud/impinjGen2X`. |
 | `doNotPersistState` | Do not resume RFID inventory after reboot. |
 
 ### `scanType`
 
-`scanType` is either:
-
-- An **array** — **global start**. The same scan types apply to **every** data endpoint.
-- An **object** — **targeted start**. Keys are data endpoint names; values are the scan types for that endpoint.
-
-**Global start** (array). Example — BLE on all endpoints:
+`scanType` is an **array** of scan types to start. Omit it for RFID-only (default).
 
 ```json
 { "scanType": ["ble"] }
@@ -63,15 +58,9 @@ The start body may include these flags. Each is explained below.
 | Scan Type | Behavior |
 |---|---|
 | omitted / `{}` | Starts RFID inventory only (default). |
-| `["rfid"]` | Starts RFID inventory only, on every data endpoint. |
-| `["ble"]` | Starts BLE scanning only, on every data endpoint. |
-| `["ble", "rfid"]` | Starts both scanners, on every data endpoint. |
-
-**Targeted start** (object with data-endpoint fields):
-
-```json
-{ "scanType": { "dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"] } }
-```
+| `["rfid"]` | Starts RFID inventory only. |
+| `["ble"]` | Starts BLE scanning only. |
+| `["ble", "rfid"]` | Starts both scanners. |
 
 > Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, `scanType` is not supported: omit it, and `PUT /cloud/start` starts RFID inventory only. Check the installed build with `GET /cloud/version` (`readerApplication`).
 
@@ -82,7 +71,7 @@ Send `applyImpinjGen2X: true` to apply the Gen2X features saved with `PUT /cloud
 | Value | Behavior |
 |---|---|
 | omitted / `false` | Start without applying Gen2X. |
-| `true` | Apply saved Gen2X on this start. Save the config first with `PUT /cloud/impinjGen2X`. Cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
+| `true` | Apply the saved Gen2X config on **this** start only. Save the config first with `PUT /cloud/impinjGen2X`. After `PUT /cloud/stop`, send `true` again — the flag does not persist across inventory sessions. Cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
 
 ```json
 { "applyImpinjGen2X": true }

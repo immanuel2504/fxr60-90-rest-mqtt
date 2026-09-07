@@ -1,0 +1,157 @@
+{
+  "read_seconds": 15,
+  "unique_tags": 23,
+  "total_reads": 23,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        null
+      ],
+      "rssi_min": null,
+      "rssi_max": null,
+      "fields_present": [
+        "eventNum",
+        "format",
+        "idHex"
+      ]
+    },
+    "e2806894000040017790ac71": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        null
+      ],
+      "rssi_min": null,
+      "rssi_max": null,
+      "fields_present": [
+        "eventNum",
+        "format",
+        "idHex"
+      ]
+    }
+  },
+  "all_tags": {
+    "30304035a880c80000123bed": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790c471": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790e471": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "41544035a880c80000123bea": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790dc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790ac71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "30304035a880c80000123bee": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "333311112222333344445555": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790cc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790bc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "20004035a880c80000123be9": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790d871": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806d120000000246f8fbf3": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "bedd11112222333344445555": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "00011206438dadb0847c0049": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "ad721205148efbb3610000e6": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "30304035a880c80000123beb": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2004718be4064260e460112": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e28068900000000016cbc093": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "000512051446c1b6620000e7": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "ad721205143d95b36200000b": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "ad721206438da5b0847e0048": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2004718bf0064260e52010e": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    }
+  },
+  "sample_event": {
+    "eventNum": 205,
+    "format": "epc",
+    "idHex": "30304035a880c80000123bed"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "method": "PUT",
+  "url": "/cloud/impinjGen2X",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "tagProtect": {
+      "action": "disableTagVisibility",
+      "password": "A1B2C3D4"
+    }
+  }
+}

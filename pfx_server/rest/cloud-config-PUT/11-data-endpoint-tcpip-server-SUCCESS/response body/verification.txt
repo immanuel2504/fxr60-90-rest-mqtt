@@ -1,0 +1,12 @@
+CONFIRMED WORKING END TO END - real tag data received, with clean before/after evidence that the reader opens the port.
+
+  nc -z 10.233.48.36 8081 BEFORE config : closed
+  nc -z 10.233.48.36 8081 AFTER config  : OPEN
+
+THE READER IS THE SERVER for this type - it listens on tcpipport and clients connect to it. Proven by the port transition above.
+
+DELIVERY PROVEN: started an inventory, connected to 10.233.48.36:8081, and received 2893 bytes of real tag data - JSON arrays with idHex, antenna, channel, peakRssi, phase, CRC, PC, eventNum, timestamp. e.g. idHex e2806894000040017790e471, antenna 1, channel 920.75, peakRssi -44.
+
+Note connectionStatus reported 'disconnected' while the port was open and accepting connections, so for this type the field appears to mean 'no client attached' rather than 'not listening'.
+
+options.tcpipport is accepted despite being absent from the documented schema.

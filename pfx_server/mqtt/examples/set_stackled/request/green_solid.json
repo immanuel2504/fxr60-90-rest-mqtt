@@ -1,0 +1,8 @@
+{
+  "command": "set_stackled",
+  "payload": {
+    "color": "green",
+    "flash": false,
+    "seconds": 0
+  }
+}

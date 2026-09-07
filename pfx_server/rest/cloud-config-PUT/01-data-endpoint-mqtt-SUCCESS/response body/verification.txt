@@ -1,0 +1,11 @@
+CONFIRMED WORKING END TO END - but only when sent together with batching and retention. See test 02.
+
+Applied config confirmed via GET /cloud/config:
+  data endpoint: mqtt DATA_MQTT_VIA_CONFIG -> 10.117.229.18:1883
+  status: connectionStatus 'connected', connectionError ''
+
+DELIVERY PROVEN: started an inventory and captured real tag events on fxr60-lab/tevents - JSON arrays of tag reads with idHex, antenna, channel, peakRssi, phase, CRC, PC, eventNum, timestamp, e.g.
+  idHex e2806894000040017790e471, antenna 1, channel 909.75, peakRssi -45
+Inventory stopped afterwards.
+
+Confirms the schema's statement that this endpoint configures ONLY the data plane: endpointConfig allows exactly one key, 'data'. Control and management endpoints require PUT /cloud/cloudConfig.

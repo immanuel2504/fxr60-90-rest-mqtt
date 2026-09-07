@@ -1,0 +1,11 @@
+start 01 - spec example "start_Inventory": empty body
+RESULT: HTTP 200, empty response body - CONFIRMED by state read-back
+
+  before: radio=inactive  ble=stopped  gen2x=none/False
+  after:  radio=active    ble=stopped  gen2x=none/False
+
+The default form. Omitting scanType starts RFID only, exactly as the schema
+documents ("Omit for RFID-only (default)"). BLE was left stopped, so the default
+genuinely is RFID-only rather than "everything".
+
+Verified via GET /cloud/status -> radioActivity.

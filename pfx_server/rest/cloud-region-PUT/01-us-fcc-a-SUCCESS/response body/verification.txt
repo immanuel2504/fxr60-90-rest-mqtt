@@ -1,0 +1,16 @@
+region 01 - switch regulatory standard to US_FCC_A
+RESULT: accepted, HTTP 200, CONFIRMED by read-back
+
+before: country='United States/Canada' standard='US_FCC_15' region='FCC_Generic'
+        lbt=False hop=True nchan=50
+after:  country='United States/Canada' standard='US_FCC_A'  region='FCC_A'
+        lbt=False hop=True nchan=50
+
+Both 'regulatoryStandard' and the derived 'region' field updated, and the
+channelData list changed to the US_FCC_A frequencies. Fully verifiable.
+
+Valid values come from GET /cloud/supportedRegionList and
+GET /cloud/supportedStandardList?region=<country>, as the schema says. On this
+reader:
+  SupportedRegions:   ["United States/Canada"]   - one only
+  SupportedStandards: US_FCC_15, US_FCC_A, US_FCC_B, US_FCC_C, US_FCC_CUSTOM

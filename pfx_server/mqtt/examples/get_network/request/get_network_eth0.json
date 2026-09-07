@@ -1,0 +1,6 @@
+{
+  "command": "get_network",
+  "payload": {
+    "interface": "eth0"
+  }
+}

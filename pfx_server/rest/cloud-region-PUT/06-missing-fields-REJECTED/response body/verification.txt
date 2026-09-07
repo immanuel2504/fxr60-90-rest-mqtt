@@ -1,0 +1,18 @@
+region 06 - required-field enforcement
+RESULT: all three rejected, HTTP 422
+
+  {"country":"United States/Canada"}   (no standardname)
+    {"code":1,"message":"required fields (country/standardName) not provided"}
+
+  {"standardname":"US_FCC_15"}         (no country)
+    {"code":1,"message":"required fields (country/standardName) not provided"}
+
+  {}
+    {"code":1,"message":"Invalid payload for set_region api"}
+
+Matches the schema, which requires both country and standardname.
+
+Minor: the message spells the field 'standardName' (capital N) but the schema and
+the working requests use 'standardname' (lowercase n). The lowercase form is what
+the firmware actually accepts - tests 01-03 confirm it. The error message's
+casing is wrong and would mislead anyone copying from it.

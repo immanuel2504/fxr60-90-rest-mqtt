@@ -1,0 +1,24 @@
+{
+  "method": "PUT",
+  "url": "/cloud/bleConfig",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "spec": "openAPISpec 11.yaml - IoT Connector REST API v3.0.0",
+  "specExampleName": "disable_ble",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential. Tokens expire quickly; mint one per call in long runs."
+  },
+  "body": {
+    "ble": {
+      "enable": false,
+      "scanIntervalSec": 5,
+      "protocols": {
+        "iBeacon": {
+          "enabled": true
+        }
+      },
+      "additionalFilters": {}
+    }
+  }
+}

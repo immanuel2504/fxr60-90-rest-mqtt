@@ -1,0 +1,1 @@
+{"antennas":[1],"query":{"sel":"NOT_SL","tagPopulation":10},"selects":[{"action":"INVB_NOTHING","length":24,"mask":"800600","membank":"TID","pointer":6,"target":"S1"}],"transmitPower":[30],"type":"CUSTOM"}

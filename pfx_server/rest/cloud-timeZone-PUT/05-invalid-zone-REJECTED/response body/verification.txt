@@ -1,0 +1,5 @@
+timeZone 05 - a zone that does not exist
+RESULT: rejected, HTTP 422, {"code":1,"message":"Invalid Time Zone specified."}
+
+So the accepted set is genuinely a set - the endpoint is not passing arbitrary
+strings through to the OS.

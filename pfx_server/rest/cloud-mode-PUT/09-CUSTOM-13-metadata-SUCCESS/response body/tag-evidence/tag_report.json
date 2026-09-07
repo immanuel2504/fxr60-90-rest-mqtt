@@ -1,0 +1,178 @@
+{
+  "read_seconds": 18,
+  "unique_tags": 20,
+  "total_reads": 20,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -39,
+      "rssi_max": -39,
+      "fields_present": [
+        "CRC",
+        "EPC",
+        "MAC",
+        "PC",
+        "TID",
+        "USER",
+        "antenna",
+        "channel",
+        "eventNum",
+        "format",
+        "hostName",
+        "idHex",
+        "peakRssi",
+        "phase",
+        "reads"
+      ]
+    },
+    "e2806894000040017790ac71": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -44,
+      "rssi_max": -44,
+      "fields_present": [
+        "CRC",
+        "EPC",
+        "MAC",
+        "PC",
+        "TID",
+        "USER",
+        "antenna",
+        "channel",
+        "eventNum",
+        "format",
+        "hostName",
+        "idHex",
+        "peakRssi",
+        "phase",
+        "reads"
+      ]
+    }
+  },
+  "all_tags": {
+    "e2806894000040017790e471": {
+      "reads": 1,
+      "rssi_min": -39,
+      "rssi_max": -39
+    },
+    "e2806894000040017790ac71": {
+      "reads": 1,
+      "rssi_min": -44,
+      "rssi_max": -44
+    },
+    "e2806894000050017790c471": {
+      "reads": 1,
+      "rssi_min": -55,
+      "rssi_max": -55
+    },
+    "e2806894000050017790bc71": {
+      "reads": 1,
+      "rssi_min": -68,
+      "rssi_max": -68
+    },
+    "41544035a880c80000123bea": {
+      "reads": 1,
+      "rssi_min": -53,
+      "rssi_max": -53
+    },
+    "20004035a880c80000123be9": {
+      "reads": 1,
+      "rssi_min": -59,
+      "rssi_max": -59
+    },
+    "333311112222333344445555": {
+      "reads": 1,
+      "rssi_min": -53,
+      "rssi_max": -53
+    },
+    "e2806894000040017790cc71": {
+      "reads": 1,
+      "rssi_min": -56,
+      "rssi_max": -56
+    },
+    "bedd11112222333344445555": {
+      "reads": 1,
+      "rssi_min": -65,
+      "rssi_max": -65
+    },
+    "30304035a880c80000123bee": {
+      "reads": 1,
+      "rssi_min": -69,
+      "rssi_max": -69
+    },
+    "ad721205148efbb3610000e6": {
+      "reads": 1,
+      "rssi_min": -73,
+      "rssi_max": -73
+    },
+    "e2806894000040017790d871": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    },
+    "30304035a880c80000123beb": {
+      "reads": 1,
+      "rssi_min": -71,
+      "rssi_max": -71
+    },
+    "30304035a880c80000123bed": {
+      "reads": 1,
+      "rssi_min": -74,
+      "rssi_max": -74
+    },
+    "aaaaddddbbbbdddd857c006d": {
+      "reads": 1,
+      "rssi_min": -70,
+      "rssi_max": -70
+    },
+    "ad721205148ed5b65f0000e0": {
+      "reads": 1,
+      "rssi_min": -77,
+      "rssi_max": -77
+    },
+    "e2806d120000000246f8fbf3": {
+      "reads": 1,
+      "rssi_min": -72,
+      "rssi_max": -72
+    },
+    "e2806894000050017790dc71": {
+      "reads": 1,
+      "rssi_min": -62,
+      "rssi_max": -62
+    },
+    "00011206438dadb0847c0049": {
+      "reads": 1,
+      "rssi_min": -71,
+      "rssi_max": -71
+    },
+    "e28068900000000016cbc093": {
+      "reads": 1,
+      "rssi_min": -73,
+      "rssi_max": -73
+    }
+  },
+  "sample_event": {
+    "CRC": "f3b3",
+    "EPC": "f3b33000e2806894000040017790e471",
+    "MAC": "88:BC:AC:9B:E3:4A",
+    "PC": "3000",
+    "TID": "e2806894200040017790e471",
+    "USER": "Error: tag returned error code 0x03 = Memory overrun",
+    "antenna": 1,
+    "channel": 921.25,
+    "eventNum": 391,
+    "format": "epc",
+    "hostName": "FXR609BE34A",
+    "idHex": "e2806894000040017790e471",
+    "peakRssi": -39,
+    "phase": 0.0,
+    "reads": 1
+  }
+}

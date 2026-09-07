@@ -1,0 +1,10 @@
+ntpServer 01 - spec example "ntpServer": the current 'server' convention
+RESULT: accepted, HTTP 200, primary applied
+
+GET after: {"server":"time1.google.com"}
+
+Both hostnames in the spec's example resolve, so this is a clean success.
+
+FINDING: "server2" is effectively write-only. GET /cloud/ntpServer returns only
+"server", so whether the secondary was stored cannot be determined over this API.
+Tested {"server2":"..."} alone as well - see test 05.

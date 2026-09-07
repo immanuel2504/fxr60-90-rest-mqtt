@@ -1,0 +1,9 @@
+{
+  "command": " get_displayCOnfig",
+  "command_id": "req-get-displayConfig",
+  "payload": {
+    "code": 4,
+    "message": "cannot handle request (invalid command)"
+  },
+  "response": "failure"
+}

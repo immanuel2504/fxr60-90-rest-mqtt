@@ -1,0 +1,7 @@
+{
+  "command": "set_gpo",
+  "payload": {
+    "port": 3,
+    "state": true
+  }
+}

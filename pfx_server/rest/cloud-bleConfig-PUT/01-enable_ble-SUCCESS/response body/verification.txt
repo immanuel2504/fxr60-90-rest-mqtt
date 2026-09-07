@@ -1,0 +1,32 @@
+bleConfig 01 - spec example "enable_ble"
+RESULT: HTTP 200, empty body - CONFIRMED by read-back
+
+  stored: enable=True  interval=0  additionalFilters={}
+          protocols enabled: altBeacon=T eddystone=T generic=T iBeacon=T
+
+TWO THINGS WORTH NOTING
+
+1. scanIntervalSec: 0 is accepted. The schema allows 0-300, so 0 is in range,
+   but its meaning is not documented - continuous scanning, or scan once? The
+   description says only "integer". Worth clarifying.
+
+2. THE PAYLOAD NAMES ONLY iBeacon, YET ALL FOUR PROTOCOLS READ BACK ENABLED.
+   The request contains protocols.iBeacon and nothing else; the response reports
+   altBeacon, eddystone, generic and iBeacon all enabled=true.
+
+   So `protocols` MERGES with what is already stored rather than replacing it -
+   the three protocols absent from the request kept their previous state (they
+   were enabled in the reader's default config). Sending one protocol does NOT
+   disable the others.
+
+   That is the opposite of GPIO-LED in PUT /cloud/config, which replaces
+   wholesale. Neither behaviour is documented. See
+   ../../findings/cloud-config/13-gpio-led-replaces-wholesale/.
+
+CORRECTS AN EARLIER CONCLUSION: during the /cloud/start testing I recorded that
+bleConfig "requires the full object - a minimal {"ble":{"enable":true}} is
+rejected". The first half was wrong. The four TOP-LEVEL keys (enable,
+scanIntervalSec, additionalFilters, protocols) are all required - the schema
+says so explicitly - but `protocols` needs only ONE protocol inside it, exactly
+as this example shows. {"ble":{"enable":true}} fails for missing top-level keys,
+not because every protocol must be listed.

@@ -1,0 +1,9 @@
+{
+  "command": "get_logs_rgErrorLog",
+  "command_id": "req-get-rg-error-logs",
+  "payload": {
+    "binary": "H4sIAAAAAAAAA9RdXXMbt55YtW7ZsT7VfALUBZKYAQAEA",
+    "filename": "rgErrorLog.tar.gz"
+  },
+  "response": "success"
+}

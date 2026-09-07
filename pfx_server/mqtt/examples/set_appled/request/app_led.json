@@ -1,0 +1,8 @@
+{
+  "command": "set_appled",
+  "payload": {
+    "color": "amber",
+    "flash": true,
+    "seconds": 60
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-combined-http-gpio",
+  "payload": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "LEDDefaults": {
+        "1": "RED",
+        "2": "RED",
+        "3": "RED"
+      },
+      "TAG_READ": [
+        {
+          "type": "GPO",
+          "pin": 1,
+          "state": "HIGH",
+          "postActionState": "LOW",
+          "blink": {
+            "ON": 100,
+            "OFF": 100,
+            "DURATION": 400
+          },
+          "conditions": [
+            "IS_CLOUD_CONNECTED",
+            "IS_RADIO_ONGOING"
+          ]
+        }
+      ],
+      "RADIO_START": [
+        {
+          "type": "LED",
+          "led": 1,
+          "color": "AMBER"
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH",
+          "conditions": [
+            "IS_CLOUD_CONNECTED"
+          ]
+        }
+      ],
+      "RADIO_STOP": [
+        {
+          "type": "LED",
+          "led": 1,
+          "color": "GREEN",
+          "conditions": [
+            "~IS_RADIO_ONGOING"
+          ]
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "LOW"
+        }
+      ]
+    },
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "name": "DATA_HTTP_COMBINED",
+                "description": "Tag events over HTTP POST, sent with conditional GPIO-LED",
+                "type": "httpPost",
+                "options": {
+                  "URL": "https://10.117.229.18:9443/tagdata",
+                  "security": {
+                    "authenticationType": "NONE",
+                    "verifyHost": false,
+                    "verifyPeer": false
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 8192,
+          "reportingInterval": 500
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 60,
+          "maxNumEvents": 10000,
+          "throttle": 100
+        }
+      ]
+    }
+  }
+}

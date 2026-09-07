@@ -1,0 +1,45 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 12 - the spec's with_report_filter example (duration 5, PER_ANTENNA)
+RESULT: ACCEPTED, HTTP 200 - deduplication window confirmed
+
+    "reportFilter": {"duration": 5, "type": "PER_ANTENNA"}
+
+TAG RESULT over 20s:
+  unique tags  24
+  total reads  68
+  reference tags:
+    e2806894000040017790e471  reads=3  rssi=None..None  ant=[None]
+    e2806894000040017790ac71  reads=4  rssi=None..None  ant=[None]
+
+The reference tags reported 3 and 4 times in 20s. With a 5 s
+window, 20 / 5 = 4.0 reports expected
+per tag - observed 3 and 4. So reportFilter.duration behaves as a per-tag
+dedupe window and is genuinely applied.
+
+*** reportFilter vs INVENTORY interval - two knobs, same effect ***
+
+                              mechanism                     tested in
+  modeSpecificSettings        INVENTORY mode only           test 04
+    .interval
+  reportFilter.duration       any mode (CUSTOM here)        this test
+
+Both suppress repeat reports of the same tag for a configured period, and both
+were measured doing so. The difference is availability: interval is only valid
+inside INVENTORY mode's modeSpecificSettings, while reportFilter is a top-level
+field usable in CUSTOM.
+
+Worth asking Zebra which is preferred, and whether they interact if both are set
+- that combination was not tested.
+
+CONSTRAINT CONFIRMED SEPARATELY: the schema states "reportFilter and accesses
+cannot both be set", and the reader enforces it - see
+16-cross-field-constraints-enforced/.

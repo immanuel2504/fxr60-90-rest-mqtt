@@ -6,7 +6,7 @@ Compared:
 
 | File | What we used |
 |---|---|
-| `rest/openAPISpec 10.yaml` | `MQTT API :-` line (command the REST spec says to send) |
+| `rest/RestDeveloperfile.yaml` (spec 11) | `MQTT API :-` line (command the REST spec says to send) |
 | `mqtt/openapi_md.json` | JSON `command` enum (schema) |
 | `mqtt/examples/*/request/*.json` | `command` in copied examples |
 
@@ -24,7 +24,7 @@ MQTT only works if JSON **`command`** is the exact string the reader expects.
 
 Excel: [MQTT-command-issues_2026-08-26.xlsx](MQTT-command-issues_2026-08-26.xlsx)
 
-**Status: applied 26 August 2026.** MQTT `command` (enum, examples, and MQTT Command docs) follows `MQTT API :-` from `openAPISpec 10.yaml`, except GET display: the firmware Display table and MQTT JSON use `get_displayConfig`. `openAPISpec 10.yaml` still has `get_displayCOnfig` and was not edited. Folder names were left unchanged.
+**Status: applied 26 August 2026; schemas re-aligned to REST spec 11 on 6 September 2026.** MQTT `command` (enum, examples, and MQTT Command docs) follows `MQTT API :-` from `rest/RestDeveloperfile.yaml` (copied from `openAPISpec 11.yaml`), except GET display: the firmware Display table and MQTT JSON use `get_displayConfig`. Folder names were left unchanged.
 
 The tables below are the original issue list (kept for history). All of those rows are fixed.
 
@@ -74,7 +74,7 @@ The reader may reject these if `command` is case-sensitive.
 
 | REST path | REST says | MQTT `command` |
 |---|---|---|
-| GET `/cloud/displayConfig` | `get_displayCOnfig` (typo in `openAPISpec 10.yaml`) | `get_displayConfig` (firmware Display table and MQTT JSON `command`) |
+| GET `/cloud/displayConfig` | `get_displayConfig` (spec 11) | `get_displayConfig` (firmware Display table and MQTT JSON `command`) |
 | GET `/cloud/hostName` | `get_hostName` | `get_hostname` |
 | PUT `/cloud/hostName` | `set_hostName` | `set_hostname` |
 | GET `/cloud/supportedRegionList` | `get_SupportedRegionList` | `get_supportedRegionList` |

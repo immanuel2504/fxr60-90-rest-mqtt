@@ -1,0 +1,8 @@
+timeZone 03 - spec example "time_zone", and the reader's original value
+RESULT: accepted, HTTP 200, CONFIRMED
+
+GET after:  {"timeZone":"UTC"}
+systemTime: 05/09/2026 16:49
+
+UTC is the one case where input and output forms match, because it is spelled the
+same in both vocabularies. Also the restore step after each other timeZone test.

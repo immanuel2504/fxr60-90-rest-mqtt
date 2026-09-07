@@ -1,0 +1,8 @@
+region 03 - restore the reader's original standard
+RESULT: accepted, HTTP 200, CONFIRMED
+
+after: standard='US_FCC_15' region='FCC_Generic' lbt=False hop=True nchan=50
+
+Byte-identical to the pre-test state, channelData included. This is the restore
+step for any region test - region affects radio regulatory compliance, so it must
+always be put back.

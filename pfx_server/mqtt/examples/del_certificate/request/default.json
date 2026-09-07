@@ -1,0 +1,6 @@
+{
+  "command": "del_certificate",
+  "payload": {
+    "type": "client"
+  }
+}

@@ -1,0 +1,20 @@
+Archive:  radioPktLog.tar.gz
+Response: 602317 bytes of JSON
+base64:   602272 chars -> 451704 bytes gzip
+gzip magic: 1f8b  (valid)
+
+Members:
+  packet_log-7.txt  1048590 bytes
+  packet_log-11.txt  1048617 bytes
+  packet_log-6.txt  1048584 bytes
+  packet_log-8.txt  1048592 bytes
+  (not extracted: packet_log-7.txt is 1048590 bytes - exceeds the 200000-byte in-repo limit; extract it from radioPktLog.tar.gz above)
+  (not extracted: packet_log-11.txt is 1048617 bytes - exceeds the 200000-byte in-repo limit; extract it from radioPktLog.tar.gz above)
+  (not extracted: packet_log-6.txt is 1048584 bytes - exceeds the 200000-byte in-repo limit; extract it from radioPktLog.tar.gz above)
+  (not extracted: packet_log-8.txt is 1048592 bytes - exceeds the 200000-byte in-repo limit; extract it from radioPktLog.tar.gz above)
+
+4 member(s). Files small enough to keep are extracted
+alongside this manifest; the .tar.gz holds all of them.
+
+Re-extract everything with:
+  tar xzf radioPktLog.tar.gz

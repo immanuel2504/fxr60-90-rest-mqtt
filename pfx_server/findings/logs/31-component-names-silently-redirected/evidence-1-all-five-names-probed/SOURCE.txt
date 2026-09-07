@@ -1,0 +1,5 @@
+Copied verbatim from:
+  rest/cloud-logs-PUT/02-all-component-names-write-to-reader-gateway
+
+That folder is the canonical record of this test; this is a copy kept
+beside the finding so the evidence travels with it.

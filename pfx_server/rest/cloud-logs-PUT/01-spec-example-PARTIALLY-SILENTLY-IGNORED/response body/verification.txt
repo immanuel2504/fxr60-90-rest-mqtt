@@ -1,0 +1,25 @@
+logs PUT 01 - the spec's example, verbatim
+RESULT: HTTP 200 - but HALF of it is silently discarded
+
+before: {"components":[{"componentName":"radio_control","level":"INFO"},
+                       {"componentName":"reader_gateway","level":"INFO"}],
+         "radioPacketLog":false}
+
+after:  {"components":[{"componentName":"radio_control","level":"INFO"},
+                       {"componentName":"reader_gateway","level":"DEBUG"}],
+         "radioPacketLog":true}
+
+Three things were requested. Two did not happen:
+
+  radioPacketLog: true          -> APPLIED       (false -> true)
+  cloud_agent: DEBUG            -> landed on reader_gateway, not cloud_agent
+  radio_control: DEBUG          -> IGNORED       (still INFO)
+
+So the reader accepted the spec's own example with HTTP 200 and applied only one
+of the two component levels in it - and applied that one to a component name that
+was not the one requested.
+
+Note "cloud_agent" does not appear in the response at all. The reader only ever
+reports two components: radio_control and reader_gateway. See
+02-all-component-names-write-to-reader-gateway for the isolation of this, and
+03-radio-control-level-never-changes for the radio_control half.

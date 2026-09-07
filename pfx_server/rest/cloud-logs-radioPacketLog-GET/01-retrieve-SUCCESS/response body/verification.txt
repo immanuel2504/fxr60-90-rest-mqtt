@@ -1,0 +1,40 @@
+radioPacketLog GET - retrieve the radio packet log
+RESULT: HTTP 200, 602317 bytes
+
+Same undocumented envelope as the other three log GETs:
+  {"binary": "<base64>", "filename": "radioPktLog.tar.gz"}
+
+VERIFIED: decodes to valid gzip (1f8b), opens as a tar with four members:
+
+    packet_log-7.txt   1048590 bytes
+    packet_log-11.txt  1048617 bytes
+    packet_log-6.txt   1048584 bytes
+    packet_log-8.txt   1048592 bytes
+
+Each is almost exactly 1 MiB (1048576), so rotation is at 1 MiB per file. The
+non-sequential numbering (6, 7, 8, 11) suggests a ring of numbered slots rather
+than a monotonic sequence.
+
+WORTH NOTING: this content was present while GET /cloud/logs reported
+radioPacketLog: false. So the flag controls whether NEW packet log data is
+generated; it does not gate retrieval of what already exists. Log data from an
+earlier period when the flag was on remains readable after it is turned off.
+
+This log is purgeable - see ../cloud-logs-radioPacketLog-DELETE/.
+
+STORED EVIDENCE - the FULL response is here, not a summary:
+
+  response body/response.json     the complete response as received, byte for
+                                  byte, including the entire base64 `binary`
+                                  value. Nothing is elided.
+  response body/decoded/          the archive written out from that base64,
+                                  plus every member small enough to keep in the
+                                  repo, extracted so the log text is directly
+                                  readable
+  response body/decoded/MANIFEST.txt
+                                  member list with sizes, the gzip magic check,
+                                  and which members were too large to extract
+
+Members over ~200 KB are left inside the .tar.gz rather than duplicated - the
+radio_control.log.N rotations are ~5 MB each and the packet logs 1 MiB each.
+Extract them with `tar xzf <archive>` from the decoded/ directory.

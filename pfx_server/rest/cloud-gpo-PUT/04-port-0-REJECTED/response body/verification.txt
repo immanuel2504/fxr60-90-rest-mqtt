@@ -1,0 +1,2 @@
+gpo 04 - port below the documented minimum (schema: minimum 1)
+RESULT: rejected, HTTP 422, {"code":1,"message":"Invalid GPO pin"}

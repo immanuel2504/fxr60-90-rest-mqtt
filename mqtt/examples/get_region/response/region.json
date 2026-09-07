@@ -55,12 +55,12 @@
       "902750",
       "923250"
     ],
-    "country": "Canada",
+    "country": "United States/Canada",
     "lbtEnabled": false,
     "maxTxPowerSupported": 300,
     "minTxPowerSupported": 0,
     "region": "FCC_Generic",
-    "regulatoryStandard": "CANADA_FCC_15"
+    "regulatoryStandard": "US_FCC_15"
   },
   "response": "success"
 }

@@ -1,0 +1,7 @@
+ntpServer 03 - spec example "ntpServer_single": primary only
+RESULT: accepted, HTTP 200, CONFIRMED
+
+GET after: {"server":"time.google.com"}
+
+The minimal working form, and the one to recommend: 'server' alone is the only
+shape confirmed reliable across every run.

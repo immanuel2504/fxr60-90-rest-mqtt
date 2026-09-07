@@ -1,0 +1,4 @@
+{
+  "code": 1,
+  "message": "scanType with 'ble' cannot be combined with _sim or applyImpinjGen2X"
+}

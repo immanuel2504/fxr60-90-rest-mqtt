@@ -1,0 +1,12 @@
+{
+  "command": "set_autostartUserapp",
+  "channel": "management",
+  "source": "request/autostartUserapp.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_autostartUserapp-e4988d969d",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_autostartUserapp\", \"command_id\": \"test-set_autostartUserapp-e4988d969d\", \"payload\": {}, \"response\": \"success\"}"
+}

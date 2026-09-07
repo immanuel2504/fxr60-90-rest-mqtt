@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "broker": "10.117.229.9",
+    "port": 1883,
+    "cmd_topic": "fxr60-lab/mcmd",
+    "rsp_topic": "fxr60-lab/mrsp",
+    "tiers": [
+      "write"
+    ],
+    "started": "2026-09-02 03:35:51"
+  },
+  "results": [
+    {
+      "command": "set_autostartUserapp",
+      "channel": "management",
+      "source": "request/autostartUserapp.json",
+      "tier": "write",
+      "verdict": "PASS",
+      "ms": 50.2,
+      "note": "",
+      "request_id": "test-set_autostartUserapp-80e76a8820",
+      "response": "success",
+      "response_preview": "{\"command\": \"set_autostartUserapp\", \"command_id\": \"test-set_autostartUserapp-80e76a8820\", \"payload\": {}, \"response\": \"success\"}"
+    },
+    {
+      "command": "set_startUserapp",
+      "channel": "management",
+      "source": "request/default.json",
+      "tier": "write",
+      "verdict": "PASS",
+      "ms": 150.4,
+      "note": "",
+      "request_id": "test-set_startUserapp-b4168fae18",
+      "response": "success",
+      "response_preview": "{\"command\": \"set_startUserapp\", \"command_id\": \"test-set_startUserapp-b4168fae18\", \"payload\": {}, \"response\": \"success\"}"
+    },
+    {
+      "command": "set_stopUserapp",
+      "channel": "management",
+      "source": "request/default.json",
+      "tier": "write",
+      "verdict": "PASS",
+      "ms": 50.2,
+      "note": "",
+      "request_id": "test-set_stopUserapp-cb15689a1a",
+      "response": "success",
+      "response_preview": "{\"command\": \"set_stopUserapp\", \"command_id\": \"test-set_stopUserapp-cb15689a1a\", \"payload\": {}, \"response\": \"success\"}"
+    }
+  ]
+}

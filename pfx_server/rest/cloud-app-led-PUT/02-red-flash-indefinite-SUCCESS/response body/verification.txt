@@ -1,0 +1,8 @@
+app-led 02 - spec example "continuous_alarm": red, flashing, indefinite
+RESULT: accepted, HTTP 200
+
+seconds: 0 is documented as "indefinite" and is accepted. So 0 is a special
+value, not a duration - and note it is NOT caught by the
+"seconds (expected positive number)" check that rejects -5 (test 07).
+
+GET after: {"status":"NON_DEFAULT"}

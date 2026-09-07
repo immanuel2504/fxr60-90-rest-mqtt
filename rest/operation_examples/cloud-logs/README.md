@@ -5,14 +5,13 @@
 
 ## Reviewed PUT
 
+Only live-working request bodies. `radio_control` / `cloud_agent` were accepted but did not apply as documented, so they are not included. Always send `radioPacketLog` if you do not want it reset to `false`.
+
 | File | Example name | Summary |
 |---|---|---|
-| `PUT/logs.json` | `logs` | DEBUG radio_control and cloud_agent |
+| `PUT/logs.json` | `logs` | Set `reader_gateway` to DEBUG and enable radioPacketLog |
+| `PUT/radioPacketLog_on.json` | `radioPacketLog_on` | Enable radioPacketLog only |
 | `PUT/success.json` | `success` | Empty string on success |
-
-## NEED LIVE TEST
-
-Confirm request is accepted and success body is `""`; verify with GET `/cloud/logs`.
 
 ## Trying these against a reader
 

@@ -7,16 +7,16 @@
 | **Example name** | `installed` |
 | **Summary title** | `Installed certificates` |
 
-### `PUT/updateCertificate.json`
+### `PUT/basic_https.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `updateCertificate` |
-| **Summary title** | `Install client certificate (BASIC)` |
+| **Example name** | `basic_https` |
+| **Summary title** | `Install client PFX over HTTPS with BASIC` |
 
-### `PUT/updateCertificate_async.json`
+### `PUT/mtls_optional.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `updateCertificate_async` |
-| **Summary title** | `Install certificate over HTTPS with retry (async)` |
+| **Example name** | `mtls_optional` |
+| **Summary title** | `Install client PFX over HTTPS with BASIC and CA` |

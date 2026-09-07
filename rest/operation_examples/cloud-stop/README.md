@@ -8,7 +8,6 @@
 | `PUT/stop_Global_RFID_only.json` | `stop_Global_RFID_only` | Global RFID only |
 | `PUT/stop_Global_BLE_only.json` | `stop_Global_BLE_only` | Global BLE only |
 | `PUT/stop_Global_BLE_and_RFID.json` | `stop_Global_BLE_and_RFID` | Global BLE and RFID |
-| `PUT/stop_Targeted.json` | `stop_Targeted` | Targeted per data endpoint |
 
 ## Trying these against a reader
 

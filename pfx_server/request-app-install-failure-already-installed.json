@@ -1,0 +1,25 @@
+{
+  "url": "https://10.117.229.18/",
+  "filename": "sampleNew_1.0.5.deb",
+  "authenticationType": "BASIC",
+  "options": {
+    "username": "altautoadmin",
+    "password": "@1T@uT0dud3"
+  },
+  "verifyPeer": false,
+  "verifyHost": false,
+  "retry": {
+    "type": "randomWait",
+    "policy": {
+      "retries": 3,
+      "wait": {
+        "min": 10,
+        "max": 30
+      }
+    }
+  },
+  "timeouts": {
+    "connection": 5,
+    "read": 20
+  }
+}

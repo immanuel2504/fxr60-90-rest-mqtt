@@ -1,6 +1,8 @@
 {
   "command": "set_impinjGen2X",
   "command_id": "req-set-impinjGen2X",
-  "payload": {},
+  "payload": {
+    "message": "Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features."
+  },
   "response": "success"
 }

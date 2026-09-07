@@ -1,0 +1,51 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 16 - the spec's with_selects example (Gen2 select, sel NOT_SL)
+RESULT: ACCEPTED, HTTP 200
+
+    "query":   {"sel": "NOT_SL", "session": "S1", "tagPopulation": 10, "target": "A"}
+    "selects": [{"target": "S1", "action": "INVB_NOTHING", "membank": "TID",
+                 "pointer": 6, "length": 24, "mask": "800600"}]
+
+TAG RESULT over 18s:
+  unique tags  22
+  total reads  22
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=None..None  ant=[None]
+    e2806894000040017790ac71  NOT SEEN
+
+INTERESTING RESULT - the two reference tags behaved DIFFERENTLY:
+
+    e2806894000040017790e471   read
+    e2806894000040017790ac71   NOT SEEN
+
+This is a Gen2 select with a TID mask (800600 at pointer 6, length 24) and
+sel: NOT_SL, so the reader inventories only tags whose selected flag is NOT set
+after the select is applied. Tags whose TID matches the mask are asserted and
+therefore excluded.
+
+So a split result is the expected shape of a working select - it is
+discriminating between tags on their TID contents. From test 09 the reference
+tags' TIDs are:
+
+    ...e471  TID e2806894200040017790e471
+    ...ac71  (TID captured in test 09's raw data)
+
+Both are Impinj (E280...) but the mask targets bits that differ between them.
+
+NOT FULLY VERIFIED: which specific tags the mask should match was not computed
+bit-by-bit, so "the select works" is inferred from the discrimination rather than
+predicted in advance. Recording it as observed. A rigorous test would compute the
+expected matching set from each tag's TID and compare - worth doing if selects
+are important to an integration.
+
+What IS solid: the payload is accepted, and the tag population returned differs
+from the unfiltered runs in a way consistent with a select being applied.

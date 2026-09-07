@@ -1,0 +1,28 @@
+{
+  "command": "set_os",
+  "command_id": "req-set-os-os-update-basic",
+  "payload": {
+    "url": "https://10.117.229.18/FXR_5.0.5-6.tar.bz2",
+    "authenticationType": "BASIC",
+    "authenticationOptions": {
+      "username": "altautoadmin",
+      "password": "@1T@uT0dud3"
+    },
+    "verifyPeer": false,
+    "verifyHost": false,
+    "retry": {
+      "type": "randomWait",
+      "policy": {
+        "retries": 3,
+        "wait": {
+          "min": 10,
+          "max": 30
+        }
+      }
+    },
+    "timeouts": {
+      "connection": 5,
+      "read": 20
+    }
+  }
+}

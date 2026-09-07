@@ -1,0 +1,38 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    },
+    "RADIO_START": [
+      {
+        "type": "GPO",
+        "pin": 4,
+        "state": "HIGH"
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "GPO",
+        "pin": 4,
+        "state": "LOW"
+      }
+    ]
+  },
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": []
+        }
+      }
+    }
+  }
+}

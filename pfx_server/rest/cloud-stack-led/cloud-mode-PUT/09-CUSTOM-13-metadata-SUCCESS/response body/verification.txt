@@ -1,0 +1,84 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 09 - all 13 WORKING tagMetaData fields
+RESULT: ACCEPTED, HTTP 200 - richest tag payload of any mode tested
+
+The spec's with_tag_metadata example minus READER_LOCATION (see test 08).
+
+TAG RESULT over 18s:
+  unique tags  20
+  total reads  20
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=-39..-39  ant=[1]
+    e2806894000040017790ac71  reads=1  rssi=-44..-44  ant=[1]
+
+*** COMPLETE TAG EVENT - reference tag e2806894000040017790e471 ***
+
+{
+  "CRC": "f3b3",
+  "EPC": "f3b33000e2806894000040017790e471",
+  "MAC": "88:BC:AC:9B:E3:4A",
+  "PC": "3000",
+  "TID": "e2806894200040017790e471",
+  "USER": "Error: tag returned error code 0x03 = Memory overrun",
+  "antenna": 1,
+  "channel": 921.25,
+  "eventNum": 391,
+  "format": "epc",
+  "hostName": "FXR609BE34A",
+  "idHex": "e2806894000040017790e471",
+  "peakRssi": -39,
+  "phase": 0.0,
+  "reads": 1
+}
+
+*** THE FIELD NAME MAPPING - requested vs delivered ***
+
+The names you request are NOT the names you receive. Documenting the mapping,
+since nothing in the spec states it:
+
+    requested         delivered in the tag event
+    ANTENNA        -> antenna
+    RSSI           -> peakRssi          (not "rssi")
+    PHASE          -> phase
+    SEEN_COUNT     -> reads             (not "seenCount")
+    CHANNEL        -> channel
+    PC             -> PC
+    XPC            -> (not present on these tags)
+    CRC            -> CRC
+    EPC            -> EPC
+    TID            -> TID
+    USER           -> USER
+    MAC            -> MAC
+    HOSTNAME       -> hostName          (not "HOSTNAME" or "hostname")
+
+Note the casing is inconsistent in the OUTPUT too: some fields come back
+UPPERCASE (PC, CRC, EPC, TID, USER, MAC) and others camelCase (antenna,
+peakRssi, channel, phase, reads, hostName). A client has to know both
+conventions.
+
+XPC was requested and accepted but does not appear - presumably because these
+tags carry no XPC word. Absence is silent.
+
+*** USER MEMORY RETURNS AN ERROR STRING, NOT AN ERROR ***
+
+    "USER": "Error: tag returned error code 0x03 = Memory overrun"
+
+The tags in this field have no USER memory bank. Rather than omitting the field
+or signalling a per-tag failure, the reader puts a human-readable error message
+in the field where data is expected. A client parsing USER as hex data would get
+a 52-character English sentence.
+
+That is worth raising: the value is neither valid data nor absent, and its type
+(string) is indistinguishable from a successful read.
+
+The MAC and hostName fields correctly identify the reader itself
+(88:BC:AC:9B:E3:4A / FXR609BE34A), which is useful for multi-reader deployments.

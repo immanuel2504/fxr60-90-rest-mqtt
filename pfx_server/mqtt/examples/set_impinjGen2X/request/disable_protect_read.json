@@ -1,0 +1,9 @@
+{
+  "command": "set_impinjGen2X",
+  "payload": {
+    "tagProtect": {
+      "action": "disableTagVisibility",
+      "password": "77777777"
+    }
+  }
+}

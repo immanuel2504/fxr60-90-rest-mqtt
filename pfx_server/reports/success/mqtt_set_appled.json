@@ -1,0 +1,12 @@
+{
+  "command": "set_appled",
+  "channel": "management",
+  "source": "request/app_led.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_appled-10901a03d1",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_appled\", \"command_id\": \"test-set_appled-10901a03d1\", \"payload\": {}, \"response\": \"success\"}"
+}

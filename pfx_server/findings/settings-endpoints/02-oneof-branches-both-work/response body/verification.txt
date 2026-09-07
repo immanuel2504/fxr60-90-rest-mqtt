@@ -1,0 +1,39 @@
+ntpServer 02 - spec example "ntpServer_legacy": the 'server1' convention
+RESULT: accepted, HTTP 200, applied correctly
+
+GET after: {"server":"time.cloudflare.com"}   (3/3 runs)
+
+The schema documents this endpoint as a oneOf with two alternatives:
+    'server'  - "current convention"
+    'server1' - "legacy convention"
+
+BOTH WORK. The legacy key is honoured and the value is applied, so the schema is
+accurate on this point.
+
+Note the response normalises the key: you write 'server1', and GET returns it
+under 'server'. There is only ever one primary field in the response.
+
+CORRECTION - an earlier version of this folder reported 'server1' as a defect
+that silently wiped the setting. THAT WAS WRONG. The test had confounded two
+variables: every hostname tried with 'server1' (timeA.google.com,
+solo.google.com, verify.google.com) happens to be NXDOMAIN, while the hostname
+tried with 'server' (time1.google.com) resolves. The wipe was caused by the
+UNRESOLVABLE HOSTNAME, not by the key.
+
+Isolated with a 2x2 over key x resolvability:
+
+    server   + time.cloudflare.com     -> {"server":"time.cloudflare.com"}
+    server   + nosuch.invalid.example  -> {"server":""}
+    server1  + time.cloudflare.com     -> {"server":"time.cloudflare.com"}
+    server1  + nosuch.invalid.example  -> {"server":""}
+
+The key makes no difference; resolvability decides. The real defect is recorded
+in 07-unresolvable-hostname-BUG-silently-wipes/.
+
+DNS check from the test host:
+    time1.google.com      resolves
+    time.cloudflare.com   resolves
+    pool.ntp.org          resolves
+    timeA.google.com      NXDOMAIN
+    solo.google.com       NXDOMAIN
+    verify.google.com     NXDOMAIN

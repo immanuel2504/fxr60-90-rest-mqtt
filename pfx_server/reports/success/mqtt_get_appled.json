@@ -1,0 +1,12 @@
+{
+  "command": "get_appled",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_appled-47f25e9758",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_appled\", \"command_id\": \"test-get_appled-47f25e9758\", \"payload\": {\"status\": \"DEFAULT\"}, \"response\": \"success\"}"
+}

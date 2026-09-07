@@ -1,0 +1,12 @@
+{
+  "command": "get_status",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 4407.7,
+  "note": "",
+  "request_id": "test-get_status-e99f689265",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_status\", \"command_id\": \"test-get_status-e99f689265\", \"payload\": {\"antennas\": {\"1\": \"connected\", \"2\": \"disconnected\", \"3\": \"disconnected\", \"4\": \"disconnected\", \"5\": \"connected\", \"6\": \"connected\"}, \"ble\": {\"beaconCounts\": {\"altBeacon\": 0, \"eddystone\": 0, \"generic\": 0, \"iBeacon\": 0, \"total\": 0}, \"scanStartTime\": \"\", \"scanState\": \"stopped\"}, \"cpu\": {\"system\": 0, \"user\": 9}, \"flash\": {\"platform\": {\"free\": 0, \"total\": 0, \"used\": 0}, \"readerConfig\": {\"free\": 0, \"total\": 0, \"used\": 0}, "
+}

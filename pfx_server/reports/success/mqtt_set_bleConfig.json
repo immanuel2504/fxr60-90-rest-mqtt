@@ -1,0 +1,12 @@
+{
+  "command": "set_bleConfig",
+  "channel": "management",
+  "source": "request/enable_ble.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_bleConfig-1431ab12b6",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_bleConfig\", \"command_id\": \"test-set_bleConfig-1431ab12b6\", \"payload\": {}, \"response\": \"success\"}"
+}

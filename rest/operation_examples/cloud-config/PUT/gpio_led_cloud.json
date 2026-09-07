@@ -6,33 +6,40 @@
       "3": "LOW",
       "4": "LOW"
     },
-    "LEDDefaults": {
-      "1": "GREEN",
-      "2": "GREEN",
-      "3": "GREEN"
-    },
     "CLOUD_CONNECT": [
       {
-        "type": "LED",
-        "led": 3,
-        "color": "GREEN"
+        "type": "GPO",
+        "pin": 1,
+        "state": "HIGH",
+        "postActionState": "LOW",
+        "blink": {
+          "ON": 200,
+          "OFF": 200,
+          "DURATION": 1000
+        }
       },
       {
-        "type": "GPO",
-        "pin": 2,
-        "state": "HIGH"
+        "type": "LED",
+        "led": 2,
+        "color": "GREEN"
       }
     ],
     "CLOUD_DISCONNECT": [
       {
-        "type": "LED",
-        "led": 3,
-        "color": "RED"
-      },
-      {
         "type": "GPO",
         "pin": 2,
-        "state": "LOW"
+        "state": "HIGH",
+        "postActionState": "LOW",
+        "blink": {
+          "ON": 500,
+          "OFF": 500,
+          "DURATION": 0
+        }
+      },
+      {
+        "type": "LED",
+        "led": 2,
+        "color": "RED"
       }
     ]
   }

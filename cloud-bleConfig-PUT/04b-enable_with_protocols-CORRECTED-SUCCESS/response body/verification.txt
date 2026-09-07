@@ -1,0 +1,43 @@
+bleConfig 04b - the spec's example with ONE fix: lowercase generic fields
+RESULT: HTTP 200 - CONFIRMED, the whole example works
+
+The only change from test 04:
+
+  "generic": {"filters": [{"Address": ..., "AddressType": ...,
+                           "Name": ..., "Alias": ...}]}      -> 422
+  "generic": {"filters": [{"address": ..., "addressType": ...,
+                           "name": ..., "alias": ...}]}      -> 200
+
+Everything else is byte-identical to the spec's example.
+
+STORED AND VERIFIED via GET /cloud/bleConfig:
+
+  enable=True  interval=5
+  additionalFilters={"rssi":-80,
+                     "serviceUuids16":["FEAA","FE9B"],
+                     "serviceUuids128":["FDA50693-A4E2-4FB1-AFCF-C6EB07647825"]}
+  protocols enabled: altBeacon=T eddystone=T generic=T iBeacon=T
+
+  generic.filters read back as:
+    [{"address":"7E:41:25:1E:D5:16","addressType":"random",
+      "alias":"BLEPeripheralApp","name":"BLEPeripheralApp"}]
+
+All four fields persisted. So a one-line casing fix in the documentation makes
+the most complex bleConfig example usable.
+
+METHOD NOTE - a false alarm worth recording. An earlier read-back of this
+payload appeared to show only `addressType` stored, suggesting the other three
+were silently dropped. Re-testing each field alone showed all four persist
+individually, and re-testing all four together with a longer settle (8 s instead
+of 4 s) showed all four stored correctly. The first observation was a
+read-too-soon artefact: GET returned the PREVIOUS test's state. It was not
+reported as a defect.
+
+Coverage confirmed by this test:
+  iBeacon   filter: uuid, major, minor, txPower
+  altBeacon filter: mfgId, beaconId, major, minor, refRssi
+  eddystone filters: all three frameTypes - URL, UID (namespace+instance),
+                     EID (ephemeralId)
+  generic   filter: address, addressType, name, alias
+  additionalFilters: rssi, serviceUuids16 (both 4-hex and 128-bit forms),
+                     serviceUuids128

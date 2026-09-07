@@ -1,0 +1,25 @@
+{
+  "command": "set_installUserapp",
+  "command_id": "req-set-installUserapp-app-install-none",
+  "payload": {
+    "url": "https://10.117.229.18/",
+    "filename": "sampleAntenna_1.0.4.deb",
+    "authenticationType": "NONE",
+    "verifyPeer": false,
+    "verifyHost": false,
+    "retry": {
+      "type": "randomWait",
+      "policy": {
+        "retries": 3,
+        "wait": {
+          "min": 10,
+          "max": 30
+        }
+      }
+    },
+    "timeouts": {
+      "connection": 5,
+      "read": 20
+    }
+  }
+}

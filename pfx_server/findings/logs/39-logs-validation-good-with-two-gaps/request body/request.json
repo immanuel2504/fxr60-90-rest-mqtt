@@ -1,0 +1,66 @@
+{
+  "method": "PUT",
+  "url": "/cloud/logs",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential.",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "_note": "nine separate probes. See verification.txt for each response.",
+    "_probes": [
+      {},
+      {
+        "components": [
+          {
+            "componentName": "nosuch",
+            "level": "INFO"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "VERBOSE"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "level": "INFO"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "info"
+          }
+        ]
+      },
+      {
+        "radioPacketLog": "true"
+      },
+      {
+        "components": {
+          "componentName": "reader_gateway",
+          "level": "INFO"
+        }
+      },
+      {
+        "components": []
+      }
+    ]
+  }
+}

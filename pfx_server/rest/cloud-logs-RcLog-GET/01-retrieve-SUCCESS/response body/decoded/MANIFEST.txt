@@ -1,0 +1,17 @@
+Archive:  rcLog.tar.gz
+Response: 621823 bytes of JSON
+base64:   621784 chars -> 466338 bytes gzip
+gzip magic: 1f8b  (valid)
+
+Members:
+  radio_control.log  95132 bytes
+  radio_control.log.5  5243170 bytes
+  radio_control.log.3  5242952 bytes
+  (not extracted: radio_control.log.5 is 5243170 bytes - exceeds the 200000-byte in-repo limit; extract it from rcLog.tar.gz above)
+  (not extracted: radio_control.log.3 is 5242952 bytes - exceeds the 200000-byte in-repo limit; extract it from rcLog.tar.gz above)
+
+3 member(s). Files small enough to keep are extracted
+alongside this manifest; the .tar.gz holds all of them.
+
+Re-extract everything with:
+  tar xzf rcLog.tar.gz

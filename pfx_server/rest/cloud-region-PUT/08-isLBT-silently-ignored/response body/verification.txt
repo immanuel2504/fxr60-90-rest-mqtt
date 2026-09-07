@@ -1,0 +1,24 @@
+region 08 - optional isLBT against a standard that reports LBT unconfigurable
+RESULT: accepted, HTTP 200 - but the value is SILENTLY IGNORED
+
+GET /cloud/supportedStandardList?region=United%20States/Canada reports for
+US_FCC_15:
+    "isLBTConfigurable": "false"
+
+Sent isLBT: true anyway.
+
+after: lbt=False hop=True nchan=50
+
+'lbtEnabled' remained false. The request was accepted with HTTP 200 and no
+indication that isLBT was discarded.
+
+FINDING: an inapplicable optional field is accepted and silently dropped. The
+behaviour is arguably correct - the standard genuinely does not support LBT - but
+the silence is the problem. A caller enabling Listen-Before-Talk gets HTTP 200
+and reasonably believes LBT is on.
+
+Better: reject with something like "isLBT not configurable for standard
+US_FCC_15", consistent with how displayConfig reports bad values.
+
+Note isLBTConfigurable is a STRING "false", not a boolean, in the
+supportedStandardList response - worth flagging separately.

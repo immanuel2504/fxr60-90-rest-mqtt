@@ -1,0 +1,13 @@
+Archive:  syslog.tar.gz
+Response: 13364 bytes of JSON
+base64:   13324 chars -> 9992 bytes gzip
+gzip magic: 1f8b  (valid)
+
+Members:
+  messages  72394 bytes
+
+1 member(s). Files small enough to keep are extracted
+alongside this manifest; the .tar.gz holds all of them.
+
+Re-extract everything with:
+  tar xzf syslog.tar.gz

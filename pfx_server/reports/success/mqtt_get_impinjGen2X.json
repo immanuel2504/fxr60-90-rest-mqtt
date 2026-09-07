@@ -1,0 +1,12 @@
+{
+  "command": "get_impinjGen2X",
+  "channel": "control",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_impinjGen2X-583faf2228",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_impinjGen2X\", \"command_id\": \"test-get_impinjGen2X-583faf2228\", \"payload\": {\"tagQuieting\": {\"advanced\": {\"preSelect\": [{\"action\": \"ASSERTSL_NOTHING\", \"mask\": {\"bank\": \"EPC\", \"length\": 96, \"pointer\": 32, \"value\": \"E280123456789012345678AB\"}, \"target\": \"SL\"}, {\"action\": \"INVB_INVA\", \"mask\": {\"bank\": \"EPC\", \"length\": 96, \"pointer\": 32, \"value\": \"E280AABBCCDDEEFF11223344\"}, \"target\": \"S2\"}], \"stateAwareAction\": \"ASSERTSL_DEASSERTSL\", \"tagQuietMasks\": [\"SL_ASSERT\", \"S2B\"], \"target\": \""
+}

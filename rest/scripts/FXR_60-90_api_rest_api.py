@@ -36,6 +36,7 @@ from build_fxr90_rest_api import (  # type: ignore  # noqa: E402
     case_insensitive_descriptions,
     collect_refs,
     description_key,
+    fill_missing_operation_ids,
     hoist_operation_bodies,
     load_yaml,
     normalize_openapi_31,
@@ -458,6 +459,8 @@ def main() -> int:
         print("Developer spec has no paths section.", file=sys.stderr)
         return 1
 
+    op_ids_filled = fill_missing_operation_ids(paths)
+
     descriptions = case_insensitive_descriptions(load_package_operation_descriptions())
     desc_applied, desc_missing = apply_markdown_descriptions(paths, descriptions)
 
@@ -511,6 +514,7 @@ def main() -> int:
         f"({schema_count_in} in source + {hoisted} hoisted - {len(dropped)} pruned)"
     )
     packs = count_example_packs()
+    print(f"operationId     : {op_ids_filled} filled in (missing from source)")
     print(f"Op docs applied : {desc_applied} / {op_count}")
     print(f"YAML examples   : stripped {stripped} media-type example/examples key(s)")
     print(f"Op examples     : {ex_ops} / {op_count} operation(s), {ex_blocks} media block(s) from folder packs only")

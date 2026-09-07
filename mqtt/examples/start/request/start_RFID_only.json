@@ -1,0 +1,9 @@
+{
+  "command": "start",
+  "command_id": "req-start",
+  "payload": {
+    "scanType": [
+      "rfid"
+    ]
+  }
+}

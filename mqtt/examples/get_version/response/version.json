@@ -7,9 +7,9 @@
     "model": "FXR60",
     "radioControlApplication": "0.2.58.7",
     "radioFirmware": "2.1.70.0",
-    "readerApplication": "5.0.3",
+    "readerApplication": "5.0.7",
     "revertBackFirmware": {},
-    "serialNumber": "260995251E0047"
+    "serialNumber": "260975251E0049"
   },
   "response": "success"
 }

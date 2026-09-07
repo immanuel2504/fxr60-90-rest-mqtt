@@ -1,0 +1,83 @@
+{
+  "method": "PUT",
+  "url": "/cloud/config",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "CLOUD_CONNECT": [
+        {
+          "type": "GPO",
+          "pin": 1,
+          "state": "HIGH"
+        }
+      ],
+      "CLOUD_DISCONNECT": [
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH"
+        }
+      ]
+    },
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "name": "DATA_UNREACHABLE",
+                "description": "Deliberately unreachable broker, to force CLOUD_DISCONNECT",
+                "type": "mqtt",
+                "options": {
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.255.255.1",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr60-lab-data",
+                    "debug": false,
+                    "keepAlive": 20,
+                    "qos": 0,
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 10
+                  },
+                  "publishTopic": [
+                    "fxr60-lab/tevents"
+                  ],
+                  "subscribeTopic": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 256000,
+          "reportingInterval": 2000
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 500,
+          "maxNumEvents": 150000,
+          "throttle": 500
+        }
+      ]
+    }
+  }
+}

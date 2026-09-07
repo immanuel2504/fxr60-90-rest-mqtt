@@ -1,0 +1,7 @@
+CONFIRMED WORKING END TO END - real tag data delivered.
+
+  status: connectionStatus 'connected', iface DATA_HTTP_VIA_CONFIG
+
+DELIVERY PROVEN: started an inventory and the httpPost receiver log grew from 20 to 26 lines - 6 new POSTs of real tag data from 10.233.48.36. Inventory stopped afterwards.
+
+Confirms /cloud/config configures httpPost identically to /cloud/cloudConfig, including the undocumented options.URL and security.authenticationType/verifyHost fields.

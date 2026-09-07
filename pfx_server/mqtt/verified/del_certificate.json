@@ -1,0 +1,7 @@
+{
+  "command": "del_certificate",
+  "payload": {
+    "type": "client",
+    "name": "mqtt-test-cert-1"
+  }
+}

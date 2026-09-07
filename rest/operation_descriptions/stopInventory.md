@@ -4,7 +4,7 @@ The `PUT /cloud/stop` REST endpoint stops RFID inventory, BLE scanning, or both.
 
 By default, if the request body is empty or `scanType` is not provided, the reader stops RFID inventory only.
 
-`scanType` can be an **array** (global stop on every data endpoint) or an **object** (targeted stop per data endpoint).
+`scanType` is an **array** of scan types to stop.
 
 Use this endpoint to:
 
@@ -29,12 +29,7 @@ Use this endpoint to:
 
 ## 3. Stop Behavior
 
-`scanType` is either:
-
-- An **array** — **global stop**. The same scan types are stopped on **every** data endpoint.
-- An **object** — **targeted stop**. Keys are data endpoint names; values are the scan types to stop on that endpoint.
-
-**Global stop** (array). Example — BLE on all endpoints:
+`scanType` is an **array** of scan types to stop. Omit it to stop RFID only (default).
 
 ```json
 { "scanType": ["ble"] }
@@ -43,15 +38,9 @@ Use this endpoint to:
 | Request body | Result |
 |---|---|
 | `{}` | Stops RFID inventory only. This is the default behavior. |
-| `{ "scanType": ["rfid"] }` | Stops RFID inventory on every data endpoint. BLE scanning continues if active. |
-| `{ "scanType": ["ble"] }` | Stops BLE scanning on every data endpoint. RFID inventory continues if active. |
-| `{ "scanType": ["ble", "rfid"] }` | Stops both on every data endpoint. |
-
-**Targeted stop** (object with data-endpoint fields):
-
-```json
-{ "scanType": { "dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"] } }
-```
+| `{ "scanType": ["rfid"] }` | Stops RFID inventory. BLE scanning continues if active. |
+| `{ "scanType": ["ble"] }` | Stops BLE scanning. RFID inventory continues if active. |
+| `{ "scanType": ["ble", "rfid"] }` | Stops both. |
 
 > Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, `scanType` is not supported: send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
 

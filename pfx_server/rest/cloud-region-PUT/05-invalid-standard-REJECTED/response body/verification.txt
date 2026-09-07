@@ -1,0 +1,8 @@
+region 05 - valid country, non-existent standard
+RESULT: rejected, HTTP 422
+{"code":3,"message":"CS:'setActiveRegionRsp' failed,Reason: RADIO REGION NOT AVAILABLE"}
+
+Note the different internal call name from test 04 ('setActiveRegionRsp' vs
+'regionStandardRsp'), so the two failures are distinguishable in logs - but both
+surface the same "RADIO REGION NOT AVAILABLE" text, which does not say whether
+the country or the standard was at fault.

@@ -1,0 +1,6 @@
+app-led 07 - negative duration
+RESULT: rejected, HTTP 422
+{"code":1,"message":"seconds (expected positive number)"}
+
+The schema puts no minimum on "seconds"; the firmware enforces one. Note 0 IS
+accepted (test 02) despite the message saying "positive".

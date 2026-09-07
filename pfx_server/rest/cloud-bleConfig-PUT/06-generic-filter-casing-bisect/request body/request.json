@@ -1,0 +1,91 @@
+{
+  "method": "PUT",
+  "url": "/cloud/bleConfig",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "spec": "openAPISpec 11.yaml - IoT Connector REST API v3.0.0",
+  "specExampleName": "(not a spec example - bisection)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential. Tokens expire quickly; mint one per call in long runs."
+  },
+  "body": {
+    "_note": "not a single request - the bisection that isolated the casing defect in test 04. Each line below was its own PUT.",
+    "_protocol_bisect": [
+      {
+        "label": "iBeacon + filters",
+        "result": 200
+      },
+      {
+        "label": "altBeacon + filters",
+        "result": 200
+      },
+      {
+        "label": "eddystone URL frame",
+        "result": 200
+      },
+      {
+        "label": "generic + filters",
+        "result": 422
+      },
+      {
+        "label": "additionalFilters all three",
+        "result": 200
+      }
+    ],
+    "_generic_field_bisect": [
+      {
+        "sent": {
+          "Address": "7E:41:25:1E:D5:16"
+        },
+        "result": 422
+      },
+      {
+        "sent": {
+          "AddressType": "random"
+        },
+        "result": 422
+      },
+      {
+        "sent": {
+          "Name": "BLEPeripheralApp"
+        },
+        "result": 422
+      },
+      {
+        "sent": {
+          "Alias": "BLEPeripheralApp"
+        },
+        "result": 422
+      },
+      {
+        "sent": {
+          "address": "7E:41:25:1E:D5:16"
+        },
+        "result": 200
+      },
+      {
+        "sent": {
+          "addressType": "random"
+        },
+        "result": 200
+      },
+      {
+        "sent": {
+          "name": "BLEPeripheralApp"
+        },
+        "result": 200
+      },
+      {
+        "sent": {
+          "alias": "MyAlias"
+        },
+        "result": 200
+      },
+      {
+        "sent": "generic with no filters at all",
+        "result": 200
+      }
+    ]
+  }
+}

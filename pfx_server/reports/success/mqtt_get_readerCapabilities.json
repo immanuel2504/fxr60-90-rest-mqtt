@@ -1,0 +1,12 @@
+{
+  "command": "get_readerCapabilities",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_readerCapabilities-d8ff6adfa4",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_readerCapabilities\", \"command_id\": \"test-get_readerCapabilities-d8ff6adfa4\", \"payload\": {\"capabilities\": {\"antennas\": [{\"port\": 1, \"type\": \"external\"}, {\"port\": 2, \"type\": \"external\"}, {\"port\": 3, \"type\": \"external\"}, {\"port\": 4, \"type\": \"external\"}, {\"port\": 5, \"type\": \"internal\"}, {\"port\": 6, \"type\": \"internal\"}], \"apiSupported\": {\"versions\": [{\"documentation\": \"https://zebradevs.github.io/rfid-ziotc-docs/index.html\", \"version\": \"v1\"}]}, \"appLEDColors\": [\"RED\", \"GREEN\", \"AMBER"
+}

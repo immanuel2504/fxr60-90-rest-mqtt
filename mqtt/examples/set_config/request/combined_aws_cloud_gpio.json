@@ -1,0 +1,134 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-combined-aws-cloud-gpio",
+  "payload": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "LEDDefaults": {
+        "1": "GREEN",
+        "2": "GREEN",
+        "3": "GREEN"
+      },
+      "CLOUD_CONNECT": [
+        {
+          "type": "GPO",
+          "pin": 1,
+          "state": "HIGH"
+        },
+        {
+          "type": "LED",
+          "led": 2,
+          "color": "GREEN"
+        }
+      ],
+      "CLOUD_DISCONNECT": [
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH"
+        },
+        {
+          "type": "LED",
+          "led": 2,
+          "color": "RED"
+        }
+      ],
+      "RADIO_START": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "HIGH"
+        }
+      ],
+      "RADIO_STOP": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "LOW"
+        }
+      ],
+      "TAG_READ": [
+        {
+          "type": "GPO",
+          "pin": 4,
+          "state": "HIGH",
+          "postActionState": "LOW",
+          "blink": {
+            "ON": 100,
+            "OFF": 100,
+            "DURATION": 400
+          },
+          "conditions": [
+            "IS_CLOUD_CONNECTED"
+          ]
+        }
+      ]
+    },
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "name": "DATA_AWS_CLOUD_EVENTS",
+                "description": "AWS IoT data endpoint, paired with CLOUD_CONNECT/DISCONNECT GPIO",
+                "type": "mqtt-AWS",
+                "options": {
+                  "enableSecurity": true,
+                  "endpoint": {
+                    "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                    "port": 443,
+                    "protocol": "ssl"
+                  },
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "FXR60-LAB-DATA",
+                    "debug": false,
+                    "keepAlive": 20,
+                    "qos": 0,
+                    "reconnectDelay": 1,
+                    "reconnectDelayMax": 30,
+                    "alpnProtocolNames": [
+                      "x-amzn-mqtt-ca"
+                    ]
+                  },
+                  "publishTopic": [
+                    "datacollection_aws/FXR60-LAB"
+                  ],
+                  "subscribeTopic": [],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/AmazonRootCA1.pem",
+                    "privateKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-private.pem.key",
+                    "publicKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-certificate.pem.crt",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 256000,
+          "reportingInterval": 2000
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 500,
+          "maxNumEvents": 150000,
+          "throttle": 500
+        }
+      ]
+    }
+  }
+}

@@ -5,49 +5,63 @@
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_all_channels` |
-| **Summary title** | `All channels over MQTT (no TLS)` |
+| **Summary title** | `All channels over MQTT, port 1883` |
 
 ### `PUT/mqtt_tls_all_channels.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_tls_all_channels` |
-| **Summary title** | `All channels over MQTT TLS` |
+| **Summary title** | `All channels over MQTT mTLS file paths, port 8884` |
+
+### `PUT/data_mqtt_tls_installed_cert.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `data_mqtt_tls_installed_cert` |
+| **Summary title** | `MQTT mTLS via cert store plus CA, port 8884` |
 
 ### `PUT/mqtt_aws_all_channels.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_aws_all_channels` |
-| **Summary title** | `All channels over AWS IoT Core` |
+| **Summary title** | `AWS IoT FileLocation, port 443` |
+
+### `PUT/mqtt_aws_installed_cert.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mqtt_aws_installed_cert` |
+| **Summary title** | `AWS IoT installed cert, port 443` |
 
 ### `PUT/mqtt_azure_all_channels.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_azure_all_channels` |
-| **Summary title** | `All channels over Azure IoT Hub` |
+| **Summary title** | `All channels over Azure IoT Hub (not live-tested)` |
 
 ### `PUT/data_tcpip_server.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_tcpip_server` |
-| **Summary title** | `Tag events over TCP/IP server` |
+| **Summary title** | `TCP/IP server (reader listens)` |
 
 ### `PUT/data_websocket.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_websocket` |
-| **Summary title** | `Tag events over WebSocket` |
+| **Summary title** | `WebSocket (accepted)` |
 
 ### `PUT/data_http_post.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_http_post` |
-| **Summary title** | `Tag events over HTTP POST` |
+| **Summary title** | `HTTP POST (tags delivered)` |
 
 ### `PUT/management_cmd_mqtt.json`
 
@@ -69,10 +83,3 @@
 |---|---|
 | **Example name** | `clear_data` |
 | **Summary title** | `Clear all data connections` |
-
-### `PUT/data_mqtt_tls_installed_cert.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_mqtt_tls_installed_cert` |
-| **Summary title** | `Tag events over MQTT TLS with installed cert` |

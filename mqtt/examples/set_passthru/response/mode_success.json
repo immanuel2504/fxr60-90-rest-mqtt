@@ -1,0 +1,8 @@
+{
+  "command": "set_passthru",
+  "command_id": "req-set-passthru-status",
+  "payload": {
+    "response": "Success: {\"antennaStopCondition\":{\"type\":\"DURATION\",\"value\":100},\"delayBetweenAntennaCycles\":{\"duration\":0,\"type\":\"DISABLED\"},\"linkProfile\":3,\"query\":{\"session\":\"S0\",\"tagPopulation\":256,\"target\":\"AB\"},\"reportFilter\":{\"duration\":0,\"type\":\"PER_ANTENNA\"},\"tagMetaData\":[\"ANTENNA\",\"RSSI\",\"CHANNEL\",\"PC\",\"XPC\",\"CRC\",\"SEEN_COUNT\",\"PHASE\"],\"transmitPower\":[30.0,30.0,30.0,30.0,30.0,30.0],\"type\":\"CUSTOM\"}"
+  },
+  "response": "success"
+}

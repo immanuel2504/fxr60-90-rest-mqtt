@@ -1,0 +1,17 @@
+10.117.229.18 - - [01/Sep/2026 03:13:05] GET /reader.pfx (auth=Basic)
+10.117.229.18 - - [01/Sep/2026 03:13:05] "GET /reader.pfx HTTP/1.1" 200 -
+10.117.229.18 - - [01/Sep/2026 03:13:05] GET /reader.pfx (auth=Bearer)
+10.117.229.18 - - [01/Sep/2026 03:13:05] "GET /reader.pfx HTTP/1.1" 200 -
+10.117.229.18 - - [01/Sep/2026 03:13:05] GET /reader.pfx (auth=<none>)
+10.117.229.18 - - [01/Sep/2026 03:13:05] AUTH FAILED for /reader.pfx
+10.117.229.18 - - [01/Sep/2026 03:13:05] "GET /reader.pfx HTTP/1.1" 401 -
+10.117.197.245 - - [01/Sep/2026 03:13:23] GET / (auth=<none>)
+10.117.197.245 - - [01/Sep/2026 03:13:23] AUTH FAILED for /
+10.117.197.245 - - [01/Sep/2026 03:13:23] "GET / HTTP/1.1" 401 -
+10.117.197.245 - - [01/Sep/2026 03:13:47] GET / (auth=Basic)
+10.117.197.245 - - [01/Sep/2026 03:13:47] "GET / HTTP/1.1" 200 -
+10.117.197.245 - - [01/Sep/2026 03:13:47] GET /favicon.ico (auth=Basic)
+10.117.197.245 - - [01/Sep/2026 03:13:47] code 404, message File not found
+10.117.197.245 - - [01/Sep/2026 03:13:47] "GET /favicon.ico HTTP/1.1" 404 -
+10.117.197.245 - - [01/Sep/2026 04:49:03] GET / (auth=Basic)
+10.117.197.245 - - [01/Sep/2026 04:49:03] "GET / HTTP/1.1" 200 -

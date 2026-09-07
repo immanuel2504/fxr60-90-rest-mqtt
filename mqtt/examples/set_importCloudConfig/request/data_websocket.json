@@ -19,7 +19,7 @@
                 "retention": {
                   "maxEventRetentionTimeInMin": 500,
                   "maxNumEvents": 150000,
-                  "throttle": 100
+                  "throttle": 500
                 }
               }
             }

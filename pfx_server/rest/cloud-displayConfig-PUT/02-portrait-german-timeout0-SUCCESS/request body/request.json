@@ -1,0 +1,19 @@
+{
+  "method": "PUT",
+  "url": "/cloud/displayConfig",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "enable": true,
+    "enableOnscreenKeyboard": false,
+    "startUrl": "https://10.117.229.18/",
+    "resolution": "1280x720",
+    "orientation": "portrait",
+    "screenTimeoutSec": 0,
+    "keyboardLayout": "German"
+  }
+}

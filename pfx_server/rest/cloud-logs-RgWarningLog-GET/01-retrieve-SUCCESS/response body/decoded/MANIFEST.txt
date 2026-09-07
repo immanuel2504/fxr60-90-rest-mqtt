@@ -1,0 +1,18 @@
+Archive:  rgWarningLog.tar.gz
+Response: 426 bytes of JSON
+base64:   380 chars -> 283 bytes gzip
+gzip magic: 1f8b  (valid)
+
+Members:
+  warning-2026-09-05T16:03:24-0.txt  26 bytes
+  warning-2026-09-05T15:20:38-0.txt  26 bytes
+  warning-2026-09-05T15:08:37-0.txt  26 bytes
+  warning-2026-09-05T15:00:44-0.txt  26 bytes
+  warning-2026-09-05T14:58:51-0.txt  26 bytes
+  warning-2026-09-05T14:55:36-0.txt  26 bytes
+
+6 member(s). Files small enough to keep are extracted
+alongside this manifest; the .tar.gz holds all of them.
+
+Re-extract everything with:
+  tar xzf rgWarningLog.tar.gz

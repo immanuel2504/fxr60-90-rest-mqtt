@@ -1,0 +1,12 @@
+{
+  "command": "get_hostName",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_hostName-413957e809",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_hostName\", \"command_id\": \"test-get_hostName-413957e809\", \"payload\": {\"hostName\": \"FXR90C60C001\"}, \"response\": \"success\"}"
+}

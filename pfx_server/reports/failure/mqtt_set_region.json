@@ -1,0 +1,11 @@
+{
+  "command": "set_region",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "FAIL",
+  "ms": 12021.073211915791,
+  "note": "no MQTT response (timeout)",
+  "request_id": "test-set_region-5c7cb068ab",
+  "response": null
+}

@@ -1,0 +1,1 @@
+Certificate installed. Verified via GET /cloud/certificates: TEST-BASIC-507, type=client, issuer=Local RFID Test CA, installTime='Sat Sep  5 13:27:21 2026'. File server log: 10.233.48.36 GET /fxr60-lab-client.pfx (auth=Basic) -> 200

@@ -20,12 +20,33 @@
 
 ## PUT request
 
-### `PUT/app_led.json`
+### `PUT/amber_flash_60s.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `app_led` |
-| **Summary title** | `Amber blink for 60 seconds` |
+| **Example name** | `amber_flash_60s` |
+| **Summary title** | `Amber flash 60 seconds` |
+
+### `PUT/red_flash_indefinite.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `red_flash_indefinite` |
+| **Summary title** | `Red flash indefinite` |
+
+### `PUT/green_solid_10s.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `green_solid_10s` |
+| **Summary title** | `Green solid 10 seconds` |
+
+### `PUT/off.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `off` |
+| **Summary title** | `LED off` |
 
 ---
 

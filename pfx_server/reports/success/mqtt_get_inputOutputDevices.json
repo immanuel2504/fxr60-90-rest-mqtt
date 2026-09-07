@@ -1,0 +1,12 @@
+{
+  "command": "get_inputOutputDevices",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 100.3,
+  "note": "",
+  "request_id": "test-get_inputOutputDevices-1200c1e759",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_inputOutputDevices\", \"command_id\": \"test-get_inputOutputDevices-1200c1e759\", \"payload\": {\"keyboard\": {\"keyboardLayout\": \"Japanese\", \"status\": \"connected\"}, \"monitor\": {\"details\": [{\"currentResolution\": \"1920x1080\", \"manufacturer\": \"LCD\", \"model\": \"HDTV TFT LCD\", \"orientation\": \"landscape\", \"screenActive\": false, \"supportedResolutions\": [\"1920x1080\", \"1680x1050\", \"1280x1024\", \"1440x900\", \"1280x800\", \"1280x720\", \"1440x576\", \"1024x768\", \"1440x480\", \"800x600\", \"720x576\", \"720x480\", "
+}

@@ -8,8 +8,8 @@
           "event": {
             "connections": [
               {
-                "name": "DATA_TCP",
-                "description": "tag_data_tcp_ip_conn",
+                "name": "DATA_TCP_VIA_CONFIG",
+                "description": "Tag events over TCP/IP server - reader listens on this port",
                 "type": "tcpip-server",
                 "options": {
                   "enableSecurity": false,
@@ -19,7 +19,20 @@
             ]
           }
         }
-      }
+      },
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 256000,
+          "reportingInterval": 2000
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 500,
+          "maxNumEvents": 150000,
+          "throttle": 500
+        }
+      ]
     }
   }
 }

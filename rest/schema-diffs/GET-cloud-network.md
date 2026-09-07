@@ -22,7 +22,7 @@ The **path is the same**. Developer added an optional GET **request body** to re
 | Developer | No body → all interfaces. Body `{ "interface": "<name>" }` → that interface only. |
 | RestDeveloperfile | **Same (7a Final).** Response `securityType` stays `802_1XEAP`. |
 
-Supported interface names in the developer body: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`.
+Supported interface names in spec 11: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `all`. `blescan` was removed.
 
 On the 200 response, ethernet `securityType` casing:
 
@@ -39,7 +39,7 @@ Same casing split as [PUT `/cloud/network`](PUT-cloud-network.md).
 
 ```
 GET /cloud/network
-└── interface                   string   optional   eth0 | mlan0 | bnep0 | wan0 | uap0 | blescan
+└── interface                   string   optional   eth0 | mlan0 | bnep0 | wan0 | uap0 | all
 ```
 
 Omit the body (or send `{}`) to return every interface.

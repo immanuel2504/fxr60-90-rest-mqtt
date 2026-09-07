@@ -1,0 +1,12 @@
+{
+  "command": "set_region",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 14726.4,
+  "note": "",
+  "request_id": "test-set_region-bb125d9668",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_region\", \"command_id\": \"test-set_region-bb125d9668\", \"payload\": {}, \"response\": \"success\"}"
+}

@@ -1,0 +1,11 @@
+gpo 02 - drive all four pins HIGH
+RESULT: all four accepted, HTTP 200, CONFIRMED
+
+The endpoint takes one pin per request, so this is four sequential PUTs.
+
+after: {"1":"HIGH","2":"HIGH","3":"HIGH","4":"HIGH"}
+
+All four pins are individually writable. Together with test 03 this establishes
+the hardware path is sound - which is what made the GPIO-LED findings in
+../cloud-config-PUT/ possible: when a GPIO-LED event failed to move a pin, this
+endpoint proved the pin itself was fine.

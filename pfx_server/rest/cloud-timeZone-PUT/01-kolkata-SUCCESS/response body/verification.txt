@@ -1,0 +1,12 @@
+timeZone 01 - spec example "time_zone_kolkata"
+RESULT: accepted, HTTP 200, CONFIRMED by the reader's clock moving
+
+GET /cloud/timeZone after:     {"timeZone":"Asia/Kolkata"}
+GET /cloud/status systemTime:  05/09/2026 22:18   (was 16:49 UTC)
+
++5:30 from UTC, correct for Kolkata. The change is real, not merely stored.
+
+FINDING - the value is not returned in the form it was sent:
+    sent      "Kolkata"
+    read back "Asia/Kolkata"
+See test 04 for whether the returned form can be written back.

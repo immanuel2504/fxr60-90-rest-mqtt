@@ -1,0 +1,12 @@
+{
+  "command": "set_gpo",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.3,
+  "note": "",
+  "request_id": "test-set_gpo-55ecc2314f",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_gpo\", \"command_id\": \"test-set_gpo-55ecc2314f\", \"payload\": {}, \"response\": \"success\"}"
+}

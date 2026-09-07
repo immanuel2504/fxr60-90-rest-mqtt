@@ -1,0 +1,12 @@
+{
+  "command": "set_importCloudConfig",
+  "payload": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": []
+        }
+      }
+    }
+  }
+}

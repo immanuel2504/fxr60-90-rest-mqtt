@@ -1,0 +1,1 @@
+mixed 422 / 200 - one response per probe, see verification.txt

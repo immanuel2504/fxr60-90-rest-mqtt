@@ -1,0 +1,41 @@
+A/B measurement of additionalFilters.rssi
+Reader 10.233.48.36, 2026-09-06. Two 20 s BLE-only scans, data captured from
+mqtt://10.117.229.18:1883 topic fxr60-lab/tevents.
+
+SCAN A - additionalFilters: {}
+  BLE_DATA events   : 78
+  unique addresses  : 4
+  RSSI range        : -86 .. -63   (all weaker than -60)
+  beaconTypes       : IBEACON 39, ALTBEACON 39
+
+SCAN B - additionalFilters: {"rssi": -60}
+  BLE_DATA events   : 0
+  unique addresses  : 0
+
+CONCLUSION: the filter works. Every beacon present was below the -60 threshold,
+and all were correctly suppressed.
+
+A real BLE_DATA event, verbatim (truncated), showing the OUTPUT field casing:
+
+{
+  "data": {
+    "Adapter": "/org/bluez/hci0",
+    "Address": "F7:17:BB:3A:7B:A1",
+    "AddressType": "random",
+    "Alias": "F7-17-BB-3A-7B-A1",
+    "RSSI": -65,
+    "ManufacturerData": {"76": [2, 21, 253, 165, ...]},
+    "beaconType": "IBEACON",
+    "iBeacon": {"major": 10001, "minor": 20002, "txPower": -59,
+                "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"}
+  },
+  "eventNum": 1822,
+  "timestamp": "2026-09-06T17:53:22..."
+}
+
+Note Address / AddressType / Alias / RSSI are CAPITALISED in output. That is the
+source of the input casing defect - see
+../../04-enable_with_protocols-REJECTED-spec-casing-bug/.
+
+The iBeacon block decodes cleanly into major/minor/txPower/uuid, and the uuid
+matches the value used in the spec's own filter example.

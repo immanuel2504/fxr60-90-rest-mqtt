@@ -1,0 +1,12 @@
+{
+  "command": "get_version",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_version-982f00e547",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_version\", \"command_id\": \"test-get_version-982f00e547\", \"payload\": {\"availableOsUpgrades\": {}, \"cloudAgentApplication\": \"0.6.2.64\", \"model\": \"FXR60\", \"radioControlApplication\": \"0.2.58.7\", \"radioFirmware\": \"2.1.70.0\", \"readerApplication\": \"5.0.5-6\", \"revertBackFirmware\": {}, \"serialNumber\": \"260975251E0049\"}, \"response\": \"success\"}"
+}

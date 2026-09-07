@@ -1,0 +1,4 @@
+{
+  "code": 1,
+  "message": "Primary NTP server is required: use 'server' key (current) or 'server1' key (legacy)"
+}

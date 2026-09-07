@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "CS:'setBleConfig' failed, Reason: Invalid BLE configuration: unknown or unexpected field in request payload, refer to API documentation for supported fields"
+}

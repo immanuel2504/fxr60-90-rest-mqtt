@@ -1,0 +1,12 @@
+{
+  "command": "get_logs_syslog",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 100.3,
+  "note": "",
+  "request_id": "test-get_logs_syslog-d15b838337",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_logs_syslog\", \"command_id\": \"test-get_logs_syslog-d15b838337\", \"payload\": {\"binary\": \"H4sIAAAAAAAAA9z9WXMUydYlDPf19yto3ptu0ynJ5wGzvtCAQEITSCCJPm1lGlITmtAIeuz575+HewYFKCNz+ZSVp7BTdqpA7OXh4bHc9/a9177o3d7uHfdu/0fFX8T9UkL4/3e/fvl/zpSUgv0PKpmQmkpO+f8glHIu/8cLUnNQ7a/727u9mxcv/sfN1dXdsJ8b9ef/ob8YYeoPYv8gbIvwV0y+ImRaS6WEnSLE/ceLxZ0PlswrMk8IfXFz+/32/Or48NWL/3t1c3p8evni9uro7nHvpvd/XrZ/9vLF7eOn3s3t6dXl/3lpppkgbJq8fPHtj+vTw//zkiujhG7+8/Ty6Or/vDy5u7u+fTUz8/j4ON23MH1wdfHy//3AevG4d/vi7ceN3uH/b"
+}

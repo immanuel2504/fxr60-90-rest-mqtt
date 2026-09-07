@@ -1,0 +1,17 @@
+timeZone 04 - write back the exact string the GET returned
+RESULT: accepted, HTTP 200. GET after: {"timeZone":"Asia/Kolkata"}
+
+*** SPEC FINDING: the firmware accepts an undocumented input vocabulary ***
+
+The schema defines "timeZone" as a closed enum of 100+ display names
+("Kolkata", "Pacific Time (US & Canada)", "London", ...). "Asia/Kolkata" is NOT
+in that enum - no IANA identifier is. Yet it is accepted. So:
+
+  - the endpoint accepts at least two vocabularies: the documented display names
+    AND undocumented IANA identifiers
+  - GET returns the IANA form, which the schema does not document as valid input
+  - round-tripping GET -> PUT works, but only via undocumented behaviour
+
+A client written strictly to the spec would treat the value it reads back as
+invalid. Either document the IANA forms as accepted input, or have GET return the
+documented display name.

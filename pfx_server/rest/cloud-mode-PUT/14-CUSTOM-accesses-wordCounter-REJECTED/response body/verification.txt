@@ -1,0 +1,40 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 14 - the spec's with_accesses example, verbatim
+RESULT: REJECTED, HTTP 422
+
+*** A THIRD SPEC EXAMPLE THAT CANNOT BE SENT AS WRITTEN ***
+
+  {"code":3,"message":"\"set_mode\" Failed to apply. Description: unsuccessful rc
+   response: Failure: wordCount must be included in access-config object for read"}
+
+The example's access config is:
+
+    {"membank": "TID", "wordPointer": 0, "wordCounter": 6}
+                                         ^^^^^^^^^^^
+
+The firmware wants "wordCount", not "wordCounter". A single character.
+
+The message is precise and names the required field, so this is quick to
+diagnose - but the documented example is simply wrong, and the schema uses the
+same wrong name.
+
+Renaming wordCounter -> wordCount made it work immediately, with no other change:
+see 15-CUSTOM-accesses-READ-TID-SUCCESS/.
+
+ASK: correct wordCounter to wordCount in both the schema and the with_accesses
+example.
+
+RUNNING TALLY - 3 of the 11 documented PUT /cloud/mode examples cannot be sent
+as written on this reader:
+    simple_basic        transmitPower 31.5 exceeds the 30.0 maximum   (test 01)
+    with_tag_metadata   READER_LOCATION not recognized                (test 08)
+    with_accesses       wordCounter should be wordCount               (this test)

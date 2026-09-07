@@ -3,7 +3,14 @@
   "command_id": "req-get-bleConfig",
   "payload": {
     "ble": {
-      "enable": false
+      "enable": false,
+      "scanIntervalSec": 5,
+      "protocols": {
+        "iBeacon": {
+          "enabled": true
+        }
+      },
+      "additionalFilters": {}
     }
   },
   "response": "success"

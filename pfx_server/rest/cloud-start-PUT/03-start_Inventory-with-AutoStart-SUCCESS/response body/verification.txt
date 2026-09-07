@@ -1,0 +1,18 @@
+start 03 - spec example "start_Inventory with AutoStart"
+RESULT: HTTP 200, inventory started - CONFIRMED
+
+  before: radio=inactive
+  after:  radio=active
+
+Both values accepted:
+  {"doNotPersistState": false}  -> 200, radio=active   (persist, autostart on)
+  {"doNotPersistState": true}   -> 200, radio=active   (do not persist)
+
+NOT VERIFIED: the actual persistence behaviour. The field controls whether the
+started state survives a reboot and whether auto-start is enabled afterwards.
+Confirming that requires rebooting the reader, which was out of scope for this
+run - the reader is shared and in use.
+
+So what is confirmed is that the field is accepted and does not interfere with
+starting. Whether the reader auto-starts after a power cycle is untested and is
+NOT claimed here.

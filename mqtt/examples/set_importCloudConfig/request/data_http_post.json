@@ -11,11 +11,18 @@
               "description": "Tag events over HTTP POST",
               "type": "httpPost",
               "options": {
-                "URL": "https://webhook.site/your-unique-id",
+                "URL": "https://10.117.229.18:9443/tagdata",
                 "security": {
                   "authenticationType": "NONE",
                   "verifyHost": false,
                   "verifyPeer": false
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
                 }
               }
             }

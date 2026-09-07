@@ -1,0 +1,42 @@
+radioPacketLog GET - the log repopulates once the flag is enabled
+RESULT: HTTP 200, 65201 bytes - recovered from the empty/422 state
+
+This closes the lifecycle and proves the 422 in test 02 means "empty", not
+"broken".
+
+Sequence, from the empty state left by the DELETE:
+
+  1. GET  /cloud/logs/radioPacketLog                 -> 422 "No radio packet logs available"
+  2. PUT  /cloud/logs {"radioPacketLog":true}        -> 200
+  3. PUT  /cloud/start        (begin inventory)      -> 200
+  4. wait 20 s
+  5. PUT  /cloud/stop                                -> 200
+  6. GET  /cloud/logs/radioPacketLog                 -> 200, 65201 bytes
+
+So the full cycle works: purge -> empty -> enable -> generate -> retrieve.
+
+This also confirms radioPacketLog is a real functional switch and not merely a
+stored boolean - it gates actual packet log generation. Combined with test 01
+(content readable while the flag was false), the flag's meaning is specifically
+"generate new packet log data", not "expose the packet log".
+
+Which makes the reset behaviour in
+../cloud-logs-PUT/07-omitting-radiopacketlog-resets-it-to-false/ consequential:
+a PUT that changes only a log level silently stops packet log generation.
+
+STORED EVIDENCE - the FULL response is here, not a summary:
+
+  response body/response.json     the complete response as received, byte for
+                                  byte, including the entire base64 `binary`
+                                  value. Nothing is elided.
+  response body/decoded/          the archive written out from that base64,
+                                  plus every member small enough to keep in the
+                                  repo, extracted so the log text is directly
+                                  readable
+  response body/decoded/MANIFEST.txt
+                                  member list with sizes, the gzip magic check,
+                                  and which members were too large to extract
+
+Members over ~200 KB are left inside the .tar.gz rather than duplicated - the
+radio_control.log.N rotations are ~5 MB each and the packet logs 1 MiB each.
+Extract them with `tar xzf <archive>` from the decoded/ directory.

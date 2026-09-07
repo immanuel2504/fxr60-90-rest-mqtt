@@ -2,7 +2,7 @@
   "command": "del_logs_syslog",
   "command_id": "req-del-syslogs",
   "payload": {
-    "binary": "H4sIAAAAAAAAA+3RQQqAIBBA0a8E7VtEUdEBOoEHEBWKQCJt0e3Ldm3atGjxHwzDMMPAyFI=",
+    "binary": "<base64 gzip>",
     "filename": "syslog.tar.gz"
   },
   "response": "success"

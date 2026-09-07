@@ -1,0 +1,35 @@
+{
+  "endpointConfig": {
+    "data": {
+      "event": {
+        "connections": [
+          {
+            "name": "DATA_WS",
+            "description": "Tag events over WebSocket (endpoint block added - schema-valid)",
+            "type": "WEBSOCKET",
+            "options": {
+              "enableSecurity": true,
+              "endpoint": {
+                "hostName": "10.117.229.18",
+                "port": 9444,
+                "protocol": "ssl"
+              },
+              "security": {
+                "CACertificateFileLocation": "/data/apps/lab-ca.crt",
+                "verifyHostName": false,
+                "verifyPeer": true
+              }
+            },
+            "additionalOptions": {
+              "retention": {
+                "maxEventRetentionTimeInMin": 500,
+                "maxNumEvents": 150000,
+                "throttle": 500
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

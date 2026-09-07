@@ -1,0 +1,65 @@
+RgErrorLog GET - retrieve the log
+RESULT: HTTP 200, 3856 bytes
+
+RESPONSE SHAPE - undocumented, and identical across all four log GETs:
+
+  {"binary": "<base64>", "filename": "rgErrorLog.tar.gz"}
+
+The spec defines NO response schema for this operation - it documents only the
+path, the operationId and a summary. The shape above is the observed response.
+
+VERIFIED: the base64 decodes to a valid gzip (magic bytes 1f8b) and opens as a
+tar archive containing:
+
+    error-2026-09-05T16:03:24-0.txt  8886 bytes
+    error-2026-09-05T15:20:38-0.txt  1323 bytes
+    error-2026-09-05T15:08:37-0.txt  352 bytes    ... (6 members total)
+
+Reader-gateway errors. Six members, same one-file-per-restart naming as
+RgWarningLog and the same six timestamps - but these have real content, 184 to
+8886 bytes each.
+
+The largest (error-2026-09-05T16:03:24-0.txt, 8886 bytes) covers the session in
+which the unreachable-broker test ran, so it is the natural place to look for the
+reader side of the error-255 connection failures recorded in
+../cloud-config-PUT/19-force-cloud-disconnect-BUG-FOUND/.
+
+This is the most useful of the four logs for diagnosing the connection findings,
+and worth pulling before and after any failing endpoint configuration.
+
+No DELETE exists for this path (405).
+
+HOW TO EXTRACT:
+
+  curl -sk -H "Authorization: Bearer $TOKEN" \
+    https://10.233.48.36/cloud/logs/RgErrorLog \
+  | python3 -c "
+import sys,json,base64
+d=json.load(sys.stdin)
+open(d['filename'],'wb').write(base64.b64decode(d['binary']))
+print('wrote', d['filename'])"
+  tar tzf rgErrorLog.tar.gz
+
+Auth is enforced - HTTP 401 without a bearer token.
+
+NOTE ON PARAMETERS: the spec declares none for this operation, and none were
+found. There is no documented way to filter by time range, severity or line
+count, or to page through a large log - RcLog returns ~10.5 MB uncompressed as a
+single response.
+
+STORED EVIDENCE - the FULL response is here, not a summary:
+
+  response body/response.json     the complete response as received, byte for
+                                  byte, including the entire base64 `binary`
+                                  value. Nothing is elided.
+  response body/decoded/          the archive written out from that base64,
+                                  plus every member small enough to keep in the
+                                  repo, extracted so the log text is directly
+                                  readable
+  response body/decoded/MANIFEST.txt
+                                  member list with sizes, the gzip magic check,
+                                  and which members were too large to extract
+
+Members over ~200 KB are left inside the .tar.gz rather than duplicated - the
+radio_control.log.N rotations are ~5 MB each and the packet logs 1 MiB each.
+Extract them with `tar xzf <archive>` from the decoded/ directory.

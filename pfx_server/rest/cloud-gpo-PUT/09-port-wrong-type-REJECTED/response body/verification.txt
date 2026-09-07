@@ -1,0 +1,7 @@
+gpo 09 - port as the string "1" instead of the number 1
+RESULT: rejected, HTTP 422, {"code":1,"message":"port (expected positive number)"}
+
+Types checked on both fields. Note the contrast with /cloud/timeZone, which
+accepts undocumented input formats, and /cloud/region, which silently ignores
+fields it cannot apply. This endpoint is strict throughout - it is the model the
+others should follow.

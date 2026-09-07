@@ -1,0 +1,47 @@
+{
+  "method": "PUT",
+  "url": "/cloud/logs",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential.",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "_note": "radio_control sent with each of its four reader-accepted levels, one request each. See verification.txt.",
+    "_probes": [
+      {
+        "components": [
+          {
+            "componentName": "radio_control",
+            "level": "ERROR"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "radio_control",
+            "level": "WARNING"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "radio_control",
+            "level": "DEBUG"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "radio_control",
+            "level": "INFO"
+          }
+        ]
+      }
+    ]
+  }
+}

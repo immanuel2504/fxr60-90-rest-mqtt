@@ -1,0 +1,7 @@
+region 02 - switch to US_FCC_C
+RESULT: accepted, HTTP 200, CONFIRMED
+
+after: standard='US_FCC_C' region='FCC_C' lbt=False hop=True nchan=50
+
+A second standard change, confirming 01 was not a one-off and that switching
+between standards works repeatedly without a reboot.

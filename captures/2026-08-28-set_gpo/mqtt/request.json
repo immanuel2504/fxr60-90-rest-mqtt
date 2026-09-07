@@ -1,0 +1,8 @@
+{
+  "command": "set_gpo",
+  "command_id": "req-set-gpo",
+  "payload": {
+    "port": 3,
+    "state": true
+  }
+}

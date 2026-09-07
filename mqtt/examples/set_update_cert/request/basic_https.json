@@ -1,0 +1,17 @@
+{
+  "command": "set_updateCertificate",
+  "command_id": "req-set-updateCertificate-basic-https",
+  "payload": {
+    "name": "TEST-BASIC-507",
+    "type": "client",
+    "url": "https://10.117.229.18/fxr60-lab-client.pfx",
+    "authenticationType": "BASIC",
+    "authenticationOptions": {
+      "username": "altautoadmin",
+      "password": "@1T@uT0dud3"
+    },
+    "pfxPassword": "Fxr60-Client-Pfx-2026!",
+    "verifyPeer": false,
+    "verifyHost": false
+  }
+}

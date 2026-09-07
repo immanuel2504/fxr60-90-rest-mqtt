@@ -1,0 +1,8 @@
+{
+  "command": "stop",
+  "payload": {
+    "scanType": [
+      "ble"
+    ]
+  }
+}

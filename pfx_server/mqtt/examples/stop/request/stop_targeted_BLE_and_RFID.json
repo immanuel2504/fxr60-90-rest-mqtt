@@ -1,0 +1,15 @@
+{
+  "command": "stop",
+  "payload": {
+    "scanType": {
+      "dataEndpoint1": [
+        "ble",
+        "rfid"
+      ],
+      "dataEndpoint2": [
+        "ble",
+        "rfid"
+      ]
+    }
+  }
+}

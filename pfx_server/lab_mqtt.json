@@ -1,0 +1,14 @@
+{
+  "broker": "10.117.229.9",
+  "port": 1883,
+  "qos": 0,
+  "tls": false,
+  "management": {
+    "cmd": "fxr60-lab/mcmd",
+    "rsp": "fxr60-lab/mrsp"
+  },
+  "control": {
+    "cmd": "fxr60-lab/cmd",
+    "rsp": "fxr60-lab/rsp"
+  }
+}

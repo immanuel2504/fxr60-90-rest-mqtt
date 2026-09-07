@@ -1,0 +1,55 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CROSS-FIELD CONSTRAINTS 17 - are the documented constraints enforced?
+RESULT: all four tested constraints ARE enforced, with specific messages
+
+The schema documents cross-field constraints in its description. Four were
+testable and all four behave as documented:
+
+1. "accesses is not allowed in INVENTORY mode"
+   PUT {"type":"INVENTORY","antennas":[1],"transmitPower":[30],
+        "accesses":[{"type":"READ","config":{...}}]}
+   -> 422  "Failure: setting accesses is ..."   ENFORCED
+
+2. "radioStartConditions and radioStopConditions are not allowed in PORTAL mode"
+   PUT {"type":"PORTAL","antennas":[1],"transmitPower":30,
+        "radioStopConditions":{"duration":60}}
+   -> 422  "Failure: setting radioStopCo..."    ENFORCED
+
+3. "reportFilter and accesses cannot both be set"
+   PUT {"type":"CUSTOM",...,"reportFilter":{...},"accesses":[...]}
+   -> 422  "Failure: setting both report..."    ENFORCED
+
+4. "transmitPower array length ... must match the size of antennas"
+   PUT {"type":"CUSTOM","antennas":[1,5],"transmitPower":[30]}
+   -> 422  "Failure: \"transmitPower\" mus..."   ENFORCED
+
+*** THIS IS THE GOOD NEWS SECTION ***
+
+Unlike the field-level problems in tests 01, 08 and 14 - where three documented
+examples cannot be sent as written - the cross-field constraint documentation is
+ACCURATE, and the validator matches it. Each rejection names the specific
+constraint violated rather than returning a generic schema error.
+
+That matters because these constraints are the hard part of this endpoint: the
+mode object is large, and the interactions between accesses, reportFilter,
+tagMetaData and mode type are not obvious. Having them enforced with clear
+messages is what makes the endpoint usable.
+
+NOT TESTED (documented but not exercised here):
+  - "query and filter with prefix cannot be configured at the same time"
+  - "accesses cannot be set with tagMetaData containing RESERVED, EPC, TID, USER"
+  - "reportFilter cannot be set with tagMetaData containing RESERVED/EPC/TID/USER
+     unless reportFilter.addl_keys is configured"
+  - antennaStopCondition / query array lengths matching antennas
+
+The four that were tested all passed, so the remainder are likely enforced too -
+but that is an inference, not a result.

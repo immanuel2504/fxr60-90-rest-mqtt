@@ -1,0 +1,12 @@
+{
+  "command": "set_reqToUserapp",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "WARN",
+  "ms": 901.7,
+  "note": "response='failure'",
+  "request_id": "test-set_reqToUserapp-b09d1b1ed9",
+  "response": "failure",
+  "response_preview": "{\"command\": \"set_reqToUserapp\", \"command_id\": \"test-set_reqToUserapp-b09d1b1ed9\", \"payload\": {\"code\": 1, \"message\": \"communication channels not created for userapp: mylogger\"}, \"response\": \"failure\"}"
+}

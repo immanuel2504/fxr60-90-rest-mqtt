@@ -1,0 +1,7 @@
+app-led 05 - colour outside the enum
+RESULT: rejected, HTTP 422, {"code":1,"message":"Invalid color"}
+
+The enum (red, amber, green, off) is enforced.
+
+The message does not list the valid values, unlike /cloud/displayConfig's
+equivalent error which does. Minor, but the inconsistency is worth noting.

@@ -1,5 +1,12 @@
 {
   "ble": {
-    "enable": true
+    "enable": true,
+    "scanIntervalSec": 0,
+    "protocols": {
+      "iBeacon": {
+        "enabled": true
+      }
+    },
+    "additionalFilters": {}
   }
 }

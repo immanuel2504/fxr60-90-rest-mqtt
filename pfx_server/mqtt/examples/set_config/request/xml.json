@@ -1,0 +1,6 @@
+{
+  "command": "set_config",
+  "payload": {
+    "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>"
+  }
+}

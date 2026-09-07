@@ -1,0 +1,5 @@
+{
+  "code": 3,
+  "message": "CS:'Add/Refresh certificate' failed,Reason: INVALID USER NAME",
+  "_evidence": "File server was in anonymous mode and served the file fine to curl. Server log shows NO request from the reader (10.233.48.36) - the reader rejected authenticationType NONE internally without making any HTTP call."
+}

@@ -1,0 +1,12 @@
+{
+  "command": "set_impinjGen2X",
+  "channel": "control",
+  "source": "request/advanced_quiet_tags.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_impinjGen2X-4a165bc587",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_impinjGen2X\", \"command_id\": \"test-set_impinjGen2X-4a165bc587\", \"payload\": {\"message\": \"Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features.\"}, \"response\": \"success\"}"
+}

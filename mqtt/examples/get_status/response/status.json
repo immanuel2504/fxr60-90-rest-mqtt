@@ -3,7 +3,7 @@
   "command_id": "req-get-status",
   "payload": {
     "antennas": {
-      "1": "disconnected",
+      "1": "connected",
       "2": "disconnected",
       "3": "disconnected",
       "4": "disconnected",
@@ -23,7 +23,7 @@
     },
     "cpu": {
       "system": 0,
-      "user": 8
+      "user": 19
     },
     "flash": {
       "platform": {
@@ -56,33 +56,27 @@
         {
           "connectionError": "",
           "connectionStatus": "connected",
-          "description": "awsend1",
-          "interface": "Mqqtendpoint"
-        },
-        {
-          "connectionError": "",
-          "connectionStatus": "disconnected",
-          "description": "WEBSOCKET",
-          "interface": "WEBSOCKET"
+          "description": "Tag events (MQTT_MTLS)",
+          "interface": "DATA_MQTT_MTLS"
         }
       ]
     },
     "ntp": {
-      "offset": 0.005446,
-      "reach": 377
+      "offset": 0.035904,
+      "reach": 213
     },
     "powerNegotiation": "POE+",
     "powerSource": "PWR_BRICK",
-    "radioActivity": "active",
-    "radioConnection": "disconnected",
+    "radioActivity": "inactive",
+    "radioConnection": "connected",
     "ram": {
-      "free": 58,
+      "free": 72,
       "total": 100,
-      "used": 42
+      "used": 28
     },
-    "systemTime": "12/08/2026 08:02",
-    "temperature": 37,
-    "uptime": "36D3H12M26S"
+    "systemTime": "05/09/2026 13:20",
+    "temperature": 31,
+    "uptime": "1D23H28M41S"
   },
   "response": "success"
 }

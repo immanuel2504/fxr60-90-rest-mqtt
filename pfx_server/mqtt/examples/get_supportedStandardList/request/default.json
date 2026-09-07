@@ -1,0 +1,6 @@
+{
+  "command": "get_supportedStandardList",
+  "payload": {
+    "region": "United States/Canada"
+  }
+}

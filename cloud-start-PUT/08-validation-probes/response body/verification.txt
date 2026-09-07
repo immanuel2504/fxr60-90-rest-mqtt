@@ -1,0 +1,54 @@
+start 08 - validation probes
+RESULT: 4 of 5 correctly rejected; the 5th reveals an undocumented survival
+
+  {"scanType":[]}                          -> 422
+      {"code":1,"message":"scanType must be a non-empty object or array"}
+      Matches the schema's minItems: 1.
+
+  {"scanType":["rfid","rfid"]}             -> 422
+      {"code":1,"message":"duplicate 'rfid' in scanType"}
+      Matches the schema's uniqueItems: true. Names the duplicate value.
+
+  {"scanType":["zigbee"]}                  -> 422
+      {"code":1,"message":"unknown scanType value 'zigbee': expected 'ble' or 'rfid'"}
+      Enum enforced, and the message LISTS THE VALID VALUES - the standard the
+      rest of this API should meet.
+
+  {"scanType":"rfid"}                      -> 422
+      {"code":1,"message":"Unknown type in payload.scanType must be a valid json
+       object or array."}
+      Bare string rejected; an array is required.
+
+  {"scanType":{"dataEndpoint1":["rfid"]}}  -> *** 200 ***
+
+*** THE LAST ONE IS A SPEC-vs-FIRMWARE MISMATCH ***
+
+v3.0.0 defines scanType as an ARRAY ONLY:
+
+    "scanType": {"type": "array", "items": {"enum": ["ble","rfid"]}}
+
+The previous spec revision also allowed a per-endpoint OBJECT form, with
+examples named start_Targeted, start_targeted_RFID, start_targeted_BLE etc.
+Those examples are GONE from v3.0.0 and the object form is no longer in the
+schema.
+
+But the firmware still accepts it, with HTTP 200.
+
+Corroborating evidence in the reader's own error messages - two of them still
+say "object or array":
+
+    "scanType must be a non-empty object or array"
+    "payload.scanType must be a valid json object or array"
+
+So the validator still implements the object form; only the documentation
+dropped it.
+
+This matters in both directions:
+  - a client written to v3.0.0 will not use the object form, which is fine
+  - a client written to the OLD spec still works, which is good for
+    compatibility but means the removal is undocumented rather than enforced
+
+ASK: was the per-endpoint object form deliberately removed, deprecated, or
+dropped from the docs by accident? If deprecated, say so in the schema and keep
+it working; if removed, the firmware should reject it and the two error messages
+should stop mentioning "object".

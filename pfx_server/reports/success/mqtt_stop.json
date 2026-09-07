@@ -1,0 +1,12 @@
+{
+  "command": "stop",
+  "channel": "control",
+  "source": "request/stop_RFID_default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 100.3,
+  "note": "",
+  "request_id": "test-stop-f4af6099db",
+  "response": "success",
+  "response_preview": "{\"command\": \"stop\", \"command_id\": \"test-stop-f4af6099db\", \"payload\": {}, \"response\": \"success\"}"
+}

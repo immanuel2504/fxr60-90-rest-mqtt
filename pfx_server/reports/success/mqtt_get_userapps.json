@@ -1,0 +1,12 @@
+{
+  "command": "get_userapps",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 300.7,
+  "note": "",
+  "request_id": "test-get_userapps-c90b864b25",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_userapps\", \"command_id\": \"test-get_userapps-c90b864b25\", \"payload\": [{\"appname\": \"sampleNew\", \"autostart\": true, \"metadata\": \"APP_TYPE: DA\", \"runningStatus\": false}, {\"appname\": \"sampleAntenna\", \"autostart\": false, \"metadata\": \"APP_TYPE: DA\", \"runningStatus\": false}], \"response\": \"success\"}"
+}

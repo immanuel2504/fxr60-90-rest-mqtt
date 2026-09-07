@@ -8,7 +8,7 @@
           "connections": [
             {
               "name": "DATA_TCP",
-              "description": "Tag events over TCP/IP server",
+              "description": "Tag events over TCP/IP server (reader listens on this port)",
               "type": "tcpip-server",
               "options": {
                 "enableSecurity": false,
@@ -16,8 +16,8 @@
               },
               "additionalOptions": {
                 "retention": {
-                  "maxEventRetentionTimeInMin": 60,
-                  "maxNumEvents": 10000,
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
                   "throttle": 500
                 }
               }

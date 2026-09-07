@@ -1,0 +1,12 @@
+app-led 04 - colour "off"
+RESULT: accepted, HTTP 200
+
+Fourth and last enum value.
+
+FINDING: this does NOT return the reader to {"status":"DEFAULT"}.
+GET after: {"status":"NON_DEFAULT"}
+
+Once any app-led PUT has been made, the endpoint reports NON_DEFAULT thereafter.
+"off" turns the LED off but still counts as an application-set state, and there
+is no documented way back to DEFAULT through this endpoint. The reader was left
+NON_DEFAULT at the end of testing for exactly this reason.

@@ -1,0 +1,14 @@
+REJECTED - but for the security block, not the endpoint.
+
+The error names the TYPE: 'invalid WEBSOCKET configuration'. That prompted a field-by-field probe of what WEBSOCKET security accepts, with an endpoint present throughout:
+
+  security = {verifyPeer}                              -> HTTP 200 ACCEPTED
+  security = {verifyPeer, CACertificateFileLocation}    -> HTTP 422 rejected
+  security = {verifyPeer, verifyHostName}               -> HTTP 422 rejected
+  security = {verifyPeer, keyAlgorithm, keyFormat}      -> HTTP 422 rejected
+
+CONCLUSION: for type WEBSOCKET the security object accepts ONLY verifyPeer. Every other field in the documented security schema is rejected - including CACertificateFileLocation.
+
+Consequence: a WebSocket connection cannot be given a private CA, so it cannot verify a privately-signed server. Only verifyPeer: false (no verification) or a publicly-trusted server certificate can work.
+
+SEPARATE FINDING: the endpoint block IS accepted. A follow-up with endpoint {hostName, port, protocol} + security {verifyPeer: false} returned HTTP 200 and the reader STORED the endpoint (confirmed via GET /cloud/config). But it still never connected - connectionStatus 'disconnected', connectionError empty, nothing at our receiver. So endpoint is accepted and stored yet apparently ignored, and where a WEBSOCKET destination should be specified remains unanswered.

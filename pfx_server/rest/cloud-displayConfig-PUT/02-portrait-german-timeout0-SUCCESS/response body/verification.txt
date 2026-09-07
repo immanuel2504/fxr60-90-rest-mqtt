@@ -1,0 +1,14 @@
+displayConfig 02 - different value in every field
+RESULT: accepted, HTTP 200, CONFIRMED
+
+GET after:
+{"enable":true,"enableOnscreenKeyboard":false,"keyboardLayout":"German",
+ "orientation":"portrait","resolution":"1280x720","screenTimeoutSec":0,
+ "startUrl":"https://10.117.229.18/"}
+
+Deliberately varies all seven fields from test 01 - a second orientation, a
+second keyboard layout, a lower resolution, onscreen keyboard off, a non-
+localhost URL, and screenTimeoutSec 0 ("always on"). All stored verbatim.
+
+Confirms 1280x720 is accepted as well as 1920x1080, so resolution is not pinned
+to a single value.

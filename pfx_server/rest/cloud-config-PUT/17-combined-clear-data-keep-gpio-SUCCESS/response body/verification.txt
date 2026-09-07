@@ -1,0 +1,14 @@
+CONFIRMED WORKING. Clears the data endpoint AND sets GPIO-LED in one request.
+
+Result via GET /cloud/config:
+  data connections: 0
+  GPIO-LED events : RADIO_START, RADIO_STOP
+
+GPIO PROVEN TO FIRE WITH NO DATA ENDPOINT AT ALL:
+  before : {"1":"LOW","2":"LOW","3":"HIGH","4":"LOW"}
+  start  : {"1":"LOW","2":"LOW","3":"HIGH","4":"HIGH"}  <-- pin 4 fired
+  stop   : {"1":"LOW","2":"LOW","3":"HIGH","4":"LOW"}
+
+So the GPIO-LED engine is INDEPENDENT of the data plane - it responds to radio events with zero data endpoints configured. Useful for a reader driving local signalling without any cloud connection.
+
+Also confirms the two objects can be combined for opposite purposes in one request: tearing down the data endpoint while building up GPIO behaviour.

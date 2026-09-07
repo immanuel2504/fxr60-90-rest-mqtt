@@ -1,0 +1,27 @@
+bleConfig 03 - spec example "enable_with_rssi_filter"
+RESULT: HTTP 200 - CONFIRMED, and the FILTER IS PROVEN TO WORK
+
+  stored: enable=True  interval=10  additionalFilters={"rssi": -70}
+
+*** THE RSSI FILTER GENUINELY FILTERS - measured A/B ***
+
+Tag data was routed to the local MQTT broker and two 20-second BLE scans run
+back to back, identical except for the rssi filter:
+
+  A) additionalFilters: {}            -> 78 BLE_DATA events
+                                         4 unique addresses
+                                         RSSI range -86 .. -63
+                                         beaconTypes: IBEACON 39, ALTBEACON 39
+
+  B) additionalFilters: {"rssi": -60} -> 0 BLE_DATA events
+
+Every beacon in range was weaker than -60 dBm (strongest was -63), so a -60
+threshold correctly excluded all of them. Scan A proves the beacons were present
+and being decoded; scan B proves the filter suppressed them.
+
+This is a real measurement, not a status flag - see
+beacon-scan-evidence.txt for the captured data summary.
+
+Note the reader's own beaconCounts in GET /cloud/status also increments during
+scans (altBeacon 73, eddystone 131, generic 265, iBeacon 86 over the session),
+giving a second independent view.

@@ -2,7 +2,7 @@
   "command": "get_ntpServer",
   "command_id": "req-get-ntpServer",
   "payload": {
-    "server": "time.google.com"
+    "server": "pool.ntp.org"
   },
   "response": "success"
 }

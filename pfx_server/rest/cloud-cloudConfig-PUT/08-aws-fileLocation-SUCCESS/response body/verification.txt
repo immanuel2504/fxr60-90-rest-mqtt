@@ -1,0 +1,17 @@
+CONFIRMED WORKING - AWS IoT Core using *FileLocation certificate paths.
+
+Reader reported: interfaceConnectionStatus.data[0] = {interface: DATA_AWS, connectionStatus: 'connected', connectionError: ''}
+
+Verified independently from the AWS side: a get_status command published to FXR60-LAB/mcmd via AWS IoT returned full reader status on FXR60-LAB/mrsp - a complete round trip.
+
+This also proves the three AWS certificate files ARE present on the reader at /data/apps/ (AmazonRootCA1.pem, and the device cert and key named by certificate ID). An earlier probe had returned 'File Not Found' for these paths, so they must have been placed since.
+
+FIRST ATTEMPT FAILED, and the error was new:
+  {"code":3,"message":"Invalid Cloud Config File Schema - DATA config: event - invalid AWS endpoint configuration: AWS requires ALPN protocol name for \"port\" number 443"}
+
+Fix: add to each connection's additional block
+  "alpnProtocolNames": ["x-amzn-mqtt-ca"]
+
+CORRECTION TO AN EARLIER CLAIM: test 06's notes state that alpnProtocolNames is output-only, added by the firmware, and must NOT be sent - reasoning from its absence in the 'additional' schema. That is WRONG. On port 443 the reader REQUIRES it in the request and rejects the config without it. The schema is simply incomplete, consistent with tests 10 and 13 where tcpipport and URL were also accepted despite being undocumented.
+
+Why test 06 succeeded without it: 06 used installedCertificateName, and this validation path evidently differs between the installed-cert and file-path variants. Worth reporting - the same endpoint and port should not have different ALPN requirements depending on how certificates are supplied.

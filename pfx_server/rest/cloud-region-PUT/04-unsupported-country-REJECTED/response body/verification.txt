@@ -1,0 +1,7 @@
+region 04 - a country this reader does not support
+RESULT: rejected, HTTP 422
+{"code":3,"message":"CS:'regionStandardRsp' failed,Reason: RADIO REGION NOT AVAILABLE"}
+
+Correct: GET /cloud/supportedRegionList returns only ["United States/Canada"] on
+this unit, so Japan is genuinely unavailable. This is a hardware/SKU limitation,
+not a defect.

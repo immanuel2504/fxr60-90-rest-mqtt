@@ -4,7 +4,13 @@
   "payload": {
     "ble": {
       "enable": true,
-      "scanIntervalSec": 5
+      "scanIntervalSec": 5,
+      "protocols": {
+        "iBeacon": {
+          "enabled": true
+        }
+      },
+      "additionalFilters": {}
     }
   }
 }

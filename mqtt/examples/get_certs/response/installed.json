@@ -3,26 +3,26 @@
   "command_id": "req-get-certs",
   "payload": [
     {
-      "installTime": "Mon Aug 10 05:12:32 2026",
-      "issuerName": "ZLAB-CA01",
-      "name": "COMMON",
+      "installTime": "Sat Sep  5 13:00:46 2026",
+      "issuerName": "Local RFID Test CA",
+      "name": "FXR60-LAB-CLIENT",
       "publickey": "",
-      "serial": "0x170000005232B0DE84B4545965000000000052",
-      "subjectName": "testuser1 (ZLAB)",
+      "serial": "0x14EC30174903912F709980C9E71AB3B4EA466A0A",
+      "subjectName": "FXR60-LAB-CLIENT",
       "type": "client",
-      "validityEnd": "02/06/2027",
-      "validityStart": "02/06/2026"
+      "validityEnd": "06/12/2028",
+      "validityStart": "03/09/2026"
     },
     {
-      "installTime": "Mon Aug 10 04:58:59 2026",
-      "issuerName": "FXR609BC6A7",
+      "installTime": "Thu Sep  3 13:33:39 2026",
+      "issuerName": "FXR609BE34A",
       "name": "Server",
-      "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3aStW3ecimauj1ZtGfM4\nSE0pY/3Mfo6jQGI+52v0m0jt6nipngXnTZf9ZVphNOC0NcXdbONc1cKIUop5wFfT\nDfM5hUedQVvodyQKCd8TBhERNHXSpsLfR1GwzxtK9CHmNKEvIo4z3FDi9D9vQiTC\nu4Cg9wAvLhbttzq4FwYaoVgMUH5foWiIq+hozWOf99PctLAuvEaR/uXvupZr6T7a\nNTUuZY1tDKXtXWKj3Cc1SBMJ62reVVQhl75vEWIdkd3Qeav0NCxeH8td+6Bh/NNH\nzWWAJ/OghNWjvlaQwesfmTYn1ctJ1mI7jwkPCEAB2G78BmmWXDW9qIPe4H8PTt3s\nDQIDAQAB\n-----END PUBLIC KEY-----\n",
+      "publickey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtbQdN/YJqakTE02f81An\nqQU3ahfB+HA750GjwyfW6LCO4PcfnkFG6bJD/8dPNg0lH5MZSoJm8ihJPffNHDLl\nuar3t/faBbP3TAUBBRK5gBvtHpbwtZtJXJInPKU0MkUl3Xy5qmck8W0EAkv77UKw\nZnFqKCwJTRXRxwJo2TtqY3VIhO64IJDITLHajUBATJRnC9QKtJaWTS2n93e3Fecu\ndy6e+Ed/demShfJoSVCRn35xFHVTfe46HpIG6iXfHdAW4I4/YsBs2kSHlWF9DfYA\nKDva3YamdLIppOphLhsY5C0Y+SqyqKmOjQO4n7UdEvv2dsq3km4Gnp2h/Utzz2/W\nVwIDAQAB\n-----END PUBLIC KEY-----\n",
       "serial": "0x3039",
-      "subjectName": "FXR609BC6A7",
+      "subjectName": "FXR609BE34A",
       "type": "server",
-      "validityEnd": "05/08/2046",
-      "validityStart": "10/08/2026"
+      "validityEnd": "29/08/2046",
+      "validityStart": "03/09/2026"
     }
   ],
   "response": "success"

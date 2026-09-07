@@ -31,7 +31,7 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Required Request Fields | `ble.enable` |
+| Required Request Fields | `ble.enable`, `ble.scanIntervalSec`, `ble.protocols`, `ble.additionalFilters` |
 | Supported BLE Protocols | iBeacon, AltBeacon, Eddystone (`URL`, `UID`, `EID`, `TLM`), Generic |
 | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds this endpoint is not available. |
 | Supported Address Types | `public`, `random` |
@@ -40,7 +40,7 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Decide which BLE behavior you need to configure before sending this request. A minimal request only needs `ble.enable`; additional fields refine which beacons are captured.
+Decide which BLE behavior you need to configure before sending this request. Every request must include `enable`, `scanIntervalSec`, `protocols`, and `additionalFilters`.
 
 | What You Need | Details |
 |---|---|

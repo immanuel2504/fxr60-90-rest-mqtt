@@ -1,0 +1,1 @@
+{"antennaStopCondition":{"type":"DURATION","value":400},"antennas":[1],"query":{"session":"S2","tagPopulation":2000,"target":"AB"},"transmitPower":30,"type":"SIMPLE"}

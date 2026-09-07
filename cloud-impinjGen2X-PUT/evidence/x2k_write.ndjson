@@ -1,0 +1,86 @@
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1778,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:23.858+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1779,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:23.866+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1780,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:23.972+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1781,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:24.077+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 1 successful words written: General Error 0x21"],"antenna":1,"eventNum":1782,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:24.182+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1783,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:24.368+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1784,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:24.473+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1785,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:24.578+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1786,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:24.766+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1787,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:24.872+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1788,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:24.978+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1789,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:25.167+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1790,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:25.272+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1791,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:25.378+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1792,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:25.567+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1793,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:25.672+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1794,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:25.777+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1795,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:25.966+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 1 successful words written: CRC error in tag response"],"antenna":1,"eventNum":1796,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:26.072+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1797,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:26.177+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1798,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:26.365+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: CRC error in tag response"],"antenna":1,"eventNum":1799,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:26.471+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1800,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:26.566+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1801,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:26.760+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1802,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:26.866+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1803,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:26.971+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: CRC error in tag response"],"antenna":1,"eventNum":1804,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:27.160+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1805,"format":"epc","idHex":"333311112222333344445555","peakRssi":-52},"timestamp":"2026-09-06T08:14:27.179+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1806,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:27.286+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1807,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:27.390+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1808,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:27.422+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1809,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:27.610+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1810,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:27.644+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1811,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:27.750+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1812,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:27.855+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1813,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:28.044+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1814,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:28.149+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1815,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:28.254+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1816,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:28.443+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1817,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:28.549+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1818,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:28.654+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1819,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:28.843+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1820,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:28.963+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1821,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:29.069+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1822,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:29.257+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1823,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:29.363+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1824,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:29.468+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: Tag did not respond"],"antenna":1,"eventNum":1825,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:29.657+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1826,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:29.773+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1827,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:29.878+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1828,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:30.067+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1829,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:30.257+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: CRC error in tag response"],"antenna":1,"eventNum":1830,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:30.446+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1831,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:30.541+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1832,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:30.646+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1833,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:30.835+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1834,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:30.940+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1835,"format":"epc","idHex":"333311112222333344445555","peakRssi":-54},"timestamp":"2026-09-06T08:14:31.046+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1836,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:31.234+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1837,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:31.340+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1838,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:31.448+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1839,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:31.637+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1840,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:31.742+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1841,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:31.847+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1842,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:32.037+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1843,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:32.144+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1844,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:32.247+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1845,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:32.436+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1846,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:32.542+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: CRC error in tag response"],"antenna":1,"eventNum":1847,"format":"epc","idHex":"333311112222333344445555","peakRssi":-53},"timestamp":"2026-09-06T08:14:32.647+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 1 successful words written: Tag did not respond"],"antenna":1,"eventNum":1848,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:32.828+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1849,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:32.951+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1850,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:33.057+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1851,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:33.246+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1852,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:33.351+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1853,"format":"epc","idHex":"333311112222333344445555","peakRssi":-55},"timestamp":"2026-09-06T08:14:33.456+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 1 successful words written: Tag did not respond"],"antenna":1,"eventNum":1854,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:33.644+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1855,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:33.768+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1856,"format":"epc","idHex":"333311112222333344445555","peakRssi":-58},"timestamp":"2026-09-06T08:14:33.874+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1857,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:33.998+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1858,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:34.104+0000","type":"CUSTOM"}
+{"data":{"accessResults":["Error after 0 successful words written: Tag did not respond"],"antenna":1,"eventNum":1859,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:34.210+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1860,"format":"epc","idHex":"333311112222333344445555","peakRssi":-56},"timestamp":"2026-09-06T08:14:34.301+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1861,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:34.490+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1862,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:34.595+0000","type":"CUSTOM"}
+{"data":{"accessResults":["SUCCESS"],"antenna":1,"eventNum":1863,"format":"epc","idHex":"333311112222333344445555","peakRssi":-57},"timestamp":"2026-09-06T08:14:34.701+0000","type":"CUSTOM"}

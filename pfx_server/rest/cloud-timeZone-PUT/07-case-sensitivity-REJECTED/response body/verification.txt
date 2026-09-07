@@ -1,0 +1,8 @@
+timeZone 07 - lowercase "utc" instead of "UTC"
+RESULT: rejected, HTTP 422, {"code":1,"message":"Invalid Time Zone specified."}
+
+Matching is CASE-SENSITIVE. Worth documenting, because the error gives no hint
+that case is the problem - the identical message is returned for a completely
+non-existent zone (test 05).
+
+Also tested: {"timeZone":""} -> same "Invalid Time Zone specified." error.

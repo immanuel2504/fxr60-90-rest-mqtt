@@ -1,0 +1,20 @@
+stop 03 - spec example "stop_BLE_only"
+RESULT: HTTP 200 - CONFIRMED
+
+  before: radio=inactive  ble=running
+  after:  radio=inactive  ble=stopped     <- BLE stopped, RFID untouched
+
+Stopped a BLE scan started by start 05. Symmetrical with start: the type is
+honoured, and the RFID radio was not affected.
+
+WHEN NOTHING IS RUNNING it returns a clear error rather than a silent 200:
+
+  PUT /cloud/stop {"scanType":["ble"]}   (BLE not running)
+  -> HTTP 422 {"code":1,"message":"No scan is currently active"}
+
+Good behaviour, and a useful contrast with the misleading BLE error in
+../cloud-start-PUT/05-start_BLE_only-SUCCESS-requires-ble-enable/ - this message
+names the actual condition.
+
+Worth noting stop is therefore NOT idempotent: stopping an already-stopped scan
+is a 422, not a no-op. Compare DELETE /cloud/logs/syslog, which IS idempotent.

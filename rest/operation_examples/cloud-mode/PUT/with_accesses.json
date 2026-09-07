@@ -18,7 +18,7 @@
       "config": {
         "membank": "TID",
         "wordPointer": 0,
-        "wordCounter": 6
+        "wordCount": 6
       }
     }
   ],

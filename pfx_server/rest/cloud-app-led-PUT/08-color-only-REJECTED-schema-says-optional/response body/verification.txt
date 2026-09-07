@@ -1,0 +1,19 @@
+app-led 08 - only "color", omitting flash and seconds
+RESULT: rejected, HTTP 422, {"code":1,"message":"Required Fields not provided"}
+
+*** SPEC vs FIRMWARE MISMATCH ***
+
+The schema declares NO "required" array, so every field reads as optional. The
+firmware requires all three. Proved by dropping each field from a known-good
+payload:
+
+  {"color":"green","flash":true,"seconds":5}  -> 200   all three present
+  {"color":"green","flash":true}              -> 422   Required Fields not provided
+  {"color":"green","seconds":5}               -> 422   Required Fields not provided
+  {"flash":true,"seconds":5}                  -> 422   Required Fields not provided
+
+The schema should carry "required": ["color","flash","seconds"].
+
+Contrast with /cloud/displayConfig, whose schema also declares nothing required
+but where only ONE field (enable) actually is. Two endpoints declare the same
+thing and behave differently, so a client cannot infer either from the spec.

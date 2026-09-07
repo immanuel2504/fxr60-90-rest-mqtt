@@ -1,0 +1,9 @@
+timeZone 02 - a zone name with spaces, parentheses and an ampersand
+RESULT: accepted, HTTP 200, CONFIRMED
+
+GET after:  {"timeZone":"America/Los_Angeles"}
+systemTime: 05/09/2026 09:48   (16:49 UTC -> -7:00, correct for PDT)
+
+Chosen deliberately to exercise the awkward characters in the enum. No escaping
+problems. Again the read-back differs from the input: a display name goes in, an
+IANA identifier comes out.

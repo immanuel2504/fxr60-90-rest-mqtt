@@ -1,0 +1,9 @@
+{
+  "command": "get_logs_syslog",
+  "command_id": "req-get-logs-syslog",
+  "payload": {
+    "binary": "H4sIAAAAAAAAA9xda48bN5bN5/0Vgj5lMbHC96MBf0hsZyaYccZjex5AHBhyq9rRjlrqSOo4RpD/vpekynG7VdJhkaXVrJHAdku+h8UiDy8vL8+9bjab6dtm89mAvxj9MkrF3+nXnd+50VwI9RnXQinDtWH2M8a5lPKzERuyUe2v2812uh6NPluvVttD3zv2+X/oL8GEecDcA+FfCnnB2QVjE2cd4/oPTF9INvrmX88N818/keqr0XrzfrNYvZ1djL5fredv58vRZnW1fTddNw/H7Wfj0ebdP5r1Zr5aPhy7iVBMTNh49MuDm/ns4VgY4W3863x5tXo4/nG7vdlcfPnlu3fvJjsLk8vV9fiHD1ijd9PN6E9/f9bz9+fvz9+fvz9+fvz9/f/7+/P35+/P35+/P35+/P39//v78/fn78/fn78/fn78/f3/+/vz9+fvz9+fvz9+fvz9/f/7+/P35+/P352/s3/8PBjyq7wCABwA=",
+    "filename": "syslog.tar.gz"
+  },
+  "response": "success"
+}

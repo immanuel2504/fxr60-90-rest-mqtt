@@ -1,0 +1,15 @@
+start 07 - the documented cross-field constraint
+RESULT: correctly rejected, HTTP 422
+
+The schema documents: applyImpinjGen2X "Cannot be used with scanType: [\"ble\"]".
+Confirmed enforced:
+
+  {"code":1,"message":"scanType with 'ble' cannot be combined with _sim or
+   applyImpinjGen2X"}
+
+Sensible - Gen2X is an RFID air-protocol feature and has no meaning for BLE.
+
+UNDOCUMENTED FIELD REVEALED: the message names "_sim", which appears NOWHERE in
+openAPISpec 11.yaml. Presumably a simulation/test flag. Worth asking about: if
+it is internal it should not surface in a customer-facing error; if it is usable
+it should be documented.

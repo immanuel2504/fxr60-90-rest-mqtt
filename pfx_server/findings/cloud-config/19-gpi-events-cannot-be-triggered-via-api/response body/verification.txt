@@ -1,0 +1,9 @@
+ACCEPTED (HTTP 200). GPI inputs driving outputs:
+  GPI_1_H -> LED 3 blinks GREEN 250/250ms for 2s, then RED
+  GPI_1_L -> LED 3 RED
+  GPI_2_H -> GPO 3 HIGH
+  GPI_2_L -> GPO 3 LOW
+
+NOT TRIGGERABLE FROM THE API. GPI events need a physical input transition, and there is no API to drive a GPI - only to read it (GET /cloud/gpi) and to set GPOs. All four GPIs currently read HIGH, so GPI_1_L / GPI_2_L could not fire either.
+
+Only GPI_1_* and GPI_2_* were used: the spec states GPI 3 and GPI 4 events are not supported on FXR60/FXR90.

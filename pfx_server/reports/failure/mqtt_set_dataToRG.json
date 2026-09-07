@@ -1,0 +1,11 @@
+{
+  "command": "set_dataToRG",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "FAIL",
+  "ms": 10017.15811342001,
+  "note": "no MQTT response (timeout)",
+  "request_id": "test-set_dataToRG-86920a1c3a",
+  "response": null
+}

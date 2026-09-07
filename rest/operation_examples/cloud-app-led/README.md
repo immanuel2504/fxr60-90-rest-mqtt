@@ -1,24 +1,14 @@
 # `/cloud/app-led`
 
-- **GET** — application LED status (`DEFAULT` / `NON_DEFAULT`)
-- **PUT** — set color / flash / duration
+- **GET** — `DEFAULT` / `NON_DEFAULT`
+- **PUT** — set color, flash, seconds
 
-## PUT examples
+Only live SUCCESS bodies from `pfx_server/rest/cloud-app-led-PUT`. Rejected cases are not published.
 
-| File | Direction | Example name | Summary title |
-|---|---|---|---|
-| `PUT/app_led.json` | request | `app_led` | Amber blink for 60 seconds |
-| `PUT/success.json` | response 200 | `success` | Empty string on success |
-
-Swagger may show `"string"` as a placeholder when no response example is present — that is **not** the real body. Docs now show `""`.
-
-**NEED LIVE TEST:** Run `PUT /cloud/app-led` on a real reader and confirm the 200 body is really `""`.
-
-## GET examples
-
-| File | Example name | Summary title |
+| Example name | File | Result |
 |---|---|---|
-| `GET/default_state.json` | `default_state` | Reader controls LED |
-| `GET/overridden_state.json` | `overridden_state` | App controls LED |
-
-See **`SUMMARIES.md`**.
+| `amber_flash_60s` | `PUT/amber_flash_60s.json` | SUCCESS 200 |
+| `red_flash_indefinite` | `PUT/red_flash_indefinite.json` | SUCCESS 200 |
+| `green_solid_10s` | `PUT/green_solid_10s.json` | SUCCESS 200 |
+| `off` | `PUT/off.json` | SUCCESS 200 |
+| `success` | `PUT/success.json` | 200 empty body `""` |

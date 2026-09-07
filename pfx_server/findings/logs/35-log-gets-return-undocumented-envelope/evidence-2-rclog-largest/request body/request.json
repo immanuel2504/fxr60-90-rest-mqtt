@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "/cloud/logs/RcLog",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": null,
+  "_note": "GET takes no request body and no parameters."
+}

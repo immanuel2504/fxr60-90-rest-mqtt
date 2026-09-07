@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "broker": "10.117.229.9",
+    "port": 1883,
+    "cmd_topic": "fxr60-lab/mcmd",
+    "rsp_topic": "fxr60-lab/mrsp",
+    "tiers": [
+      "write"
+    ],
+    "started": "2026-09-02 03:02:06"
+  },
+  "results": [
+    {
+      "command": "set_region",
+      "channel": "management",
+      "source": "request/default.json",
+      "tier": "write",
+      "verdict": "FAIL",
+      "ms": 12021.073211915791,
+      "note": "no MQTT response (timeout)",
+      "request_id": "test-set_region-5c7cb068ab",
+      "response": null
+    }
+  ]
+}

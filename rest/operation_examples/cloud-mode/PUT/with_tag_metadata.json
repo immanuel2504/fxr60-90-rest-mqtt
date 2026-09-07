@@ -17,7 +17,6 @@
     "TID",
     "USER",
     "MAC",
-    "HOSTNAME",
-    "READER_LOCATION"
+    "HOSTNAME"
   ]
 }

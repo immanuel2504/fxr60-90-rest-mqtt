@@ -1,0 +1,4 @@
+Copied verbatim from:
+  rest/cloud-logs-PUT/07-omitting-radiopacketlog-resets-it-to-false
+
+That folder is the canonical record of this test; this is a copy kept beside the finding so the evidence travels with it.

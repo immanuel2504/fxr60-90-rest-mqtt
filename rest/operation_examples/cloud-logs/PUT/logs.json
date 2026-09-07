@@ -1,11 +1,7 @@
 {
   "components": [
     {
-      "componentName": "radio_control",
-      "level": "DEBUG"
-    },
-    {
-      "componentName": "cloud_agent",
+      "componentName": "reader_gateway",
       "level": "DEBUG"
     }
   ],

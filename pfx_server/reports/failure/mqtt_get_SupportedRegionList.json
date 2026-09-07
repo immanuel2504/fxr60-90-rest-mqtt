@@ -1,0 +1,12 @@
+{
+  "command": "get_SupportedRegionList",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "WARN",
+  "ms": 50.2,
+  "note": "response='failure'",
+  "request_id": "test-get_SupportedRegionList-efd8a9ed5a",
+  "response": "failure",
+  "response_preview": "{\"command\": \"get_SupportedRegionList\", \"command_id\": \"test-get_SupportedRegionList-efd8a9ed5a\", \"payload\": {\"code\": 4, \"message\": \"cannot handle request (invalid command)\"}, \"response\": \"failure\"}"
+}

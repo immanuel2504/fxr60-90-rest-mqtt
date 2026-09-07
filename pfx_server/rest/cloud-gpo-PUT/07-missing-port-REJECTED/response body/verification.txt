@@ -1,0 +1,3 @@
+gpo 07 - omit "port"
+RESULT: rejected, HTTP 422
+{"code":1,"message":"Required Fields not provided.Expected port/state"}

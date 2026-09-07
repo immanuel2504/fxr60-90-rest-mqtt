@@ -1,0 +1,28 @@
+bleConfig 05 - spec example "disable_ble"
+RESULT: HTTP 200 - CONFIRMED
+
+  stored: enable=False  interval=5  additionalFilters={}
+
+Note the protocols stay enabled=true while ble.enable is false: the master
+switch is `enable`, and per-protocol flags are independent of it. Sensible - it
+preserves the protocol selection for the next time BLE is turned on.
+
+CONSEQUENCE - this immediately blocks BLE scanning:
+
+  PUT /cloud/start {"scanType":["ble"]}
+  -> 422 {"code":3,"message":"CS:'startBleScan' failed, Reason: Invalid BLE
+     configuration: unknown or unexpected field in request payload, refer to API
+     documentation for supported fields"}
+
+That confirms the finding in ../../START_STOP_TEST_REPORT.md: start_BLE_only
+fails on a default reader because ble.enable is false, and THE ERROR MESSAGE IS
+MISLEADING - the start payload {"scanType":["ble"]} has one field, it matches
+the schema, and nothing about it is unknown or unexpected. The real cause is
+this config setting, which the message never mentions.
+
+Same wrong message, two different endpoints, two different causes:
+  PUT /cloud/bleConfig  with capitalised generic fields -> accurate (test 04)
+  PUT /cloud/start      with ble.enable false           -> misleading
+
+ASK: make the start error name the real cause, e.g. "BLE scanning is disabled;
+set ble.enable true via PUT /cloud/bleConfig first".

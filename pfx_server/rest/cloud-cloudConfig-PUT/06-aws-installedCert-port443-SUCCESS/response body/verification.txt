@@ -1,0 +1,19 @@
+CONFIRMED WORKING. Only change from test 05: port 8883 -> 443.
+
+Verified by fetching get_config THROUGH AWS (published to FXR60-LAB/mcmd, reply on FXR60-LAB/mrsp) - a full round trip. A get_status command sent the same way returned correct reader status.
+
+KEY DETAIL: the reader's own applied config shows it automatically added
+  "alpnProtocolNames": ["x-amzn-mqtt-ca"]
+to the additional block of every port-443 connection. This is the ALPN identifier AWS IoT needs to carry MQTT over 443 (normally HTTPS). We did NOT set it - the firmware adds it on seeing port 443. It is also NOT a valid input field: it is absent from the 'additional' schema, so it must not be sent.
+
+*** CORRECTION, added after test 08 ***
+
+The claim above that alpnProtocolNames 'is NOT a valid input field ... so it must not be sent' is WRONG.
+
+Test 08 (the *FileLocation variant, same endpoint, same port 443) was REJECTED without it:
+  "invalid AWS endpoint configuration: AWS requires ALPN protocol name for \"port\" number 443"
+and accepted once alpnProtocolNames: ["x-amzn-mqtt-ca"] was added.
+
+So the field IS accepted as input, and on port 443 it is REQUIRED - at least for the file-path variant. This test (installedCertificateName) succeeded without it, so the two variants validate differently. That inconsistency is itself worth reporting.
+
+The original inference came from the field's absence in the 'additional' schema. That was unsound: tests 10 and 13 later showed the reader also accepts URL and tcpipport, both equally undocumented. The schema is incomplete, not authoritative.

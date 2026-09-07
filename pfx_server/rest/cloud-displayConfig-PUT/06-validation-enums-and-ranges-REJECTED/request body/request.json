@@ -1,0 +1,31 @@
+{
+  "method": "PUT",
+  "url": "/cloud/displayConfig",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "_note": "six separate probes, each its own request. See verification.txt.",
+    "_probes": [
+      {
+        "orientation": "diagonal"
+      },
+      {
+        "keyboardLayout": "Klingon"
+      },
+      {
+        "screenTimeoutSec": 3601
+      },
+      {
+        "screenTimeoutSec": -1
+      },
+      {
+        "resolution": "abc"
+      },
+      {}
+    ]
+  }
+}

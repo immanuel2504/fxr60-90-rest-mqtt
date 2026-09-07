@@ -1,0 +1,9 @@
+{
+  "command": "start",
+  "payload": {
+    "scanType": [
+      "ble",
+      "rfid"
+    ]
+  }
+}

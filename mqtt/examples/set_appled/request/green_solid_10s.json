@@ -1,0 +1,9 @@
+{
+  "command": "set_appled",
+  "command_id": "req-set-appled-green-solid-10s",
+  "payload": {
+    "color": "green",
+    "flash": false,
+    "seconds": 10
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "command": "set_stackled",
+  "channel": "management",
+  "source": "request/amber_med_flash.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_stackled-8a8f27b52f",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_stackled\", \"command_id\": \"test-set_stackled-8a8f27b52f\", \"payload\": {}, \"response\": \"success\"}"
+}

@@ -1,0 +1,6 @@
+gpo 06 - omit "state"
+RESULT: rejected, HTTP 422
+{"code":1,"message":"Required Fields not provided.Expected port/state"}
+
+Matches the schema, which lists both port and state as required, and the message
+names the expected fields. This is the behaviour /cloud/app-led should have.

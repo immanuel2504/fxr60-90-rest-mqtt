@@ -1,0 +1,12 @@
+{
+  "command": "get_mode",
+  "channel": "control",
+  "source": "request/default_configured_only.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_mode-ee76bba42f",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_mode\", \"command_id\": \"test-get_mode-ee76bba42f\", \"payload\": {\"antennaStopCondition\": {\"type\": \"DURATION\", \"value\": 100}, \"antennas\": [1, 2, 3, 4], \"query\": {\"tagPopulation\": 200}, \"tagMetaData\": [\"ANTENNA\", \"RSSI\", \"CHANNEL\", \"SEEN_COUNT\"], \"transmitPower\": [30.0, 30.0, 30.0, 30.0], \"type\": \"CONVEYOR\"}, \"response\": \"success\"}"
+}

@@ -1,0 +1,12 @@
+{
+  "command": "get_supportedRegionList",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_supportedRegionList-cf40d441ab",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_supportedRegionList\", \"command_id\": \"test-get_supportedRegionList-cf40d441ab\", \"payload\": {\"SupportedRegions\": [\"United States/Canada\"]}, \"response\": \"success\"}"
+}

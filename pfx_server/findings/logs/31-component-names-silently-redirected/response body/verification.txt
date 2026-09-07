@@ -1,0 +1,46 @@
+logs PUT 02 - what does each documented componentName actually write to?
+RESULT: ALL FIVE names write to reader_gateway. radio_control is never changed.
+
+The schema documents five accepted values for componentName:
+
+    radio_control, RC, cloud_agent, reader_gateway, RG
+
+described as: "Supported canonical names are radio_control and cloud_agent.
+Supported aliases are RC for radio_control and RG for reader_gateway."
+
+So the documented mapping is:
+    radio_control  <- radio_control, RC
+    reader_gateway <- reader_gateway, RG
+    cloud_agent    <- cloud_agent          (a third component)
+
+Each name was sent alone, with a distinctive level, and the config read back:
+
+  PUT {"componentName":"radio_control","level":"DEBUG"}   -> 200
+      read back: rc=INFO  rg=DEBUG        <- landed on rg, NOT rc
+  PUT {"componentName":"RC","level":"DEBUG"}              -> 200
+      read back: rc=INFO  rg=DEBUG        <- landed on rg, NOT rc
+  PUT {"componentName":"cloud_agent","level":"ERROR"}     -> 200
+      read back: rc=INFO  rg=ERROR        <- landed on rg
+  PUT {"componentName":"reader_gateway","level":"TRACE"}  -> 200
+      read back: rc=INFO  rg=TRACE        <- correct
+  PUT {"componentName":"RG","level":"WARNING"}            -> 200
+      read back: rc=INFO  rg=WARNING      <- correct
+
+FINDINGS
+
+1. radio_control and RC do NOT set radio_control. Their level is applied to
+   reader_gateway instead. The documented alias mapping is wrong, or the
+   implementation is.
+
+2. cloud_agent is not a separate component here. It also writes to
+   reader_gateway, and the name never appears in any GET response. Either
+   cloud_agent IS reader_gateway under another name - in which case the schema's
+   description is misleading, since it presents them as distinct - or the
+   component does not exist on this firmware.
+
+3. GET /cloud/logs only ever reports two components: radio_control and
+   reader_gateway. Of the five documented names, one (reader_gateway) round-trips
+   correctly, one (RG) is a correct alias for it, and three are silently
+   redirected.
+
+All five returned HTTP 200. Nothing indicated a redirect had occurred.

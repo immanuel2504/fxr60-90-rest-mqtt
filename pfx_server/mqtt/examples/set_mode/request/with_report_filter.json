@@ -1,0 +1,18 @@
+{
+  "command": "set_mode",
+  "payload": {
+    "type": "CUSTOM",
+    "antennas": [
+      1,
+      2
+    ],
+    "transmitPower": [
+      28,
+      28
+    ],
+    "reportFilter": {
+      "duration": 5,
+      "type": "PER_ANTENNA"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+app-led 06 - empty JSON object
+RESULT: rejected, HTTP 422, {"code":1,"message":"Required Fields not provided"}

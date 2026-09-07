@@ -1,0 +1,12 @@
+CONFIG ACCEPTED BUT CONNECTION FAILED - and this took a long time to diagnose.
+
+Reader left local MQTT (config applied) but never appeared on AWS. An AWS-side listener subscribed to FXR60-LAB/# and datacollection_aws/# saw zero traffic over several minutes. Reader error log:
+  [DATA#1]/[EVENTS]/[CTRL]/[MGMT]: connection initialization failed with return code (255), retry count (0)
+All four channels failing within ~2ms, zero retries.
+
+Causes found, in order:
+1. The AWS IoT Policy attached to the certificate was AWS's SDK sample policy, permitting only client IDs sdk-java/basicPubSub/sdk-nodejs-* and topics sdk/test/*. None matched FXR60-LAB-*. Fixed by attaching a permissive policy.
+2. AFTER the policy fix it STILL failed. Verified from this host with the reader's exact cert files that AWS connect+publish+subscribe all worked - so credentials, policy, network and endpoint were all fine.
+3. ACTUAL CAUSE: port 8883 is blocked on the reader's network path to AWS. Switching to port 443 fixed it immediately - see test 06.
+
+Worth noting: 'return code (255), retry count (0)' is returned for a BLOCKED PORT as well as for certificate faults, with nothing to distinguish them.

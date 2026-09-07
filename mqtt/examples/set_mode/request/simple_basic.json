@@ -9,7 +9,7 @@
       3,
       4
     ],
-    "transmitPower": 31.5,
+    "transmitPower": 30,
     "antennaStopCondition": {
       "type": "DURATION",
       "value": 400

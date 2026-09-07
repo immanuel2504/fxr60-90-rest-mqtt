@@ -1,0 +1,77 @@
+{
+    "antennas": {
+        "1": "connected",
+        "2": "disconnected",
+        "3": "disconnected",
+        "4": "disconnected",
+        "5": "connected",
+        "6": "connected"
+    },
+    "ble": {
+        "beaconCounts": {
+            "altBeacon": 0,
+            "eddystone": 0,
+            "generic": 458,
+            "iBeacon": 38,
+            "total": 496
+        },
+        "scanStartTime": "2026-08-28T06:35:29.972+00:00",
+        "scanState": "stopped"
+    },
+    "cpu": {
+        "system": 0,
+        "user": 11
+    },
+    "flash": {
+        "platform": {
+            "free": 0,
+            "total": 0,
+            "used": 0
+        },
+        "readerConfig": {
+            "free": 0,
+            "total": 0,
+            "used": 0
+        },
+        "readerData": {
+            "free": 0,
+            "total": 0,
+            "used": 0
+        },
+        "rootFileSystem": {
+            "free": 0,
+            "total": 0,
+            "used": 0
+        }
+    },
+    "impinjGen2X": {
+        "feature": "none",
+        "isActive": false
+    },
+    "interfaceConnectionStatus": {
+        "data": [
+            {
+                "connectionError": "",
+                "connectionStatus": "disconnected",
+                "description": "WEBSOCKET",
+                "interface": "WEBSOCKET"
+            }
+        ]
+    },
+    "ntp": {
+        "offset": 0.058832,
+        "reach": 377
+    },
+    "powerNegotiation": "POE+",
+    "powerSource": "PWR_BRICK",
+    "radioActivity": "inactive",
+    "radioConnection": "connected",
+    "ram": {
+        "free": 73,
+        "total": 100,
+        "used": 27
+    },
+    "systemTime": "28/08/2026 06:41",
+    "temperature": 37,
+    "uptime": "0D20H22M47S"
+}

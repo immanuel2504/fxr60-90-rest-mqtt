@@ -1,0 +1,11 @@
+ACCEPTED AND STORED, BUT NEVER CONNECTS - identical to the /cloud/cloudConfig result. This endpoint does NOT behave differently.
+
+  status: connectionStatus 'disconnected', connectionError '' (EMPTY - no reason given)
+  stored options: {"security": {"verifyPeer": false}}
+  websocket receiver on port 9444: no connection attempt logged at all
+
+This test was run specifically because WEBSOCKET failed on /cloud/cloudConfig, to see whether /cloud/config validated or handled it differently. It does not - the behaviour is the same.
+
+ROOT PROBLEM (established during the /cloud/cloudConfig work): the WEBSOCKET security object accepts ONLY verifyPeer - CACertificateFileLocation, verifyHostName, keyAlgorithm and keyFormat are all rejected for this type. And the spec's example carries no URL or endpoint field, so there is no documented way to tell the reader where to connect. An endpoint block IS accepted and stored but appears to be ignored.
+
+WEBSOCKET remains the one connection type with no working configuration.

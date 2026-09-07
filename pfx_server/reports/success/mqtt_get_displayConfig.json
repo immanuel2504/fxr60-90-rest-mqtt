@@ -1,0 +1,12 @@
+{
+  "command": "get_displayConfig",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_displayConfig-ebd0279837",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_displayConfig\", \"command_id\": \"test-get_displayConfig-ebd0279837\", \"payload\": {\"enable\": true, \"enableOnscreenKeyboard\": true, \"keyboardLayout\": \"Japanese\", \"orientation\": \"landscape\", \"resolution\": \"1920x1080\", \"screenTimeoutSec\": 300, \"startUrl\": \"https://localhost/\"}, \"response\": \"success\"}"
+}

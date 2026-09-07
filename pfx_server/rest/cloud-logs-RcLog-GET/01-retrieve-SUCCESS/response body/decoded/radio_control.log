@@ -1,0 +1,996 @@
+2026-09-03T13:44:33.270Z INFO requests.cpp Response: Success
+2026-09-03T13:44:33.276Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-03T13:44:33.277Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-03T13:44:50.108Z INFO requests.cppRequest: events
+2026-09-03T13:44:50.108Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:45:58.650Z INFO requests.cppRequest: events
+2026-09-03T13:45:58.650Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:46:46.522Z INFO requests.cppRequest: events
+2026-09-03T13:46:46.522Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:48:55.588Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-03T13:48:56.588Z INFO requests.cppRequest: exit
+2026-09-03T13:48:56.589Z INFO requests.cpp Response: Success
+2026-09-03T13:48:56.589Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-03T13:48:56.616Z INFO main.cppgoodbye
+2026-09-03T13:49:23.993Z INFO radio_control: 0.2.58.7
+2026-09-03T13:49:23.996Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-03T13:49:23.997Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-03T13:49:28.231Z INFO radio_control: 0.2.58.7
+2026-09-03T13:49:28.231Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-03T13:49:28.235Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-03T13:49:33.310Z INFO nge_intfc.cppRadio is in state: -591837368 ..Retry in 5 seconds
+2026-09-03T13:49:43.985Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-03T13:49:44.032Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-03T13:49:44.033Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-03T13:49:44.033Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-03T13:49:44.033Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-03T13:49:44.033Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-03T13:49:44.033Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-03T13:49:44.142Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-03T13:49:44.220Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-03T13:49:44.316Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-03T13:49:44.317Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-03T13:49:44.322Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-03T13:49:44.322Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-03T13:49:44.370Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-03T13:49:44.424Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-03T13:49:44.477Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-03T13:49:44.529Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-03T13:49:44.585Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-03T13:49:44.641Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-03T13:49:44.693Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-03T13:49:44.741Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-03T13:49:50.853Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-03T13:49:50.901Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-03T13:49:50.955Z INFO nge_intfc.cpp Response: Success
+2026-09-03T13:49:51.208Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-03T13:49:51.209Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-03T13:49:51.209Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-03T13:49:59.183Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:49:59.183Z INFO requests.cpp Response: Success
+2026-09-03T13:49:59.189Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-03T13:49:59.189Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-03T13:51:09.386Z INFO requests.cppRequest: events
+2026-09-03T13:51:09.386Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:51:31.529Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-03T13:51:32.530Z INFO requests.cppRequest: exit
+2026-09-03T13:51:32.530Z INFO requests.cpp Response: Success
+2026-09-03T13:51:32.530Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-03T13:51:32.553Z INFO main.cppgoodbye
+2026-09-03T13:51:58.799Z INFO radio_control: 0.2.58.7
+2026-09-03T13:51:58.804Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-03T13:51:58.806Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-03T13:52:03.453Z INFO radio_control: 0.2.58.7
+2026-09-03T13:52:03.453Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-03T13:52:03.454Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-03T13:52:08.527Z INFO nge_intfc.cppRadio is in state: -851501256 ..Retry in 5 seconds
+2026-09-03T13:52:19.129Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-03T13:52:19.175Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-03T13:52:19.175Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-03T13:52:19.176Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-03T13:52:19.176Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-03T13:52:19.176Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-03T13:52:19.176Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-03T13:52:19.277Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-03T13:52:19.330Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-03T13:52:19.427Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-03T13:52:19.428Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-03T13:52:19.433Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-03T13:52:19.433Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-03T13:52:19.483Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-03T13:52:19.537Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-03T13:52:19.591Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-03T13:52:19.645Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-03T13:52:19.700Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-03T13:52:19.753Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-03T13:52:19.805Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-03T13:52:19.851Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-03T13:52:25.876Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-03T13:52:25.926Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-03T13:52:25.980Z INFO nge_intfc.cpp Response: Success
+2026-09-03T13:52:26.237Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-03T13:52:26.238Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-03T13:52:26.238Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-03T13:52:33.323Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T13:52:33.323Z INFO requests.cpp Response: Success
+2026-09-03T13:52:33.329Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-03T13:52:33.329Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-03T13:53:44.238Z INFO requests.cppRequest: events
+2026-09-03T13:53:44.238Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-03T21:41:38.974Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-03T21:41:40.755Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-03T21:41:59.313Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-03T21:41:59.313Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:05:36.382Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:14:04.859Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:20:00.860Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:20:11.029Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:34:50.810Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:35:06.017Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:35:16.191Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:35:20.813Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:36:17.209Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:36:17.209Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:36:20.815Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:36:37.561Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:36:50.799Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:36:50.799Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:37:08.054Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:37:08.055Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:37:18.222Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:37:18.222Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:37:20.826Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:37:20.827Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:37:28.388Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:37:28.388Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:42:50.862Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:42:53.864Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:43:04.029Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:43:14.202Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:53:59.531Z INFO requests.cppRequest: events
+2026-09-04T06:53:59.531Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:54:30.331Z INFO requests.cppRequest: version
+2026-09-04T06:54:30.331Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-04T06:54:30.460Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:54:30.460Z INFO requests.cpp Response: Success
+2026-09-04T06:54:30.465Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-04T06:54:30.466Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-04T06:54:55.931Z INFO requests.cppRequest: version
+2026-09-04T06:54:55.931Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-04T06:55:00.421Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:55:00.422Z INFO requests.cpp Response: Success
+2026-09-04T06:55:00.427Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-04T06:55:00.427Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-04T06:55:48.459Z INFO requests.cppRequest: events
+2026-09-04T06:55:48.459Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:55:56.354Z INFO requests.cppRequest: events
+2026-09-04T06:55:56.355Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:56:55.027Z INFO requests.cppRequest: version
+2026-09-04T06:56:55.027Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-04T06:57:03.927Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:57:03.927Z INFO requests.cpp Response: Success
+2026-09-04T06:57:03.933Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-04T06:57:03.933Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-04T06:57:10.682Z INFO requests.cppRequest: events
+2026-09-04T06:57:10.682Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T06:59:20.490Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T06:59:20.491Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:59:20.819Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T06:59:20.819Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:59:25.227Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:59:30.659Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:59:40.824Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T06:59:50.855Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T06:59:51.160Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:00:01.330Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:00:11.499Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:00:20.861Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:05:16.552Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:05:16.553Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:05:20.818Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:05:20.818Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:05:50.811Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:05:57.225Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:06:20.815Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:06:27.714Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:15:06.423Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:15:16.585Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:16:20.813Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:16:25.225Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:16:37.922Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:16:37.922Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:16:48.096Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:16:48.097Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:17:08.517Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:17:08.517Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:17:18.694Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:17:18.696Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:17:25.232Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:17:25.233Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:17:39.022Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:17:39.023Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:17:49.197Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:17:49.197Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:17:50.810Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:17:50.810Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:17:58.090Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:18:09.536Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:18:19.707Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:18:20.817Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:18:25.591Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:18:25.591Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:18:29.880Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:18:40.058Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:18:50.230Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:18:58.064Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:19:00.394Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:19:20.741Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:19:20.909Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:19:25.299Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:19:50.826Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:19:51.248Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:19:58.098Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:19:58.098Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:20:20.815Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:20:20.815Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:20:21.752Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:20:21.752Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:20:50.800Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:20:50.800Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:20:52.242Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:20:52.242Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:21:02.411Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:21:12.588Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:21:20.826Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:21:22.753Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:21:22.753Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:21:32.924Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:21:43.090Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:21:50.799Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:21:58.072Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:22:03.425Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:22:13.583Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:22:13.583Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:22:20.844Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:22:20.844Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:22:44.092Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:22:44.092Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:22:50.805Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:22:54.258Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:23:14.604Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:23:14.604Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:23:20.849Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:23:20.849Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:24:35.959Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:24:46.123Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:25:06.459Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:25:16.626Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:25:25.229Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:25:26.796Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:25:47.132Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:25:47.132Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:25:50.808Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:25:50.809Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:27:08.516Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:27:18.699Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:27:50.799Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:28:09.574Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:28:25.234Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:28:40.096Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:29:00.426Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:29:00.427Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:29:10.609Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:29:10.609Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:29:20.773Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:29:30.938Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:29:50.870Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:29:50.870Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:30:01.456Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:30:01.456Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:30:11.624Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:30:20.818Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:30:25.275Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:30:31.956Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:30:42.125Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:30:52.289Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:31:02.462Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:31:12.643Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:31:20.819Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:31:20.819Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:31:22.807Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:31:32.970Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:31:43.142Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:31:50.800Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:32:03.470Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:32:03.471Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:32:20.842Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:32:33.990Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:33:04.493Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:33:14.667Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:33:24.829Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:33:25.236Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:33:45.178Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:33:55.344Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:34:05.502Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:34:15.670Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:34:20.814Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:34:20.815Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:34:25.201Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:34:36.015Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:34:46.184Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:34:50.853Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:34:56.357Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:35:06.524Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:35:16.696Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:35:20.809Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:35:25.162Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:35:26.864Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:36:07.534Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:36:07.534Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:36:20.820Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:36:20.821Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:36:25.247Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:36:38.043Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:37:08.559Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:37:18.726Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:37:25.213Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:37:28.886Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:37:39.051Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:37:49.230Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:37:59.402Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:38:09.569Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:38:19.753Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:38:19.754Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:38:29.928Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:38:40.103Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:39:00.444Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:39:00.444Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:39:10.609Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:39:10.610Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:39:20.778Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:39:25.243Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:39:41.104Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:39:41.105Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:39:50.869Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:39:50.870Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:40:01.447Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:40:11.615Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:40:31.948Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:40:31.948Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:40:42.120Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:40:42.120Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:40:50.814Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:40:52.279Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:41:02.445Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:41:20.810Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:41:32.939Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:41:43.106Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:41:50.805Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:41:53.271Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:42:23.779Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:42:23.779Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:42:25.221Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:42:25.224Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:42:50.805Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:42:50.806Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:43:04.466Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:43:04.467Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:43:20.816Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:43:20.816Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:43:24.811Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:43:24.812Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:43:34.979Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:43:45.148Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:43:55.314Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:44:05.475Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:44:15.647Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:44:25.820Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:44:46.162Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:44:46.162Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:44:50.834Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:44:50.834Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:45:06.501Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:45:16.679Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:45:20.814Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:45:20.814Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:45:37.010Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:45:37.010Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:45:47.179Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:45:47.179Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:45:57.350Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:46:07.524Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:47:08.530Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:47:18.696Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:47:28.863Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:47:28.864Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:47:39.038Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:47:39.038Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:47:59.382Z ERROR requests.cppAntenna Disconnected on Port 1
+2026-09-04T07:47:59.383Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:48:09.558Z ERROR requests.cppAntenna Reconnected on Port 1
+2026-09-04T07:48:09.559Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:48:19.729Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:48:20.807Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:48:25.188Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:48:29.893Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T07:48:50.228Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T07:49:00.394Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T10:13:19.348Z INFO requests.cppRequest: events
+2026-09-04T10:13:19.348Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-04T16:38:02.877Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T16:38:13.050Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-04T19:05:30.995Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-04T19:05:34.412Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-05T00:55:02.013Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-05T00:55:11.241Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-05T06:09:47.204Z ERROR requests.cppAntenna Disconnected on Port 6
+2026-09-05T06:09:54.772Z ERROR requests.cppAntenna Reconnected on Port 6
+2026-09-05T12:16:36.241Z INFO requests.cppRequest: version
+2026-09-05T12:16:36.242Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T12:16:36.349Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:16:36.349Z INFO requests.cpp Response: Success
+2026-09-05T12:16:36.354Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T12:16:36.354Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T12:16:40.750Z INFO requests.cppRequest: events
+2026-09-05T12:16:40.750Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:22:41.123Z INFO requests.cppRequest: version
+2026-09-05T12:22:41.123Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T12:22:50.043Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:22:50.043Z INFO requests.cpp Response: Success
+2026-09-05T12:22:50.049Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T12:22:50.049Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T12:23:15.520Z INFO requests.cppRequest: version
+2026-09-05T12:23:15.520Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T12:23:15.632Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:23:15.632Z INFO requests.cpp Response: Success
+2026-09-05T12:23:15.638Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T12:23:15.638Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T12:25:25.323Z INFO requests.cppRequest: events
+2026-09-05T12:25:25.324Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:27:31.247Z INFO requests.cppRequest: version
+2026-09-05T12:27:31.247Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T12:27:40.154Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T12:27:40.155Z INFO requests.cpp Response: Success
+2026-09-05T12:27:40.160Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T12:27:40.162Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T13:20:30.866Z INFO requests.cppRequest: events
+2026-09-05T13:20:30.867Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T13:20:32.552Z INFO requests.cppRequest: mode
+2026-09-05T13:20:32.552Z INFO requests.cpp Response: Success: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"query":{"tagPopulation":256},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["ANTENNA","RSSI","CHANNEL","PC","XPC","CRC","SEEN_COUNT","PHASE"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T13:20:32.818Z INFO requests.cppRequest: confignge custom rxSawFilter
+2026-09-05T13:20:32.818Z INFO requests.cpp Response: Success: rxSawFilter is disabled
+2026-09-05T13:20:33.105Z INFO requests.cppRequest: impinjgen2x
+2026-09-05T13:20:33.105Z INFO requests.cpp Response: Success: {}
+2026-09-05T13:20:38.655Z INFO requests.cppRequest: logging
+2026-09-05T13:20:38.655Z INFO requests.cpp Response: Success: level: INFO, radioPacketLog: OFF
+2026-09-05T13:21:34.885Z INFO requests.cppRequest: impinjgen2x
+2026-09-05T13:21:34.885Z INFO requests.cpp Response: Success: {}
+2026-09-05T14:36:08.119Z INFO requests.cppRequest: events
+2026-09-05T14:36:08.119Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:38:01.564Z INFO requests.cppRequest: version
+2026-09-05T14:38:01.565Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:38:01.676Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:38:01.676Z INFO requests.cpp Response: Success
+2026-09-05T14:38:01.681Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:38:01.682Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:39:51.025Z INFO requests.cppRequest: version
+2026-09-05T14:39:51.025Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:39:51.137Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:39:51.138Z INFO requests.cpp Response: Success
+2026-09-05T14:39:51.143Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:39:51.143Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:41:21.666Z INFO requests.cppRequest: version
+2026-09-05T14:41:21.666Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:41:21.803Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:41:21.803Z INFO requests.cpp Response: Success
+2026-09-05T14:41:21.808Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:41:21.808Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:42:09.799Z INFO requests.cppRequest: events
+2026-09-05T14:42:09.799Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:43:58.255Z INFO requests.cppRequest: version
+2026-09-05T14:43:58.256Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:43:58.370Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:43:58.370Z INFO requests.cpp Response: Success
+2026-09-05T14:43:58.376Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:43:58.376Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:45:05.384Z INFO requests.cppRequest: version
+2026-09-05T14:45:05.384Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:45:14.322Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:45:14.322Z INFO requests.cpp Response: Success
+2026-09-05T14:45:14.328Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:45:14.328Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:46:26.069Z INFO requests.cppRequest: version
+2026-09-05T14:46:26.069Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:46:26.188Z INFO requests.cppRequest: events
+2026-09-05T14:46:26.188Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:46:26.198Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:46:26.198Z INFO requests.cpp Response: Success
+2026-09-05T14:46:26.208Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:46:26.208Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:52:41.239Z INFO requests.cppRequest: version
+2026-09-05T14:52:41.240Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:52:41.352Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:52:41.352Z INFO requests.cpp Response: Success
+2026-09-05T14:52:41.358Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:52:41.358Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:54:36.576Z INFO requests.cppRequest: version
+2026-09-05T14:54:36.576Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:54:36.686Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:54:36.686Z INFO requests.cpp Response: Success
+2026-09-05T14:54:36.692Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:54:36.693Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:55:36.843Z INFO requests.cppRequest: version
+2026-09-05T14:55:36.843Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:55:36.954Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:55:36.954Z INFO requests.cpp Response: Success
+2026-09-05T14:55:36.960Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:55:36.960Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:56:10.582Z INFO requests.cppRequest: events
+2026-09-05T14:56:10.583Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:58:51.513Z INFO requests.cppRequest: version
+2026-09-05T14:58:51.514Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T14:58:51.623Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T14:58:51.624Z INFO requests.cpp Response: Success
+2026-09-05T14:58:51.629Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T14:58:51.629Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T14:58:51.630Z INFO requests.cppRequest: events
+2026-09-05T14:58:51.630Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:00:45.014Z INFO requests.cppRequest: version
+2026-09-05T15:00:45.015Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T15:00:49.585Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:00:49.586Z INFO requests.cpp Response: Success
+2026-09-05T15:00:49.592Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T15:00:49.593Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T15:08:38.097Z INFO requests.cppRequest: version
+2026-09-05T15:08:38.098Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T15:08:42.647Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:08:42.647Z INFO requests.cpp Response: Success
+2026-09-05T15:08:42.653Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T15:08:42.653Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T15:17:12.098Z INFO requests.cppRequest: events
+2026-09-05T15:17:12.098Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:19:03.045Z INFO requests.cppRequest: mode
+2026-09-05T15:19:03.046Z INFO requests.cpp Response: Success: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"query":{"tagPopulation":256},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["ANTENNA","RSSI","CHANNEL","PC","XPC","CRC","SEEN_COUNT","PHASE"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T15:20:38.330Z INFO requests.cppRequest: version
+2026-09-05T15:20:38.331Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T15:20:38.445Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:20:38.445Z INFO requests.cpp Response: Success
+2026-09-05T15:20:38.451Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T15:20:38.451Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T15:20:42.803Z INFO requests.cppRequest: events
+2026-09-05T15:20:42.803Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:21:00.682Z INFO requests.cppRequest: start
+2026-09-05T15:21:00.682Z INFO requests.cpp Response: Success
+2026-09-05T15:21:44.370Z INFO requests.cppRequest: stop
+2026-09-05T15:21:44.370Z INFO requests.cpp Response: Success
+2026-09-05T15:21:44.371Z INFO requests.cpp duration:43.6405 seconds,total tag reads:170 ,total rounds:11499 ,stop cause: -851501736
+2026-09-05T15:21:44.371Z INFO requests.cpp radio stopped
+2026-09-05T15:30:27.095Z INFO requests.cppRequest: events
+2026-09-05T15:30:27.095Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:35:10.372Z INFO requests.cppRequest: events
+2026-09-05T15:35:10.372Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:35:47.324Z INFO requests.cppRequest: events
+2026-09-05T15:35:47.324Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:36:04.341Z INFO requests.cppRequest: start
+2026-09-05T15:36:04.341Z INFO requests.cpp Response: Success
+2026-09-05T15:36:06.587Z INFO requests.cppRequest: stop
+2026-09-05T15:36:06.587Z INFO requests.cpp Response: Success
+2026-09-05T15:36:06.588Z INFO requests.cpp duration:2.19755 seconds,total tag reads:12 ,total rounds:576 ,stop cause: -851501736
+2026-09-05T15:36:06.588Z INFO requests.cpp radio stopped
+2026-09-05T15:37:02.307Z INFO requests.cppRequest: events
+2026-09-05T15:37:02.307Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:43:34.042Z INFO requests.cppRequest: start
+2026-09-05T15:43:34.042Z INFO requests.cpp Response: Success
+2026-09-05T15:43:51.280Z INFO requests.cppRequest: events
+2026-09-05T15:43:51.280Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T15:44:36.924Z INFO requests.cppRequest: stop
+2026-09-05T15:44:36.924Z INFO requests.cpp Response: Success
+2026-09-05T15:44:36.924Z INFO requests.cpp duration:62.8417 seconds,total tag reads:253 ,total rounds:17151 ,stop cause: -851501736
+2026-09-05T15:44:36.924Z INFO requests.cpp radio stopped
+2026-09-05T15:56:55.225Z INFO requests.cppRequest: start
+2026-09-05T15:56:55.225Z INFO requests.cpp Response: Success
+2026-09-05T15:57:10.331Z INFO requests.cppRequest: stop
+2026-09-05T15:57:10.331Z INFO requests.cpp Response: Success
+2026-09-05T15:57:10.332Z INFO requests.cpp duration:15.0599 seconds,total tag reads:60 ,total rounds:3686 ,stop cause: -851501736
+2026-09-05T15:57:10.332Z INFO requests.cpp radio stopped
+2026-09-05T16:01:10.395Z INFO requests.cppRequest: start
+2026-09-05T16:01:10.395Z INFO requests.cpp Response: Success
+2026-09-05T16:01:13.034Z INFO requests.cppRequest: stop
+2026-09-05T16:01:13.034Z INFO requests.cpp Response: Success
+2026-09-05T16:01:13.034Z INFO requests.cpp duration:2.59068 seconds,total tag reads:14 ,total rounds:709 ,stop cause: -851501736
+2026-09-05T16:01:13.034Z INFO requests.cpp radio stopped
+2026-09-05T16:01:42.175Z INFO requests.cppRequest: events
+2026-09-05T16:01:42.175Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:02:22.532Z INFO requests.cppRequest: events
+2026-09-05T16:02:22.532Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:03:24.852Z INFO requests.cppRequest: version
+2026-09-05T16:03:24.852Z INFO requests.cpp Response: Success:
+radio_control: 0.2.58.7,radio_api: 2.2.37.0,radio_fw: 2.1.70.0,zmq: 4.3.5
+2026-09-05T16:03:25.354Z INFO requests.cppRequest: events {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:03:25.354Z INFO requests.cpp Response: Success
+2026-09-05T16:03:25.360Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:03:25.360Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:23:32.368Z INFO requests.cppRequest: events
+2026-09-05T16:23:32.368Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:23:45.840Z INFO requests.cppRequest: start
+2026-09-05T16:23:45.840Z INFO requests.cpp Response: Success
+2026-09-05T16:23:50.418Z INFO requests.cppRequest: stop
+2026-09-05T16:23:50.419Z INFO requests.cpp Response: Success
+2026-09-05T16:23:50.419Z INFO requests.cpp duration:4.53113 seconds,total tag reads:21 ,total rounds:1221 ,stop cause: -851501736
+2026-09-05T16:23:50.419Z INFO requests.cpp radio stopped
+2026-09-05T16:24:08.126Z INFO requests.cppRequest: start
+2026-09-05T16:24:08.127Z INFO requests.cpp Response: Success
+2026-09-05T16:24:11.291Z INFO requests.cppRequest: stop
+2026-09-05T16:24:11.291Z INFO requests.cpp Response: Success
+2026-09-05T16:24:11.291Z INFO requests.cpp duration:3.11839 seconds,total tag reads:17 ,total rounds:841 ,stop cause: -851501736
+2026-09-05T16:24:11.292Z INFO requests.cpp radio stopped
+2026-09-05T16:24:14.483Z INFO requests.cppRequest: start
+2026-09-05T16:24:14.484Z INFO requests.cpp Response: Success
+2026-09-05T16:24:17.647Z INFO requests.cppRequest: stop
+2026-09-05T16:24:17.647Z INFO requests.cpp Response: Success
+2026-09-05T16:24:17.647Z INFO requests.cpp duration:3.11768 seconds,total tag reads:15 ,total rounds:788 ,stop cause: -851501736
+2026-09-05T16:24:17.647Z INFO requests.cpp radio stopped
+2026-09-05T16:24:53.661Z INFO requests.cppRequest: start
+2026-09-05T16:24:53.661Z INFO requests.cpp Response: Success
+2026-09-05T16:24:57.827Z INFO requests.cppRequest: stop
+2026-09-05T16:24:57.827Z INFO requests.cpp Response: Success
+2026-09-05T16:24:57.827Z INFO requests.cpp duration:4.12054 seconds,total tag reads:21 ,total rounds:1103 ,stop cause: -851501736
+2026-09-05T16:24:57.828Z INFO requests.cpp radio stopped
+2026-09-05T16:25:25.215Z INFO requests.cppRequest: start
+2026-09-05T16:25:25.215Z INFO requests.cpp Response: Success
+2026-09-05T16:25:32.498Z INFO requests.cppRequest: stop
+2026-09-05T16:25:32.498Z INFO requests.cpp Response: Success
+2026-09-05T16:25:32.501Z INFO requests.cpp duration:7.23774 seconds,total tag reads:37 ,total rounds:1956 ,stop cause: -851501736
+2026-09-05T16:25:32.501Z INFO requests.cpp radio stopped
+2026-09-05T16:26:32.432Z INFO requests.cppRequest: start
+2026-09-05T16:26:32.432Z INFO requests.cpp Response: Success
+2026-09-05T16:26:44.594Z INFO requests.cppRequest: stop
+2026-09-05T16:26:44.594Z INFO requests.cpp Response: Success
+2026-09-05T16:26:44.594Z INFO requests.cpp duration:12.1185 seconds,total tag reads:56 ,total rounds:3304 ,stop cause: -851501736
+2026-09-05T16:26:44.595Z INFO requests.cpp radio stopped
+2026-09-05T16:27:08.701Z INFO requests.cppRequest: events
+2026-09-05T16:27:08.701Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:27:35.939Z INFO requests.cppRequest: events
+2026-09-05T16:27:35.940Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:27:36.125Z INFO requests.cppRequest: start
+2026-09-05T16:27:36.125Z INFO requests.cpp Response: Success
+2026-09-05T16:27:41.287Z INFO requests.cppRequest: stop
+2026-09-05T16:27:41.287Z INFO requests.cpp Response: Success
+2026-09-05T16:27:41.288Z INFO requests.cpp duration:5.11506 seconds,total tag reads:22 ,total rounds:1381 ,stop cause: -851501736
+2026-09-05T16:27:41.288Z INFO requests.cpp radio stopped
+2026-09-05T16:30:36.617Z INFO requests.cppRequest: events
+2026-09-05T16:30:36.618Z INFO requests.cpp Response: Success: {"errors":{"antenna":true,"database":true,"radio":true,"radio_control":true},"heartbeat":{"period":10,"stats":["numTagReads","numTagReadsPerAntenna","numRadioPacketsRxed","numDataMessagesTxed","cpuUtilization","ramUtilization","uptime","numErrors","numWarnings","radioConnection","radioActivity","temperature","antennas","aarEcho","impinjGen2X"]},"warnings":{"database":true,"radio_api":true,"radio_control":true,"temperature":{"ambient":75,"pa":105}}}
+2026-09-05T16:53:45.158Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:53:46.158Z INFO requests.cppRequest: exit
+2026-09-05T16:53:46.158Z INFO requests.cpp Response: Success
+2026-09-05T16:53:46.158Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:53:46.702Z INFO main.cppgoodbye
+2026-09-05T16:53:49.797Z INFO radio_control: 0.2.58.7
+2026-09-05T16:53:49.798Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:53:49.798Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:53:55.420Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:53:55.466Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:53:55.467Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:53:55.467Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:53:55.467Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:53:55.467Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:53:55.467Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:53:55.567Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:53:55.617Z INFO nge_intfc.cpp Reader is using US_FCC_A regulatory standard
+2026-09-05T16:53:55.707Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:53:55.707Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:53:55.713Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:53:55.713Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:53:55.761Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:53:55.813Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:53:55.863Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:53:55.916Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:53:55.966Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:53:56.016Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:53:56.067Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:53:56.113Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:54:02.116Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:54:02.162Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:54:02.215Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:54:02.474Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:54:02.474Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:54:02.475Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:54:02.481Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:54:02.481Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:54:04.914Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:54:05.914Z INFO requests.cppRequest: exit
+2026-09-05T16:54:05.914Z INFO requests.cpp Response: Success
+2026-09-05T16:54:05.914Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:54:06.444Z INFO main.cppgoodbye
+2026-09-05T16:54:09.564Z INFO radio_control: 0.2.58.7
+2026-09-05T16:54:09.564Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:54:09.565Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:54:15.189Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:54:15.235Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:54:15.235Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:54:15.235Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:54:15.235Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:54:15.235Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:54:15.235Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:54:15.336Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:54:15.388Z INFO nge_intfc.cpp Reader is using US_FCC_C regulatory standard
+2026-09-05T16:54:15.478Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:54:15.478Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:54:15.483Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:54:15.483Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:54:15.531Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:54:15.581Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:54:15.632Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:54:15.685Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:54:15.737Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:54:15.787Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:54:15.838Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:54:15.884Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:54:21.887Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:54:21.933Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:54:21.987Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:54:22.076Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:54:22.077Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:54:22.288Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:54:22.288Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:54:22.288Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:54:24.955Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:54:25.955Z INFO requests.cppRequest: exit
+2026-09-05T16:54:25.956Z INFO requests.cpp Response: Success
+2026-09-05T16:54:25.956Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:54:26.464Z INFO main.cppgoodbye
+2026-09-05T16:54:26.604Z INFO radio_control: 0.2.58.7
+2026-09-05T16:54:26.604Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:54:26.604Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:54:28.655Z INFO radio_control: 0.2.58.7
+2026-09-05T16:54:28.655Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:54:28.656Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:54:34.280Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:54:34.326Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:54:34.326Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:54:34.326Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:54:34.326Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:54:34.326Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:54:34.326Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:54:34.431Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:54:34.482Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:54:34.575Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:54:34.575Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:54:34.581Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:54:34.581Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:54:34.629Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:54:34.679Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:54:34.734Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:54:34.784Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:54:34.835Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:54:34.888Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:54:34.939Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:54:34.985Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:54:40.988Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:54:41.034Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:54:41.088Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:54:41.345Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:54:41.345Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:54:41.346Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:54:41.352Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:54:41.352Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:55:05.285Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:55:06.286Z INFO requests.cppRequest: exit
+2026-09-05T16:55:06.286Z INFO requests.cpp Response: Success
+2026-09-05T16:55:06.286Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:55:06.840Z INFO main.cppgoodbye
+2026-09-05T16:55:09.958Z INFO radio_control: 0.2.58.7
+2026-09-05T16:55:09.960Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:55:09.960Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:55:15.584Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:55:15.630Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:55:15.631Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:55:15.631Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:55:15.631Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:55:15.631Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:55:15.631Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:55:15.732Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:55:15.807Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:55:15.901Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:55:15.901Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:55:15.907Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:55:15.907Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:55:15.955Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:55:16.008Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:55:16.058Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:55:16.111Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:55:16.162Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:55:16.216Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:55:16.267Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:55:16.313Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:55:23.182Z INFO radio_control: 0.2.58.7
+2026-09-05T16:55:23.182Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:55:23.183Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:55:28.807Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:55:28.853Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:55:28.853Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:55:28.853Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:55:28.853Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:55:28.853Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:55:28.853Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:55:28.953Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:55:29.009Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:55:29.100Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:55:29.100Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:55:29.105Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:55:29.105Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:55:29.151Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:55:29.201Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:55:29.251Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:55:29.303Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:55:29.353Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:55:29.403Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:55:29.455Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:55:29.501Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:55:35.499Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:55:35.545Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:55:35.599Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:55:35.684Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:55:35.684Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:55:35.898Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:55:35.898Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:55:35.899Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:55:44.311Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:55:45.311Z INFO requests.cppRequest: exit
+2026-09-05T16:55:45.311Z INFO requests.cpp Response: Success
+2026-09-05T16:55:45.311Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:55:45.843Z INFO main.cppgoodbye
+2026-09-05T16:55:48.976Z INFO radio_control: 0.2.58.7
+2026-09-05T16:55:48.976Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:55:48.977Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:55:54.600Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:55:54.647Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:55:54.647Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:55:54.647Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:55:54.647Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:55:54.647Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:55:54.647Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:55:54.750Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:55:54.802Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:55:54.892Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:55:54.892Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:55:54.897Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:55:54.898Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:55:54.943Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:55:54.993Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:55:55.043Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:55:55.093Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:55:55.144Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:55:55.198Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:55:55.249Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:55:55.295Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:56:01.296Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:56:01.342Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:56:01.396Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:56:01.683Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:56:01.684Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:56:01.684Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:56:01.690Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:56:01.690Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:56:04.105Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:56:05.106Z INFO requests.cppRequest: exit
+2026-09-05T16:56:05.106Z INFO requests.cpp Response: Success
+2026-09-05T16:56:05.106Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:56:05.625Z INFO main.cppgoodbye
+2026-09-05T16:56:08.708Z INFO radio_control: 0.2.58.7
+2026-09-05T16:56:08.709Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:56:08.709Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:56:14.332Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:56:14.378Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:56:14.379Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:56:14.379Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:56:14.379Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:56:14.379Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:56:14.379Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:56:14.477Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:56:14.527Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:56:14.618Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:56:14.619Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:56:14.624Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:56:14.624Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:56:14.669Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:56:14.719Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:56:14.770Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:56:14.821Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:56:14.871Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:56:14.921Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:56:14.972Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:56:15.018Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:56:21.020Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:56:21.066Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:56:21.119Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:56:21.203Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:56:21.203Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T16:56:21.423Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:56:21.423Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:56:21.424Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:56:23.838Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T16:56:24.838Z INFO requests.cppRequest: exit
+2026-09-05T16:56:24.838Z INFO requests.cpp Response: Success
+2026-09-05T16:56:24.839Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T16:56:25.357Z INFO main.cppgoodbye
+2026-09-05T16:56:28.496Z INFO radio_control: 0.2.58.7
+2026-09-05T16:56:28.496Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T16:56:28.497Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T16:56:34.129Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T16:56:34.175Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T16:56:34.175Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T16:56:34.175Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T16:56:34.175Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T16:56:34.175Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T16:56:34.176Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T16:56:34.277Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T16:56:34.327Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T16:56:34.419Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T16:56:34.419Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T16:56:34.424Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T16:56:34.424Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T16:56:34.470Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T16:56:34.523Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T16:56:34.573Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T16:56:34.627Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T16:56:34.677Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T16:56:34.727Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T16:56:34.778Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T16:56:34.824Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T16:56:40.827Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T16:56:40.874Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T16:56:40.928Z INFO nge_intfc.cpp Response: Success
+2026-09-05T16:56:41.186Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T16:56:41.186Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T16:56:41.187Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T16:56:41.193Z INFO requests.cppRequest: confignge custom rxSawFilter disable
+2026-09-05T16:56:41.193Z INFO requests.cpp Response: Success: Setting rxSawFilter
+2026-09-05T17:09:05.363Z ERROR requests.cpp zmq polling error failed: Interrupted system call
+2026-09-05T17:09:06.363Z INFO requests.cppRequest: exit
+2026-09-05T17:09:06.363Z INFO requests.cpp Response: Success
+2026-09-05T17:09:06.363Z WARNING requests.cppTermination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T17:09:06.416Z INFO main.cppgoodbye
+2026-09-05T17:09:06.636Z INFO radio_control: 0.2.58.7
+2026-09-05T17:09:06.637Z INFO zmq_intfc.cppzmq: 4.3.5
+2026-09-05T17:09:06.638Z INFO nge_intfc.cppradio_api: 2.2.37.0
+2026-09-05T17:09:12.262Z INFO nge_intfc.cppNGE_connect returned 0
+
+2026-09-05T17:09:12.308Z INFO nge_intfc.cppradio_fw: 2.1.70.0
+2026-09-05T17:09:12.309Z INFO nge_intfc.cppNGE Based Antenna Check Supported
+2026-09-05T17:09:12.309Z INFO nge_intfc.cpp RSSI Filter Supported
+2026-09-05T17:09:12.309Z INFO nge_intfc.cpp Dynamic Range Supported 
+2026-09-05T17:09:12.309Z INFO nge_intfc.cpp Cable Loss Compensation Supported in NGE and API 
+2026-09-05T17:09:12.309Z INFO nge_intfc.cpp Tx Delay Interval Supported in NGE 
+2026-09-05T17:09:12.412Z INFO nge_intfc.cpp Reader is model: FXR60
+2026-09-05T17:09:12.504Z INFO nge_intfc.cpp Reader is using US_FCC_15 regulatory standard
+2026-09-05T17:09:12.626Z INFO nge_intfc.cpp Reader has 6 antennas
+2026-09-05T17:09:12.626Z INFO nge_intfc.cpp Reader is powered by 24V supply 
+2026-09-05T17:09:12.632Z INFO nge_intfc.cppDefault antenna check interval set to 5 seconds
+2026-09-05T17:09:12.632Z INFO nge_intfc.cpp Reader can transmit up to 33.0 dbm
+2026-09-05T17:09:12.689Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T17:09:12.747Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T17:09:12.800Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T17:09:12.853Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T17:09:12.903Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T17:09:12.953Z INFO nge_intfc.cpp Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T17:09:13.106Z INFO nge_intfc.cpp Regulatory Domain is 1
+2026-09-05T17:09:13.152Z INFO nge_intfc.cpp Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T17:09:19.157Z INFO nge_intfc.cpp Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T17:09:19.203Z INFO mode_config.cpprefreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T17:09:19.256Z INFO nge_intfc.cpp Response: Success
+2026-09-05T17:09:19.417Z ERROR requests.cppAntenna Disconnected on Port 2
+2026-09-05T17:09:19.417Z ERROR requests.cppAntenna Disconnected on Port 3
+2026-09-05T17:09:19.418Z ERROR requests.cppAntenna Disconnected on Port 4
+2026-09-05T17:34:39.243Z INFO requests.cppRequest: logging
+2026-09-05T17:34:39.243Z INFO requests.cpp Response: Success: level: INFO, radioPacketLog: OFF

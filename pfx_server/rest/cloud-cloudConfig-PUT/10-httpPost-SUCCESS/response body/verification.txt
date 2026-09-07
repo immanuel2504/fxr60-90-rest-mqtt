@@ -1,0 +1,22 @@
+CONFIRMED WORKING END TO END - real tag data delivered.
+
+Config accepted (HTTP 200) and stored verbatim:
+  type: httpPost
+  options.URL: https://10.117.229.18:9443/tagdata
+  options.security: {authenticationType: NONE, verifyHost: false, verifyPeer: false}
+
+Reader reported: interfaceConnectionStatus.data[0] = {interface: DATA_HTTP, connectionStatus: 'connected', connectionError: ''}
+
+DELIVERY PROVEN. An inventory was started (PUT /cloud/start) and the receiver logged real tag reads arriving:
+  18 POSTs from 10.233.48.36
+  170 tag events total
+  8 unique EPCs
+  payloads 1.4 - 2.6 KB each, arriving every 2-3 seconds
+
+Each POST body is a JSON ARRAY of tag events, each carrying idHex, antenna, channel, peakRssi, phase, reads, CRC, PC, eventNum, timestamp and type. A verbatim sample is in delivered_tag_data_sample.json.
+
+Inventory was stopped afterwards (PUT /cloud/stop, HTTP 200).
+
+CORRECTS AN EARLIER PREDICTION: this test was expected to be REJECTED, because options.URL, security.authenticationType and security.verifyHost are all absent from the documented schema, and two earlier example-vs-schema mismatches (*FileContent, basicAuthentication) had been rejected. All three fields were accepted. The schema in FXR_60-90_rest_api.yaml is INCOMPLETE, not authoritative - the validator applies per-type rules instead. This same lesson later explained the ALPN requirement in test 08.
+
+Note the earlier record of this test said 'whether tag data is actually delivered was not confirmed'. It is now confirmed.

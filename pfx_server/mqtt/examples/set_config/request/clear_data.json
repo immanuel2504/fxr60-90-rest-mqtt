@@ -1,0 +1,14 @@
+{
+  "command": "set_config",
+  "payload": {
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": []
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "code": 3,
+  "message": "CS:'Add/Refresh certificate response' failed",
+  "_evidence": "File server run with --mtls (require_certificate). curl WITH a lab-CA client cert got HTTP 200 and logged peer_cn=FXR60-LAB-CLIENT. The reader does not appear in the log at all - it failed the TLS handshake without presenting a certificate, despite installedCertificateName pointing at an installed cert."
+}

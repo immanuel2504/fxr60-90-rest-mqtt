@@ -1,0 +1,44 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CONVEYOR 07 - the spec's conveyor_basic example
+RESULT: ACCEPTED, HTTP 200 - both reference tags read
+
+Changes from the spec example: antennas [1,2,3,4] -> [1] and
+transmitPower [30,30,30,30] -> [30], for the one connected antenna.
+
+TAG RESULT over 18s:
+  unique tags  30
+  total reads  30
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=-39..-39  ant=[1]
+    e2806894000040017790ac71  reads=1  rssi=-44..-44  ant=[1]
+
+Metadata fields delivered:
+    antenna, channel, eventNum, format, idHex, peakRssi, reads
+
+The example's tagMetaData [ANTENNA, RSSI, SEEN_COUNT, CHANNEL] is honoured.
+
+unique == total reads, i.e. each tag reported once in this window - the same
+single-report behaviour as INVENTORY at a long interval, even though CONVEYOR
+takes no modeSpecificSettings. The example does set
+
+    antennaStopCondition = {"type":"DURATION","value":100}
+    query.session = "S1", target = "A", tagPopulation = 200
+
+S1/target A is the session combination that gives each tag a persistence window
+before it can be re-inventoried, which is consistent with the one-report-per-tag
+result.
+
+CONVEYOR accepted the same shape as CONVEYOR/INVENTORY without complaint. No
+CONVEYOR-specific modeSpecificSettings object is documented (the schema's oneOf
+offers only inventorySettings and portalSettings), so there is nothing
+conveyor-specific to configure through this field - worth confirming with Zebra
+whether that is intended.

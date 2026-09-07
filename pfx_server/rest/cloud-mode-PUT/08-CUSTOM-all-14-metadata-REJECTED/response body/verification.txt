@@ -1,0 +1,52 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 08 - the spec's with_tag_metadata example, all 14 documented fields
+RESULT: REJECTED, HTTP 422
+
+*** ANOTHER SPEC EXAMPLE THAT DOES NOT WORK ***
+
+  {"code":3,"message":"\"set_mode\" Failed to apply. Description: unsuccessful rc
+   response: Failure: tagMetaData value (READER_LOCATION) not recognized"}
+
+The spec's with_tag_metadata example lists 14 values. The firmware rejects
+READER_LOCATION.
+
+ISOLATED PRECISELY - each of the 14 documented values sent alone as
+{"type":"CUSTOM","antennas":[1],"transmitPower":30,"tagMetaData":["<value>"]}:
+
+    ANTENNA          200 OK
+    RSSI             200 OK
+    PHASE            200 OK
+    SEEN_COUNT       200 OK
+    CHANNEL          200 OK
+    PC               200 OK
+    XPC              200 OK
+    CRC              200 OK
+    EPC              200 OK
+    TID              200 OK
+    USER             200 OK
+    MAC              200 OK
+    HOSTNAME         200 OK
+    READER_LOCATION  422  "not recognized"
+
+So 13 of the 14 documented values work, and exactly one does not. It is not a
+combination problem or a payload-size problem - READER_LOCATION alone is
+rejected.
+
+Worth noting the reader DOES have a reader-location concept: there is a
+GET /cloud/readerLocation endpoint. So the field name is plausible; it just is
+not accepted as tag metadata on this firmware.
+
+ASK: either implement READER_LOCATION as tag metadata or remove it from the
+tagMetaData enum, and fix the with_tag_metadata example, which currently cannot
+be sent as written.
+
+The working 13-field version is in 09-CUSTOM-13-metadata-SUCCESS/.

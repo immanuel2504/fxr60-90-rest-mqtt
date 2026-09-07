@@ -1,0 +1,12 @@
+bleConfig 02 - spec example "enable_with_interval"
+RESULT: HTTP 200 - CONFIRMED
+
+  stored: enable=True  interval=5  additionalFilters={}
+
+Identical to test 01 apart from scanIntervalSec 0 -> 5, and the value is stored
+verbatim. Confirms the field is honoured rather than clamped or ignored.
+
+NOT VERIFIED: the timing effect of the interval - whether a 5-second interval
+genuinely paces the scan differently from 0 or 1. Measuring that needs beacon
+arrival timestamps compared across intervals, which was not run. What is
+confirmed is that the value is accepted and stored.

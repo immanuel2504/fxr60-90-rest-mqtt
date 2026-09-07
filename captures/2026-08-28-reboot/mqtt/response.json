@@ -1,0 +1,6 @@
+{
+  "command": "reboot",
+  "command_id": "abcd1431243",
+  "payload": {},
+  "response": "success"
+}

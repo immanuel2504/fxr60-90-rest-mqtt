@@ -1,0 +1,12 @@
+{
+  "command": "set_mode",
+  "channel": "control",
+  "source": "request/conveyor_basic.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 200.6,
+  "note": "",
+  "request_id": "test-set_mode-fd033c180a",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_mode\", \"command_id\": \"test-set_mode-fd033c180a\", \"payload\": {}, \"response\": \"success\"}"
+}

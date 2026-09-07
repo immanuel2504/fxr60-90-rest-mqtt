@@ -1,0 +1,15 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    }
+  }
+}

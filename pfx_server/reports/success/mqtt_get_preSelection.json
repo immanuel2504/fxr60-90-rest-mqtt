@@ -1,0 +1,12 @@
+{
+  "command": "get_preSelection",
+  "channel": "control",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_preSelection-034ad28f1c",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_preSelection\", \"command_id\": \"test-get_preSelection-034ad28f1c\", \"payload\": {\"preSelection\": \"disabled\"}, \"response\": \"success\"}"
+}

@@ -1,0 +1,7 @@
+CONFIRMED CONNECTED. Data endpoint pointed at AWS IoT Core via PUT /cloud/config.
+
+  status: connectionStatus 'connected', iface DATA_AWS_VIA_CONFIG
+
+Used the combination already proven on /cloud/cloudConfig: port 443, protocol ssl, alpnProtocolNames [x-amzn-mqtt-ca], and *FileLocation certificate paths under /data/apps/. ALPN is REQUIRED on port 443 - omitting it gives 'AWS requires ALPN protocol name for "port" number 443'.
+
+Tag delivery to AWS not separately re-verified here; it was already proven on /cloud/cloudConfig test 08 with a full round trip.

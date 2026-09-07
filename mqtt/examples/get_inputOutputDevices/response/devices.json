@@ -3,21 +3,25 @@
   "command_id": "req-get-inputOutputDevices",
   "payload": {
     "keyboard": {
-      "keyboardLayout": "Japanese",
+      "keyboardLayout": "English-US",
       "status": "disconnected"
     },
     "monitor": {
       "details": [
         {
           "currentResolution": "1920x1080",
-          "manufacturer": "HPN",
-          "model": "HP Z24n G2",
+          "manufacturer": "MST",
+          "model": "XENARC",
           "orientation": "landscape",
           "screenActive": true,
           "supportedResolutions": [
+            "1280x720",
             "1920x1080",
-            "1600x900",
-            "1280x1024"
+            "1024x768",
+            "800x600",
+            "720x576",
+            "720x480",
+            "640x480"
           ]
         }
       ],

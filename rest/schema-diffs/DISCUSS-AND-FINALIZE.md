@@ -1,7 +1,10 @@
 # Schema diffs — discuss and finalize
 
 **Started:** 26 August 2026  
-**Working note for decisions.** Per-endpoint comparison files stay in this folder (trees, examples, field maps). Do not merge `RestDeveloperfile.yaml` until a row here is **Final**. Do not edit `rest/openAPISpec 10.yaml`.
+**Updated:** 6 September 2026 — checked developer replies in `FXR-API-Findings-For-Developer_2026-09-feedback .xlsx` against `rest/openAPISpec 11.yaml`.  
+**Working note for decisions.** Per-endpoint comparison files stay in this folder (trees, examples, field maps). Latest developer spec is `rest/openAPISpec 11.yaml`. Do not edit the developer YAML files.
+
+See [SPEC11-FINDINGS-CHECK.md](SPEC11-FINDINGS-CHECK.md) for the 22-row check (what they said vs what is in spec 11 vs what we updated).
 
 ---
 
@@ -487,19 +490,21 @@ MQTT: `start`
 
 | | Targeted `scanType` object |
 |---|---|
-| Our docs | Any data-endpoint name (`additionalProperties`) |
-| Developer YAML | Same |
-| Device | Align to developer |
+| Spec 11 / this release | Not documented. `scanType` is an array only |
+| Our docs | Array only. Six live-tested examples. `start_Targeted` dropped |
+| Device | Firmware still accepts the old object form; not published this release |
 
-**Align to developer.** Do not name `dataEndpoint1` / `dataEndpoint2` as schema properties. Example names match the developer file (`start_Global_*`, `start_Targeted`).
+**This release:** targeted per-endpoint `scanType` is not in spec 11. Published start examples are the six live-tested bodies only.
 
-- [x] **Final** — Align to developer
+- [x] **Final** — Array only; drop Targeted for this release
 
 ## 16. PUT `/cloud/stop` — **Final**
 
 Same as start. MQTT: `stop`
 
-- [x] **Final** — Align to developer
+**This release:** targeted per-endpoint `scanType` is not in spec 11. Published stop examples are the four live-tested bodies only. `stop_Targeted` dropped.
+
+- [x] **Final** — Array only; drop Targeted for this release
 
 ---
 

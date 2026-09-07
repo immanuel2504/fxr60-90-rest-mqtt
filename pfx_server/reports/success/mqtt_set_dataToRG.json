@@ -1,0 +1,12 @@
+{
+  "command": "set_dataToRG",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 13724.1,
+  "note": "",
+  "request_id": "test-set_dataToRG-7bc118033b",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_dataToRG\", \"command_id\": \"test-set_dataToRG-7bc118033b\", \"payload\": {}, \"response\": \"success\"}"
+}

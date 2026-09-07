@@ -1,0 +1,12 @@
+{
+  "command": "get_ntpServer",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_ntpServer-ae2d90abdd",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_ntpServer\", \"command_id\": \"test-get_ntpServer-ae2d90abdd\", \"payload\": {\"server\": \"time1.google.com\"}, \"response\": \"success\"}"
+}

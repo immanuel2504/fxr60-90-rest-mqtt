@@ -1,0 +1,46 @@
+{
+  "received": "2026-09-05T16:26:44",
+  "from": "10.233.48.36",
+  "method": "POST",
+  "path": "/tagdata",
+  "headers": {
+    "Host": "10.117.229.18:9443",
+    "Accept": "*/*",
+    "Content-Type": "application/json",
+    "Content-Length": "485"
+  },
+  "body": [
+    {
+      "data": {
+        "CRC": "0f45",
+        "PC": "3400",
+        "antenna": 1,
+        "channel": 909.25,
+        "eventNum": 674,
+        "format": "epc",
+        "idHex": "333311112222333344445555",
+        "peakRssi": -64,
+        "phase": -149.00662231445312,
+        "reads": 1
+      },
+      "timestamp": "2026-09-05T16:26:44.256+0000",
+      "type": "CUSTOM"
+    },
+    {
+      "data": {
+        "CRC": "8a0a",
+        "PC": "3000",
+        "antenna": 1,
+        "channel": 918.75,
+        "eventNum": 675,
+        "format": "epc",
+        "idHex": "20004035a880c80000123be9",
+        "peakRssi": -62,
+        "phase": -127.51670837402344,
+        "reads": 1
+      },
+      "timestamp": "2026-09-05T16:26:44.452+0000",
+      "type": "CUSTOM"
+    }
+  ]
+}

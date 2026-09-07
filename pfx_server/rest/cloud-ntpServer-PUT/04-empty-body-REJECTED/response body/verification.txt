@@ -1,0 +1,8 @@
+ntpServer 04 - empty JSON object
+RESULT: rejected, HTTP 422
+
+{"code":1,"message":"Primary NTP server is required: use 'server' key (current)
+ or 'server1' key (legacy)"}
+
+Correct rejection and a specific message - except that it recommends 'server1',
+which does not work (test 02).

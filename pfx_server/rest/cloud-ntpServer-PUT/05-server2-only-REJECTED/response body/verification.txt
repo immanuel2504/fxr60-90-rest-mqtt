@@ -1,0 +1,5 @@
+ntpServer 05 - secondary without a primary
+RESULT: rejected, HTTP 422, same "Primary NTP server is required" message
+
+Matches the schema: both oneOf branches require a primary. The existing setting
+was left untouched by the rejection.

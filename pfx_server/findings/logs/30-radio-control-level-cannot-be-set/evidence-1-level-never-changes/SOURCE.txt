@@ -1,0 +1,5 @@
+Copied verbatim from:
+  rest/cloud-logs-PUT/03-radio-control-level-never-changes
+
+That folder is the canonical record of this test; this is a copy kept
+beside the finding so the evidence travels with it.

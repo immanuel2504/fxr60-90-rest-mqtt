@@ -1,0 +1,8 @@
+ACCEPTED (HTTP 200). LED feedback bound to radio events:
+  RADIO_START -> LED 1 AMBER
+  TAG_READ    -> LED 1 blinks GREEN 100/100ms for 500ms, then RED
+  RADIO_STOP  -> LED 1 RED
+
+Confirms the action structure: each event takes an ARRAY of actions; ledAction requires type/led/color; postActionColor and blink are optional; actionBlink requires ON, OFF and DURATION in milliseconds.
+
+NOT VISUALLY CONFIRMED - no physical access to the reader's LEDs. Acceptance and storage are confirmed; actual illumination is not.

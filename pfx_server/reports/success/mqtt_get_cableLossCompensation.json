@@ -1,0 +1,12 @@
+{
+  "command": "get_cableLossCompensation",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.3,
+  "note": "",
+  "request_id": "test-get_cableLossCompensation-b7fa00d385",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_cableLossCompensation\", \"command_id\": \"test-get_cableLossCompensation-b7fa00d385\", \"payload\": {\"1\": {\"cableLength\": 90.0, \"cableLossPerHundredFt\": 18.0}, \"2\": {\"cableLength\": 18.0, \"cableLossPerHundredFt\": 19.0}, \"3\": {\"cableLength\": 10.0, \"cableLossPerHundredFt\": 11.0}, \"4\": {\"cableLength\": 10.0, \"cableLossPerHundredFt\": 70.0}}, \"response\": \"success\"}"
+}

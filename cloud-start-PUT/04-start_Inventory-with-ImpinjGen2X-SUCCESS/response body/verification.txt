@@ -1,0 +1,26 @@
+start 04 - spec example "start_Inventory with ImpinjGen2X"
+RESULT: HTTP 200 - CONFIRMED, and the flag demonstrably does something
+
+Prerequisite: a Gen2X config must already be saved via PUT /cloud/impinjGen2X.
+For this test {"fastID":{"enabled":true}} was saved first.
+
+  before: radio=inactive  gen2x=none/False
+  after:  radio=active    gen2x=fastID/True     <- feature applied
+
+NEGATIVE CONTROL - the same saved config, started WITHOUT the flag:
+
+  PUT /cloud/start {}
+  after: radio=active  gen2x=none/False         <- NOT applied
+
+So the flag is genuinely required to activate a saved Gen2X config; a plain start
+ignores it. This is the cleanest available demonstration of the two-step
+configure-then-apply flow.
+
+ALSO OBSERVED: the saved config persists across inventory sessions but the
+ACTIVATION does not - after PUT /cloud/stop, status returns to
+gen2x=none/False. The flag must be re-sent on every start. Consistent with the
+finding in ../cloud-impinjGen2X-PUT/TAG_PROTECT_REPORT.md.
+
+The reader's response message on the impinjGen2X PUT states this itself:
+  "Success: Gen2X configured. Use applyImpinjGen2X flag in start command to
+   apply features."

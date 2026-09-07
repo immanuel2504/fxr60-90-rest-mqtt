@@ -5,10 +5,11 @@
         "event": {
           "connections": [
             {
-              "name": "DATA_HTTP",
+              "name": "DATA_HTTP_VIA_CONFIG",
+              "description": "Tag events over HTTP POST, set via PUT /cloud/config",
               "type": "httpPost",
               "options": {
-                "URL": "https://webhook.site/your-unique-id",
+                "URL": "https://10.117.229.18:9443/tagdata",
                 "security": {
                   "authenticationType": "NONE",
                   "verifyHost": false,
@@ -19,6 +20,19 @@
           ]
         }
       }
-    }
+    },
+    "batching": [
+      {
+        "maxPayloadSizePerReport": 256000,
+        "reportingInterval": 2000
+      }
+    ],
+    "retention": [
+      {
+        "maxEventRetentionTimeInMin": 500,
+        "maxNumEvents": 150000,
+        "throttle": 500
+      }
+    ]
   }
 }

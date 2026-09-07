@@ -1,0 +1,45 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+SIMPLE 02 - the spec example with transmitPower corrected to 30
+RESULT: ACCEPTED, HTTP 200 - and both reference tags read
+
+Changes from the spec's simple_basic: transmitPower 31.5 -> 30 (see test 01),
+and antennas [1,2,3,4] -> [1] because only antenna 1 has a connected antenna on
+this reader (GET /cloud/status reports 2, 3, 4 disconnected).
+
+TAG RESULT over 15s:
+  unique tags  23
+  total reads  23
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=None..None  ant=[None]
+    e2806894000040017790ac71  reads=1  rssi=None..None  ant=[None]
+
+*** KEY FINDING - SIMPLE MODE STRIPS TAG METADATA ***
+
+Fields present on every tag event in this mode:
+
+    eventNum, format, idHex
+
+That is all. No peakRssi, no antenna, no channel, no phase - even though the
+reader was reporting all of those minutes earlier in its original CUSTOM mode.
+
+SIMPLE mode accepts no tagMetaData key at all (it is not in the example, and the
+mode is documented as a baseline), so there is no way to ask for more. If an
+integration needs RSSI or antenna number, SIMPLE mode cannot provide it - use
+INVENTORY, CONVEYOR or CUSTOM.
+
+This is worth documenting explicitly: "SIMPLE" reads as "simple to configure",
+but its real consequence is a reduced data payload.
+
+Note the unique-tag count rose from 8 (baseline, 17 dBm) to 23
+here at 30 dBm - the extra power pulled in tags outside the original read range.
+That is expected, and it is why power is held at 30 for every subsequent test so
+the counts stay comparable.

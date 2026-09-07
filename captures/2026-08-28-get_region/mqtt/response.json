@@ -1,0 +1,19 @@
+{
+  "command": "get_region",
+  "command_id": "req-get-region",
+  "payload": {
+    "FrequencyHopping": true,
+    "channelData": [
+      "865700",
+      "866300",
+      "866900"
+    ],
+    "country": "Albania",
+    "lbtEnabled": false,
+    "maxTxPowerSupported": 292,
+    "minTxPowerSupported": 0,
+    "region": "NewETSI_Generic",
+    "regulatoryStandard": "ETSI_302_208"
+  },
+  "response": "success"
+}

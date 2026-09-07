@@ -1,0 +1,50 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 3 - enableTagProtection
+RESULT: HTTP 200, configuration STORED - but NOT yet applied
+
+    {"message":"Success: Gen2X configured. Use applyImpinjGen2X flag in start
+     command to apply features."}
+
+*** THE TWO-STEP FLOW - THE MOST IMPORTANT UNDOCUMENTED DETAIL ***
+
+PUT /cloud/impinjGen2X only SAVES the configuration. It does not activate it.
+Proof, immediately after this call returned 200:
+
+    GET /cloud/impinjGen2X   -> {"tagProtect":{"action":"enableTagProtection",
+                                 "enableShortRange":false,"password":"A1B2C3D4",
+                                 "tagID":"333311112222333344445555"}}    stored
+    GET /cloud/status        -> "impinjGen2X":{"feature":"none","isActive":false}
+                                                                        NOT active
+
+The feature only activates on the next start - see 04-apply-via-start-flag/.
+
+WHERE THIS IS DOCUMENTED: the applyImpinjGen2X flag is described under
+PUT /cloud/start, NOT under PUT /cloud/impinjGen2X. The impinjGen2X endpoint
+description lists "Supported TagProtect Actions" and the request schema but never
+mentions that a start call is required. Anyone reading only the impinjGen2X page
+will configure TagProtect and conclude it does nothing.
+
+VALIDATION IS CORRECT on this endpoint:
+  - action, password and tagID are all required for
+    enableTagProtection/disableTagProtection (schema oneOf branch 1)
+  - tagID must be OMITTED for enableTagVisibility/disableTagVisibility (branch 2)
+  - password is pattern-checked ^[0-9A-Fa-f]{8}$ - 8 hex characters, 32 bits
+
+*** HTTP 200 IS RETURNED REGARDLESS OF WHETHER THE PASSWORD IS RIGHT ***
+
+This call returns 200 with any syntactically valid 8-hex-character password. The
+reader does not verify the password against the tag at configuration time - it
+cannot, since no inventory is running. So a wrong password is indistinguishable
+from a right one until you observe (or fail to observe) the effect.
+
+Evidence: ../evidence/x2k_prot.ndjson

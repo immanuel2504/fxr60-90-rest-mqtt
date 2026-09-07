@@ -1,0 +1,6 @@
+{
+  "command": "set_ntpServer",
+  "payload": {
+    "server": "time.google.com"
+  }
+}

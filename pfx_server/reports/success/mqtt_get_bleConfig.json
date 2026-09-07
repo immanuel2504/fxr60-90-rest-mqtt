@@ -1,0 +1,12 @@
+{
+  "command": "get_bleConfig",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_bleConfig-d2939926f4",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_bleConfig\", \"command_id\": \"test-get_bleConfig-d2939926f4\", \"payload\": {\"ble\": {\"additionalFilters\": {}, \"enable\": true, \"protocols\": {\"altBeacon\": {\"enabled\": true, \"filters\": []}, \"eddystone\": {\"enabled\": true, \"filters\": []}, \"generic\": {\"enabled\": true, \"filters\": []}, \"iBeacon\": {\"enabled\": true, \"filters\": []}}, \"scanIntervalSec\": 0}}, \"response\": \"success\"}"
+}

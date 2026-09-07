@@ -2,59 +2,8 @@
   "command": "get_config",
   "command_id": "req-get-config",
   "payload": {
-    "GPIO-LED": {
-      "GPODefaults": {
-        "1": "LOW",
-        "2": "LOW",
-        "3": "LOW",
-        "4": "LOW"
-      },
-      "LEDDefaults": {
-        "1": "GREEN",
-        "2": "GREEN",
-        "3": "GREEN"
-      },
-      "RADIO_START": [
-        {
-          "color": "AMBER",
-          "led": 3,
-          "type": "LED"
-        }
-      ],
-      "RADIO_STOP": [
-        {
-          "color": "GREEN",
-          "led": 3,
-          "type": "LED"
-        }
-      ],
-      "TAG_READ": [
-        {
-          "blink": {
-            "DURATION": 500,
-            "OFF": 100,
-            "ON": 100
-          },
-          "color": "AMBER",
-          "led": 3,
-          "postActionColor": "GREEN",
-          "type": "LED"
-        },
-        {
-          "blink": {
-            "DURATION": 1000,
-            "OFF": 200,
-            "ON": 200
-          },
-          "pin": 1,
-          "postActionState": "LOW",
-          "state": "HIGH",
-          "type": "GPO"
-      }
-    ]
-  },
-  "xml": "<RFID><!-- Cloud Connect operational profile --></RFID>",
-  "READER-GATEWAY": {
+    "GPIO-LED": {},
+    "READER-GATEWAY": {
       "batching": [
         {
           "maxPayloadSizePerReport": 0,
@@ -66,29 +15,38 @@
           "commandResponse": {
             "connections": [
               {
-                "description": "Control cmd/rsp over MQTT",
-                "name": "CTRL_MQTT",
+                "description": "Control cmd/rsp (MQTT_MTLS)",
+                "name": "CTRL_MQTT_MTLS",
                 "options": {
                   "additional": {
                     "cleanSession": true,
-                    "clientId": "fxr90-lab-ctrl",
+                    "clientId": "fxr60-lab-ctrl",
                     "debug": false,
                     "keepAlive": 60,
                     "qos": 0,
-                    "reconnectDelay": 1,
-                    "reconnectDelayMax": 30
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 60
                   },
-                  "enableSecurity": false,
+                  "enableSecurity": true,
                   "endpoint": {
-                    "hostName": "10.117.229.9",
-                    "port": 1883,
-                    "protocol": "tcp"
+                    "hostName": "10.117.229.18",
+                    "port": 8884,
+                    "protocol": "ssl"
                   },
                   "publishTopic": [
-                    "fxr90-lab/rsp"
+                    "fxr60-lab/rsp"
                   ],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/lab-ca.crt",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "privateKeyFileLocation": "/data/apps/fxr60-client.key",
+                    "publicKeyFileLocation": "/data/apps/fxr60-client.crt",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  },
                   "subscribeTopic": [
-                    "fxr90-lab/cmd"
+                    "fxr60-lab/cmd"
                   ]
                 },
                 "type": "mqtt"
@@ -107,27 +65,36 @@
                     "throttle": 500
                   }
                 },
-                "description": "Tag events to MQTT",
-                "name": "DATA_MQTT",
+                "description": "Tag events (MQTT_MTLS)",
+                "name": "DATA_MQTT_MTLS",
                 "options": {
                   "additional": {
                     "cleanSession": true,
-                    "clientId": "fxr90-lab-data",
+                    "clientId": "fxr60-lab-data",
                     "debug": false,
                     "keepAlive": 60,
                     "qos": 0,
-                    "reconnectDelay": 1,
-                    "reconnectDelayMax": 30
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 60
                   },
-                  "enableSecurity": false,
+                  "enableSecurity": true,
                   "endpoint": {
-                    "hostName": "10.117.229.9",
-                    "port": 1883,
-                    "protocol": "tcp"
+                    "hostName": "10.117.229.18",
+                    "port": 8884,
+                    "protocol": "ssl"
                   },
                   "publishTopic": [
-                    "fxr90-lab/tevents"
+                    "fxr60-lab/tevents"
                   ],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/lab-ca.crt",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "privateKeyFileLocation": "/data/apps/fxr60-client.key",
+                    "publicKeyFileLocation": "/data/apps/fxr60-client.crt",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  },
                   "subscribeTopic": []
                 },
                 "type": "mqtt"
@@ -139,29 +106,38 @@
           "commandResponse": {
             "connections": [
               {
-                "description": "Management cmd/rsp",
-                "name": "MGMT_CMD_MQTT",
+                "description": "Management cmd/rsp (MQTT_MTLS)",
+                "name": "MGMT_CMD_MQTT_MTLS",
                 "options": {
                   "additional": {
                     "cleanSession": true,
-                    "clientId": "fxr90-lab-mcmd",
+                    "clientId": "fxr60-lab-mcmd",
                     "debug": false,
                     "keepAlive": 60,
                     "qos": 0,
-                    "reconnectDelay": 1,
-                    "reconnectDelayMax": 30
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 60
                   },
-                  "enableSecurity": false,
+                  "enableSecurity": true,
                   "endpoint": {
-                    "hostName": "10.117.229.9",
-                    "port": 1883,
-                    "protocol": "tcp"
+                    "hostName": "10.117.229.18",
+                    "port": 8884,
+                    "protocol": "ssl"
                   },
                   "publishTopic": [
-                    "fxr90-lab/mrsp"
+                    "fxr60-lab/mrsp"
                   ],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/lab-ca.crt",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "privateKeyFileLocation": "/data/apps/fxr60-client.key",
+                    "publicKeyFileLocation": "/data/apps/fxr60-client.crt",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  },
                   "subscribeTopic": [
-                    "fxr90-lab/mcmd"
+                    "fxr60-lab/mcmd"
                   ]
                 },
                 "type": "mqtt"
@@ -171,34 +147,36 @@
           "event": {
             "connections": [
               {
-                "additionalOptions": {
-                  "retention": {
-                    "maxEventRetentionTimeInMin": 500,
-                    "maxNumEvents": 150000,
-                    "throttle": 500
-                  }
-                },
-                "description": "Management/heartbeat events",
-                "name": "MGMT_EVENTS_MQTT",
+                "description": "Management/heartbeat events (MQTT_MTLS)",
+                "name": "MGMT_EVENTS_MQTT_MTLS",
                 "options": {
                   "additional": {
                     "cleanSession": true,
-                    "clientId": "fxr90-lab-mevents",
+                    "clientId": "fxr60-lab-mevents",
                     "debug": false,
                     "keepAlive": 60,
                     "qos": 0,
-                    "reconnectDelay": 1,
-                    "reconnectDelayMax": 30
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 60
                   },
-                  "enableSecurity": false,
+                  "enableSecurity": true,
                   "endpoint": {
-                    "hostName": "10.117.229.9",
-                    "port": 1883,
-                    "protocol": "tcp"
+                    "hostName": "10.117.229.18",
+                    "port": 8884,
+                    "protocol": "ssl"
                   },
                   "publishTopic": [
-                    "fxr90-lab/mevents"
+                    "fxr60-lab/mevents"
                   ],
+                  "security": {
+                    "CACertificateFileLocation": "/data/apps/lab-ca.crt",
+                    "keyAlgorithm": "RS256",
+                    "keyFormat": "PEM",
+                    "privateKeyFileLocation": "/data/apps/fxr60-client.key",
+                    "publicKeyFileLocation": "/data/apps/fxr60-client.crt",
+                    "verifyHostName": true,
+                    "verifyPeer": true
+                  },
                   "subscribeTopic": []
                 },
                 "type": "mqtt"

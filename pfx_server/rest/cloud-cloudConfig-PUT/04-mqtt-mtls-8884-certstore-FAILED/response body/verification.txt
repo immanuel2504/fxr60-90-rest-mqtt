@@ -1,0 +1,17 @@
+ACCEPTED (HTTP 200) BUT THE CONNECTION FAILS.
+
+Sent via REST to 10.233.48.36 (app 5.0.7). The reader immediately began failing the TLS handshake against our mTLS broker, repeatedly:
+  OpenSSL Error[0]: error:0A000418:SSL routines::tlsv1 alert unknown ca
+  Client <unknown> disconnected: Protocol error.
+
+'unknown ca' is a TLS alert sent BY THE READER - it is rejecting our broker's certificate, not the other way round. No command round-trip was possible.
+
+ROOT CAUSE: security supplied only installedCertificateName + installedCertificateType. That gives the reader its OWN identity but no CA with which to verify the BROKER. With verifyPeer: true and no trust anchor, the reader rejects the broker as unknown ca.
+
+Compare the security blocks:
+  test 03 (works): CACertificateFileLocation + privateKeyFileLocation + publicKeyFileLocation
+  test 04 (fails): installedCertificateName + installedCertificateType only
+
+CONFIRMED by test 04b: adding CACertificateFileLocation alongside installedCertificateName made it connect immediately. See 04b-mqtt-mtls-8884-certstore-plus-CA-SUCCESS.
+
+This also resolves an earlier open question. installedCertificateName was long suspected of being broken because it failed repeatedly during the AWS work. It is NOT broken - it simply does not supply a CA, and must be paired with CACertificateFileLocation whenever verifyPeer is true. It worked for AWS only because the reader already trusts Amazon's public root CA.

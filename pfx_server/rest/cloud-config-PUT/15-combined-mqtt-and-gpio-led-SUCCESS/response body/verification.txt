@@ -1,0 +1,22 @@
+CONFIRMED WORKING - BOTH halves applied from ONE request, and this test PROVED the GPIO-LED engine actually drives hardware, correcting test 08.
+
+Follows the spec's data_mqtt pattern - the only shipped example combining GPIO-LED and READER-GATEWAY.
+
+BOTH HALVES APPLIED, confirmed via GET /cloud/config:
+  GPIO-LED events : CLOUD_CONNECT, CLOUD_DISCONNECT, RADIO_START, RADIO_STOP, TAG_READ
+  GPODefaults     : all LOW
+  data endpoint   : mqtt DATA_MQTT_COMBINED
+  batching        : [{256000, 2000}]
+  retention       : [{500, 150000, 500}]
+
+DATA HALF PROVEN: real tag reads captured on fxr60-lab/tevents, e.g. idHex e2806894000040017790ac71, antenna 1, channel 926.25, peakRssi -49.
+
+GPIO HALF PROVEN - the significant result:
+  before : {"1":"LOW","2":"LOW","3":"HIGH","4":"LOW"}
+  start  : {"1":"LOW","2":"HIGH","3":"HIGH","4":"LOW"}   <-- pin 2 fired
+  stop   : {"1":"LOW","2":"LOW","3":"HIGH","4":"LOW"}   <-- pin 2 released
+Reproduced over two further consecutive start/stop cycles - reliable, not a fluke.
+
+Pin 3 was already HIGH from CLOUD_DISCONNECT firing earlier, which is further evidence the engine acts on events.
+
+This DISPROVES the conclusion drawn from test 08, which had been recorded as evidence that GPIO-LED is a silent no-op. It is not.

@@ -1,0 +1,12 @@
+{
+  "command": "get_logs_rgErrorLog",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_logs_rgErrorLog-4a62d81fdc",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_logs_rgErrorLog\", \"command_id\": \"test-get_logs_rgErrorLog-4a62d81fdc\", \"payload\": {\"binary\": \"H4sIAAAAAAAAA+09bW/bSM79nF8x8PNhG6BR51Vv39w0vQ2uTXNxtndAsVgo1jjRU1vyyXK72cP+94cjyY5tjpK0kbXIPRq0SCzRJIdDcl5ITnSeZ/kRp9w9osERZZfMC6kMGXx0it+LF200Cs2VsvwJbecnE0q4L5jiUnlMKpe9gEeuEi8IbYX6A225KKKckBd5lt3b24feP9N2udRkpOeEMLIaeWK04eCAhcSiFo6k9Ojzh799uPw1JOMsTfW4SLKUJGlSJNE0+SMqP06iZKpj8i0pbkiui2WeAnCsyUuu1OEr8yi/hSfLtCAv6eEBb6LFjz4fX168b5OWaKKljj6ffDo5uxy1SU02UXOPPr8dXg7/h7VJTVmoceVIwY4G17r47"
+}

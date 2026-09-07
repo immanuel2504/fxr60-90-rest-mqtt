@@ -1,0 +1,7 @@
+{
+  "command": "set_InstallCACertificate",
+  "payload": {
+    "name": "AmazonRootCA1",
+    "content": "-----BEGIN CERTIFICATE-----\nMIIDdzCCAl+gAwIBAgIEbJQz0jANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJV\n-----END CERTIFICATE-----"
+  }
+}

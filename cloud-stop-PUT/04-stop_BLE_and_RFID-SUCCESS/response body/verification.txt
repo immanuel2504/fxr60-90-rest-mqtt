@@ -1,0 +1,8 @@
+stop 04 - spec example "stop_BLE_and_RFID"
+RESULT: HTTP 200 - CONFIRMED
+
+  before: radio=active    ble=running
+  after:  radio=inactive  ble=stopped     <- both stopped by one call
+
+Mirrors start 06. Both scan types stopped in a single request, verified by
+read-back on both fields.

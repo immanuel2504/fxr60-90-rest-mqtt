@@ -1,0 +1,136 @@
+{
+  "GPIO-LED": {
+    "GPODefaults": {
+      "1": "LOW",
+      "2": "LOW",
+      "3": "LOW",
+      "4": "LOW"
+    },
+    "LEDDefaults": {
+      "1": "GREEN",
+      "2": "GREEN",
+      "3": "GREEN"
+    },
+    "TAG_READ": [
+      {
+        "type": "LED",
+        "led": 3,
+        "color": "AMBER",
+        "postActionColor": "GREEN",
+        "blink": {
+          "ON": 100,
+          "OFF": 100,
+          "DURATION": 500
+        }
+      },
+      {
+        "type": "GPO",
+        "pin": 1,
+        "state": "HIGH",
+        "postActionState": "LOW",
+        "blink": {
+          "ON": 200,
+          "OFF": 200,
+          "DURATION": 1000
+        }
+      }
+    ],
+    "RADIO_START": [
+      {
+        "type": "LED",
+        "led": 3,
+        "color": "AMBER"
+      },
+      {
+        "type": "GPO",
+        "pin": 2,
+        "state": "HIGH"
+      }
+    ],
+    "RADIO_STOP": [
+      {
+        "type": "LED",
+        "led": 3,
+        "color": "GREEN"
+      },
+      {
+        "type": "GPO",
+        "pin": 2,
+        "state": "LOW"
+      }
+    ],
+    "CLOUD_CONNECT": [
+      {
+        "type": "LED",
+        "led": 3,
+        "color": "GREEN"
+      }
+    ],
+    "CLOUD_DISCONNECT": [
+      {
+        "type": "LED",
+        "led": 3,
+        "color": "RED",
+        "blink": {
+          "ON": 500,
+          "OFF": 500,
+          "DURATION": 0
+        }
+      },
+      {
+        "type": "GPO",
+        "pin": 3,
+        "state": "HIGH"
+      }
+    ]
+  },
+  "READER-GATEWAY": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT_COMBINED",
+              "description": "Tag events to our broker, sent with GPIO-LED in one request",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 1883,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-data",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/tevents"
+                ],
+                "subscribeTopic": []
+              }
+            }
+          ]
+        }
+      }
+    },
+    "batching": [
+      {
+        "maxPayloadSizePerReport": 256000,
+        "reportingInterval": 2000
+      }
+    ],
+    "retention": [
+      {
+        "maxEventRetentionTimeInMin": 500,
+        "maxNumEvents": 150000,
+        "throttle": 500
+      }
+    ]
+  }
+}

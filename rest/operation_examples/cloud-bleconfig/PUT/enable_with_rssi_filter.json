@@ -2,6 +2,11 @@
   "ble": {
     "enable": true,
     "scanIntervalSec": 10,
+    "protocols": {
+      "iBeacon": {
+        "enabled": true
+      }
+    },
     "additionalFilters": {
       "rssi": -70
     }

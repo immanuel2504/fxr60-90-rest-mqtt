@@ -1,0 +1,6 @@
+{
+  "command": "del_CACertificate",
+  "payload": {
+    "name": "mqtt-test-ca-1"
+  }
+}

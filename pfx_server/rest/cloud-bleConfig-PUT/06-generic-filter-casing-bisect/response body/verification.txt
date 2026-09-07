@@ -1,0 +1,41 @@
+bleConfig 06 - the bisection that isolated the test 04 rejection
+RESULT: the `generic` filter field names must be lowercase
+
+STEP 1 - which protocol block is rejected? Each sent alone with its filters:
+
+  iBeacon + filters            -> 200
+  altBeacon + filters          -> 200
+  eddystone URL frame          -> 200
+  generic + filters            -> 422    <-- isolated
+  additionalFilters all three  -> 200
+
+STEP 2 - which generic field? Each sent alone, capitalised then lowercase:
+
+  {"Address":"7E:41:25:1E:D5:16"}  -> 422    {"address":...}      -> 200
+  {"AddressType":"random"}         -> 422    {"addressType":...}  -> 200
+  {"Name":"BLEPeripheralApp"}      -> 422    {"name":...}         -> 200
+  {"Alias":"BLEPeripheralApp"}     -> 422    {"alias":...}        -> 200
+
+  generic with "enabled" only, no filters   -> 200
+
+All four capitalised names rejected; all four lowercase accepted. Consistent, so
+this is a naming convention rather than a per-field quirk.
+
+STEP 3 - do the lowercase fields persist? Each verified by read-back:
+
+  address only     -> stored [{"address":"7E:41:25:1E:D5:16"}]
+  name only        -> stored [{"name":"BLEPeripheralApp"}]
+  alias only       -> stored [{"alias":"MyAlias"}]
+  addressType only -> stored [{"addressType":"public"}]
+  all four         -> stored with all four keys present
+
+So the fields are genuinely functional, not merely tolerated.
+
+WHY THE SPEC HAS IT CAPITALISED: the reader's BLE_DATA output uses capitalised
+names (Address, AddressType, Alias, RSSI - see
+../03-enable_with_rssi_filter-SUCCESS-filter-proven/response body/beacon-scan-evidence.txt).
+The example looks like output field names pasted into an input filter.
+
+The schema sets "additionalProperties": false on this object, which is why the
+wrong casing is a hard 422 rather than being silently ignored - correct strict
+behaviour, just applied to an example that does not match it.

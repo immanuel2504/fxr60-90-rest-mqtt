@@ -1,0 +1,48 @@
+{
+  "method": "PUT",
+  "url": "/cloud/config",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "GPIO-LED": {
+      "GPI_1_H": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "GREEN",
+          "postActionColor": "RED",
+          "blink": {
+            "ON": 250,
+            "OFF": 250,
+            "DURATION": 2000
+          }
+        }
+      ],
+      "GPI_1_L": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "RED"
+        }
+      ],
+      "GPI_2_H": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "HIGH"
+        }
+      ],
+      "GPI_2_L": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "LOW"
+        }
+      ]
+    }
+  }
+}

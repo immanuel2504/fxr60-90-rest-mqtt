@@ -2,8 +2,8 @@
   "command": "get_logs_rgErrorLog",
   "command_id": "req-get-rg-error-logs",
   "payload": {
-    "binary": "H4sIAAAAAAAAA+3RQQqAIBBA0a8E7VtEUdEBOoEHEBWKQCJt0e3Ldm3atGjxHwzDMMPAyFI=",
-    "filename": "rg_error.log.gz"
+    "binary": "<base64 gzip>",
+    "filename": "rgErrorLog.tar.gz"
   },
   "response": "success"
 }

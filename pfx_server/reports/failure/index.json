@@ -1,0 +1,12 @@
+[
+  "index.json",
+  "mqtt_get_SupportedRegionList.json",
+  "mqtt_get_SupportedStandardList.json",
+  "mqtt_set_autostartUserapp.json",
+  "mqtt_set_bleConfig.json",
+  "mqtt_set_dataToRG.json",
+  "mqtt_set_region.json",
+  "mqtt_set_reqToUserapp.json",
+  "mqtt_set_startUserapp.json",
+  "mqtt_set_stopUserapp.json"
+]

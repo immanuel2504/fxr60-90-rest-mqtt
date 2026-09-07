@@ -1,0 +1,12 @@
+{
+  "command": "set_timeZone",
+  "channel": "management",
+  "source": "request/time_zone.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 250.6,
+  "note": "",
+  "request_id": "test-set_timeZone-0f86b2be63",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_timeZone\", \"command_id\": \"test-set_timeZone-0f86b2be63\", \"payload\": {}, \"response\": \"success\"}"
+}

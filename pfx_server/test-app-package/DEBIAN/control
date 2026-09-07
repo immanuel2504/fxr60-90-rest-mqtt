@@ -1,0 +1,8 @@
+Package: fxr60-install-test
+Version: 1.0.0
+Section: misc
+Priority: optional
+Architecture: all
+Maintainer: FXR60 Test <fxr60-test@example.invalid>
+Description: Minimal package for testing FXR60 user application installation
+ This package installs a harmless diagnostic command only.

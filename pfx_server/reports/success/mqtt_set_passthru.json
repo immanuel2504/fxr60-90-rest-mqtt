@@ -1,0 +1,12 @@
+{
+  "command": "set_passthru",
+  "channel": "management",
+  "source": "request/passthru.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.3,
+  "note": "",
+  "request_id": "test-set_passthru-c4d7d5e771",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_passthru\", \"command_id\": \"test-set_passthru-c4d7d5e771\", \"payload\": {\"response\": \"Success: {\\\"antennaStopCondition\\\":{\\\"type\\\":\\\"DURATION\\\",\\\"value\\\":100},\\\"antennas\\\":[1,2,3,4],\\\"query\\\":{\\\"tagPopulation\\\":200},\\\"tagMetaData\\\":[\\\"ANTENNA\\\",\\\"RSSI\\\",\\\"CHANNEL\\\",\\\"SEEN_COUNT\\\"],\\\"transmitPower\\\":[30.0,30.0,30.0,30.0],\\\"type\\\":\\\"CONVEYOR\\\"}\"}, \"response\": \"success\"}"
+}

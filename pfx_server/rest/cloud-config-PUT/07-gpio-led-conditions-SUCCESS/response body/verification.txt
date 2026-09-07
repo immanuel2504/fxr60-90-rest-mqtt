@@ -1,0 +1,9 @@
+ACCEPTED (HTTP 200), and stored EXACTLY as sent - verified via GET /cloud/config, including both condition forms:
+  TAG_READ         conditions: ["IS_CLOUD_CONNECTED", "IS_RADIO_ONGOING"]
+  CLOUD_DISCONNECT conditions: {operator: "or", operands: ["~IS_CLOUD_CONNECTED"]}
+
+Confirms actionConditions accepts both the bare array (implicit 'and') and the explicit {operator, operands} object.
+
+CORRECTION MADE BEFORE SENDING: an earlier draft used {type: 'GPI', pin: 1, state: 'HIGH'}, inferring an object shape from other condition schemas in the spec. Checking conditionsArray.v1 showed conditions are plain ENUM STRINGS with only four possible values - IS_CLOUD_CONNECTED, ~IS_CLOUD_CONNECTED, IS_RADIO_ONGOING, ~IS_RADIO_ONGOING - and there is no GPI-based condition at all. Fixed before any request was sent.
+
+NOTE: this request REPLACED the entire GPIO-LED object rather than merging with it. Test 06's GPI_1_*/GPI_2_* events were gone afterwards, since this payload did not include them. GPIO-LED is replace-whole, not partial-merge.

@@ -3,3 +3,27 @@ __pycache__/
 .DS_Store
 Thumbs.db
 ~$*
+
+# Firmware images exceed GitHub 100MB file limit -- keep local only
+*.tar.bz2
+
+# Private keys, cert bundles, and local Python env — do not publish
+*.pem
+*.key
+*.pfx
+*.p12
+**/*.pem.key
+.venv/
+pfx_server/.venv/
+pfx_server/ca/
+pfx_server/broker-certs/
+pfx_server/Mqqt/certificate/
+pfx_server/FXR60-LAB/*-private.pem.key
+pfx_server/FXR60-LAB/*-public.pem.key
+pfx_server/mqtt/verified/set_importCloudConfig_aws_*.json
+pfx_server/rest/cloud-cloudConfig-PUT/07-aws-inline-FileContent-REJECTED/request body/request.json
+*.pem.selfsigned.bak
+*.pem.crt
+pfx_server/cert.pem.selfsigned.bak
+pfx_server/key.pem.selfsigned.bak
+pfx_server/FXR60-LAB/*.pem.crt

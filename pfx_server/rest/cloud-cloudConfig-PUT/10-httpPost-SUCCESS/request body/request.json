@@ -1,0 +1,40 @@
+{
+  "method": "PUT",
+  "url": "/cloud/cloudConfig",
+  "reader": "10.117.229.9 (reader app 5.0.5)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Real admin token minted at run time via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "endpointConfig": {
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_HTTP",
+              "description": "Tag events over HTTP POST",
+              "type": "httpPost",
+              "options": {
+                "URL": "https://10.117.229.18:9443/tagdata",
+                "security": {
+                  "authenticationType": "NONE",
+                  "verifyHost": false,
+                  "verifyPeer": false
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

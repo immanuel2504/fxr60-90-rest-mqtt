@@ -1,0 +1,4 @@
+Copied verbatim from:
+  rest/cloud-logs-PUT/01-spec-example-PARTIALLY-SILENTLY-IGNORED
+
+That folder is the canonical record of this test; this is a copy kept beside the finding so the evidence travels with it.

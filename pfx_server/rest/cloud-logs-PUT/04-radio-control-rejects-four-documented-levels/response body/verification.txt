@@ -1,0 +1,47 @@
+logs PUT 04 - radio_control accepts only 4 of the 8 documented levels
+RESULT: rejected, HTTP 422 - and the reader names the real enum
+
+*** SPEC vs FIRMWARE MISMATCH ***
+
+The schema declares ONE level enum, shared by every component, with 8 values:
+
+    OFF, FATAL, ERROR, WARNING, DEBUG, INFO, TRACE, EXTRA
+
+The reader disagrees, for radio_control specifically:
+
+  {"code":3,"message":"\"set_logs\" Failed to apply. Description: unsuccessful rc
+   response: Failure: TRACE is not an acceptable value for level (acceptable
+   values are: ERROR, WARNING, INFO, DEBUG)"}
+
+So radio_control supports FOUR levels: ERROR, WARNING, INFO, DEBUG.
+
+Sent each of the 8 documented levels as radio_control:
+
+  OFF     -> 422  "OFF is not an acceptable value for level"
+  FATAL   -> 422  (same class)
+  ERROR   -> 200
+  WARNING -> 200
+  DEBUG   -> 200
+  INFO    -> 200
+  TRACE   -> 422  "TRACE is not an acceptable value for level"
+  EXTRA   -> 422  "EXTRA is not an acceptable value for level"
+
+And the SAME 8 levels as reader_gateway - all eight accepted:
+
+  OFF FATAL ERROR WARNING DEBUG INFO TRACE EXTRA   -> 200, each read back correctly
+    rg=OFF, rg=FATAL, rg=ERROR, rg=WARNING, rg=DEBUG, rg=INFO, rg=TRACE, rg=EXTRA
+
+So the level enum is PER-COMPONENT:
+    reader_gateway   8 levels  (all documented values)
+    radio_control    4 levels  (ERROR, WARNING, INFO, DEBUG)
+
+The schema expresses one shared enum and cannot represent this. A client sending
+a documented level to a documented component gets a 422 with no way to have
+predicted it.
+
+Credit where due: the error message is excellent - it names the offending value
+AND lists the acceptable ones, which is how the real enum was discovered. Compare
+the generic "Unsupported cloud_agent or reader_gateway level provided" returned
+for a bad reader_gateway level (test 07), which lists nothing.
+
+ASK: document the per-component level sets, or accept all 8 for both.

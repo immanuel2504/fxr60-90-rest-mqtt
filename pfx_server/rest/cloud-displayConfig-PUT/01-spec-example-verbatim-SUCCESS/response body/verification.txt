@@ -1,0 +1,15 @@
+displayConfig 01 - the spec's example verbatim, all seven fields
+RESULT: accepted, HTTP 200, CONFIRMED by read-back
+
+GET after:
+{"enable":true,"enableOnscreenKeyboard":true,"keyboardLayout":"Japanese",
+ "orientation":"landscape","resolution":"1920x1080","screenTimeoutSec":300,
+ "startUrl":"https://localhost/"}
+
+Every field stored and reflected exactly as sent, including keyboardLayout
+"Japanese". Full read-back verification is available on this endpoint.
+
+Not verified: whether any of this reaches a physical display. The FXR60/FXR90
+have no built-in screen; these settings presumably apply to an attached monitor,
+which this reader does not have. So "accepted and stored correctly" is the limit
+of what can be confirmed here.

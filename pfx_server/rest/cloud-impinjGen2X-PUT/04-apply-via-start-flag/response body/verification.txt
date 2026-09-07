@@ -1,0 +1,71 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 4 - apply the saved Gen2X config with the start flag
+RESULT: HTTP 200 - feature ACTIVATES, confirmed in status
+
+    PUT /cloud/start   {"applyImpinjGen2X": true}
+
+GET /cloud/status DURING the inventory:
+
+    "impinjGen2X": {"feature": "tagProtect", "isActive": true}     <-- ACTIVE
+    "radioActivity": "active"
+
+Compare before the start call: {"feature":"none","isActive":false}. So this flag
+is what moves the saved configuration into effect.
+
+*** THE FEATURE IS PER-SESSION, NOT PERSISTENT ***
+
+After PUT /cloud/stop:
+
+    "impinjGen2X": {"feature":"none","isActive":false}
+
+It reverts. And a subsequent plain start (no flag) does NOT re-apply it - a
+second inventory started with {} showed feature:none while the tagProtect config
+was still saved and returned by GET /cloud/impinjGen2X.
+
+So applyImpinjGen2X:true must be sent on EVERY start where the feature is wanted.
+The reader confirms this in its own response text:
+
+    "Note: Gen2X will not auto-start on reboot (normal mode will resume)."
+
+...though the reality is stronger than that note suggests: it does not carry over
+between inventory sessions either, not just across reboots.
+
+*** THE READER DOES GENERATE THE PROTECT OPERATIONS ***
+
+From radio_control.log at the moment of this call - this is the evidence that the
+command reaches the radio rather than being silently dropped:
+
+  08:08:23.966 INFO requests.cpp Request: impinjgen2x {"tagProtect":{"action":
+               "enableTagProtection","enableShortRange":false,
+               "password":"A1B2C3D4","tagID":"41544035a880c80000123bea"}}
+  08:08:23.966 INFO requests.cpp Response: Success: Gen2X configured...
+  08:08:26.661 INFO impinjGen2X.cpp mergeImpinjGen2xWithMode:
+                 ===== FINAL MERGE RESULT =====
+                 Total SELECT operations: 0
+                 Total ACCESS operations: 2          <-- two Gen2 accesses built
+                 accessBitMask: 0x0000000000000003   <-- both enabled
+  08:08:26.708 INFO requests.cpp Request: start gen2x
+  08:08:26.709 INFO requests.cpp Response: Success: Radio started with Gen2X.
+
+"Total ACCESS operations: 2" with accessBitMask 0x3 shows TagProtect was
+translated into two access operations and armed. Contrast the same log lines for
+{"fastID":{"enabled":false}} moments earlier, which show
+"Total ACCESS operations: 0" and accessBitMask 0x0.
+
+*** BUT THE TAG NEVER BECOMES RF-SILENT - SEE THE REPORT ***
+
+The tag remained fully readable in every attempt. Details, all three chip
+families, and what was ruled out: ../TAG_PROTECT_REPORT.md
+
+Evidence: ../evidence/x2k_prot.ndjson, ../evidence/imp_prot.ndjson,
+          ../evidence/protect_applied.ndjson

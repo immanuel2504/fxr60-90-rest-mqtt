@@ -1,0 +1,6 @@
+{
+  "command": "start",
+  "payload": {
+    "doNotPersistState": false
+  }
+}

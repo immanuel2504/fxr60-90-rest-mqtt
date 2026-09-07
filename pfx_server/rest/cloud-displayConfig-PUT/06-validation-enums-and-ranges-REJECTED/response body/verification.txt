@@ -1,0 +1,41 @@
+displayConfig 06 - enum and range validation
+RESULT: all six rejected, HTTP 422, with the most helpful messages on this API
+
+  {"orientation":"diagonal"}
+    {"code":1,"message":"field 'orientation' must be one of: landscape,
+     portrait, landscape-flipped, portrait-flipped"}
+
+  {"keyboardLayout":"Klingon"}
+    {"code":1,"message":"field 'keyboardLayout' has an supported values:
+     English-US, English-UK, German, Spanish, Italian, French, Brazilian,
+     Swedish, Japanese"}
+
+  {"screenTimeoutSec":3601}
+    {"code":1,"message":"field 'screenTimeoutSec' must be between 0 (display
+     always on) and 3600 seconds (display always on for 1 hour)."}
+
+  {"screenTimeoutSec":-1}
+    same message as 3601
+
+  {"resolution":"abc"}
+    {"code":1,"message":"field 'resolution' format is invalid. Must contain 'x'
+     (e.g., '1920x1080')"}
+
+  {}
+    {"code":1,"message":"payload must be a non-empty JSON object"}
+
+These messages name the field AND enumerate the valid values - by far the best
+error reporting encountered anywhere in this API. They are the model the rest of
+the API should follow (compare app-led's bare "Invalid color", or error 255 in
+the cloudConfig report).
+
+Both enum sets match the schema exactly, and the 0-3600 range matches the
+documented range. Two small wording bugs: "has an supported values" should read
+"has unsupported value", and the 3600 gloss "display always on for 1 hour" is
+self-contradictory - 3600 is a timeout, not always-on (0 is always-on).
+
+NOTE these probes are single-field payloads with no "enable", so per test 04 they
+would have been rejected anyway. The enum/range check clearly runs FIRST, at the
+REST layer (code 1), before the required-field check at the Core Service
+(code 3) - which is why these return specific messages rather than "Missing
+required parameters".

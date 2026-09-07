@@ -1,0 +1,91 @@
+Test 18 — GPIO-LED cloud events + READER-GATEWAY AWS data endpoint
+Reader 10.233.48.36 (app 5.0.7), 2026-09-05
+
+RESULT: accepted, HTTP 200, {"response":"success"}
+
+WHAT THIS TEST DOES
+  READER-GATEWAY  data.event -> AWS IoT Core, mqtt-AWS, port 443 + ALPN,
+                  certificates by *FileLocation, name DATA_AWS_CLOUD_EVENTS
+  GPIO-LED        CLOUD_CONNECT    -> GPO 1 HIGH, LED 2 GREEN
+                  CLOUD_DISCONNECT -> GPO 2 HIGH, LED 2 RED
+                  RADIO_START      -> GPO 3 HIGH
+                  RADIO_STOP       -> GPO 3 LOW
+                  TAG_READ         -> GPO 4 HIGH/blink, cond IS_CLOUD_CONNECTED
+
+METHOD (this run — the earlier run was discarded, see NOTE)
+  GPO state persists across configuration changes, so a dirty baseline makes the
+  result unreadable. All four pins were driven LOW and the reset confirmed by
+  read-back before applying anything:
+
+    for p in 1 2 3 4; do
+      curl -sk -X PUT -H "Authorization: Bearer $T" -H "Content-Type: application/json" \
+        -d "{\"port\":$p,\"state\":false}" https://10.233.48.36/cloud/gpo
+    done
+
+    GET /cloud/gpo  ->  {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}   baseline verified
+
+  Then PUT /cloud/config with this test's body, wait 25 s, read GPO again.
+
+OBSERVED
+  before apply:  {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}
+  after apply:   {"1":"HIGH","2":"HIGH","3":"LOW","4":"LOW"}
+  at t+20 s:     {"1":"HIGH","2":"HIGH","3":"LOW","4":"LOW"}    stable, not transient
+
+  GET /cloud/status:
+    interfaceConnectionStatus.data[0]:
+      interface        DATA_AWS_CLOUD_EVENTS
+      connectionStatus connected
+      connectionError  ""
+    radioActivity      inactive
+    radioConnection    connected
+
+CONCLUSIONS
+
+1. CLOUD_CONNECT fires. Pin 1 went LOW -> HIGH from a verified-LOW baseline, and
+   /cloud/status shows the AWS data interface connected. This is the first
+   confirmation that the two cloud events in GPIO-LED are wired to real firmware
+   events, not just accepted by the validator.
+
+2. CLOUD_DISCONNECT also fires in the same operation. Pin 2 went LOW -> HIGH too.
+   Applying a new endpoint configuration tears down the existing cloud connection
+   before bringing up the new one, so within one PUT the reader emits
+   CLOUD_DISCONNECT (old connection dropped) and then CLOUD_CONNECT (new one up).
+   Both actions latch their pins HIGH and neither clears the other, so the end
+   state has both HIGH while the reader is, in fact, connected.
+
+   This is consistent behaviour, but it means GPO 1 and GPO 2 cannot be read as a
+   current-state indicator of cloud connectivity — they are latched event
+   counters. To use them as a state indicator, CLOUD_CONNECT must also drive the
+   disconnect pin back LOW and vice versa, e.g.
+
+     "CLOUD_CONNECT":    [{"type":"GPO","pin":1,"state":"HIGH"},
+                          {"type":"GPO","pin":2,"state":"LOW"}]
+     "CLOUD_DISCONNECT": [{"type":"GPO","pin":2,"state":"HIGH"},
+                          {"type":"GPO","pin":1,"state":"LOW"}]
+
+   The LED actions do not have this problem: LED 2 is a single resource that the
+   two events set to different colours, so the last event wins and the LED does
+   show current state.
+
+3. RADIO_START correctly did NOT fire. Pin 3 stayed LOW, matching
+   radioActivity: "inactive" — no inventory was started in this test. This is a
+   useful negative control: it shows pins 1 and 2 going HIGH was event-driven and
+   not a side effect of applying a configuration.
+
+4. TAG_READ did not fire. Pin 4 stayed LOW. Expected — the radio was never
+   started, so no tags were read.
+
+NOTE ON THE DISCARDED FIRST RUN
+  An earlier run of this test reported {"1":"HIGH","2":"HIGH","3":"HIGH","4":"LOW"}.
+  That observation was thrown away rather than reported, for two reasons:
+   - the GPO reset loop that was supposed to establish the baseline was malformed
+     (missing URL, "curl: no URL specified!"), so the pins were never actually
+     reset and pin 3 HIGH was leftover state from tests 15-17;
+   - the bearer token expired part-way through, so the follow-up read returned
+     {"message":"Unauthorized access"}.
+  The run above replaces it with a verified baseline and a single valid token.
+
+RELATED
+  Tests 15-17 established GPIO-LED drives hardware on RADIO_START/RADIO_STOP.
+  Test 19 drives CLOUD_DISCONNECT in isolation, by pointing the data endpoint at
+  an unreachable broker so no CLOUD_CONNECT can follow it.

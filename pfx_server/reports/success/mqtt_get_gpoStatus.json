@@ -1,0 +1,12 @@
+{
+  "command": "get_gpoStatus",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.3,
+  "note": "",
+  "request_id": "test-get_gpoStatus-860d955309",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_gpoStatus\", \"command_id\": \"test-get_gpoStatus-860d955309\", \"payload\": {\"1\": \"LOW\", \"2\": \"LOW\", \"3\": \"LOW\", \"4\": \"LOW\"}, \"response\": \"success\"}"
+}

@@ -1,0 +1,115 @@
+Test 19 — CLOUD_DISCONNECT in isolation, via a deliberately unreachable broker
+Reader 10.233.48.36 (app 5.0.7), 2026-09-05
+
+RESULT: accepted, HTTP 200
+        CLOUD_DISCONNECT confirmed working
+        CLOUD_CONNECT found to FIRE ON A FAILED CONNECTION  <-- defect, reproduced
+
+WHY THIS TEST EXISTS
+  Test 18 applied a working AWS endpoint and saw both cloud pins latch HIGH,
+  because replacing an endpoint tears the old connection down and brings the new
+  one up inside one PUT. That cannot separate the two events. This test points
+  data.event at 10.255.255.1:1883 - routable-looking but unreachable - so the
+  reader must emit CLOUD_DISCONNECT with no successful connect to follow it.
+
+  Pin 1 (CLOUD_CONNECT) is kept in the config deliberately, as a negative
+  control: with no broker to reach, pin 1 must stay LOW.
+
+    GPIO-LED  CLOUD_CONNECT    -> GPO 1 HIGH
+              CLOUD_DISCONNECT -> GPO 2 HIGH
+    endpoint  mqtt, 10.255.255.1:1883, name DATA_UNREACHABLE
+
+RUN 1 - apply the config from a verified-LOW baseline
+  baseline:  {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}   confirmed by read-back
+  apply:     PUT /cloud/config -> HTTP 200
+
+  t+20s:  {"1":"LOW", "2":"HIGH","3":"LOW","4":"LOW"}    <-- correct
+  t+40s:  {"1":"HIGH","2":"HIGH","3":"LOW","4":"LOW"}    <-- pin 1 rose on its own
+  t+60s:  {"1":"HIGH","2":"HIGH","3":"LOW","4":"LOW"}
+  t+80s:  {"1":"HIGH","2":"HIGH","3":"LOW","4":"LOW"}
+
+  GET /cloud/status, interfaceConnectionStatus.data[0]:
+    interface        DATA_UNREACHABLE
+    connectionStatus disconnected
+    connectionError  connection initialization failed with return code (255),
+                     retry count (0)
+
+  At t+20 the result was exactly as designed. By t+40 pin 1 was HIGH as well,
+  while the interface remained disconnected and never once reported connected.
+
+RUN 2 - isolate it: reset the pins, change nothing else
+  To rule out the config-apply itself as the trigger, the four pins were driven
+  LOW again with NO new configuration sent. The unreachable endpoint stayed
+  active, so the only thing the reader could be doing is retrying it.
+
+  baseline:  {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}   confirmed by read-back
+  t+20s:     {"1":"LOW", "2":"LOW","3":"LOW","4":"LOW"}
+  t+40s:     {"1":"HIGH","2":"LOW","3":"LOW","4":"LOW"}   <-- reproduced
+  t+60s:     {"1":"HIGH","2":"LOW","3":"LOW","4":"LOW"}
+  t+80s:     {"1":"HIGH","2":"LOW","3":"LOW","4":"LOW"}
+  t+100s:    {"1":"HIGH","2":"LOW","3":"LOW","4":"LOW"}
+
+  Reproduced with no PUT involved. Pin 2 stayed LOW throughout, which is correct
+  - the reader was already disconnected, so there was no new disconnect to
+  report. Pin 1 rose anyway.
+
+CONCLUSIONS
+
+1. CLOUD_DISCONNECT works. Run 1 latched pin 2 within 20 s of the connection
+   being lost, ahead of any other pin movement. This is the first isolated
+   confirmation of the event.
+
+2. CLOUD_CONNECT fires when a connection ATTEMPT is made, not when a connection
+   is ESTABLISHED. This is a defect, reproduced twice, and run 2 rules out every
+   alternative explanation:
+     - not caused by applying a config      (run 2 sent no config)
+     - not stale pin state                  (baseline read back as LOW both runs)
+     - not a real connection                (status: disconnected, error 255,
+                                             throughout both runs)
+     - not pin-specific                     (same pin 1 behaves correctly in
+                                             test 18 and tests 15-17)
+   The ~40 s delay and the reader's reconnectDelay/reconnectDelayMax of 2/10 s
+   suggest the pin is being driven by a retry cycle, i.e. the event is hooked to
+   the start of a connection attempt rather than to a successful CONNACK.
+
+3. Impact. CLOUD_CONNECT cannot be used to signal cloud connectivity. Any
+   integration wiring it to a lamp, a stack light or a PLC input will show
+   "cloud OK" on a reader that has never connected and is retrying a dead
+   endpoint - the exact failure the indicator exists to catch. Combined with the
+   latching behaviour from test 18, both cloud pins end up HIGH regardless of
+   the true state.
+
+4. Workaround. Do not treat GPO 1 as cloud state. Use
+   GET /cloud/status -> interfaceConnectionStatus[].connectionStatus, which
+   reported "disconnected" correctly and consistently in both runs. For a
+   hardware indicator, drive the LED rather than latched GPOs and have each
+   event clear the other's pin (see test 18 notes) - though that still cannot
+   fix a CLOUD_CONNECT that fires spuriously.
+
+QUESTIONS FOR ZEBRA
+
+  Q1. Is CLOUD_CONNECT specified to fire on a successful MQTT connection, or on
+      a connection attempt? Observed behaviour is the latter: the pin goes HIGH
+      while /cloud/status reports the same interface disconnected with error
+      255, and it does so with no config change and no broker present.
+      Reproduced twice from a verified-LOW baseline.
+
+  Q2. Should CLOUD_CONNECT re-fire on every reconnect attempt? If a customer
+      wires this to a status lamp, a reader retrying a dead endpoint currently
+      indicates healthy.
+
+  Q3. Are GPO actions intended to latch? Applying a new endpoint config emits
+      CLOUD_DISCONNECT then CLOUD_CONNECT, leaving both pins HIGH (test 18), so
+      the pair cannot represent current state. Is there a supported way to have
+      one event clear another's pin, or is driving both pins from both events
+      the intended pattern?
+
+  Q4. Error 255 again. Same opaque code here for an unreachable host as for a
+      blocked port and for certificate faults (see cloudConfig tests 05/06).
+
+RECOVERY
+  The reader is left on an unreachable data endpoint by design. Restore with the
+  known-good AWS config in test 18, or the reader's own broker in
+  rest/cloud-cloudConfig-PUT/99-rollback-reader-own-broker-SUCCESS/.
+  The local REST API stays reachable because every config here sets
+  enableLocalRest: true.

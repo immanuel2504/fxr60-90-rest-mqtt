@@ -1,0 +1,8 @@
+start 02 - spec example "start_RFID_only"
+RESULT: HTTP 200 - CONFIRMED
+
+  before: radio=inactive  ble=stopped
+  after:  radio=active    ble=stopped
+
+Explicit equivalent of test 01. Same effect, which confirms the documented
+default. Both forms are valid; the explicit one is clearer in client code.

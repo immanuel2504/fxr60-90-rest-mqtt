@@ -1,0 +1,5 @@
+ACCEPTED (HTTP 200). GPO defaults all LOW, LED defaults all GREEN.
+
+Sent as GPIO-LED only, with no READER-GATEWAY at all - so unlike batching and retention (test 02), the GPIO-LED object CAN be sent on its own.
+
+Matches the reader's pre-existing GPO state (all LOW per GET /cloud/gpo), so no hardware change was expected or observable.

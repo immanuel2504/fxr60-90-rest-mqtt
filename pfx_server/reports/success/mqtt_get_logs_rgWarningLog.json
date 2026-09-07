@@ -1,0 +1,12 @@
+{
+  "command": "get_logs_rgWarningLog",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_logs_rgWarningLog-68f5358c5a",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_logs_rgWarningLog\", \"command_id\": \"test-get_logs_rgWarningLog-68f5358c5a\", \"payload\": {\"binary\": \"H4sIAAAAAAAAA+3WTW6DMBCGYdY5hS9ANeOxTeNdD9BVcwGkpFEWhYqA0uPXIVQiiJRFI6OU79lY/EiAhldwyqviUOxTTdqltE6JN5x5Mp7D5lP9VSd/R4Ezpl2D4UokOmGrjbViKAv72bCxiaI7XHtSc6zzSqmkKstfn3Xq+IPaNDv1tvtUitXP3NX5XVit5r4ziOE00r/zRnuh+/aftf1zZqW/DvtnIy70b512kfuvq/fDNt9+3Dpv6viD6vffzR39L8h1/8+phP7FW+f1On7/Wqx2tu3fCPqP4bUs1EuzVxL67+aO/hdkrH/jae2tnaN/l4lc+tfoP4Z+/93c0f+C3OjfeZnl+x+6zy79M/qPYdD/ee7of0HG+2fymuf5/"
+}

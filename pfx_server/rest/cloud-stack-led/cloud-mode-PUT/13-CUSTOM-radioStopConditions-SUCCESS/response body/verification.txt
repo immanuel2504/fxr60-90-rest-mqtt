@@ -1,0 +1,34 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 13 - the spec's with_radio_stop example (radioStopConditions duration 60)
+RESULT: ACCEPTED, HTTP 200 - accepted and stored; the 60 s stop not reached
+
+    "radioStopConditions": {"duration": 60}
+
+TAG RESULT over 15s:
+  unique tags  22
+  total reads  22
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=None..None  ant=[None]
+    e2806894000040017790ac71  reads=1  rssi=None..None  ant=[None]
+
+Both reference tags read, so the mode is functional.
+
+WHAT WAS NOT VERIFIED: the read window here was 15s and the
+configured stop duration is 60 s, so the automatic stop could not trigger within
+the test. Confirming it needs a run longer than 60 s with radioActivity polled
+until it goes inactive on its own.
+
+Recorded as accepted-and-stored rather than proven. Being explicit about that
+distinction: the field is valid input, but its runtime effect is untested here.
+
+CONSTRAINT CONFIRMED SEPARATELY: radioStopConditions is rejected in PORTAL mode,
+exactly as the schema documents - see 16-cross-field-constraints-enforced/.

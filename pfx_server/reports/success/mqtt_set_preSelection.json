@@ -1,0 +1,12 @@
+{
+  "command": "set_preSelection",
+  "channel": "control",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.3,
+  "note": "",
+  "request_id": "test-set_preSelection-6f45b2153e",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_preSelection\", \"command_id\": \"test-set_preSelection-6f45b2153e\", \"payload\": {}, \"response\": \"success\"}"
+}

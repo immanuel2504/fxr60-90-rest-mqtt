@@ -1,0 +1,3 @@
+{
+    "response": "Success: {\"numTagReads\": 17965,\"numTagReadsPerAntenna\": {\"1\": 17344,\"2\": 0,\"3\": 0,\"4\": 0,\"5\": 0,\"6\": 621},\"numRadioPacketsRxed\": 41678495,\"numDataMessagesTxed\": 17965,\"cpuUtilization\": 0.2,\"ramUtilization\": 0.4,\"uptime\": \"21:30:45\",\"numErrors\": 493,\"numWarnings\": 30,\"radioConnection\": \"connected\",\"radioActivity\": \"inactive\",\"antennas\": {\"1\": \"connected\",\"2\": \"disconnected\",\"3\": \"disconnected\",\"4\": \"disconnected\",\"5\": \"connected\",\"6\": \"connected\"},\"temperature\": {\"ambient\":32,\"pa\":29},\"impinjGen2X\": {\"isActive\": false,\"feature\": \"none\"}}"
+}

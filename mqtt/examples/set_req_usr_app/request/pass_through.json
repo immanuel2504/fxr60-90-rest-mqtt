@@ -1,0 +1,10 @@
+{
+  "command": "set_reqToUserapp",
+  "command_id": "req-set-reqToUserapp-pass-through",
+  "payload": {
+    "userapp": "mylogger",
+    "command": {
+      "message": "Hello World!!!"
+    }
+  }
+}

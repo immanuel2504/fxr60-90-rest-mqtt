@@ -1,0 +1,24 @@
+{
+  "url": "https://10.117.229.18/",
+  "filename": "sampleAntenna_1.0.4.deb",
+  "authenticationType": "NONE",
+  "verifyPeer": false,
+  "verifyHost": false,
+  "headers": {
+    "Authorization": "Bearer @1T@uT0dud3"
+  },
+  "retry": {
+    "type": "randomWait",
+    "policy": {
+      "retries": 3,
+      "wait": {
+        "min": 10,
+        "max": 30
+      }
+    }
+  },
+  "timeouts": {
+    "connection": 5,
+    "read": 20
+  }
+}

@@ -1,5 +1,7 @@
 {
-  "command": "get_SupportedStandardList",
+  "command": "get_supportedStandardList",
   "command_id": "req-get-supportedStandardList",
-  "payload": {}
+  "payload": {
+    "region": "Argentina"
+  }
 }

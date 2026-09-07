@@ -1,0 +1,8 @@
+{
+  "command": "set_impinjGen2X",
+  "payload": {
+    "tagFocus": {
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "/cloud/network",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Real admin token minted at run time. Reproduce with:\n  TOKEN=$(curl -sk -u 'admin:Zebra@123' https://10.233.48.36/cloud/localRestLogin | python3 -c \"import sys,json;print(json.load(sys.stdin)['message'])\")\nToken claims: {\"id\":\"1\",\"role\":\"admin\"}, valid ~8h. Not stored here because it is a live credential."
+  },
+  "note": "GET request - no request body"
+}

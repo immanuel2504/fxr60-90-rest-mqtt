@@ -1,0 +1,27 @@
+{
+  "name": "FXR60_CLIENT_RETRY_TEST",
+  "type": "client",
+  "url": "https://10.117.229.18/reader-test.pfx",
+  "authenticationType": "BASIC",
+  "authenticationOptions": {
+    "username": "altautoadmin",
+    "password": "@1T@uT0dud3"
+  },
+  "pfxPassword": "Fxr60-Pfx-Setup-2026-47!",
+  "verifyPeer": false,
+  "verifyHost": false,
+  "retry": {
+    "type": "randomWait",
+    "policy": {
+      "retries": 3,
+      "wait": {
+        "min": 1,
+        "max": 2
+      }
+    }
+  },
+  "timeouts": {
+    "connection": 5,
+    "read": 15
+  }
+}

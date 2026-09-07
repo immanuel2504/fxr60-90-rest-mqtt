@@ -1,0 +1,30 @@
+{
+  "method": "PUT",
+  "url": "/cloud/mode",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "type": "SIMPLE",
+    "antennas": [
+      1
+    ],
+    "transmitPower": 30,
+    "antennaStopCondition": {
+      "type": "DURATION",
+      "value": 400
+    },
+    "query": {
+      "sel": "ALL",
+      "session": "S2",
+      "tagPopulation": 2000,
+      "target": "AB"
+    },
+    "inventoryProtocol": {
+      "mode": "GEN2"
+    }
+  }
+}

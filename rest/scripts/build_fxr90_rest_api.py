@@ -247,9 +247,16 @@ def fix_delete_request_bodies(paths: dict, schemas: dict | None = None) -> int:
     HTTP clients often avoid DELETE bodies, so most log-delete operations are documented
     as query parameters. ``DELETE /cloud/certificates/{certname}`` is an exception: the
     reader expects ``type`` in the JSON body (confirmed on device 26 Aug 2026).
+    ``DELETE /cloud/caCertificates/{caname}`` is also an exception: the reader matches
+    the CA cert to delete by its ``content`` (full PEM), which is too large and
+    ill-suited for a query string (confirmed on device 30 Aug 2026 -- name-only, as a
+    query param or otherwise, was rejected with "INVALID CA CERTIFICATE NAME").
     """
     schemas = schemas or {}
-    keep_delete_body_paths = frozenset({"/cloud/certificates/{certname}"})
+    keep_delete_body_paths = frozenset({
+        "/cloud/certificates/{certname}",
+        "/cloud/caCertificates/{caname}",
+    })
     fixed = 0
 
     for path, path_item in paths.items():
@@ -302,6 +309,7 @@ def fix_delete_request_bodies(paths: dict, schemas: dict | None = None) -> int:
 # Fallback when RestDeveloperfile omits operationId (path+method -> markdown stem).
 # Only list entries that cannot be resolved via operationId + case-insensitive match.
 PATH_METHOD_ALIASES: dict[tuple[str, str], str] = {
+    ("GET", "/cloud/supportedRegionList"): "getSupportedregionlist",
     ("GET", "/cloud/preSelection"): "getPreSelection",
     ("PUT", "/cloud/preSelection"): "setPreSelection",
     ("PUT", "/cloud/updatePassword"): "updatePassword",
@@ -319,6 +327,48 @@ PATH_METHOD_ALIASES: dict[tuple[str, str], str] = {
     ("DELETE", "/cloud/logs/radioPacketLog"): "delRadioPacketLog",
     ("GET", "/cloud/ntpServer"): "getNtpServer",
 }
+
+
+def fill_missing_operation_ids(paths: dict) -> int:
+    """Write operationId onto operations RestDeveloperfile.yaml leaves without one.
+
+    RestDeveloperfile.yaml occasionally omits operationId on an operation (GET
+    /cloud/ntpServer and friends). Nothing downstream failed loudly because
+    hoist_operation_bodies() and the description lookup both already fall back to
+    PATH_METHOD_ALIASES internally -- but that fallback was never written back onto
+    the operation, so the generated specs (FXR_60-90_rest_api.yaml,
+    FXR_60-90_scalar_api.yaml) shipped without operationId for those paths too.
+    This guarantees every operation in generated output has one, regardless of
+    whether the developer file remembers to add it.
+    """
+    filled = 0
+    for api_path, path_item in paths.items():
+        if not isinstance(path_item, dict):
+            continue
+        for method, operation in path_item.items():
+            if method not in HTTP_METHODS or not isinstance(operation, dict):
+                continue
+            if operation.get("operationId"):
+                continue
+            op_id = PATH_METHOD_ALIASES.get(
+                (method.upper(), api_path)
+            ) or description_key(method, api_path, None)
+
+            # Rebuild in place so operationId lands after summary/description, like
+            # every hand-written operation, instead of appending after responses/
+            # security (a plain assignment would put it last).
+            rebuilt = OrderedDict()
+            inserted = False
+            for key, value in operation.items():
+                rebuilt[key] = value
+                if key == "description" and not inserted:
+                    rebuilt["operationId"] = op_id
+                    inserted = True
+            if not inserted:
+                rebuilt["operationId"] = op_id
+            path_item[method] = rebuilt
+            filled += 1
+    return filled
 
 
 def normalize_for_oas31(obj):

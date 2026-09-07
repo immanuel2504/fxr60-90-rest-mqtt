@@ -1,0 +1,12 @@
+{
+  "command": "get_timeZone",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_timeZone-54cef74de7",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_timeZone\", \"command_id\": \"test-get_timeZone-54cef74de7\", \"payload\": {\"timeZone\": \"UTC\"}, \"response\": \"success\"}"
+}

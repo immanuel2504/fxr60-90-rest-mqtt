@@ -1,0 +1,12 @@
+{
+  "command": "get_config",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-get_config-6d8fdccc2c",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_config\", \"command_id\": \"test-get_config-6d8fdccc2c\", \"payload\": {\"GPIO-LED\": {}, \"READER-GATEWAY\": {\"batching\": [{\"maxPayloadSizePerReport\": 0, \"reportingInterval\": 0}], \"endpointConfig\": {\"control\": {\"commandResponse\": {\"connections\": [{\"description\": \"Control cmd/rsp over MQTT\", \"name\": \"CTRL_MQTT\", \"options\": {\"additional\": {\"cleanSession\": true, \"clientId\": \"fxr60-lab-ctrl\", \"debug\": false, \"keepAlive\": 60, \"qos\": 0, \"reconnectDelay\": 1, \"reconnectDelayMax\": 30}, \"enableSecu"
+}

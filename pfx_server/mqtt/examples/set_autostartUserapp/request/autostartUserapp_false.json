@@ -1,0 +1,7 @@
+{
+  "command": "set_autostartUserapp",
+  "payload": {
+    "appname": "mylogger",
+    "autostart": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "command": "set_eSimConfig",
+  "payload": {
+    "operation": "delete",
+    "profileNickName": "gnd1"
+  }
+}

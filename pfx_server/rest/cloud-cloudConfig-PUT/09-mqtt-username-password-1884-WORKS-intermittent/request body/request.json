@@ -1,0 +1,169 @@
+{
+  "method": "PUT",
+  "url": "/cloud/cloudConfig",
+  "reader": "10.117.229.9 (reader app 5.0.5)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Real admin token minted at run time via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "CTRL_MQTT",
+              "description": "Control cmd/rsp (MQTT)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 1884,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-ctrl",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60,
+                  "basicAuthentication": {
+                    "username": "fxr60user",
+                    "password": "Fxr60-Mqtt-2026!"
+                  }
+                },
+                "publishTopic": [
+                  "fxr60-lab/rsp"
+                ],
+                "subscribeTopic": [
+                  "fxr60-lab/cmd"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT",
+              "description": "Tag events (MQTT)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 1884,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-data",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60,
+                  "basicAuthentication": {
+                    "username": "fxr60user",
+                    "password": "Fxr60-Mqtt-2026!"
+                  }
+                },
+                "publishTopic": [
+                  "fxr60-lab/tevents"
+                ],
+                "subscribeTopic": []
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": [
+            {
+              "name": "MGMT_EVENTS_MQTT",
+              "description": "Management/heartbeat events (MQTT)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 1884,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mevents",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60,
+                  "basicAuthentication": {
+                    "username": "fxr60user",
+                    "password": "Fxr60-Mqtt-2026!"
+                  }
+                },
+                "publishTopic": [
+                  "fxr60-lab/mevents"
+                ],
+                "subscribeTopic": []
+              }
+            }
+          ]
+        },
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_MQTT",
+              "description": "Management cmd/rsp (MQTT)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": false,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 1884,
+                  "protocol": "tcp"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mcmd",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60,
+                  "basicAuthentication": {
+                    "username": "fxr60user",
+                    "password": "Fxr60-Mqtt-2026!"
+                  }
+                },
+                "publishTopic": [
+                  "fxr60-lab/mrsp"
+                ],
+                "subscribeTopic": [
+                  "fxr60-lab/mcmd"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

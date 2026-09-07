@@ -3,39 +3,85 @@
   "command_id": "req-set-importCloudConfig-data-mqtt-tls-installed-cert",
   "payload": {
     "endpointConfig": {
-      "data": {
-        "event": {
+      "control": {
+        "commandResponse": {
+          "enableLocalRest": true,
           "connections": [
             {
-              "name": "DATA_MQTT_TLS_INSTALLED",
-              "description": "Secure data MQTT using installed certificate name/type",
+              "name": "CTRL_MQTT_MTLS",
+              "description": "Control cmd/rsp (MQTT_MTLS)",
               "type": "mqtt",
               "options": {
                 "enableSecurity": true,
                 "endpoint": {
-                  "hostName": "mqtt.example.com",
-                  "port": 8883,
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
                   "protocol": "ssl"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "fxr90-dock01-data-inst",
+                  "clientId": "fxr60-lab-ctrl",
+                  "debug": false,
                   "keepAlive": 60,
-                  "qos": 1,
+                  "qos": 0,
                   "reconnectDelay": 2,
                   "reconnectDelayMax": 60
                 },
                 "publishTopic": [
-                  "site/dock01/tevents"
+                  "fxr60-lab/rsp"
                 ],
-                "subscribeTopic": [],
+                "subscribeTopic": [
+                  "fxr60-lab/cmd"
+                ],
                 "security": {
-                  "installedCertificateName": "DOCK01_CLIENT",
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
                   "installedCertificateType": "client",
                   "keyAlgorithm": "RS256",
                   "keyFormat": "PEM",
                   "verifyHostName": true,
-                  "verifyPeer": true
+                  "verifyPeer": true,
+                  "CACertificateFileLocation": "/data/apps/lab-ca.crt"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT_MTLS",
+              "description": "Tag events (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-data",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/tevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true,
+                  "CACertificateFileLocation": "/data/apps/lab-ca.crt"
                 }
               },
               "additionalOptions": {
@@ -43,6 +89,89 @@
                   "maxEventRetentionTimeInMin": 500,
                   "maxNumEvents": 150000,
                   "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": [
+            {
+              "name": "MGMT_EVENTS_MQTT_MTLS",
+              "description": "Management/heartbeat events (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mevents",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/mevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true,
+                  "CACertificateFileLocation": "/data/apps/lab-ca.crt"
+                }
+              }
+            }
+          ]
+        },
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_MQTT_MTLS",
+              "description": "Management cmd/rsp (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mcmd",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/mrsp"
+                ],
+                "subscribeTopic": [
+                  "fxr60-lab/mcmd"
+                ],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true,
+                  "CACertificateFileLocation": "/data/apps/lab-ca.crt"
                 }
               }
             }

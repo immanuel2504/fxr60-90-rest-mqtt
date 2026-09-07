@@ -1,0 +1,2 @@
+{"received": "2026-09-05T14:18:53", "from": "10.117.229.18", "path": "/tagdata", "body": {"test": "ws-tag-event", "epc": "E280AABBCCDDEEFF11223344"}}
+{"received": "2026-09-05T14:20:28", "from": "10.117.229.18", "path": "/check", "body": {"svc": "systemd-check"}}

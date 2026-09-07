@@ -1,0 +1,5 @@
+app-led 03 - green, solid (flash false), 10 seconds
+RESULT: accepted, HTTP 200
+
+Covers the third enum colour and flash:false.
+GET after: {"status":"NON_DEFAULT"} - still NON_DEFAULT once the 10 s elapsed.

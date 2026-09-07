@@ -1,0 +1,46 @@
+logs PUT 08 - validation probes
+RESULT: 7 of 9 correctly rejected; 2 accepted with side effects
+
+  {}                                                    -> 200
+      Accepted. Its only effect is to reset radioPacketLog to false - see test 07.
+      Arguably should be rejected as an empty payload; compare
+      PUT /cloud/displayConfig, which returns
+      "payload must be a non-empty JSON object" for {}.
+
+  {"components":[{"componentName":"nosuch","level":"INFO"}]}
+      -> 422 {"code":1,"message":"Unsupported component provided"}
+
+  {"components":[{"componentName":"reader_gateway","level":"VERBOSE"}]}
+      -> 422 {"code":1,"message":"Unsupported cloud_agent or reader_gateway level provided"}
+      Correct rejection, but the message does not list the valid values - unlike
+      the radio_control error in test 04, which does. Note the message names
+      "cloud_agent or reader_gateway" together, further suggesting the two are
+      the same component internally (test 02).
+
+  {"components":[{"componentName":"reader_gateway"}]}     (no level)
+      -> 422 {"code":1,"message":"Invalid payload fields"}
+      Matches the schema, which requires both componentName and level.
+
+  {"components":[{"level":"INFO"}]}                       (no componentName)
+      -> 422 {"code":1,"message":"Invalid payload fields"}
+
+  {"components":[{"componentName":"reader_gateway","level":"info"}]}
+      -> 422 "Unsupported cloud_agent or reader_gateway level provided"
+      Level matching is CASE-SENSITIVE. Same as /cloud/timeZone.
+
+  {"radioPacketLog":"true"}                               (string, not boolean)
+      -> 422 {"code":1,"message":"Invalid payload fields"}
+      Type checked.
+
+  {"components":{...}}                                    (object, not array)
+      -> 422 {"code":1,"message":"Invalid payload fields"}
+      Type checked.
+
+  {"components":[]}                                       (empty array)
+      -> 200
+      Accepted as a no-op on components. Reasonable.
+
+The three "Invalid payload fields" responses are generic - they do not say which
+field was wrong. For a two-field object that is tolerable, but the endpoint is
+inconsistent with itself: it produces a precise, enumerated message for a bad
+radio_control level and a generic one for everything else.

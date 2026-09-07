@@ -1,0 +1,27 @@
+{
+  "command": "get_mode",
+  "command_id": "req-get-mode-CONVEYOR",
+  "payload": {
+    "antennaStopCondition": {
+      "type": "DURATION",
+      "value": 100
+    },
+    "antennas": [
+      1
+    ],
+    "query": {
+      "tagPopulation": 200
+    },
+    "tagMetaData": [
+      "ANTENNA",
+      "RSSI",
+      "CHANNEL",
+      "SEEN_COUNT"
+    ],
+    "transmitPower": [
+      30
+    ],
+    "type": "CONVEYOR"
+  },
+  "response": "success"
+}

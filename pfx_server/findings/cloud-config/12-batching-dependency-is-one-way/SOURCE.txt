@@ -1,0 +1,4 @@
+Copied verbatim from:
+  rest/cloud-config-PUT/13-clear-data-endpoint-SUCCESS
+
+That folder is the canonical record of this test; this is a copy kept beside the finding so the evidence travels with it.

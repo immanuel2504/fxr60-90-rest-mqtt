@@ -1,0 +1,53 @@
+bleConfig 04 - spec example "enable_with_protocols", VERBATIM
+RESULT: *** REJECTED, HTTP 422 *** - the spec's own example does not work
+
+  {"code":3,"message":"CS:'setBleConfig' failed, Reason: Invalid BLE
+   configuration: unknown or unexpected field in request payload, refer to API
+   documentation for supported fields"}
+
+This is the most detailed example in the bleConfig set - all four protocols with
+filters, plus all three additionalFilters - and it is rejected as sent.
+
+ROOT CAUSE ISOLATED BY BISECTION: the `generic` protocol's filter fields are
+CAPITALISED in the example; the firmware requires them LOWERCASE.
+
+Each protocol block was sent alone, with its filters, to find the offender:
+
+  iBeacon + filters        -> 200
+  altBeacon + filters      -> 200
+  eddystone (URL frame)    -> 200
+  generic + filters        -> 422    <-- the culprit
+  additionalFilters (all 3)-> 200
+
+Then each generic filter field alone:
+
+  {"Address":"7E:41:25:1E:D5:16"}   -> 422       {"address":...}     -> 200
+  {"AddressType":"random"}          -> 422       {"addressType":...} -> 200
+  {"Name":"BLEPeripheralApp"}       -> 422       {"name":...}        -> 200
+  {"Alias":"BLEPeripheralApp"}      -> 422       {"alias":...}       -> 200
+
+  {"ble":{...,"protocols":{"generic":{"enabled":true}}}}  (no filters) -> 200
+
+So all four capitalised names are rejected and all four lowercase equivalents are
+accepted. Nothing else in the example is at fault.
+
+WHY THE SPEC LIKELY HAS IT WRONG: the reader's BLE_DATA OUTPUT uses capitalised
+names. A captured event contains:
+
+  "Address": "F7:17:BB:3A:7B:A1", "AddressType": "random",
+  "Alias": "F7-17-BB-3A-7B-A1",   "RSSI": -65
+
+The example appears to have been written by copying output field names into an
+input filter, where the API expects lowercase. Note the schema itself sets
+"additionalProperties": false on the generic filter object, which is why the
+capitalised keys are rejected outright rather than ignored.
+
+THE ERROR MESSAGE IS ALSO A PROBLEM. "unknown or unexpected field in request
+payload" is technically accurate here - but it names neither the field nor the
+protocol block, so locating it took a full bisection. The same message is
+returned by PUT /cloud/start for a completely different cause (BLE disabled),
+where it is outright misleading. See ../../START_STOP_TEST_REPORT.md finding 2.
+
+CORRECTED VERSION: see
+../04b-enable_with_protocols-CORRECTED-SUCCESS/ - lowercase the four generic
+field names and the entire example is accepted.

@@ -10,7 +10,7 @@ Omit the request body (or send `{}`) to return **all** interfaces. To return one
 { "interface": "eth0" }
 ```
 
-Supported `interface` values: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`. `wan0` is **FXR90 only**.
+Supported `interface` values: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `all`. `wan0` is **FXR90 only**. `blescan` is not a valid value. `all` returns every interface (same as omitting the field).
 
 This endpoint returns:
 
@@ -20,7 +20,6 @@ This endpoint returns:
 - Bluetooth PAN (`bnep0`) configuration and status
 - Cellular (`wan0`) configuration and status — **FXR90 only**
 - Wi-Fi hotspot (`uap0`) configuration, connected clients, and status
-- BLE scan (`blescan`) when requested
 
 ## 2. Endpoint Details
 

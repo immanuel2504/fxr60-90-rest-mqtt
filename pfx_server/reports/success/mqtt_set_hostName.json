@@ -1,0 +1,12 @@
+{
+  "command": "set_hostName",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 250.6,
+  "note": "",
+  "request_id": "test-set_hostName-8b0e82db40",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_hostName\", \"command_id\": \"test-set_hostName-8b0e82db40\", \"payload\": {}, \"response\": \"success\"}"
+}

@@ -1,0 +1,5 @@
+timeZone 06 - empty JSON object
+RESULT: rejected, HTTP 422
+{"code":1,"message":"Invalid payload for set Time Zone api. Expects 'timeZone'"}
+
+The message names the expected field.

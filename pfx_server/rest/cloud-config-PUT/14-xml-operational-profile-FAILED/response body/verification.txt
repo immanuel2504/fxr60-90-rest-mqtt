@@ -1,0 +1,12 @@
+FAILED - but with a TIMEOUT, not a schema rejection.
+
+  {"code":6,"message":"Profile configuration failed: Timeout: failed to receive Core Service response"}  HTTP 422
+
+Sent the spec's xml example verbatim - a 55-character placeholder:
+  <RFID><!-- Cloud Connect operational profile --></RFID>
+
+Note code 6 and the wording 'Timeout: failed to receive Core Service response' - a different failure class from the code 1/code 3 schema errors seen elsewhere. The request reached the Core Service and no reply came back.
+
+CANNOT CONCLUDE the xml field is broken. The spec ships only a comment-only placeholder with no real profile content, so this may simply be an empty/invalid profile that the Core Service cannot process, rather than a fault in the API. Testing properly needs a real RFID operational profile document, which the spec does not provide.
+
+Worth raising: the spec's only xml example cannot be used as-is.

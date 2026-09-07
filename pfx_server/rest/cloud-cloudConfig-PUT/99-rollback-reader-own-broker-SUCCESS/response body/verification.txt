@@ -1,0 +1,7 @@
+RECOVERY CONFIG - used successfully several times.
+
+Returns the reader to its own built-in broker at 10.117.229.9:1883. Needed whenever a config is ACCEPTED but cannot connect, which drops the reader off both the new endpoint and the old one.
+
+Applied via the reader's local web UI (ENDPOINT tab -> PUBLISH), which stays reachable because every config here sets enableLocalRest: true. That is what made recovery possible each time MQTT was lost.
+
+One earlier version of this file had additionalOptions on management.event, which the schema permits only on data.event - it would have been rejected. Fixed.

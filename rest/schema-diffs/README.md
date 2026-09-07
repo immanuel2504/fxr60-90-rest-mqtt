@@ -6,7 +6,8 @@ One file per operation that still differs between developer firmware spec and th
 
 | File | Role |
 |---|---|
-| `rest/openAPISpec 10.yaml` | Developer spec |
+| `rest/openAPISpec 11.yaml` | Latest developer spec (September 2026) |
+| `rest/openAPISpec 10.yaml` | Previous developer spec |
 | `rest/RestDeveloperfile.yaml` | Current docs source |
 
 Nothing in these per-endpoint notes has been merged unless a row in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md) is marked **Final**.

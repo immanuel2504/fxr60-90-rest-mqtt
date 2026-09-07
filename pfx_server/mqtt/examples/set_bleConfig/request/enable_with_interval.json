@@ -1,0 +1,9 @@
+{
+  "command": "set_bleConfig",
+  "payload": {
+    "ble": {
+      "enable": true,
+      "scanIntervalSec": 5
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "broker": "10.117.229.9",
+    "port": 1883,
+    "cmd_topic": "fxr60-lab/mcmd",
+    "rsp_topic": "fxr60-lab/mrsp",
+    "tiers": [
+      "read"
+    ],
+    "started": "2026-09-02 02:49:48"
+  },
+  "results": [
+    {
+      "command": "get_supportedRegionList",
+      "channel": "management",
+      "source": "request/default.json",
+      "tier": "read",
+      "verdict": "PASS",
+      "ms": 50.2,
+      "note": "",
+      "request_id": "test-get_supportedRegionList-e4a530da79",
+      "response": "success",
+      "response_preview": "{\"command\": \"get_supportedRegionList\", \"command_id\": \"test-get_supportedRegionList-e4a530da79\", \"payload\": {\"SupportedRegions\": [\"United States/Canada\"]}, \"response\": \"success\"}"
+    },
+    {
+      "command": "get_supportedStandardList",
+      "channel": "management",
+      "source": "request/default.json",
+      "tier": "read",
+      "verdict": "PASS",
+      "ms": 50.2,
+      "note": "",
+      "request_id": "test-get_supportedStandardList-f320bdaaab",
+      "response": "success",
+      "response_preview": "{\"command\": \"get_supportedStandardList\", \"command_id\": \"test-get_supportedStandardList-f320bdaaab\", \"payload\": {\"SupportedStandards\": [{\"StandardName\": \"US_FCC_15\", \"channeldata\": [\"915750\", \"915250\", \"903250\", \"926750\", \"926250\", \"904250\", \"927250\", \"920250\", \"919250\", \"909250\", \"918750\", \"917750\", \"905250\", \"904750\", \"925250\", \"921750\", \"914750\", \"906750\", \"913750\", \"922250\", \"911250\", \"911750\", \"903750\", \"908750\", \"905750\", \"912250\", \"906250\", \"917250\", \"914250\", \"907250\", \"918250\", \"916250\","
+    }
+  ]
+}

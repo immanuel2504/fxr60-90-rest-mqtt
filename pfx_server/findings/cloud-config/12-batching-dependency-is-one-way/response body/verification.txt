@@ -1,0 +1,9 @@
+CONFIRMED WORKING. Data endpoint cleared.
+
+  data connections after: count 0, []
+
+Sent the spec's clear_data shape verbatim: endpointConfig.data.event.connections = [] with NO batching and NO retention.
+
+NOTABLE: this refines finding 1. batching/retention are rejected when sent WITHOUT endpointConfig, but endpointConfig can be sent without batching/retention. The dependency runs one way only - batching/retention require endpointConfig, not the reverse.
+
+Useful as a cleanup step between endpoint tests.

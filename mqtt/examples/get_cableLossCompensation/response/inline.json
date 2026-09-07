@@ -4,19 +4,19 @@
   "payload": {
     "1": {
       "cableLength": 10,
-      "cableLossPerHundredFt": 10
+      "cableLossPerHundredFt": 8
     },
     "2": {
       "cableLength": 10,
-      "cableLossPerHundredFt": 10
+      "cableLossPerHundredFt": 8
     },
     "3": {
       "cableLength": 10,
-      "cableLossPerHundredFt": 10
+      "cableLossPerHundredFt": 8
     },
     "4": {
       "cableLength": 10,
-      "cableLossPerHundredFt": 10
+      "cableLossPerHundredFt": 8
     }
   },
   "response": "success"

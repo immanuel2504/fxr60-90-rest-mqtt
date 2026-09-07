@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "\"set_logs\" Failed to apply. Description: unsuccessful rc response: Failure: TRACE is not an acceptable value for level (acceptable values are: ERROR, WARNING, INFO, DEBUG)"
+}

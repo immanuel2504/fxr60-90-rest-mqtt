@@ -1,0 +1,16 @@
+{
+  "command": "set_logs",
+  "payload": {
+    "components": [
+      {
+        "componentName": "radio_control",
+        "level": "DEBUG"
+      },
+      {
+        "componentName": "cloud_agent",
+        "level": "DEBUG"
+      }
+    ],
+    "radioPacketLog": true
+  }
+}

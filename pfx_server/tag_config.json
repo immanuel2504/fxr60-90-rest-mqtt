@@ -1,0 +1,6 @@
+{
+  "operation_order": {
+    "Control": ["get_mode", "set_mode", "start", "stop", "get_preSelection", "set_preSelection"],
+    "ImpinjGen2X": ["get_impinjGen2X", "set_impinjGen2X"]
+  }
+}

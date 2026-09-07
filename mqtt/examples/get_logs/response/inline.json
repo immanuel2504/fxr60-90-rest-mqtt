@@ -2,7 +2,6 @@
   "command": "get_logs",
   "command_id": "req-get-logs",
   "payload": {
-    "radioPacketLog": true,
     "components": [
       {
         "componentName": "radio_control",
@@ -10,9 +9,10 @@
       },
       {
         "componentName": "reader_gateway",
-        "level": "DEBUG"
+        "level": "INFO"
       }
-    ]
+    ],
+    "radioPacketLog": false
   },
   "response": "success"
 }

@@ -35,7 +35,7 @@
     "set_gpo": "Gpio",
     "get_gpi_status": "Gpio",
     "get_region": "Region",
-    "get_SupportedRegionList": "Region",
+    "get_supportedRegionList": "Region",
     "set_region": "Region",
     "get_mode": "Control",
     "set_mode": "Control",
@@ -160,7 +160,7 @@
     "Region": [
       "get_region",
       "set_region",
-      "get_SupportedRegionList",
+      "get_supportedRegionList",
       "get_supportedStandardList"
     ],
     "Logs": [

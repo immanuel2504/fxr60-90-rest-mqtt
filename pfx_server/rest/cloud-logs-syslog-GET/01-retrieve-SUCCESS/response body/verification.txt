@@ -1,0 +1,58 @@
+syslog GET - retrieve the log
+RESULT: HTTP 200, 13364 bytes
+
+RESPONSE SHAPE - undocumented, and identical across all four log GETs:
+
+  {"binary": "<base64>", "filename": "syslog.tar.gz"}
+
+The spec defines NO response schema for this operation - it documents only the
+path, the operationId and a summary. The shape above is the observed response.
+
+VERIFIED: the base64 decodes to a valid gzip (magic bytes 1f8b) and opens as a
+tar archive containing:
+
+    messages  72394 bytes
+
+The system log (rsyslog). One member, "messages", 72 KB of plain-text
+syslog lines. First line:
+
+  2026-09-05T17:00:01.166929+00:00 FXR609BE34A rsyslogd: [origin
+  software="rsyslogd" swVersion="8.2402.0" x-pid="1482662"
+  x-info="https://www.rsyslog.com"]
+
+This log is purgeable - see ../cloud-logs-syslog-DELETE/.
+
+HOW TO EXTRACT:
+
+  curl -sk -H "Authorization: Bearer $TOKEN" \
+    https://10.233.48.36/cloud/logs/syslog \
+  | python3 -c "
+import sys,json,base64
+d=json.load(sys.stdin)
+open(d['filename'],'wb').write(base64.b64decode(d['binary']))
+print('wrote', d['filename'])"
+  tar tzf syslog.tar.gz
+
+Auth is enforced - HTTP 401 without a bearer token.
+
+NOTE ON PARAMETERS: the spec declares none for this operation, and none were
+found. There is no documented way to filter by time range, severity or line
+count, or to page through a large log - RcLog returns ~10.5 MB uncompressed as a
+single response.
+
+STORED EVIDENCE - the FULL response is here, not a summary:
+
+  response body/response.json     the complete response as received, byte for
+                                  byte, including the entire base64 `binary`
+                                  value. Nothing is elided.
+  response body/decoded/          the archive written out from that base64,
+                                  plus every member small enough to keep in the
+                                  repo, extracted so the log text is directly
+                                  readable
+  response body/decoded/MANIFEST.txt
+                                  member list with sizes, the gzip magic check,
+                                  and which members were too large to extract
+
+Members over ~200 KB are left inside the .tar.gz rather than duplicated - the
+radio_control.log.N rotations are ~5 MB each and the packet logs 1 MiB each.
+Extract them with `tar xzf <archive>` from the decoded/ directory.

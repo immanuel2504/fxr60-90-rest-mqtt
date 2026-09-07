@@ -1,4 +1,4 @@
-Retrieves the reader's network configuration. Omit the body (or send `{}`) for all interfaces. Send `{"interface": "eth0"}` (or `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`) for one interface.
+Retrieves the reader's network configuration. Omit the body (or send `{}` / `{"interface": "all"}`) for all interfaces. Send `{"interface": "eth0"}` (or `mlan0`, `bnep0`, `wan0`, `uap0`) for one interface.
 
 > [!warning]
 > Cellular interface `wan0` is supported on **FXR90 only**. It is not present on FXR60. On FXR60, expect interfaces such as `eth0`, `mlan0`, `bnep0`, and `uap0` only.

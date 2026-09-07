@@ -1,0 +1,31 @@
+[
+  {
+    "step": 1,
+    "url": "https://10.117.229.15/testuser-2026.pfx",
+    "note": "No explicit port. Known-working baseline, confirmed earlier this session (install succeeded, verified via get_certificates).",
+    "result": "success"
+  },
+  {
+    "step": 2,
+    "url": "https://192.168.1.41:8443/certificates/sample.pfx",
+    "note": "Different host AND non-standard explicit port -- two variables changed at once.",
+    "response": {
+      "command": "set_updateCertificate",
+      "command_id": "req-set-update-cert",
+      "payload": { "code": 3, "message": "CS:'Add/Refresh certificate' failed,Reason: INVALID IPADDR OR DOMAIN NAME" },
+      "response": "failure"
+    }
+  },
+  {
+    "step": 3,
+    "url": "https://10.117.229.15:443/testuser-2026.pfx",
+    "note": "Isolation test: same host, same file, same credentials as the step-1 success -- only difference is the explicit ':443' port suffix (the correct, default HTTPS port).",
+    "response": {
+      "command": "set_updateCertificate",
+      "command_id": "req-set-update-cert",
+      "payload": { "code": 3, "message": "CS:'Add/Refresh certificate' failed,Reason: INVALID IPADDR OR DOMAIN NAME" },
+      "response": "failure"
+    },
+    "conclusion": "Confirms the failure is caused specifically by the presence of an explicit port number in the url field -- not the host, not the port value being non-standard, not the file, not the credentials. The reader's URL parser rejects any 'host:port' form, even for the correct default port."
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "command": "set_timeZone",
+  "payload": {
+    "timeZone": "Kolkata"
+  }
+}

@@ -1,0 +1,24 @@
+region 09 - optional channeldata against a non-channel-selectable standard
+RESULT: accepted, HTTP 200 - but the value is SILENTLY IGNORED
+
+supportedStandardList reports for US_FCC_15:
+    "isChannelSelectable": "false"
+
+Sent a 3-channel subset of the 50 channels the standard already uses.
+
+after: nchan=50, first3=['915750','915250','903250']
+
+Still all 50 channels. The list was not narrowed to 3. (The first three happen to
+match what was sent because they are already the first three of the standard's
+own list - which is exactly why the full count is the thing to check, not the
+first few entries.)
+
+Same defect class as test 08: an optional field that cannot be applied is
+accepted with HTTP 200 and silently dropped.
+
+Also note the type mismatch. The schema declares:
+    "channeldata": {"type":"array","items":{"type":"integer"}}
+but GET /cloud/region returns channelData as an array of STRINGS
+(["915750","915250",...]), and with a different capitalisation - 'channeldata' on
+input, 'channelData' on output. So the field cannot be round-tripped without
+transforming both its name and its element type.

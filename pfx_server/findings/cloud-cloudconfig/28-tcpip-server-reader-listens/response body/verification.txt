@@ -1,0 +1,16 @@
+ACCEPTED (HTTP 200), and it CONFIRMS the reader is the server.
+
+Also disproves the pre-test prediction: options.tcpipport is absent from the documented schema, yet was accepted and stored verbatim (confirmed via GET /cloud/config).
+
+KEY RESULT - the reader opened a listening socket:
+  before: nc -zv 10.233.48.36 8081  -> closed
+  after : nc -zv 10.233.48.36 8081  -> succeeded
+
+So for type tcpip-server the READER LISTENS and clients connect to it - the reverse of every other connection type. The spec's example implies this by having a port and no hostname, but never states it. Confirmed empirically here.
+
+receivers/tcpip_client.py connected to 10.233.48.36:8081 successfully and held the connection. No tag data arrived because no inventory was running.
+
+connectionStatus reported 'disconnected' with an empty connectionError even while the port was open and accepting connections - so for this type the field appears to mean 'no data flowing' rather than 'not listening'.
+
+To complete: start an inventory, then
+  .venv/bin/python receivers/tcpip_client.py --host 10.233.48.36 --port 8081

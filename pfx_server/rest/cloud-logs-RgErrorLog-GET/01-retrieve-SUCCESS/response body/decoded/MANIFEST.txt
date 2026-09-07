@@ -1,0 +1,18 @@
+Archive:  rgErrorLog.tar.gz
+Response: 3856 bytes of JSON
+base64:   3812 chars -> 2857 bytes gzip
+gzip magic: 1f8b  (valid)
+
+Members:
+  error-2026-09-05T16:03:24-0.txt  8886 bytes
+  error-2026-09-05T15:20:38-0.txt  1323 bytes
+  error-2026-09-05T15:08:37-0.txt  352 bytes
+  error-2026-09-05T15:00:44-0.txt  789 bytes
+  error-2026-09-05T14:58:51-0.txt  546 bytes
+  error-2026-09-05T14:55:36-0.txt  184 bytes
+
+6 member(s). Files small enough to keep are extracted
+alongside this manifest; the .tar.gz holds all of them.
+
+Re-extract everything with:
+  tar xzf rgErrorLog.tar.gz

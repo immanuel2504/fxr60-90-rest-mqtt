@@ -1,0 +1,4 @@
+{
+  "code": 1,
+  "message": "Invalid global batching payload fields: Batching configuration error: Incorrect number of batching objects for the given endpoints"
+}

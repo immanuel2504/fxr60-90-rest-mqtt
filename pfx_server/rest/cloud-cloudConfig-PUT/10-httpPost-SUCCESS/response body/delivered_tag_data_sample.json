@@ -1,0 +1,62 @@
+{
+  "note": "One real POST delivered by the reader to the httpPost receiver, captured verbatim. Body truncated to the first 3 tag events.",
+  "received": "2026-09-05T15:21:43",
+  "from": "10.233.48.36",
+  "path": "/tagdata",
+  "headers": {
+    "Host": "10.117.229.18:9443",
+    "Accept": "*/*",
+    "Content-Type": "application/json",
+    "Content-Length": "3854"
+  },
+  "body_first_3_of_16": [
+    {
+      "data": {
+        "CRC": "8a0a",
+        "PC": "3000",
+        "antenna": 1,
+        "channel": 925.25,
+        "eventNum": 154,
+        "format": "epc",
+        "idHex": "20004035a880c80000123be9",
+        "peakRssi": -62,
+        "phase": 28.26868438720703,
+        "reads": 1
+      },
+      "timestamp": "2026-09-05T15:21:41.284+0000",
+      "type": "CUSTOM"
+    },
+    {
+      "data": {
+        "CRC": "4a53",
+        "PC": "3000",
+        "antenna": 1,
+        "channel": 925.25,
+        "eventNum": 155,
+        "format": "epc",
+        "idHex": "41544035a880c80000123bea",
+        "peakRssi": -58,
+        "phase": -20.84719467163086,
+        "reads": 1
+      },
+      "timestamp": "2026-09-05T15:21:41.287+0000",
+      "type": "CUSTOM"
+    },
+    {
+      "data": {
+        "CRC": "8a0a",
+        "PC": "3000",
+        "antenna": 1,
+        "channel": 925.25,
+        "eventNum": 156,
+        "format": "epc",
+        "idHex": "20004035a880c80000123be9",
+        "peakRssi": -62,
+        "phase": 28.25769805908203,
+        "reads": 1
+      },
+      "timestamp": "2026-09-05T15:21:41.289+0000",
+      "type": "CUSTOM"
+    }
+  ]
+}

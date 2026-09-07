@@ -1,0 +1,15 @@
+REJECTED - batching and retention CANNOT be sent without endpointConfig.
+
+Sent READER-GATEWAY with batching + retention only (one object each):
+  {"code":1,"message":"Invalid global batching payload fields: Batching configuration error: Incorrect number of batching objects for the given endpoints"}
+
+Retried with retention alone - same class of error:
+  "retention configuration error: Incorrect number of retention objects for the given endpoints"
+
+The count was not the problem. At the time the reader had exactly ONE data endpoint (DATA_HTTP), its stored batching had exactly ONE object, and one object was sent.
+
+ROOT CAUSE: the reader counts batching/retention objects against the endpoints present IN THE SAME REQUEST, not against the stored configuration. With no endpointConfig in the request there are zero endpoints, so any number of batching objects is 'incorrect'.
+
+PROVEN: the identical batching and retention values were accepted (HTTP 200) as soon as endpointConfig was included alongside them - see test 01, which applied batching [{8192, 1000}] and retention [{120, 50000, 200}] successfully.
+
+CONTRADICTS THE SCHEMA, which states READER-GATEWAY 'must contain at least one of: endpointConfig, batching, retention, or managementEventConfig' - implying batching or retention alone is valid. In practice endpointConfig is mandatory whenever either is present.

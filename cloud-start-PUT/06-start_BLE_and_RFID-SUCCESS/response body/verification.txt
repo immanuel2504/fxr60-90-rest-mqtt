@@ -1,0 +1,19 @@
+start 06 - spec example "start_BLE_and_RFID"
+RESULT: HTTP 200 - CONFIRMED, and BOTH data streams proven
+
+  before: radio=inactive  ble=stopped
+  after:  radio=active    ble=running      <- both started by one call
+
+DATA DELIVERY PROVEN. Tag data was routed to the local MQTT broker
+(fxr60-lab/tevents) and captured during a 15 s combined scan:
+
+  624 events total
+    BLE_DATA : 558
+    CUSTOM   :  66      (RFID tag reads)
+  unique RFID tags: 8
+
+So this is not merely two status flags flipping - one start call genuinely drove
+both radios and both produced real data on the same endpoint, distinguishable by
+the "type" field.
+
+Requires ble.enable = true, same as test 05.

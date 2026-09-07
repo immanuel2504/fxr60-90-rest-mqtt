@@ -1,0 +1,5 @@
+gpo 05 - port above the documented maximum (schema: maximum 4)
+RESULT: rejected, HTTP 422, {"code":1,"message":"Invalid GPO pin"}
+
+Matches the schema's 1-4 range. The schema notes "device-specific maximum
+applies"; on this reader the maximum is 4.

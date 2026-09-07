@@ -43,10 +43,3 @@
 |---|---|
 | **Example name** | `start_Global_BLE_and_RFID` |
 | **Summary title** | `Global BLE and RFID` |
-
-### `PUT/start_Targeted.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `start_Targeted` |
-| **Summary title** | `Targeted per data endpoint` |

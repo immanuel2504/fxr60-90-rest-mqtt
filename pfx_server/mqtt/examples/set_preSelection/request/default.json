@@ -1,0 +1,6 @@
+{
+  "command": "set_preSelection",
+  "payload": {
+    "preSelection": true
+  }
+}

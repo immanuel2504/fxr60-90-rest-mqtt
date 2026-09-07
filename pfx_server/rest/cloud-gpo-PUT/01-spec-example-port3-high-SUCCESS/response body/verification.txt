@@ -1,0 +1,10 @@
+gpo 01 - spec example verbatim: {"port":3,"state":true}
+RESULT: accepted, HTTP 200, CONFIRMED by read-back
+
+GET /cloud/gpo before: {"1":"HIGH","2":"LOW","3":"LOW","4":"LOW"}
+GET /cloud/gpo after:  {"1":"HIGH","2":"LOW","3":"HIGH","4":"LOW"}
+
+Pin 3 LOW -> HIGH, no other pin touched.
+
+This is the only endpoint of the six in this batch with a genuine read-back of
+what was written, which makes it fully verifiable over the API.

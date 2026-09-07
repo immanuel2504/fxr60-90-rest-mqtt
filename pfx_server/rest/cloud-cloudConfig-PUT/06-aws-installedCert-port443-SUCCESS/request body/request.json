@@ -1,0 +1,204 @@
+{
+  "method": "PUT",
+  "url": "/cloud/cloudConfig",
+  "reader": "10.117.229.9 (reader app 5.0.5)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Real admin token minted at run time via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "CTRL_AWS",
+              "description": "Control cmd/rsp through AWS IoT Core",
+              "type": "mqtt-AWS",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR60-LAB-CTRL",
+                  "keepAlive": 30,
+                  "qos": 1,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30,
+                  "debug": false,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
+                },
+                "publishTopic": [
+                  "FXR60-LAB/rsp"
+                ],
+                "subscribeTopic": [
+                  "FXR60-LAB/cmd"
+                ],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-AWS-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_AWS",
+              "description": "Tag events to AWS IoT Core",
+              "type": "mqtt-AWS",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR60-LAB-DATA",
+                  "keepAlive": 20,
+                  "qos": 0,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30,
+                  "debug": false,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
+                },
+                "publishTopic": [
+                  "datacollection_aws/FXR60-LAB"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-AWS-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": [
+            {
+              "name": "MGMT_EVENTS_AWS",
+              "description": "Management/heartbeat events to AWS IoT Core",
+              "type": "mqtt-AWS",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR60-LAB-MEVENTS",
+                  "keepAlive": 30,
+                  "qos": 1,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30,
+                  "debug": false,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
+                },
+                "publishTopic": [
+                  "FXR60-LAB/mevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-AWS-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        },
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_AWS",
+              "description": "Management cmd/rsp through AWS IoT Core",
+              "type": "mqtt-AWS",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR60-LAB-MCMD",
+                  "keepAlive": 30,
+                  "qos": 1,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30,
+                  "debug": false,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
+                },
+                "publishTopic": [
+                  "FXR60-LAB/mrsp"
+                ],
+                "subscribeTopic": [
+                  "FXR60-LAB/mcmd"
+                ],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-AWS-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

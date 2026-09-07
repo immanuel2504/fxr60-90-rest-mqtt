@@ -1,0 +1,44 @@
+start 05 - spec example "start_BLE_only"
+RESULT: HTTP 200 - but ONLY after enabling BLE first
+
+*** UNDOCUMENTED PREREQUISITE ***
+
+FIRST ATTEMPT, with the reader's default bleConfig (ble.enable = false):
+
+  PUT /cloud/start {"scanType":["ble"]}
+  -> HTTP 422
+  {"code":3,"message":"CS:'startBleScan' failed, Reason: Invalid BLE
+   configuration: unknown or unexpected field in request payload, refer to API
+   documentation for supported fields"}
+
+THE ERROR MESSAGE IS WRONG AND COST TIME. It says "unknown or unexpected field
+in request payload" - but the payload is the spec's own example, it contains
+exactly one field, and that field matches the schema. Nothing is unknown or
+unexpected about it. The real cause is that BLE scanning is disabled in
+bleConfig, which the message never hints at.
+
+FIX - enable BLE first:
+
+  PUT /cloud/bleConfig
+  {"ble":{"enable":true,"scanIntervalSec":1,"additionalFilters":{},
+   "protocols":{"altBeacon":{"enabled":true,"filters":[]},
+                "eddystone":{"enabled":true,"filters":[]},
+                "generic":{"enabled":true,"filters":[]},
+                "iBeacon":{"enabled":true,"filters":[]}}}}
+  -> 200, read back: ble.enable = true
+
+(The full object is required - a minimal {"ble":{"enable":true}} is rejected.
+See ../cloud-bleConfig/ for that separate finding.)
+
+SECOND ATTEMPT:
+
+  PUT /cloud/start {"scanType":["ble"]}
+  -> HTTP 200
+  before: radio=inactive  ble=stopped
+  after:  radio=inactive  ble=running      <- BLE started, RFID untouched
+
+Note radio stayed INACTIVE. BLE-only correctly does not start the RFID radio,
+which confirms scanType is honoured per type rather than starting everything.
+
+ASK: state the ble.enable prerequisite in the /cloud/start documentation, and
+fix the error message to name the real cause.

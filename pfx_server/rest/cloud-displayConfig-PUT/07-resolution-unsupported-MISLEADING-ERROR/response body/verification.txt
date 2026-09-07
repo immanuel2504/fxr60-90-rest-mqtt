@@ -1,0 +1,20 @@
+displayConfig 07 - a well-formed but unsupported resolution
+RESULT: rejected, HTTP 422 - with a MISLEADING message
+
+{"code":3,"message":"CS:'setDisplayConfig' failed, Reason: Missing required parameters"}
+
+"9999x9999" passes the format check (it contains 'x', so the code-1 validator in
+test 06 lets it through) and then fails at the Core Service, which reports
+"Missing required parameters".
+
+Nothing is missing. The payload's problem is an unsupportable resolution.
+
+Note this payload also omits "enable", which alone would produce the same message
+(test 03/04) - so strictly the two causes cannot be separated from this response.
+That is itself the finding: "Missing required parameters" is returned for at least
+two unrelated problems, so it cannot be acted on. Compare the excellent code-1
+messages in test 06.
+
+Suggested: report unsupported resolutions distinctly, e.g. "resolution
+9999x9999 is not supported; supported: ..." - and ideally expose the supported
+list, which no GET currently provides.

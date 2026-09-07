@@ -1,0 +1,12 @@
+{
+  "command": "set_autostartUserapp",
+  "channel": "management",
+  "source": "request/autostartUserapp.json",
+  "tier": "write",
+  "verdict": "WARN",
+  "ms": 50.2,
+  "note": "response='failure'",
+  "request_id": "test-set_autostartUserapp-81163495f9",
+  "response": "failure",
+  "response_preview": "{\"command\": \"set_autostartUserapp\", \"command_id\": \"test-set_autostartUserapp-81163495f9\", \"payload\": {\"code\": 3, \"message\": \"CS:'autostartUserAppRsp' failed,Reason: APP not found\"}, \"response\": \"failure\"}"
+}

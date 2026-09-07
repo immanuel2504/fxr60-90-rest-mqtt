@@ -54,6 +54,8 @@ Key fields to check in the response:
 | `ble.scanState` | Is the value `running`? | Confirms whether the BLE scanner is currently active (`running`) or `stopped`. |
 | `ble.scanStartTime` | When did the current scan start? | ISO 8601 timestamp marking when BLE scanning last started. |
 | `ble.beaconCounts` | Are advertisements being seen? | Per-protocol counts (`iBeacon`, `altBeacon`, `eddystone`, `generic`, `total`) confirm beacons are being detected in the current scan window. |
+| `impinjGen2X.feature` | Which Gen2X object is loaded (`fastID`, `tagProtect`, `tagFocus`, `tagQuieting`, or `none`)? | Names the last saved feature. `none` after stop or when Gen2X is not running. |
+| `impinjGen2X.isActive` | Is a Gen2X config running in this inventory session? | `true` means Gen2X was applied on this start. It does **not** mean FastID or TagFocus is switched on. `{"fastID":{"enabled":false}}` can still show `feature: fastID` and `isActive: true`. Use `GET /cloud/impinjGen2X` to read `enabled`. |
 
 ## 4. BLE Status Fields
 

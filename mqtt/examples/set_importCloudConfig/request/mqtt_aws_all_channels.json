@@ -14,28 +14,32 @@
               "options": {
                 "enableSecurity": true,
                 "endpoint": {
-                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                  "port": 8883,
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
                   "protocol": "ssl"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "FXR90-LAB-CTRL",
+                  "clientId": "FXR60-LAB-CTRL",
+                  "debug": false,
                   "keepAlive": 30,
                   "qos": 1,
                   "reconnectDelay": 1,
-                  "reconnectDelayMax": 30
+                  "reconnectDelayMax": 30,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
                 },
                 "publishTopic": [
-                  "FXR90-LAB/rsp"
+                  "FXR60-LAB/rsp"
                 ],
                 "subscribeTopic": [
-                  "FXR90-LAB/cmd"
+                  "FXR60-LAB/cmd"
                 ],
                 "security": {
-                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                  "privateKeyFileLocation": "/data/aws-pvt.key",
-                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "CACertificateFileLocation": "/data/apps/AmazonRootCA1.pem",
+                  "privateKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-private.pem.key",
+                  "publicKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-certificate.pem.crt",
                   "keyAlgorithm": "RS256",
                   "keyFormat": "PEM",
                   "verifyHostName": true,
@@ -56,26 +60,30 @@
               "options": {
                 "enableSecurity": true,
                 "endpoint": {
-                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                  "port": 8883,
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
                   "protocol": "ssl"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "FXR90-LAB-DATA",
+                  "clientId": "FXR60-LAB-DATA",
+                  "debug": false,
                   "keepAlive": 20,
                   "qos": 0,
                   "reconnectDelay": 1,
-                  "reconnectDelayMax": 30
+                  "reconnectDelayMax": 30,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
                 },
                 "publishTopic": [
-                  "datacollection_aws/FXR90-LAB"
+                  "datacollection_aws/FXR60-LAB"
                 ],
                 "subscribeTopic": [],
                 "security": {
-                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                  "privateKeyFileLocation": "/data/aws-pvt.key",
-                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "CACertificateFileLocation": "/data/apps/AmazonRootCA1.pem",
+                  "privateKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-private.pem.key",
+                  "publicKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-certificate.pem.crt",
                   "keyAlgorithm": "RS256",
                   "keyFormat": "PEM",
                   "verifyHostName": true,
@@ -103,37 +111,34 @@
               "options": {
                 "enableSecurity": true,
                 "endpoint": {
-                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                  "port": 8883,
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
                   "protocol": "ssl"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "FXR90-LAB-MEVENTS",
+                  "clientId": "FXR60-LAB-MEVENTS",
+                  "debug": false,
                   "keepAlive": 30,
                   "qos": 1,
                   "reconnectDelay": 1,
-                  "reconnectDelayMax": 30
+                  "reconnectDelayMax": 30,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
                 },
                 "publishTopic": [
-                  "FXR90-LAB/mevents"
+                  "FXR60-LAB/mevents"
                 ],
                 "subscribeTopic": [],
                 "security": {
-                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                  "privateKeyFileLocation": "/data/aws-pvt.key",
-                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "CACertificateFileLocation": "/data/apps/AmazonRootCA1.pem",
+                  "privateKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-private.pem.key",
+                  "publicKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-certificate.pem.crt",
                   "keyAlgorithm": "RS256",
                   "keyFormat": "PEM",
                   "verifyHostName": true,
                   "verifyPeer": true
-                }
-              },
-              "additionalOptions": {
-                "retention": {
-                  "maxEventRetentionTimeInMin": 500,
-                  "maxNumEvents": 150000,
-                  "throttle": 500
                 }
               }
             }
@@ -149,28 +154,32 @@
               "options": {
                 "enableSecurity": true,
                 "endpoint": {
-                  "hostName": "test-ats.iot.us-east-1.amazonaws.com",
-                  "port": 8883,
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
                   "protocol": "ssl"
                 },
                 "additional": {
                   "cleanSession": true,
-                  "clientId": "FXR90-LAB-MCMD",
+                  "clientId": "FXR60-LAB-MCMD",
+                  "debug": false,
                   "keepAlive": 30,
                   "qos": 1,
                   "reconnectDelay": 1,
-                  "reconnectDelayMax": 30
+                  "reconnectDelayMax": 30,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
                 },
                 "publishTopic": [
-                  "FXR90-LAB/mrsp"
+                  "FXR60-LAB/mrsp"
                 ],
                 "subscribeTopic": [
-                  "FXR90-LAB/mcmd"
+                  "FXR60-LAB/mcmd"
                 ],
                 "security": {
-                  "CACertificateFileLocation": "/data/AmazonRootCA1.pem",
-                  "privateKeyFileLocation": "/data/aws-pvt.key",
-                  "publicKeyFileLocation": "/data/aws-pub.crt",
+                  "CACertificateFileLocation": "/data/apps/AmazonRootCA1.pem",
+                  "privateKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-private.pem.key",
+                  "publicKeyFileLocation": "/data/apps/0e45e82812dfa432797089d8bd85dd813160f82cdc8db8e99893e0e896448666-certificate.pem.crt",
                   "keyAlgorithm": "RS256",
                   "keyFormat": "PEM",
                   "verifyHostName": true,

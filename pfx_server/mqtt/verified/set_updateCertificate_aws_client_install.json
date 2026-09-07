@@ -1,0 +1,16 @@
+{
+  "command": "set_updateCertificate",
+  "payload": {
+    "name": "FXR60-LAB-AWS-CLIENT",
+    "type": "client",
+    "url": "https://10.117.229.18/fxr60-lab-aws-client.pfx",
+    "authenticationType": "BASIC",
+    "authenticationOptions": {
+      "username": "altautoadmin",
+      "password": "@1T@uT0dud3"
+    },
+    "pfxPassword": "Fxr60-Aws-Pfx-2026!",
+    "verifyPeer": false,
+    "verifyHost": false
+  }
+}

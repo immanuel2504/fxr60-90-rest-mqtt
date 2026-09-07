@@ -1,0 +1,10 @@
+gpo 03 - drive all four pins LOW
+RESULT: all four accepted, HTTP 200, CONFIRMED
+
+after: {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}
+
+This is the routine used to establish a clean baseline before every GPIO-LED
+observation in ../cloud-config-PUT/ (tests 15-19). GPO state persists across
+configuration changes, so without resetting AND READING BACK first, leftover pin
+state from an earlier test reads as a fresh event. That mistake invalidated one
+earlier run of cloud-config test 18.

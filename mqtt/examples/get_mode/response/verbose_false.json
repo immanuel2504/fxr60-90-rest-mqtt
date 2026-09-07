@@ -7,33 +7,34 @@
       "value": 100
     },
     "antennas": [
-      1,
-      2
+      1
     ],
     "delayBetweenAntennaCycles": {
       "duration": 0,
       "type": "DISABLED"
     },
-    "modeSpecificSettings": {
-      "interval": {
-        "unit": "seconds",
-        "value": 60
-      }
-    },
+    "linkProfile": 3,
     "query": {
       "tagPopulation": 256
+    },
+    "reportFilter": {
+      "duration": 0,
+      "type": "PER_ANTENNA"
     },
     "tagMetaData": [
       "ANTENNA",
       "RSSI",
       "CHANNEL",
-      "SEEN_COUNT"
+      "PC",
+      "XPC",
+      "CRC",
+      "SEEN_COUNT",
+      "PHASE"
     ],
     "transmitPower": [
-      27,
-      27
+      17
     ],
-    "type": "INVENTORY"
+    "type": "CUSTOM"
   },
   "response": "success"
 }

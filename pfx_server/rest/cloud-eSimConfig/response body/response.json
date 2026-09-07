@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "CS:'getESIMConfigRsp' failed,Reason: eSIM slot is not active, switch to eSIM slot"
+}

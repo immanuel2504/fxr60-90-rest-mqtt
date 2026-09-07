@@ -1,0 +1,1 @@
+{"antennas":[1],"filter":{"match":"prefix","operation":"exclude","value":"E280"},"transmitPower":30,"type":"CUSTOM"}

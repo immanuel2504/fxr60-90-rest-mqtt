@@ -1,0 +1,6 @@
+{
+  "command": "set_stopUserapp",
+  "payload": {
+    "appname": "sampleNew"
+  }
+}

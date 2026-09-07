@@ -1,0 +1,12 @@
+{
+  "command": "get_logs_radioPacketLog",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "read",
+  "verdict": "PASS",
+  "ms": 1152.2,
+  "note": "",
+  "request_id": "test-get_logs_radioPacketLog-eeb2cfd93d",
+  "response": "success",
+  "response_preview": "{\"command\": \"get_logs_radioPacketLog\", \"command_id\": \"test-get_logs_radioPacketLog-eeb2cfd93d\", \"payload\": {\"binary\": \"H4sIAAAAAAAAA9S9Wa41u7atdZ5PKaICTEXmSEY1eOARjRQhQFxdDhLFxz3xTMJZa7/EA1dbh81e7fNyxOzDYXf35L/dn//b+7/+5//9//xf/of567/+n//6j/8P/t8Y/9+2r/L/nfaw/P7/jsu87/u6/ccU5jXs07hO+3+M07qM4T+G8f+LyVz/3//9f/3X/b8Pw3/813///K+v++v/qOl6//z/p//vf3q/hv/x/d+GYR7G8Tadt2Uf5nHe/vM//zP9/3+t5zT89+F+H+6PYTyGcYrSYVz0vws2HM9hXgYH1v0rRMl//QJU5P93Gd7bML/+qJffw082/D39S8b0n/vwmId1G7bH8JqG/xz+/r/lGJ5bfVRk0tufSe/+7"
+}

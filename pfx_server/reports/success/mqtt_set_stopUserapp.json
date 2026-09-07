@@ -1,0 +1,12 @@
+{
+  "command": "set_stopUserapp",
+  "channel": "management",
+  "source": "request/default.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 50.2,
+  "note": "",
+  "request_id": "test-set_stopUserapp-0f969ee730",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_stopUserapp\", \"command_id\": \"test-set_stopUserapp-0f969ee730\", \"payload\": {}, \"response\": \"success\"}"
+}

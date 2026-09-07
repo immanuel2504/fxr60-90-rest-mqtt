@@ -1,0 +1,18 @@
+{
+  "method": "PUT",
+  "url": "/cloud/start",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "spec": "openAPISpec 11.yaml - IoT Connector REST API v3.0.0",
+  "specExampleName": "(not a spec example - documented constraint check)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential. NOTE: tokens expire quickly; mint a fresh one per call in long test runs."
+  },
+  "body": {
+    "scanType": [
+      "ble"
+    ],
+    "applyImpinjGen2X": true
+  }
+}

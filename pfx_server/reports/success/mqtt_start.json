@@ -1,0 +1,12 @@
+{
+  "command": "start",
+  "channel": "control",
+  "source": "request/start_Inventory.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 250.6,
+  "note": "",
+  "request_id": "test-start-88bc5b35fb",
+  "response": "success",
+  "response_preview": "{\"command\": \"start\", \"command_id\": \"test-start-88bc5b35fb\", \"payload\": {}, \"response\": \"success\"}"
+}

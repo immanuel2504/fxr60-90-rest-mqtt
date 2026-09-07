@@ -1,0 +1,6 @@
+{
+  "command": "set_refreshCertificate",
+  "payload": {
+    "type": "server"
+  }
+}

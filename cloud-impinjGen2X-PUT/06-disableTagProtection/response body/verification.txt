@@ -1,0 +1,48 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 6 - disableTagProtection (cleanup / reversal)
+RESULT: HTTP 200, stored and applied without error
+
+    {"tagProtect": {"action": "disableTagProtection",
+                    "password": "A1B2C3D4",
+                    "tagID": "333311112222333344445555"}}
+
+Run against both Impinj test tags at the end of testing, each followed by
+PUT /cloud/start {"applyImpinjGen2X":true} and a short inventory to apply it.
+
+Both returned HTTP 200 with the standard "Gen2X configured" message.
+
+This is the documented reversal of enableTagProtection and takes the same three
+required fields (action, password, tagID).
+
+*** ALWAYS RUN THIS BEFORE CLEARING THE PASSWORD ***
+
+Order matters for cleanup. If a tag really were protected and you zeroed its
+access password first, you would no longer be able to supply the password needed
+to unprotect it - the tag would be permanently RF-silent to any reader that does
+not know the old password. So:
+
+    1. disableTagProtection  (with the current password)
+    2. apply via start
+    3. only then WRITE 00000000 back to RESERVED words 2-3
+
+That is the order used here. Full cleanup, verified by reading RESERVED back on
+all three tags:
+
+    333311112222333344445555  kill=00000000 access=00000000   RESTORED
+    41544035a880c80000123bea  kill=00000000 access=00000000   RESTORED
+    e2806894000040017790e471  kill=00000000 access=00000000   RESTORED
+
+The reader was also returned to its original CUSTOM mode (byte-identical) and
+its AWS data endpoint, and the Gen2X config cleared.
+
+Evidence: ../evidence/z_*.ndjson (per-tag password verification after cleanup)

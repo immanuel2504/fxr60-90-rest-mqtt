@@ -12,5 +12,4 @@ Stable `command_id`: `req-start`
 | `request/start_Global_BLE_only.json` | request | `start_Global_BLE_only` | `cloud-start/PUT/start_Global_BLE_only.json` | Global BLE only |
 | `request/start_Global_RFID_only.json` | request | `start_Global_RFID_only` | `cloud-start/PUT/start_Global_RFID_only.json` | Global RFID only |
 | `request/start_Global_BLE_and_RFID.json` | request | `start_Global_BLE_and_RFID` | `cloud-start/PUT/start_Global_BLE_and_RFID.json` | Global BLE and RFID |
-| `request/start_Targeted.json` | request | `start_Targeted` | `cloud-start/PUT/start_Targeted.json` | Targeted per data endpoint |
 | `response/success.json` | response | `success` | `—` | Command succeeded |

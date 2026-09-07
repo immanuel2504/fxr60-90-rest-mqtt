@@ -1,0 +1,7 @@
+stop 01 - spec example "stop_RFID_default": empty body
+RESULT: HTTP 200, empty response body - CONFIRMED
+
+  before: radio=active    ble=stopped
+  after:  radio=inactive  ble=stopped
+
+Mirrors start 01. Omitting scanType stops RFID only.

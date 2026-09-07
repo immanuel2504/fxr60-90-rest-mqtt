@@ -1,0 +1,12 @@
+{
+  "command": "set_ntpServer",
+  "channel": "management",
+  "source": "request/ntpServer.json",
+  "tier": "write",
+  "verdict": "PASS",
+  "ms": 1152.2,
+  "note": "",
+  "request_id": "test-set_ntpServer-4ef3df6fee",
+  "response": "success",
+  "response_preview": "{\"command\": \"set_ntpServer\", \"command_id\": \"test-set_ntpServer-4ef3df6fee\", \"payload\": {}, \"response\": \"success\"}"
+}
