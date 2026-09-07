@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
-  title: IoT Connector REST API (FXR readers)
+  title: IoT Connector REST API
   description: |-
     # Overview
     
-    This REST API controls Zebra FXR RFID readers. FXR documentation includes FXR60 and FXR90.
+    FXR90 reader can be controlled using REST API as documented in this page.
     The definition can be found below
 
     # Authentication
@@ -106,7 +106,7 @@ paths:
               properties:
                 enable:
                   type: boolean
-                  description: Enable or disable the display.
+                  description: Turns the display rendering engine on (true) or off (false).
                   example: true
                 enableOnscreenKeyboard:
                   type: boolean
@@ -118,11 +118,11 @@ paths:
                   example: 'https://localhost/'
                 resolution:
                   type: string
-                  description: Configured display resolution (WidthxHeight). Optional; if omitted, the reader uses the preferred resolution.
+                  description: Preferred monitor resolution in pixels(WidthxHeight).
                   example: '1920x1080'
                 screenTimeoutSec:
                   type: integer
-                  description: Screen timeout in seconds (0-3600). Use 0 to keep the display always on. Optional; if omitted, the default is 300 seconds.
+                  description: The amount of idle time in seconds before the screen goes to sleep, Use 0 for always on with maximum 3600 seconds(1 hour).
                   example: 300
                 orientation:
                   type: string
@@ -150,7 +150,7 @@ paths:
       tags:
         - Display
       summary: Retrieves input/output device information
-      description: MQTT API :-  get_inputOutputDevices <br> Retrieves the connection status and capabilities of input/output devices.
+      description: MQTT API :-  get_inputOutputDevices <br>  This API retrieves the connection status and capabilities of input/output devices.
       operationId: getInputOutputDevices
       responses:
         '200':
@@ -195,7 +195,7 @@ paths:
                         example: "connected"
                       details:
                         type: array
-                        description: Connected monitor detailed capabilities and hardware information.
+                        description: A list containing hardware specifications for each connected monitor.
                         items:
                           type: object
                           properties:
@@ -205,7 +205,7 @@ paths:
                               example: "HPN"
                             model:
                               type: string
-                              description: Model name of the monitor.
+                              description: Model name of teh monitor.
                               example: "HP Z24n G2"
                             currentResolution:
                               type: string
@@ -213,7 +213,7 @@ paths:
                               example: "1920x1080"
                             screenActive:
                               type: boolean
-                              description: Indicates if the display screen is currently awake (true) or blanked due to screen timeout (false).
+                              description: Indicates if the monitor is awake (true) or sleep (false).
                               example: true
                             orientation:
                               type: string
@@ -225,7 +225,7 @@ paths:
                               description: A list of all resolutions supported by the monitor hardware.
                               items:
                                 type: string
-                              example: ["1920x1080", "1600x900", "1280x1024"]
+                              example: ["1920x1080", "1600x900"]
       security:
         - bearerAuth: []
   /cloud/app-led:
@@ -261,6 +261,10 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - color
+                - flash
+                - seconds
               properties:
                 color:
                   type: string
@@ -309,30 +313,21 @@ paths:
                 properties:
                   status:
                     type: string
-                    description: Current state of the stack LED.
-                    enum: [DEFAULT, NON_DEFAULT]
                     example: NON_DEFAULT
                   color:
                     type: string
-                    description: The color of the LED (red, amber, green, blue, off)
-                    enum: [red, amber, green, blue, "off"]
                     example: amber
                   brightness:
                     type: string
-                    description: The brightness of the LED (low, med, high).
-                    enum: [low, med, high]
                     example: high
                   flash:
                     type: boolean
-                    description: Whether the LED is blinking.
                     example: true
                   seconds:
                     type: integer
-                    description: Configured duration in seconds. 0 means indefinite.
                     example: 0
                   seconds_remaining:
                     type: integer
-                    description: Seconds remaining on a timed LED override.
                     example: 14
       security:
         - bearerAuth: []
@@ -340,13 +335,17 @@ paths:
       tags:
         - Stack-led
       summary: Updates stack LED state
-      description: "MQTT API :-  set_stackled <br> Sets the reader stack LED to the specified color. <br><br> Supported Colors: red, amber, green, blue, off <br> Supported Brightness: low, med, high (Defaults to low)"
+      description: "MQTT API :-  set_stackled <br> Updates the stack LED state on the reader to the state specified. <br><br> Supported Colors: red, amber, green, blue, off <br> Supported Brightness: low, med, high (Defaults to low)"
       operationId: setStackled
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              required:
+                - color
+                - flash
+                - seconds
               properties:
                 color:
                   type: string
@@ -567,7 +566,7 @@ paths:
                     type: array
                     description: Active channel list used by the region/standard configuration, represented as frequencies (kHz).
                     items:
-                      type: integer
+                      type: string
                   country:
                     type: string
                     description: Country name associated with the active region configuration.
@@ -581,7 +580,7 @@ paths:
                 multiple_values:
                   value:
                     FrequencyHopping: true
-                    channelData: [915250, 915750, 903250, 926750]
+                    channelData: ["915250", "915750", "903250", "926750"]
                     country: "Canada"
                     lbtEnabled: false
                     maxTxPowerSupported: 300
@@ -645,7 +644,7 @@ paths:
       tags:
         - Region
       summary: Retrieves the supported region list based on the reader type
-      description: MQTT API :-  get_SupportedRegionList <br> Gets the list of regions supported by the reader based on the reader type
+      description: MQTT API :-  get_supportedRegionList <br> Gets the list of regions supported by the reader based on the reader type
       operationId: getSupportedregionlist
       responses:
         '200':
@@ -704,7 +703,7 @@ paths:
       tags:
         - Region
       summary: Retrieves the standard channels of the supported regions
-      description: MQTT API :-  get_SupportedStandardList <br> Based on the region name provided, retrieves the standard channel list
+      description: MQTT API :-  get_supportedStandardList <br> Based on the region name provided, retrieves the standard channel list
       operationId: getSupportedstandardlist
       parameters:
         - name: region
@@ -814,7 +813,6 @@ paths:
       description: MQTT API :-  get_mode <br> Retrieves the current operating mode
       operationId: getMode
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -822,16 +820,8 @@ paths:
               properties:
                 verbose:
                   type: boolean
-                  description: "Controls how much of the operating-mode configuration is returned. When `true`, the reader returns the entire mode configuration, including every default value. When `false` or omitted, the reader returns only the settings that have been explicitly configured for the current mode; default values are omitted."
+                  description: Includes verbose operating mode details when true.
                   example: true
-            examples:
-              default_configured_only:
-                summary: Configured values only (default)
-                value: {}
-              verbose_full:
-                summary: Entire configuration including defaults
-                value:
-                  verbose: true
       responses:
         '200':
           description: 'OK'
@@ -949,7 +939,7 @@ paths:
                     mode: GEN2
                   radioStopConditions:
                     duration: 60
-                  transmitPower: 31.5
+                  transmitPower: 30
                   type: SIMPLE
               set_mode_default_FXR90:
                 value:
@@ -1039,7 +1029,7 @@ paths:
         MQTT API :- start
 
         Start RFID inventory, BLE scanning, or both simultaneously.
-        The optional `scanType` array controls which scan types are activated across all configured data endpoints. To configure endpoints independently, provide an object keyed by data endpoint name.
+        The optional `scanType` array controls which scan types are activated.
         Omitting the payload (or `scanType`) defaults to RFID-only.
         BLE scanning requires prior BLE configuration via `set_bleConfig`.
           `scanType` with `"ble"` cannot be combined with `applyImpinjGen2X`.
@@ -1051,32 +1041,21 @@ paths:
               type: object
               properties:
                 scanType:
-                  oneOf:
-                    - type: array
-                      description: Scan types to start across all configured data endpoints. Omit for RFID-only (default).
-                      items:
-                        type: string
-                        enum: [ble, rfid]
-                      minItems: 1
-                      uniqueItems: true
-                      example: ["ble", "rfid"]
-                    - type: object
-                      description: Scan types to start for each configured data endpoint.
-                      additionalProperties:
-                        type: array
-                        items:
-                          type: string
-                          enum: [ble, rfid]
-                        minItems: 1
-                        uniqueItems: true
-                      example: {"dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"]}
+                  type: array
+                  description: Which scan types to start. Omit for RFID-only (default).
+                  items:
+                    type: string
+                    enum: [ble, rfid]
+                  minItems: 1
+                  uniqueItems: true
+                  example: ["ble", "rfid"]
                 doNotPersistState:
                   type: boolean
                   description: "Controls whether the started inventory state is persisted across reboot. If `true`, the state is not persisted and auto-start is not enabled after reboot. If `false`, the state is persisted across reboot, enabling auto-start."
                   example: false
                 applyImpinjGen2X:
                   type: boolean
-                  description: "When true, applies the previously configured Impinj Gen2X features (FastID, TagProtect, TagFocus, TagQuieting) on start. Cannot be used with `scanType: [\"ble\"]`."
+                  description: "When true, applies the previously configured Impinj Gen2X features (FastID, TagProtect, TagFocus, TagQuieting) on this start only. After stop, send true again. Cannot be used with `scanType: [\"ble\"]`."
                   example: true
             examples:
               start_Inventory:
@@ -1087,18 +1066,15 @@ paths:
               start_Inventory with ImpinjGen2X:
                 value:
                   applyImpinjGen2X: true
-              start_Global_BLE_only:
+              start_BLE_only:
                 value:
                   scanType: ["ble"]
-              start_Global_RFID_only:
+              start_RFID_only:
                 value:
                   scanType: ["rfid"]
-              start_Global_BLE_and_RFID:
+              start_BLE_and_RFID:
                 value:
                   scanType: ["ble", "rfid"]
-              start_Targeted:
-                value:
-                  scanType: {"dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"]}
       responses:
         '200':
           description: OK
@@ -1112,12 +1088,11 @@ paths:
       description: |-
         MQTT API :- stop
 
-        Stop BLE, RFID, or both globally across all configured data endpoints, or stop selected streams on specific endpoints.
-
-        For a global stop, pass a `scanType` array. Omitting the payload or `scanType` stops RFID only by default.
-        Use `["rfid"]` to stop RFID only, `["ble"]` to stop BLE only, or `["ble", "rfid"]` to stop both globally.
-
-        For a targeted stop, pass a `scanType` object whose keys are data endpoint names and whose values are arrays of streams to stop on those endpoints.
+        Stop RFID inventory, BLE scanning, or both.
+        The optional `scanType` array controls what is stopped.
+        Omitting the payload (or `scanType`) stops RFID only — the original default behaviour.
+        Use `["ble"]` to stop only BLE (RFID continues), `["rfid"]` to stop only RFID
+        (BLE continues), or `["ble","rfid"]` to stop both.
       operationId: stopInventory
       requestBody:
         content:
@@ -1126,42 +1101,26 @@ paths:
               type: object
               properties:
                 scanType:
-                  oneOf:
-                    - type: array
-                      description: Scan types to stop across all configured data endpoints. Omit for RFID-only (default).
-                      items:
-                        type: string
-                        enum: [ble, rfid]
-                      minItems: 1
-                      uniqueItems: true
-                      example: ["ble", "rfid"]
-                    - type: object
-                      description: Scan types to stop for each configured data endpoint.
-                      additionalProperties:
-                        type: array
-                        items:
-                          type: string
-                          enum: [ble, rfid]
-                        minItems: 1
-                        uniqueItems: true
-                      example:
-                        dataEndpoint1: ["ble", "rfid"]
-                        dataEndpoint2: ["rfid"]
+                  type: array
+                  description: Which scan types to stop. Omit for RFID-only (default).
+                  items:
+                    type: string
+                    enum: [ble, rfid]
+                  minItems: 1
+                  uniqueItems: true
+                  example: ["ble", "rfid"]
             examples:
               stop_RFID_default:
                 value: {}
-              stop_Global_RFID_only:
+              stop_RFID_explicit:
                 value:
                   scanType: ["rfid"]
-              stop_Global_BLE_only:
+              stop_BLE_only:
                 value:
                   scanType: ["ble"]
-              stop_Global_BLE_and_RFID:
+              stop_BLE_and_RFID:
                 value:
                   scanType: ["ble", "rfid"]
-              stop_Targeted:
-                value:
-                  scanType: {"dataEndpoint1": ["ble", "rfid"], "dataEndpoint2": ["rfid"]}
       responses:
         '200':
           description: OK
@@ -1212,6 +1171,15 @@ paths:
                   serialNumber:
                     type: string
                     description: Reader serial number.
+              example:
+                availableOsUpgrades: {}
+                cloudAgentApplication: 0.6.2.25
+                model: FXR90
+                radioControlApplication: 0.2.58.6
+                radioFirmware: 2.1.57.0
+                readerApplication: 2.0.7-5
+                revertBackFirmware: {}
+                serialNumber: 233575230D0028
 
       security:
         - bearerAuth: []
@@ -1232,16 +1200,40 @@ paths:
                 properties:
                   antennas:
                     type: object
-                    description: |
-                      Per-antenna connection status reported by the reader.
-                      Keys are antenna port numbers as strings. Only ports present on this reader are included; not every reader has 8 antennas.
-                      Use GET /cloud/readPoints to list the ports available on this device.
-                    additionalProperties:
-                      type: string
-                      description: Antenna port connection state.
-                      enum:
-                        - connected
-                        - disconnected
+                    description: Per-antenna connection status reported by the reader.
+                    properties:
+                      1:
+                        type: string
+                        description: Antenna 1 connection state.
+                        enum: [connected, disconnected]
+                      2:
+                        type: string
+                        description: Antenna 2 connection state.
+                        enum: [connected, disconnected]
+                      3:
+                        type: string
+                        description: Antenna 3 connection state.
+                        enum: [connected, disconnected]
+                      4:
+                        type: string
+                        description: Antenna 4 connection state.
+                        enum: [connected, disconnected]
+                      5:
+                        type: string
+                        description: Antenna 5 connection state.
+                        enum: [connected, disconnected]
+                      6:
+                        type: string
+                        description: Antenna 6 connection state.
+                        enum: [connected, disconnected]
+                      7:
+                        type: string
+                        description: Antenna 7 connection state.
+                        enum: [connected, disconnected]
+                      8:
+                        type: string
+                        description: Antenna 8 connection state.
+                        enum: [connected, disconnected]
                   cpu:
                     type: object
                     description: CPU utilization statistics reported by the reader.
@@ -1302,8 +1294,7 @@ paths:
                     properties:
                       data:
                         type: array
-                        description: Per-interface connection status entries. A maximum of 2 data interfaces is supported.
-                        maxItems: 2
+                        description: Per-interface connection status entries.
                         items:
                           type: object
                           properties:
@@ -1334,7 +1325,7 @@ paths:
                     description: Power negotiation mode reported by the reader.
                   powerSource:
                     type: string
-                    description: Current power source for the reader. `PWR_BRICK` indicates the external power brick. `DC` is not used on FXR60 or FXR90.
+                    description: Current power source for the reader.
                     enum:
                       - PWR_BRICK
                       - POE
@@ -1372,14 +1363,21 @@ paths:
                     type: string
                   impinjGen2X:
                     type: object
-                    description: Active Impinj Gen2X runtime status.
+                    description: >-
+                      Impinj Gen2X runtime status for the current inventory session.
+                      isActive means a saved Gen2X config was applied on this start,
+                      not that FastID or TagFocus is switched on. Use GET /cloud/impinjGen2X
+                      to read enabled.
                     properties:
-                      active:
+                      isActive:
                         type: boolean
-                        description: Indicates whether an Impinj Gen2X feature is currently active
+                        description: >-
+                          True when a Gen2X config is running in this inventory session.
+                          Does not mean the feature's enabled flag is true.
                       feature:
                         type: string
-                        description: The name of the active Impinj Gen2X feature. `none` when no Gen2X feature is running.
+                        description: >-
+                          Last saved Gen2X feature object, or none when Gen2X is not running.
                         enum:
                           - none
                           - fastId
@@ -1469,8 +1467,8 @@ paths:
                 temperature: 33
                 uptime: 0D1H13M15S
                 impinjGen2X:
-                  active: true
-                  feature: tagFocus
+                  feature: none
+                  isActive: false
                 ble:
                   scanState: running
                   scanStartTime: '2026-05-21T13:46:16.955Z'
@@ -1501,15 +1499,18 @@ paths:
                 properties:
                   GPIO-LED:
                     description: >-
-                      GPIO and LED trigger mapping configuration.
-                      An empty object {} is returned when no GPIO-LED configuration has been applied.
-                    allOf:
+                      GPIO and LED trigger mapping configuration. Returns the configured
+                      object when set, or an empty object when no configuration has been applied.
+                    anyOf:
+                      - type: object
+                        description: Returned as an empty object when GPIO-LED config has not been set.
+                        additionalProperties: false
                       - $ref: '#/components/schemas/GPIOLEDConfig.v1'
                   xml:
                     type: string
                     description: >-
                       RFID reader operational XML profile (the "Cloud Connect" RFID profile).
-                      Present when the reader has an XML profile.
+                      Only returned on supported reader models (e.g. STARFISH/FX series).
                   READER-GATEWAY:
                     type: object
                     description: >-
@@ -1527,10 +1528,10 @@ paths:
                             properties:
                               maxPayloadSizePerReport:
                                 type: number
-                                description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                               reportingInterval:
                                 type: number
-                                description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                           - type: array
                             description: Per-endpoint batching config (one entry per data endpoint connection).
                             items:
@@ -1538,10 +1539,10 @@ paths:
                               properties:
                                 maxPayloadSizePerReport:
                                   type: number
-                                  description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                  description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                                 reportingInterval:
                                   type: number
-                                  description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                  description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                       endpointConfig:
                         type: object
                         description: >-
@@ -1571,9 +1572,9 @@ paths:
                                         type:
                                           type: string
                                           description: >-
-                                            Connection type. Supported values: mqtt,
+                                            Connection type. Supported values: mqtt, mqtt-GCP,
                                             mqtt-AWS, mqtt-Azure, httpPost, WEBSOCKET,
-                                            tcpip-server.
+                                            tcpip-server, keyboard-emulation.
                                         options:
                                           type: object
                                           description: Connection-specific options.
@@ -1645,7 +1646,7 @@ paths:
                                                   description: Type of the pre-installed certificate (e.g. "server", "client").
                                                 keyAlgorithm:
                                                   type: string
-                                                  description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                                  description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                                 keyFormat:
                                                   type: string
                                                   description: Key file format (e.g. PEM).
@@ -1676,10 +1677,10 @@ paths:
                                 properties:
                                   maxPayloadSizePerReport:
                                     type: number
-                                    description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                    description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                                   reportingInterval:
                                     type: number
-                                    description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                    description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                               event:
                                 type: object
                                 description: Data event endpoint (publishes tag read events to cloud connections).
@@ -1700,10 +1701,10 @@ paths:
                                               properties:
                                                 maxPayloadSizePerReport:
                                                   type: number
-                                                  description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                                  description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                                                 reportingInterval:
                                                   type: number
-                                                  description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                                  description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                                             retention:
                                               type: object
                                               description: Per-connection event retention configuration when the connection is offline.
@@ -1712,7 +1713,7 @@ paths:
                                                   type: number
                                                   description: >-
                                                     Maximum time in minutes to retain events when offline (0 - 10080).
-                                                    0 retains events indefinitely until maxNumEvents is reached.
+                                                    0 or -1 retains events indefinitely until maxNumEvents is reached.
                                                 maxNumEvents:
                                                   type: number
                                                   description: Maximum number of events to buffer when offline (0 - 150000).
@@ -1726,7 +1727,6 @@ paths:
                                               description: >-
                                                 Data acknowledgement configuration. When enabled, the reader waits
                                                 for an ACK from the cloud before marking events as delivered.
-                                                Requires MQTT 5. Not supported on Azure IoT Hub (Azure does not support MQTT 5).
                                               properties:
                                                 enable:
                                                   type: boolean
@@ -1748,9 +1748,9 @@ paths:
                                         type:
                                           type: string
                                           description: >-
-                                            Connection type. Supported values: mqtt,
+                                            Connection type. Supported values: mqtt, mqtt-GCP,
                                             mqtt-AWS, mqtt-Azure, httpPost, WEBSOCKET,
-                                            tcpip-server.
+                                            tcpip-server, keyboard-emulation.
                                         options:
                                           type: object
                                           description: Connection-specific options.
@@ -1822,7 +1822,7 @@ paths:
                                                   description: Type of the pre-installed certificate (e.g. "server", "client").
                                                 keyAlgorithm:
                                                   type: string
-                                                  description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                                  description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                                 keyFormat:
                                                   type: string
                                                   description: Key file format (e.g. PEM).
@@ -1851,7 +1851,7 @@ paths:
                                     type: number
                                     description: >-
                                       Maximum time in minutes to retain events when offline (0 - 10080).
-                                      0 retains events indefinitely until maxNumEvents is reached.
+                                      0 or -1 retains events indefinitely until maxNumEvents is reached.
                                   maxNumEvents:
                                     type: number
                                     description: Maximum number of events to buffer when offline (0 - 150000).
@@ -1884,9 +1884,9 @@ paths:
                                         type:
                                           type: string
                                           description: >-
-                                            Connection type. Supported values: mqtt,
+                                            Connection type. Supported values: mqtt, mqtt-GCP,
                                             mqtt-AWS, mqtt-Azure, httpPost, WEBSOCKET,
-                                            tcpip-server.
+                                            tcpip-server, keyboard-emulation.
                                         options:
                                           type: object
                                           description: Connection-specific options.
@@ -1958,7 +1958,7 @@ paths:
                                                   description: Type of the pre-installed certificate (e.g. "server", "client").
                                                 keyAlgorithm:
                                                   type: string
-                                                  description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                                  description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                                 keyFormat:
                                                   type: string
                                                   description: Key file format (e.g. PEM).
@@ -2001,7 +2001,7 @@ paths:
                                                   type: number
                                                   description: >-
                                                     Maximum time in minutes to retain management events when offline (0 - 10080).
-                                                    0 retains events indefinitely until maxNumEvents is reached.
+                                                    0 or -1 retains events indefinitely until maxNumEvents is reached.
                                                 maxNumEvents:
                                                   type: number
                                                   description: Maximum number of management events to buffer when offline (0 - 150000).
@@ -2013,7 +2013,6 @@ paths:
                                               description: >-
                                                 Data acknowledgement configuration for management events. When enabled,
                                                 the reader waits for an ACK before marking management events as delivered.
-                                                Requires MQTT 5. Not supported on Azure IoT Hub (Azure does not support MQTT 5).
                                               properties:
                                                 enable:
                                                   type: boolean
@@ -2035,9 +2034,9 @@ paths:
                                         type:
                                           type: string
                                           description: >-
-                                            Connection type. Supported values: mqtt,
+                                            Connection type. Supported values: mqtt, mqtt-GCP,
                                             mqtt-AWS, mqtt-Azure, httpPost, WEBSOCKET,
-                                            tcpip-server.
+                                            tcpip-server, keyboard-emulation.
                                         options:
                                           type: object
                                           description: Connection-specific options.
@@ -2109,7 +2108,7 @@ paths:
                                                   description: Type of the pre-installed certificate (e.g. "server", "client").
                                                 keyAlgorithm:
                                                   type: string
-                                                  description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                                  description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                                 keyFormat:
                                                   type: string
                                                   description: Key file format (e.g. PEM).
@@ -2348,7 +2347,7 @@ paths:
                                 type: number
                                 description: >-
                                   Maximum time in minutes to retain events when offline (0 - 10080).
-                                  0 retains events indefinitely until maxNumEvents is reached.
+                                  0 or -1 retains events indefinitely until maxNumEvents is reached.
                               maxNumEvents:
                                 type: number
                                 description: Maximum number of events to buffer when offline (0 - 150000).
@@ -2364,7 +2363,7 @@ paths:
                                   type: number
                                   description: >-
                                     Maximum time in minutes to retain events when offline (0 - 10080).
-                                    0 retains events indefinitely until maxNumEvents is reached.
+                                    0 or -1 retains events indefinitely until maxNumEvents is reached.
                                 maxNumEvents:
                                   type: number
                                   description: Maximum number of events to buffer when offline (0 - 150000).
@@ -2375,35 +2374,55 @@ paths:
                 GPIO-LED: {}
                 READER-GATEWAY:
                   batching:
-                  - maxPayloadSizePerReport: 256000
-                    reportingInterval: 10000
+                    - maxPayloadSizePerReport: 0
+                      reportingInterval: 0
                   endpointConfig:
                     control:
-                      commandResponse: {}
+                      commandResponse:
+                        enableLocalRest: true
                     data:
+                      batching:
+                        maxPayloadSizePerReport: 0
+                        reportingInterval: 0
                       event:
                         connections:
-                        - additionalOptions:
-                            batching:
-                              maxPayloadSizePerReport: 256000
-                              reportingInterval: 10000
-                            retention:
-                              maxEventRetentionTimeInMin: 500
-                              maxNumEvents: 150000
-                              throttle: 100
-                          description: QWERTYU
-                          name: ASDFGHJ
-                          options:
-                            security:
-                              verifyPeer: false
-                          type: WEBSOCKET
+                          - additionalOptions:
+                              batching:
+                                maxPayloadSizePerReport: 0
+                                reportingInterval: 0
+                              retention:
+                                maxEventRetentionTimeInMin: 0
+                                maxNumEvents: 0
+                                throttle: 1
+                            description: WEBSOCKET_TEST
+                            name: WEBSOCKET_TEST
+                            options:
+                              security:
+                                verifyPeer: false
+                            type: WEBSOCKET
+                      retention:
+                        maxEventRetentionTimeInMin: 0
+                        maxNumEvents: 0
+                        throttle: 1
                     management:
-                      commandResponse: {}
+                      commandResponse:
+                        enableLocalRest: true
                       event:
-                        connections: []
+                        connections:
+                          - additionalOptions:
+                              retention:
+                                maxEventRetentionTimeInMin: 500
+                                maxNumEvents: 150000
+                                throttle: 100
+                            description: WEBSOCKET_TEST
+                            name: WEBSOCKET_TEST
+                            options:
+                              security:
+                                verifyPeer: false
+                            type: WEBSOCKET
                   managementEventConfig:
                     errors:
-                      antenna: true
+                      antenna: false
                       cpu:
                         reportIntervalInSec: 1800
                         threshold: 90
@@ -2413,7 +2432,7 @@ paths:
                         threshold: 90
                       ntp: true
                       radio: true
-                      radio_control: true
+                      radio_control: false
                       ram:
                         reportIntervalInSec: 1800
                         threshold: 90
@@ -2426,56 +2445,56 @@ paths:
                     heartbeat:
                       fields:
                         radio_control:
-                        - ANTENNAS
-                        - RADIO_ACTIVITY
-                        - RADIO_CONNECTION
-                        - CPU
-                        - RAM
-                        - UPTIME
-                        - NUM_ERRORS
-                        - NUM_WARNINGS
-                        - NUM_TAG_READS
-                        - NUM_TAG_READS_PER_ANTENNA
-                        - NUM_DATA_MESSAGES_TXED
-                        - NUM_RADIO_PACKETS_RXED
+                          - ANTENNAS
+                          - RADIO_ACTIVITY
+                          - RADIO_CONNECTION
+                          - CPU
+                          - RAM
+                          - UPTIME
+                          - NUM_ERRORS
+                          - NUM_WARNINGS
+                          - NUM_TAG_READS
+                          - NUM_TAG_READS_PER_ANTENNA
+                          - NUM_DATA_MESSAGES_TXED
+                          - NUM_RADIO_PACKETS_RXED
                         reader_gateway:
-                        - NUM_DATA_MESSAGES_RXED
-                        - NUM_MANAGEMENT_EVENTS_TXED
-                        - NUM_DATA_MESSAGES_TXED
-                        - NUM_DATA_MESSAGES_RETAINED
-                        - NUM_DATA_MESSAGES_DROPPED
-                        - CPU
-                        - RAM
-                        - UPTIME
-                        - NUM_ERRORS
-                        - NUM_WARNINGS
-                        - INTERFACE_CONNECTION_STATUS
-                        - NOLOCKQ_DEPTH
+                          - NUM_DATA_MESSAGES_RXED
+                          - NUM_MANAGEMENT_EVENTS_TXED
+                          - NUM_DATA_MESSAGES_TXED
+                          - NUM_DATA_MESSAGES_RETAINED
+                          - NUM_DATA_MESSAGES_DROPPED
+                          - CPU
+                          - RAM
+                          - UPTIME
+                          - NUM_ERRORS
+                          - NUM_WARNINGS
+                          - INTERFACE_CONNECTION_STATUS
+                          - NOLOCKQ_DEPTH
                         system:
-                        - CPU
-                        - FLASH
-                        - NTP
-                        - RAM
-                        - SYSTEMTIME
-                        - TEMPERATURE
-                        - UPTIME
-                        - GPO
-                        - GPI
-                        - POWER_NEGOTIATION
-                        - POWER_SOURCE
-                        - MAC_ADDRESS
-                        - HOSTNAME
-                        userDefined: {}
+                          - CPU
+                          - FLASH
+                          - NTP
+                          - RAM
+                          - SYSTEMTIME
+                          - TEMPERATURE
+                          - UPTIME
+                          - GPO
+                          - GPI
+                          - POWER_NEGOTIATION
+                          - POWER_SOURCE
+                          - MAC_ADDRESS
+                          - HOSTNAME
+                        userDefined: null
                         userapps:
-                        - STATUS
-                        - CPU
-                        - RAM
-                        - UPTIME
-                        - NUM_DATA_MESSAGES_RXED
-                        - NUM_DATA_MESSAGES_TXED
-                        - INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING
-                        - OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING
-                      interval: 60
+                          - STATUS
+                          - CPU
+                          - RAM
+                          - UPTIME
+                          - NUM_DATA_MESSAGES_RXED
+                          - NUM_DATA_MESSAGES_TXED
+                          - INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING
+                          - OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING
+                      interval: 10
                     userappEvents: true
                     warnings:
                       cpu:
@@ -2499,9 +2518,9 @@ paths:
                         reportIntervalInSec: 1800
                         threshold: 60
                   retention:
-                  - maxEventRetentionTimeInMin: 500
-                    maxNumEvents: 150000
-                    throttle: 100
+                    - maxEventRetentionTimeInMin: -1
+                      maxNumEvents: 0
+                      throttle: 500
       security:
         - bearerAuth: []
     put:
@@ -2510,7 +2529,7 @@ paths:
       summary: Updates reader configuration
       description: >-
         MQTT API :- set_config <br> Updates reader configuration. Accepts one or more of the following top-level keys:
-        **xml** (string) - raw XML reader config (Cloud Connect RFID profile);
+        **xml** (string) - raw XML reader config;
         **GPIO-LED** (object) - GPIO and LED event-action configuration;
         **READER-GATEWAY** (object) - cloud gateway configuration accepting at least one of:
         endpointConfig (data endpoint configuration only - control/management endpoints are not configurable here; use /cloud/cloudConfig for that),
@@ -2527,9 +2546,7 @@ paths:
               properties:
                 xml:
                   type: string
-                  description: >-
-                    RFID reader operational XML profile (the "Cloud Connect" RFID profile).
-                    Raw XML reader configuration string.
+                  description: Raw XML reader configuration string.
                 GPIO-LED:
                   $ref: '#/components/schemas/GPIOLEDConfig.v1'
                 READER-GATEWAY:
@@ -2580,13 +2597,13 @@ paths:
                                                 properties:
                                                   maxPayloadSizePerReport:
                                                     type: integer
-                                                    description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                                    description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                                                     minimum: 0
                                                     maximum: 256000
                                                     example: 65536
                                                   reportingInterval:
                                                     type: integer
-                                                    description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                                    description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                                                     minimum: 0
                                                     maximum: 86400000
                                                     example: 1000
@@ -2599,7 +2616,7 @@ paths:
                                                 type: integer
                                                 description: >-
                                                   Maximum time in minutes to retain events when offline (0 - 10080).
-                                                  0 retains events indefinitely until maxNumEvents is reached.
+                                                  0 or -1 retains events indefinitely until maxNumEvents is reached.
                                                 minimum: 0
                                                 maximum: 10080
                                                 example: 500
@@ -2622,7 +2639,7 @@ paths:
                                             description: >-
                                               Data acknowledgement configuration. When enabled, the reader waits
                                               for an ACK from the cloud before marking events as delivered.
-                                              Requires MQTT 5. Not supported on Azure IoT Hub (Azure does not support MQTT 5).
+                                              Supported on MQTT-based connections only.
                                             properties:
                                               enable:
                                                 type: boolean
@@ -2749,7 +2766,7 @@ paths:
                                                 example: server
                                               keyAlgorithm:
                                                 type: string
-                                                description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                                description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                                 example: RS256
                                               keyFormat:
                                                 type: string
@@ -2791,9 +2808,9 @@ paths:
                                       type:
                                         type: string
                                         description: >-
-                                          Connection type. Supported values: mqtt, mqtt-AWS,
-                                          mqtt-Azure, httpPost, WEBSOCKET, tcpip-server.
-                                          Only one WEBSOCKET or tcpip-server connection
+                                          Connection type. Supported values: mqtt, mqtt-GCP, mqtt-AWS,
+                                          mqtt-Azure, httpPost, WEBSOCKET, tcpip-server, keyboard-emulation.
+                                          Only one WEBSOCKET, tcpip-server, or keyboard-emulation connection
                                           is allowed at a time.
                                         example: mqtt
                                   example:
@@ -2842,13 +2859,13 @@ paths:
                           properties:
                             maxPayloadSizePerReport:
                               type: integer
-                              description: Maximum payload size in bytes (0 - 256000). 0 disables this setting.
+                              description: Maximum payload size in bytes (0 - 256000). -1 to disable.
                               minimum: 0
                               maximum: 256000
                               example: 65536
                             reportingInterval:
                               type: integer
-                              description: Report interval in milliseconds (0 - 86400000). 0 disables this setting.
+                              description: Report interval in milliseconds (0 - 86400000). -1 to disable.
                               minimum: 0
                               maximum: 86400000
                               example: 1000
@@ -2878,7 +2895,7 @@ paths:
                           properties:
                             maxEventRetentionTimeInMin:
                               type: integer
-                              description: Maximum event retention time in minutes (0 - 10080). 0 retains events indefinitely until maxNumEvents is reached.
+                              description: Maximum event retention time in minutes (0 - 10080). 0 or -1 retains forever.
                               minimum: 0
                               maximum: 10080
                               example: 1440
@@ -2917,10 +2934,6 @@ paths:
                     managementEventConfig:
                       $ref: '#/components/schemas/eventsConfig.v1'
             examples:
-              set_config_xml:
-                summary: Cloud Connect RFID XML profile
-                value:
-                  xml: "<RFID><!-- Cloud Connect operational profile --></RFID>"
               set_config_data_mqtt_async:
                 value:
                   READER-GATEWAY:
@@ -3004,38 +3017,40 @@ paths:
                       data:
                         event:
                           connections:
-                          - description: azure_8883yj
-                            name: AZURE_8883
-                            options:
-                              additional:
-                                cleanSession: false
-                                clientId: FXR90A3A2F7
-                                debug: true
-                                keepAlive: 120
-                                qos: 1
-                                reconnectDelay: 600
-                                reconnectDelayMax: 86400
-                              basicAuthentication:
-                                password: none
-                                username: VULCANIOTHUB.azure-devices.net/FXR90A3A2F7/?api-version=2018-06-30
-                              enableSecurity: true
-                              endpoint:
-                                hostName: VULCANIOTHUB.azure-devices.net
-                                port: 8883
-                                protocol: ssl
-                              publishTopic:
-                              - devices/FXR90A3A2F7/messages/events/
-                              security:
-                                CACertificateFileLocation: /data/apps/cacertazure.pem
-                                keyAlgorithm: RS256
-                                keyFormat: PEM
-                                privateKeyFileLocation: /data/apps/key.pem
-                                publicKeyFileLocation: /data/apps/csr.pem
-                                verifyHostName: false
-                                verifyPeer: false
-                              subscribeTopic:
-                              - devices/FXR90A3A2F7/messages/devicebound/#
-                            type: mqtt-AZURE
+                            - additionalOptions:
+                                batching: null
+                                retention:
+                                  maxEventRetentionTimeInMin: 500
+                                  maxNumEvents: 150000
+                                  throttle: 500
+                              description: MQTT_TEST
+                              name: MQTT_TEST
+                              options:
+                                additional:
+                                  cleanSession: true
+                                  clientId: EV1
+                                  debug: false
+                                  keepAlive: 60
+                                  qos: 0
+                                  reconnectDelay: 1
+                                  reconnectDelayMax: 5
+                                enableSecurity: false
+                                endpoint:
+                                  hostName: 10.117.229.9
+                                  port: 1883
+                                  protocol: tcp
+                                publishTopic:
+                                  - tagevents_r2c_longrun
+                                security:
+                                  CACertificateFileLocation: /home/root/broker.emqx.io-ca.crt
+                                  installedCertificateName: Server
+                                  installedCertificateType: server
+                                  keyAlgorithm: RS256
+                                  keyFormat: PEM
+                                  verifyHostName: false
+                                  verifyPeer: false
+                                subscribeTopic: []
+                              type: mqtt
               set_config_data_clear:
                 value:
                   READER-GATEWAY:
@@ -3212,11 +3227,11 @@ paths:
                       '1': GREEN
                     RADIO_START:
                       - type: LED
-                        led: 3
+                        led: 1
                         color: AMBER
                     RADIO_STOP:
                       - type: LED
-                        led: 3
+                        led: 1
                         color: GREEN
       responses:
         '200':
@@ -3414,7 +3429,7 @@ paths:
                                             example: server
                                           keyAlgorithm:
                                             type: string
-                                            description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                            description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                             example: RS256
                                           keyFormat:
                                             type: string
@@ -3447,8 +3462,8 @@ paths:
                                   type:
                                     type: string
                                     description: >-
-                                      Connection type. Supported values: mqtt, mqtt-AWS,
-                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server.
+                                      Connection type. Supported values: mqtt, mqtt-GCP, mqtt-AWS,
+                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server, keyboard-emulation.
                                     example: mqtt
                               example:
                                 - description: MQTT_TEST
@@ -3522,13 +3537,13 @@ paths:
                                             properties:
                                               maxPayloadSizePerReport:
                                                 type: integer
-                                                description: Maximum payload size per batch report in bytes (0 - 256000). 0 disables this setting.
+                                                description: Maximum payload size per batch report in bytes (0 - 256000). -1 to disable.
                                                 minimum: 0
                                                 maximum: 256000
                                                 example: 65536
                                               reportingInterval:
                                                 type: integer
-                                                description: Batch reporting interval in milliseconds (0 - 86400000). 0 disables this setting.
+                                                description: Batch reporting interval in milliseconds (0 - 86400000). -1 to disable.
                                                 minimum: 0
                                                 maximum: 86400000
                                                 example: 1000
@@ -3541,7 +3556,7 @@ paths:
                                             type: integer
                                             description: >-
                                               Maximum time in minutes to retain events when offline (0 - 10080).
-                                              0 retains events indefinitely until maxNumEvents is reached.
+                                              0 or -1 retains events indefinitely until maxNumEvents is reached.
                                             minimum: 0
                                             maximum: 10080
                                             example: 500
@@ -3564,7 +3579,7 @@ paths:
                                         description: >-
                                           Data acknowledgement configuration. When enabled, the reader waits
                                           for an ACK from the cloud before marking events as delivered.
-                                          Requires MQTT 5. Not supported on Azure IoT Hub (Azure does not support MQTT 5).
+                                          Supported on MQTT-based connections only.
                                         properties:
                                           enable:
                                             type: boolean
@@ -3676,7 +3691,7 @@ paths:
                                             example: server
                                           keyAlgorithm:
                                             type: string
-                                            description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                            description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                             example: RS256
                                           keyFormat:
                                             type: string
@@ -3706,8 +3721,8 @@ paths:
                                   type:
                                     type: string
                                     description: >-
-                                      Connection type. Supported values: mqtt, mqtt-AWS,
-                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server.
+                                      Connection type. Supported values: mqtt, mqtt-GCP, mqtt-AWS,
+                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server, keyboard-emulation.
                                     example: mqtt
                               example:
                                 - additionalOptions:
@@ -3858,7 +3873,7 @@ paths:
                                             example: server
                                           keyAlgorithm:
                                             type: string
-                                            description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                            description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                             example: RS256
                                           keyFormat:
                                             type: string
@@ -3891,8 +3906,8 @@ paths:
                                   type:
                                     type: string
                                     description: >-
-                                      Connection type. Supported values: mqtt, mqtt-AWS,
-                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server.
+                                      Connection type. Supported values: mqtt, mqtt-GCP, mqtt-AWS,
+                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server, keyboard-emulation.
                                     example: mqtt
                               example:
                                 - description: MQTT_TEST
@@ -4039,7 +4054,7 @@ paths:
                                             example: server
                                           keyAlgorithm:
                                             type: string
-                                            description: Signing algorithm for JWT-based authentication (e.g. RS256, ES256).
+                                            description: JWT signing algorithm for GCP connections (e.g. RS256, ES256).
                                             example: RS256
                                           keyFormat:
                                             type: string
@@ -4069,8 +4084,8 @@ paths:
                                   type:
                                     type: string
                                     description: >-
-                                      Connection type. Supported values: mqtt, mqtt-AWS,
-                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server.
+                                      Connection type. Supported values: mqtt, mqtt-GCP, mqtt-AWS,
+                                      mqtt-Azure, httpPost, WEBSOCKET, tcpip-server, keyboard-emulation.
                                     example: mqtt
                               example:
                                 - description: MQTT_TEST
@@ -4285,6 +4300,44 @@ paths:
                         type: array
                         items:
                           type: string
+                      stackLED:
+                        description: >-
+                          Stack LED capability. FXR90 returns supported as false. FXR60 returns
+                          supported as true and includes colors when stack LED hardware is present.
+                        oneOf:
+                          - type: object
+                            properties:
+                              supported:
+                                const: false
+                            required:
+                              - supported
+                            additionalProperties: false
+                            example:
+                              supported: false
+                          - type: object
+                            properties:
+                              supported:
+                                const: true
+                              colors:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - RED
+                                    - GREEN
+                                    - AMBER
+                                    - BLUE
+                            required:
+                              - supported
+                              - colors
+                            additionalProperties: false
+                            example:
+                              supported: true
+                              colors:
+                                - RED
+                                - GREEN
+                                - AMBER
+                                - BLUE
                       asyncManagementEventsSupported:
                         type: boolean
                       beepersSupported:
@@ -4434,7 +4487,19 @@ paths:
                             - POE+
                             - POWERBRICK
                             - BATTERY
-                        description: Power sources supported by the reader model.
+                        description: >-
+                          Power sources supported by the reader model. FXR90 and FXR60 support
+                          only POE, POE+, and POWERBRICK.
+                      gen2xFeaturesSupported:
+                        type: array
+                        description: Impinj Gen2X features supported by the reader model.
+                        items:
+                          type: string
+                          enum:
+                            - FASTID
+                            - TAGFOCUS
+                            - TAGQUIETING
+                            - PROTECTEDMODE
                       supportedTagDataFormat:
                         type: array
                         items:
@@ -4464,6 +4529,8 @@ paths:
                     - RED
                     - GREEN
                     - AMBER
+                  stackLED:
+                    supported: false
                   asyncManagementEventsSupported: true
                   beepersSupported: false
                   clockSupport: true
@@ -4580,6 +4647,11 @@ paths:
                     - POWERBRICK
                     - POE
                     - POE+
+                  gen2xFeaturesSupported:
+                    - FASTID
+                    - TAGFOCUS
+                    - TAGQUIETING
+                    - PROTECTEDMODE
                   supportedTagDataFormat:
                     - GS1
                     - HEX
@@ -5252,14 +5324,7 @@ paths:
       tags:
         - Certificate
       summary: Install certificate
-      description: >-
-        MQTT API :- set_updateCertificate (set_update_cert) <br>
-        Installs a certificate on the device. Supported certificate download/transfer protocols: HTTPS, FTPS, SFTP.
-        Synchronous: without `retry`, the certificate download and installation complete during this API call, and
-        the final result is returned in the response. Asynchronous: when `retry` is provided with an HTTPS URL, the
-        operation runs in the background and the API returns an immediate acknowledgment; the final result is
-        published on the management events channel. FTPS and SFTP support synchronous operation only. `retry` and
-        `timeouts` are supported only for HTTPS.
+      description: "MQTT API :-  set_updateCertificate (set_update_cert) <br> Installs a certificate on the device. Supported certificate download/transfer protocols: HTTPS, FTPS, SFTP."
       operationId: setUpdatecertificate
       requestBody:
         content:
@@ -5277,7 +5342,7 @@ paths:
                   description: Authentication method for fetching the certificate file.
                 authenticationOptions:
                   type: object
-                  description: Credentials object used when `authenticationType` is `BASIC`.
+                  description: Credentials object used when `authenticationType` is `BASIC`. The reader accepts this key. Spec 11 still names it `options`.
                   required:
                     - username
                     - password
@@ -5341,115 +5406,29 @@ paths:
                   type: string
                 headers:
                   type: object
-                  description: Optional HTTP headers to include in the download request.
-                  properties:
-                    Authorization:
-                      type: string
-                      example: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJaRUJSQSIsImV4cCI6MTc2MTY0'
-                      description: Bearer token (JWT) used for authenticating API requests.
+                  additionalProperties:
+                    type: string
                 retry:
                   type: object
-                  description: >-
-                    Backoff retry is supported only when the download URL uses https://. Providing this field selects
-                    asynchronous execution. The API returns an immediate acknowledgment and publishes the final
-                    success or failure result on the management events channel. Omit this field to execute
-                    synchronously and receive the final result in the REST response. FTPS and SFTP do not support
-                    asynchronous execution.
                   properties:
-                    type:
-                      type: string
-                      example: randomWait
-                      enum:
-                        - randomWait
-                      description: '"randomWait" means wait a random duration between retries'
-                    policy:
-                      type: object
-                      description: Contains retry configuration settings
-                      properties:
-                        retries:
-                          type: integer
-                          description: Maximum number of times to retry a failed request
-                          default: 1
-                          minimum: 1
-                          example: 3
-                          maximum: 50
-                        wait:
-                          type: object
-                          description: Duration settings for the wait between retries
-                          properties:
-                            min:
-                              type: integer
-                              description: Minimum wait time in seconds before retrying
-                              minimum: 0
-                              maximum: 3600
-                              default: 30
-                              example: 60
-                            max:
-                              type: integer
-                              description: Maximum wait time in seconds before retrying
-                              default: 300
-                              minimum: 1
-                              maximum: 3600
-                              example: 600
-                timeouts:
-                  type: object
-                  description: Transfer timeout settings supported only when the download URL uses https://.
-                  properties:
-                    connection:
+                    count:
                       type: integer
-                      description: Maximum time in seconds to establish a connection to the server
-                      default: 60
-                      example: 120
-                      minimum: 1
-                      maximum: 3600
-                    read:
+                    delayInSec:
                       type: integer
-                      description: Maximum time in seconds to wait for a response after a connection is established
-                      default: 600
-                      example: 180
-                      minimum: 1
-                      maximum: 3600
             examples:
               set_updateCertificate:
                 value:
                   authenticationOptions:
-                    password: L@bu$3rs
-                    username: labuser
+                    password: zebra
+                    username: zebra
                   authenticationType: BASIC
-                  name: DOCK01
-                  pfxPassword: password123456
+                  name: reader
+                  pfxPassword: abcd12345
                   type: client
-                  url: sftp://10.117.229.15/data2/home/labuser/Certs/testuser-2026.pfx
-              set_updateCertificate_async:
-                summary: Asynchronous certificate installation
-                value:
-                  authenticationType: BASIC
-                  authenticationOptions:
-                    password: demo-password
-                    username: demo-user
-                  name: demo-certificate
-                  pfxPassword: demo-pfx-password
-                  type: app
-                  url: https://example.com/certificates/sample.pfx
-                  verifyHost: false
-                  verifyPeer: false
-                  headers:
-                    Authorization: Bearer demo-token
-                  retry:
-                    type: randomWait
-                    policy:
-                      retries: 3
-                      wait:
-                        min: 10
-                        max: 30
-                  timeouts:
-                    connection: 5
-                    read: 20
+                  url: https://10.117.229.15/reader.pfx
       responses:
         '200':
-          description: >-
-            Synchronous requests return the final installation result. Asynchronous requests return an immediate
-            acknowledgment; the final result is delivered through the management events channel.
+          description: OK
       security:
         - bearerAuth: []
   /cloud/certificates/{certname}:
@@ -5458,7 +5437,6 @@ paths:
         in: path
         required: true
         description: Certificate name. This path value is used as the certificate name for refresh and delete operations.
-        example: mqtt-client-cert
         schema:
           type: string
     put:
@@ -5511,7 +5489,7 @@ paths:
               properties:
                 type:
                   type: string
-                  description: 'Certificate type. Valid values: client, app. The server certificate cannot be deleted.'
+                  description: 'Certificate type. Valid values: client, app.'
                   enum: [client, app]
                   example: client
             examples:
@@ -5556,7 +5534,6 @@ paths:
         in: path
         required: true
         description: CA certificate name. For local REST this path parameter is used as the certificate name. For MQTT, `name` is provided in the payload.
-        example: AmazonRootCA1
         schema:
           type: string
     put:
@@ -5626,11 +5603,11 @@ paths:
       tags:
         - Network
       summary: Retrieves reader network configuration
-      description: >-
-        MQTT API :- get_network <br> Retrieves reader network information including IP address, subnet mask, gateway and DNS. <br>
+      description: >
+        MQTT API :-  get_network <br> Retrieves reader network information including IP address, subnet mask, gateway and DNS. <br>
         When no body is provided, all interfaces are returned (implicit call). <br>
         To query a single interface, supply `{"interface": "<name>"}` in the request body. <br>
-        Supported interfaces: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `blescan`.
+        Supported interfaces: `eth0`, `mlan0`, `bnep0`, `wan0`, `uap0`, `all`.
       operationId: getNetwork
       requestBody:
         required: false
@@ -5641,14 +5618,14 @@ paths:
               properties:
                 interface:
                   type: string
-                  description: Network interface to query. If omitted, all interfaces are returned. `wan0` is FXR90 only.
+                  description: Network interface to query. If omitted, all interfaces are returned.
                   enum:
                     - eth0
                     - mlan0
                     - bnep0
                     - wan0
                     - uap0
-                    - blescan
+                    - all
             examples:
               get_network_all:
                 summary: All interfaces (implicit — no body)
@@ -5666,17 +5643,17 @@ paths:
                 value:
                   interface: bnep0
               get_network_wan0:
-                summary: WAN / cellular (wan0) — FXR90 only
+                summary: WAN / cellular (wan0)
                 value:
                   interface: wan0
               get_network_uap0:
                 summary: WiFi Hotspot (uap0)
                 value:
                   interface: uap0
-              get_network_blescan:
-                summary: BLE scan (blescan)
+              get_network_all_explicit:
+                summary: get all interfaces
                 value:
-                  interface: blescan
+                  interface: all
       responses:
         '200':
           description: OK
@@ -5702,42 +5679,54 @@ paths:
                               dhcp:
                                 type: boolean
                                 description: Whether DHCP is enabled for IPv4 on this interface.
+                                example: true
                               ipAddress:
                                 type: string
                                 description: IPv4 address assigned to this interface.
+                                example: 10.233.45.235
                               gatewayAddress:
                                 type: string
                                 description: IPv4 gateway address for this interface.
+                                example: 10.233.45.2
                               subnetMask:
                                 type: string
                                 description: Subnet mask for the assigned IPv4 address.
+                                example: 255.255.255.0
                               dnsAddress:
                                 type: string
                                 description: IPv4 DNS server address for this interface.
+                                example: 10.233.1.200
                               domainName:
                                 type: string
                                 description: Domain name associated with this interface.
+                                example: zlab.com
                           IPV6:
                             type: object
                             properties:
                               dhcp:
                                 type: boolean
                                 description: Whether DHCP is enabled for IPv6 on this interface.
+                                example: true
                               ipAddress:
                                 type: string
                                 description: IPv6 address assigned to this interface.
+                                example: fd6c:10:233:45:eab:f51f:957e:f729
                               gatewayAddress:
                                 type: string
                                 description: IPv6 gateway address for this interface.
+                                example: fe80::f6ee:31ff:fe0c:5a1f
                               prefix:
                                 type: string
-                                description: IPv6 prefix length (CIDR) of the assigned address, for example `64`. IPv6 has no subnetMask field; this value is the prefix length.
+                                description: IPv6 prefix for the assigned address.
+                                example: 64
                               dnsAddress:
                                 type: string
                                 description: IPv6 DNS server address for this interface.
+                                example: fd6c:10:233:1::201
                               domainName:
                                 type: string
                                 description: Domain name associated with this interface.
+                                example: zlab.com
                           security:
                             type: object
                             description: Ethernet security configuration.
@@ -5754,17 +5743,20 @@ paths:
                                 example: TLS
                               innerAuthentication:
                                 type: string
-                                description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPV2).
+                                description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPv2).
                                 example: MSCHAPV2
                               username:
                                 type: string
-                                description: Username for TTLS/PEAP with MSCHAPV2.
+                                description: Username for TTLS/PEAP with MSCHAPv2.
+                                example: john.doe
                               password:
                                 type: string
-                                description: Password for TTLS/PEAP with MSCHAPV2.
+                                description: Password for TTLS/PEAP with MSCHAPv2.
+                                example: secret
                               certificate:
                                 type: string
                                 description: Client certificate name used for TLS-based authentication.
+                                example: my-client-cert
                           Status:
                             type: string
                             description: Connection status.
@@ -5787,42 +5779,54 @@ paths:
                               dhcp:
                                 type: boolean
                                 description: Whether DHCP is enabled for IPv4 on this interface.
+                                example: true
                               ipAddress:
                                 type: string
                                 description: IPv4 address assigned to this interface.
+                                example: 192.168.0.201
                               gatewayAddress:
                                 type: string
                                 description: IPv4 gateway address for this interface.
+                                example: 192.168.0.1
                               subnetMask:
                                 type: string
                                 description: Subnet mask for the assigned IPv4 address.
+                                example: 255.255.255.0
                               dnsAddress:
                                 type: string
                                 description: IPv4 DNS server address for this interface.
+                                example: 1.1.1.1
                               domainName:
                                 type: string
                                 description: Domain name associated with this interface.
+                                example: zlab.com
                           IPV6:
                             type: object
                             properties:
                               dhcp:
                                 type: boolean
                                 description: Whether DHCP is enabled for IPv6 on this interface.
+                                example: true
                               ipAddress:
                                 type: string
                                 description: IPv6 address assigned to this interface.
+                                example: fe80::3626:9125:eda5:36d7
                               gatewayAddress:
                                 type: string
                                 description: IPv6 gateway address for this interface.
+                                example: fe80::c206:c3ff:febe:ee3c
                               prefix:
                                 type: string
-                                description: IPv6 prefix length (CIDR) of the assigned address, for example `64`. IPv6 has no subnetMask field; this value is the prefix length.
+                                description: IPv6 prefix for the assigned address.
+                                example: 64
                               dnsAddress:
                                 type: string
                                 description: IPv6 DNS server address for this interface.
+                                example: fd6c:10:233:1::201
                               domainName:
                                 type: string
                                 description: Domain name associated with this interface.
+                                example: zlab.com
                           accesspoint:
                             type: object
                             description: Connected WiFi access point details.
@@ -5874,14 +5878,14 @@ paths:
                                         example: TLS
                                       innerAuthentication:
                                         type: string
-                                        description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPV2).
+                                        description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPv2).
                                         example: MSCHAPV2
                                       username:
                                         type: string
-                                        description: Username for TTLS/PEAP with MSCHAPV2.
+                                        description: Username for TTLS/PEAP with MSCHAPv2.
                                       password:
                                         type: string
-                                        description: Password for TTLS/PEAP with MSCHAPV2.
+                                        description: Password for TTLS/PEAP with MSCHAPv2.
                                       certificate:
                                         type: string
                                         description: Client certificate name for TLS-based methods.
@@ -5895,14 +5899,14 @@ paths:
                                         example: TLS
                                       innerAuthentication:
                                         type: string
-                                        description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPV2).
+                                        description: Inner EAP authentication method (for TTLS/PEAP with TLS or MSCHAPv2).
                                         example: MSCHAPV2
                                       username:
                                         type: string
-                                        description: Username for TTLS/PEAP with MSCHAPV2.
+                                        description: Username for TTLS/PEAP with MSCHAPv2.
                                       password:
                                         type: string
-                                        description: Password for TTLS/PEAP with MSCHAPV2.
+                                        description: Password for TTLS/PEAP with MSCHAPv2.
                                       certificate:
                                         type: string
                                         description: Client certificate name for TLS-based methods.
@@ -6101,8 +6105,105 @@ paths:
                           macAddress:
                             type: string
               examples:
-                Ethernet:
-                  summary: eth0 Interface
+                get_network_all:
+                  summary: All interfaces (implicit — no parameter)
+                  value:
+                    hostName: FXR90C5F1AB
+                    networkInterface:
+                      blescan:
+                        enable: false
+                        scanState: stopped
+                        type: blescan
+                      eth0:
+                        IPV4:
+                          dhcp: true
+                          dnsAddress: 10.233.1.200
+                          domainName: zlab.com
+                          gatewayAddress: 10.233.45.2
+                          ipAddress: 10.233.45.235
+                          subnetMask: 255.255.255.0
+                        IPV6:
+                          dhcp: true
+                          dnsAddress: fd6c:10:233:1::201
+                          domainName: zlab.com
+                          gatewayAddress: fe80::f6ee:31ff:fe0c:5a1f
+                          ipAddress: fd6c:10:233:45:eab:f51f:957e:f729
+                          prefix: 64
+                        Status: connected
+                        isEnabled: true
+                        macAddress: C8:1C:FE:C5:F1:AB
+                      mlan0:
+                        IPV4:
+                          dhcp: true
+                          dnsAddress: 1.1.1.1
+                          domainName: FXR90C5F1AB
+                          gatewayAddress: 192.168.0.1
+                          ipAddress: 192.168.0.201
+                          subnetMask: 255.255.255.0
+                        IPV6:
+                          dhcp: true
+                          dnsAddress: fd6c:10:233:1::201
+                          domainName: FXR90C5F1AB
+                          gatewayAddress: fe80::c206:c3ff:febe:ee3c
+                          ipAddress: fe80::3626:9125:eda5:36d7
+                          prefix: 64
+                        Status: connected
+                        accesspoint:
+                          autoConn: false
+                          essid: GLaDOS
+                          status: connected
+                          security:
+                            securityType: WPA2Personal
+                        isEnabled: true
+                        macAddress: 48:A4:93:BF:A9:50
+                      bnep0:
+                        Status: active
+                        deviceDiscoverableName: FXR90C5F1AB
+                        dhcpEndAddress: 192.168.0.10
+                        dhcpStartAddress: 192.168.0.2
+                        ipAddress: 192.168.241.171
+                        isDiscoverable: true
+                        isEnabled: true
+                        isPairable: true
+                        macAddress: 48:A4:93:BF:A9:52
+                        passKey: '1234'
+                        subnetMask: 255.255.0.0
+                        usePassKey: true
+                      wan0:
+                        Status: online
+                        activeSim: psim
+                        isEnabled: true
+                        psim:
+                          currentDataClass: LTE
+                          currentServiceProvider: Vi India
+                          enableIPv6: false
+                          enablePin: false
+                          enableRoaming: false
+                          highestAvailableDataClass: LTE
+                          internetAccess: true
+                          packetServiceState: Attached
+                          preferredNetworkType: AUTO
+                          registerState: Home
+                          rsrp: '-103.7dBm'
+                          rsrq: '-5.5dB'
+                          rssi: '-82.7dBm'
+                          signalBar: 1
+                          simState: Initialized
+                          snr: 0.0dB
+                      uap0:
+                        ssid: FXR90Hotspot
+                        ssidPassword: 'MyP@ssword'
+                        isHidden: false
+                        securityType: WPA3Personal
+                        Status: active
+                        isEnabled: true
+                        macAddress: 48:A4:93:BF:A9:53
+                        Clients:
+                          - hostName: my-laptop
+                            IP: 192.168.43.2
+                            MAC: AA:BB:CC:DD:EE:FF
+                get_network_eth0:
+                  summary: Ethernet (eth0)
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6124,8 +6225,8 @@ paths:
                         Status: connected
                         isEnabled: true
                         macAddress: C8:1C:FE:C5:F1:AB
-                WiFi:
-                  summary: mlan0 Interface
+                get_network_mlan0:
+                  summary: WiFi station (mlan0)
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6153,8 +6254,8 @@ paths:
                             securityType: WPA2Personal
                         isEnabled: true
                         macAddress: 48:A4:93:BF:A9:50
-                Bluetooth:
-                  summary: bnep0 Interface
+                get_network_bnep0:
+                  summary: Bluetooth PAN (bnep0)
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6171,8 +6272,8 @@ paths:
                         passKey: '1234'
                         subnetMask: 255.255.0.0
                         usePassKey: true
-                WAN:
-                  summary: wan0 Interface
+                get_network_wan0:
+                  summary: WAN / cellular (wan0)
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6197,8 +6298,8 @@ paths:
                           signalBar: 1
                           simState: Initialized
                           snr: 0.0dB
-                Hotspot:
-                  summary: uap0 Interface
+                get_network_uap0:
+                  summary: WiFi Hotspot (uap0)
                   value:
                     hostName: FXR90C5F1AB
                     networkInterface:
@@ -6214,6 +6315,15 @@ paths:
                           - hostName: my-laptop
                             IP: 192.168.43.2
                             MAC: AA:BB:CC:DD:EE:FF
+                get_network_blescan:
+                  summary: BLE scan (blescan)
+                  value:
+                    hostName: FXR90C5F1AB
+                    networkInterface:
+                      blescan:
+                        enable: false
+                        scanState: stopped
+                        type: blescan
       security:
         - bearerAuth: []
     put:
@@ -6221,8 +6331,19 @@ paths:
         - Network
       summary: Updates reader network configuration
       description: >
-        MQTT API :-  set_network <br> Updates the reader network configuration settings.
-        Only one interface key (`eth0`, `mlan0`, `bnep0`, `wan0`, or `uap0`) may be present per request.
+        MQTT API :-  set_network <br> Updates the reader network configuration settings. <br>
+        Only one interface key (`eth0`, `mlan0`, `bnep0`, `wan0`, or `uap0` or `all` ) may be present per request. <br>
+        Both ethernet (eth0) with security type 802_1XEAP and Wi-Fi (mlan0) with security type WPA2Enterprise/WPA3Enterprise are in common for outer/inner authentication of below: <br>
+        TLS - requires certificate <br>
+        TTLS/TLS - requires certificate <br>
+        PEAP/TLS - requires certificate <br>
+        PEAP/MSCHAPV2  - requires username and password <br>
+        TTLS/MSCHAPV2  - requires username and password <br>
+        Wi-Fi applies following security of authenication: <br>
+        WPA2 Personal - requires password <br>
+        WPA3 Personal - requires password <br>
+        Security Alert: The MSCHAPv2 protocol is not FIPS 140-3 compliant <br>
+
       operationId: updateNetwork
       requestBody:
         content:
@@ -6265,42 +6386,42 @@ paths:
                           example: zlab.com
                     IPV6:
                       type: object
-                      description: IPv6 settings. Use dhcp:true for DHCP, or supply all static fields when dhcp:false (including prefix length).
+                      description: IPv6 settings. Use dhcp:true for DHCP, or supply all static fields when dhcp:false.
                       properties:
                         dhcp:
                           type: boolean
                           description: Enable/disable DHCP for IPv6 on this interface.
+                          example: true
                         ipAddress:
                           type: string
                           description: Static IPv6 address (required if dhcp is false).
+                          example: 2001:db8:1:0:8731:2eb1:cd28:f0cd
                         gatewayAddress:
                           type: string
                           description: IPv6 gateway address (required if dhcp is false).
+                          example: fe80::1643:8376:b32:4a16
                         prefix:
                           type: string
-                          description: IPv6 prefix length (CIDR), for example `64`. Required when dhcp is false. IPv6 has no subnetMask field; use prefix instead of an IPv4-style mask.
+                          description: IPv6 prefix (required if dhcp is false).
+                          example: 64
                         dnsAddress:
                           type: string
                           description: IPv6 DNS address (required if dhcp is false).
+                          example: 2001:4860:4860::9999
                         domainName:
                           type: string
                           description: IPv6 domain name (required if dhcp is false).
+                          example: zlab.com
                     security:
                       type: object
                       description: >
-                        Ethernet security configuration.
-                        Set `security.enable` to true and include `802_1XEAP` for 802.1X authentication.
-                        If the `security` configuration is omitted, security is disabled.
+                        Ethernet security configuration. 
+                        Include the appropriate security configuration to enable security: `802_1XEAP` for 802.1X authentication.
+                        If the `security` configuration is omitted, security is disabled and all other security-related fields are ignored.
                       properties:
-                        enable:
-                          type: boolean
-                          description: >
-                            Set to true when configuring 802.1X on this interface.
-                            This is independent of the interface-level `enable` field, which turns the Ethernet port on or off.
-                          example: true
                         802_1XEAP:
                           type: object
-                          description: 802.1X EAP security configuration. The JSON key is `802_1XEAP` (uppercase X).
+                          description: 802.1X EAP security configuration (when securityType is 802_1XEAP).
                           properties:
                             authentication:
                               type: string
@@ -6309,26 +6430,26 @@ paths:
                                 - TLS
                                 - TTLS
                                 - PEAP
-                              example: TTLS
+                              example: TLS
                             innerAuthentication:
                               type: string
-                              description: >
-                                Inner method for TTLS and PEAP (`MSCHAPV2` or `TLS`).
-                                For outer `TLS`, send an empty string (`""`).
+                              description: "Inner authentication method (for TTLS/PEAP): TLS or MSCHAPv2."
                               enum:
                                 - TLS
                                 - MSCHAPV2
-                                - ''
                               example: MSCHAPV2
                             username:
                               type: string
-                              description: Username (for TTLS/PEAP with MSCHAPV2).
+                              description: Username (for TTLS/PEAP with MSCHAPv2).
+                              example: john.doe
                             password:
                               type: string
-                              description: Password (for TTLS/PEAP with MSCHAPV2).
+                              description: Password (for TTLS/PEAP with MSCHAPv2).
+                              example: secret
                             certificate:
                               type: string
                               description: Client certificate name (for TLS-based methods).
+                              example: my-client-cert
                     enable:
                       type: boolean
                       description: Enable/disable the ethernet interface.
@@ -6344,43 +6465,54 @@ paths:
                         dhcp:
                           type: boolean
                           description: Enable/disable DHCP for IPv4 on this interface.
+                          example: true
                         ipAddress:
                           type: string
                           description: Static IPv4 address (required if dhcp is false).
+                          example: 10.233.46.47
                         gatewayAddress:
                           type: string
                           description: IPv4 gateway address (required if dhcp is false).
+                          example: 10.233.46.2
                         subnetMask:
                           type: string
                           description: IPv4 subnet mask (required if dhcp is false).
+                          example: 255.255.255.0
                         dnsAddress:
                           type: string
                           description: IPv4 DNS address (required if dhcp is false).
+                          example: 10.233.46.1
                         domainName:
                           type: string
                           description: IPv4 domain name (required if dhcp is false).
+                          example: example.com
                     IPV6:
                       type: object
-                      description: IPv6 settings. Use dhcp:true for DHCP, or supply all static fields when dhcp:false (including prefix length).
                       properties:
                         dhcp:
                           type: boolean
                           description: Enable/disable DHCP for IPv6 on this interface.
+                          example: true
                         ipAddress:
                           type: string
                           description: Static IPv6 address (required if dhcp is false).
+                          example: 2001:db8:1:0:8731:2eb1:cd28:f0cd
                         gatewayAddress:
                           type: string
                           description: IPv6 gateway address (required if dhcp is false).
+                          example: fe80::1643:8376:b32:4a16
                         prefix:
                           type: string
-                          description: IPv6 prefix length (CIDR), for example `64`. Required when dhcp is false. IPv6 has no subnetMask field; use prefix instead of an IPv4-style mask.
+                          description: IPv6 prefix (required if dhcp is false).
+                          example: 64
                         dnsAddress:
                           type: string
                           description: IPv6 DNS address (required if dhcp is false).
+                          example: 2001:4860:4860::9999
                         domainName:
                           type: string
                           description: IPv6 domain name (required if dhcp is false).
+                          example: zlab.com
                     accesspoint:
                       type: object
                       required:
@@ -6402,16 +6534,8 @@ paths:
                         security:
                           type: object
                           description: >
-                            WiFi security configuration.Include the appropriate security configuration to enable security.
-                            Include exactly ONE of the following: `WPA2Personal` or `WPA2Enterprise`.
-                            If the security configuration is omitted, security is disabled and all other security-related fields are ignored.
+                            Wi-Fi security configuration has security type following options WPA2Personal, WPA3Personal, WPA2Enterprise or WPA3Enterprise
                           properties:
-                            enable:
-                              type: boolean
-                              description: >
-                                Enables the security configuration. The reader-captured WPA2Enterprise body sends
-                                `true` alongside the chosen suite.
-                              example: true
                             WPA2Personal:
                               type: object
                               description: WPA2 Personal (PSK) security options.
@@ -6442,23 +6566,23 @@ paths:
                                   example: TLS
                                 innerAuthentication:
                                   type: string
-                                  description: >
-                                    Inner method for TTLS and PEAP (`MSCHAPV2` or `TLS`).
-                                    For outer `TLS`, send an empty string (`""`). Do not send a space.
+                                  description: "Inner authentication method (for TTLS/PEAP): TLS or MSCHAPv2."
                                   enum:
                                     - TLS
                                     - MSCHAPV2
-                                    - ''
                                   example: MSCHAPV2
                                 username:
                                   type: string
-                                  description: Username (for TTLS/PEAP with MSCHAPV2).
+                                  description: Username (for TTLS/PEAP with MSCHAPv2).
+                                  example: testuser
                                 password:
                                   type: string
-                                  description: Password (for TTLS/PEAP with MSCHAPV2).
+                                  description: Password (for TTLS/PEAP with MSCHAPv2).
+                                  example: MyP@ssword
                                 certificate:
                                   type: string
                                   description: Client certificate name (for TLS-based methods).
+                                  example: myCertificate
                             WPA3Enterprise:
                               type: object
                               description: WPA3 Enterprise security options.
@@ -6473,23 +6597,23 @@ paths:
                                   example: TLS
                                 innerAuthentication:
                                   type: string
-                                  description: >
-                                    Inner method for TTLS and PEAP (`MSCHAPV2` or `TLS`).
-                                    For outer `TLS`, send an empty string (`""`). Do not send a space.
+                                  description: "Inner authentication method (for TTLS/PEAP): TLS or MSCHAPv2."
                                   enum:
                                     - TLS
                                     - MSCHAPV2
-                                    - ''
                                   example: MSCHAPV2
                                 username:
                                   type: string
-                                  description: Username (for TTLS/PEAP with MSCHAPV2).
+                                  description: Username (for TTLS/PEAP with MSCHAPv2).
+                                  example: testuser
                                 password:
                                   type: string
-                                  description: Password (for TTLS/PEAP with MSCHAPV2).
+                                  description: Password (for TTLS/PEAP with MSCHAPv2).
+                                  example: MyP@ssword
                                 certificate:
                                   type: string
                                   description: Client certificate name (for TLS-based methods).
+                                  example: myCertificate
                     enable:
                       type: boolean
                       description: Enable/disable the WiFi station interface.
@@ -6646,7 +6770,7 @@ paths:
                       prefix: 64
                     enable: true
               set_Network_ethernet_static_8021x_tls:
-                summary: Ethernet — 802.1X (TLS).Similarly applicable for TTLS/TLS, PEAP/TTLS, TTLS/MSCHAPV2, PEAP/MSCHAPV2.  
+                summary: Ethernet — 802.1X (TLS) Static IP  
                 value:
                   eth0:
                     IPV4:
@@ -6665,48 +6789,42 @@ paths:
                       prefix: 64
                     enable: true
                     security:
-                      enable: true
                       802_1XEAP:
                         authentication: TLS
-                        innerAuthentication: ""
-                        certificate: COMMON
+                        certificate: my-client-cert
               set_Network_ethernet_dhcp_8021x_tls:
-                summary: Ethernet — 802.1X (TLS)
+                summary: Ethernet — 802.1X (TLS) DHCP
                 value:
                   eth0:
-                    enable: true
                     security:
-                      enable: true
                       802_1XEAP:
                         authentication: TLS
-                        innerAuthentication: ""
-                        certificate: COMMON
+                        certificate: my-client-cert
+                    enable: true
               set_Network_ethernet_dhcp_8021x_ttls_mschapv2:
-                summary: Ethernet — 802.1X (TTLS/MSCHAPV2)
+                summary: Ethernet — 802.1X (TTLS/MSCHAPv2)
                 value:
                   eth0:
-                    enable: true
                     security:
-                      enable: true
-                      802_1XEAP:
+                      802_1xEAP:
                         authentication: TTLS
                         innerAuthentication: MSCHAPV2
-                        username: testuser1
-                        password: X!k78@rH0nL1
+                        username: john.doe
+                        password: secret
+                    enable: true
               set_Network_ethernet_dhcp_8021x_peap_mschapv2:
-                summary: Ethernet — 802.1X (PEAP/MSCHAPV2)
+                summary: Ethernet — 802.1X (PEAP/MSCHAPv2)
                 value:
                   eth0:
-                    enable: true
                     security:
-                      enable: true
-                      802_1XEAP:
+                      802_1xEAP:
                         authentication: PEAP
                         innerAuthentication: MSCHAPV2
-                        username: testuser1
-                        password: X!k78@rH0nL1
+                        username: john.doe
+                        password: secret
+                    enable: true
               set_Network_wifi_static:
-                summary: WiFi — static IP .Similarly applicable for WPA3Personal, WPA2Enterprise, WPA3Enterprise 
+                summary: WiFi — static IP 
                 value:
                   mlan0:
                     IPV4:
@@ -6732,7 +6850,7 @@ paths:
                         WPA2Personal:
                           password: '12345678'
               set_Network_wifi_dhcp:
-                summary: WiFi — WPA3 Personal.Similarly applicable for WPA2Personal,WPA2Enterprise, WPA3Enterprise, 
+                summary: WiFi — WPA3 Personal 
                 value:
                   mlan0:
                     accesspoint:
@@ -6756,7 +6874,7 @@ paths:
                           password: '12345678'
                     enable: true
               set_Network_wifi_wpa2_enterprise_tls:
-                summary: WiFi — WPA2 Enterprise (TLS).Similary applicable for WPA3 Enterprise(WPA3Enterprise)
+                summary: WiFi — WPA2 Enterprise (TLS)
                 value:
                   mlan0:
                     accesspoint:
@@ -6766,27 +6884,25 @@ paths:
                       security:
                         WPA2Enterprise:
                           authentication: TLS
-                          innerAuthentication: ""
                           certificate: my-client-cert
                     enable: true
               set_Network_wifi_wpa3_enterprise_ttls_mschapv2:
-                summary: WiFi — WPA3 Enterprise (TTLS/MSCHAPV2).similarly applicable for WPA2 Enterprise (WPA2Enterprise)
+                summary: WiFi — WPA3 Enterprise (TTLS/MSCHAPv2)
                 value:
                   mlan0:
                     accesspoint:
-                      essid: Vulcan_WPA3_5_ENT_802.1x
+                      essid: CorpNetwork
                       connect: true
                       autoConn: true
                       security:
-                        enable: true
                         WPA3Enterprise:
                           authentication: TTLS
                           innerAuthentication: MSCHAPV2
-                          username: testuser1
-                          password: X!k78@rH0nL1
+                          username: john.doe
+                          password: secret
                     enable: true
               set_Network_wifi_wpa2_enterprise_peap_tls:
-                summary: WiFi — WPA2 Enterprise (PEAP/TLS).Similarly applicable for WPA3 Enterprise(WPA3Enterprise)
+                summary: WiFi — WPA2 Enterprise (PEAP/TLS)
                 value:
                   mlan0:
                     accesspoint:
@@ -6800,7 +6916,7 @@ paths:
                           certificate: my-client-cert
                     enable: true
               set_Network_wifi_wpa2_enterprise_ttls_tls:
-                summary: WiFi — WPA2 Enterprise (TTLS/TLS).Similarly applicable for WPA3 Enterprise(WPA3Enterprise)
+                summary: WiFi — WPA2 Enterprise (TTLS/TLS)
                 value:
                   mlan0:
                     accesspoint:
@@ -6814,20 +6930,19 @@ paths:
                           certificate: my-client-cert
                     enable: true 
               set_Network_wifi_wpa3_enterprise_peap_mschapv2:
-                summary: WiFi — WPA3 Enterprise (PEAP/MSCHAPV2).Similarly applicable for WPA2 Enterprise(WPA2Enterprise)
+                summary: WiFi — WPA3 Enterprise (PEAP/MSCHAPv2)
                 value:
                   mlan0:
                     accesspoint:
-                      essid: Vulcan_WPA3_5_ENT_802.1x
+                      essid: CorpNetwork
                       connect: true
                       autoConn: true
                       security:
-                        enable: true
                         WPA3Enterprise:
                           authentication: PEAP
                           innerAuthentication: MSCHAPV2
-                          username: testuser1
-                          password: X!k78@rH0nL1
+                          username: john.doe
+                          password: secret
                     enable: true  
               set_Network_bluetooth:
                 summary: Bluetooth PAN
@@ -6867,7 +6982,7 @@ paths:
             application/json:
               schema:
                 type: string
-                description: Returns an empty string on success. The reader does not echo the new configuration. Confirm the change with GET /cloud/network.
+                description: Returns an empty string on success.
                 example: ""
       security:
         - bearerAuth: []
@@ -6950,170 +7065,36 @@ paths:
                 availableWifiNetworks:
                   - capabilities:
                       - WPA2
-                      - WPA3
-                    configuration:
-                      autoConnect: false
-                    essid: GLaDOS
+                    essid: VULCAN_HOTSPOT
                     signalStrength: 100%
                   - capabilities:
-                      - WPA2
-                      - WPA3
-                    configuration:
-                      autoConnect: false
-                    essid: Bodhi
-                    signalStrength: 99%
+                      - WPA2-802.1X
+                    essid: Vulcan_WPA2_24_5_ENT_SHA256
+                    signalStrength: 84%
                   - capabilities:
                       - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: 017TB01-TNV
-                    signalStrength: 89%
+                    essid: VULCAN_2.4_WPA2
+                    signalStrength: 82%
                   - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: IOT_TESTAP
-                    signalStrength: 77%
+                      - WPA2-802.1X
+                    essid: Vulcan_WPA2_24_5_ENT_802.1x
+                    signalStrength: 82%
                   - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: ZWireless
-                    signalStrength: 75%
+                      - WPA2-802.1X
+                    essid: Vulcan_WPA2_2_4_ENT_802.1x
+                    signalStrength: 80%
                   - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: ZLAB
-                    signalStrength: 72%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: ZCorp
-                    signalStrength: 72%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: DIRECT-TY17L11-R-7951msf9
-                    signalStrength: 70%
+                      - WPA2-802.1X
+                    essid: test_owe
+                    signalStrength: 80%
                   - capabilities:
                       - WPA3
-                    configuration:
-                      autoConnect: false
-                    essid: Bodhi_5G
+                    essid: VULCAN_2.4_WPA3
+                    signalStrength: 79%
+                  - capabilities:
+                      - WPA2-802.1X
+                    essid: Vulcan_WPA2_24_ENT_SHA256
                     signalStrength: 65%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: SNT_WPA2_2G
-                    signalStrength: 50%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: RFID_Aruba_WPA2PSK
-                    signalStrength: 50%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: kawshik PC
-                    signalStrength: 47%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: OnePlus 9 Pro 5G
-                    signalStrength: 45%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: Pranshu_17
-                    signalStrength: 37%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: VJ
-                    signalStrength: 35%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: DIRECT-KH17L10-BGMW36-1msSL
-                    signalStrength: 34%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: FTMLocation
-                    signalStrength: 32%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: DIRECT-G917L11-RC7864msAJ
-                    signalStrength: 27%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: Noobie
-                    signalStrength: 25%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: sim (domain 10.233.250.53)
-                    signalStrength: 25%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: wpa2_tkip
-                    signalStrength: 24%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: testdot.1x1
-                    signalStrength: 24%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: testdot1
-                    signalStrength: 22%
-                  - capabilities:
-                      - WPA2
-                      - 802.1X
-                    configuration:
-                      autoConnect: false
-                    essid: EAPSIM
-                    signalStrength: 22%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: gg_wfw
-                    signalStrength: 20%
-                  - capabilities:
-                      - WPA2
-                    configuration:
-                      autoConnect: false
-                    essid: ManualRoam_PSK
-                    signalStrength: 20%
 
       security:
         - bearerAuth: []
@@ -7305,14 +7286,7 @@ paths:
       tags:
         - Firmware
       summary: Updates OS software on device
-      description: >-
-        MQTT API :- set_os <br>
-        Updates the OS software on the device using server-based transfer. Supported server-based transfer
-        protocols: SCP, HTTPS, SFTP, FTPS. Firmware updates always run asynchronously: the API immediately acknowledges the request, the
-        download and update run in the background, and final success or failure progress is published on the
-        management events channel or can be retrieved using get_status api.
-        The optional `retry` and `timeouts` fields configure the background transfer and are supported only when the
-        download URL uses `https://`. SCP, FTPS, and SFTP updates remain asynchronous but do not support these options.
+      description: "MQTT API :-  set_os <br> Updates the OS software on the device using server-based transfer only. Supported server-based transfer protocols: SCP, HTTPS, SFTP, FTPS. File-based and USB-based update methods are not available in this API at this time."
       operationId: setOs
       requestBody:
         content:
@@ -7330,7 +7304,7 @@ paths:
                   example: NONE
                 authenticationOptions:
                   type: object
-                  description: Credentials object used when `authenticationType` is `BASIC`.
+                  description: Credentials object used when `authenticationType` is `BASIC`. The reader accepts this key. Spec 11 still names it `options`; keep `authenticationOptions` until the developer updates.
                   required:
                     - username
                     - password
@@ -7338,7 +7312,7 @@ paths:
                     username:
                       type: string
                       description: Username for BASIC authentication.
-                      example: test
+                      example: altautoadmin
                     password:
                       type: string
                       description: Password for BASIC authentication.
@@ -7387,18 +7361,10 @@ paths:
                   description: PEM-encoded private key content.
                 installedCertificateType:
                   type: string
-                  enum:
-                    - server
-                    - client
-                    - app
-                  description: >-
-                    Type of a certificate already installed on the reader (from GET /cloud/certificates).
-                    Use this only for client TLS authentication during the download.
-                    Names must match the installed certificate (`Server`, `COMMON`, and so on) — not a placeholder such as `reader-server-cert`.
-                    To trust the download server, use `CACertificateFileContent` or `CACertificateFileLocation`.
+                  description: Use an installed certificate by specifying its type.
                 installedCertificateName:
                   type: string
-                  description: Name of an installed certificate to use. Must match a name returned by GET /cloud/certificates.
+                  description: Name of an installed certificate to use.
                 headers:
                   type: object
                   description: Optional HTTP headers to include in the download request (e.g. Authorization).
@@ -7406,16 +7372,13 @@ paths:
                     type: string
                 retry:
                   type: object
-                  description: >-
-                    Optional backoff retry strategy for the asynchronous firmware download. It is supported only when
-                    the download URL uses https://. Its presence does not change the execution mode; firmware updates
-                    are always asynchronous. SCP, FTPS, and SFTP do not support this option.
+                  description: Optional backoff retry for HTTPS OS download. Firmware updates are always asynchronous. Do not send this for scp://, sftp://, or ftps://.
                   properties:
                     type:
                       type: string
                       enum:
                         - randomWait
-                      description: Retry strategy. randomWait waits a random duration between retries.
+                      example: randomWait
                     policy:
                       type: object
                       properties:
@@ -7423,7 +7386,6 @@ paths:
                           type: integer
                           minimum: 1
                           maximum: 50
-                          default: 1
                           example: 3
                         wait:
                           type: object
@@ -7432,47 +7394,36 @@ paths:
                               type: integer
                               minimum: 0
                               maximum: 3600
-                              default: 30
                               example: 10
                             max:
                               type: integer
                               minimum: 1
                               maximum: 3600
-                              default: 300
                               example: 30
                 timeouts:
                   type: object
-                  description: >-
-                    Transfer timeout settings for the asynchronous firmware download. They are supported
-                    only when the download URL uses https://.
+                  description: Transfer timeouts for HTTPS OS download. Do not send this for scp://, sftp://, or ftps://.
                   properties:
                     connection:
                       type: integer
-                      description: Maximum time in seconds to establish a connection to the server.
                       minimum: 1
                       maximum: 3600
-                      default: 60
                       example: 5
                     read:
                       type: integer
-                      description: Maximum time in seconds to wait for a response after connection.
                       minimum: 1
                       maximum: 3600
-                      default: 600
                       example: 20
             examples:
               set_os:
                 value:
-                  url: https://10.117.229.9:9093/BUILDS/FXR90_2.0.10.tar.bz2
-                  authenticationType: NONE
-              set_os_https_retry:
-                summary: HTTPS OS update with retry
-                value:
+                  url: https://10.117.229.18/FXR_5.0.5-6.tar.bz2
                   authenticationType: BASIC
                   authenticationOptions:
-                    username: demo-user
-                    password: demo-password
-                  url: https://example.com/firmware/reader-os.tar.bz2
+                    username: altautoadmin
+                    password: XXXX
+                  verifyPeer: false
+                  verifyHost: false
                   retry:
                     type: randomWait
                     policy:
@@ -7485,9 +7436,7 @@ paths:
                     read: 20
       responses:
         '200':
-          description: >-
-            Immediate acknowledgment that the asynchronous firmware update request was accepted. Final progress and
-            success or failure results are delivered through the management events channel or get_status API call.
+          description: OK
           content:
             application/json:
               schema:
@@ -7527,13 +7476,7 @@ paths:
       tags:
         - userapp
       summary: Install user application
-      description: >-
-        MQTT API :- set_installUserapp <br>
-        Installs a user application. Synchronous: without `retry`, the application download and installation complete
-        during this API call, and the final result is returned in the response. Asynchronous: when `retry` is provided
-        with an HTTPS URL, the operation runs in the background and the API returns an immediate acknowledgment; the
-        final result is published on the management events channel. FTPS and SFTP support synchronous operation only.
-        `retry` and `timeouts` are supported only for HTTPS.
+      description: MQTT API :-  set_installUserapp <br> Installs a user application
       operationId: setInstalluserapp
       requestBody:
         content:
@@ -7598,73 +7541,15 @@ paths:
                 headers:
                   type: object
                   description: Optional HTTP headers to include in the download request.
-                  properties:
-                    Authorization:
-                      type: string
-                      example: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJaRUJSQSIsImV4cCI6MTc2MTY0'
-                      description: Bearer token (JWT) used for authenticating API requests.
+                  additionalProperties:
+                    type: string
                 retry:
                   type: object
-                  description: >-
-                    Backoff retry is supported only when the download URL uses https://. Providing this field selects
-                    asynchronous execution. The API returns an immediate acknowledgment and publishes the final
-                    success or failure result on the management events channel. Omit this field to execute
-                    synchronously and receive the final result in the REST response. FTPS and SFTP do not support
-                    asynchronous execution.
                   properties:
-                    type:
-                      type: string
-                      example: randomWait
-                      enum:
-                        - randomWait
-                      description: '"randomWait" means wait a random duration between retries'
-                    policy:
-                      type: object
-                      description: Contains retry configuration settings
-                      properties:
-                        retries:
-                          type: integer
-                          description: Maximum number of times to retry a failed request
-                          default: 1
-                          minimum: 1
-                          example: 3
-                          maximum: 50
-                        wait:
-                          type: object
-                          description: Duration settings for the wait between retries
-                          properties:
-                            min:
-                              type: integer
-                              description: Minimum wait time in seconds before retrying
-                              minimum: 0
-                              maximum: 3600
-                              default: 30
-                              example: 60
-                            max:
-                              type: integer
-                              description: Maximum wait time in seconds before retrying
-                              default: 300
-                              minimum: 1
-                              maximum: 3600
-                              example: 600
-                timeouts:
-                  type: object
-                  description: Transfer timeout settings supported only when the download URL uses https://.
-                  properties:
-                    connection:
+                    count:
                       type: integer
-                      description: Maximum time in seconds to establish a connection to the server
-                      default: 60
-                      example: 120
-                      minimum: 1
-                      maximum: 3600
-                    read:
+                    delayInSec:
                       type: integer
-                      description: Maximum time in seconds to wait for a response after a connection is established
-                      default: 600
-                      example: 180
-                      minimum: 1
-                      maximum: 3600
             examples:
               set_installUserapp:
                 value:
@@ -7674,30 +7559,9 @@ paths:
                   authenticationType: BASIC
                   filename: mylogger_1.0.1.deb
                   url: sftp://10.117.229.15/home/labuser/EV1/
-              set_installUserapp_async:
-                summary: Asynchronous user application installation
-                value:
-                  authenticationType: BASIC
-                  filename: sample-app.deb
-                  options:
-                    password: demo-password
-                    username: demo-user
-                  url: https://example.com/packages/sample-app.deb
-                  retry:
-                    type: randomWait
-                    policy:
-                      retries: 3
-                      wait:
-                        min: 10
-                        max: 30
-                  timeouts:
-                    connection: 5
-                    read: 20
       responses:
         '200':
-          description: >-
-            Synchronous requests return the final installation result. Asynchronous requests return an immediate
-            acknowledgment; the final result is delivered through the management events channel.
+          description: OK
           content:
             application/json:
               schema:
@@ -7713,6 +7577,20 @@ paths:
       summary: Start user application
       description: MQTT API :-  set_startUserapp <br> Starts a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStartuserapp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appname:
+                  type: string
+                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
+                  example: mylogger
+            examples:
+              set_startUserapp:
+                value:
+                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7737,6 +7615,20 @@ paths:
       summary: Stop user application
       description: MQTT API :-  set_stopUserapp <br> Stops a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStopuserapp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appname:
+                  type: string
+                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
+                  example: mylogger
+            examples:
+              set_stopUserapp:
+                value:
+                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7934,7 +7826,6 @@ paths:
       - name: appname
         in: path
         required: true
-        example: mylogger
         schema:
           type: string
   /cloud/apps/{appname}/uninstall:
@@ -7944,6 +7835,20 @@ paths:
       summary: Uninstall User Application
       description: MQTT API :-  set_uninstallUserapp <br> Uninstalls a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setUninstalluserapp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appname:
+                  type: string
+                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
+                  example: mylogger
+            examples:
+              set_uninstallUserapp:
+                value:
+                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -8022,7 +7927,7 @@ paths:
       tags:
         - ImpinjGen2X
       summary: Get Impinj Gen2X configuration
-      description: MQTT API :- get_impinjGen2X <br> Retrieves the current Impinj Gen2X feature configuration as last saved via set_impinjGen2X. Returns an empty object if no Gen2X configuration has been set yet. Only feature objects that were previously configured are included in the response.
+      description: MQTT API :- get_impinjGen2X <br> Retrieves the last saved Impinj Gen2X feature configuration (exactly one feature object). Returns an empty object if no Gen2X configuration has been set yet. Use this GET to read enabled; status isActive only means Gen2X is running.
       operationId: getImpinjGen2X
       responses:
         '200':
@@ -8121,11 +8026,26 @@ paths:
                   value:
                     tagQuieting:
                       advanced:
+                        preSelect:
+                          - target: SL
+                            action: ASSERTSL_NOTHING
+                            mask:
+                              bank: EPC
+                              pointer: 32
+                              length: 96
+                              value: E280123456789012345678AB
+                          - target: S2
+                            action: INVB_INVA
+                            mask:
+                              bank: EPC
+                              pointer: 32
+                              length: 96
+                              value: E280AABBCCDDEEFF11223344
                         tagQuietMasks:
-                          - S0A
-                          - S2A
+                          - SL_ASSERT
+                          - S2B
                         target: SL
-                        stateAwareAction: ASSERTSL
+                        stateAwareAction: ASSERTSL_DEASSERTSL
         '500':
           description: Internal Server Error
           content:
@@ -8145,7 +8065,7 @@ paths:
       tags:
         - ImpinjGen2X
       summary: Set Impinj Gen2X configuration
-      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). At least one feature object must be provided. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations.
+      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). Exactly one feature object must be provided. Combining two or more is rejected. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations. The flag is per inventory session.
       operationId: setImpinjGen2X
       requestBody:
         required: true
@@ -8154,9 +8074,11 @@ paths:
             schema:
               type: object
               description: >-
-                Configures Impinj Gen2X proprietary features. At least one feature object
+                Configures Impinj Gen2X proprietary features. Exactly one feature object
                 (fastID, tagProtect, tagFocus, or tagQuieting) must be provided.
+                Combining two or more is rejected.
               minProperties: 1
+              maxProperties: 1
               properties:
                 fastID:
                   type: object
@@ -8366,13 +8288,12 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - message
                 properties:
                   message:
                     type: string
-                    description: "Confirmation that the Gen2X configuration was saved. The configuration is applied on the next start with applyImpinjGen2X true."
                     example: "Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features."
-                required:
-                  - message
         '422':
           description: Unprocessable Entity
           content:
@@ -8408,9 +8329,8 @@ paths:
       description: |-
         MQTT API :- set_bleConfig
 
-        Configure the BLE scanner. The `ble.enable` field is required.
-        Optional fields control scan interval, RSSI filter, service UUID filters,
-        and protocol-specific settings.
+        Configure the BLE scanner. Every request must include all four fields:
+        `enable`, `scanIntervalSec`, `additionalFilters`, and `protocols`.
         BLE configuration must be applied before starting a BLE scan via `start`.
       operationId: setBleConfig
       requestBody:
@@ -8426,6 +8346,9 @@ paths:
                   type: object
                   required:
                     - enable
+                    - scanIntervalSec
+                    - additionalFilters
+                    - protocols
                   properties:
                     enable:
                       type: boolean
@@ -8437,6 +8360,7 @@ paths:
                       example: 5
                     additionalFilters:
                       type: object
+                      additionalProperties : false
                       properties:
                         rssi:
                           type: integer
@@ -8447,11 +8371,15 @@ paths:
                           type: array
                           items:
                             type: string
-                          example: ["0x180D"]
+                            oneOf:
+                              - pattern: '^(0[xX])?[0-9A-Fa-f]{4}$'
+                              - pattern: '^0000[0-9A-Fa-f]{4}-0000-1000-8000-00805[Ff]9[Bb]34[Ff][Bb]$'
+                          example: ["0x180D", "FEAA"]
                         serviceUuids128:
                           type: array
                           items:
                             type: string
+                            pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$'
                           example: ["6E400001-B5A3-F393-E0A9-E50E24DCCA9E"]
                     protocols:
                       type: object
@@ -8459,6 +8387,9 @@ paths:
                       properties:
                         iBeacon:
                           type: object
+                          additionalProperties : false
+                          required : 
+                            - enabled
                           properties:
                             enabled:
                               type: boolean
@@ -8467,25 +8398,37 @@ paths:
                               type: array
                               items:
                                 type: object
+                                minProperties : 1
+                                additionalProperties : false
                                 properties:
                                   uuid:
                                     type: string
                                     description: Proximity UUID
+                                    pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$'
                                     example: "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
                                   major:
                                     type: integer
+                                    minimum : 0
+                                    maximum : 65535
                                     description: Major value
                                     example: 10001
                                   minor:
                                     type: integer
+                                    minimum : 0
+                                    maximum : 65535
                                     description: Minor value
                                     example: 20002
                                   txPower:
                                     type: integer
+                                    minimum : -128
+                                    maximum : 127
                                     description: TX power / calibrated RSSI at 1m
                                     example: -59
                         altBeacon:
                           type: object
+                          additionalProperties : false
+                          required :
+                            - enabled
                           properties:
                             enabled:
                               type: boolean
@@ -8494,29 +8437,42 @@ paths:
                               type: array
                               items:
                                 type: object
+                                minProperties : 1
+                                additionalProperties : false
                                 properties:
                                   mfgId:
                                     type: string
                                     description: Manufacturer ID (hex string)
+                                    pattern: '^[0-9A-Fa-f]{4}$'
                                     example: "0118"
                                   beaconId:
                                     type: string
                                     description: Beacon ID (UUID string)
+                                    pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$'
                                     example: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA7"
                                   major:
                                     type: integer
                                     description: Major value
+                                    minimum : 0
+                                    maximum : 65535
                                     example: 4
                                   minor:
                                     type: integer
                                     description: Minor value
+                                    minimum : 0
+                                    maximum : 65535
                                     example: 4
                                   refRssi:
                                     type: integer
                                     description: Reference RSSI (TX power at 1m)
+                                    minimum : -128
+                                    maximum : 127
                                     example: -100
                         eddystone:
                           type: object
+                          additionalProperties : false
+                          required : 
+                            - enabled
                           properties:
                             enabled:
                               type: boolean
@@ -8529,6 +8485,8 @@ paths:
                                 and frame-type-specific.
                               items:
                                 type: object
+                                minProperties : 1
+                                additionalProperties : false
                                 properties:
                                   frameType:
                                     type: string
@@ -8542,28 +8500,37 @@ paths:
                                   txPower:
                                     type: integer
                                     description: TX power at 0m (calibrated RSSI)
+                                    minimum: -128
+                                    maximum: 127
                                     example: -59
                                   url:
                                     type: string
                                     description: Advertised URL (Eddystone-URL only)
+                                    pattern: '^https?://'
                                     example: "https://www.zebra.com"
                                   namespace:
                                     type: string
                                     description: 10-byte namespace (Eddystone-UID only, hex string)
+                                    pattern: '^[0-9A-Fa-f]{20}$'
                                     example: "0102030405060708090A"
                                   instance:
                                     type: string
                                     description: 6-byte instance ID (Eddystone-UID only, hex string)
+                                    pattern: '^[0-9A-Fa-f]{12}$'
                                     example: "000000000001"
                                   ephemeralId:
                                     type: string
                                     description: 8-byte ephemeral ID (Eddystone-EID only, hex string)
+                                    pattern: '^[0-9A-Fa-f]{16}$'
                                     example: "0102030405060708"
                         generic:
                           type: object
+                          additionalProperties : false
                           description: >-
                             Configuration for GENERIC_BLE beacons. Filters match on
-                            device-level advertisement fields.
+                            device-level advertisement fields like address, addressType, name and alias.
+                          required : 
+                            - enabled
                           properties:
                             enabled:
                               type: boolean
@@ -8575,10 +8542,13 @@ paths:
                                 forwarded if it matches any one filter entry.
                               items:
                                 type: object
+                                minProperties : 1
+                                additionalProperties : false
                                 properties:
                                   address:
                                     type: string
                                     description: Bluetooth device address to match (e.g. "7E:41:25:1E:D5:16").
+                                    pattern: '^[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5}$'
                                     example: "7E:41:25:1E:D5:16"
                                   addressType:
                                     type: string
@@ -8589,27 +8559,41 @@ paths:
                                     example: "random"
                                   name:
                                     type: string
-                                    description: Device name to match against the "Name" field in the BLE advertisement.
+                                    minLength : 1
+                                    description: Device name to match against the advertisement name field.
                                     example: "BLEPeripheralApp"
                                   alias:
                                     type: string
-                                    description: Device alias to match against the "Alias" field in the BLE advertisement.
+                                    minLength : 1
+                                    description: Device alias to match against the advertisement alias field.
                                     example: "BLEPeripheralApp"
             examples:
               enable_ble:
                 value:
                   ble:
                     enable: true
+                    scanIntervalSec: 0
+                    protocols:
+                      iBeacon:
+                        enabled: true
+                    additionalFilters: {}
               enable_with_interval:
                 value:
                   ble:
                     enable: true
                     scanIntervalSec: 5
+                    protocols:
+                      iBeacon:
+                        enabled: true
+                    additionalFilters: {}
               enable_with_rssi_filter:
                 value:
                   ble:
                     enable: true
                     scanIntervalSec: 10
+                    protocols:
+                      iBeacon:
+                        enabled: true
                     additionalFilters:
                       rssi: -70
               enable_with_protocols:
@@ -8622,6 +8606,7 @@ paths:
                         enabled: true
                         filters:
                           - uuid: "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+
                             major: 10001
                             minor: 20002
                             txPower: -59
@@ -8658,12 +8643,18 @@ paths:
                       serviceUuids16:
                         - "FEAA"
                         - "FE9B"
+
                       serviceUuids128:
                         - "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
               disable_ble:
                 value:
                   ble:
                     enable: false
+                    scanIntervalSec: 5
+                    protocols:
+                      iBeacon:
+                        enabled: true
+                    additionalFilters: {}
       responses:
         '200':
           description: OK
@@ -8673,7 +8664,7 @@ paths:
       tags:
         - Ble
       summary: Get BLE configuration
-      description: MQTT API :- get_bleConfig
+      description: MQTT API :- get_bleConfig <br> Retrieves the saved BLE scanner configuration. The response always includes enable, scanIntervalSec, protocols, and additionalFilters.
       operationId: getBleConfig
       responses:
         '200':
@@ -8685,29 +8676,40 @@ paths:
                 properties:
                   ble:
                     type: object
+                    required:
+                      - enable
+                      - scanIntervalSec
+                      - additionalFilters
+                      - protocols
                     properties:
                       enable:
                         type: boolean
                         example: true
                       scanIntervalSec:
                         type: integer
-                        minimum: 0
-                        maximum: 300
+                        minimum : 0
+                        maximum : 300
                         example: 5
                       additionalFilters:
                         type: object
                         properties:
                           rssi:
                             type: integer
+                            minimum : -127
+                            maximum : 0
                             example: -70
                           serviceUuids16:
                             type: array
                             items:
                               type: string
+                              oneOf:
+                              - pattern: '^(0[xX])?[0-9A-Fa-f]{4}$'
+                              - pattern: '^0000[0-9A-Fa-f]{4}-0000-1000-8000-00805[Ff]9[Bb]34[Ff][Bb]$'
                           serviceUuids128:
                             type: array
                             items:
                               type: string
+                              pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$'
                       protocols:
                         type: object
                         description: Protocol-specific BLE scanner configurations.
@@ -8727,12 +8729,18 @@ paths:
                                       description: Proximity UUID
                                     major:
                                       type: integer
+                                      minimum : 0
+                                      maximum : 65535
                                       description: Major value
                                     minor:
                                       type: integer
+                                      minimum : 0
+                                      maximum : 65535
                                       description: Minor value
                                     txPower:
                                       type: integer
+                                      minimum : -128
+                                      maximum : 127
                                       description: TX power / calibrated RSSI at 1m
                           altBeacon:
                             type: object
@@ -8752,12 +8760,18 @@ paths:
                                       description: Beacon ID (UUID string)
                                     major:
                                       type: integer
+                                      minimum : 0
+                                      maximum : 65535
                                       description: Major value
                                     minor:
                                       type: integer
+                                      minimum : 0
+                                      maximum : 65535
                                       description: Minor value
                                     refRssi:
                                       type: integer
+                                      minimum : -128
+                                      maximum : 127
                                       description: Reference RSSI (TX power at 1m)
                           eddystone:
                             type: object
@@ -8782,6 +8796,8 @@ paths:
                                         - TLM
                                     txPower:
                                       type: integer
+                                      minimum : -128
+                                      maximum : 127
                                       description: TX power at 0m
                                     url:
                                       type: string
@@ -8887,8 +8903,6 @@ tags:
   - name: System
   - name: App-led
   - name: Stack-led
-  - name: Display
-    description: FXR60 display and attached I/O device APIs. Not applicable to FXR90.
   - name: Gpio
   - name: Region 
   - name: Logs
@@ -9308,10 +9322,10 @@ components:
         powerSource:
           type: string
           enum:
-            - PWR_BRICK
+            - DC
             - POE
             - POE+
-          description: The source of power for the reader. DC is not used on FXR60 or FXR90.
+          description: The source of power for the reader
         powerNegotiation:
           type: string
           description: |-
@@ -9637,12 +9651,9 @@ components:
       properties:
         port:
           type: integer
-          enum:
-            - 1
-            - 2
-            - 3
-            - 4
-          description: GPI port number. FXR60 / FXR90 support GPI ports 1 through 4.
+          minimum: 1
+          maximum: 2
+          description: GPI Port Number
         signal:
           type: string
           enum:
@@ -9816,26 +9827,24 @@ components:
                 example: S2
               action:
                 type: string
-                description: Action to perform on the target session or flag.
+                description: Action to perform on the target. For target SL, provide an SL action using ASSERTSL, DEASSERTSL, or NEGATESL. For targets S0, S1, S2, or S3, provide a session action using INVA, INVB, or FLIPAB.
                 enum:
-                  - ASSERTSL_NOTHING
-                  - DEASSERTSL_NOTHING
-                  - ASSERTSL_ASSERTSL
                   - ASSERTSL_DEASSERTSL
-                  - DEASSERTSL_ASSERTSL
-                  - DEASSERTSL_DEASSERTSL
-                  - NEGSL_NOTHING
-                  - NOTHING_ASSERTSL
+                  - ASSERTSL_NOTHING
                   - NOTHING_DEASSERTSL
-                  - NOTHING_NEGSL
-                  - INVA_NOTHING
-                  - INVB_NOTHING
+                  - NEGATESL_NOTHING
+                  - DEASSERTSL_ASSERTSL
+                  - DEASSERTSL_NOTHING
+                  - NOTHING_ASSERTSL
+                  - NOTHING_NEGATESL
                   - INVA_INVB
-                  - INVB_INVA
-                  - INVA_INVA
-                  - INVB_INVB
-                  - NOTHING_INVA
+                  - INVA_NOTHING
                   - NOTHING_INVB
+                  - FLIPAB_NOTHING
+                  - INVB_INVA
+                  - INVB_NOTHING
+                  - NOTHING_INVA
+                  - NOTHING_FLIPAB
                 example: INVB_INVA
               mask:
                 type: object
@@ -9931,25 +9940,25 @@ components:
           example: SL
         stateAwareAction:
           type: string
-          description: Action to perform on target flag when tags match the tagQuietMasks pattern.
+          description: Action to perform when tags match the tagQuietMasks pattern. For target SL, provide an SL action using ASSERTSL, DEASSERTSL, or NEGATESL. For targets S0, S1, S2, or S3, provide a session action using INVA, INVB, or FLIPAB.
           enum:
-            - ASSERTSL
-            - DEASSERTSL
             - ASSERTSL_DEASSERTSL
+            - ASSERTSL_NOTHING
+            - NOTHING_DEASSERTSL
+            - NEGATESL_NOTHING
             - DEASSERTSL_ASSERTSL
-            - NEGSL
-            - NOT_DEASSERTSL
-            - NOT_ASSERTSL
-            - NOT_NEGSL
-            - INV_A
-            - INV_B
-            - INV_A_NOT_INV_B
-            - INV_B_NOT_INV_A
-            - INV_A2BB2A
-            - NOT_INV_B
-            - NOT_INV_A
-            - NOT_INV_A2BB2A
-          example: ASSERTSL
+            - DEASSERTSL_NOTHING
+            - NOTHING_ASSERTSL
+            - NOTHING_NEGATESL
+            - INVA_INVB
+            - INVA_NOTHING
+            - NOTHING_INVB
+            - FLIPAB_NOTHING
+            - INVB_INVA
+            - INVB_NOTHING
+            - NOTHING_INVA
+            - NOTHING_FLIPAB
+          example: ASSERTSL_DEASSERTSL
       required:
         - tagQuietMasks
         - target
@@ -9989,13 +9998,13 @@ components:
             wordPointer:
               type: integer
               description: WordPtr Field (see EPC Gen2 Spec)
-            wordCounter:
+            wordCount:
               type: integer
-              description: WordPtr Field (see EPC Gen2 Spec)
+              description: WordCount Field (see EPC Gen2 Spec)
           required:
             - membank
             - wordPointer
-            - wordCounter
+            - wordCount
         type:
           type: string
           enum:
@@ -10189,8 +10198,6 @@ components:
 
           “HOSTNAME” will report the hostname of the reader reporting the tag.
 
-          “READER_LOCATION” will report the reader’s configured location (latitude, longitude, altitude, and an optional user-defined label) with each tag event.
-
         The array may also contain an object or objects. The object must contain a single name value pair with the name being set to “userDefined”, “antennaNames”, or “gpsCoordinates”.
 
 
@@ -10219,7 +10226,6 @@ components:
           - USER
           - MAC
           - HOSTNAME
-          - READER_LOCATION
         properties:
           userDefined:
             type: string
@@ -10243,8 +10249,6 @@ components:
                 type: number
                 nullable: true
                 description: Longitude in decimal degrees.
-          readerLocation:
-            $ref: '#/components/schemas/readerLocationMode.v1'
     radioStartConditions.v1:
       title: radioStartConditions
       type: object
@@ -10381,7 +10385,7 @@ components:
     readerLocationMode.v1:
       title: readerLocation
       type: object
-      description: The reader's configured location (latitude, longitude, altitude, and an optional user-defined label) reported with each tag event. Included in the tag metadata only when `READER_LOCATION` is listed in `tagMetaData`.
+      description: Reader location metadata reported with mode configuration.
       properties:
         latitude:
           type: number
@@ -10463,6 +10467,7 @@ components:
             - CONVEYOR
             - CUSTOM
           description: 'The type of mode of operation '
+          default: SIMPLE
         modeSpecificSettings:
           description: One of inventorySettings or portalSettings, depending on the selected mode type.
           oneOf:
@@ -10665,11 +10670,26 @@ components:
     os_update.v1:
       title: os_update
       type: object
+      description: Server-based OS update request. Supported transfer protocols are SCP, HTTPS, SFTP, and FTPS. File-based and USB-based update methods are not available in this API at this time.
       properties:
         url:
           type: string
-          description: URL where the OS image is served
-          example: http://169.254.149.144:8000/firmware
+          format: uri
+          description: URL where the OS image is served. Supported URL schemes are scp://, https://, sftp://, and ftps://.
+          oneOf:
+            - pattern: '^scp://.+'
+            - pattern: '^https://.+'
+            - pattern: '^sftp://.+'
+            - pattern: '^ftps://.+'
+          example: https://169.254.149.144:8000/firmware
+        transfer_protocol:
+          type: string
+          description: Optional explicit transfer protocol for firmware download. If omitted, protocol is inferred from the `url` scheme.
+          enum:
+            - SCP
+            - HTTPS
+            - SFTP
+            - FTPS
         authenticationType:
           type: string
           description: Type of authentication required to get OS image
@@ -10688,6 +10708,33 @@ components:
       required:
         - url
         - authenticationType
+    installCACertificate.v1:
+      title: installCACertificate
+      type: object
+      description: Request payload to install a CA certificate.
+      properties:
+        name:
+          type: string
+          description: Required for MQTT API (`set_InstallCACertificate`). Ignored for local REST where the path parameter `{caname}` is used.
+          example: AmazonRootCA1
+        content:
+          type: string
+          description: PEM-encoded CA certificate content.
+          example: |
+            -----BEGIN CERTIFICATE-----
+            MIIB...
+            -----END CERTIFICATE-----
+      required:
+        - content
+    caCertificateList.v1:
+      title: caCertificateList
+      type: array
+      description: List of installed CA certificate names.
+      items:
+        type: string
+      example:
+        - AmazonRootCA1
+        - broker.emqx.io-ca
     actionBlink.v1:
       title: Action Blink Configuration
       type: object
@@ -10797,22 +10844,6 @@ components:
         - type
         - pin
         - state
-    cableLossPort.v1:
-      title: Cable loss port settings
-      type: object
-      description: Cable loss compensation settings for a single antenna port.
-      required:
-        - cableLength
-        - cableLossPerHundredFt
-      properties:
-        cableLength:
-          type: number
-          minimum: 0
-          description: Length of the cable connected to this antenna port, in feet.
-        cableLossPerHundredFt:
-          type: number
-          minimum: 0
-          description: Cable signal loss per 100 feet, in dB.
     ledAction.v1:
       title: LED Action
       type: object
@@ -10828,7 +10859,7 @@ components:
             - LED
         led:
           type: number
-          description: LED number. 1, 2, or 3.
+          description: LED number
           enum:
             - 1
             - 2
@@ -10847,6 +10878,7 @@ components:
             - GREEN
             - RED
             - AMBER
+            - OFF
         blink:
           $ref: '#/components/schemas/actionBlink.v1'
         conditions:
@@ -10882,8 +10914,6 @@ components:
         7. TAG_READ: event raised when a tag is read
         8. RADIO_START: event raised when inventory operation started using START API
         9. RADIO_STOP: event raised when inventory operation stopped using STOP API
-
-        GPI 3 and GPI 4 events are not supported on FXR60 / FXR90.
       properties:
         GPODefaults:
           type: object
@@ -10981,7 +11011,8 @@ components:
           description: |-
             Maximum event retention time (in minutes)
 
-            0 retains events indefinitely until maxNumEvents is reached.
+            0 or -1 indicate Events will be retained Forever.
+            -1 is the default
 
             Example:
             10 indicate Events generated in last 10 minutes will be retained
@@ -10993,15 +11024,15 @@ components:
       properties:
         reportingInterval:
           type: number
-          description: Event report interval in milliseconds (0 - 86400000). 0 disables this setting.
+          description: Event Report interval in milliseconds. -1 disables this option
           example: 1000
-          minimum: 0
+          minimum: -1
         maxPayloadSizePerReport:
           type: number
-          description: Maximum payload size in bytes (0 - 256000). 0 disables this setting.
+          description: Maximum payload size in bytes. -1 disables
           default: 256000
           maximum: 256000
-          minimum: 0
+          minimum: -1
     eventsConfig.v1:
       description: Asynchronous management events configuration
       type: object
@@ -11369,6 +11400,9 @@ components:
       title: Reader Configuration
       type: object
       properties:
+        xml:
+          type: string
+          description: Current reader XML configuration
         GPIO-LED:
           $ref: '#/components/schemas/GPIOLEDConfig.v1'
         READER-GATEWAY:
@@ -11382,33 +11416,6 @@ components:
             managementEventConfig:
               $ref: '#/components/schemas/eventsConfig.v1'
       description: Configuration body for the set_config request
-    installCACertificate.v1:
-      title: installCACertificate
-      type: object
-      description: Request payload to install a CA certificate.
-      properties:
-        name:
-          type: string
-          description: Required for MQTT API (`set_InstallCACertificate`). Ignored for local REST where the path parameter `{caname}` is used.
-          example: AmazonRootCA1
-        content:
-          type: string
-          description: PEM-encoded CA certificate content.
-          example: |
-            -----BEGIN CERTIFICATE-----
-            MIIB...
-            -----END CERTIFICATE-----
-      required:
-        - content
-    caCertificateList.v1:
-      title: caCertificateList
-      type: array
-      description: List of installed CA certificate names.
-      items:
-        type: string
-      example:
-        - AmazonRootCA1
-        - broker.emqx.io-ca
     logLevel.v1:
       title: logLevel
       type: object
@@ -11448,7 +11455,7 @@ components:
               - componentName
               - level
     SupportedRegionList:
-      title: get_SupportedRegionList
+      title: get_supportedRegionList
       type: object
       description: Retrieves the region list supported by the reader based on the readertype
       properties:
@@ -12221,8 +12228,27 @@ components:
       type: object
       minProperties: 1
       maxProperties: 8
-      additionalProperties:
-        $ref: '#/components/schemas/cableLossPort.v1'
+      additionalProperties: false
+      patternProperties:
+        '^[1-8]$':
+          type: object
+          minProperties: 2
+          additionalProperties: false
+          description: Returns cable loss compensation per read point labeled 1,2,3... up to the maximum supported read points.
+          required:
+            - cableLength
+            - cableLossPerHundredFt
+          properties:
+            cableLength:
+              type: number
+              example: 1
+              minimum: 0
+              description: Cable length for the read point, in feet.
+            cableLossPerHundredFt:
+              type: number
+              minimum: 0
+              example: 1
+              description: Cable loss per hundred feet for the read point, in dB.
     setCableLossCompensation:
       title: setCableLossCompensation
       x-stoplight:
@@ -12259,13 +12285,31 @@ components:
               type: number
               description: Cable loss applied to all read points per 100 feet, in dB.
               minimum: 0
-        - description: Adjust cable loss compensation per read point using numeric read-point keys (`"1"` through `"8"`). Only include ports present on this reader.
+        - description: Adjust cable loss compensation for each read point. Can have as many keys as number of allowed read points on device.
           title: Each
           type: object
           maxProperties: 8
           minProperties: 1
-          additionalProperties:
-            $ref: '#/components/schemas/cableLossPort.v1'
+          additionalProperties: false
+          patternProperties:
+            '^[1-8]$':
+              type: object
+              description: Adjust cable loss compensation per read point labeled 1,2,3... up to the maximum supported read points.
+              maxProperties: 2
+              required:
+                - cableLength
+                - cableLossPerHundredFt
+              properties:
+                cableLength:
+                  type: number
+                  description: Cable length for the read point, in feet.
+                  example: 1
+                  minimum: 0
+                cableLossPerHundredFt:
+                  type: number
+                  minimum: 0
+                  example: 1
+                  description: Cable loss per hundred feet for the read point, in dB.
       type: object
     getReaderCapabilites:
       title: getReaderCapabilites
@@ -12326,7 +12370,7 @@ components:
             supportedDisplayType:
               - NONE
             supportedPowerSource:
-              - POWERBRICK
+              - DC
             supportedTagDataFormat:
               - GS1
             tagLocationingSupported: true
@@ -12614,7 +12658,6 @@ components:
                   - DC
                   - POE
                   - POE+
-                  - POWERBRICK
                   - BATTERY
             supportedTagDataFormat:
               type: array

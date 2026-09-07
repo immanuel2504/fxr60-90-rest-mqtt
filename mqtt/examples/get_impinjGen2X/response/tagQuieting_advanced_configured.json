@@ -4,12 +4,34 @@
   "payload": {
     "tagQuieting": {
       "advanced": {
+        "preSelect": [
+          {
+            "target": "SL",
+            "action": "ASSERTSL_NOTHING",
+            "mask": {
+              "bank": "EPC",
+              "pointer": 32,
+              "length": 96,
+              "value": "E280123456789012345678AB"
+            }
+          },
+          {
+            "target": "S2",
+            "action": "INVB_INVA",
+            "mask": {
+              "bank": "EPC",
+              "pointer": 32,
+              "length": 96,
+              "value": "E280AABBCCDDEEFF11223344"
+            }
+          }
+        ],
         "tagQuietMasks": [
-          "S0A",
-          "S2A"
+          "SL_ASSERT",
+          "S2B"
         ],
         "target": "SL",
-        "stateAwareAction": "ASSERTSL"
+        "stateAwareAction": "ASSERTSL_DEASSERTSL"
       }
     }
   },

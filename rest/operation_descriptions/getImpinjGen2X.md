@@ -2,12 +2,11 @@
 
 The `GET /cloud/impinjGen2X` REST endpoint retrieves the Impinj Gen2X configuration currently saved on the reader.
 
-This endpoint returns:
+This endpoint returns the **last saved** Gen2X feature — one of FastID, TagFocus, TagProtect, or TagQuieting — and that feature's fields.
 
-- Whether FastID, TagFocus, TagProtect, or TagQuieting is configured
-- The parameters for each enabled Gen2X feature
+The reader stores only one feature at a time. The response is not a list of all four. If no Gen2X configuration has been saved, the payload is an empty object.
 
-No request body is required. If no Gen2X configuration has been saved, the response payload will be an empty object.
+No request body is required. Use this GET to see `enabled` on FastID or TagFocus. `GET /cloud/status` `impinjGen2X.isActive` only means a Gen2X config is running, not that the feature is switched on.
 
 ## 2. Endpoint Details
 
@@ -25,8 +24,8 @@ No request body is required. If no Gen2X configuration has been saved, the respo
 
 Use `GET /cloud/impinjGen2X` to:
 
-- Check whether FastID, TagProtect, TagFocus, or TagQuieting has been configured
-- Review Gen2X settings before applying them with a `PUT /cloud/start` call
+- See which one feature was last saved, and its fields (including `enabled`)
+- Review Gen2X settings before applying them with `PUT /cloud/start` and `applyImpinjGen2X: true`
 - Confirm the effect of a prior `PUT /cloud/impinjGen2X` call
 
 Key fields to check in the response:
