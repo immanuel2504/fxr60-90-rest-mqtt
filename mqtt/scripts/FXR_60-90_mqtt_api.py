@@ -196,7 +196,7 @@ def main() -> int:
     apply_mqtt_pack_examples(openapi, EXAMPLES_DIR)
 
     info = openapi.setdefault("info", OrderedDict())
-    info["title"] = "Zebra Fixed Reader MQTT API (FXR readers)"
+    info["title"] = "IoT Connector MQTT API (FXR readers)"
     info["description"] = (
         "# Overview\n"
         "\n"
