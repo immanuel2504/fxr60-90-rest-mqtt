@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "Invalid Cloud Config File Schema - MGMT config: command-response - invalid configuration (invalid \"security\" JSON object)"
+}

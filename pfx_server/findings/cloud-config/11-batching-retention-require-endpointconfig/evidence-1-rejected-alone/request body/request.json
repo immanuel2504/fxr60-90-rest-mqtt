@@ -1,0 +1,27 @@
+{
+  "method": "PUT",
+  "url": "/cloud/config",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "READER-GATEWAY": {
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 8192,
+          "reportingInterval": 1000
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 120,
+          "maxNumEvents": 50000,
+          "throttle": 200
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "payload": {
+    "hostName": "FXR609BE34A",
+    "networkInterface": {
+      "bnep0": {
+        "Status": "active",
+        "deviceDiscoverableName": "FXR609BE34A",
+        "dhcpEndAddress": "192.168.0.10",
+        "dhcpStartAddress": "192.168.0.2",
+        "ipAddress": "192.168.227.74",
+        "isDiscoverable": true,
+        "isEnabled": true,
+        "isPairable": true,
+        "macAddress": "90:75:DE:14:FC:FB",
+        "passKey": "1234",
+        "subnetMask": "255.255.0.0",
+        "usePassKey": true
+      },
+      "eth0": {
+        "IPV4": {
+          "dhcp": true,
+          "dnsAddress": "10.233.1.200",
+          "domainName": "zlab.com",
+          "gatewayAddress": "10.233.48.2",
+          "ipAddress": "10.233.48.36",
+          "subnetMask": "255.255.255.0"
+        },
+        "IPV6": {
+          "dhcp": true,
+          "dnsAddress": "",
+          "domainName": "zlab.com",
+          "gatewayAddress": "fe80::f6ee:31ff:fe0c:5a1f",
+          "ipAddress": "fd6c:10:233:48:d9fe:bed:4e00:b12f",
+          "prefix": "64"
+        },
+        "Status": "connected",
+        "isEnabled": true,
+        "macAddress": "88:BC:AC:9B:E3:4A"
+      },
+      "mlan0": {
+        "IPV4": {
+          "dhcp": true,
+          "dnsAddress": "",
+          "domainName": "",
+          "gatewayAddress": "",
+          "ipAddress": "",
+          "subnetMask": ""
+        },
+        "IPV6": {
+          "dhcp": true,
+          "dnsAddress": "",
+          "domainName": "",
+          "gatewayAddress": "",
+          "ipAddress": "",
+          "prefix": ""
+        },
+        "Status": "disabled",
+        "accesspoint": {
+          "autoConn": false,
+          "essid": ""
+        },
+        "isEnabled": false
+      },
+      "uap0": {
+        "Clients": [],
+        "isEnabled": false,
+        "isHidden": false,
+        "securityType": "WPA2Personal",
+        "ssid": "",
+        "ssidPassword": ""
+      }
+    }
+  },
+  "response": "success"
+}

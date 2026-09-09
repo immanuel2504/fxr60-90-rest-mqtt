@@ -1,0 +1,4 @@
+Copied verbatim from:
+  rest/cloud-displayConfig-PUT/07-resolution-unsupported-MISLEADING-ERROR
+
+That folder is the canonical record of this test; this is a copy kept beside the finding so the evidence travels with it.

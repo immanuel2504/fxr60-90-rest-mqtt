@@ -1,0 +1,30 @@
+tagQuieting basic - 5 alternating trials
+Reader 10.233.48.36, 2026-09-06. 12 s inventory each, data captured from
+mqtt://10.117.229.18:1883 topic fxr60-lab/tevents.
+
+Target EPC : e2806894000040017790ac71  (real tag, consistently readable)
+Control EPC: e2806894000040017790e471  (never listed in tagIDs)
+
+  trial   PLAIN start {}      QUIET + applyImpinjGen2X
+  1       target VISIBLE      target ABSENT
+  2       target VISIBLE      target ABSENT
+  3       target VISIBLE      target ABSENT
+  4       target VISIBLE      target ABSENT
+  5       target VISIBLE      target ABSENT
+
+  PLAIN : 5/5 visible
+  QUIET : 0/5 visible
+  Control tag visible in every run, both arms.
+
+SUPPORTING MEASUREMENT - why one trial was not enough:
+
+  40 s plain scan, no Gen2X: 29 unique tags,
+  read-count distribution = Counter({1: 29})
+
+Every tag is reported exactly ONCE per session no matter how long the scan runs,
+so the reader de-duplicates before the data endpoint. Absence of a single-read
+tag in one window is therefore weak evidence; repetition is required.
+
+RECOVERY CONFIRMED - after clearing Gen2X ({"fastID":{"enabled":false}}) and a
+plain 15 s inventory, the previously quieted tag was VISIBLE again. Quieting is
+session-scoped; no persistent tag state.

@@ -1,13 +1,9 @@
 # `/cloud/logs/RgErrorLog`
 
-- **GET** - Retrieve RgErrorLog
+- **GET** — Reader-gateway error log archive (`get_logs_rgErrorLog`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/download.json` | `download` | RG error log archive |
-
-## NEED LIVE TEST
-
-Confirm live reader returns non-empty `binary` + `filename`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/rg_error.json` | response 200 | `rg_error` | rgErrorLog.tar.gz archive |

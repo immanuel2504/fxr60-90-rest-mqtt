@@ -872,6 +872,7 @@ paths:
                   - ANTENNA
                   - RSSI
                   - CHANNEL
+                  - READERLOCATION
                   - PC
                   - XPC
                   - CRC
@@ -970,6 +971,7 @@ paths:
                     - SEEN_COUNT
                     - ANTENNA
                     - CHANNEL
+                    - READERLOCATION
                     - PC
                     - XPC
                     - CRC
@@ -4838,7 +4840,7 @@ paths:
       tags:
         - Control
       summary: Returns whether the rxSawFilter is enabled or disabled
-      description: MQTT API :-  get_preSelection <br> Returns whether the rxSawFilter is enabled or disabled
+      description: MQTT API :-  get_preSelection <br> Returns whether the rxSawFilter is enabled or disabled. The response value is a string (`enabled` or `disabled`).
       responses:
         '200':
           description: OK
@@ -4858,7 +4860,7 @@ paths:
       tags:
         - Control
       summary: Enables or disables the rxSawFilter
-      description: MQTT API :-  set_preSelection <br> Enables or disables the rxSawFilter. Set to true to enable, false to disable
+      description: MQTT API :-  set_preSelection <br> Enables or disables the rxSawFilter. PUT uses a boolean (`true` / `false`). GET returns the string `enabled` or `disabled`.
       requestBody:
         content:
           application/json:
@@ -5512,7 +5514,10 @@ paths:
       tags:
         - Certificate
       summary: List installed CA certificates
-      description: MQTT API :- get_CACertificates <br> Returns the list of installed CA certificate names.
+      description: >-
+        MQTT API :- get_CACertificates <br> Returns the list of installed CA
+        certificate names. The device appends `.crt` to each name. When deleting,
+        supply the name **without** the `.crt` suffix — see `delCACertificate`.
       operationId: getCACertificates
       responses:
         '200':
@@ -5521,26 +5526,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/caCertificateList.v1'
-              examples:
-                get_CACertificates:
-                  value:
-                    - AmazonRootCA1
-                    - broker.emqx.io-ca
       security:
         - bearerAuth: []
-  /cloud/caCertificates/{caname}:
-    parameters:
-      - name: caname
-        in: path
-        required: true
-        description: CA certificate name. For local REST this path parameter is used as the certificate name. For MQTT, `name` is provided in the payload.
-        schema:
-          type: string
     put:
       tags:
         - Certificate
       summary: Install CA certificate
-      description: MQTT API :- set_InstallCACertificate <br> Installs a CA certificate on the device.
+      description: >-
+        MQTT API :- set_InstallCACertificate <br> Installs a CA certificate on
+        the device. The certificate name is supplied as `name` in the request
+        body for **both** local REST and MQTT. `content` must be a valid
+        PEM-encoded X.509 certificate.
       operationId: setInstallCACertificate
       requestBody:
         required: true
@@ -5548,28 +5544,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/installCACertificate.v1'
-            examples:
-              set_InstallCACertificate:
-                value:
-                  content: |
-                    -----BEGIN CERTIFICATE-----
-                    MIIDdzCCAl+gAwIBAgIEbJQz0jANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJV
-                    UzELMAkGA1UECBMCQ0ExEDAOBgNVBAcTB0lydmluZTEPMA0GA1UEChMGWmVicmEx
-                    EzARBgNVBAsTCkVuZ2luZWVyaW5nMRcwFQYDVQQDEw5BbWF6b25Sb290Q0ExMB4X
-                    DTE1MDUyNjAwMDAwMFoXDTM1MDUyNjAwMDAwMFowbzELMAkGA1UEBhMCVVMxCzAJ
-                    BgNVBAgTAkNBMRAwDgYDVQQHEwdJcnZpbmUxDzANBgNVBAoTBlplYnJhMRMwEQYD
-                    VQQLEwpFbmdpbmVlcmluZzEXMBUGA1UEAxMOQW1hem9uUm9vdENBMTCCASIwDQYJ
-                    KoZIhvcNAQEBBQADggEPADCCAQoCggEBAN9x7k8m4rjQv2N2j9pYx0Qwdk6U4b5o
-                    5xY+o2zj7n3q6WvWq6E4Yt8k1bH6Y3w2N7v0Y8o1Y4yYHqk8iCw8Wj8JmZ2dK8q3
-                    1YJYQv1M2VxQy6G8z3yq8r4jG9Q2n7gY3D9v2v2V5Hh1oS8q5D7rX2f3W7n9j3aP
-                    2r5sLrGv7R9yq8vM1Cq7y8l3b6Q2h9K1z0t6b4M2V8yN4o6W2n8p1v5z3f9dQ8m7
-                    B6oK7wQ8m3v1w4b9n8z6m1o3k2p5q7r9s1v2x4y6z8a0b2c4d6e8f0g1h2i3j4k5
-                    l6m7n8o9p0q1r2s3t4u5v6w7x8y9z0CAwEAAaNQME4wHQYDVR0OBBYEFJ4i9Q6d
-                    iQ0aQ1m3nY2j8f4K9l8WMB8GA1UdIwQYMBaAFJ4i9Q6diQ0aQ1m3nY2j8f4K9l8W
-                    MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAB9N8eYk1Wl7d8q9m5fG
-                    2b3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6A7B8C9D0E1F2G3H
-                    4I5J6K7L8M9N0O1P2Q3R4S5T6U7V8W9X0Y1Z2a3b4c5d6e7f8g9h0i1j2k3l4m5n
-                    -----END CERTIFICATE-----
       responses:
         '200':
           description: OK
@@ -5585,8 +5559,19 @@ paths:
       tags:
         - Certificate
       summary: Delete CA certificate
-      description: MQTT API :- del_CACertificate <br> Deletes the specified CA certificate from the device.
+      description: >-
+        MQTT API :- del_CACertificate <br> Deletes the specified CA certificate
+        from the device. The name is supplied as `name` in the request body.
+        Use the name as installed, not as listed: `GET /cloud/caCertificates`
+        returns names with a `.crt` suffix; supplying that suffixed value here
+        is rejected.
       operationId: delCACertificate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteCACertificate.v1'
       responses:
         '200':
           description: OK
@@ -7927,7 +7912,7 @@ paths:
       tags:
         - ImpinjGen2X
       summary: Get Impinj Gen2X configuration
-      description: MQTT API :- get_impinjGen2X <br> Retrieves the last saved Impinj Gen2X feature configuration (exactly one feature object). Returns an empty object if no Gen2X configuration has been set yet. Use this GET to read enabled; status isActive only means Gen2X is running.
+      description: MQTT API :- get_impinjGen2X <br> Retrieves the last saved Impinj Gen2X feature (exactly one object). PUT replaces the stored feature; GET is not a merge of all four. On a reader that has never been configured, the 200 body is empty (not JSON `{}`). After any successful PUT the body is JSON. The saved config is sticky — `PUT {}` is rejected.
       operationId: getImpinjGen2X
       responses:
         '200':
@@ -7937,9 +7922,12 @@ paths:
               schema:
                 type: object
                 description: >-
-                  Current Impinj Gen2X feature configuration as last saved via set_impinjGen2X.
-                  Returns an empty object if no Gen2X configuration has been set yet.
-                  Only feature objects that were previously configured are included in the response.
+                  Current Impinj Gen2X feature as last saved via set_impinjGen2X.
+                  Exactly one feature object is present after any successful PUT.
+                  A later PUT replaces the previous object; this is not a merge.
+                  On a reader that has never been configured, the 200 body is
+                  empty (not JSON `{}`).
+                maxProperties: 1
                 properties:
                   fastID:
                     type: object
@@ -7998,8 +7986,11 @@ paths:
                   tagQuieting:
                     $ref: '#/components/schemas/impinjTagQuieting.v1'
               examples:
-                empty:
-                  value: {}
+                fastID_disabled:
+                  summary: Last saved FastID, enabled false (live 8 Sep 2026)
+                  value:
+                    fastID:
+                      enabled: false
                 fastID_configured:
                   value:
                     fastID:
@@ -8065,7 +8056,7 @@ paths:
       tags:
         - ImpinjGen2X
       summary: Set Impinj Gen2X configuration
-      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). Exactly one feature object must be provided. Combining two or more is rejected. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations. The flag is per inventory session.
+      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). Exactly one feature object (fastID, tagProtect, tagFocus, or tagQuieting) must be provided per request; combining any two or more features is rejected. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations. The flag is per inventory session.
       operationId: setImpinjGen2X
       requestBody:
         required: true
@@ -8075,8 +8066,8 @@ paths:
               type: object
               description: >-
                 Configures Impinj Gen2X proprietary features. Exactly one feature object
-                (fastID, tagProtect, tagFocus, or tagQuieting) must be provided.
-                Combining two or more is rejected.
+                (fastID, tagProtect, tagFocus, or tagQuieting) must be provided per request;
+                combining any two or more features is rejected.
               minProperties: 1
               maxProperties: 1
               properties:
@@ -8180,14 +8171,17 @@ paths:
                   $ref: '#/components/schemas/impinjTagQuieting.v1'
             examples:
               enable_fastID:
+                summary: Enable FastID (live 6 Sep 2026)
                 value:
                   fastID:
                     enabled: true
               disable_fastID:
+                summary: Disable FastID (live 6 Sep 2026)
                 value:
                   fastID:
                     enabled: false
               protect_tag:
+                summary: Protect tag (live 6 Sep 2026)
                 value:
                   tagProtect:
                     action: enableTagProtection
@@ -8195,30 +8189,36 @@ paths:
                     tagID: 'e2801191a5030069073b426d'
                     enableShortRange: true
               unprotect_tag:
+                summary: Unprotect tag (live 6 Sep 2026)
                 value:
                   tagProtect:
                     action: disableTagProtection
                     password: '77777777'
                     tagID: 'e2801191a5030069073b426d'
               enable_protect_read:
+                summary: Enable protected-tag visibility (live 6 Sep 2026)
                 value:
                   tagProtect:
                     action: enableTagVisibility
                     password: '77777777'
               disable_protect_read:
+                summary: Disable protected-tag visibility (live 6 Sep 2026)
                 value:
                   tagProtect:
                     action: disableTagVisibility
                     password: '77777777'
               enable_tagFocus:
+                summary: Enable TagFocus (live 6 Sep 2026)
                 value:
                   tagFocus:
                     enabled: true
               disable_tagFocus:
+                summary: Disable TagFocus (live 6 Sep 2026)
                 value:
                   tagFocus:
                     enabled: false
               quiet_tags:
+                summary: Quiet tags by EPC list (live 6 Sep 2026)
                 value:
                   tagQuieting:
                     basic:
@@ -8227,6 +8227,7 @@ paths:
                         - 'e2801191a5030069073b426d'
                         - 'e2801191a5030069073b426e'
               unquiet_tags:
+                summary: Unquiet tags by EPC list (accepted 6 Sep 2026)
                 value:
                   tagQuieting:
                     basic:
@@ -8234,6 +8235,7 @@ paths:
                       tagIDs:
                         - 'e2801191a5030069073b426d'
               advanced_quiet_tags:
+                summary: Advanced quiet tags (live 6 Sep 2026)
                 value:
                   tagQuieting:
                     advanced:
@@ -8258,6 +8260,7 @@ paths:
                       target: SL
                       stateAwareAction: ASSERTSL_DEASSERTSL
               advanced_unquiet_tags:
+                summary: Advanced unquiet tags (live 6 Sep 2026)
                 value:
                   tagQuieting:
                     advanced:
@@ -8329,8 +8332,12 @@ paths:
       description: |-
         MQTT API :- set_bleConfig
 
-        Configure the BLE scanner. Every request must include all four fields:
-        `enable`, `scanIntervalSec`, `additionalFilters`, and `protocols`.
+        Configure the BLE scanner. All four fields in the `ble` object are required:
+        `enable`, `scanIntervalSec`, `protocols`, and `additionalFilters`.
+        These fields must be present even when no values are populated; use empty
+        objects for optional nested configuration such as `protocols` or `additionalFilters`.
+        Their nested fields control RSSI filters, service UUID filters, and
+        protocol-specific settings.
         BLE configuration must be applied before starting a BLE scan via `start`.
       operationId: setBleConfig
       requestBody:
@@ -9652,7 +9659,12 @@ components:
         port:
           type: integer
           minimum: 1
-          maximum: 2
+          maximum: 4
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
           description: GPI Port Number
         signal:
           type: string
@@ -10198,6 +10210,8 @@ components:
 
           “HOSTNAME” will report the hostname of the reader reporting the tag.
 
+          “READERLOCATION” will report the reader's configured location with the tag.
+
         The array may also contain an object or objects. The object must contain a single name value pair with the name being set to “userDefined”, “antennaNames”, or “gpsCoordinates”.
 
 
@@ -10226,6 +10240,7 @@ components:
           - USER
           - MAC
           - HOSTNAME
+          - READERLOCATION
         properties:
           userDefined:
             type: string
@@ -10419,7 +10434,7 @@ components:
           - 1
           - 2
           - 3
-        transmitPower: 30.1
+        transmitPower: 30
         antennaStopCondition:
           - type: DURATION
             value: 500
@@ -10441,7 +10456,7 @@ components:
             - 1
             - 2
             - 3
-          transmitPower: 30.1
+          transmitPower: 30
           antennaStopCondition:
             - type: DURATION
               value: 500
@@ -10715,26 +10730,44 @@ components:
       properties:
         name:
           type: string
-          description: Required for MQTT API (`set_InstallCACertificate`). Ignored for local REST where the path parameter `{caname}` is used.
-          example: AmazonRootCA1
+          description: >-
+            Certificate name. Required for both local REST and MQTT. The device
+            appends `.crt` when listing, but stores the name as supplied here —
+            use this value when deleting.
+          example: ZebraExampleRootCA
         content:
           type: string
-          description: PEM-encoded CA certificate content.
-          example: |
-            -----BEGIN CERTIFICATE-----
-            MIIB...
-            -----END CERTIFICATE-----
+          description: >-
+            PEM-encoded X.509 CA certificate. The device parses this value and
+            rejects anything that is not a valid certificate.
+          example: "-----BEGIN CERTIFICATE-----\nMIIE...\n-----END CERTIFICATE-----\n"
       required:
+        - name
         - content
+    deleteCACertificate.v1:
+      title: deleteCACertificate
+      type: object
+      description: Request payload to delete a CA certificate.
+      properties:
+        name:
+          type: string
+          description: >-
+            Certificate name as supplied at install time, **without** the `.crt`
+            suffix that `GET /cloud/caCertificates` appends. The key must be
+            `name` — `caname` is rejected.
+          example: ZebraExampleRootCA
+      required:
+        - name
     caCertificateList.v1:
       title: caCertificateList
       type: array
-      description: List of installed CA certificate names.
+      description: >-
+        List of installed CA certificate names. The device appends `.crt` to
+        each name.
       items:
         type: string
       example:
-        - AmazonRootCA1
-        - broker.emqx.io-ca
+        - ZebraExampleRootCA.crt
     actionBlink.v1:
       title: Action Blink Configuration
       type: object

@@ -1,0 +1,4 @@
+  mode HTTP 200 
+  start HTTP 200   body={"applyImpinjGen2X":true}
+Timed out
+  events: 2

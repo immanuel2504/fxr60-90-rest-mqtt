@@ -1,0 +1,34 @@
+tagQuieting 05 - spec example "quiet_tags"
+RESULT: HTTP 200, stored - AND THE FEATURE IS PROVEN TO WORK
+
+  stored: {"tagQuieting":{"basic":{"action":"quiet",
+           "tagIDs":["e2801191a5030069073b426d","e2801191a5030069073b426e"]}}}
+  after start: status.impinjGen2X = {"feature":"tagQuieting","isActive":true}
+
+The spec's EPCs are not present in our field, so the example only proves
+acceptance. To prove the FUNCTION, the same payload shape was used with a real
+EPC from the field: e2806894000040017790ac71.
+
+*** PROVEN OVER 5 REPEATED TRIALS EACH WAY ***
+
+  PLAIN start (no Gen2X)        target seen in 5/5 trials   Y Y Y Y Y
+  QUIET target + applyGen2X     target seen in 0/5 trials   n n n n n
+
+12-second inventory per trial, alternating. That is an unambiguous result.
+
+WHY REPEATED TRIALS WERE NECESSARY - and a correction to an earlier reading.
+A single-shot comparison initially looked convincing (target absent after
+quiet, control still present), but a 40-second plain scan then showed the
+reader reports EVERY tag exactly once per session
+(read-count distribution Counter({1: 29})). With only one read per tag,
+presence/absence of a marginal tag is noisy, and one trial cannot separate
+"quieted" from "not singulated this time". The 5-trial repetition is what makes
+the result solid; the single-shot version was not sufficient evidence and was
+not reported as such.
+
+A control tag (e2806894000040017790e471) stayed visible throughout every quiet
+trial, so the effect is specific to the EPC listed in tagIDs.
+
+SESSION-SCOPED, NOT PERSISTENT: after clearing the Gen2X config and running a
+plain inventory, the quieted tag reappeared - see
+../06-unquiet_tags-DOES-NOT-RESTORE/. Nothing permanent is written to the tag.

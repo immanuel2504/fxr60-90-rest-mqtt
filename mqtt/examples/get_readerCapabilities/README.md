@@ -7,5 +7,5 @@ Stable `command_id`: `req-get-readerCapabilities`
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
 | `request/default.json` | request | `default` | `—` | Empty get_readerCapabilities request |
-| `response/inline.json` | response | `inline` | `cloud-readercapabilities/GET/inline.json` |  |
-
+| `response/fxr60.json` | response | `fxr60` | `cloud-readercapabilities/GET/fxr60.json` | FXR60 capabilities |
+| `response/fxr90.json` | response | `fxr90` | `cloud-readercapabilities/GET/fxr90.json` | FXR90 capabilities |

@@ -1,0 +1,61 @@
+{
+  "method": "PUT",
+  "url": "/cloud/config",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "READER-GATEWAY": {
+      "endpointConfig": {
+        "data": {
+          "event": {
+            "connections": [
+              {
+                "name": "DATA_MQTT_BATCHED",
+                "description": "Tag events with batching and retention tuned",
+                "type": "mqtt",
+                "options": {
+                  "enableSecurity": false,
+                  "endpoint": {
+                    "hostName": "10.117.229.18",
+                    "port": 1883,
+                    "protocol": "tcp"
+                  },
+                  "additional": {
+                    "cleanSession": true,
+                    "clientId": "fxr60-lab-data",
+                    "debug": false,
+                    "keepAlive": 60,
+                    "qos": 0,
+                    "reconnectDelay": 2,
+                    "reconnectDelayMax": 60
+                  },
+                  "publishTopic": [
+                    "fxr60-lab/tevents"
+                  ],
+                  "subscribeTopic": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "batching": [
+        {
+          "maxPayloadSizePerReport": 8192,
+          "reportingInterval": 1000
+        }
+      ],
+      "retention": [
+        {
+          "maxEventRetentionTimeInMin": 120,
+          "maxNumEvents": 50000,
+          "throttle": 200
+        }
+      ]
+    }
+  }
+}

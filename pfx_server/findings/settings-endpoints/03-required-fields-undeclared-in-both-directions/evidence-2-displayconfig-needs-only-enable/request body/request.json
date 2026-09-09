@@ -1,0 +1,22 @@
+{
+  "method": "PUT",
+  "url": "/cloud/displayConfig",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "_note": "not a single request - a drop-one-field-at-a-time sweep over the full seven-field payload. See verification.txt.",
+    "_baseline": {
+      "enable": true,
+      "enableOnscreenKeyboard": true,
+      "startUrl": "https://localhost/",
+      "resolution": "1920x1080",
+      "orientation": "landscape",
+      "screenTimeoutSec": 300,
+      "keyboardLayout": "English-US"
+    }
+  }
+}

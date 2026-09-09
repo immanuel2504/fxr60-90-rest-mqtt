@@ -1,0 +1,14 @@
+{
+  "command": "get_networkInterfaces",
+  "command_id": "req-get-networkInterfaces",
+  "payload": {
+    "availableNetworkInterfaces": [
+      "eth0",
+      "mlan0",
+      "bnep0",
+      "blescan",
+      "uap0"
+    ]
+  },
+  "response": "success"
+}

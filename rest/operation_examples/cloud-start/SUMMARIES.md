@@ -9,6 +9,13 @@
 | **Example name** | `start_Inventory` |
 | **Summary title** | `Start RFID inventory (default)` |
 
+### `PUT/start_RFID_only.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `start_RFID_only` |
+| **Summary title** | `Start RFID inventory (explicit)` |
+
 ### `PUT/start_Inventory_with_AutoStart.json`
 
 | Field | Value |
@@ -23,23 +30,16 @@
 | **Example name** | `start_Inventory with ImpinjGen2X` |
 | **Summary title** | `Start inventory with Impinj Gen2X` |
 
-### `PUT/start_Global_BLE_only.json`
+### `PUT/start_BLE_only.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `start_Global_BLE_only` |
-| **Summary title** | `Global BLE only` |
+| **Example name** | `start_BLE_only` |
+| **Summary title** | `Start BLE only` |
 
-### `PUT/start_Global_RFID_only.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `start_Global_RFID_only` |
-| **Summary title** | `Global RFID only` |
-
-### `PUT/start_Global_BLE_and_RFID.json`
+### `PUT/start_BLE_and_RFID.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `start_Global_BLE_and_RFID` |
-| **Summary title** | `Global BLE and RFID` |
+| **Example name** | `start_BLE_and_RFID` |
+| **Summary title** | `Start BLE and RFID` |

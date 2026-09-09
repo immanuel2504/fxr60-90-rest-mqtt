@@ -1,0 +1,61 @@
+{
+  "method": "PUT",
+  "url": "/cloud/cloudConfig",
+  "reader": "10.117.229.9 (reader app 5.0.5)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Real admin token minted at run time via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "endpointConfig": {
+      "management": {
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_AWS_INLINE",
+              "description": "Management cmd/rsp through AWS IoT Core (inline content test, port 443)",
+              "type": "mqtt-AWS",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "a2fvbpwwdngail-ats.iot.eu-north-1.amazonaws.com",
+                  "port": 443,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "FXR60-LAB-MCMD",
+                  "keepAlive": 30,
+                  "qos": 1,
+                  "reconnectDelay": 1,
+                  "reconnectDelayMax": 30,
+                  "debug": false,
+                  "alpnProtocolNames": [
+                    "x-amzn-mqtt-ca"
+                  ]
+                },
+                "publishTopic": [
+                  "FXR60-LAB/mrsp"
+                ],
+                "subscribeTopic": [
+                  "FXR60-LAB/mcmd"
+                ],
+                "security": {
+                  "CACertificateFileContent": "-----BEGIN CERTIFICATE-----\nMIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF\nADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6\nb24gUm9vdCBDQSAxMB4XDTE1MDUyNjAwMDAwMFoXDTM4MDExNzAwMDAwMFowOTEL\nMAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJv\nb3QgQ0EgMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJ4gHHKeNXj\nca9HgFB0fW7Y14h29Jlo91ghYPl0hAEvrAIthtOgQ3pOsqTQNroBvo3bSMgHFzZM\n9O6II8c+6zf1tRn4SWiw3te5djgdYZ6k/oI2peVKVuRF4fn9tBb6dNqcmzU5L/qw\nIFAGbHrQgLKm+a/sRxmPUDgH3KKHOVj4utWp+UhnMJbulHheb4mjUcAwhmahRWa6\nVOujw5H5SNz/0egwLX0tdHA114gk957EWW67c4cX8jJGKLhD+rcdqsq08p8kDi1L\n93FcXmn/6pUCyziKrlA4b9v7LWIbxcceVOF34GfID5yHI9Y/QCB/IIDEgEw+OyQm\njgSubJrIqg0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC\nAYYwHQYDVR0OBBYEFIQYzIU07LwMlJQuCFmcx7IQTgoIMA0GCSqGSIb3DQEBCwUA\nA4IBAQCY8jdaQZChGsV2USggNiMOruYou6r4lK5IpDB/G/wkjUu0yKGX9rbxenDI\nU5PMCCjjmCXPI6T53iHTfIUJrU6adTrCC2qJeHZERxhlbI1Bjjt/msv0tadQ1wUs\nN+gDS63pYaACbvXy8MWy7Vu33PqUXHeeE6V/Uq2V8viTO96LXFvKWlJbYK8U90vv\no/ufQJVtMVT8QtPHRh8jrdkPSHCa2XV4cdFyQzR1bldZwgJcJmApzyMZFo6IQ6XU\n5MsI+yMRQ+hDKXJioaldXgjUkK642M4UwtBV8ob2xJNDd2ZhwLnoQdeXeGADbkpy\nrqXRfboQnoZsG4q5WTP468SQvvG5\n-----END CERTIFICATE-----",
+                  "privateKeyFileContent": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA2v2PTRMA+AvFqyB49KZxp1diq49rOUaKYd2x/onxEuP6IewT\nVSKewhowtH9cccJFumOy1LqzainL1JX/Y6hQWFw0RK7N7CHQHKu/0bTkieau2gQn\nifNp0RdxvFuQbh3rp2RJzTCk/VBBdmSZRq0CWiw/BogPVi5Te4KuP25a0CYUbT0q\nWXGqsucJJF7Oz/c7vqbr9VTUv7r9PF4hq8tGV9+Sn1vf7cvHpcmobmit/P/VgnrC\nGiDAXOzwys4lkWLk7vbjjlmpXoKtAe1/vDRibpSn3KosdtMLwj2OumQ5wCHGBnAs\nqLEAbMRMoZTqSkc9yTIjtsmjK5gkmzgYAT1cCwIDAQABAoIBADAskWaiJJdsd4qC\ntTkUmHH4nkMhZLQP2YdX7r0Q+VBviGoH9eTHnecTPd2nGt4Hn7E2F3QGsktLcISO\njsUMlMgrWHA3iCNG+PIlsifexFu1vIdHXK9TNdcCckm+VtJykJGdVULnTZRQIGZ8\nEN/kVV0i2KaGLeGGhWTpRY28qAubvLn6Q5CkPM7MWCRX6mygmLZh+P2F0zy0IlBv\nPsNUzMDpwTSdOkmhgyxYpu9SyDng7b5cjMpDyZ9SIuBbSL8aT+XtfkLMZTjqDi95\n1WmBdR9Ox7PByf33hwVc3dLKdeJv6MaBbBOzYUqTsISTgfWyfTZ5BHqLqSRz8pTw\n9PIimhECgYEA79dbMQzGxla5DfGGxuu/H3WH5IYQ+mcjdtCKN+IJ3xTvw8NMiArN\nM9m6FQoP+b+a0un7RYcOB8YkThNFwN7StZK4MadFVAQn7WIZyhZI/3M2v780XP+y\nhdhrx3W4LH7FuKggGgbOISLq7Z2RXkosxLjTJyHIE7LhHe3DQl/rG8kCgYEA6b6U\n3TW6sAe1LsUbESIVY895kH2dp0Sga8IUmQmibxjqRAxMKYIm/s1cNYwypDYhGNb/\nLFWyAG5fnklm9JeEv+WEEUTys55ODPas3BFeR6P8vcFq+7Ovsk6uHpEcMRuu62Rq\n6SZ33qrxlvr+MUuCNbaJBJST1DA64zgcGw7DuzMCgYBa1uBNJZ+rw3D3nQEFGoka\n6zL7FOQdUy8Vc0rGe7Btc8qUBMZZyG2MM+zMxzDh0PZc6A4peUuRGjTp9Va4BC0e\nZGGrPMV/Wsucl0lZRzOCvSqBWXQFvTrqgtvfgfCtuZ49oD/4W5d66XS9Zq6GXeWy\n5KXk7mCPRXMKGOGZpCayMQKBgQCRRXRJo2n6m1+8yJ3Q4SkAFmNMLPX9jkZRkpaw\nom9EsuxuDGKNbamEtOc5FIAo1MdvI7gFuuDdKbvdqWsGWuETTrbs8LgScDG8FtdK\nErVQuxeKa5ptArkQjZvjvXYTA0yMWaWkb9cSGZX6qtWul2o+rcqsgRb7Slpe+3Fk\nU6HMRwKBgFfYtQ0IPTn/jRpmWjkrsgzbNsCZB6wJYNKBoCTQlu/OqaN5FdtNSBa9\nt1qon7IvXr4Rmy1xMQOCuYiR4sWYe7oCb1GF2fB1ZS/rQIx2fVf5KPdMjfwVFUWU\nG0x3BGS2H54JVzba3UTYcCp9UrJtmI+DZfdQ4s+d6xlh09lpH+MH\n-----END RSA PRIVATE KEY-----\n",
+                  "publicKeyFileContent": "-----BEGIN CERTIFICATE-----\nMIIDWTCCAkGgAwIBAgIUd0gW4+c4O3BRviVGkyeBgPcb7VIwDQYJKoZIhvcNAQEL\nBQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g\nSW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTI2MDkwMzA1MjA1\nM1oXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0\nZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANr9j00TAPgLxasgePSm\ncadXYquPazlGimHdsf6J8RLj+iHsE1UinsIaMLR/XHHCRbpjstS6s2opy9SV/2Oo\nUFhcNESuzewh0Byrv9G05InmrtoEJ4nzadEXcbxbkG4d66dkSc0wpP1QQXZkmUat\nAlosPwaID1YuU3uCrj9uWtAmFG09KllxqrLnCSRezs/3O76m6/VU1L+6/TxeIavL\nRlffkp9b3+3Lx6XJqG5orfz/1YJ6whogwFzs8MrOJZFi5O72445ZqV6CrQHtf7w0\nYm6Up9yqLHbTC8I9jrpkOcAhxgZwLKixAGzETKGU6kpHPckyI7bJoyuYJJs4GAE9\nXAsCAwEAAaNgMF4wHwYDVR0jBBgwFoAUPSgCjWH+lBihsrosTjrn0U/4rz0wHQYD\nVR0OBBYEFGJonoembgFiLciq/Juu7WzKXdGQMAwGA1UdEwEB/wQCMAAwDgYDVR0P\nAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQBUJeZ75O4Szj03QcR8PETElAD/\niu6cl+QxA/WDmF109sUjqUXvSu4EDYIa4JFUHUrKbtFUj1GcJxEI7pM9CKjjzm5H\ndREM8ADIGtvd5L6FrmQFKdfOjhTfyeyaZ2XV3JEMbzykZECZYOA4MRTRvbdFAM9z\nkDci4CHZ4/3nnUBLAx7csR/sN4ecDbBILQwlAHc5lGKrJIhbZV6f8TgMuuNYXixs\nN4ubAzkJIk6Bwr1kDT0d0eKdmeHkqx7AOZiyugMin5lskOO2gzi0rY35G9n1PsXL\nsEdLwD7CAm/qSiPKGYBnbizvrvxSGUq3pBfVw9HB+g+obgK7sXN2QAiKKpN4\n-----END CERTIFICATE-----\n",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

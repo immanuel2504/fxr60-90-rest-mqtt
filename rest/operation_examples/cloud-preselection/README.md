@@ -1,16 +1,12 @@
 # `/cloud/preSelection`
 
-- **GET** - Current preSelection state
-- **PUT** - Enable/disable preSelection
+- **GET** - Current preSelection state (`enabled` / `disabled` string)
+- **PUT** - Enable or disable preSelection (`true` / `false` boolean)
 
-## Reviewed
+GET and PUT use different types for the same setting. That is the published schema.
 
 | File | Example name | Summary |
 |---|---|---|
-| `GET/pre_selection.json` | `pre_selection` | Current preSelection state |
-| `PUT/pre_selection.json` | `pre_selection` | Enable preSelection |
+| `GET/disabled.json` | `disabled` | Current preSelection state (`disabled`) |
+| `PUT/enable.json` | `enable` | Enable preSelection (`true`) |
 | `PUT/success.json` | `success` | Empty string on success |
-
-## NEED LIVE TEST
-
-Confirm PUT boolean vs GET string on a real reader.

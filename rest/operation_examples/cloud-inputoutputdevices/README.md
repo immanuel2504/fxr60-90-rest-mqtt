@@ -1,5 +1,9 @@
 # `/cloud/inputOutputDevices`
 
-- **GET** — keyboard, mouse, touch, and monitor connection status
+- **GET** — Keyboard, mouse, touch, and monitor connection status (`get_inputOutputDevices`). FXR60 only.
 
-See **`SUMMARIES.md`**.
+## GET examples
+
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/devices.json` | response 200 | `devices` | Monitor connected; keyboard, mouse, and touch disconnected |

@@ -1,0 +1,13 @@
+# Drop-in replacement for the set_InstallCACertificate example in
+# openAPISpec 12.yaml -> /cloud/caCertificates -> put -> examples
+#
+# Verified on FXR60 reader application 5.0.7: installs with HTTP 200,
+# appears in GET /cloud/caCertificates, deletes cleanly.
+#
+# NOTE the reader requires `name` in the body for local REST -- the
+# documented {caname} path parameter returns 404.
+
+set_InstallCACertificate:
+  value:
+    name: ZebraExampleRootCA
+    content: "-----BEGIN CERTIFICATE-----\nMIID7TCCAtWgAwIBAgIUCDlNLDwzHb+g+BXfCsx3oVTUjO0wDQYJKoZIhvcNAQEL\nBQAwfjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMQ8wDQYDVQQHDAZJcnZpbmUx\nGzAZBgNVBAoMElplYnJhIFRlY2hub2xvZ2llczEUMBIGA1UECwwLRW5naW5lZXJp\nbmcxHjAcBgNVBAMMFVplYnJhIEV4YW1wbGUgUm9vdCBDQTAeFw0yNjA5MDgwNDU5\nMDFaFw0zNjA5MDUwNDU5MDFaMH4xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEP\nMA0GA1UEBwwGSXJ2aW5lMRswGQYDVQQKDBJaZWJyYSBUZWNobm9sb2dpZXMxFDAS\nBgNVBAsMC0VuZ2luZWVyaW5nMR4wHAYDVQQDDBVaZWJyYSBFeGFtcGxlIFJvb3Qg\nQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC3V7MYN4Qm/9aS4i+n\nrnw+clIc5IgW4j9GdceW23BJW4Vf4zyehxe02F23w6Bsqv6DynSh+wkcHRNKxxbb\nilhFHqB/jo61TdYZepD7poyrgUdbFpvvQ/wJYjlykp5/QbGwnCrc/hqmrZDfjmWI\nydzipMqgU1KrSlSpC7fJPEvHUzHztaH/DAgp7alVmNiINe1NIL0/7eMcipAcYqTE\nbA7EzRUP77XeR6oNaeI3rE3j9FN/FjKHd9Z0Wp9kg/JXh/3WZx0ZTRouJn6n1gz1\n3KbrqurW9mw3pdw5cMSduqX7n8oZID/+euh5yqXb2kzVHmtz3aUMkrwvgw/icWDb\nnL+HAgMBAAGjYzBhMB0GA1UdDgQWBBTmmPb9eWoYyieKTIdNePTjWQkSLTAfBgNV\nHSMEGDAWgBTmmPb9eWoYyieKTIdNePTjWQkSLTAPBgNVHRMBAf8EBTADAQH/MA4G\nA1UdDwEB/wQEAwIBBjANBgkqhkiG9w0BAQsFAAOCAQEASWOjU6hn1GdXz/f89CyY\n5dIt3qrbeiJ+n+ao/XYeS8aWBbv0mXIoh5Kkazd0FGEif36AwOm9OGuoMCG8f/hR\nuMGy6qck7ve3vTEIgOVrYgbiwPZvmc/tYN/qQa8BJOP+zV6FZH10jpHnWFpPx8Pd\naufeXnU77zt5zPdF6EK8axpo7RnN3eVjZNqGREMIuA8dSMh+eUsc8x2eYhlyY4a2\nbY+86MxuwQ5+MkJ8SCorWqbumWFFBzxbesB25vzNyjNxv77UnHf2p6KC7u6jXeiz\nRZZedHtRtcevs7S2Q4MtCES9Fx/LM2Ur9D+9VqHUphxC4TcrNVuOlXi0HeiEOumu\nNw==\n-----END CERTIFICATE-----\n"

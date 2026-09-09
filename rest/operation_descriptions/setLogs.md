@@ -1,18 +1,17 @@
 ## 1. Description
 
-The `PUT /cloud/logs` REST endpoint configures logging behavior on the reader, including per-component log verbosity and radio packet log capture.
+The `PUT /cloud/logs` REST endpoint sets log configuration.
 
-This endpoint allows you to configure:
+This endpoint sends:
 
-- Whether radio packet logging is enabled through `radioPacketLog`
-- The log level for each reader software component through `components`
+- `radioPacketLog` — `true` or `false`
+- `components` — optional array of `componentName` and `level`
 
-Use this endpoint to:
+To change a component level, send `reader_gateway` (or `RG`).
 
-- Enable radio packet logging before collecting RF diagnostic data
-- Increase log verbosity for a specific component during troubleshooting
-- Reduce log verbosity in production to limit storage consumption
-- Reset component log levels to a known state before a support capture
+`level` is `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`.
+
+Omitted `radioPacketLog` returns to `false`.
 
 ## 2. Endpoint Details
 
@@ -25,16 +24,13 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Supported Log Levels | `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, `EXTRA` |
-| Supported Components | `radio_control` (alias `RC`), `cloud_agent`, `reader_gateway` (alias `RG`) |
 
 ## 3. Before You Begin
 
-Decide which logging areas you need to change before sending this request. Verbose log levels can fill storage quickly in production deployments.
+Decide `radioPacketLog` and any component level. Use the JSON field names below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Radio packet log | Whether to enable or disable `radioPacketLog` (boolean). Enabling this is required before `GET /cloud/logs/radioPacketLog` will return useful data. |
-| Component name | The component whose level to change: `radio_control` (alias `RC`), `cloud_agent`, or `reader_gateway` (alias `RG`). |
-| Log level | The verbosity level to apply, one of `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`. `OFF` disables logging for the component. |
-| Storage impact | Verbose levels such as `DEBUG`, `TRACE`, and `EXTRA` generate the most data. Confirm available flash storage before enabling verbose logging for extended periods. |
+| `radioPacketLog` | `true` to capture radio packets, `false` to stop. Send this on every `PUT /cloud/logs`. |
+| `componentName` | `reader_gateway` or `RG`. |
+| `level` | `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`. |

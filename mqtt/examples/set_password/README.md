@@ -2,11 +2,10 @@
 
 REST: `PUT /cloud/updatePassword` → `cloud-updatepassword/`
 
-Stable `command_id`: `req-set-password`
+Stable `command_id`: `req-set-password` (`req-set-password-rfidadm` for the rfidadm example)
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/password.json` | request | `password` | `cloud-updatepassword/PUT/password.json` |  |
-| `request/password_rfidadm.json` | request | `password_rfidadm` | `cloud-updatepassword/PUT/password_rfidadm.json` |  |
+| `request/set_password.json` | request | `set_password` | `cloud-updatepassword/PUT/set_password.json` | Set admin password |
+| `request/set_password_rfidadm.json` | request | `set_password_rfidadm` | `cloud-updatepassword/PUT/set_password_rfidadm.json` | Set rfidadm password |
 | `response/success.json` | response | `success` | `—` | Command succeeded |
-

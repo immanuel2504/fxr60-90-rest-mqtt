@@ -1,0 +1,32 @@
+logs PUT 03 - can radio_control's level be changed at all?
+RESULT: No. HTTP 200 every time, value never changes.
+
+Tested with the four levels the reader itself says are valid for radio_control
+(see 04-radio-control-rejects-four-documented-levels for where that list comes
+from), each sent alone, with a 2 s settle and a read-back:
+
+  PUT radio_control=ERROR    -> 200,  read back rc=INFO
+  PUT radio_control=WARNING  -> 200,  read back rc=INFO
+  PUT radio_control=DEBUG    -> 200,  read back rc=INFO
+  PUT radio_control=INFO     -> 200,  read back rc=INFO   (no-op, matches)
+
+Also tested with both components in ONE request, both at rc-valid levels:
+
+  PUT {"components":[{"componentName":"radio_control","level":"DEBUG"},
+                     {"componentName":"reader_gateway","level":"ERROR"}]}
+      -> 200,  read back rc=INFO  rg=ERROR
+
+The reader_gateway half applied; the radio_control half did not.
+
+So radio_control's log level appears to be UNSETTABLE through this API. It passes
+validation - an invalid level for it IS rejected with a specific error (test 04),
+which proves the value reaches the radio_control validator - and then the accepted
+value is discarded.
+
+That combination is the awkward part: the endpoint validates the field
+specifically for this component, then ignores it. If the level is fixed, the
+request should be rejected rather than accepted.
+
+Not established: whether the level is genuinely applied internally and merely
+mis-reported by GET /cloud/logs. Distinguishing those needs a log-volume
+comparison at ERROR vs DEBUG, which was not run.

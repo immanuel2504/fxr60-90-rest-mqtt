@@ -2,22 +2,22 @@
 
 ## GET responses
 
-### `GET/pre_selection.json`
+### `GET/disabled.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `pre_selection` |
-| **Summary title** | `Current preSelection state` |
+| **Example name** | `disabled` |
+| **Summary title** | `preSelection disabled` |
 
 ---
 
 ## PUT request
 
-### `PUT/pre_selection.json`
+### `PUT/enable.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `pre_selection` |
+| **Example name** | `enable` |
 | **Summary title** | `Enable preSelection` |
 
 ---
@@ -32,6 +32,4 @@
 | **Summary title** | `Empty string on success` |
 | **HTTP status** | `200` |
 
-## NEED LIVE TEST / discuss with developer
-
-GET returns string `"enabled"` / `"disabled"`; PUT sends boolean `true` / `false`. Confirm contract on a reader.
+GET returns string `"enabled"` / `"disabled"`; PUT sends boolean `true` / `false`. That split is the published schema.

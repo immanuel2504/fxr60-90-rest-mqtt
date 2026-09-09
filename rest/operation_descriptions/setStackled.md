@@ -1,40 +1,39 @@
 ## 1. Description
 
-> **Product applicability: FXR60 Premium only.** The stack LED (stack light) is an FXR60 Premium feature; it is not available on other FXR60 variants, and the FXR90.
+> **FXR60 Premium only.** The stack LED is not on other FXR60 variants. The FXR90 has no stack light.
 
-The `PUT /cloud/stack-led` REST endpoint sets the reader stack LED to the specified color.
+The `PUT /cloud/stack-led` REST endpoint sets the stack LED color, flash, and duration.
 
-Supported colors: `red`, `amber`, `green`, `blue`, `off`.
+This endpoint requires:
 
-Supported brightness: `low`, `med`, `high` (defaults to `low`).
+- `color` — `red`, `amber`, `green`, `blue`, or `off`
+- `flash` — `true` to blink, `false` for solid
+- `seconds` — how long to keep this state. `0` means until the next `PUT /cloud/stack-led`
 
-> Note on `blue`: `blue` is valid **here**, on the stack light. It is **not** a valid application LED colour — see `PUT /cloud/app-led`, whose colours are `red`, `amber`, `green`, `off`.
+`brightness` is optional: `low`, `med`, or `high`. If omitted, the reader uses `low`.
+
+`blue` is valid on the stack LED. It is not valid on `PUT /cloud/app-led`.
 
 ## 2. Endpoint Details
 
 | Property | Value |
 |---|---|
 | MQTT Command | `set_stackled` |
+| Pattern Name | Stack LED Control |
 | REST Endpoint | `PUT /cloud/stack-led` |
 | Communication Type | Client to Device (HTTP request/response) |
-| Applies To | **FXR60 Premium** — not on other FXR60 variants; the FXR90 has no stack light |
+| Applies To | FXR60 Premium |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
+| Supported Colors | `red`, `amber`, `green`, `blue`, `off` |
+| Supported Brightness | `low`, `med`, `high` (default `low`) |
+| Required Request Fields | `color`, `flash`, `seconds` |
 
-## 3. Request Body
+## 3. Before You Begin
 
-| Field | Type | Description |
-|---|---|---|
-| `color` | string | LED color: `red`, `amber`, `green`, `blue`, or `off` |
-| `brightness` | string | `low`, `med`, or `high` |
-| `flash` | boolean | Whether the LED should blink |
-| `seconds` | integer | Duration in seconds; use `0` for indefinite |
-
-## 4. When to Use This Endpoint
-
-Success (`200`) is an empty string. The request body is not returned.
-
-Use `PUT /cloud/stack-led` to:
-
-- Set a visual indicator on the reader stack LED
-- Temporarily override the default LED state with a timed color/flash pattern
+| What You Need | Details |
+|---|---|
+| Color | `red`, `amber`, `green`, `blue`, or `off`. |
+| Flash | `true` blinks. `false` is solid. |
+| Duration | Seconds to keep this state. Use `0` until the next `PUT /cloud/stack-led`. |
+| Brightness | Optional. `low`, `med`, or `high`. |

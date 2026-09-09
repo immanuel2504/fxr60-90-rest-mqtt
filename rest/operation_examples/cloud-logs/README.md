@@ -1,26 +1,18 @@
 # `/cloud/logs`
 
-- **GET** - Get log configuration
-- **PUT** - Update log configuration (`setLogs`)
+- **GET** — Current log configuration (`get_logs`)
+- **PUT** — Set log configuration (`set_logs`)
 
-## Reviewed PUT
+## GET examples
 
-Only live-working request bodies. `radio_control` / `cloud_agent` were accepted but did not apply as documented, so they are not included. Always send `radioPacketLog` if you do not want it reset to `false`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/info_packet_off.json` | response 200 | `info_packet_off` | radio_control INFO, reader_gateway INFO, radioPacketLog off |
 
-| File | Example name | Summary |
-|---|---|---|
-| `PUT/logs.json` | `logs` | Set `reader_gateway` to DEBUG and enable radioPacketLog |
-| `PUT/radioPacketLog_on.json` | `radioPacketLog_on` | Enable radioPacketLog only |
-| `PUT/success.json` | `success` | Empty string on success |
+## PUT examples
 
-## Trying these against a reader
-
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X PUT "https://$READER/cloud/logs" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @PUT/logs.json
-```
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `PUT/logs.json` | request | `logs` | reader_gateway DEBUG and radioPacketLog on |
+| `PUT/radioPacketLog_on.json` | request | `radioPacketLog_on` | Enable radioPacketLog |
+| `PUT/success.json` | response 200 | `success` | Empty string on success |

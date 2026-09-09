@@ -1,0 +1,11 @@
+CONFIRMED WORKING on reader 10.233.48.36 (app 5.0.7).
+
+All four channels connected to the mTLS broker on port 8884, authenticated by client certificate - the broker resolved the cert CN and logged each client as u'FXR60-LAB-CLIENT':
+  New client connected from 10.233.48.36 as fxr60-lab-mevents (u'FXR60-LAB-CLIENT')
+  New client connected from 10.233.48.36 as fxr60-lab-data    (u'FXR60-LAB-CLIENT')
+  New client connected from 10.233.48.36 as fxr60-lab-mcmd    (u'FXR60-LAB-CLIENT')
+  New client connected from 10.233.48.36 as fxr60-lab-ctrl    (u'FXR60-LAB-CLIENT')
+
+Heartbeats arriving on fxr60-lab/mevents (~2013 bytes each). A get_status command published to fxr60-lab/mcmd over mTLS returned full reader status on fxr60-lab/mrsp.
+
+Requires three files on the reader at /data/apps/: lab-ca.crt, fxr60-client.crt, fxr60-client.key.

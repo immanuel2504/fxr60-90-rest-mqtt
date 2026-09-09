@@ -7,8 +7,4 @@
 | Field | Value |
 |---|---|
 | **Example name** | `pass_through` |
-| **Summary title** | `Send Hello World to mylogger` |
-
-Path parameter: `appname` = `mylogger`
-
-Docs follow the developer spec: body requires `userapp`; `command` is optional.
+| **Summary title** | `userapp mylogger with command.message` |

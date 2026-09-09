@@ -1,0 +1,36 @@
+tagFocus 03 - spec example "enable_tagFocus"
+RESULT: HTTP 200, stored, activates - effect NOT MEASURABLE through this API
+
+  stored: {"tagFocus":{"enabled":true}}
+  after start: status.impinjGen2X = {"feature":"tagFocus","isActive":true}
+
+TagFocus is described as silencing already-inventoried tags to cut redundant
+reads, letting the reader concentrate on weak tags. Per Zebra's MAUI Gen2X
+tutorial it targets session S1, so the mode was set accordingly:
+
+  PUT /cloud/mode {..., "query":{"sel":"ALL","session":"S1",
+                                 "tagPopulation":256,"target":"A"}}
+
+A/B, 20 s each:
+
+  TagFocus ON   events=20  unique=20  avg reads/tag=1.0  max=1
+  TagFocus OFF  events=26  unique=26  avg reads/tag=1.0  max=1
+
+*** WHY THIS TEST CANNOT DETECT THE FEATURE ***
+
+Both runs show exactly 1.0 reads per tag. A separate 40-second plain scan
+confirmed the same pattern across 29 tags - read-count distribution
+Counter({1: 29}), i.e. EVERY tag reported exactly once regardless of scan
+length.
+
+So the reader already de-duplicates tag reports before they reach the data
+endpoint. TagFocus reduces redundant reads at the AIR PROTOCOL layer; the
+reporting layer has already collapsed those to one event per tag per session.
+There is no headroom left to measure.
+
+This is a limitation of the measurement, NOT evidence that TagFocus does not
+work. To test it properly you would need either:
+  - a reporting mode that emits every raw read (reportFilter/interval tuning), or
+  - a read-RATE comparison in a dense population where weak tags are being
+    starved - TagFocus's actual benefit is that weak tags get found sooner
+Neither was run.

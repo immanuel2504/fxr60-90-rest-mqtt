@@ -2,11 +2,19 @@
 
 The `GET /cloud/preSelection` REST endpoint retrieves the current rxSawFilter pre-selection state from the reader.
 
-This endpoint returns:
+The response is a string, not a boolean:
 
-- Whether the rxSawFilter (receive SAW filter pre-selection) is enabled or disabled
+```json
+{ "preSelection": "disabled" }
+```
 
-No request body is required.
+| Field | Type | Values |
+|---|---|---|
+| `preSelection` | string | `enabled` or `disabled` |
+
+To change the filter, use `PUT /cloud/preSelection` with a **boolean** (`true` / `false`). `GET /cloud/preSelection` always returns the string form.
+
+No additional fields are required.
 
 ## 2. Endpoint Details
 
@@ -18,7 +26,7 @@ No request body is required.
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Operations | Retrieve the rxSawFilter pre-selection state |
+| Response field | `preSelection`: `enabled` \| `disabled` |
 
 ## 3. When to Use This Endpoint
 
@@ -32,4 +40,4 @@ Key fields to check in the response:
 
 | Field | What to Check | Why It Matters |
 |---|---|---|
-| `preSelection` | Is the filter enabled or disabled? | Enabling the SAW filter improves receiver selectivity in noisy RF environments but may reduce sensitivity in clean environments. |
+| `preSelection` | Is the value `enabled` or `disabled`? | Enabling the SAW filter improves receiver selectivity in noisy RF environments but may reduce sensitivity in clean environments. |

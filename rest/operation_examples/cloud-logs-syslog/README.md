@@ -1,14 +1,16 @@
 # `/cloud/logs/syslog`
 
-- **GET** - Retrieve syslog
-- **DELETE** - Purge syslog (no example pack yet)
+- **GET** — System log archive (`get_logs_syslog`)
+- **DELETE** — Delete stored syslog files (`del_logs_syslog`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/download.json` | `download` | Syslog archive |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/syslog.json` | response 200 | `syslog` | syslog.tar.gz archive |
 
-## NEED LIVE TEST
+## DELETE examples
 
-Confirm live reader returns non-empty `binary` + `filename`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `DELETE/success.json` | response 200 | `success` | Empty string on success |

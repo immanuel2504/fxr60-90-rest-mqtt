@@ -1,0 +1,28 @@
+displayConfig 04 - determine which fields are actually required
+RESULT: exactly one field is mandatory - "enable"
+
+*** SPEC vs FIRMWARE MISMATCH ***
+
+The schema declares no "required" array, so all seven fields read as optional.
+
+Method: start from a known-good seven-field payload (200 OK), then drop one
+field at a time:
+
+  full payload                      -> 200
+  without enable                    -> 422  Missing required parameters
+  without enableOnscreenKeyboard    -> 200
+  without startUrl                  -> 200
+  without resolution                -> 200
+  without orientation               -> 200
+  without screenTimeoutSec          -> 200
+  without keyboardLayout            -> 200
+
+So "enable" is mandatory and the other six are genuinely optional, as the schema
+implies. The schema should carry "required": ["enable"].
+
+This also explains test 03: {"orientation":...} failed for lack of "enable", not
+because partial updates are unsupported.
+
+Worth comparing with /cloud/app-led, whose schema likewise declares nothing
+required but where ALL THREE fields are mandatory. Same declaration, opposite
+behaviour - a client cannot infer either endpoint's requirements from the spec.

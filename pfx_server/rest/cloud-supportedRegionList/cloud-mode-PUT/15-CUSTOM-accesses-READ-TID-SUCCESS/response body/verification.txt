@@ -1,0 +1,54 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 15 - accesses READ TID, with wordCounter corrected to wordCount
+RESULT: ACCEPTED, HTTP 200 - and the TID is read back per tag
+
+    "accesses": [{"type": "READ",
+                  "config": {"membank": "TID", "wordPointer": 0, "wordCount": 6}}]
+
+TAG RESULT over 18s:
+  unique tags  22
+  total reads  173
+  reference tags:
+    e2806894000040017790e471  reads=11  rssi=-39..-38  ant=[1]
+    e2806894000040017790ac71  reads=9  rssi=-46..-44  ant=[1]
+
+*** accessResults APPEARS IN THE TAG EVENT ***
+
+{
+  "accessResults": [
+    "e28011c12000112dbc930317"
+  ],
+  "antenna": 1,
+  "eventNum": 534,
+  "format": "epc",
+  "idHex": "333311112222333344445555",
+  "peakRssi": -58
+}
+
+The Gen2 READ operation executes per tag and its result is returned in an
+"accessResults" ARRAY - one entry per configured access. 6 words = 12 bytes =
+24 hex characters, which matches the value returned.
+
+NOTE THE READ VOLUME: 173 total reads from 22
+unique tags - the reference tags read 11 and 9 times. This is by far the highest
+read count of any test here, because this payload sets no reportFilter and no
+interval, so every inventory round re-reports every tag. Combined with an access
+operation per tag, that is a lot of RF work and a lot of events.
+
+Practical implication: accesses without a reportFilter produces a very high event
+rate. But the two cannot be combined - the schema forbids reportFilter together
+with accesses, and the reader enforces it (test 16). So high event volume is
+unavoidable when using access operations, unless the mode's own interval is used
+instead.
+
+That is worth raising with Zebra: the natural way to throttle an access-heavy
+configuration is exactly the combination the API prohibits.

@@ -1,22 +1,5 @@
 # Example summary titles — `set_network`
 
-REST: `PUT /cloud/network` → `cloud-network/`
-
-Example names and summary titles are copied **verbatim** from the developer
-OpenAPI (`rest/RestDeveloperfile.yaml` → `PUT /cloud/network` → `examples`).
-
-**NEED LIVE TEST — 802.1X enterprise bodies.** Only `Network_wifi_wpa2_enterprise_tls`
-was captured from a reader (lab AP `Vulcan_WPA2_5_ENT_802.1x`, installed client cert
-`COMMON`). The four PEAP/TTLS variants and the two `eth0` 802.1X TLS bodies were
-written by hand and reshaped on 2026-08-12 to match that captured body — placeholder
-`CorpNetwork` / `my-client-cert` values were replaced with the lab SSIDs from the
-`get_availableWifiNetworks` example and the `COMMON` cert from `get_certificates`, and
-the missing `security.enable: true` was added to the four Wi-Fi bodies. The shape is now
-consistent with the one body known to work, but none of the six has been confirmed
-against a reader with an enterprise AP. Two schema gaps remain open (see the tracker):
-`security.enable` is undeclared, and `mlan0.enable` is declared inside `accesspoint`
-though every example sends it one level up.
-
 ### `request/Network_ethernet_dhcp.json`
 
 | Field | Value |

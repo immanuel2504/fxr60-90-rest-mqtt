@@ -1,38 +1,20 @@
 # `/cloud/eSimConfig`
 
-- **GET** - Gets the eSIM configuration (`getEsimConfig`)
-- **PUT** - Sets the eSIM configuration (`setEsimConfig`)
+- **GET** — eSIM identity and profiles (`get_eSimConfig`)
+- **PUT** — Update an eSIM profile (`set_eSimConfig`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/profiles_present.json` | `profiles_present` | Two profiles |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/gnd1_gnd2.json` | response 200 | `gnd1_gnd2` | Profiles `gnd1` and `gnd2` |
 
-`no_profiles` removed.
+## PUT examples
 
-## Method folders
-
-```
-cloud-esimconfig/
-  GET/     # GET response examples
-  PUT/     # PUT request examples (not reviewed yet)
-```
-
-| File | Method | Direction | Example name | Origin | Valid | Summary |
-|---|---|---|---|---|---|---|
-| `GET/profiles_present.json` | GET | response 200 | `profiles_present` | reviewed | yes | Two profiles |
-| `PUT/eSimConfig_enable.json` | PUT | request | `eSimConfig_enable` | in-spec | yes | eSimConfig enable |
-| `PUT/eSimConfig_disable.json` | PUT | request | `eSimConfig_disable` | reviewed | yes | eSimConfig disable |
-| `PUT/eSimConfig_add.json` | PUT | request | `eSimConfig_add` | in-spec | yes | eSimConfig add |
-| `PUT/eSimConfig_delete.json` | PUT | request | `eSimConfig_delete` | in-spec | yes | eSimConfig delete |
-
-## Trying these against a reader
-
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X GET "https://$READER/cloud/eSimConfig" \
-  -H "Authorization: Bearer $TOKEN"
-```
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `PUT/enable_profile.json` | request | `enable_profile` | `operation` enable |
+| `PUT/disable_profile.json` | request | `disable_profile` | `operation` disable |
+| `PUT/add_profile.json` | request | `add_profile` | `operation` add with `activationID` |
+| `PUT/delete_profile.json` | request | `delete_profile` | `operation` delete |
+| `PUT/success.json` | response 200 | `success` | Empty string on success |

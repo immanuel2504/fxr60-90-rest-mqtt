@@ -1,0 +1,18 @@
+tagProtect 11 - spec example "enable_protect_read"
+RESULT: HTTP 200, stored, activates
+
+  stored: {"tagProtect":{"action":"enableTagVisibility",
+           "enableShortRange":false,"password":"77777777"}}
+  after start: status.impinjGen2X = {"feature":"tagProtect","isActive":true}
+
+Note there is NO tagID - correct for this action, and enforced: supplying one is
+rejected with
+
+  "tagProtect.tagID is not allowed for action: enableTagVisibility"
+
+This is the READER-SCOPED branch of the tagProtect oneOf. It controls whether
+THIS READER can see protected tags; it does not protect or unprotect anything.
+Easy to conflate with enableTagProtection given the similar names - the
+distinction is worth an explicit callout in the docs.
+
+enableShortRange:false was injected again (see test 10).

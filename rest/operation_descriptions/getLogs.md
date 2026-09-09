@@ -1,13 +1,11 @@
 ## 1. Description
 
-The `GET /cloud/logs` REST endpoint retrieves the reader's current log configuration, including the radio packet log enable flag and per-component log levels.
+The `GET /cloud/logs` REST endpoint retrieves the current log configuration.
 
 This endpoint returns:
 
-- Whether radio packet logging is enabled (`radioPacketLog`)
-- The configured log level for each reader software component (`components`)
-
-No request body is required.
+- `radioPacketLog` — `true` or `false`
+- `components` — `componentName` and `level` for `radio_control` and `reader_gateway`
 
 ## 2. Endpoint Details
 
@@ -19,20 +17,10 @@ No request body is required.
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Operations | Retrieve current logging configuration |
+| Supported Operations | Retrieve log configuration |
 
 ## 3. When to Use This Endpoint
 
 Use `GET /cloud/logs` to:
 
-- Review which components are set to verbose or debug logging before a troubleshooting session
-- Confirm radio packet log capture is enabled before downloading log files
-- Audit per-component verbosity during troubleshooting or before a support handoff
-- Verify the effect of a prior `PUT /cloud/logs` call
-
-Key fields to check in the response:
-
-| Field | What to Check | Why It Matters |
-|---|---|---|
-| `radioPacketLog` | Is packet logging enabled? | Must be enabled before log files (`GET /cloud/logs/radioPacketLog`) will contain meaningful data. |
-| `components` | Are component levels set to the appropriate verbosity? | Higher verbosity generates more log data but may affect performance in production deployments. |
+- Read `radioPacketLog` and component levels after `PUT /cloud/logs`

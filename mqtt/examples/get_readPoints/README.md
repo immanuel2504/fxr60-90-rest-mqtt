@@ -7,5 +7,4 @@ Stable `command_id`: `req-get-readPoints`
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
 | `request/default.json` | request | `default` | `—` | Empty get_readPoints request |
-| `response/inline.json` | response | `inline` | `cloud-readpoints/GET/inline.json` |  |
-
+| `response/read_points.json` | response | `read_points` | `cloud-readpoints/GET/read_points.json` | `"1"` through `"6"` |

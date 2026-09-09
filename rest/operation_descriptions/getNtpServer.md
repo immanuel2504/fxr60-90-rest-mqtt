@@ -1,12 +1,10 @@
 ## 1. Description
 
-The `GET /cloud/ntpServer` REST endpoint retrieves the NTP server currently configured for time synchronization on the reader.
+The `GET /cloud/ntpServer` REST endpoint retrieves the NTP server used for time synchronization.
 
 This endpoint returns:
 
-- The NTP server hostname or IP address
-
-No request body is required.
+- `server` — hostname or IP of the primary NTP server
 
 ## 2. Endpoint Details
 
@@ -24,12 +22,4 @@ No request body is required.
 
 Use `GET /cloud/ntpServer` to:
 
-- Confirm the reader is pointed at the correct time source for the deployment
-- Verify the result of a prior `PUT /cloud/ntpServer` call
-- Troubleshoot clock drift that is affecting event timestamps
-
-Key fields to check in the response:
-
-| Field | What to Check | Why It Matters |
-|---|---|---|
-| `server` | Is this the correct NTP server address? | An incorrect or unreachable NTP server causes clock drift, making event timestamps unreliable. |
+- Read `server` after `PUT /cloud/ntpServer`

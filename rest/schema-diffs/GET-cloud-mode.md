@@ -30,13 +30,13 @@ Nested response fields (same operatingMode object as PUT):
 
 | Field | Developer | RestDeveloperfile |
 |---|---|---|
-| `antennaStopCondition[].value.port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
-| `radioStartConditions.gpis[].port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
-| `radioStopConditions.gpis[].port` | integer (GPI schema max **2**) | integer enum `1`–`4` |
+| `antennaStopCondition[].value.port` | integer enum `1`–`4` | integer enum `1`–`4` |
+| `radioStartConditions.gpis[].port` | integer enum `1`–`4` | integer enum `1`–`4` |
+| `radioStopConditions.gpis[].port` | integer enum `1`–`4` | integer enum `1`–`4` |
 
-GET `/cloud/gpi` in the same developer file already has ports 1–4. Our docs keep 1–4 until firmware answers.
+GET `/cloud/gpi` in the same developer file already has ports 1–4. Spec 12 aligned mode GPI to **1–4**.
 
-`tagMetaData`: same names except our docs also list **`READER_LOCATION`** (developer YAML does not). Keep it until they answer.
+`tagMetaData`: spec 12 added **`READERLOCATION`** (no underscore). Live firmware rejected `READER_LOCATION`. Docs use **`READERLOCATION`**.
 
 Copy-paste questions: [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
 
@@ -90,6 +90,6 @@ GET with no body.
 
 ---
 
-## Docs work still to do (not applied yet)
+## Docs work
 
-`verbose` stays. Ports stay 1–4. `READER_LOCATION` stays. Nothing merged until rows in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md) are Final.
+**Final (spec 12).** `verbose` stays. GPI ports are 1–4. Tag metadata location is **`READERLOCATION`**, not `READER_LOCATION`.

@@ -7,10 +7,10 @@ REST: `PUT /cloud/config` → `cloud-config/`
 | `request/data_mqtt.json` | request | `data_mqtt` | `cloud-config/PUT/data_mqtt.json` | MQTT data endpoint (tags delivered) |
 | `request/data_mqtt_batching.json` | request | `data_mqtt_batching` | `cloud-config/PUT/data_mqtt_batching.json` | MQTT with batching and retention arrays |
 | `request/data_aws.json` | request | `data_aws` | `cloud-config/PUT/data_aws.json` | AWS IoT Core (port 443 + ALPN) |
-| `request/data_azure.json` | request | `data_azure` | `cloud-config/PUT/data_azure.json` | Tag events over Azure IoT Hub |
+| `request/data_azure.json` | request | `data_azure` | `cloud-config/PUT/data_azure.json` | Azure IoT Hub |
 | `request/data_http_post.json` | request | `data_http_post` | `cloud-config/PUT/data_http_post.json` | HTTP POST (tags delivered) |
 | `request/data_tcpip_server.json` | request | `data_tcpip_server` | `cloud-config/PUT/data_tcpip_server.json` | TCP/IP server (tags received) |
-| `request/data_websocket.json` | request | `data_websocket` | `cloud-config/PUT/data_websocket.json` | WebSocket (accepted) |
+| `request/data_websocket.json` | request | `data_websocket` | `cloud-config/PUT/data_websocket.json` | WebSocket |
 | `request/clear_data.json` | request | `clear_data` | `cloud-config/PUT/clear_data.json` | Clear all data connections |
 | `request/gpio_led_defaults.json` | request | `gpio_led_defaults` | `cloud-config/PUT/gpio_led_defaults.json` | GPIO-LED defaults only |
 | `request/gpio_led_tag_radio.json` | request | `gpio_led_tag_radio` | `cloud-config/PUT/gpio_led_tag_radio.json` | GPIO-LED for tag read and radio start/stop |

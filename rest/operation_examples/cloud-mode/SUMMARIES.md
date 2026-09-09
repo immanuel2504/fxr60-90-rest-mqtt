@@ -1,39 +1,66 @@
 # Example summary titles — `/cloud/mode`
 
-GET responses replaced 2026-08-12 with a live verbose/non-verbose pair captured from a reader in
-INVENTORY mode. The previous four (`inline`, `SIMPLE`, `INVENTORY`, `PORTAL`) were removed: they
-returned `antennaStopCondition` and `query` as arrays, which the live captures contradict, and
-`inline` combined `reportFilter` with `modeSpecificSettings.interval`.
+GET request examples are `verbose_false` and `verbose_true`.
+GET responses are named by mode (SIMPLE, INVENTORY, PORTAL, CONVEYOR, CUSTOM)
+and also include `verbose_false` / `verbose_true` (same bodies as CUSTOM / INVENTORY).
 
 PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
+
+### `GET/CUSTOM.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `CUSTOM` |
+| **Summary title** | `Response: CUSTOM mode (verbose false — configured values only)` |
+
+### `GET/INVENTORY.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `INVENTORY` |
+| **Summary title** | `Response: INVENTORY mode (verbose true — full configuration including defaults)` |
+
+### `GET/verbose_false_request.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `verbose_false` |
+| **Summary title** | `Request: verbose false — configured values only` |
+
+### `GET/verbose_true_request.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `verbose_true` |
+| **Summary title** | `Request: verbose true — full configuration including defaults` |
 
 ### `GET/verbose_false.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `verbose_false` |
-| **Summary title** | `Response: verbose false — configured values only` |
+| **Summary title** | `Response: verbose false — CUSTOM configured values only` |
 
 ### `GET/verbose_true.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `verbose_true` |
-| **Summary title** | `Response: verbose true — full configuration including defaults` |
+| **Summary title** | `Response: verbose true — INVENTORY full configuration including defaults` |
 
-### `GET/default_configured_only.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `default_configured_only` |
-| **Summary title** | `Request: configured values only (default)` |
-
-### `GET/verbose_full.json`
+### `GET/SIMPLE.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `verbose_full` |
-| **Summary title** | `Request: entire configuration including defaults` |
+| **Example name** | `SIMPLE` |
+| **Summary title** | `Response: SIMPLE mode` |
+
+### `GET/PORTAL.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `PORTAL` |
+| **Summary title** | `Response: PORTAL mode` |
 
 ### `GET/CONVEYOR.json`
 
@@ -42,79 +69,79 @@ PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
 | **Example name** | `CONVEYOR` |
 | **Summary title** | `Response: CONVEYOR mode after live PUT` |
 
-### `PUT/simple_basic.json`
+### `PUT/SIMPLE.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `simple_basic` |
+| **Example name** | `SIMPLE` |
 | **Summary title** | `SIMPLE mode baseline` |
 
-### `PUT/inventory_with_interval.json`
+### `PUT/INVENTORY.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `inventory_with_interval` |
+| **Example name** | `INVENTORY` |
 | **Summary title** | `INVENTORY mode with report interval` |
 
-### `PUT/portal_gpi_trigger.json`
+### `PUT/PORTAL.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `portal_gpi_trigger` |
+| **Example name** | `PORTAL` |
 | **Summary title** | `PORTAL mode with GPI start trigger` |
 
-### `PUT/conveyor_basic.json`
+### `PUT/CONVEYOR.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `conveyor_basic` |
+| **Example name** | `CONVEYOR` |
 | **Summary title** | `CONVEYOR mode baseline` |
 
-### `PUT/with_filter_prefix.json`
+### `PUT/CUSTOM_filter.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `with_filter_prefix` |
-| **Summary title** | `CUSTOM mode with prefix EPC filter` |
+| **Example name** | `CUSTOM_filter` |
+| **Summary title** | `CUSTOM filter` |
 
-### `PUT/with_query.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `with_query` |
-| **Summary title** | `CUSTOM mode with Gen2 query` |
-
-### `PUT/with_selects.json`
+### `PUT/CUSTOM_query.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `with_selects` |
-| **Summary title** | `CUSTOM mode with Gen2 selects` |
+| **Example name** | `CUSTOM_query` |
+| **Summary title** | `CUSTOM query` |
 
-### `PUT/with_accesses.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `with_accesses` |
-| **Summary title** | `CUSTOM mode with READ TID access` |
-
-### `PUT/with_report_filter.json`
+### `PUT/CUSTOM_selects.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `with_report_filter` |
-| **Summary title** | `CUSTOM mode with report filter` |
+| **Example name** | `CUSTOM_selects` |
+| **Summary title** | `CUSTOM selects` |
 
-### `PUT/with_tag_metadata.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `with_tag_metadata` |
-| **Summary title** | `CUSTOM mode with tag metadata fields` |
-
-### `PUT/with_radio_stop.json`
+### `PUT/CUSTOM_accesses.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `with_radio_stop` |
-| **Summary title** | `CUSTOM mode with radio stop conditions` |
+| **Example name** | `CUSTOM_accesses` |
+| **Summary title** | `CUSTOM accesses` |
+
+### `PUT/CUSTOM_report_filter.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `CUSTOM_report_filter` |
+| **Summary title** | `CUSTOM report filter` |
+
+### `PUT/CUSTOM_metadata.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `CUSTOM_metadata` |
+| **Summary title** | `CUSTOM metadata` |
+
+### `PUT/CUSTOM_radio_stop.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `CUSTOM_radio_stop` |
+| **Summary title** | `CUSTOM radio stop` |

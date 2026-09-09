@@ -1,0 +1,12 @@
+ACCEPTED (HTTP 200) BUT NEVER CONNECTS.
+
+Sent via REST to 10.233.48.36 (app 5.0.7) exactly as the spec's data_websocket example, with only security.verifyPeer and no address of any kind.
+
+The reader stored it verbatim - confirmed via GET /cloud/config - and reported:
+  interfaceConnectionStatus.data[0] = {interface: DATA_WS, connectionStatus: 'disconnected', connectionError: ''}
+
+Nothing ever reached our WebSocket receiver on port 9444 (fxr60-recv-websocket, verified working independently). connectionError is EMPTY - the reader gives no reason at all.
+
+Expected, since the config contains no destination. Included to establish that the reader ACCEPTS an address-less WEBSOCKET config rather than rejecting it, then silently does nothing.
+
+A NOTE ON A WRONG INFERENCE: port 9000 was observed open on the reader after this test and I initially took it for a WebSocket listener. Reverting the config left 9000 still open, so it is unrelated - my earlier port scan simply had not covered 9000. It is not opened by the WEBSOCKET config.

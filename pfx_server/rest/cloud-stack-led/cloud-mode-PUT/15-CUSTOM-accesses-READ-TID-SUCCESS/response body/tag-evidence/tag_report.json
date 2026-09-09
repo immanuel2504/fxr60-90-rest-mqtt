@@ -1,0 +1,163 @@
+{
+  "read_seconds": 18,
+  "unique_tags": 22,
+  "total_reads": 173,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": true,
+      "reads": 11,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -39,
+      "rssi_max": -38,
+      "fields_present": [
+        "accessResults",
+        "antenna",
+        "eventNum",
+        "format",
+        "idHex",
+        "peakRssi"
+      ]
+    },
+    "e2806894000040017790ac71": {
+      "seen": true,
+      "reads": 9,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -46,
+      "rssi_max": -44,
+      "fields_present": [
+        "accessResults",
+        "antenna",
+        "eventNum",
+        "format",
+        "idHex",
+        "peakRssi"
+      ]
+    }
+  },
+  "all_tags": {
+    "333311112222333344445555": {
+      "reads": 17,
+      "rssi_min": -58,
+      "rssi_max": -53
+    },
+    "41544035a880c80000123bea": {
+      "reads": 16,
+      "rssi_min": -62,
+      "rssi_max": -52
+    },
+    "e2806894000050017790bc71": {
+      "reads": 16,
+      "rssi_min": -71,
+      "rssi_max": -67
+    },
+    "20004035a880c80000123be9": {
+      "reads": 16,
+      "rssi_min": -64,
+      "rssi_max": -57
+    },
+    "30304035a880c80000123bee": {
+      "reads": 15,
+      "rssi_min": -70,
+      "rssi_max": -66
+    },
+    "e2806894000040017790e471": {
+      "reads": 11,
+      "rssi_min": -39,
+      "rssi_max": -38
+    },
+    "bedd11112222333344445555": {
+      "reads": 11,
+      "rssi_min": -67,
+      "rssi_max": -64
+    },
+    "30304035a880c80000123bed": {
+      "reads": 10,
+      "rssi_min": -75,
+      "rssi_max": -71
+    },
+    "e2806894000040017790ac71": {
+      "reads": 9,
+      "rssi_min": -46,
+      "rssi_max": -44
+    },
+    "e2806894000040017790cc71": {
+      "reads": 8,
+      "rssi_min": -56,
+      "rssi_max": -55
+    },
+    "e2806894000050017790c471": {
+      "reads": 8,
+      "rssi_min": -55,
+      "rssi_max": -54
+    },
+    "e2806894000040017790d871": {
+      "reads": 7,
+      "rssi_min": -78,
+      "rssi_max": -73
+    },
+    "30304035a880c80000123beb": {
+      "reads": 7,
+      "rssi_min": -70,
+      "rssi_max": -68
+    },
+    "e2806d120000000246f8fbf3": {
+      "reads": 7,
+      "rssi_min": -75,
+      "rssi_max": -72
+    },
+    "ad721205148efbb3610000e6": {
+      "reads": 5,
+      "rssi_min": -72,
+      "rssi_max": -72
+    },
+    "e2806894000050017790dc71": {
+      "reads": 4,
+      "rssi_min": -58,
+      "rssi_max": -51
+    },
+    "ad721206438da5b0847e0048": {
+      "reads": 1,
+      "rssi_min": -74,
+      "rssi_max": -74
+    },
+    "ad721205148ed5b65f0000e0": {
+      "reads": 1,
+      "rssi_min": -78,
+      "rssi_max": -78
+    },
+    "ad721205143d95b36200000b": {
+      "reads": 1,
+      "rssi_min": -78,
+      "rssi_max": -78
+    },
+    "e28011112222333344445555": {
+      "reads": 1,
+      "rssi_min": -73,
+      "rssi_max": -73
+    },
+    "e2004718be4064260e460112": {
+      "reads": 1,
+      "rssi_min": -66,
+      "rssi_max": -66
+    },
+    "000512051446c1b6620000e7": {
+      "reads": 1,
+      "rssi_min": -71,
+      "rssi_max": -71
+    }
+  },
+  "sample_event": {
+    "accessResults": [
+      "e28011c12000112dbc930317"
+    ],
+    "antenna": 1,
+    "eventNum": 534,
+    "format": "epc",
+    "idHex": "333311112222333344445555",
+    "peakRssi": -58
+  }
+}

@@ -1,18 +1,15 @@
 ## 1. Description
 
-The `PUT /cloud/ntpServer` REST endpoint sets one or more NTP servers used by the reader for time synchronization.
+The `PUT /cloud/ntpServer` REST endpoint sets the NTP server used for time synchronization.
 
-This endpoint allows you to configure:
+This endpoint requires one primary:
 
-- The primary NTP server through `server` (current convention) or `server1` (legacy convention)
-- An optional secondary NTP server through `server2`
+- `server` — hostname or IP
+- or `server1` — same meaning (legacy key)
 
-Use this endpoint to:
+Optional:
 
-- Point the reader to your organization's NTP server for accurate timekeeping
-- Configure fallback NTP servers for resilience when the primary is unreachable
-- Correct clock drift that is affecting event timestamps and log correlation
-- Standardize NTP configuration across a fleet of readers
+- `server2` — backup hostname or IP
 
 ## 2. Endpoint Details
 
@@ -25,14 +22,14 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Required Request Fields | `server` (or `server1` for the legacy convention) |
+| Required Request Fields | `server` or `server1` |
 
 ## 3. Before You Begin
 
-Confirm that the NTP server is reachable from the reader's network before sending this request. An unreachable NTP server will leave the reader clock unsynchronized.
+Decide the NTP host to send. Use the JSON field names below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Primary NTP server | Hostname or IP address of the primary NTP server. Provide it as `server` (current convention) or `server1` (legacy convention). The reader must be able to reach this address on UDP port 123. |
-| Secondary NTP server | Optional - provide `server2` as a backup time source. |
-| Network access | NTP uses UDP port 123. Ensure this port is open between the reader and the NTP server on all network paths. |
+| `server` | Primary NTP hostname or IP. |
+| `server1` | Same as `server` (legacy key). Send `server` or `server1`, not both. |
+| `server2` | Optional backup hostname or IP. |

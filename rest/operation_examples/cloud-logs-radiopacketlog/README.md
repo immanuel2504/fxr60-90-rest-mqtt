@@ -1,14 +1,16 @@
 # `/cloud/logs/radioPacketLog`
 
-- **GET** - Retrieve radio packet log
-- **DELETE** - Purge radio packet log (no example pack yet)
+- **GET** — Radio packet log archive (`get_logs_radioPacketLog`)
+- **DELETE** — Delete stored radio packet logs (`del_logs_radioPacketLog`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/download.json` | `download` | Radio packet log archive |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/radio_packet.json` | response 200 | `radio_packet` | radioPktLog.tar.gz archive |
 
-## NEED LIVE TEST
+## DELETE examples
 
-Enable packet logging with `PUT /cloud/logs`, then confirm GET returns `binary` + `filename`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `DELETE/success.json` | response 200 | `success` | Empty string on success |

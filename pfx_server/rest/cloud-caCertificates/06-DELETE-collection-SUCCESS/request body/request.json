@@ -1,0 +1,14 @@
+{
+  "method": "DELETE",
+  "url": "/cloud/caCertificates",
+  "reader": "10.233.48.36 (FXR60 app 5.0.7)",
+  "spec": "openAPISpec 12.yaml - IoT Connector REST API v3.0.0",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "GET /cloud/localRestLogin with admin:Zebra@123"
+  },
+  "body": {
+    "name": "lab-rfid-ca"
+  }
+}

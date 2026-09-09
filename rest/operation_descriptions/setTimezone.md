@@ -1,17 +1,10 @@
 ## 1. Description
 
-The `PUT /cloud/timeZone` REST endpoint sets the time zone on the reader.
+The `PUT /cloud/timeZone` REST endpoint sets the time zone.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- The reader's local time zone through `timeZone`
-
-Use this endpoint to:
-
-- Align the reader's clock with the deployment site's local time zone
-- Correct event timestamps and log timestamps for local time reporting
-- Standardize time zone configuration across a fleet of readers
-- Update the time zone after a reader is relocated to a different region
+- `timeZone` — a reader-supported name, for example `UTC` or `Kolkata`
 
 ## 2. Endpoint Details
 
@@ -28,9 +21,8 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Have the exact time zone string ready before sending this request. An unrecognized time zone string will be rejected.
+Decide the zone to send. Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Time zone string | A reader-supported time zone name (e.g., `"International Date Line West"`, `"Pacific Time (US & Canada)"`). Use `GET /cloud/timeZone` to check the currently configured value. |
-| Site location | Confirm the physical deployment location of the reader to select the correct time zone. |
+| `timeZone` | A supported name, for example `UTC` or `Kolkata`. Matching is case-sensitive. |

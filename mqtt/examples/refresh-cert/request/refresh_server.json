@@ -1,0 +1,8 @@
+{
+  "command": "set_refreshCertificate",
+  "command_id": "req-refresh-cert-server",
+  "payload": {
+    "name": "Server",
+    "type": "server"
+  }
+}

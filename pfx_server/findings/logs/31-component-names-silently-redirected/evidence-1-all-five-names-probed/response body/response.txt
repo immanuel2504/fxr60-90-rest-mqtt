@@ -1,0 +1,1 @@
+all five returned HTTP 200 - see verification.txt for each read-back

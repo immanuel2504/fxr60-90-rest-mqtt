@@ -1,14 +1,17 @@
 ## 1. Description
 
-The `PUT /cloud/config` REST endpoint updates the reader's full configuration, including RF settings, GPIO and LED defaults, and reader-gateway endpoint configuration.
+The `PUT /cloud/config` REST endpoint updates GPIO/LED behavior and the data-plane reader-gateway configuration.
+
+Send at least one of `GPIO-LED` or `READER-GATEWAY`. Both can be sent in the same request.
+
+This call configures **data** connections only (`endpointConfig.data`). Use `PUT /cloud/cloudConfig` for control and management plane endpoints.
 
 Use this endpoint to:
 
-- Set the Cloud Connect RFID XML profile (`xml`)
-- Configure GPIO/LED default states and event-triggered actions
-- Set tag-data retention, batching, and data/management endpoint connections
-
-Send at least one of `xml`, `GPIO-LED`, or `READER-GATEWAY`.
+- Set GPO and LED defaults and event-triggered actions
+- Configure where tag events are sent (`mqtt`, `httpPost`, `tcpip-server`, `mqtt-AWS`)
+- Set tag-data batching and retention together with the data endpoint
+- Clear all data connections with an empty `connections` array
 
 ## 2. Endpoint Details
 
@@ -25,11 +28,11 @@ Send at least one of `xml`, `GPIO-LED`, or `READER-GATEWAY`.
 
 ## 3. Before You Begin
 
-Gather these details before sending the request. A misconfigured endpoint can disrupt tag reporting and management events.
+A misconfigured data endpoint can stop tag reporting. Read the current config with `GET /cloud/config` first — especially `GPIO-LED`, which is replaced wholesale.
 
 | What You Need | Details |
 |---|---|
-| Configuration scope | At least one of `xml`, `GPIO-LED`, or `READER-GATEWAY`. |
-| GPIO/LED defaults | Desired GPO pin defaults (`HIGH`/`LOW`) and LED colors per pin. |
-| Endpoint connections | Data and management channel types (`mqtt`, `httpPost`, `tcpip-server`, etc.) with host, port, and security. |
-| Certificates | Pre-installed or inline PEM content for TLS endpoints (see `GET /cloud/certificates`). |
+| Configuration scope | At least one of `GPIO-LED` or `READER-GATEWAY`. |
+| GPIO/LED | The full desired `GPIO-LED` object. GPO defaults are `HIGH`/`LOW`. LED colors are `GREEN`/`RED`/`AMBER`. |
+| Data endpoint | Connection type, host/port or URL, and TLS material if needed (see `GET /cloud/certificates`). |
+| Batching / retention | Send as arrays, and only together with `endpointConfig`. |

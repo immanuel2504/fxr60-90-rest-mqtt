@@ -1,24 +1,25 @@
 ## 1. Description
 
-The `PUT /cloud/bleConfig` REST endpoint configures the Bluetooth Low Energy (BLE) scanner on the reader.
+The `PUT /cloud/bleConfig` REST endpoint sets the BLE scanner configuration.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- BLE scanner enable or disable through `ble.enable`
-- Scan interval through `ble.scanIntervalSec`
-- Cross-protocol RSSI and service UUID filters through `ble.additionalFilters`
-- iBeacon filters through `ble.protocols.iBeacon`
-- AltBeacon filters through `ble.protocols.altBeacon`
-- Eddystone filters through `ble.protocols.eddystone`
-- Generic BLE device filters through `ble.protocols.generic`
+- `ble.enable`
+- `ble.scanIntervalSec` — `0` to `300`
+- `ble.protocols`
+- `ble.additionalFilters`
 
-Use this endpoint to:
+Optional inside `ble.protocols`:
 
-- Activate or deactivate BLE scanning
-- Tune how frequently the reader collects BLE scan results
-- Filter out weak or irrelevant BLE advertisements using RSSI or service UUID
-- Capture only specific beacon types or devices from the BLE environment
-- Prepare BLE configuration before starting a combined RFID and BLE inventory
+- `iBeacon`, `altBeacon`, `eddystone`, `generic` — each with `enabled`, and optional `filters`
+
+Optional inside `ble.additionalFilters`:
+
+- `rssi` — `-127` to `0`
+- `serviceUuids16`
+- `serviceUuids128`
+
+When `generic.filters` is sent, use `address`, `addressType`, `name`, and `alias`.
 
 ## 2. Endpoint Details
 
@@ -32,24 +33,22 @@ Use this endpoint to:
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
 | Required Request Fields | `ble.enable`, `ble.scanIntervalSec`, `ble.protocols`, `ble.additionalFilters` |
-| Supported BLE Protocols | iBeacon, AltBeacon, Eddystone (`URL`, `UID`, `EID`, `TLM`), Generic |
-| Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds this endpoint is not available. |
-| Supported Address Types | `public`, `random` |
-| RSSI Filter Range | `-127` to `0` dBm |
-| Scan Interval | `0` to `300` seconds |
 
 ## 3. Before You Begin
 
-Decide which BLE behavior you need to configure before sending this request. Every request must include `enable`, `scanIntervalSec`, `protocols`, and `additionalFilters`.
+Decide the scanner settings. Use the JSON field names below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Enable decision | `ble.enable` is required in every request. Set to `true` to activate scanning, or `false` to disable it. |
-| Scan interval | How often the reader collects BLE scan results (`scanIntervalSec`). Range is `0` to `300` seconds. Shorter intervals increase responsiveness; longer intervals reduce data volume. |
-| RSSI threshold | Set `additionalFilters.rssi` to drop weak advertisements. Range is `-127` to `0` dBm; values closer to zero indicate stronger signals. |
-| Service UUID filters | Prepare 16-bit (`serviceUuids16`) or 128-bit (`serviceUuids128`) UUID lists to filter by advertised services. |
-| iBeacon details | UUID, major, minor, and txPower values for each iBeacon filter entry. |
-| AltBeacon details | Manufacturer ID, beacon ID, major, minor, and refRssi for each AltBeacon filter entry. |
-| Eddystone frame type | Choose `URL`, `UID`, `EID`, or `TLM` and supply the corresponding fields (`url`, `namespace`/`instance`, `ephemeralId`). |
-| Generic BLE device | Bluetooth MAC address, address type (`public`/`random`), device name, or alias for each generic filter entry. |
-| Activation | Saving this configuration does not start BLE scanning. Send `PUT /cloud/start` with `scanType: ["ble"]` to begin scanning. |
+| `ble.enable` | `true` to allow BLE scanning, `false` to not. |
+| `ble.scanIntervalSec` | Scan interval in seconds. `0` to `300`. |
+| `ble.protocols` | Protocol object. Include at least one of `iBeacon`, `altBeacon`, `eddystone`, or `generic`. |
+| `ble.protocols.*.enabled` | `true` or `false` for that protocol. |
+| `ble.protocols.iBeacon.filters` | Optional. `uuid`, `major`, `minor`, `txPower`. |
+| `ble.protocols.altBeacon.filters` | Optional. `mfgId`, `beaconId`, `major`, `minor`, `refRssi`. |
+| `ble.protocols.eddystone.filters` | Optional. `frameType` `URL`, `UID`, `EID`, or `TLM`, plus `url`, `namespace`/`instance`, or `ephemeralId`. |
+| `ble.protocols.generic.filters` | Optional. `address`, `addressType` (`public` or `random`), `name`, `alias`. |
+| `ble.additionalFilters` | Required object. Use `{}` when empty. |
+| `ble.additionalFilters.rssi` | Optional. Drop weaker advertisements. `-127` to `0`. |
+| `ble.additionalFilters.serviceUuids16` | Optional. 16-bit service UUIDs. |
+| `ble.additionalFilters.serviceUuids128` | Optional. 128-bit service UUIDs. |

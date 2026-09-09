@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "\"set_mode\" Failed to apply. Description: unsuccessful rc response: Failure: value provided for \"transmitPower\" is out of bounds. Must be between 0.000000 and 30.000000."
+}

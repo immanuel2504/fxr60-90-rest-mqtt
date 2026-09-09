@@ -1,0 +1,185 @@
+{
+  "method": "PUT",
+  "url": "/cloud/cloudConfig",
+  "reader": "10.117.229.9 (reader app 5.0.5)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Real admin token minted at run time. Reproduce with:\n  TOKEN=$(curl -sk -u 'admin:Zebra@123' https://<reader>/cloud/localRestLogin | python3 -c \"import sys,json;print(json.load(sys.stdin)['message'])\")\nNot stored here because it is a live credential."
+  },
+  "body": {
+    "endpointConfig": {
+      "control": {
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "CTRL_MQTT_MTLS",
+              "description": "Control cmd/rsp (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-ctrl",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/rsp"
+                ],
+                "subscribeTopic": [
+                  "fxr60-lab/cmd"
+                ],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "event": {
+          "connections": [
+            {
+              "name": "DATA_MQTT_MTLS",
+              "description": "Tag events (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-data",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/tevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              },
+              "additionalOptions": {
+                "retention": {
+                  "maxEventRetentionTimeInMin": 500,
+                  "maxNumEvents": 150000,
+                  "throttle": 500
+                }
+              }
+            }
+          ]
+        }
+      },
+      "management": {
+        "event": {
+          "connections": [
+            {
+              "name": "MGMT_EVENTS_MQTT_MTLS",
+              "description": "Management/heartbeat events (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mevents",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/mevents"
+                ],
+                "subscribeTopic": [],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        },
+        "commandResponse": {
+          "enableLocalRest": true,
+          "connections": [
+            {
+              "name": "MGMT_CMD_MQTT_MTLS",
+              "description": "Management cmd/rsp (MQTT_MTLS)",
+              "type": "mqtt",
+              "options": {
+                "enableSecurity": true,
+                "endpoint": {
+                  "hostName": "10.117.229.18",
+                  "port": 8884,
+                  "protocol": "ssl"
+                },
+                "additional": {
+                  "cleanSession": true,
+                  "clientId": "fxr60-lab-mcmd",
+                  "debug": false,
+                  "keepAlive": 60,
+                  "qos": 0,
+                  "reconnectDelay": 2,
+                  "reconnectDelayMax": 60
+                },
+                "publishTopic": [
+                  "fxr60-lab/mrsp"
+                ],
+                "subscribeTopic": [
+                  "fxr60-lab/mcmd"
+                ],
+                "security": {
+                  "installedCertificateName": "FXR60-LAB-CLIENT",
+                  "installedCertificateType": "client",
+                  "keyAlgorithm": "RS256",
+                  "keyFormat": "PEM",
+                  "verifyHostName": true,
+                  "verifyPeer": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

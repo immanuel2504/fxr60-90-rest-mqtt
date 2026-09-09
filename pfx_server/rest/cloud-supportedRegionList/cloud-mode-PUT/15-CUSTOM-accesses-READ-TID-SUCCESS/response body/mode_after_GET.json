@@ -1,0 +1,1 @@
+{"accesses":[{"config":{"membank":"TID","wordCount":6,"wordPointer":0},"type":"READ"}],"antennas":[1],"query":{"tagPopulation":50},"tagMetaData":["ANTENNA","RSSI"],"transmitPower":[30],"type":"CUSTOM"}

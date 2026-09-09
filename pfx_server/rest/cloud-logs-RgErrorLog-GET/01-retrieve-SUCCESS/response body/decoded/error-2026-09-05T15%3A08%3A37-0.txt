@@ -1,0 +1,6 @@
+Sat Sep  5 15:08:37 2026
+
+1: 2026-09-05T15:08:44.201-NTP synchronization failed offset 0.040762 and reach 373
+2: 2026-09-05T15:12:52.318-NTP synchronization failed offset 0.007201 and reach 355
+3: 2026-09-05T15:17:03.391-NTP synchronization failed offset 0.022085 and reach 277
+4: 2026-09-05T15:20:17.973-[MGMT]: disconnect failed with return code (0)

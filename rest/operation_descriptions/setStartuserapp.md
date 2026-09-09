@@ -1,12 +1,10 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/start` REST endpoint starts a user application installed on the reader. The application is identified by the `{appname}` path parameter.
+The `PUT /cloud/apps/{appname}/start` REST endpoint starts an installed user application.
 
-Use this endpoint to:
+This endpoint requires:
 
-- Launch an installed user app on demand
-- Restart an app after configuration changes
-- Bring application logic online after installing it with `PUT /cloud/apps/install`
+- `{appname}` — installed name in the URL
 
 ## 2. Endpoint Details
 
@@ -18,14 +16,13 @@ Use this endpoint to:
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Path Parameter | `appname` (the installed application to start) |
-| Request Body | None (the app name is supplied as the `{appname}` path parameter) |
+| Path Parameter | `appname` |
+| Request Body | None |
 
 ## 3. Before You Begin
 
-Confirm the application is installed before starting it. Use `GET /cloud/apps` to verify the exact `appname` and its current running status.
+Confirm the application is installed. Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Application name | The exact name of the installed application, supplied as the `{appname}` path parameter, as returned by `GET /cloud/apps`. |
-| Installation check | The application must already be installed via `PUT /cloud/apps/install` before it can be started. |
+| `appname` | Installed name from `GET /cloud/apps`. URL path. |

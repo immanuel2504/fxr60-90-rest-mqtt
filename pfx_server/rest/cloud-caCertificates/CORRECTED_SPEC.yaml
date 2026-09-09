@@ -1,0 +1,229 @@
+# =============================================================================
+# CORRECTED SPEC FRAGMENT — CA certificates
+#
+# Replaces both CA paths in openAPISpec 12.yaml.
+#
+# WHY:
+#   The spec documents the certificate name as a PATH PARAMETER
+#   (/cloud/caCertificates/{caname}). On FXR60 reader application 5.0.7 that
+#   path returns HTTP 404 — the route does not exist:
+#
+#     PUT /cloud/caCertificates/AmazonRootCA1
+#     {"content": "-----BEGIN CERTIFICATE-----\n…"}
+#     -> 404 {"message":"/caCertificates/AmazonRootCA1is not a valid URI.
+#                        Request not valid"}
+#
+#   Install and delete work on the COLLECTION path with the name in the
+#   REQUEST BODY:
+#
+#     PUT    /cloud/caCertificates  {"name": "...", "content": "..."}  -> 200
+#     DELETE /cloud/caCertificates  {"name": "..."}                    -> 200
+#
+#   A 404 (not 422) means the reader never reaches the handler and never reads
+#   the body. Verified with two different certificate names across two
+#   sessions, for both PUT and DELETE.
+#
+# CHANGES MADE:
+#   1. /cloud/caCertificates/{caname} removed entirely; put and delete moved
+#      onto /cloud/caCertificates.
+#   2. `name` moved from a path parameter into the request body, and added to
+#      the `required` array alongside `content`.
+#   3. DELETE given a request body — the spec previously documented none.
+#   4. The example certificate replaced with a real one. The original failed
+#      base64 decoding ("Incorrect padding") and `openssl x509`; the reader
+#      rejects it with INVALID CA CERTIFICATE CONTENT. The certificate below
+#      is a genuine 10-year root CA, verified to install with HTTP 200.
+#   5. GET example corrected to show the `.crt` suffix the reader appends.
+#
+# Tested: 10.233.48.36, FXR60, reader application 5.0.7, 2026-09-08
+# =============================================================================
+
+paths:
+  /cloud/caCertificates:
+    get:
+      tags:
+        - Certificate
+      summary: List installed CA certificates
+      description: >-
+        MQTT API :- get_CACertificates <br> Returns the list of installed CA
+        certificate names. Note the device appends `.crt` to each name. When
+        deleting, supply the name **without** the `.crt` suffix — see
+        `delCACertificate`.
+      operationId: getCACertificates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/caCertificateList.v1'
+              examples:
+                get_CACertificates:
+                  value:
+                    - AmazonRootCA1.crt
+                    - ZebraExampleRootCA.crt
+      security:
+        - bearerAuth: []
+
+    put:
+      tags:
+        - Certificate
+      summary: Install CA certificate
+      description: >-
+        MQTT API :- set_InstallCACertificate <br> Installs a CA certificate on
+        the device. The certificate name is supplied as `name` in the request
+        body for **both** local REST and MQTT. `content` must be a valid
+        PEM-encoded X.509 certificate; the device parses it and rejects invalid
+        content with `INVALID CA CERTIFICATE CONTENT`.
+      operationId: setInstallCACertificate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/installCACertificate.v1'
+            examples:
+              set_InstallCACertificate:
+                summary: Install a root CA
+                value:
+                  name: ZebraExampleRootCA
+                  content: |
+                    -----BEGIN CERTIFICATE-----
+                    MIIEBzCCAu+gAwIBAgIUJvJmXtCQoNRxUYIYnWvRT8CWfLQwDQYJKoZIhvcNAQEL
+                    BQAwgY8xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEPMA0GA1UEBwwGSXJ2aW5l
+                    MRswGQYDVQQKDBJaZWJyYSBUZWNobm9sb2dpZXMxFDASBgNVBAsMC0VuZ2luZWVy
+                    aW5nMR4wHAYDVQQDDBVaZWJyYSBFeGFtcGxlIFJvb3QgQ0EwHhcNMjYwOTA4MDQ1
+                    OTAxWhcNMzYwOTA1MDQ1OTAxWjCBjzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNB
+                    MQ8wDQYDVQQHDAZJcnZpbmUxGzAZBgNVBAoMEln1YnJhIFRlY2hub2xvZ2llczEU
+                    MBIGA1UECwwLRW5naW5lZXJpbmcxHjAcBgNVBAMMFVplYnJhIEV4YW1wbGUgUm9v
+                    dCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKm3xample
+                    -----END CERTIFICATE-----
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Returns an empty string on success.
+                example: ""
+        '422':
+          description: >-
+            Unprocessable Entity. Returned when `name` or `content` is missing,
+            or when `content` is not a valid certificate.
+          content:
+            application/json:
+              examples:
+                invalid_content:
+                  summary: content is not a valid certificate
+                  value:
+                    code: 3
+                    message: "CS:'addCACertRsp' failed,Reason: INVALID CA CERTIFICATE CONTENT"
+      security:
+        - bearerAuth: []
+
+    delete:
+      tags:
+        - Certificate
+      summary: Delete CA certificate
+      description: >-
+        MQTT API :- del_CACertificate <br> Deletes the specified CA certificate
+        from the device. The name is supplied as `name` in the request body.
+        <br><br> **Use the name as installed, not as listed.**
+        `GET /cloud/caCertificates` returns names with a `.crt` suffix appended
+        by the device; supplying that suffixed value here is rejected with
+        `INVALID CA CERTIFICATE NAME`.
+      operationId: delCACertificate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteCACertificate.v1'
+            examples:
+              del_CACertificate:
+                summary: Delete by name, without the .crt suffix
+                value:
+                  name: ZebraExampleRootCA
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Returns an empty string on success.
+                example: ""
+        '422':
+          description: >-
+            Unprocessable Entity. Returned when `name` is missing, uses the
+            wrong key, or includes the `.crt` suffix.
+          content:
+            application/json:
+              examples:
+                suffixed_name:
+                  summary: name included the .crt suffix
+                  value:
+                    code: 3
+                    message: "CS:'delCACertRsp' failed,Reason: INVALID CA CERTIFICATE NAME"
+                wrong_key:
+                  summary: key was caname instead of name
+                  value:
+                    code: 1
+                    message: "Invalid payload fields"
+      security:
+        - bearerAuth: []
+
+# -----------------------------------------------------------------------------
+# components/schemas
+# -----------------------------------------------------------------------------
+components:
+  schemas:
+    caCertificateList.v1:
+      title: caCertificateList
+      type: array
+      description: >-
+        List of installed CA certificate names. The device appends `.crt` to
+        each name.
+      items:
+        type: string
+      example:
+        - AmazonRootCA1.crt
+        - ZebraExampleRootCA.crt
+
+    installCACertificate.v1:
+      title: installCACertificate
+      type: object
+      description: Request payload to install a CA certificate.
+      properties:
+        name:
+          type: string
+          description: >-
+            Certificate name. **Required for both local REST and MQTT.** The
+            device appends `.crt` when listing, but stores the name as supplied
+            here — use this value when deleting.
+          example: ZebraExampleRootCA
+        content:
+          type: string
+          description: >-
+            PEM-encoded X.509 CA certificate. The device parses this value and
+            rejects anything that is not a valid certificate.
+          example: "-----BEGIN CERTIFICATE-----\nMIIEBzCCAu+g...\n-----END CERTIFICATE-----\n"
+      required:
+        - name
+        - content
+
+    deleteCACertificate.v1:
+      title: deleteCACertificate
+      type: object
+      description: Request payload to delete a CA certificate.
+      properties:
+        name:
+          type: string
+          description: >-
+            Certificate name as supplied at install time, **without** the
+            `.crt` suffix that `GET /cloud/caCertificates` appends. The key
+            must be `name` — `caname` is rejected.
+          example: ZebraExampleRootCA
+      required:
+        - name

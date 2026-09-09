@@ -1,0 +1,33 @@
+impinjGen2X 13 - only one feature at a time
+RESULT: all five combinations correctly rejected, HTTP 422
+
+  "Only one Impinj Gen2X feature can be configured at a time
+   (fastID, tagProtect, tagFocus, or tagQuieting)"
+
+  fastID + tagFocus                      -> 422
+  fastID + tagQuieting                   -> 422
+  tagFocus + tagQuieting                 -> 422
+  all three                              -> 422
+  fastID + tagProtect                    -> 422
+
+*** THE CONSTRAINT IS BROADER THAN THE OLD SPEC DOCUMENTED ***
+
+The previous spec revision carried a table row reading:
+
+  | Mutually Exclusive Features | fastID, tagFocus, tagQuieting (only one
+    reader-scoped feature active at a time) |
+
+That names THREE features and calls them "reader-scoped", implying tagProtect -
+being tag-scoped - could be combined with one of them. It cannot: fastID +
+tagProtect is rejected, and the reader's own message lists all FOUR.
+
+v3.0.0 has removed that table entirely (the PUT description is now 262
+characters and mentions no constraints at all), so the corrected rule is now
+documented nowhere - it exists only in this error message.
+
+ASK: document "only one of fastID / tagProtect / tagFocus / tagQuieting per
+request" in the v3.0.0 description. The old text was wrong; the new text is
+absent.
+
+Silver lining: the error message itself is excellent - it states the rule and
+lists all four features.

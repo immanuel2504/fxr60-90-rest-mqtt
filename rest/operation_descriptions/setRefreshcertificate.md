@@ -1,12 +1,11 @@
 ## 1. Description
 
-The `PUT /cloud/certificates/{certname}` REST endpoint refreshes an already-installed certificate on the reader by re-fetching or re-applying it from its configured source.
+The `PUT /cloud/certificates/{certname}` REST endpoint refreshes an installed certificate.
 
-Use this endpoint to:
+This endpoint requires:
 
-- Renew a certificate before expiry without a full reinstall
-- Re-apply a certificate after upstream CA rotation
-- Trigger certificate refresh as part of a credential rotation workflow
+- `{certname}` — certificate `name` in the URL
+- `type` — `server`, `client`, or `app` in the JSON body
 
 ## 2. Endpoint Details
 
@@ -19,15 +18,14 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Path Parameter | `certname` (the installed certificate name to refresh) |
+| Path Parameter | `certname` |
 | Required Request Fields | `type` |
-| Supported Certificate Types | `client`, `server`, `app` |
 
 ## 3. Before You Begin
 
-The certificate must already be installed. Use `GET /cloud/certificates` to confirm the certificate name and `type`.
+Confirm the certificate is already installed. Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Certificate name | The exact name of the installed certificate, supplied as the `{certname}` path parameter. |
-| Certificate type | The `type` of the certificate: `client`, `server`, or `app`, sent in the request body. |
+| `certname` | Certificate `name` in the URL path. |
+| `type` | `server`, `client`, or `app`. Send in the JSON body. |

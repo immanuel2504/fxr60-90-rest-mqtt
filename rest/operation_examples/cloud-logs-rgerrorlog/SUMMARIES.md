@@ -2,13 +2,9 @@
 
 ## GET responses
 
-### `GET/download.json`
+### `GET/rg_error.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `download` |
-| **Summary title** | `RG error log archive` |
-
-## NEED LIVE TEST
-
-Confirm on a real reader that the response includes non-empty `binary` (Base64) and a `filename`.
+| **Example name** | `rg_error` |
+| **Summary title** | `rgErrorLog.tar.gz archive` |

@@ -1,19 +1,12 @@
 ## 1. Description
 
-The `PUT /cloud/app-led` REST endpoint sets the color, flash behavior, and duration of the application LED on the reader.
+The `PUT /cloud/app-led` REST endpoint sets the application LED color, flash, and duration.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- The LED color through `color`
-- Whether the LED flashes through `flash`
-- How long the LED state persists through `seconds`
-
-Use this endpoint to:
-
-- Signal application state to operators on the floor using the reader LED
-- Flash the application LED to draw attention to a reader requiring action
-- Set a timed LED state that automatically resets after a defined duration
-- Override the default LED behavior from application logic
+- `color` — `red`, `amber`, `green`, or `off`
+- `flash` — `true` to blink, `false` for solid
+- `seconds` — how long to keep this state. `0` means until the next `PUT /cloud/app-led`
 
 ## 2. Endpoint Details
 
@@ -27,13 +20,12 @@ Use this endpoint to:
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
 | Supported Colors | `red`, `amber`, `green`, `off` |
+| Required Request Fields | `color`, `flash`, `seconds` |
 
 ## 3. Before You Begin
 
-Decide on the LED color, flash behavior, and duration before sending this request.
-
 | What You Need | Details |
 |---|---|
-| LED color | One of `red`, `amber`, `green`, or `off` to turn the LED off. |
-| Flash behavior | Whether the LED should blink (`true`) or remain solid (`false`). |
-| Duration | How long in seconds the LED state should persist. Set to `0` for indefinite (until the next `PUT /cloud/app-led` request). |
+| Color | `red`, `amber`, `green`, or `off`. |
+| Flash | `true` blinks. `false` is solid. |
+| Duration | Seconds to keep this state. Use `0` until the next `PUT /cloud/app-led`. |

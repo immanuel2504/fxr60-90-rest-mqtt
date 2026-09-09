@@ -8,9 +8,9 @@ Use this endpoint to:
 
 - Start RFID inventory using the currently configured operating mode
 - Start BLE scanning using the currently configured BLE settings
-- Start RFID and BLE scanning together in a single inventory session
+- Start RFID and BLE scanning together in a single session
 - Apply a previously saved Impinj Gen2X configuration when starting RFID inventory
-- Control whether the reader automatically resumes scanning after reboot
+- Control whether the reader automatically resumes RFID inventory after reboot
 
 ## 2. Endpoint Details
 
@@ -23,7 +23,7 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Supported Scan Types | `rfid`, `ble`, or both combined |
+| Request fields | `scanType` (array of `ble` / `rfid`), `applyImpinjGen2X`, `doNotPersistState` |
 | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |
 
 ## 3. Before You Begin
@@ -33,36 +33,34 @@ Make sure the relevant scanners are configured before sending this request.
 | What You Need | Details |
 |---|---|
 | HTTPS connectivity | The reader's HTTPS endpoint must be reachable and a valid bearer token must be included in the `Authorization` header of every request. |
-| RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or default) before starting RFID inventory. |
-| BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/bleConfig` with `ble.enable: true`. |
-| Gen2X configuration | If using `applyImpinjGen2X: true`, the Gen2X configuration must be saved via `PUT /cloud/impinjGen2X` beforehand. `applyImpinjGen2X` cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
+| RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or left at the default) before starting RFID inventory. |
+| BLE configuration | If starting BLE, configure BLE first with `PUT /cloud/bleConfig` and `ble.enable: true`. The full `ble` object is required. |
+| Gen2X configuration | If using `applyImpinjGen2X: true`, save the Gen2X configuration with `PUT /cloud/impinjGen2X` first. `applyImpinjGen2X` cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
 
 ## 4. Supported flags
 
-The start body may include these flags. Each is explained below.
-
 | Flag | What it does |
 |---|---|
-| `scanType` | Which scanners to start. |
+| `scanType` | Which scanners to start. Array of `ble` and/or `rfid`. |
 | `applyImpinjGen2X` | Apply the Gen2X configuration saved with `PUT /cloud/impinjGen2X`. |
-| `doNotPersistState` | Do not resume RFID inventory after reboot. |
+| `doNotPersistState` | Do not resume RFID inventory after reboot. RFID only — BLE never auto-resumes. |
 
 ### `scanType`
 
-`scanType` is an **array** of scan types to start. Omit it for RFID-only (default).
+`scanType` is an **array** of scan types. Omit it for RFID-only (default). The array must be non-empty and must not contain duplicates.
 
 ```json
 { "scanType": ["ble"] }
 ```
 
-| Scan Type | Behavior |
+| Request body | Behavior |
 |---|---|
 | omitted / `{}` | Starts RFID inventory only (default). |
 | `["rfid"]` | Starts RFID inventory only. |
-| `["ble"]` | Starts BLE scanning only. |
+| `["ble"]` | Starts BLE scanning only. Requires BLE to be enabled first. |
 | `["ble", "rfid"]` | Starts both scanners. |
 
-> Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, `scanType` is not supported: omit it, and `PUT /cloud/start` starts RFID inventory only. Check the installed build with `GET /cloud/version` (`readerApplication`).
+> Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, omit `scanType`; `PUT /cloud/start` starts RFID inventory only. Check the installed build with `GET /cloud/version` (`readerApplication`).
 
 ### `applyImpinjGen2X`
 
@@ -70,8 +68,8 @@ Send `applyImpinjGen2X: true` to apply the Gen2X features saved with `PUT /cloud
 
 | Value | Behavior |
 |---|---|
-| omitted / `false` | Start without applying Gen2X. |
-| `true` | Apply the saved Gen2X config on **this** start only. Save the config first with `PUT /cloud/impinjGen2X`. After `PUT /cloud/stop`, send `true` again — the flag does not persist across inventory sessions. Cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
+| omitted / `false` | Start without applying Gen2X. A saved Gen2X config is ignored until this flag is true. |
+| `true` | Apply the saved Gen2X config on **this** start only. After `PUT /cloud/stop`, send `true` again — activation does not persist across inventory sessions. Cannot be combined with `scanType: ["ble"]`. |
 
 ```json
 { "applyImpinjGen2X": true }
@@ -79,11 +77,11 @@ Send `applyImpinjGen2X: true` to apply the Gen2X features saved with `PUT /cloud
 
 ### Persistence across reboots (`doNotPersistState`)
 
-The `doNotPersistState` field controls whether the reader resumes RFID inventory automatically after a reboot or reconnect. It applies to RFID only and has no effect on BLE scanning — a BLE scan never auto-resumes.
+`doNotPersistState` applies to RFID only.
 
 | `doNotPersistState` | Behavior on reboot or reconnect |
 |---|---|
 | `false` (default) | The reader **remembers the running RFID inventory state** and automatically resumes it. |
-| `true` | The running state is **not saved**. The reader stays Idle until `PUT /cloud/start` is called again. |
+| `true` | The running state is **not saved**. The reader stays idle until `PUT /cloud/start` is called again. |
 
-> Tip: Use `doNotPersistState: true` for one-time or debugging sessions where automatic resume after reboot is not desired.
+> Use `doNotPersistState: true` for one-time or debugging sessions where automatic resume after reboot is not desired.

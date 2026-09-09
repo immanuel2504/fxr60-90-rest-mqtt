@@ -1,0 +1,37 @@
+impinjGen2X 14 - validation probes
+RESULT: all six correctly rejected, with the best error messages on this API
+
+  {}
+    422 {"code":1,"message":"Invalid payload for set_impinjGen2X api"}
+    Matches the schema's minProperties: 1.
+
+  {"tagProtect":{"action":"nosuch","password":"77777777"}}
+    422 'value provided for "action" must be a string containing one of the
+         following values: enableTagProtection, disableTagProtection,
+         enableTagVisibility, disableTagVisibility'
+    LISTS ALL VALID VALUES.
+
+  password "7777777"  (7 chars)
+    422 "tagProtect.password must be 8 hex characters (32-bit)"
+    States the exact requirement.
+
+  password "ZZZZZZZZ"  (8 chars, non-hex)
+    422 "tagProtect.password contains invalid hex character: 'Z'"
+    NAMES THE OFFENDING CHARACTER. Best error message encountered anywhere in
+    this API.
+
+  tagID supplied with enableTagVisibility
+    422 "tagProtect.tagID is not allowed for action: enableTagVisibility"
+
+  enableTagProtection with NO tagID
+    422 "tagProtect.tagID is required for action: enableTagProtection"
+
+The last two confirm the oneOf branch rule is enforced in BOTH directions -
+tagID required for the tag-scoped actions, forbidden for the reader-scoped ones -
+and each message names the field AND the action it applies to.
+
+This endpoint's validation is the strongest in the whole test programme. Compare
+/cloud/app-led's bare "Invalid color", /cloud/logs' generic "Invalid payload
+fields", or error 255 in the cloudConfig report which covers three unrelated
+causes. The style here - name the field, state the rule, list the valid values,
+point at the bad character - is what the rest of the API should adopt.

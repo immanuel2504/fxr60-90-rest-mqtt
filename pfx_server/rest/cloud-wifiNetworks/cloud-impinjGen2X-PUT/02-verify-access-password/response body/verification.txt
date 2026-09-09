@@ -1,0 +1,47 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 2 - verify the access password by reading RESERVED back
+RESULT: HTTP 200 - password CONFIRMED on the tag
+
+Read words 0-3 (both passwords) with a READ access operation, same filter.
+
+BEFORE the write (step 01):
+    x95  ["0000000000000000"]
+         kill password   = 00000000
+         ACCESS password = 00000000     <-- unset, the factory default
+
+AFTER the write:
+    x122 ["a1b2c3d4a1b2c3d4"]
+         kill password   = a1b2c3d4
+         ACCESS password = a1b2c3d4     <-- CONFIRMED, matches what was written
+
+*** ALWAYS DO THIS STEP ***
+
+The WRITE returns "SUCCESS" per tag, but reading the value back is the only way
+to confirm the password is actually on the tag. That matters because every
+tagProtect call later returns HTTP 200 whether or not the password is valid (see
+step 03), so a bad password produces no error anywhere - this read is the only
+checkpoint.
+
+NOTE wordCount, not wordCounter. The spec's own with_accesses example uses
+"wordCounter", which the firmware rejects:
+    "Failure: wordCount must be included in access-config object for read"
+
+Confirmed on all three test tags before protecting:
+
+    333311112222333344445555  Monza X-2K   00000000 -> a1b2c3d4   confirmed
+    41544035a880c80000123bea  Monza R6     00000000 -> a1b2c3d4   confirmed
+    e2806894000040017790e471  non-Impinj   00000000 -> a1b2c3d4   confirmed
+
+All three were restored to 00000000 at the end of testing.
+
+Evidence: ../evidence/x2k_before.ndjson, ../evidence/x2k_verify.ndjson

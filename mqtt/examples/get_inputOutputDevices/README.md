@@ -2,6 +2,8 @@
 
 REST: `GET /cloud/inputOutputDevices` → `cloud-inputoutputdevices/`
 
+FXR60 only.
+
 Stable `command_id`: `req-get-inputOutputDevices`
 
 | File | Direction | Example | REST source | Summary |

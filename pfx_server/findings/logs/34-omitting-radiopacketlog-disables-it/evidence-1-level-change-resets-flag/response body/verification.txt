@@ -1,0 +1,34 @@
+logs PUT 07 - omitting radioPacketLog silently resets it to false
+RESULT: HTTP 200 - and radioPacketLog is turned OFF as a side effect
+
+  before: {"components":[...rg=TRACE...],"radioPacketLog":true}
+  PUT     {"components":[{"componentName":"reader_gateway","level":"INFO"}]}
+  after:  {"components":[...rg=INFO...], "radioPacketLog":false}   <- reset
+
+Changing a component's log level silently disables the radio packet log.
+
+The empty body does the same thing:
+
+  before: {"components":[...rg=TRACE...],"radioPacketLog":true}
+  PUT     {}                                             -> 200
+  after:  {"components":[...rg=TRACE...],"radioPacketLog":false}   <- reset
+
+Note {} returns 200 rather than a "payload required" error, and its only effect
+is to disable radioPacketLog.
+
+SO THE MERGE SEMANTICS ARE MIXED, per field:
+
+  components      MERGED / preserved   - omitted, and the levels survived
+  radioPacketLog  RESET to default     - omitted, and it reverted to false
+
+That is the awkward part. A caller cannot reason about this endpoint as either
+"merge" or "replace" - it is one of each, and neither is documented.
+
+PRACTICAL GUIDANCE: always send radioPacketLog explicitly on every PUT to
+/cloud/logs, even when only changing a log level. Otherwise packet logging is
+turned off without any indication.
+
+Compare PUT /cloud/displayConfig, which merges every field
+(../cloud-displayConfig-PUT/05-partial-update-merges-SUCCESS/), and GPIO-LED in
+PUT /cloud/config, which replaces wholesale. Three endpoints on this API, three
+different update semantics, none documented.

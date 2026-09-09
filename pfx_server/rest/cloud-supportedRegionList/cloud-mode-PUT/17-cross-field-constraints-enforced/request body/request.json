@@ -1,0 +1,75 @@
+{
+  "method": "PUT",
+  "url": "/cloud/mode",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "_note": "four separate probes, each a full PUT /cloud/mode. See verification.txt for each response.",
+    "_probes": [
+      {
+        "type": "INVENTORY",
+        "antennas": [
+          1
+        ],
+        "transmitPower": [
+          30
+        ],
+        "accesses": [
+          {
+            "type": "READ",
+            "config": {
+              "membank": "TID",
+              "wordPointer": 0,
+              "wordCount": 6
+            }
+          }
+        ]
+      },
+      {
+        "type": "PORTAL",
+        "antennas": [
+          1
+        ],
+        "transmitPower": 30,
+        "radioStopConditions": {
+          "duration": 60
+        }
+      },
+      {
+        "type": "CUSTOM",
+        "antennas": [
+          1
+        ],
+        "transmitPower": 30,
+        "reportFilter": {
+          "duration": 5,
+          "type": "PER_ANTENNA"
+        },
+        "accesses": [
+          {
+            "type": "READ",
+            "config": {
+              "membank": "TID",
+              "wordPointer": 0,
+              "wordCount": 6
+            }
+          }
+        ]
+      },
+      {
+        "type": "CUSTOM",
+        "antennas": [
+          1,
+          5
+        ],
+        "transmitPower": [
+          30
+        ]
+      }
+    ]
+  }
+}

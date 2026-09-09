@@ -1,0 +1,17 @@
+region 07 - the spec's own example, verbatim
+RESULT: rejected, HTTP 422
+{"code":3,"message":"CS:'regionStandardRsp' failed,Reason: RADIO REGION NOT AVAILABLE"}
+
+The spec's example is:
+    {"country":"Canada","standardname":"CANADA_FCC_15"}
+
+Neither value exists on this reader. Its supported region is the single combined
+entry "United States/Canada", and its standards are US_FCC_15 / _A / _B / _C /
+_CUSTOM. There is no bare "Canada" and no "CANADA_FCC_15".
+
+This is most likely a SKU difference rather than a defect - a Canada-specific
+unit may well report those values. But the documented example does not work on a
+US/Canada reader, and the spec gives no indication that its example is
+region-specific. Worth either using a universally valid example or noting that
+valid values are per-device and must come from supportedRegionList /
+supportedStandardList first.

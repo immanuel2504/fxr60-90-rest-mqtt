@@ -55,7 +55,7 @@ Copying the MQTT example will send the wrong `command`.
 | DELETE `/cloud/certificates/{certname}` | `del_certificate` | `del_certs` |
 | PUT `/cloud/certificates/{certname}` | `set_refreshCertificate` | `refresh-cert` |
 | GET `/cloud/apps` | `get_userapps` | `get_user_apps` |
-| PUT `/cloud/caCertificates/{caname}` | `set_InstallCACertificate` | `set_installCACertificate` |
+| PUT `/cloud/caCertificates` | `set_InstallCACertificate` | `set_installCACertificate` |
 | GET `/cloud/gpi` | `get_gpiStatus` | `get_gpi_status` |
 | GET `/cloud/gpo` | `get_gpoStatus` | `get_gpostatus` |
 | DELETE `/cloud/logs/syslog` | `del_logs_syslog` | `del_syslogs` |

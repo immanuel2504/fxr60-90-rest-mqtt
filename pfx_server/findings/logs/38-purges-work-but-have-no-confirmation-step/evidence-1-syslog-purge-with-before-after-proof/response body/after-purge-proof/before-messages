@@ -1,0 +1,458 @@
+2026-09-05T17:00:01.166929+00:00 FXR609BE34A rsyslogd: [origin software="rsyslogd" swVersion="8.2402.0" x-pid="1482662" x-info="https://www.rsyslog.com"] rsyslogd was HUPed
+2026-09-05T17:06:09.570607+00:00 FXR609BE34A cloud_agent[1457907]: NTP synchronization failed offset 0.399867 and reach 337
+Sep 05 17:07:07 FXR609BE34A user.info web-app: 07:07:338338 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:07:08.501851+00:00 FXR609BE34A core_service: 07:08:501039: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:08.657590+00:00 FXR609BE34A core_service: 07:08:657353: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:09.004643+00:00 FXR609BE34A core_service: 07:09:4422: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:09.006552+00:00 FXR609BE34A core_service: 07:09:6381: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:07:09.200760+00:00 FXR609BE34A core_service: 07:09:199647: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:09.353868+00:00 FXR609BE34A core_service: 07:09:352988: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:10.004395+00:00 FXR609BE34A core_service: 07:10:3554: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:10.005169+00:00 FXR609BE34A core_service: 07:10:5003: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=verify.google.com
+2026-09-05T17:07:10.005861+00:00 FXR609BE34A core_service: 07:10:5718: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:07:11.248778+00:00 FXR609BE34A core_service: 07:11:247630: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:11.407723+00:00 FXR609BE34A core_service: 07:11:407470: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:12.004657+00:00 FXR609BE34A core_service: 07:12:4446: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:12.006538+00:00 FXR609BE34A core_service: 07:12:6373: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:07:12.195399+00:00 FXR609BE34A core_service: 07:12:195144: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:12.348027+00:00 FXR609BE34A core_service: 07:12:346061: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:13.004722+00:00 FXR609BE34A core_service: 07:13:4519: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:13.006198+00:00 FXR609BE34A core_service: 07:13:6025: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=verify.google.com to=pool.ntp.org
+2026-09-05T17:07:13.006891+00:00 FXR609BE34A core_service: 07:13:6761: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+Sep 05 17:07:24 FXR609BE34A user.info web-app: 07:24:268268 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:07:24.384087+00:00 FXR609BE34A core_service: 07:24:383152: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:24.547196+00:00 FXR609BE34A core_service: 07:24:546992: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:25.003706+00:00 FXR609BE34A core_service: 07:25:3480: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:25.005197+00:00 FXR609BE34A core_service: 07:25:5001: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=verify.google.com
+2026-09-05T17:07:25.005874+00:00 FXR609BE34A core_service: 07:25:5732: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:07:50.333909+00:00 FXR609BE34A core_service: 07:50:333062: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:07:50.483018+00:00 FXR609BE34A core_service: 07:50:482832: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:07:51.004674+00:00 FXR609BE34A core_service: 07:51:4464: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:07:51.006151+00:00 FXR609BE34A core_service: 07:51:5965: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=verify.google.com to=time.cloudflare.com
+2026-09-05T17:07:51.006839+00:00 FXR609BE34A core_service: 07:51:6701: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:11.352503+00:00 FXR609BE34A core_service: 08:11:351168: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:11.502768+00:00 FXR609BE34A core_service: 08:11:502583: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:12.004647+00:00 FXR609BE34A core_service: 08:12:4443: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:12.006129+00:00 FXR609BE34A core_service: 08:12:5978: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:08:12.006830+00:00 FXR609BE34A core_service: 08:12:6697: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+Sep 05 17:08:43 FXR609BE34A user.info web-app: 08:43:614614 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:08:43.728146+00:00 FXR609BE34A core_service: 08:43:727339: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:43.892637+00:00 FXR609BE34A core_service: 08:43:892236: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:44.004876+00:00 FXR609BE34A core_service: 08:44:4611: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:44.006803+00:00 FXR609BE34A core_service: 08:44:6636: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:44.115892+00:00 FXR609BE34A core_service: 08:44:115673: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:44.279311+00:00 FXR609BE34A core_service: 08:44:279072: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:45.005304+00:00 FXR609BE34A core_service: 08:45:4502: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:45.006112+00:00 FXR609BE34A core_service: 08:45:5953: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:08:45.007046+00:00 FXR609BE34A core_service: 08:45:6745: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:45.190663+00:00 FXR609BE34A core_service: 08:45:190398: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:45.354691+00:00 FXR609BE34A core_service: 08:45:354181: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:46.005342+00:00 FXR609BE34A core_service: 08:46:4553: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:46.006333+00:00 FXR609BE34A core_service: 08:46:6145: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:08:46.006991+00:00 FXR609BE34A core_service: 08:46:6866: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:50.518641+00:00 FXR609BE34A core_service: 08:50:517691: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:50.667278+00:00 FXR609BE34A core_service: 08:50:667068: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:51.005107+00:00 FXR609BE34A core_service: 08:51:4879: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:51.006785+00:00 FXR609BE34A core_service: 08:51:6506: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch.invalid.example
+2026-09-05T17:08:51.007781+00:00 FXR609BE34A core_service: 08:51:7421: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:51.193036+00:00 FXR609BE34A core_service: 08:51:192822: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:51.346416+00:00 FXR609BE34A core_service: 08:51:346201: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:52.005149+00:00 FXR609BE34A core_service: 08:52:4408: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:52.006013+00:00 FXR609BE34A core_service: 08:52:5856: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch.invalid.example to=pool.ntp.org
+2026-09-05T17:08:52.006740+00:00 FXR609BE34A core_service: 08:52:6597: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:08:52.119135+00:00 FXR609BE34A core_service: 08:52:118946: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:08:52.150455+00:00 FXR609BE34A core_service: 08:52:150241: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:08:53.006404+00:00 FXR609BE34A core_service: 08:53:5534: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:08:53.007337+00:00 FXR609BE34A core_service: 08:53:7060: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:08:53.008094+00:00 FXR609BE34A core_service: 08:53:7907: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:09:03.964108+00:00 FXR609BE34A core_service: 09:03:963064: INFO: configmngr.cpp: init():336 - SKU Type:PRE
+2026-09-05T17:09:03.965108+00:00 FXR609BE34A core_service: 09:03:964958: INFO: configmngr.cpp: validateCommConfigJson():1240 - Validating Commconf, in validateCommConfigJson 0
+2026-09-05T17:09:03.965358+00:00 FXR609BE34A core_service: 09:03:965216: INFO: configmngr.cpp: validateDashboardReaderDetailsJson():1065 - Validated ReaderConfigDetails, in validateReaderConfigDetails 0
+2026-09-05T17:09:03.965562+00:00 FXR609BE34A core_service: 09:03:965405: INFO: configmngr.cpp: validateTimeConfigJson():1759 - Validated Time Config, in validateTimeConfig 0
+2026-09-05T17:09:03.970962+00:00 FXR609BE34A core_service: 09:03:970743: INFO: Utility.cpp: setRemoteLogConfig():1431 - No change in remote syslog config
+2026-09-05T17:09:03.997793+00:00 FXR609BE34A core_service: 09:03:997559: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:09:04.165646+00:00 FXR609BE34A core_service: 09:04:165466: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:09:05.005363+00:00 FXR609BE34A core_service: 09:05:4511: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:09:05.228040+00:00 FXR609BE34A core_service: 09:05:227832: INFO: Utility.cpp: setTimeZone():462 - Timezone already set to UTC
+2026-09-05T17:09:05.288217+00:00 FXR609BE34A core_service: 09:05:287938: ERR: sysutil.cpp: SendZMQMessage():459 - send failed: -1 Socket operation on non-socket #012
+2026-09-05T17:09:05.288501+00:00 FXR609BE34A core_service: 09:05:288003: ERR: coreservice.cpp: SendPubMsg():147 - async send failed
+2026-09-05T17:09:05.294107+00:00 FXR609BE34A core_service: 09:05:293929: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST1_CC_DET requested on /dev/gpiochip4 offset 2
+2026-09-05T17:09:05.304389+00:00 FXR609BE34A core_service: 09:05:304193: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST2_CC_DET requested on /dev/gpiochip4 offset 3
+2026-09-05T17:09:05.304775+00:00 FXR609BE34A core_service: 09:05:304545: INFO: usbcvbusmonitor.cpp: startUSBCDetectionMonitor():450 - Started FXR60 USBC CC detect monitor with sysUtil FDs host1=63 host2=67
+2026-09-05T17:09:05.335766+00:00 FXR609BE34A core_service: 09:05:335578: INFO: coremain.cpp: configureReaderPowerManagement():605 - Update Power Source to PWR_BRICK
+2026-09-05T17:09:05.337049+00:00 FXR609BE34A core_service: 09:05:336559: INFO: usbcvbusmonitor.cpp: updateFXR60USBVBUS():297 - FXR60 USBC VBUS updated for PWR_BRICK: host1=0 host2=0
+2026-09-05T17:09:05.338936+00:00 FXR609BE34A cloud_agent[1457907]: max power changed!restarting radio_control
+2026-09-05T17:09:05.340406+00:00 FXR609BE34A cloud_agent[1457907]: Attempting to restart radio_control!
+2026-09-05T17:09:05.364900+00:00 FXR609BE34A radio_control.elf: 09:05:363074: ERR: requests.cpp: GetNextRequest():739 -  zmq polling error failed: Interrupted system call
+2026-09-05T17:09:05.406470+00:00 FXR609BE34A core_service: 09:05:406227: INFO: coremain.cpp: startStopGPSD():542 - GPSD stopped by core-service
+2026-09-05T17:09:05.414387+00:00 FXR609BE34A core_service: 09:05:414151: INFO: configmngr.cpp: loadWLANModules():531 - wifi driver previously loaded
+2026-09-05T17:09:05.414651+00:00 FXR609BE34A core_service: 09:05:414414: INFO: coremain.cpp: applyReaderPowerManagementConfiguration():754 - Power Source is PWR_BRICK#012
+2026-09-05T17:09:06.306292+00:00 FXR609BE34A core_service: 09:06:305351: INFO: sysutil.cpp: InitWDTMonitor():900 - 60000000
+2026-09-05T17:09:06.307169+00:00 FXR609BE34A core_service: 09:06:305722: INFO: sysutil.cpp: InitWDTMonitor():908 - wdt timer started 30
+2026-09-05T17:09:06.364064+00:00 FXR609BE34A radio_control.elf: 09:06:363495: INFO: requests.cpp: processRequests():2115 - Request: exit
+2026-09-05T17:09:06.365255+00:00 FXR609BE34A radio_control.elf: 09:06:363768: INFO: requests.cpp: processRequests():2116 -  Response: Success
+2026-09-05T17:09:06.367103+00:00 FXR609BE34A radio_control.elf: 09:06:363955: WARN: requests.cpp: processRequests():2128 - Termination signal received (processReqRetVal = -1). Exiting loop.
+2026-09-05T17:09:06.418464+00:00 FXR609BE34A radio_control.elf: 09:06:416757: INFO: main.cpp: main():162 - goodbye
+2026-09-05T17:09:06.427645+00:00 FXR609BE34A radio_mngr: 09:06:426470: INFO: radiomngrparser.cpp: clientReqHndlr():107 - Removing client 27#012
+2026-09-05T17:09:06.428465+00:00 FXR609BE34A radio_mngr: 09:06:427952: INFO: sysutil.cpp: CloseTCPclient():794 - close tcp connection#012
+2026-09-05T17:09:06.430244+00:00 FXR609BE34A radio_mngr: 09:06:430002: INFO: radiomngrparser.cpp: clientReqHndlr():124 - Client disconnected: 27#012
+2026-09-05T17:09:06.638199+00:00 FXR609BE34A radio_control.elf: 09:06:637698: INFO: zmq_intfc.cpp: initZMQ():50 - zmq: 4.3.5
+2026-09-05T17:09:06.638746+00:00 FXR609BE34A radio_control.elf: 09:06:638451: INFO: nge_intfc.cpp: initNGEConnection():369 - radio_api: 2.2.37.0
+2026-09-05T17:09:11.761642+00:00 FXR609BE34A radio_mngr: 09:11:760797: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: connectToRadio TYP: REQ Hash: 0xb4041d81#012
+2026-09-05T17:09:11.765423+00:00 FXR609BE34A radio_mngr: 09:11:765189: INFO: radiomngrparser.cpp: listeningSocketcallback():236 - Accepted connection from client socket: 27 from client: 0 #012
+2026-09-05T17:09:12.263535+00:00 FXR609BE34A radio_control.elf: 09:12:262412: INFO: nge_intfc.cpp: initNGEConnection():388 - NGE_connect returned 0#012
+2026-09-05T17:09:12.309072+00:00 FXR609BE34A radio_control.elf: 09:12:308467: INFO: nge_intfc.cpp: initNGEConnection():464 - radio_fw: 2.1.70.0
+2026-09-05T17:09:12.309421+00:00 FXR609BE34A radio_control.elf: 09:12:308988: INFO: nge_intfc.cpp: initNGEConnection():468 - NGE Based Antenna Check Supported
+2026-09-05T17:09:12.309705+00:00 FXR609BE34A radio_control.elf: 09:12:309158: INFO: nge_intfc.cpp: initNGEConnection():474 -  RSSI Filter Supported
+2026-09-05T17:09:12.309891+00:00 FXR609BE34A radio_control.elf: 09:12:309301: INFO: nge_intfc.cpp: initNGEConnection():480 -  Dynamic Range Supported 
+2026-09-05T17:09:12.310055+00:00 FXR609BE34A radio_control.elf: 09:12:309406: INFO: nge_intfc.cpp: initNGEConnection():486 -  Cable Loss Compensation Supported in NGE and API 
+2026-09-05T17:09:12.310214+00:00 FXR609BE34A radio_control.elf: 09:12:309480: INFO: nge_intfc.cpp: initNGEConnection():492 -  Tx Delay Interval Supported in NGE 
+2026-09-05T17:09:12.412776+00:00 FXR609BE34A radio_control.elf: 09:12:412415: INFO: nge_intfc.cpp: initNGEConnection():513 -  Reader is model: FXR60
+2026-09-05T17:09:12.477141+00:00 FXR609BE34A radio_mngr: 09:12:476810: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getActiveRegion TYP: REQ Hash: 0x4a795ee5#012
+2026-09-05T17:09:12.507225+00:00 FXR609BE34A radio_control.elf: 09:12:504209: INFO: nge_intfc.cpp: initNGEConnection():527 -  Reader is using US_FCC_15 regulatory standard
+2026-09-05T17:09:12.626785+00:00 FXR609BE34A radio_control.elf: 09:12:626314: INFO: nge_intfc.cpp: initNGEConnection():553 -  Reader has 6 antennas
+2026-09-05T17:09:12.627347+00:00 FXR609BE34A radio_control.elf: 09:12:626629: INFO: nge_intfc.cpp: initNGEConnection():557 -  Reader is powered by 24V supply 
+2026-09-05T17:09:12.627612+00:00 FXR609BE34A radio_mngr: 09:12:627448: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x2112 (ANTENNA_CHECK_INTERVAL) length=3 value=5#012
+2026-09-05T17:09:12.633371+00:00 FXR609BE34A radio_control.elf: 09:12:632087: INFO: nge_intfc.cpp: initNGEConnection():603 - Default antenna check interval set to 5 seconds
+2026-09-05T17:09:12.633883+00:00 FXR609BE34A radio_control.elf: 09:12:632420: INFO: nge_intfc.cpp: initNGEConnection():620 -  Reader can transmit up to 33.0 dbm
+2026-09-05T17:09:12.689668+00:00 FXR609BE34A radio_control.elf: 09:12:689332: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 1 is 0.8 db
+2026-09-05T17:09:12.690231+00:00 FXR609BE34A radio_mngr: 09:12:689965: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1201 (CABLE_LOSS_COMPENSATION) length=3 value=8#012
+2026-09-05T17:09:12.747986+00:00 FXR609BE34A radio_control.elf: 09:12:747661: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 2 is 0.8 db
+2026-09-05T17:09:12.748827+00:00 FXR609BE34A radio_mngr: 09:12:748662: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1202 (CABLE_LOSS_COMPENSATION) length=3 value=8#012
+2026-09-05T17:09:12.800743+00:00 FXR609BE34A radio_control.elf: 09:12:800410: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 3 is 0.8 db
+2026-09-05T17:09:12.801727+00:00 FXR609BE34A radio_mngr: 09:12:801039: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1203 (CABLE_LOSS_COMPENSATION) length=3 value=8#012
+2026-09-05T17:09:12.853717+00:00 FXR609BE34A radio_control.elf: 09:12:853394: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 4 is 0.8 db
+2026-09-05T17:09:12.854155+00:00 FXR609BE34A radio_mngr: 09:12:854022: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1204 (CABLE_LOSS_COMPENSATION) length=3 value=8#012
+2026-09-05T17:09:12.904140+00:00 FXR609BE34A radio_control.elf: 09:12:903754: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 5 is 0.0 db
+2026-09-05T17:09:12.904540+00:00 FXR609BE34A radio_mngr: 09:12:904411: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1205 (CABLE_LOSS_COMPENSATION) length=3 value=0#012
+2026-09-05T17:09:12.954132+00:00 FXR609BE34A radio_control.elf: 09:12:953799: INFO: nge_intfc.cpp: initNGEConnection():636 -  Cable Loss Compensation for antenna 6 is 0.0 db
+2026-09-05T17:09:12.954604+00:00 FXR609BE34A radio_mngr: 09:12:954456: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x1206 (CABLE_LOSS_COMPENSATION) length=3 value=0#012
+2026-09-05T17:09:13.106591+00:00 FXR609BE34A radio_control.elf: 09:13:106208: INFO: nge_intfc.cpp: initNGEConnection():653 -  Regulatory Domain is 1
+2026-09-05T17:09:13.152637+00:00 FXR609BE34A radio_control.elf: 09:13:152272: INFO: nge_intfc.cpp: initNGEConnection():668 -  Maximum NGE Transmit Power is 34.0 dbm
+2026-09-05T17:09:13.153113+00:00 FXR609BE34A radio_mngr: 09:13:152977: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_NVM paramId=0x0406 (CFG_AMBIENT_HITEMP_WARNING) length=3 value=-125#012
+2026-09-05T17:09:13.158356+00:00 FXR609BE34A radio_mngr: 09:13:158091: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_NVM paramId=0x0403 (CFG_PA_HITEMP_WARNING) length=3 value=-125#012
+2026-09-05T17:09:16.484153+00:00 FXR609BE34A cloud_agent[1457907]: IOTComponent radio_control restarted successfully!
+2026-09-05T17:09:16.484884+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:09:16.488467+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:09:16.488800+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:09:16.488995+00:00 FXR609BE34A cloud_agent[1457907]: clearing CMD wait lock
+2026-09-05T17:09:16.489134+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:09:16.489419+00:00 FXR609BE34A cloud_agent[1457907]: clearing CMD wait lock
+2026-09-05T17:09:16.490325+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:09:17.598987+00:00 FXR609BE34A core_service: 09:17:598158: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:09:17.750825+00:00 FXR609BE34A core_service: 09:17:750392: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:09:18.004661+00:00 FXR609BE34A core_service: 09:18:4453: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:09:18.006038+00:00 FXR609BE34A core_service: 09:18:5888: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:09:18.006876+00:00 FXR609BE34A core_service: 09:18:6736: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:09:18.040677+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 333333 for response from RM/CS
+2026-09-05T17:09:18.062691+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 444444 for response from RM/CS
+2026-09-05T17:09:18.064198+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 555555 for response from RM/CS
+2026-09-05T17:09:18.994730+00:00 FXR609BE34A radio_mngr: 09:18:993833: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0400 (OLIO_CONFIGURATION) length=27 enabled=0 virtTxAnt=0 virtRxAnt=0 stopCondType=0 stopCondValue=0 txPwr=0 selectOpsBitMask=0x0 invParamIdx=0 accessOpsBitMask=0x0 LPIdx=0#012
+2026-09-05T17:09:19.001082+00:00 FXR609BE34A radio_mngr: 09:18:903: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0885 (REGULATORY_HOP_LOGIC) length=3 value=0#012
+2026-09-05T17:09:19.016623+00:00 FXR609BE34A radio_mngr: 09:19:16427: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x381#012
+2026-09-05T17:09:19.021833+00:00 FXR609BE34A radio_mngr: 09:19:21653: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x391#012
+2026-09-05T17:09:19.026940+00:00 FXR609BE34A radio_mngr: 09:19:26775: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x382#012
+2026-09-05T17:09:19.032136+00:00 FXR609BE34A radio_mngr: 09:19:31942: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x383#012
+2026-09-05T17:09:19.037342+00:00 FXR609BE34A radio_mngr: 09:19:37115: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x385#012
+2026-09-05T17:09:19.042513+00:00 FXR609BE34A radio_mngr: 09:19:42318: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x386#012
+2026-09-05T17:09:19.047748+00:00 FXR609BE34A radio_mngr: 09:19:47559: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x388#012
+2026-09-05T17:09:19.052886+00:00 FXR609BE34A radio_mngr: 09:19:52705: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x389#012
+2026-09-05T17:09:19.058062+00:00 FXR609BE34A radio_mngr: 09:19:57859: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x303#012
+2026-09-05T17:09:19.063202+00:00 FXR609BE34A radio_mngr: 09:19:63015: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x30e#012
+2026-09-05T17:09:19.068390+00:00 FXR609BE34A radio_mngr: 09:19:68168: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x308#012
+2026-09-05T17:09:19.073576+00:00 FXR609BE34A radio_mngr: 09:19:73404: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x38d#012
+2026-09-05T17:09:19.078700+00:00 FXR609BE34A radio_mngr: 09:19:78517: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x38e#012
+2026-09-05T17:09:19.083846+00:00 FXR609BE34A radio_mngr: 09:19:83662: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x291#012
+2026-09-05T17:09:19.088996+00:00 FXR609BE34A radio_mngr: 09:19:88818: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x301#012
+2026-09-05T17:09:19.094105+00:00 FXR609BE34A radio_mngr: 09:19:93933: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x10f5 (DELAY_AFTER_SELECTS_US) length=4 value=0#012
+2026-09-05T17:09:19.099330+00:00 FXR609BE34A radio_mngr: 09:19:99123: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0888 (DYNAMIC_RANGE) length=3 value=1#012
+2026-09-05T17:09:19.104498+00:00 FXR609BE34A radio_mngr: 09:19:104317: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x10f3 (REGULATORY_TX_DELAY_INTERVAL) length=4 value=19202#012
+2026-09-05T17:09:19.153846+00:00 FXR609BE34A radio_mngr: 09:19:153657: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getRegMaxPower TYP: REQ Hash: 0xe860a7f6#012
+2026-09-05T17:09:19.158615+00:00 FXR609BE34A radio_control.elf: 09:19:157593: INFO: nge_intfc.cpp: initialNGEConfiguration():6386 -  Initial Config: {"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"component":"RC","delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"linkProfile":3,"payload":"status","query":{"sel":"ALL","session":"S1","tagPopulation":256,"target":"A"},"reportFilter":{"duration":0,"type":"PER_ANTENNA"},"tagMetaData":["RSSI","PHASE","SEEN_COUNT","ANTENNA","CHANNEL","PC","XPC","CRC"],"transmitPower":[17.0],"type":"CUSTOM"}
+2026-09-05T17:09:19.199725+00:00 FXR609BE34A radio_mngr: 09:19:199534: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getRegMaxPower TYP: REQ Hash: 0xe860a7f6#012
+2026-09-05T17:09:19.203716+00:00 FXR609BE34A radio_control.elf: 09:19:203385: INFO: mode_config.cpp: refreshMaxTxPowerFromRadioControl():116 - refreshMaxTxPowerFromRadioControl: max_reg_tx_pwr_x_10=300 (30.00 dBm)
+2026-09-05T17:09:19.210148+00:00 FXR609BE34A radio_mngr: 09:19:209972: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0401 (OLIO_CONFIGURATION) length=27 enabled=1 virtTxAnt=1 virtRxAnt=1 stopCondType=2 stopCondValue=100 txPwr=178 selectOpsBitMask=0x0 invParamIdx=1 accessOpsBitMask=0x0 LPIdx=3#012
+2026-09-05T17:09:19.215419+00:00 FXR609BE34A radio_mngr: 09:19:215211: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0005 (PER_RADIO_STOP) length=15 time=0 olioLoops=0 tagCount=0 gpioBitMask=0x0 gpio1HoldTime=0 gpio2HoldTime=0#012
+2026-09-05T17:09:19.220451+00:00 FXR609BE34A radio_mngr: 09:19:220246: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0xd001 (GPIO_DIRECTION) length=3 value=-1#012
+2026-09-05T17:09:19.230772+00:00 FXR609BE34A radio_mngr: 09:19:230581: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0xd003 (GPIO_START) length=7 gpioBitMask=0x0 gpio1HoldTime=0 gpio2HoldTime=0#012
+2026-09-05T17:09:19.235975+00:00 FXR609BE34A radio_mngr: 09:19:235772: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x10f3 (REGULATORY_TX_DELAY_INTERVAL) length=4 value=0#012
+2026-09-05T17:09:19.246414+00:00 FXR609BE34A radio_mngr: 09:19:246147: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x0004 (PACKET_TYPE_ENABLE) length=5 enable=1 responseType=0x304#012
+2026-09-05T17:09:19.251522+00:00 FXR609BE34A radio_mngr: 09:19:251332: INFO: radiomngrparser.cpp: logSetPacketPayload():1379 - client=IOT SET_PARAM paramId=0x10fe (RSSI_DETECT_THRESHOLD) length=3 value=-128#012
+2026-09-05T17:09:19.257118+00:00 FXR609BE34A radio_control.elf: 09:19:256780: INFO: nge_intfc.cpp: initialNGEConfiguration():6390 -  Response: Success
+2026-09-05T17:09:19.417768+00:00 FXR609BE34A radio_control.elf: 09:19:417418: ERR: requests.cpp: logError():240 - Antenna Disconnected on Port 2
+2026-09-05T17:09:19.418094+00:00 FXR609BE34A radio_control.elf: 09:19:417827: ERR: requests.cpp: logError():240 - Antenna Disconnected on Port 3
+2026-09-05T17:09:19.418400+00:00 FXR609BE34A radio_control.elf: 09:19:418054: ERR: requests.cpp: logError():240 - Antenna Disconnected on Port 4
+2026-09-05T17:09:21.487251+00:00 FXR609BE34A rsyslogd: -- MARK --
+2026-09-05T17:09:27.491893+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:09:27.492231+00:00 FXR609BE34A cloud_agent[1457907]: "set_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:09:27 FXR609BE34A user.error web-app: 09:27:492492 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:09:27 FXR609BE34A user.error web-app: 09:27:493493 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:09:27 FXR609BE34A user.error web-app: 09:27:493493 ERROR: corecloudclient.js: response_body
+Sep 05 17:09:27 FXR609BE34A user.error web-app: 09:27:493493 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:09:27.900548+00:00 FXR609BE34A core_service: 09:27:899577: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:09:28.069785+00:00 FXR609BE34A core_service: 09:28:69375: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:09:29.005206+00:00 FXR609BE34A core_service: 09:29:4448: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:09:29.006229+00:00 FXR609BE34A core_service: 09:29:6058: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch.invalid.example
+2026-09-05T17:09:29.006928+00:00 FXR609BE34A core_service: 09:29:6791: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:09:29.157203+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 222222 for response from RM/CS
+2026-09-05T17:09:34.493968+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:09:34.494351+00:00 FXR609BE34A cloud_agent[1457907]: "get_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:09:34 FXR609BE34A user.error web-app: 09:34:494494 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:09:34 FXR609BE34A user.error web-app: 09:34:495495 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:09:34 FXR609BE34A user.error web-app: 09:34:495495 ERROR: corecloudclient.js: response_body
+Sep 05 17:09:34 FXR609BE34A user.error web-app: 09:34:496496 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:09:56.504968+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:09:56.505484+00:00 FXR609BE34A cloud_agent[1457907]: "get_readPoints" request failed: Timeout: failed to receive Core Service response
+2026-09-05T17:09:56.505770+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:09:56.506007+00:00 FXR609BE34A cloud_agent[1457907]: "get_readPoints" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:506506 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:507507 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:508508 ERROR: corecloudclient.js: response_body
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:508508 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:510510 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:510510 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:511511 ERROR: corecloudclient.js: response_body
+Sep 05 17:09:56 FXR609BE34A user.error web-app: 09:56:511511 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:10:09.508692+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:10:09.509073+00:00 FXR609BE34A cloud_agent[1457907]: "get_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:10:09 FXR609BE34A user.error web-app: 10:09:509509 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:10:09 FXR609BE34A user.error web-app: 10:09:511511 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:10:09 FXR609BE34A user.error web-app: 10:09:512512 ERROR: corecloudclient.js: response_body
+Sep 05 17:10:09 FXR609BE34A user.error web-app: 10:09:512512 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:10:19.620174+00:00 FXR609BE34A cloud_agent[1457907]: NTP synchronization failed offset 0.000001 and reach 0
+Sep 05 17:10:29 FXR609BE34A user.info web-app: 10:29:133133 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:10:29.246904+00:00 FXR609BE34A core_service: 10:29:246057: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:29.396918+00:00 FXR609BE34A core_service: 10:29:396745: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:30.003784+00:00 FXR609BE34A core_service: 10:30:3576: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:30.005195+00:00 FXR609BE34A core_service: 10:30:5021: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch.invalid.example to=pool.ntp.org
+2026-09-05T17:10:30.005879+00:00 FXR609BE34A core_service: 10:30:5737: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:30.116315+00:00 FXR609BE34A core_service: 10:30:115880: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:30.278844+00:00 FXR609BE34A core_service: 10:30:277750: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:31.004648+00:00 FXR609BE34A core_service: 10:31:4452: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:31.006028+00:00 FXR609BE34A core_service: 10:31:5864: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:10:31.006737+00:00 FXR609BE34A core_service: 10:31:6578: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:31.189802+00:00 FXR609BE34A core_service: 10:31:189569: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:31.344406+00:00 FXR609BE34A core_service: 10:31:343534: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:32.004645+00:00 FXR609BE34A core_service: 10:32:4425: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:32.006000+00:00 FXR609BE34A core_service: 10:32:5840: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:10:32.006729+00:00 FXR609BE34A core_service: 10:32:6576: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:32.111656+00:00 FXR609BE34A core_service: 10:32:111446: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:32.261125+00:00 FXR609BE34A core_service: 10:32:260872: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:33.005144+00:00 FXR609BE34A core_service: 10:33:4403: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:33.005952+00:00 FXR609BE34A core_service: 10:33:5801: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:10:33.006665+00:00 FXR609BE34A core_service: 10:33:6532: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:37.582172+00:00 FXR609BE34A core_service: 10:37:580697: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:37.806402+00:00 FXR609BE34A core_service: 10:37:806157: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:38.004641+00:00 FXR609BE34A core_service: 10:38:4423: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:38.006023+00:00 FXR609BE34A core_service: 10:38:5856: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:10:38.006755+00:00 FXR609BE34A core_service: 10:38:6619: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:38.115221+00:00 FXR609BE34A core_service: 10:38:114865: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:38.146774+00:00 FXR609BE34A core_service: 10:38:146590: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:39.005228+00:00 FXR609BE34A core_service: 10:39:4469: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:39.006047+00:00 FXR609BE34A core_service: 10:39:5878: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:10:39.006784+00:00 FXR609BE34A core_service: 10:39:6638: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:10:49.965928+00:00 FXR609BE34A core_service: 10:49:964873: INFO: configmngr.cpp: init():336 - SKU Type:PRE
+2026-09-05T17:10:49.966884+00:00 FXR609BE34A core_service: 10:49:966732: INFO: configmngr.cpp: validateCommConfigJson():1240 - Validating Commconf, in validateCommConfigJson 0
+2026-09-05T17:10:49.967086+00:00 FXR609BE34A core_service: 10:49:966987: INFO: configmngr.cpp: validateDashboardReaderDetailsJson():1065 - Validated ReaderConfigDetails, in validateReaderConfigDetails 0
+2026-09-05T17:10:49.967324+00:00 FXR609BE34A core_service: 10:49:967078: INFO: configmngr.cpp: validateTimeConfigJson():1759 - Validated Time Config, in validateTimeConfig 0
+2026-09-05T17:10:49.972608+00:00 FXR609BE34A core_service: 10:49:972388: INFO: Utility.cpp: setRemoteLogConfig():1431 - No change in remote syslog config
+2026-09-05T17:10:49.998950+00:00 FXR609BE34A core_service: 10:49:998714: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:50.150361+00:00 FXR609BE34A core_service: 10:50:150043: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:10:51.005303+00:00 FXR609BE34A core_service: 10:51:4480: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:10:51.223363+00:00 FXR609BE34A core_service: 10:51:223135: INFO: Utility.cpp: setTimeZone():462 - Timezone already set to UTC
+2026-09-05T17:10:51.282495+00:00 FXR609BE34A core_service: 10:51:282167: ERR: sysutil.cpp: SendZMQMessage():459 - send failed: -1 Socket operation on non-socket #012
+2026-09-05T17:10:51.282719+00:00 FXR609BE34A core_service: 10:51:282227: ERR: coreservice.cpp: SendPubMsg():147 - async send failed
+2026-09-05T17:10:51.288342+00:00 FXR609BE34A core_service: 10:51:288124: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST1_CC_DET requested on /dev/gpiochip4 offset 2
+2026-09-05T17:10:51.298592+00:00 FXR609BE34A core_service: 10:51:298372: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST2_CC_DET requested on /dev/gpiochip4 offset 3
+2026-09-05T17:10:51.298926+00:00 FXR609BE34A core_service: 10:51:298705: INFO: usbcvbusmonitor.cpp: startUSBCDetectionMonitor():450 - Started FXR60 USBC CC detect monitor with sysUtil FDs host1=62 host2=64
+2026-09-05T17:10:51.331634+00:00 FXR609BE34A core_service: 10:51:331421: INFO: coremain.cpp: configureReaderPowerManagement():605 - Update Power Source to PWR_BRICK
+2026-09-05T17:10:51.332421+00:00 FXR609BE34A core_service: 10:51:331937: INFO: usbcvbusmonitor.cpp: updateFXR60USBVBUS():297 - FXR60 USBC VBUS updated for PWR_BRICK: host1=0 host2=0
+2026-09-05T17:10:51.397470+00:00 FXR609BE34A core_service: 10:51:397235: INFO: coremain.cpp: startStopGPSD():542 - GPSD stopped by core-service
+2026-09-05T17:10:51.405635+00:00 FXR609BE34A core_service: 10:51:405386: INFO: configmngr.cpp: loadWLANModules():531 - wifi driver previously loaded
+2026-09-05T17:10:51.405902+00:00 FXR609BE34A core_service: 10:51:405653: INFO: coremain.cpp: applyReaderPowerManagementConfiguration():754 - Power Source is PWR_BRICK#012
+2026-09-05T17:10:52.300215+00:00 FXR609BE34A core_service: 10:52:299358: INFO: sysutil.cpp: InitWDTMonitor():900 - 60000000
+2026-09-05T17:10:52.300623+00:00 FXR609BE34A core_service: 10:52:299719: INFO: sysutil.cpp: InitWDTMonitor():908 - wdt timer started 30
+2026-09-05T17:10:54.360098+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:10:54.360825+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:10:54.361117+00:00 FXR609BE34A cloud_agent[1457907]: clearing CMD wait lock
+2026-09-05T17:10:59.105074+00:00 FXR609BE34A core_service: 10:59:103619: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:10:59.269119+00:00 FXR609BE34A core_service: 10:59:268930: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:00.004694+00:00 FXR609BE34A core_service: 11:00:4490: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:00.006071+00:00 FXR609BE34A core_service: 11:00:5907: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:11:00.006876+00:00 FXR609BE34A core_service: 11:00:6721: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:04.542741+00:00 FXR609BE34A core_service: 11:04:541532: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:04.764460+00:00 FXR609BE34A core_service: 11:04:763846: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:05.004641+00:00 FXR609BE34A core_service: 11:05:4430: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:05.005983+00:00 FXR609BE34A core_service: 11:05:5824: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=time.cloudflare.com
+2026-09-05T17:11:05.007280+00:00 FXR609BE34A core_service: 11:05:7061: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:19.541468+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:11:19.541825+00:00 FXR609BE34A cloud_agent[1457907]: "get_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:11:19 FXR609BE34A user.error web-app: 11:19:541541 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:11:19 FXR609BE34A user.error web-app: 11:19:542542 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:11:19 FXR609BE34A user.error web-app: 11:19:542542 ERROR: corecloudclient.js: response_body
+Sep 05 17:11:19 FXR609BE34A user.error web-app: 11:19:543543 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:11:49 FXR609BE34A user.info web-app: 11:49:175175 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:11:50.360612+00:00 FXR609BE34A core_service: 11:50:358881: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:50.520879+00:00 FXR609BE34A core_service: 11:50:520687: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:51.004673+00:00 FXR609BE34A core_service: 11:51:4466: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:51.006033+00:00 FXR609BE34A core_service: 11:51:5883: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=time.cloudflare.com to=pool.ntp.org
+2026-09-05T17:11:51.006697+00:00 FXR609BE34A core_service: 11:51:6566: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:51.213619+00:00 FXR609BE34A core_service: 11:51:212591: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:51.450069+00:00 FXR609BE34A core_service: 11:51:447112: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:52.004928+00:00 FXR609BE34A core_service: 11:52:4713: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:52.006390+00:00 FXR609BE34A core_service: 11:52:6208: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch1.invalid.example
+2026-09-05T17:11:52.007045+00:00 FXR609BE34A core_service: 11:52:6910: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:52.210119+00:00 FXR609BE34A core_service: 11:52:208967: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:52.363799+00:00 FXR609BE34A core_service: 11:52:363586: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:53.005147+00:00 FXR609BE34A core_service: 11:53:4399: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:53.005993+00:00 FXR609BE34A core_service: 11:53:5842: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch1.invalid.example to=pool.ntp.org
+2026-09-05T17:11:53.006698+00:00 FXR609BE34A core_service: 11:53:6561: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:53.199061+00:00 FXR609BE34A core_service: 11:53:198232: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:53.347817+00:00 FXR609BE34A core_service: 11:53:347617: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:54.004601+00:00 FXR609BE34A core_service: 11:54:4388: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:54.006513+00:00 FXR609BE34A core_service: 11:54:5780: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch2.invalid.example
+2026-09-05T17:11:54.006789+00:00 FXR609BE34A core_service: 11:54:6453: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:54.213591+00:00 FXR609BE34A core_service: 11:54:213386: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:54.362584+00:00 FXR609BE34A core_service: 11:54:362325: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:55.004609+00:00 FXR609BE34A core_service: 11:55:4389: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:55.006537+00:00 FXR609BE34A core_service: 11:55:5805: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch2.invalid.example to=pool.ntp.org
+2026-09-05T17:11:55.006895+00:00 FXR609BE34A core_service: 11:55:6478: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:11:55.200485+00:00 FXR609BE34A core_service: 11:55:200050: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:11:55.232437+00:00 FXR609BE34A core_service: 11:55:231842: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:11:56.003622+00:00 FXR609BE34A core_service: 11:56:3418: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:11:56.005038+00:00 FXR609BE34A core_service: 11:56:4855: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch3.invalid.example
+2026-09-05T17:11:56.007401+00:00 FXR609BE34A core_service: 11:56:6314: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:06.954347+00:00 FXR609BE34A core_service: 12:06:953215: INFO: configmngr.cpp: init():336 - SKU Type:PRE
+2026-09-05T17:12:06.955205+00:00 FXR609BE34A core_service: 12:06:955069: INFO: configmngr.cpp: validateCommConfigJson():1240 - Validating Commconf, in validateCommConfigJson 0
+2026-09-05T17:12:06.955507+00:00 FXR609BE34A core_service: 12:06:955395: INFO: configmngr.cpp: validateDashboardReaderDetailsJson():1065 - Validated ReaderConfigDetails, in validateReaderConfigDetails 0
+2026-09-05T17:12:06.955682+00:00 FXR609BE34A core_service: 12:06:955508: INFO: configmngr.cpp: validateTimeConfigJson():1759 - Validated Time Config, in validateTimeConfig 0
+2026-09-05T17:12:06.960975+00:00 FXR609BE34A core_service: 12:06:960771: INFO: Utility.cpp: setRemoteLogConfig():1431 - No change in remote syslog config
+2026-09-05T17:12:06.987469+00:00 FXR609BE34A core_service: 12:06:987226: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:07.141701+00:00 FXR609BE34A core_service: 12:07:141524: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:08.005203+00:00 FXR609BE34A core_service: 12:08:4415: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:08.228561+00:00 FXR609BE34A core_service: 12:08:228341: INFO: Utility.cpp: setTimeZone():462 - Timezone already set to UTC
+2026-09-05T17:12:08.289048+00:00 FXR609BE34A core_service: 12:08:288786: ERR: sysutil.cpp: SendZMQMessage():459 - send failed: -1 Socket operation on non-socket #012
+2026-09-05T17:12:08.289316+00:00 FXR609BE34A core_service: 12:08:288850: ERR: coreservice.cpp: SendPubMsg():147 - async send failed
+2026-09-05T17:12:08.303629+00:00 FXR609BE34A core_service: 12:08:303409: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST1_CC_DET requested on /dev/gpiochip4 offset 2
+2026-09-05T17:12:08.305245+00:00 FXR609BE34A core_service: 12:08:305053: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST2_CC_DET requested on /dev/gpiochip4 offset 3
+2026-09-05T17:12:08.305563+00:00 FXR609BE34A core_service: 12:08:305446: INFO: usbcvbusmonitor.cpp: startUSBCDetectionMonitor():450 - Started FXR60 USBC CC detect monitor with sysUtil FDs host1=64 host2=68
+2026-09-05T17:12:08.336212+00:00 FXR609BE34A core_service: 12:08:336027: INFO: coremain.cpp: configureReaderPowerManagement():605 - Update Power Source to PWR_BRICK
+2026-09-05T17:12:08.336942+00:00 FXR609BE34A core_service: 12:08:336550: INFO: usbcvbusmonitor.cpp: updateFXR60USBVBUS():297 - FXR60 USBC VBUS updated for PWR_BRICK: host1=0 host2=0
+2026-09-05T17:12:08.397212+00:00 FXR609BE34A core_service: 12:08:396994: INFO: coremain.cpp: startStopGPSD():542 - GPSD stopped by core-service
+2026-09-05T17:12:08.405302+00:00 FXR609BE34A core_service: 12:08:405050: INFO: configmngr.cpp: loadWLANModules():531 - wifi driver previously loaded
+2026-09-05T17:12:08.405583+00:00 FXR609BE34A core_service: 12:08:405315: INFO: coremain.cpp: applyReaderPowerManagementConfiguration():754 - Power Source is PWR_BRICK#012
+2026-09-05T17:12:09.307088+00:00 FXR609BE34A core_service: 12:09:306181: INFO: sysutil.cpp: InitWDTMonitor():900 - 60000000
+2026-09-05T17:12:09.307459+00:00 FXR609BE34A core_service: 12:09:306570: INFO: sysutil.cpp: InitWDTMonitor():908 - wdt timer started 30
+2026-09-05T17:12:11.361219+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:12:11.362131+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:12:11.362592+00:00 FXR609BE34A cloud_agent[1457907]: clearing CMD wait lock
+2026-09-05T17:12:11.362860+00:00 FXR609BE34A cloud_agent[1457907]: clearing RM wait lock
+2026-09-05T17:12:11.363133+00:00 FXR609BE34A cloud_agent[1457907]: clearing CMD wait lock
+2026-09-05T17:12:19.973829+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 222222 for response from RM/CS
+2026-09-05T17:12:20.031644+00:00 FXR609BE34A core_service: 12:20:25209: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:20.176216+00:00 FXR609BE34A core_service: 12:20:175965: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:21.004790+00:00 FXR609BE34A core_service: 12:21:4580: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:21.006170+00:00 FXR609BE34A core_service: 12:21:5986: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch3.invalid.example to=pool.ntp.org
+2026-09-05T17:12:21.006931+00:00 FXR609BE34A core_service: 12:21:6793: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:21.195373+00:00 FXR609BE34A core_service: 12:21:194526: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:21.346904+00:00 FXR609BE34A core_service: 12:21:346495: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:22.004977+00:00 FXR609BE34A core_service: 12:22:4753: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:22.006355+00:00 FXR609BE34A core_service: 12:22:6157: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch1.invalid.example
+2026-09-05T17:12:22.007423+00:00 FXR609BE34A core_service: 12:22:7140: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:22.191909+00:00 FXR609BE34A core_service: 12:22:191636: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:22.360249+00:00 FXR609BE34A core_service: 12:22:359464: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:23.004647+00:00 FXR609BE34A core_service: 12:23:4444: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:23.006006+00:00 FXR609BE34A core_service: 12:23:5847: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch1.invalid.example to=pool.ntp.org
+2026-09-05T17:12:23.006742+00:00 FXR609BE34A core_service: 12:23:6586: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:24.228479+00:00 FXR609BE34A core_service: 12:24:226728: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:24.377205+00:00 FXR609BE34A core_service: 12:24:376995: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:25.004633+00:00 FXR609BE34A core_service: 12:25:4423: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:25.005990+00:00 FXR609BE34A core_service: 12:25:5824: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch2.invalid.example
+2026-09-05T17:12:25.006679+00:00 FXR609BE34A core_service: 12:25:6539: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:25.202122+00:00 FXR609BE34A core_service: 12:25:201917: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:25.353311+00:00 FXR609BE34A core_service: 12:25:352073: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:26.004728+00:00 FXR609BE34A core_service: 12:26:4528: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:26.006100+00:00 FXR609BE34A core_service: 12:26:5945: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch2.invalid.example to=pool.ntp.org
+2026-09-05T17:12:26.007564+00:00 FXR609BE34A core_service: 12:26:7357: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:26.216670+00:00 FXR609BE34A core_service: 12:26:216429: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:26.248845+00:00 FXR609BE34A core_service: 12:26:248400: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:27.005220+00:00 FXR609BE34A core_service: 12:27:4463: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:27.006034+00:00 FXR609BE34A core_service: 12:27:5875: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=pool.ntp.org to=nosuch3.invalid.example
+2026-09-05T17:12:27.006742+00:00 FXR609BE34A core_service: 12:27:6605: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:36.568690+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:12:36.569040+00:00 FXR609BE34A cloud_agent[1457907]: "get_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:12:36 FXR609BE34A user.error web-app: 12:36:568568 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:12:36 FXR609BE34A user.error web-app: 12:36:569569 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:12:36 FXR609BE34A user.error web-app: 12:36:570570 ERROR: corecloudclient.js: response_body
+Sep 05 17:12:36 FXR609BE34A user.error web-app: 12:36:570570 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:12:37.953878+00:00 FXR609BE34A core_service: 12:37:952820: INFO: configmngr.cpp: init():336 - SKU Type:PRE
+2026-09-05T17:12:37.954884+00:00 FXR609BE34A core_service: 12:37:954724: INFO: configmngr.cpp: validateCommConfigJson():1240 - Validating Commconf, in validateCommConfigJson 0
+2026-09-05T17:12:37.955109+00:00 FXR609BE34A core_service: 12:37:954989: INFO: configmngr.cpp: validateDashboardReaderDetailsJson():1065 - Validated ReaderConfigDetails, in validateReaderConfigDetails 0
+2026-09-05T17:12:37.955319+00:00 FXR609BE34A core_service: 12:37:955088: INFO: configmngr.cpp: validateTimeConfigJson():1759 - Validated Time Config, in validateTimeConfig 0
+2026-09-05T17:12:37.960571+00:00 FXR609BE34A core_service: 12:37:960369: INFO: Utility.cpp: setRemoteLogConfig():1431 - No change in remote syslog config
+2026-09-05T17:12:37.986737+00:00 FXR609BE34A core_service: 12:37:986519: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:38.146194+00:00 FXR609BE34A core_service: 12:38:145963: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:39.004700+00:00 FXR609BE34A core_service: 12:39:3821: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:39.231157+00:00 FXR609BE34A core_service: 12:39:230960: INFO: Utility.cpp: setTimeZone():462 - Timezone already set to UTC
+2026-09-05T17:12:39.291633+00:00 FXR609BE34A core_service: 12:39:291360: ERR: sysutil.cpp: SendZMQMessage():459 - send failed: -1 Socket operation on non-socket #012
+2026-09-05T17:12:39.291905+00:00 FXR609BE34A core_service: 12:39:291424: ERR: coreservice.cpp: SendPubMsg():147 - async send failed
+2026-09-05T17:12:39.297517+00:00 FXR609BE34A core_service: 12:39:297233: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST1_CC_DET requested on /dev/gpiochip4 offset 2
+2026-09-05T17:12:39.306422+00:00 FXR609BE34A core_service: 12:39:306092: INFO: usbcvbusmonitor.cpp: openUSBCDetectLine():155 - USB CC detect line USBC_HOST2_CC_DET requested on /dev/gpiochip4 offset 3
+2026-09-05T17:12:39.306729+00:00 FXR609BE34A core_service: 12:39:306512: INFO: usbcvbusmonitor.cpp: startUSBCDetectionMonitor():450 - Started FXR60 USBC CC detect monitor with sysUtil FDs host1=63 host2=65
+2026-09-05T17:12:39.338870+00:00 FXR609BE34A core_service: 12:39:338675: INFO: coremain.cpp: configureReaderPowerManagement():605 - Update Power Source to PWR_BRICK
+2026-09-05T17:12:39.339524+00:00 FXR609BE34A core_service: 12:39:339111: INFO: usbcvbusmonitor.cpp: updateFXR60USBVBUS():297 - FXR60 USBC VBUS updated for PWR_BRICK: host1=0 host2=0
+2026-09-05T17:12:39.401041+00:00 FXR609BE34A core_service: 12:39:400825: INFO: coremain.cpp: startStopGPSD():542 - GPSD stopped by core-service
+2026-09-05T17:12:39.408804+00:00 FXR609BE34A core_service: 12:39:408595: INFO: configmngr.cpp: loadWLANModules():531 - wifi driver previously loaded
+2026-09-05T17:12:39.409075+00:00 FXR609BE34A core_service: 12:39:408834: INFO: coremain.cpp: applyReaderPowerManagementConfiguration():754 - Power Source is PWR_BRICK#012
+2026-09-05T17:12:40.308038+00:00 FXR609BE34A core_service: 12:40:307161: INFO: sysutil.cpp: InitWDTMonitor():900 - 60000000
+2026-09-05T17:12:40.308450+00:00 FXR609BE34A core_service: 12:40:307548: INFO: sysutil.cpp: InitWDTMonitor():908 - wdt timer started 30
+2026-09-05T17:12:50.222773+00:00 FXR609BE34A core_service: 12:50:221442: INFO: Utility.cpp: setSNTPServerDetails():73 - chronyd stopped.
+2026-09-05T17:12:50.375654+00:00 FXR609BE34A core_service: 12:50:375486: INFO: Utility.cpp: setSNTPServerDetails():99 - chronyd started
+2026-09-05T17:12:51.004664+00:00 FXR609BE34A core_service: 12:51:4446: INFO: Utility.cpp: setSNTPServerDetails():105 - NTP set the Hardware Clock
+2026-09-05T17:12:51.006017+00:00 FXR609BE34A core_service: 12:51:5860: NOTICE: configmngr.cpp: logConfigChanges():4460 - CONFIG_CHANGE source=updateSNTPServerConfig path=/TimeConfig/ntpServer1 from=nosuch3.invalid.example to=pool.ntp.org
+2026-09-05T17:12:51.006833+00:00 FXR609BE34A core_service: 12:51:6686: NOTICE: configmngr.cpp: updateReaderConfigFile():4514 - Updated Readerconfig source=updateSNTPServerConfig
+2026-09-05T17:12:51.075297+00:00 FXR609BE34A core_service: 12:51:75060: ERR: coreservice.cpp: ProcessReqMsg():708 - Invalid Server1 Format
+2026-09-05T17:12:51.076743+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:12:51.077007+00:00 FXR609BE34A cloud_agent[1457907]: "set_ntpServer" request failed: CS:'setNTPServerRsp' failed,Reason: SNTP_INVALID_SERVER_FORMAT
+Sep 05 17:12:51 FXR609BE34A user.error web-app: 12:51:077077 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:12:51 FXR609BE34A user.error web-app: 12:51:077077 ERROR: corecloudclient.js: {"code":3,"message":"CS:'setNTPServerRsp' failed,Reason: SNTP_INVALID_SERVER_FORMAT"}
+Sep 05 17:12:51 FXR609BE34A user.error web-app: 12:51:078078 ERROR: corecloudclient.js: response_body
+Sep 05 17:12:51 FXR609BE34A user.error web-app: 12:51:078078 ERROR: corecloudclient.js: {"code":3,"message":"CS:'setNTPServerRsp' failed,Reason: SNTP_INVALID_SERVER_FORMAT"}
+2026-09-05T17:13:01.578418+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:13:01.578801+00:00 FXR609BE34A cloud_agent[1457907]: "get_status" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:13:01 FXR609BE34A user.error web-app: 13:01:578578 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:13:01 FXR609BE34A user.error web-app: 13:01:579579 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:13:01 FXR609BE34A user.error web-app: 13:01:580580 ERROR: corecloudclient.js: response_body
+Sep 05 17:13:01 FXR609BE34A user.error web-app: 13:01:580580 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:13:07.579873+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:13:07.580309+00:00 FXR609BE34A cloud_agent[1457907]: "get_ntpServer" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:13:07 FXR609BE34A user.error web-app: 13:07:580580 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:13:07 FXR609BE34A user.error web-app: 13:07:580580 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:13:07 FXR609BE34A user.error web-app: 13:07:581581 ERROR: corecloudclient.js: response_body
+Sep 05 17:13:07 FXR609BE34A user.error web-app: 13:07:582582 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:13:08.283714+00:00 FXR609BE34A cloud_agent[1457907]: Failed to lookup reqid 222222 for response from RM/CS
+2026-09-05T17:13:48.599489+00:00 FXR609BE34A cloud_agent[1457907]: CS REQ: FAILED
+2026-09-05T17:13:48.599954+00:00 FXR609BE34A cloud_agent[1457907]: "get_status" request failed: Timeout: failed to receive Core Service response
+Sep 05 17:13:48 FXR609BE34A user.error web-app: 13:48:601601 ERROR: corecloudclient.js: sending failure response
+Sep 05 17:13:48 FXR609BE34A user.error web-app: 13:48:602602 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+Sep 05 17:13:48 FXR609BE34A user.error web-app: 13:48:603603 ERROR: corecloudclient.js: response_body
+Sep 05 17:13:48 FXR609BE34A user.error web-app: 13:48:603603 ERROR: corecloudclient.js: {"code":3,"message":"Timeout: failed to receive Core Service response"}
+2026-09-05T17:14:27.700030+00:00 FXR609BE34A cloud_agent[1457907]: NTP synchronization failed offset 0.421945 and reach 337
+Sep 05 17:14:47 FXR609BE34A user.info web-app: 14:47:249249 INFO: sckioiotc.js: A Client disconnected from socketiotc server
+Sep 05 17:16:55 FXR609BE34A user.info web-app: 16:55:456456 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:16:55.852584+00:00 FXR609BE34A radio_mngr: 16:55:851050: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getActiveRegion TYP: REQ Hash: 0x4a795ee5#012
+2026-09-05T17:16:55.859573+00:00 FXR609BE34A radio_mngr: 16:55:859377: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getActiveRegion TYP: REQ Hash: 0x4a795ee5#012
+2026-09-05T17:16:55.866913+00:00 FXR609BE34A radio_mngr: 16:55:866496: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getRegionStandards TYP: REQ Hash: 0xe67ba44d#012
+Sep 05 17:19:45 FXR609BE34A user.info web-app: 19:45:927927 INFO: sckioiotc.js: A Client disconnected from socketiotc server
+Sep 05 17:19:46 FXR609BE34A user.info web-app: 19:46:876876 INFO: authenticator.js: Logged in as guest.
+2026-09-05T17:19:47.717718+00:00 FXR609BE34A radio_mngr: 19:47:716735: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getActiveRegion TYP: REQ Hash: 0x4a795ee5#012
+2026-09-05T17:19:48.021599+00:00 FXR609BE34A radio_mngr: 19:48:21299: INFO: radiomngr.cpp: parseMsgHdr():306 - RPC: getRegionInfo TYP: REQ Hash: 0x6b5d2d5#012
+Sep 05 17:26:27 FXR609BE34A user.info web-app: 26:27:730730 INFO: sckioiotc.js: A Client disconnected from socketiotc server
+2026-09-05T17:26:57.046014+00:00 FXR609BE34A cloud_agent[1457907]: NTP synchronization failed offset 0.096490 and reach 277
+2026-09-05T17:29:21.570288+00:00 FXR609BE34A rsyslogd: -- MARK --
+2026-09-05T17:31:08.291649+00:00 FXR609BE34A cloud_agent[1457907]: NTP synchronization failed offset 1.178963 and reach 367
+Sep 05 17:31:26 FXR609BE34A user.info web-app: 31:26:288288 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:32:24.901339+00:00 FXR609BE34A RDMPAgent: I-WSDD: No UDP data received (183601 timeouts so far)
+Sep 05 17:34:39 FXR609BE34A user.info web-app: 34:39:173173 INFO: authenticator.js: Logged in as admin.
+2026-09-05T17:34:39.244511+00:00 FXR609BE34A radio_control.elf: 34:39:243517: INFO: requests.cpp: processRequests():2115 - Request: logging
+2026-09-05T17:34:39.244932+00:00 FXR609BE34A radio_control.elf: 34:39:243725: INFO: requests.cpp: processRequests():2116 -  Response: Success: level: INFO, radioPacketLog: OFF

@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "CS:'setNTPServerRsp' failed,Reason: SNTP_INVALID_SERVER_FORMAT"
+}

@@ -1,0 +1,21 @@
+fastID 02 - spec example "disable_fastID"
+RESULT: HTTP 200, stored
+
+  stored: {"fastID":{"enabled":false}}
+  after start {"applyImpinjGen2X":true}:
+          status.impinjGen2X = {"feature":"fastID","isActive":true}
+
+*** NOTE THE STATUS SEMANTICS ***
+
+With enabled:false, status still reports feature="fastID", isActive=true. So
+those two fields mean "a fastID configuration is loaded and Gen2X is running",
+NOT "FastID is switched on". The enabled flag inside the config is what
+distinguishes on from off, and status does not expose it.
+
+Consequence: status cannot be used to tell whether a feature is actually enabled
+- only which feature object was last configured. GET /cloud/impinjGen2X is the
+only way to see the enabled flag.
+
+This is also the reader's baseline/idle configuration - {"fastID":{"enabled":
+false}} is what the reader was left holding, and is the cleanest way to clear a
+previously configured feature.

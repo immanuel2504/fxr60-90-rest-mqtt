@@ -1,13 +1,9 @@
 # `/cloud/logs/RcLog`
 
-- **GET** - Retrieve RcInfoLog
+- **GET** — Radio-control log archive (`get_logs_rcLog`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/download.json` | `download` | RC log archive |
-
-## NEED LIVE TEST
-
-Confirm live reader returns non-empty `binary` + `filename`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/rc_log.json` | response 200 | `rc_log` | rcLog.tar.gz archive |

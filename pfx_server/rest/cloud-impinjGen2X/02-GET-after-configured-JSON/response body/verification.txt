@@ -1,0 +1,39 @@
+GET /cloud/impinjGen2X  -- after a feature has been configured
+===============================================================
+Reader : 10.233.48.49 (FXR90, reader application 5.0.7)
+Date   : 2026-09-08
+Status : 200
+Body   : {"fastID":{"enabled":false}}   -- 28 bytes, valid JSON
+
+Confirmed identical on BOTH readers on the same day:
+
+  10.233.48.36  FXR60 5.0.7  -> 200, 28 bytes, {"fastID":{"enabled":false}}
+  10.233.48.49  FXR90 5.0.7  -> 200, 28 bytes, {"fastID":{"enabled":false}}
+
+WHY THE EARLIER CAPTURE WAS EMPTY
+---------------------------------
+The endpoint reflects stored Gen2X configuration. On 2026-09-05 no Gen2X
+feature had ever been set on the reader, so it returned a bare newline. After
+any successful PUT /cloud/impinjGen2X it returns the stored object.
+
+The config is STICKY -- there is no way to return to the empty state:
+
+  PUT /cloud/impinjGen2X {}
+  -> 422 {"code":1,"message":"Invalid payload for set_impinjGen2X api"}
+
+So the 1-byte response can only be observed on a reader that has never had
+Gen2X configured. Confirmed by attempting the clear above.
+
+The GET always echoes the LAST feature configured, not a merge of all features.
+PUT is wholesale: setting tagFocus replaces a stored fastID object entirely.
+This follows from the reader's own rule that exactly one feature may be
+configured per request:
+
+  PUT {"fastID":{"enabled":true},"tagFocus":{"enabled":true}}
+  -> 422 "Only one Impinj Gen2X feature can be configured at a time
+          (fastID, tagProtect, tagFocus, or tagQuieting)"
+
+FEATURE TESTING
+---------------
+All four Gen2X features were verified working on genuine Impinj Monza 4i tags:
+  ../cloud-impinjGen2X-PUT/all-features-VERIFIED-507/GEN2X_ALL_FEATURES_507.md

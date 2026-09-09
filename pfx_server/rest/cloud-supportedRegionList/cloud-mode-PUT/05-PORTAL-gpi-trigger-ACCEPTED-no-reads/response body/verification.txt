@@ -1,0 +1,62 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+PORTAL 05 - the spec's portal_gpi_trigger example
+RESULT: ACCEPTED, HTTP 200 - and ZERO tags read, which is correct behaviour
+
+TAG RESULT over 20s:
+  unique tags  0
+  total reads  0
+  reference tags:
+    e2806894000040017790e471  NOT SEEN
+    e2806894000040017790ac71  NOT SEEN
+
+Nothing read at all - and that is the expected, correct result.
+
+PORTAL mode gates reading on a GPI transition. The config asks for:
+
+    modeSpecificSettings.startTrigger = {"port": 1, "signal": "HIGH"}
+    modeSpecificSettings.stopInterval = 5
+
+so the reader only inventories once GPI port 1 goes HIGH, then stops 5 s after
+the last unique tag.
+
+WHY NOTHING FIRED: GET /cloud/gpi reports all four inputs already HIGH:
+
+    {"1":"HIGH","2":"HIGH","3":"HIGH","4":"HIGH"}
+
+with nothing physically wired to them, so no TRANSITION to HIGH can occur. The
+signal is static. Sending signal: LOW instead also produced zero reads
+(06-PORTAL-signal-LOW-ACCEPTED-no-reads/) - the inputs never change state either
+way.
+
+*** THE FINDING WORTH REPORTING ***
+
+PUT /cloud/start does NOT override the GPI trigger. It returned HTTP 200, and
+GET /cloud/status then reported:
+
+    radioActivity: active
+
+...while zero tags were produced. So in PORTAL mode "radioActivity: active"
+means "the radio is armed and waiting for its trigger", not "the reader is
+reading". Those are very different operational states and the field does not
+distinguish them.
+
+Anyone monitoring radioActivity to confirm a portal is working would see
+"active" on a portal that is reading nothing because its trigger is miswired.
+
+CANNOT BE FULLY TESTED FROM THE API: GPI inputs cannot be driven through the
+REST API - PUT /cloud/gpo drives outputs only. So PORTAL mode's trigger path
+needs someone physically closing a contact at the reader. This is the same
+limitation recorded for GPI_* events in
+../../findings/cloud-config/19-gpi-events-cannot-be-triggered-via-api/.
+
+What IS confirmed here: the config is accepted, stored, and correctly suppresses
+reading until triggered.

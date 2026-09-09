@@ -1,0 +1,14 @@
+[
+  {
+    "appname": "sampleNew",
+    "autostart": true,
+    "metadata": "APP_TYPE: DA",
+    "runningStatus": false
+  },
+  {
+    "appname": "sampleAntenna",
+    "autostart": false,
+    "metadata": "APP_TYPE: DA",
+    "runningStatus": false
+  }
+]

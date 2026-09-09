@@ -1,0 +1,50 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+SIMPLE 01 - the spec's simple_basic example, verbatim
+RESULT: REJECTED, HTTP 422
+
+*** THE SPEC'S OWN EXAMPLE IS OUT OF BOUNDS ***
+
+The example sets transmitPower: 31.5. This reader accepts a maximum of 30.0:
+
+  {"code":3,"message":"\"set_mode\" Failed to apply. Description: unsuccessful rc
+   response: Failure: value provided for \"transmitPower\" is out of bounds.
+   Must be between 0.000000 and 30.000000."}
+
+Boundary established by bisection - each value sent alone as
+{"type":"SIMPLE","antennas":[1],"transmitPower":<p>}:
+
+    31.5   -> 422   (the spec's value)
+    30.5   -> 422
+    30     -> 200
+    30.0   -> 200
+    29.5   -> 200
+    17     -> 200
+    0      -> 200
+    -1     -> 422
+
+So the accepted range is exactly 0.0 to 30.0 inclusive, and the spec's example
+exceeds it by 1.5 dB.
+
+A UNIT INCONSISTENCY WORTH RAISING SEPARATELY: GET /cloud/region reports
+
+    minTxPowerSupported = 0
+    maxTxPowerSupported = 300
+
+300 is deci-dBm (30.0 dBm), while /cloud/mode takes plain dBm. The same physical
+quantity uses two different units on two endpoints, and neither documents which
+it is using. A client copying maxTxPowerSupported straight into transmitPower
+gets a 422.
+
+The error message itself is good - it names the field and states the range.
+
+The corrected version of this example is in
+02-SIMPLE-power-30-SUCCESS/.

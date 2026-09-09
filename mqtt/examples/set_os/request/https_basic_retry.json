@@ -1,0 +1,26 @@
+{
+  "command": "set_os",
+  "command_id": "req-set-os",
+  "payload": {
+    "authenticationType": "BASIC",
+    "authenticationOptions": {
+      "username": "demo-user",
+      "password": "demo-password"
+    },
+    "url": "https://example.com/firmware/reader-os.tar.bz2",
+    "retry": {
+      "type": "randomWait",
+      "policy": {
+        "retries": 3,
+        "wait": {
+          "min": 10,
+          "max": 30
+        }
+      }
+    },
+    "timeouts": {
+      "connection": 5,
+      "read": 20
+    }
+  }
+}

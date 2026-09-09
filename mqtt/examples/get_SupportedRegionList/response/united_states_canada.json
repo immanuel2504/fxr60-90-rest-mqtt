@@ -1,0 +1,10 @@
+{
+  "command": "get_supportedRegionList",
+  "command_id": "req-get-supportedRegionList",
+  "payload": {
+    "SupportedRegions": [
+      "United States/Canada"
+    ]
+  },
+  "response": "success"
+}

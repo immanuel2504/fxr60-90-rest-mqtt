@@ -4,12 +4,12 @@
 
 | Field | Value |
 |---|---|
-| **Example name** | `hostName` |
-| **Summary title** | `Current host name` |
+| **Example name** | `configured` |
+| **Summary title** | `Current hostname` |
 
 ### `PUT/hostName.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `hostName` |
-| **Summary title** | `Set host name` |
+| **Summary title** | `Set hostname` |

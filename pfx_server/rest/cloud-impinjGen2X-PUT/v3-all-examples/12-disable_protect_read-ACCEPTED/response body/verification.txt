@@ -1,0 +1,17 @@
+tagProtect 12 - spec example "disable_protect_read"
+RESULT: HTTP 200, stored, activates
+
+  stored: {"tagProtect":{"action":"disableTagVisibility",
+           "enableShortRange":false,"password":"77777777"}}
+  after start: status.impinjGen2X = {"feature":"tagProtect","isActive":true}
+
+The fourth and last tagProtect action, completing coverage of the action enum:
+enableTagProtection, disableTagProtection, enableTagVisibility,
+disableTagVisibility.
+
+Also reader-scoped, so no tagID - same rule as test 11.
+
+During the separate TagProtect functional work
+(../../TAG_PROTECT_REPORT.md) this action was applied to a reader holding a
+verified password, with a protected tag present, and the tag remained readable.
+That observation is inconclusive for the reasons set out in that report.

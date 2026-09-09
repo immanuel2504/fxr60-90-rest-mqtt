@@ -1,30 +1,32 @@
 ## 1. Description
 
-> **Product applicability: FXR60 Premium only.** The stack LED (stack light) is an FXR60 Premium feature; it is not available on other FXR60 variants, and the FXR90.
+> **FXR60 Premium only.** The stack LED is not on other FXR60 variants. The FXR90 has no stack light.
 
-The `GET /cloud/stack-led` REST endpoint retrieves the current state of the stack LED on the reader.
+The `GET /cloud/stack-led` REST endpoint retrieves the current stack LED state.
 
 This endpoint returns:
 
-- Status (`DEFAULT` or `NON_DEFAULT`)
-- Color, brightness, flash state, configured duration, and remaining time
+- `status` — `DEFAULT` or `NON_DEFAULT`
+- `color`, `brightness`, `flash`, `seconds`, and `seconds_remaining` when the LED is `NON_DEFAULT`
 
-No request body is required.
+When `status` is `DEFAULT`, the body is `{ "status": "DEFAULT" }`.
 
 ## 2. Endpoint Details
 
 | Property | Value |
 |---|---|
 | MQTT Command | `get_stackled` |
+| Pattern Name | Stack LED Query |
 | REST Endpoint | `GET /cloud/stack-led` |
 | Communication Type | Client to Device (HTTP request/response) |
-| Applies To | **FXR60 Premium** — not on other FXR60 variants; the FXR90 has no stack light |
+| Applies To | FXR60 Premium |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
+| Supported Operations | Retrieve stack LED state |
 
 ## 3. When to Use This Endpoint
 
 Use `GET /cloud/stack-led` to:
 
-- Confirm the current stack LED color, brightness, and flash state
-- Verify the effect of a prior `PUT /cloud/stack-led` call
-- Check how many seconds remain on a timed LED override
+- Read `status`, color, brightness, and flash
+- Check `seconds_remaining` on a timed override
+- Confirm a prior `PUT /cloud/stack-led` call

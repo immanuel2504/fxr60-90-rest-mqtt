@@ -1,0 +1,6 @@
+{
+  "command": "get_CACertificates",
+  "command_id": "req-get-CACertificates",
+  "payload": [],
+  "response": "success"
+}

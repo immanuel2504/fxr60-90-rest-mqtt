@@ -4,6 +4,6 @@
     "required": false,
     "type": "string",
     "enum": null,
-    "example": "India"
+    "example": "United States/Canada"
   }
 }

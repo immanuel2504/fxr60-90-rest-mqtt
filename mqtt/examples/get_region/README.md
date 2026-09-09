@@ -7,6 +7,4 @@ Stable `command_id`: `req-get-region`
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
 | `request/default.json` | request | `default` | `—` | Empty get_region request |
-| `response/multiple_values.json` | response | `multiple_values` | `cloud-region/GET/multiple_values.json` |  |
-| `response/india.json` | response | `india` | `cloud-region/GET/india.json` | Second country sample |
-
+| `response/region.json` | response | `region` | `cloud-region/GET/region.json` | United States/Canada, US_FCC_15 |

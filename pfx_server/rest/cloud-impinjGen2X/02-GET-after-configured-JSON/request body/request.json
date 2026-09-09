@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "url": "/cloud/impinjGen2X",
+  "reader": "10.233.48.49 (FXR90, reader application 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Real admin token minted at run time. Reproduce with:\n  TOKEN=$(curl -sk -u 'admin:Zebra@123' https://10.233.48.49/cloud/localRestLogin | python3 -c \"import sys,json;print(json.load(sys.stdin)['message'])\")"
+  },
+  "note": "GET request - no request body. Taken AFTER a PUT /cloud/impinjGen2X had configured a feature."
+}

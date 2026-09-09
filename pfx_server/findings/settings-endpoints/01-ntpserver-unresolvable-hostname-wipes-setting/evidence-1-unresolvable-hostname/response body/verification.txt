@@ -1,0 +1,53 @@
+ntpServer 07 - a well-formed but UNRESOLVABLE hostname
+RESULT: HTTP 200 - and the NTP server is WIPED to an empty string
+
+*** DEFECT - reproduced 3/3 per key, on BOTH keys ***
+
+before: {"server":"pool.ntp.org"}
+PUT:    {"server":"nosuch1.invalid.example"}   -> HTTP 200, empty body
+after:  {"server":""}
+
+The reader is left with NO NTP SERVER CONFIGURED, and the caller is told the
+request succeeded.
+
+Method - reset to a known-good value, send an unresolvable host, read back.
+Repeated 3 times per key with a different unresolvable name each run:
+
+  server   run 1  before=pool.ntp.org  PUT=200  after={"server":""}
+  server   run 2  before=pool.ntp.org  PUT=200  after={"server":""}
+  server   run 3  before=pool.ntp.org  PUT=200  after=(empty response)
+  server1  run 1  before=pool.ntp.org  PUT=200  after={"server":""}
+  server1  run 2  before=pool.ntp.org  PUT=200  after={"server":""}
+  server1  run 3  before=pool.ntp.org  PUT=200  after=(empty response)
+
+Key-independent: 'server' and 'server1' behave identically, so this is about the
+hostname, not the convention used.
+
+CONTRAST - a MALFORMED hostname is handled correctly:
+
+  PUT {"server":"not..a..host"}
+    -> 422 {"code":3,"message":"CS:'setNTPServerRsp' failed,
+            Reason: SNTP_INVALID_SERVER_FORMAT"}
+    -> GET {"server":"pool.ntp.org"}   previous value INTACT
+
+So the endpoint already has the right behaviour for one class of bad input:
+reject, change nothing. It just does not apply it to names that are syntactically
+valid but do not resolve. In that case it destroys the working configuration and
+reports success.
+
+Two separable problems:
+  1. The response is wrong. An input the reader cannot use should be a 4xx, as
+     the malformed case already is - not HTTP 200.
+  2. The failure is destructive. Whether or not it is rejected, a failed update
+     should leave the previous working value in place. Wiping to "" is worse than
+     either accepting or rejecting the new value.
+
+Impact: silent and delayed. The caller has no reason to re-check, and the
+consequence - a reader that cannot synchronise its clock - surfaces later as
+certificate validity failures and wrong event timestamps, far from the cause.
+A single typo in a hostname is enough to trigger it.
+
+SEPARATE MINOR ISSUE, visible in run 3 of both keys above: GET /cloud/ntpServer
+intermittently returns a completely empty response body instead of a JSON object.
+Seen ~2 times in ~40 GETs across this endpoint, with a fresh token and no other
+error. Not specific to this test - it also occurred during test 02.

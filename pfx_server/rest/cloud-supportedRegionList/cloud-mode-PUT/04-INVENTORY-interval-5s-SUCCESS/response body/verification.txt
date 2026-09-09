@@ -1,0 +1,43 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+INVENTORY 04 - the same config with interval dropped to 5 s
+RESULT: ACCEPTED, HTTP 200 - the A/B half that proves interval works
+
+Identical to 03-INVENTORY-interval-60s-SUCCESS except:
+    modeSpecificSettings.interval  {"unit":"seconds","value":60}  ->  value 5
+
+TAG RESULT over 22s:
+  unique tags  30
+  total reads  101
+  reference tags:
+    e2806894000040017790e471  reads=4  rssi=-39..-38  ant=[1]
+    e2806894000040017790ac71  reads=5  rssi=-45..-44  ant=[1]
+
+*** THE A/B COMPARISON ***
+
+                          interval 60 s      interval 5 s
+  window                  20 s               22 s
+  unique tags             30                 30
+  total reads             30                 101
+  ref tag ...e471 reads   1                  4
+  ref tag ...ac71 reads   1                  5
+
+Same tags, same power, same antenna - only the interval changed. The reference
+tags went from 1 read to 4 and 5, and 22 s / 5 s = 4.4 expected reports per tag.
+Observed 4 and 5.
+
+That arithmetic is the point: the reporting rate matches the configured interval,
+so INVENTORY mode's deduplication is real and predictable, not approximate.
+
+USEFUL FOR INTEGRATORS: interval is the knob that controls event volume. At 60 s
+a tag sitting in the field generates 1 event per minute; at 5 s it generates 12.
+For a busy portal that is the difference between a manageable event stream and
+flooding the data endpoint.

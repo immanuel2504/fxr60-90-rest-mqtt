@@ -2,12 +2,12 @@
 
 REST: `PUT /cloud/certificates` → `cloud-certificates/`
 
-Wire `command` (developer MQTT API): `set_updateCertificate` (alias `set_update_cert`)
+MQTT command key: `set_updateCertificate`
 
 Stable `command_id`: `req-set-update-cert`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/basic_https.json` | request | `basic_https` | `cloud-certificates/PUT/basic_https.json` | Install client cert over HTTPS with BASIC auth |
-| `request/mtls_optional.json` | request | `mtls_optional` | `cloud-certificates/PUT/mtls_optional.json` | Install cert with optional mTLS |
-| `response/success.json` | response | `success` | `—` | Command succeeded |
+| `request/https_basic.json` | request | `https_basic` | `cloud-certificates/PUT/https_basic.json` | HTTPS BASIC download |
+| `request/mtls.json` | request | `mtls` | `cloud-certificates/PUT/mtls.json` | HTTPS BASIC with installed client cert and CA |
+| `response/success.json` | response | `success` | `—` | Empty payload on success |

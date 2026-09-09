@@ -16,8 +16,7 @@ cloud-status/
 ```
 | File | Method | Direction | Example name | Origin | Valid | Summary |
 |---|---|---|---|---|---|---|
-| `GET/inline.json` | GET | response 200 | `inline` | in-spec | yes |  |
-| `GET/running.json` | GET | response 200 | `running` | proposed | yes | Radio active variant |
+| `GET/status.json` | GET | response 200 | `status` | live | yes | Reader status |
 
 ## Trying these against a reader
 

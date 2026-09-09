@@ -1,25 +1,42 @@
 # Example summary titles — `/cloud/timeZone`
 
-### `GET/time_zone.json`
+## GET responses
+
+### `GET/utc.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `time_zone` |
-| **Summary title** | `Current time zone` |
+| **Example name** | `utc` |
+| **Summary title** | `timeZone UTC` |
 
-### `PUT/time_zone.json`
+---
 
-| Field | Value |
-|---|---|
-| **Example name** | `time_zone` |
-| **Summary title** | `Set time zone UTC` |
+## PUT request
 
-### `PUT/time_zone_kolkata.json`
+### `PUT/utc.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `time_zone_kolkata` |
-| **Summary title** | `Set time zone Kolkata` |
+| **Example name** | `utc` |
+| **Summary title** | `Set UTC` |
+
+### `PUT/kolkata.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `kolkata` |
+| **Summary title** | `Set Kolkata` |
+
+### `PUT/pacific.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `pacific` |
+| **Summary title** | `Set Pacific Time (US & Canada)` |
+
+---
+
+## PUT response
 
 ### `PUT/success.json`
 

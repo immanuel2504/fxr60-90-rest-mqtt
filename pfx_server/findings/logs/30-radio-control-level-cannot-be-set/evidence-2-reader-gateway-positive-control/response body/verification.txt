@@ -1,0 +1,17 @@
+logs PUT 05 - all 8 documented levels on reader_gateway
+RESULT: all accepted, all verified by read-back
+
+  OFF      -> 200, read back rg=OFF
+  FATAL    -> 200, read back rg=FATAL
+  ERROR    -> 200, read back rg=ERROR
+  WARNING  -> 200, read back rg=WARNING
+  DEBUG    -> 200, read back rg=DEBUG
+  INFO     -> 200, read back rg=INFO
+  TRACE    -> 200, read back rg=TRACE
+  EXTRA    -> 200, read back rg=EXTRA
+
+Full coverage of the documented level enum, and reader_gateway honours every one.
+This is the positive control that makes the radio_control results meaningful:
+the endpoint, the level enum and the read-back all work correctly here, so the
+radio_control failures in tests 03 and 04 are specific to that component and not
+a fault in the endpoint or in the test method.

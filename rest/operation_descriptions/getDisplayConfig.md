@@ -1,39 +1,34 @@
 ## 1. Description
 
-> **Product applicability: FXR60 only.** Display APIs are not available on FXR90.
+> **FXR60 only.** Display APIs are not available on FXR90.
 
-The `GET /cloud/displayConfig` REST endpoint retrieves the currently active display configuration from the device.
+The `GET /cloud/displayConfig` REST endpoint retrieves the active display configuration.
 
 This endpoint returns:
 
-- Whether the display is enabled
-- On-screen keyboard, start URL, resolution, idle timeout, orientation, and keyboard layout
-
-No request body is required.
+- `enable` — whether the display is on
+- `enableOnscreenKeyboard` — whether the on-screen keyboard is on
+- `startUrl` — URL loaded on the display
+- `resolution` — active resolution (`WidthxHeight`)
+- `screenTimeoutSec` — idle timeout in seconds
+- `orientation` — `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`
+- `keyboardLayout` — `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, or `Japanese`
 
 ## 2. Endpoint Details
 
 | Property | Value |
 |---|---|
+| MQTT Command | `get_displayConfig` |
+| Pattern Name | Display Configuration Query |
 | REST Endpoint | `GET /cloud/displayConfig` |
 | Communication Type | Client to Device (HTTP request/response) |
-| Applies To | FXR60 only — not FXR90 |
+| Applies To | FXR60 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Related Endpoint | `PUT /cloud/displayConfig` |
-| MQTT Command | `get_displayConfig` |
+| Supported Operations | Retrieve active display configuration |
 
 ## 3. When to Use This Endpoint
 
-Use `GET /cloud/displayConfig` to read the display settings last applied with `PUT /cloud/displayConfig`.
+Use `GET /cloud/displayConfig` to:
 
-Key fields to check in the response:
-
-| Field | What to Check | Why It Matters |
-|---|---|---|
-| `enable` | Is the display on? | `false` means the display is disabled. |
-| `enableOnscreenKeyboard` | Is the virtual touch keyboard on? | Needed when no physical keyboard is attached. |
-| `startUrl` | Which URL is loaded? | Confirms the kiosk or local UI target. |
-| `resolution` | Is it `WidthxHeight` as expected? | Must match a resolution the monitor supports. |
-| `screenTimeoutSec` | Idle timeout, or `0` for always on | `0` keeps the screen awake; maximum is 3600 seconds. |
-| `orientation` | `landscape`, `portrait`, or a flipped variant | Controls how content is rotated. |
-| `keyboardLayout` | Layout such as `Japanese` or `English-US` | Should match the attached keyboard when one is present. |
+- Read the settings last applied with `PUT /cloud/displayConfig`
+- Confirm enable, URL, resolution, orientation, and keyboard layout

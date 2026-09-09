@@ -1,0 +1,15 @@
+Sat Sep  5 15:20:38 2026
+
+1: 2026-09-05T15:20:48.371-NTP synchronization failed offset 0.000052 and reach 367
+2: 2026-09-05T15:24:55.556-NTP synchronization failed offset 0.064860 and reach 357
+3: 2026-09-05T15:29:06.677-NTP synchronization failed offset 0.019422 and reach 277
+4: 2026-09-05T15:33:14.776-NTP synchronization failed offset 0.004267 and reach 277
+5: 2026-09-05T15:34:56.699-"set_config" request failed: Invalid global batching payload fields: Batching configuration error: Incorrect number of batching objects for the given endpoints
+6: 2026-09-05T15:35:10.567-"set_config" request failed: Invalid payload fields: retention configuration error: Incorrect number of retention objects for the given endpoints
+7: 2026-09-05T15:37:22.859-NTP synchronization failed offset 0.004617 and reach 337
+8: 2026-09-05T15:41:33.379-NTP synchronization failed offset 0.007602 and reach 357
+9: 2026-09-05T15:45:41.072-NTP synchronization failed offset 0.001067 and reach 337
+10: 2026-09-05T15:49:50.158-NTP synchronization failed offset 0.007794 and reach 167
+11: 2026-09-05T15:58:08.623-NTP synchronization failed offset 0.012287 and reach 353
+12: 2026-09-05T16:03:03.572-CS REQ: FAILED
+13: 2026-09-05T16:03:03.573-"set_config" request failed: Profile configuration failed: Timeout: failed to receive Core Service response

@@ -1,11 +1,13 @@
 ## 1. Description
 
-The `PUT /cloud/mode` REST endpoint configures the reader's operating mode and all RF settings associated with that mode.
+The `PUT /cloud/mode` REST endpoint configures the reader's operating mode. The request body is an `operatingMode.v1` object.
+
+This call **replaces the entire mode configuration**. Fields you omit are not kept from the previous mode — send the full object you want the reader to use.
 
 This endpoint allows you to configure:
 
 - The operating mode type through `type`
-- Antenna port selection and transmit power through `antennas`
+- Antenna port selection and transmit power through `antennas` and `transmitPower`
 - The RF environment profile through `environment`
 - Inventory stop behavior through `antennaStopCondition`
 - Gen2 query, select, and access settings
@@ -13,7 +15,7 @@ This endpoint allows you to configure:
 
 Use this endpoint to:
 
-- Switch between `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, or `CUSTOM` modes
+- Switch between `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, or `CUSTOM`
 - Tune antenna ports and transmit power for the deployment environment
 - Configure portal triggers or inventory intervals for the chosen mode type
 - Apply tag filtering and reporting behavior before starting inventory
@@ -35,13 +37,27 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Decide on your mode configuration before sending this request. Changing mode while inventory is active can disrupt reads - call `PUT /cloud/stop` first if the reader is currently reading.
+Decide on your mode configuration before sending this request. Changing mode while inventory is active can disrupt reads — call `PUT /cloud/stop` first if the reader is currently reading.
 
 | What You Need | Details |
 |---|---|
 | Mode type | One of `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, or `CUSTOM`. |
-| Antenna ports and power | Which antenna ports to enable and the transmit power in dBm for each. |
-| Environment profile | Optional - set to match the RF environment at the deployment site. Use `AUTO_DETECT` if unsure. |
-| Mode-specific settings | Inventory interval for `INVENTORY`; GPI triggers and stop interval for `PORTAL`. Only include the sub-object relevant to the chosen mode type. |
-| Gen2 and reporting settings | Query settings, select operations, and optional access operations, plus metadata fields, report filter, RSSI filter, and radio start/stop conditions. |
-| Active inventory | If the reader is currently reading tags, send `PUT /cloud/stop` before changing the mode to avoid disrupting ongoing inventory. |
+| Antenna ports and power | Which antenna ports to enable, and transmit power in **dBm** (0.0–30.0). |
+| Environment profile | Optional. Set to match the RF environment. Use `AUTO_DETECT` if unsure. Default is `HIGH_INTERFERENCE`. |
+| Mode-specific settings | Inventory interval for `INVENTORY`; GPI trigger (`port` 1–4) and stop interval for `PORTAL`. Include only the sub-object for the chosen type. |
+| Gen2 and reporting | Query, selects, optional accesses (`wordCount`, not `wordCounter`), metadata (`READERLOCATION`, not `READER_LOCATION`), report filter, RSSI filter, and radio start/stop conditions. |
+
+## 4. Mode and field rules
+
+These rules match `operatingMode.v1`:
+
+| Rule | Detail |
+|---|---|
+| Wholesale replace | The new body replaces the previous mode. Omitted fields are not merged. |
+| `SIMPLE` | Do not send `tagMetaData`. Tag events include only `eventNum`, `format`, and `idHex`. |
+| `INVENTORY` | `accesses` is not allowed. Use `modeSpecificSettings.interval` to control how often each tag is reported. |
+| `PORTAL` | `radioStartConditions` and `radioStopConditions` are not allowed. GPI `port` is 1–4. |
+| Prefix `filter` | Cannot be set together with `query` or `selects`. |
+| `reportFilter` and `accesses` | Cannot both be set. |
+| Memory-bank metadata | `accesses` cannot be combined with `tagMetaData` values `RESERVED`, `EPC`, `TID`, or `USER`. |
+| Array lengths | When `transmitPower`, `antennaStopCondition`, or `query` is an array, its length must match `antennas`. |

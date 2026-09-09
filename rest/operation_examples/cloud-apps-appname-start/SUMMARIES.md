@@ -1,6 +1,6 @@
-# Example summary titles
+# Example summary titles — `/cloud/apps/{appname}/start`
 
-Path parameter `appname` only — no request body.
+## PUT response
 
 ### `PUT/success.json`
 

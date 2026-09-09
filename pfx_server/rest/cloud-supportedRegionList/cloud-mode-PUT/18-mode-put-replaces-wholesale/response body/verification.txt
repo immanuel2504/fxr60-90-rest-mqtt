@@ -1,0 +1,63 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+MODE SEMANTICS 18 - PUT /cloud/mode REPLACES the whole mode object
+RESULT: replace, not merge - confirmed by metadata disappearing
+
+Evidence, from the sequence of tests in this folder:
+
+The reader's ORIGINAL mode (captured before testing) included:
+
+    tagMetaData: [ANTENNA, RSSI, CHANNEL, PC, XPC, CRC, SEEN_COUNT, PHASE]
+    reportFilter: {duration: 0, type: PER_ANTENNA}
+    antennaStopCondition: {type: DURATION, value: 100}
+    linkProfile: 3
+
+Test 10 (with_filter_prefix) sets only type, antennas, transmitPower and filter -
+no tagMetaData. Its tag events came back with only:
+
+    eventNum, format, idHex
+
+All eight previously configured metadata fields were gone. They were not merged
+forward from the stored mode; the new mode object replaced the old one entirely.
+
+The same pattern appears in tests 02 (SIMPLE), 12 (reportFilter) and 13
+(radioStop) - each omits tagMetaData and each returns the bare three fields.
+And it works in reverse: test 09, which DOES request 13 metadata fields, gets all
+13.
+
+*** PRACTICAL CONSEQUENCE ***
+
+Every PUT /cloud/mode must carry the COMPLETE desired configuration. Sending a
+partial mode object silently discards everything not mentioned - including
+metadata selection, filters and stop conditions that may be load-bearing for the
+integration.
+
+The safe pattern is read-modify-write:
+
+    GET  /cloud/mode          -> current object
+    (modify the field you want)
+    PUT  /cloud/mode          -> the full modified object
+
+RESTORE VERIFIED: at the end of testing the captured baseline object was PUT back
+verbatim, and GET /cloud/mode compared byte-for-byte identical to the
+pre-test capture. So a full object PUT does restore state exactly - which is what
+makes the read-modify-write pattern reliable.
+
+*** THIS API HAS FOUR DIFFERENT UPDATE SEMANTICS ***
+
+    PUT /cloud/mode                  REPLACES wholesale          (this finding)
+    PUT /cloud/config -> GPIO-LED    REPLACES wholesale
+    PUT /cloud/displayConfig         MERGES every field
+    PUT /cloud/logs                  MIXED - components merge,
+                                     radioPacketLog resets
+
+None of the four is documented. A client cannot infer any of them from the spec,
+and they differ in ways that silently lose configuration.

@@ -1,0 +1,27 @@
+DELETE /cloud/logs/radioPacketLog - purge the radio packet log
+RESULT: HTTP 200, empty body - purge confirmed
+
+  before DELETE:  GET -> 200, 257 bytes
+  DELETE:         200, empty body
+  after DELETE:   GET -> 422 {"code":1,"message":"No radio packet logs available"}
+
+The purge worked. Note the before-size of 257 bytes: an earlier full retrieval in
+this session returned 602317 bytes, and radioPacketLog was toggled off in between
+during the PUT testing, so most content had already rotated away. The 422
+afterwards is the endpoint's way of reporting empty - see
+../cloud-logs-radioPacketLog-GET/02-empty-returns-422/.
+
+FULLY RECOVERABLE, unlike syslog: re-enabling the flag and running an inventory
+regenerated 65 KB of packet log. See
+../cloud-logs-radioPacketLog-GET/03-repopulates-after-enable/.
+
+IDEMPOTENT: a second DELETE on the already-empty log also returns HTTP 200 - it
+does NOT return the 422 that the GET returns for the same state. So the two verbs
+disagree about whether "already empty" is an error.
+
+Only two of the five log paths are purgeable. DELETE on the others returns 405:
+
+  DELETE /cloud/logs/RcLog         -> 405 "DELETE not a valid METHOD for Req :/logs/RcLog"
+  DELETE /cloud/logs               -> 405 "DELETE not a valid METHOD for Req :/logs"
+
+which matches the spec - it documents DELETE only for syslog and radioPacketLog.

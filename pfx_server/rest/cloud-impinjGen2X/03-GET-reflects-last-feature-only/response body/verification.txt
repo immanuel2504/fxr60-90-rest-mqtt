@@ -1,0 +1,31 @@
+GET /cloud/impinjGen2X reflects only the LAST feature configured
+=================================================================
+Reader : 10.233.48.49 (FXR90, reader application 5.0.7)
+Date   : 2026-09-08
+
+PUT is wholesale, not a merge. Demonstrated directly:
+
+  PUT /cloud/impinjGen2X {"tagFocus":{"enabled":true}}    -> 200
+  GET /cloud/impinjGen2X                                  -> {"tagFocus":{"enabled":true}}
+
+  PUT /cloud/impinjGen2X {"fastID":{"enabled":false}}     -> 200
+  GET /cloud/impinjGen2X                                  -> {"fastID":{"enabled":false}}
+
+The stored tagFocus object is GONE -- replaced, not merged. So the GET response
+can never show more than one feature at a time.
+
+This is consistent with the reader rejecting multi-feature requests:
+
+  PUT {"fastID":{"enabled":true},"tagFocus":{"enabled":true}}
+  -> 422 "Only one Impinj Gen2X feature can be configured at a time
+          (fastID, tagProtect, tagFocus, or tagQuieting)"
+
+CONSEQUENCE FOR CLIENTS
+-----------------------
+GET /cloud/impinjGen2X cannot be used to read back "the current Gen2X state" as
+a whole. It only reports the most recent PUT. A client that configures tagFocus
+and later configures fastID has no API-visible record that tagFocus was ever
+set, and no way to query whether it is still active on the radio.
+
+There is also no way to clear the config back to empty:
+  PUT {} -> 422 {"code":1,"message":"Invalid payload for set_impinjGen2X api"}

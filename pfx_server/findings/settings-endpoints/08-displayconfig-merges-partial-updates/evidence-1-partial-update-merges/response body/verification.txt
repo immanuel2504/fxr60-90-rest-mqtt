@@ -1,0 +1,21 @@
+displayConfig 05 - partial update: enable + orientation only
+RESULT: accepted, HTTP 200, and the omitted fields are PRESERVED
+
+before:
+{"enable":true,"enableOnscreenKeyboard":false,"keyboardLayout":"French",
+ "orientation":"portrait","resolution":"1280x720","screenTimeoutSec":45,
+ "startUrl":"https://10.117.229.18/"}
+
+after:
+{"enable":true,"enableOnscreenKeyboard":false,"keyboardLayout":"French",
+ "orientation":"landscape-flipped","resolution":"1280x720","screenTimeoutSec":45,
+ "startUrl":"https://10.117.229.18/"}
+
+Only "orientation" changed; the other five were kept.
+
+FINDING: this endpoint MERGES. That is the opposite of the GPIO-LED object in
+PUT /cloud/config, which replaces wholesale and silently discards events not
+named in the request (see ../cloud-config-PUT/, finding 3).
+
+Two endpoints on the same API with opposite update semantics, neither documented.
+Please state the semantics per endpoint.

@@ -1,0 +1,1 @@
+{"antennas":[1],"modeSpecificSettings":{"startTrigger":{"port":1,"signal":"LOW"},"stopInterval":5},"query":{"tagPopulation":100},"tagMetaData":["ANTENNA","RSSI","SEEN_COUNT"],"transmitPower":30,"type":"PORTAL"}

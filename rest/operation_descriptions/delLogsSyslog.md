@@ -1,12 +1,6 @@
 ## 1. Description
 
-The `DELETE /cloud/logs/syslog` REST endpoint purges system log files stored on the reader. When you call this endpoint, all accumulated syslog data is permanently deleted from the reader's storage.
-
-Use this endpoint to:
-
-- Clear syslog archives after downloading them with `GET /cloud/logs/syslog`
-- Free flash storage consumed by accumulated system log data
-- Reset the syslog before a diagnostic test run to ensure a clean capture
+The `DELETE /cloud/logs/syslog` REST endpoint deletes stored system log files.
 
 ## 2. Endpoint Details
 
@@ -22,9 +16,4 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Archive the syslog files with `GET /cloud/logs/syslog` before sending this request if you need to retain them for support cases or post-incident analysis.
-
-| What You Need | Details |
-|---|---|
-| Log retrieval | Confirm you have downloaded the syslog using `GET /cloud/logs/syslog` before purging. Deletion is permanent and cannot be undone. |
-| Diagnostic baseline | If you plan to run a diagnostic session after purging, ensure all relevant services are in a known state before the purge so the new logs capture only the events of interest. |
+Download first with `GET /cloud/logs/syslog` if you need to keep the files.

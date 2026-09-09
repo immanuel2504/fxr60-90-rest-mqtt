@@ -1,0 +1,57 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 10 - the spec's with_filter_prefix example: include EPCs starting E280
+RESULT: ACCEPTED, HTTP 200 - and the filter is genuinely enforced at the reader
+
+    "filter": {"value": "E280", "match": "prefix", "operation": "include"}
+
+Both reference tags begin E2806894, so a correct implementation must KEEP them
+and DROP everything else. That is what makes this pair testable.
+
+TAG RESULT over 18s:
+  unique tags  11
+  total reads  11
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=None..None  ant=[None]
+    e2806894000040017790ac71  reads=1  rssi=None..None  ant=[None]
+
+*** ALL 11 TAGS RETURNED START WITH E280 ***
+
+    e2806894000040017790e471
+    e2806894000040017790ac71
+    e2806894000050017790c471
+    e2806894000040017790cc71
+    e2806894000050017790dc71
+    e2806894000050017790bc71
+    e2806894000040017790d871
+    e2806d120000000246f8fbf3
+    e28011b0a504007f647aee94
+    e2806894000050017794f071
+    e28068900000000016cbc093
+
+And the non-E280 tags that were present in the baseline inventory are ABSENT:
+
+    20004035a880c80000123be9    seen in baseline, correctly filtered out
+    41544035a880c80000123bea    seen in baseline, correctly filtered out
+    333311112222333344445555    seen in baseline, correctly filtered out
+
+Zero false positives. The filter is applied by the reader, not by the data
+endpoint, which matters for bandwidth: filtered tags never reach the network.
+
+See 11-CUSTOM-filter-prefix-exclude-SUCCESS/ for the inverse, which is the
+other half of the proof.
+
+NOTE - metadata reverts to the minimum here:
+    eventNum, format, idHex
+because the spec's with_filter_prefix example sets no tagMetaData. Filtering and
+metadata are independent; you must ask for metadata explicitly in every mode
+payload, since PUT /cloud/mode REPLACES the whole mode object rather than merging
+(see 15-mode-put-replaces-wholesale/).

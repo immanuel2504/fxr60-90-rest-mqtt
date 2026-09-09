@@ -1,10 +1,34 @@
 # Example summary titles — `/cloud/os`
 
-Live request body from `pfx_server/os/os-update-basic.json`.
+## PUT request
 
-### `PUT/os-update-basic.json`
+### `PUT/https_none.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `os-update-basic` |
-| **Summary title** | `HTTPS OS update with BASIC` |
+| **Example name** | `https_none` |
+| **Summary title** | `authenticationType NONE` |
+
+### `PUT/https_basic.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `https_basic` |
+| **Summary title** | `authenticationType BASIC` |
+
+### `PUT/https_basic_retry.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `https_basic_retry` |
+| **Summary title** | `BASIC with retry and timeouts` |
+
+## PUT response
+
+### `PUT/success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `success` |
+| **Summary title** | `Empty string on success` |
+| **HTTP status** | `200` |

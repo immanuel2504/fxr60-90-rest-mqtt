@@ -1,12 +1,10 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/uninstall` REST endpoint removes a user application from the reader. The application is identified by the `{appname}` path parameter.
+The `PUT /cloud/apps/{appname}/uninstall` REST endpoint removes an installed user application.
 
-Use this endpoint to:
+This endpoint requires:
 
-- Remove a decommissioned user application
-- Free storage before installing a replacement
-- Clean up test or development packages
+- `{appname}` — installed name in the URL
 
 ## 2. Endpoint Details
 
@@ -18,13 +16,13 @@ Use this endpoint to:
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Path Parameter | `appname` (the application to uninstall) |
-| Request Body | None (the app name is supplied as the `{appname}` path parameter) |
+| Path Parameter | `appname` |
+| Request Body | None |
 
 ## 3. Before You Begin
 
-Stop the app with `PUT /cloud/apps/{appname}/stop` before uninstalling if it is currently running.
+Stop the application first if it is running. Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Application name | The exact `appname` from `GET /cloud/apps`, supplied as the `{appname}` path parameter. |
+| `appname` | Installed name from `GET /cloud/apps`. URL path. |

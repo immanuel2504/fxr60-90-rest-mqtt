@@ -1,0 +1,43 @@
+TAG PROTECT TEST SERIES
+Target tags, all verified present and readable at 30 dBm on antenna 1:
+
+  333311112222333344445555   Monza X-2K Dura  (TID e28011c12000112dbc930317, TMN 0x1C1)
+  41544035a880c80000123bea   Monza R6         (TID e2801130200030fd816a089d, TMN 0x130)
+  e2806894000040017790e471   NOT Impinj       (TID e2806894...,               MDID 0x806)
+
+Tag data was routed to the local MQTT broker (10.117.229.18:1883, topic
+fxr60-lab/tevents) so per-tag access results could be read. The reader's normal
+AWS endpoint cannot be read back. Restored afterwards.
+
+STEP 5 - disableTagVisibility (reader should stop reading protected tags)
+RESULT: HTTP 200, stored - target tag STILL VISIBLE
+
+    {"tagProtect": {"action": "disableTagVisibility", "password": "A1B2C3D4"}}
+
+NOTE THE SHAPE: no tagID. This is the schema's second oneOf branch, which is
+reader-scoped rather than tag-scoped - it controls whether THIS READER can see
+protected tags, not which tags are protected. The schema requires tagID to be
+OMITTED here, and requires it for enableTagProtection/disableTagProtection.
+That distinction is easy to miss and is worth calling out in the documentation.
+
+GET /cloud/impinjGen2X after:
+    {"tagProtect":{"action":"disableTagVisibility","enableShortRange":false,
+                   "password":"A1B2C3D4"}}
+
+Applied with PUT /cloud/start {"applyImpinjGen2X":true}, then a 12 s inventory:
+
+    unique tags: 22
+    TARGET  e2806894000040017790e471: visible, reads=1
+    CONTROL e2806894000040017790ac71: visible, reads=1
+
+The target was still read. Since the tag was never actually protected (see the
+report), this is consistent - there was no protected tag to hide. It does not
+independently prove disableTagVisibility is broken.
+
+WHAT THIS STEP DOES ESTABLISH:
+  - both oneOf branches of tagProtect are accepted by the validator
+  - the visibility branch correctly rejects nothing and stores correctly
+  - all four documented actions (enableTagProtection, disableTagProtection,
+    enableTagVisibility, disableTagVisibility) return HTTP 200
+
+Evidence: ../evidence/vis_off.ndjson

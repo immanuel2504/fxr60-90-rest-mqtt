@@ -1,0 +1,204 @@
+{
+  "read_seconds": 20,
+  "unique_tags": 30,
+  "total_reads": 30,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -38,
+      "rssi_max": -38,
+      "fields_present": [
+        "antenna",
+        "channel",
+        "eventNum",
+        "format",
+        "idHex",
+        "peakRssi",
+        "reads"
+      ]
+    },
+    "e2806894000040017790ac71": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        1
+      ],
+      "rssi_min": -45,
+      "rssi_max": -45,
+      "fields_present": [
+        "antenna",
+        "channel",
+        "eventNum",
+        "format",
+        "idHex",
+        "peakRssi",
+        "reads"
+      ]
+    }
+  },
+  "all_tags": {
+    "333311112222333344445555": {
+      "reads": 1,
+      "rssi_min": -56,
+      "rssi_max": -56
+    },
+    "e2806894000040017790cc71": {
+      "reads": 1,
+      "rssi_min": -56,
+      "rssi_max": -56
+    },
+    "20004035a880c80000123be9": {
+      "reads": 1,
+      "rssi_min": -63,
+      "rssi_max": -63
+    },
+    "e2806894000050017790bc71": {
+      "reads": 1,
+      "rssi_min": -69,
+      "rssi_max": -69
+    },
+    "41544035a880c80000123bea": {
+      "reads": 1,
+      "rssi_min": -57,
+      "rssi_max": -57
+    },
+    "e2806894000040017790ac71": {
+      "reads": 1,
+      "rssi_min": -45,
+      "rssi_max": -45
+    },
+    "e2806894000050017790c471": {
+      "reads": 1,
+      "rssi_min": -54,
+      "rssi_max": -54
+    },
+    "e2806894000040017790d871": {
+      "reads": 1,
+      "rssi_min": -79,
+      "rssi_max": -79
+    },
+    "30304035a880c80000123bee": {
+      "reads": 1,
+      "rssi_min": -67,
+      "rssi_max": -67
+    },
+    "e2806d120000000246f8fbf3": {
+      "reads": 1,
+      "rssi_min": -75,
+      "rssi_max": -75
+    },
+    "30304035a880c80000123bed": {
+      "reads": 1,
+      "rssi_min": -72,
+      "rssi_max": -72
+    },
+    "000512051446c1b6620000e7": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    },
+    "e28011112222333344445555": {
+      "reads": 1,
+      "rssi_min": -74,
+      "rssi_max": -74
+    },
+    "bedd11112222333344445555": {
+      "reads": 1,
+      "rssi_min": -73,
+      "rssi_max": -73
+    },
+    "e2004718be4064260e460112": {
+      "reads": 1,
+      "rssi_min": -68,
+      "rssi_max": -68
+    },
+    "ad721205148ed5b65f0000e0": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    },
+    "ad721205148efbb3610000e6": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    },
+    "e2806894000050017790dc71": {
+      "reads": 1,
+      "rssi_min": -52,
+      "rssi_max": -52
+    },
+    "e2806894000040017790e471": {
+      "reads": 1,
+      "rssi_min": -38,
+      "rssi_max": -38
+    },
+    "e28068900000000016cbc093": {
+      "reads": 1,
+      "rssi_min": -74,
+      "rssi_max": -74
+    },
+    "ad721205143d95b36200000b": {
+      "reads": 1,
+      "rssi_min": -78,
+      "rssi_max": -78
+    },
+    "30304035a880c80000123beb": {
+      "reads": 1,
+      "rssi_min": -69,
+      "rssi_max": -69
+    },
+    "00011206438dadb0847c0049": {
+      "reads": 1,
+      "rssi_min": -61,
+      "rssi_max": -61
+    },
+    "ad721206438da5b0847e0048": {
+      "reads": 1,
+      "rssi_min": -72,
+      "rssi_max": -72
+    },
+    "e2806894000050017794f071": {
+      "reads": 1,
+      "rssi_min": -78,
+      "rssi_max": -78
+    },
+    "e28011b0a504007f647aee90": {
+      "reads": 1,
+      "rssi_min": -77,
+      "rssi_max": -77
+    },
+    "e2004718bf0064260e52010e": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    },
+    "e28011b0a504007f647aee94": {
+      "reads": 1,
+      "rssi_min": -78,
+      "rssi_max": -78
+    },
+    "aaaaddddbbbbdddd857c006d": {
+      "reads": 1,
+      "rssi_min": -70,
+      "rssi_max": -70
+    },
+    "ad721205443173b25e00001a": {
+      "reads": 1,
+      "rssi_min": -76,
+      "rssi_max": -76
+    }
+  },
+  "sample_event": {
+    "antenna": 1,
+    "channel": 908.75,
+    "eventNum": 228,
+    "format": "epc",
+    "idHex": "333311112222333344445555",
+    "peakRssi": -56,
+    "reads": 1
+  }
+}

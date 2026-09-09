@@ -1,0 +1,92 @@
+{
+  "read_seconds": 18,
+  "unique_tags": 14,
+  "total_reads": 14,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": false,
+      "reads": 0
+    },
+    "e2806894000040017790ac71": {
+      "seen": false,
+      "reads": 0
+    }
+  },
+  "all_tags": {
+    "41544035a880c80000123bea": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "333311112222333344445555": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "20004035a880c80000123be9": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "30304035a880c80000123bee": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "bedd11112222333344445555": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "30304035a880c80000123beb": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2004718bf0064260e52010e": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "30304035a880c80000123bed": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "00011206438dadb0847c0049": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2004718be4064260e460112": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "ad721206438da5b0847e0048": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "000512051446c1b6620000e7": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "ad721205148efbb3610000e6": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2004718c30064260e92010a": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    }
+  },
+  "sample_event": {
+    "eventNum": 422,
+    "format": "epc",
+    "idHex": "41544035a880c80000123bea"
+  }
+}

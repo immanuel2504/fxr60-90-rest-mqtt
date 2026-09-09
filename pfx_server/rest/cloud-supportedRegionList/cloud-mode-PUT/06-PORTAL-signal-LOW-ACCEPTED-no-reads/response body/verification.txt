@@ -1,0 +1,30 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+PORTAL 06 - the same config with startTrigger.signal = LOW
+RESULT: ACCEPTED, HTTP 200 - also zero tags
+
+TAG RESULT over 18s:
+  unique tags  0
+  total reads  0
+  reference tags:
+    e2806894000040017790e471  NOT SEEN
+    e2806894000040017790ac71  NOT SEEN
+
+Run to rule out the obvious alternative explanation for test 05. Since all four
+GPIs read HIGH, a HIGH trigger might never fire because the line is already at
+its target level - so the LOW variant was tried as the inverse.
+
+It also produced nothing, which confirms the cause is that the GPI inputs never
+CHANGE STATE (nothing is wired to them), not that one polarity was wrong.
+
+Both polarities of the documented startTrigger are therefore accepted and stored
+correctly, and neither can be exercised without physical access to the GPI
+terminals.

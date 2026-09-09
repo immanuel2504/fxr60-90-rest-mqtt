@@ -1,0 +1,9 @@
+Sat Sep  5 15:00:44 2026
+
+1: 2026-09-05T15:00:51.098-NTP synchronization failed offset 0.018983 and reach 337
+2: 2026-09-05T15:05:01.676-NTP synchronization failed offset 0.001457 and reach 367
+3: 2026-09-05T15:08:04.639-Cloud interface: Invalid Cloud Config File Schema - DATA config: event - invalid AWS endpoint configuration: AWS requires ALPN protocol name for "port" number 443
+4: 2026-09-05T15:08:04.639-CS REQ: FAILED
+5: 2026-09-05T15:08:04.639-"set_importCloudConfig" request failed: Invalid Cloud Config File Schema - DATA config: event - invalid AWS endpoint configuration: AWS requires ALPN protocol name for "port" number 443
+6: 2026-09-05T15:08:17.592-[CTRL]: disconnect failed with return code (0)
+7: 2026-09-05T15:08:17.594-[DATA#1]: disconnect failed with return code (0)

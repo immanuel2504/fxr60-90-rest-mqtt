@@ -1,0 +1,46 @@
+{
+  "method": "PUT",
+  "url": "/cloud/impinjGen2X",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "spec": "openAPISpec 11.yaml - IoT Connector REST API v3.0.0",
+  "specExampleName": "advanced_unquiet_tags",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential. Tokens expire quickly; mint one per call in long runs."
+  },
+  "body": {
+    "tagQuieting": {
+      "advanced": {
+        "preSelect": [
+          {
+            "target": "SL",
+            "action": "DEASSERTSL_NOTHING",
+            "mask": {
+              "bank": "EPC",
+              "pointer": 32,
+              "length": 96,
+              "value": "E280123456789012345678AB"
+            }
+          },
+          {
+            "target": "S2",
+            "action": "INVA_INVB",
+            "mask": {
+              "bank": "EPC",
+              "pointer": 32,
+              "length": 96,
+              "value": "E280AABBCCDDEEFF11223344"
+            }
+          }
+        ],
+        "tagQuietMasks": [
+          "SL_DEASSERT",
+          "S2A"
+        ],
+        "target": "SL",
+        "stateAwareAction": "DEASSERTSL_ASSERTSL"
+      }
+    }
+  }
+}

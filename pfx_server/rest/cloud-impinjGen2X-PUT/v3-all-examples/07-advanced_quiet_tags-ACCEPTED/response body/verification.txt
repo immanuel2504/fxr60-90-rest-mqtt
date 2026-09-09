@@ -1,0 +1,31 @@
+tagQuieting 07 - spec example "advanced_quiet_tags"
+RESULT: HTTP 200, stored VERBATIM, activates
+
+  after start: status.impinjGen2X = {"feature":"tagQuieting","isActive":true}
+
+Every nested field round-trips exactly, confirmed via GET /cloud/impinjGen2X:
+
+  preSelect[0]: target=SL  action=ASSERTSL_NOTHING
+                mask={bank:EPC, pointer:32, length:96,
+                      value:E280123456789012345678AB}
+  preSelect[1]: target=S2  action=INVB_INVA
+                mask={bank:EPC, pointer:32, length:96,
+                      value:E280AABBCCDDEEFF11223344}
+  tagQuietMasks: ["SL_ASSERT","S2B"]
+  target: SL
+  stateAwareAction: ASSERTSL_DEASSERTSL
+
+This is the most structurally complex payload in the impinjGen2X set - two
+pre-select entries with masks, a mask-combination array, a target and a
+state-aware action - and the reader accepts and stores all of it.
+
+NOT VERIFIED: the radio-level effect. The two mask values
+(E280123456789012345678AB, E280AABBCCDDEEFF11223344) do not match any tag in our
+field, so no tag should be affected and none was. Testing the function would
+need a mask matching a real EPC, which was not attempted - the basic form in
+test 05 already proves quieting works, and the advanced form's value is the
+mask/session control rather than a different outcome.
+
+What IS established: the schema is accurate for this example, the enum values
+(SL_ASSERT, S2B, ASSERTSL_NOTHING, INVB_INVA, ASSERTSL_DEASSERTSL) are all
+accepted, and the payload is preserved without normalisation.

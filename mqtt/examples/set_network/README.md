@@ -22,7 +22,8 @@ Stable `command_id`: `req-set-network`
 | `request/Network_wifi_wpa2_enterprise_ttls_tls.json` | request | `Network_wifi_wpa2_enterprise_ttls_tls` | `cloud-network/PUT/Network_wifi_wpa2_enterprise_ttls_tls.json` | WiFi — WPA2 Enterprise (TTLS/TLS).Similarly applicable for WPA3 Enterprise(WPA3Enterprise) |
 | `request/Network_wifi_wpa3_enterprise_peap_mschapv2.json` | request | `Network_wifi_wpa3_enterprise_peap_mschapv2` | `cloud-network/PUT/Network_wifi_wpa3_enterprise_peap_mschapv2.json` | WiFi — WPA3 Enterprise (PEAP/MSCHAPV2).Similarly applicable for WPA2 Enterprise(WPA2Enterprise) |
 | `request/Network_bluetooth.json` | request | `Network_bluetooth` | `cloud-network/PUT/Network_bluetooth.json` | Bluetooth PAN |
-| `request/Network_wan.json` | request | `Network_wan` | `cloud-network/PUT/Network_wan.json` | WAN — cellular (psim) |
-| `request/Network_hotspot.json` | request | `Network_hotspot` | `cloud-network/PUT/Network_hotspot.json` | WiFi Hotspot (uap0) |
-| `response/success.json` | response | `success` | `cloud-network/PUT/success.json` | Empty string on success |
+| `request/Network_wan.json` | request | `Network_wan` | `cloud-network/PUT/Network_wan.json` | `wan0` psim |
+| `request/Network_wan_esim.json` | request | `Network_wan_esim` | `cloud-network/PUT/Network_wan_esim.json` | `wan0` esim |
+| `request/Network_hotspot.json` | request | `Network_hotspot` | `cloud-network/PUT/Network_hotspot.json` | `uap0` |
+| `response/success.json` | response | `success` | `cloud-network/PUT/success.json` | Empty payload on success |
 

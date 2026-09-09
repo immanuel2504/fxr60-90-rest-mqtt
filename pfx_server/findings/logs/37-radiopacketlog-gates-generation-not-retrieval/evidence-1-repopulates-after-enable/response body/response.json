@@ -1,0 +1,4 @@
+{
+  "binary": "<base64 of the gzipped tar - truncated here; the full value was 65201 characters. Decoded and verified, see verification.txt>",
+  "filename": "radioPktLog.tar.gz"
+}

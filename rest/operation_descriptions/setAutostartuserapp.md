@@ -1,16 +1,11 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/autostart` REST endpoint configures whether a user application starts automatically when the reader boots. The application is identified by the `{appname}` path parameter.
+The `PUT /cloud/apps/{appname}/autostart` REST endpoint sets whether a user application starts when the reader boots.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- Whether the application starts automatically on boot through `autostart`
-
-Use this endpoint to:
-
-- Enable autostart for production user apps
-- Disable autostart for test or manual-only apps
-- Standardize boot behavior across a fleet
+- `{appname}` — installed name in the URL
+- `autostart` — `true` or `false`
 
 ## 2. Endpoint Details
 
@@ -23,14 +18,14 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Path Parameter | `appname` (the application to configure) |
+| Path Parameter | `appname` |
 | Required Request Fields | `autostart` |
 
 ## 3. Before You Begin
 
-Decide the desired boot behavior before sending this request.
+Decide the boot behavior. Use the JSON field names below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Application name | The exact `appname`, supplied as the `{appname}` path parameter, as returned by `GET /cloud/apps`. |
-| Autostart flag | `autostart` (boolean): `true` to start the app automatically on boot, or `false` to disable autostart. |
+| `appname` | Installed name from `GET /cloud/apps`. URL path. |
+| `autostart` | `true` to start on boot, or `false` to not. |

@@ -1,6 +1,6 @@
-# Example summary titles
+# Example summary titles — `/cloud/apps/{appname}/uninstall`
 
-Path parameter `appname` only — no request body.
+## PUT response
 
 ### `PUT/success.json`
 

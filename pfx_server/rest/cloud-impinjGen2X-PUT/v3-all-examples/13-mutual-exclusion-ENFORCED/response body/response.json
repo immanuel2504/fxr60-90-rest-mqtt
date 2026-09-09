@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "\"set_impinjGen2X\" Failed to apply. Description: unsuccessful rc response: Failure: Only one Impinj Gen2X feature can be configured at a time (fastID, tagProtect, tagFocus, or tagQuieting)"
+}

@@ -6,9 +6,8 @@ Stable `command_id`: `req-set-eSimConfig`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/eSimConfig_enable.json` | request | `eSimConfig_enable` | `cloud-esimconfig/PUT/eSimConfig_enable.json` | eSimConfig enable |
-| `request/eSimConfig_disable.json` | request | `eSimConfig_disable` | `cloud-esimconfig/PUT/eSimConfig_disable.json` | eSimConfig disable |
-| `request/eSimConfig_add.json` | request | `eSimConfig_add` | `cloud-esimconfig/PUT/eSimConfig_add.json` | eSimConfig add |
-| `request/eSimConfig_delete.json` | request | `eSimConfig_delete` | `cloud-esimconfig/PUT/eSimConfig_delete.json` | eSimConfig delete |
-| `response/success.json` | response | `success` | `—` | Command succeeded |
-
+| `request/enable_profile.json` | request | `enable_profile` | `cloud-esimconfig/PUT/enable_profile.json` | `operation` enable |
+| `request/disable_profile.json` | request | `disable_profile` | `cloud-esimconfig/PUT/disable_profile.json` | `operation` disable |
+| `request/add_profile.json` | request | `add_profile` | `cloud-esimconfig/PUT/add_profile.json` | `operation` add with `activationID` |
+| `request/delete_profile.json` | request | `delete_profile` | `cloud-esimconfig/PUT/delete_profile.json` | `operation` delete |
+| `response/success.json` | response | `success` | `—` | Empty payload on success |

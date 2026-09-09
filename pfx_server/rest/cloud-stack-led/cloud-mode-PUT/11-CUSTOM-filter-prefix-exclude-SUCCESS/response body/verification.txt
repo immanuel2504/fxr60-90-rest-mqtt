@@ -1,0 +1,60 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+CUSTOM 11 - the same filter with operation flipped to exclude
+RESULT: ACCEPTED, HTTP 200 - exact inverse of test 10
+
+    "filter": {"value": "E280", "match": "prefix", "operation": "exclude"}
+
+Only "operation" changed from the previous test.
+
+TAG RESULT over 18s:
+  unique tags  14
+  total reads  14
+  reference tags:
+    e2806894000040017790e471  NOT SEEN
+    e2806894000040017790ac71  NOT SEEN
+
+*** NOT ONE of the 14 tags starts with E280 ***
+
+    41544035a880c80000123bea
+    333311112222333344445555
+    20004035a880c80000123be9
+    30304035a880c80000123bee
+    bedd11112222333344445555
+    30304035a880c80000123beb
+    e2004718bf0064260e52010e
+    30304035a880c80000123bed
+    00011206438dadb0847c0049
+    e2004718be4064260e460112
+    ad721206438da5b0847e0048
+    000512051446c1b6620000e7
+    ad721205148efbb3610000e6
+    e2004718c30064260e92010a
+
+BOTH REFERENCE TAGS CORRECTLY EXCLUDED - they are E280 tags, and this is an
+exclude filter, so their absence is the expected result rather than a read
+failure. That is why having known reference tags matters: without them, "no tags
+seen" and "the right tags were filtered" look identical.
+
+*** THE A/B PROOF ***
+
+                       include E280     exclude E280
+  unique tags          11               14
+  E280 tags present    11 (all)         0 (none)
+  ref ...e471          read             correctly absent
+  ref ...ac71          read             correctly absent
+
+Complementary sets, no overlap, no leakage in either direction. filter.operation
+is correctly implemented for both values.
+
+The exclude run surfaced 14 non-E280 tags - more than the 11 E280 ones - which
+were invisible in the include run. Together the two runs enumerate the whole
+population.

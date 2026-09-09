@@ -9,11 +9,11 @@
 | **Example name** | `default_state` |
 | **Summary title** | `Reader controls LED` |
 
-### `GET/overridden_state.json`
+### `GET/non_default_state.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `overridden_state` |
+| **Example name** | `non_default_state` |
 | **Summary title** | `App controls LED` |
 
 ---

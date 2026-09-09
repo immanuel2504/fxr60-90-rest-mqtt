@@ -1,15 +1,17 @@
 # Example summary titles — `/cloud/networkInterfaces`
 
-### `GET/fxr60.json`
+## GET responses
+
+### `GET/with_uap0.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `fxr60` |
-| **Summary title** | `FXR60 interfaces (no wan0)` |
+| **Example name** | `with_uap0` |
+| **Summary title** | `eth0 mlan0 bnep0 blescan uap0` |
 
-### `GET/fxr90.json`
+### `GET/with_wan0.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `fxr90` |
-| **Summary title** | `FXR90 interfaces (includes wan0)` |
+| **Example name** | `with_wan0` |
+| **Summary title** | `eth0 mlan0 bnep0 wan0` |

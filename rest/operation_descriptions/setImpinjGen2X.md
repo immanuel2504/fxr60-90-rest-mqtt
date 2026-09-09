@@ -42,16 +42,24 @@ Use this endpoint to:
 
 Decide which Gen2X feature to configure before sending this request. Send **exactly one** of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting`. An empty body or any combination of two or more features is rejected. To apply the saved configuration during inventory, send `PUT /cloud/start` with `applyImpinjGen2X: true`. After `PUT /cloud/stop`, send the flag again on the next start — apply is per inventory session.
 
-**Prerequisite:** The target tag must have a valid 32-bit Access Password configured before using Protected Mode operations. The password parameter used in the TagProtect APIs is the same Access Password stored on the tag. These APIs do not create or assign a new password.
+### Access Password for TagProtect
 
-Write that password first with `PUT /cloud/mode` WRITE to the RESERVED bank, words 2–3. Then send the same 8-character hex value in `tagProtect.password`.
+`PUT /cloud/impinjGen2X` does **not** write a password onto the tag. `tagProtect.password` must be the 32-bit Access Password already stored in the tag's Gen2 `RESERVED` bank (words 2–3).
+
+To store a password on the tag:
+
+1. `PUT /cloud/mode` — WRITE 8 hex characters to `RESERVED` at `wordPointer: 2`. Add a `filter` for that tag's EPC so other tags are not written.
+2. `PUT /cloud/start` — inventory must run for the write to take effect.
+3. `PUT /cloud/impinjGen2X` — send the same 8 characters in `tagProtect.password`.
+
+Do not use `00000000` — Gen2 treats that as no password, so Protected Mode cannot apply. A password mismatch still returns HTTP 200 and leaves the tag unprotected.
 
 | What You Need | Details |
 |---|---|
 | Feature selection | Exactly one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` per request. An empty body or two features together is rejected. `tagProtect` cannot be combined with the others. |
 | FastID | Decide whether to enable or disable TID embedding. |
 | TagProtect action | Choose one of: `enableTagProtection` (protect a specific tag), `disableTagProtection` (remove protection from a tag), `enableTagVisibility` (allow reading protected tags), `disableTagVisibility` (block reading protected tags). |
-| TagProtect password | An 8-character hex string (32-bit) is required for all TagProtect actions. This is the Access Password already stored on the tag. These APIs do not create or assign a new password. |
+| TagProtect password | Exactly 8 hex characters. Must match the Access Password already on the tag (`RESERVED` words 2–3). Not `00000000`. TagProtect does not create this password — write it first with `PUT /cloud/mode`. A mismatch returns 200 and does not protect the tag. |
 | TagProtect tag EPC | `tagID` (hex EPC) is required for `enableTagProtection` and `disableTagProtection`. It must be omitted for `enableTagVisibility` and `disableTagVisibility`. |
 | TagFocus | Whether to enable or disable the feature. TagFocus targets session S1. |
 | TagQuieting | For basic: provide `action` (`quiet`/`unquiet`) and the `tagIDs` EPC array (maximum 31 tag IDs per request). For advanced: provide the `preSelect` array, `tagQuietMasks`, `target`, and `stateAwareAction`. |
@@ -78,7 +86,7 @@ TagProtect operations either lock/unlock individual tags or temporarily allow th
 
 | Action | What It Does | Required Fields | Key Constraints |
 |---|---|---|---|
-| `enableTagProtection` | Permanently protects a tag; the tag becomes invisible to standard reads until unprotected. | `password`, `tagID` | `password` must be exactly 8 hex characters. Optional `enableShortRange` reduces read range during protection. If omitted, the reader stores `false`. |
+| `enableTagProtection` | Permanently protects a tag; the tag becomes invisible to standard reads until unprotected. Protection lives on the tag, not in reader filtering. | `password`, `tagID` | `password` must match the tag Access Password (8 hex, not `00000000`). Optional `enableShortRange` reduces read range during protection. If omitted, the reader stores `false`. A wrong password still returns 200 and the tag stays visible. |
 | `disableTagProtection` | Removes protection from a previously protected tag, restoring normal visibility. | `password`, `tagID` | `password` must match the tag's existing access password exactly. |
 | `enableTagVisibility` | Temporarily allows the reader to read protected tags during this session. Does not change the tag's protection state. | `password` | Reader-scoped; affects all protected tags in field. |
 | `disableTagVisibility` | Restores the default behavior where protected tags are hidden from the reader. | `password` | Reverts the effect of `enableTagVisibility`. |
@@ -121,17 +129,19 @@ Advanced quieting uses Gen2 select pre-conditions to silence tags based on memor
 
 | Field | What It Controls |
 |---|---|
-| `enabled: true` | Reader returns EPC + TID together in a single read, reducing total operations. |
-| `enabled: false` | Reverts to standard EPC-only reads. |
+| `enabled: true` | On Gen2X-capable tags, inventory events use `format: "fastID"` and `idHex` is 48 hex characters (24 EPC + 24 TID). There is no separate `tid` field. Non-Gen2X tags stay `format: "epc"` with EPC-only `idHex`. |
+| `enabled: false` | Standard EPC-only reads (`format: "epc"`). |
 
-**Use FastID when:** Your application needs TID for every tag (e.g., authentication, chip-level traceability) and you want to avoid the extra round-trip of a separate TID read.
+**Use FastID when:** Your application needs TID for every tag (e.g., authentication, chip-level traceability) and you want to avoid the extra round-trip of a separate TID read. Parse `idHex` by length, or key off `format == "fastID"`. A client that treats `idHex` as always the EPC will read a 48-character value as one long EPC.
 
 ### `tagFocus`
 
 | Field | What It Controls |
 |---|---|
-| `enabled: true` | Once a tag is read, it is silenced for the rest of the inventory cycle. The reader focuses only on new tags entering the field. |
+| `enabled: true` | Once a tag is read, it is silenced for the rest of the inventory cycle. The reader focuses only on new tags entering the field. TagFocus targets session S1. |
 | `enabled: false` | Standard inventory behavior; tags can be reported multiple times. |
+
+To measure TagFocus, set `reportFilter.duration` to `0` on the mode. The reader's default report filter de-duplicates to one event per tag, which hides the repeat-read drop.
 
 **Use TagFocus when:** You operate portals, conveyors, or other scenarios with many duplicate reads of the same tag set and want unique-tag reporting.
 

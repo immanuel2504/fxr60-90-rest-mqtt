@@ -1,0 +1,26 @@
+radioPacketLog GET - behaviour when the log is empty
+RESULT: HTTP 422 {"code":1,"message":"No radio packet logs available"}
+
+Taken immediately after DELETE /cloud/logs/radioPacketLog succeeded.
+
+*** INCONSISTENT WITH THE SIBLING ENDPOINT ***
+
+The same situation on syslog behaves differently:
+
+  after DELETE /cloud/logs/syslog:
+    GET /cloud/logs/syslog          -> HTTP 200, 396 bytes,
+                                       archive with a 346-byte "messages" member
+  after DELETE /cloud/logs/radioPacketLog:
+    GET /cloud/logs/radioPacketLog  -> HTTP 422, "No radio packet logs available"
+
+Two endpoints in the same family, both freshly purged, one returns 200 with a
+near-empty archive and the other returns a 4xx error.
+
+An empty log is a legitimate, expected state - especially straight after a purge
+this same API offers. Treating it as a client error (422) means a caller polling
+for logs must special-case this message to distinguish "nothing to collect" from
+a real failure. HTTP 200 with an empty archive, or 204 No Content, would say the
+same thing without ambiguity.
+
+The message itself is clear and specific, which is good. It is the status code and
+the inconsistency with syslog that are the issue.

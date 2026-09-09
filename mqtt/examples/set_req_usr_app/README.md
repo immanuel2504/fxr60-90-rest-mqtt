@@ -2,12 +2,11 @@
 
 REST: `PUT /cloud/apps/{appname}/pass-through` → `cloud-apps-appname-pass-through/`
 
+MQTT command key: `set_reqToUserapp`
+
 Stable `command_id`: `req-set-req-usr-app`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/reqToUserapp.json` | request | `reqToUserapp` | `cloud-apps-appname-pass-through/PUT/reqToUserapp.json` |  |
-| `request/reqToUserapp_command.json` | request | `reqToUserapp_command` | `cloud-apps-appname-pass-through/PUT/reqToUserapp_command.json` | Command message variant |
-| `request/reqToUserapp_reload.json` | request | `reqToUserapp_reload` | `cloud-apps-appname-pass-through/PUT/reqToUserapp_reload.json` | Alternate userapp payload |
-| `response/app_reply.json` | response | `app_reply` | `cloud-apps-appname-pass-through/PUT/app_reply.json` | App-defined response shape |
-
+| `request/pass_through.json` | request | `pass_through` | `cloud-apps-appname-pass-through/PUT/pass_through.json` | `userapp` `mylogger` with `command.message` |
+| `response/app_reply.json` | response | `app_reply` | `—` | Application-defined reply |

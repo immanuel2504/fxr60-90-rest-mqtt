@@ -1,0 +1,19 @@
+GET /cloud/impinjGen2X  -- never-configured reader
+====================================================
+Reader : 10.233.48.36 (FXR60)
+Date   : 2026-09-05
+Status : 200
+Body   : a single 0x0a byte (bare newline) -- 1 byte total
+
+  $ xxd response.txt
+  00000000: 0a                                       .
+
+This is NOT an error and NOT a bug. It is what the endpoint returns when no
+Impinj Gen2X feature has ever been configured on the reader.
+
+Note the response is NOT valid JSON. A client that calls json.loads() on this
+body raises "Expecting value: line 1 column 1". The spec documents the 200
+response as an impinjGen2X object, so a bare newline is undocumented.
+
+Superseded by ../02-GET-after-configured-JSON/ which shows the same endpoint
+returning proper JSON once a feature has been set.

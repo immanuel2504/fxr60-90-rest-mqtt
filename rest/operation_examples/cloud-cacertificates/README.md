@@ -1,44 +1,26 @@
 # `/cloud/caCertificates`
 
-- **GET** - List installed CA certificates (`getCACertificates`)
+- **GET** — List CA certificates (`get_CACertificates`)
+- **PUT** — Install a CA certificate (`set_InstallCACertificate`)
+- **DELETE** — Delete a CA certificate (`del_CACertificate`)
 
-1 example(s) exported from the spec, 0 proposed.
+## GET examples
 
-## Method folders
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/empty_list.json` | response 200 | `empty_list` | No CA certificates |
+| `GET/ca_list.json` | response 200 | `ca_list` | CA names with `.crt` |
 
-Examples are split by HTTP method:
+## PUT examples
 
-```
-cloud-cacertificates/
-  GET/     # GET request/response examples
-  PUT/     # PUT request/response examples
-  DELETE/  # when present
-```
-| File | Method | Direction | Example name | Origin | Valid | Summary |
-|---|---|---|---|---|---|---|
-| `GET/CACertificates.json` | GET | response 200 | `CACertificates` | in-spec | yes |  |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `PUT/install_ca.json` | request | `install_ca` | Install a CA (`name` + PEM `content`) |
+| `PUT/success.json` | response 200 | `success` | Empty string on success |
 
-## Trying these against a reader
+## DELETE examples
 
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X GET "https://$READER/cloud/caCertificates" \
-  -H "Authorization: Bearer $TOKEN"
-
-```
-
-## Folding a file back into the spec
-
-Add under the operation `examples:` map in `FXR90-rest-api.yaml`:
-
-```yaml
-      examples:
-        <example_name>:
-          summary: <summary from the table>
-          value:
-            # contents of the .json file
-```
-
-Then run `python ../validate_pack.py cloud-cacertificates`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `DELETE/delete_ca.json` | request | `delete_ca` | Delete by install name, without `.crt` |
+| `DELETE/success.json` | response 200 | `success` | Empty string on success |

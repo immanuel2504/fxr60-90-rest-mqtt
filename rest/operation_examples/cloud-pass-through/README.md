@@ -7,5 +7,6 @@
 | File | Direction | Example name | Summary |
 |---|---|---|---|
 | `PUT/status.json` | request | `status` | RC status command |
-| `PUT/passthru.json` | request | `passthru` | RC mode command |
-| `PUT/success.json` | response 200 | `success` | RC status reply |
+| `PUT/mode.json` | request | `mode` | RC mode command |
+| `PUT/status_success.json` | response 200 | `status_success` | RC status reply |
+| `PUT/mode_success.json` | response 200 | `mode_success` | RC mode reply |

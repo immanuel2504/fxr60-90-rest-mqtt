@@ -2,11 +2,12 @@
 
 REST: `PUT /cloud/certificates/{certname}` → `cloud-certificates-certname/`
 
+MQTT command key: `set_refreshCertificate`
+
 Stable `command_id`: `req-refresh-cert`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/refreshCertificate_server.json` | request | `refreshCertificate_server` | `cloud-certificates-certname/PUT/refreshCertificate_server.json` |  |
-| `request/refreshCertificate_client.json` | request | `refreshCertificate_client` | `cloud-certificates-certname/PUT/refreshCertificate_client.json` | Refresh client cert |
-| `response/success.json` | response | `success` | `—` | Command succeeded |
-
+| `request/refresh_client.json` | request | `refresh_client` | `cloud-certificates-certname/PUT/refresh_client.json` | Refresh client `mqtt-test-cert-1` |
+| `request/refresh_server.json` | request | `refresh_server` | `cloud-certificates-certname/PUT/refresh_server.json` | Refresh `Server` |
+| `response/success.json` | response | `success` | `—` | Empty payload on success |

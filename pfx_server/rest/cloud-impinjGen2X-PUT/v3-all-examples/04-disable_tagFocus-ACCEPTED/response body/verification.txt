@@ -1,0 +1,12 @@
+tagFocus 04 - spec example "disable_tagFocus"
+RESULT: HTTP 200, stored
+
+  stored: {"tagFocus":{"enabled":false}}
+  after start: status.impinjGen2X = {"feature":"tagFocus","isActive":true}
+
+Same status semantics as fastID 02 - feature names the configured object, not
+whether it is enabled.
+
+Note Zebra's MAUI SDK documents that disabling TagFocus when it was never set
+raises IllegalStateException. The REST API has no such behaviour: this returned
+200 from a state where tagFocus had never been enabled in that session.

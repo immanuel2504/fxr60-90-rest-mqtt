@@ -1,0 +1,83 @@
+{
+  "CONVEYOR": {
+    "events": 24,
+    "keys": [
+      "antenna",
+      "eventNum",
+      "format",
+      "idHex"
+    ],
+    "sample": {
+      "data": {
+        "antenna": 1,
+        "eventNum": 5113,
+        "format": "epc",
+        "idHex": "e2806894000040017790e471"
+      },
+      "timestamp": "2026-09-07T12:51:29.949+0000",
+      "type": "CONVEYOR"
+    }
+  },
+  "CUSTOM": {
+    "events": 21,
+    "keys": [
+      "eventNum",
+      "format",
+      "idHex"
+    ],
+    "sample": {
+      "data": {
+        "eventNum": 5137,
+        "format": "epc",
+        "idHex": "e2806894000040017790e471"
+      },
+      "timestamp": "2026-09-07T12:51:55.441+0000",
+      "type": "CUSTOM"
+    }
+  },
+  "INVENTORY": {
+    "events": 54,
+    "keys": [
+      "antenna",
+      "eventNum",
+      "format",
+      "idHex",
+      "peakRssi",
+      "reads"
+    ],
+    "sample": {
+      "data": {
+        "antenna": 1,
+        "eventNum": 5059,
+        "format": "epc",
+        "idHex": "e2806894000040017790e471",
+        "peakRssi": -37,
+        "reads": 1
+      },
+      "timestamp": "2026-09-07T12:50:55.513+0000",
+      "type": "INVENTORY"
+    }
+  },
+  "PORTAL": {
+    "events": 0,
+    "keys": [],
+    "sample": null
+  },
+  "SIMPLE": {
+    "events": 23,
+    "keys": [
+      "eventNum",
+      "format",
+      "idHex"
+    ],
+    "sample": {
+      "data": {
+        "eventNum": 5036,
+        "format": "epc",
+        "idHex": "e2806894000040017790e471"
+      },
+      "timestamp": "2026-09-07T12:50:36.194+0000",
+      "type": "SIMPLE"
+    }
+  }
+}

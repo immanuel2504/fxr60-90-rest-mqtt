@@ -1,8 +1,7 @@
 # Schema diffs — discuss and finalize
 
 **Started:** 26 August 2026  
-**Updated:** 6 September 2026 — checked developer replies in `FXR-API-Findings-For-Developer_2026-09-feedback .xlsx` against `rest/openAPISpec 11.yaml`.  
-**Working note for decisions.** Per-endpoint comparison files stay in this folder (trees, examples, field maps). Latest developer spec is `rest/openAPISpec 11.yaml`. Do not edit the developer YAML files.
+**Updated:** 8 September 2026 — spec 12 applied the GPI 1–4 and `READERLOCATION` rows. Latest developer spec is `rest/openAPISpec 12.yaml`. Do not edit the developer YAML files.
 
 See [SPEC11-FINDINGS-CHECK.md](SPEC11-FINDINGS-CHECK.md) for the 22-row check (what they said vs what is in spec 11 vs what we updated).
 
@@ -12,7 +11,7 @@ See [SPEC11-FINDINGS-CHECK.md](SPEC11-FINDINGS-CHECK.md) for the 22-row check (w
 
 Excel to share: [REST-schema-questions-for-developer_2026-08-26.xlsx](REST-schema-questions-for-developer_2026-08-26.xlsx) — 14 questions. Developer replies in column **I**.
 
-### GET `/cloud/mode` (and PUT `/cloud/mode` for ports + `READER_LOCATION`)
+### GET `/cloud/mode` (and PUT `/cloud/mode` for ports + `READERLOCATION`)
 
 > On GET `/cloud/mode`, `{ "verbose": true }` works on the reader.  
 > Your spec does not list a request body.  
@@ -25,6 +24,8 @@ Excel to share: [REST-schema-questions-for-developer_2026-08-26.xlsx](REST-schem
 >  
 > Your spec does not list `READER_LOCATION`.  
 > Does GET `/cloud/mode` and PUT `/cloud/mode` support `READER_LOCATION` in `tagMetaData`?
+
+**Spec 12:** GPI ports are now 1–4. Tag metadata location is **`READERLOCATION`** (not `READER_LOCATION`). `verbose` is still the live-tested GET body.
 
 ### PUT `/cloud/network` (and GET `/cloud/network` response spelling)
 
@@ -120,7 +121,7 @@ MQTT: `get_mode`
 - [x] Final for our docs
 - [ ] Developer reply
 
-### 1b. GPI ports 1–4 vs spec max 2
+### 1b. GPI ports 1–4 vs spec max 2 — **Final (spec 12)**
 
 On GET/PUT `/cloud/mode`, when inventory starts or stops on a GPI:
 
@@ -128,33 +129,31 @@ On GET/PUT `/cloud/mode`, when inventory starts or stops on a GPI:
 |---|---|
 | GET `/cloud/gpi` | 1, 2, 3, 4 |
 | `readerCapabilities` example | `numGPIs: 4` |
-| Developer mode GPI | only 1 or 2 |
+| Developer mode GPI (spec 12) | **1, 2, 3, 4** |
 | Our docs | 1–4 |
 
-Until they answer: **keep 1–4**.
+Spec 12 updated `gpi.v1.port` to `minimum: 1`, `maximum: 4`, `enum: [1, 2, 3, 4]`. Docs match.
 
-- [ ] Developer reply
-- [ ] Final
+- [x] Developer reply — spec 12
+- [x] **Final**
 
-### 1c. `READER_LOCATION` in `tagMetaData`
+### 1c. `READERLOCATION` in `tagMetaData` — **Final (spec 12)**
 
-Our docs include `READER_LOCATION`. Developer spec does not.
+Spec 12 added **`READERLOCATION`** (no underscore). Live firmware rejected `READER_LOCATION`. Docs use **`READERLOCATION`**.
 
-Until they answer: **keep `READER_LOCATION`**.
+- [x] Developer reply — spec 12
+- [x] **Final**
 
-- [ ] Developer reply
-- [ ] Final
-
-PUT `/cloud/mode` is the same 1b and 1c questions. **Keep docs** (ports 1–4 and `READER_LOCATION`) until the developer replies.
+PUT `/cloud/mode` is the same 1b and 1c. **Final** (ports 1–4 and `READERLOCATION`).
 
 ---
 
-## 14. PUT `/cloud/mode` — waiting on developer
+## 14. PUT `/cloud/mode` — **Final (spec 12)**
 
-Same as 1b and 1c. No extra PUT-only fields.
+Same as 1b and 1c. GPI ports 1–4. Tag metadata location is `READERLOCATION`.
 
-- [ ] Developer reply
-- [ ] Final
+- [x] Developer reply — spec 12
+- [x] **Final**
 
 ---
 

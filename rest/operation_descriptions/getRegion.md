@@ -1,17 +1,16 @@
 ## 1. Description
 
-The `GET /cloud/region` REST endpoint retrieves the reader's currently configured RF region and the regulatory parameters in effect.
+The `GET /cloud/region` REST endpoint retrieves the active RF region and regulatory settings.
 
 This endpoint returns:
 
-- The active region code and country name
-- The regulatory standard currently applied
-- Listen Before Talk (LBT) enable state
-- Frequency hopping state
-- Enabled channel list for the active region
-- Minimum and maximum transmit power supported
-
-No request body is required.
+- `country` — country name
+- `region` — region code
+- `regulatoryStandard` — active standard
+- `lbtEnabled` — Listen-Before-Talk
+- `FrequencyHopping` — frequency hopping
+- `channelData` — channel frequencies in kHz
+- `minTxPowerSupported`, `maxTxPowerSupported` — transmit power range
 
 ## 2. Endpoint Details
 
@@ -29,18 +28,5 @@ No request body is required.
 
 Use `GET /cloud/region` to:
 
-- Confirm the reader is set to the correct regulatory region before deployment
-- Verify LBT and channel configuration before starting inventory
-- Audit minimum and maximum transmit power for the region
-- Validate region settings after deploying to a new country
-
-Key fields to check in the response:
-
-| Field | What to Check | Why It Matters |
-|---|---|---|
-| `country` | Is the correct country configured? | The reader must match the regulatory region of its deployment location. |
-| `regulatoryStandard` | Which standard is applied (e.g., `CANADA_FCC_15`)? | Determines which transmission rules apply - channels, power limits, and LBT behavior. |
-| `lbtEnabled` | Is Listen Before Talk active? | Required in some regions (e.g., ETSI). Affects when the radio may transmit. |
-| `FrequencyHopping` | Is frequency hopping enabled? | Mandatory in most regions. Confirms the radio is operating compliantly. |
-| `maxTxPowerSupported` | What is the allowed power ceiling? | Use this to validate transmit power settings before starting inventory. |
-| `channelData` | How many channels are available? | The channel list defines where the reader can operate within the region. |
+- Read `country` and `regulatoryStandard` after `PUT /cloud/region`
+- Confirm LBT, hopping, channels, and power limits

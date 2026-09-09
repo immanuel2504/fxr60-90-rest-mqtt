@@ -1,0 +1,26 @@
+tagProtect 09 - spec example "protect_tag"
+RESULT: HTTP 200, stored verbatim, activates
+
+  stored: {"tagProtect":{"action":"enableTagProtection","enableShortRange":true,
+           "password":"77777777","tagID":"e2801191a5030069073b426d"}}
+  after start: status.impinjGen2X = {"feature":"tagProtect","isActive":true}
+
+enableShortRange:true round-trips correctly (contrast test 10, where omitting it
+yields a false default).
+
+The spec's tagID is not a tag in our field, so this test establishes acceptance
+and storage only.
+
+THE FUNCTIONAL TESTING OF tagProtect IS SEPARATE AND MORE INVOLVED - it requires
+writing a 32-bit access password into the target tag's RESERVED bank first. That
+work, including the undocumented password procedure and an honest account of
+what could and could not be concluded, is in:
+
+  ../../TAG_PROTECT_REPORT.md
+  ../../WHAT_WE_DID.md
+
+Summary of that result: the full documented flow was followed with a
+read-back-verified password on a genuine Impinj Monza X-2K, the reader reported
+feature=tagProtect isActive=true, and no protection effect was observable - but
+the test could not have detected success, because visibility was measured from
+the reader holding the password. Cause not isolated.

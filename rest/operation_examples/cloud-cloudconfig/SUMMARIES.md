@@ -40,28 +40,28 @@
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_azure_all_channels` |
-| **Summary title** | `All channels over Azure IoT Hub (not live-tested)` |
+| **Summary title** | `All channels over Azure IoT Hub` |
 
 ### `PUT/data_tcpip_server.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_tcpip_server` |
-| **Summary title** | `TCP/IP server (reader listens)` |
+| **Summary title** | `TCP/IP server` |
 
 ### `PUT/data_websocket.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_websocket` |
-| **Summary title** | `WebSocket (accepted)` |
+| **Summary title** | `WebSocket` |
 
 ### `PUT/data_http_post.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `data_http_post` |
-| **Summary title** | `HTTP POST (tags delivered)` |
+| **Summary title** | `HTTP POST` |
 
 ### `PUT/management_cmd_mqtt.json`
 

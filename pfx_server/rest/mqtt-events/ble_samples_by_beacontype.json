@@ -1,0 +1,273 @@
+{
+  "EDDYSTONE_TLM": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "CF:C7:E6:45:DE:F7",
+      "AddressType": "random",
+      "Alias": "CF-C7-E6-45-DE-F7",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "Paired": false,
+      "RSSI": -66,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [
+        "0000feaa-0000-1000-8000-00805f9b34fb"
+      ],
+      "beaconType": "EDDYSTONE_TLM",
+      "eddystone": {
+        "advPduCount": 27432,
+        "batteryVoltage": 3300,
+        "frameType": "TLM",
+        "temperature": -5.0,
+        "timeSincePowerOn": 918381,
+        "version": 0
+      }
+    },
+    "eventNum": 1900,
+    "timestamp": "2026-09-07T12:53:07.484+00:00",
+    "type": "BLE_DATA"
+  },
+  "GENERIC_BLE": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "0B:34:82:E1:91:8B",
+      "AddressType": "random",
+      "Alias": "0B-34-82-E1-91-8B",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "ManufacturerData": {
+        "6": [
+          1,
+          9,
+          32,
+          34,
+          21,
+          59,
+          134,
+          58,
+          206,
+          140,
+          86,
+          16,
+          21,
+          4,
+          29,
+          62,
+          154,
+          112,
+          195,
+          168,
+          36,
+          56,
+          211,
+          253,
+          0,
+          15,
+          64
+        ]
+      },
+      "Paired": false,
+      "RSSI": -53,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [],
+      "beaconType": "GENERIC_BLE"
+    },
+    "eventNum": 1902,
+    "timestamp": "2026-09-07T12:53:07.519+00:00",
+    "type": "BLE_DATA"
+  },
+  "IBEACON": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "D0:B5:44:6B:47:82",
+      "AddressType": "random",
+      "Alias": "D0-B5-44-6B-47-82",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "ManufacturerData": {
+        "76": [
+          2,
+          21,
+          178,
+          189,
+          40,
+          18,
+          115,
+          81,
+          68,
+          64,
+          73,
+          244,
+          91,
+          211,
+          102,
+          109,
+          202,
+          203,
+          131,
+          12,
+          170,
+          73,
+          182
+        ]
+      },
+      "Paired": false,
+      "RSSI": -70,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [],
+      "beaconType": "IBEACON",
+      "iBeacon": {
+        "major": 33548,
+        "minor": 43593,
+        "txPower": -74,
+        "uuid": "B2BD2812-7351-4440-49F4-5BD3666DCACB"
+      }
+    },
+    "eventNum": 1905,
+    "timestamp": "2026-09-07T12:53:07.549+00:00",
+    "type": "BLE_DATA"
+  },
+  "EDDYSTONE_URL": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "CE:69:03:63:BF:7F",
+      "AddressType": "random",
+      "Alias": "CE-69-03-63-BF-7F",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "Paired": false,
+      "RSSI": -69,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [
+        "0000feaa-0000-1000-8000-00805f9b34fb"
+      ],
+      "beaconType": "EDDYSTONE_URL",
+      "eddystone": {
+        "frameType": "URL",
+        "txPower": -70,
+        "url": "https://www.zebra.com"
+      }
+    },
+    "eventNum": 1909,
+    "timestamp": "2026-09-07T12:53:07.628+00:00",
+    "type": "BLE_DATA"
+  },
+  "EDDYSTONE_UID": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "DE:CD:08:1E:AD:F7",
+      "AddressType": "random",
+      "Alias": "DE-CD-08-1E-AD-F7",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "Paired": false,
+      "RSSI": -69,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [
+        "0000feaa-0000-1000-8000-00805f9b34fb"
+      ],
+      "beaconType": "EDDYSTONE_UID",
+      "eddystone": {
+        "frameType": "UID",
+        "instance": "748CB4D71BB2",
+        "namespace": "C11CBCB05AFEA3535AB1",
+        "txPower": -50
+      }
+    },
+    "eventNum": 1910,
+    "timestamp": "2026-09-07T12:53:07.642+00:00",
+    "type": "BLE_DATA"
+  },
+  "ALTBEACON": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "EE:BD:65:20:15:AD",
+      "AddressType": "random",
+      "Alias": "EE-BD-65-20-15-AD",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "ManufacturerData": {
+        "55048": [
+          190,
+          172,
+          192,
+          1,
+          206,
+          15,
+          255,
+          109,
+          173,
+          215,
+          156,
+          128,
+          102,
+          214,
+          164,
+          167,
+          251,
+          196,
+          19,
+          226,
+          113,
+          135,
+          189,
+          0
+        ]
+      },
+      "Paired": false,
+      "RSSI": -77,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [],
+      "altBeacon": {
+        "beaconId": "C001CE0F-FF6D-ADD7-9C80-66D6A4A7FBC4",
+        "major": 5090,
+        "mfgId": "D708",
+        "minor": 29063,
+        "refRssi": -67
+      },
+      "beaconType": "ALTBEACON"
+    },
+    "eventNum": 1913,
+    "timestamp": "2026-09-07T12:53:07.680+00:00",
+    "type": "BLE_DATA"
+  },
+  "EDDYSTONE_EID": {
+    "data": {
+      "Adapter": "/org/bluez/hci0",
+      "Address": "F1:7E:11:DA:86:10",
+      "AddressType": "random",
+      "Alias": "F1-7E-11-DA-86-10",
+      "Blocked": false,
+      "Connected": false,
+      "LegacyPairing": false,
+      "Paired": false,
+      "RSSI": -67,
+      "ServicesResolved": false,
+      "Trusted": false,
+      "UUIDs": [
+        "0000feaa-0000-1000-8000-00805f9b34fb"
+      ],
+      "beaconType": "EDDYSTONE_EID",
+      "eddystone": {
+        "ephemeralId": "D8BCEC3707F08207",
+        "frameType": "EID",
+        "txPower": -59
+      }
+    },
+    "eventNum": 1914,
+    "timestamp": "2026-09-07T12:53:07.689+00:00",
+    "type": "BLE_DATA"
+  }
+}

@@ -484,55 +484,52 @@ def flow_ca_certificates(session, base, args, spec) -> list[dict]:
 
     if not args.pem:
         steps.append({"step": "install CA certificate", "method": "PUT",
-                      "path": f"/cloud/caCertificates/{name}", "status": None,
+                      "path": "/cloud/caCertificates", "status": None,
                       "ms": None, "verdict": "SKIP", "response_preview": None,
-                      "notes": ["no --pem supplied; the PEM in the spec examples is "
-                                "placeholder text and will not install"], "parsed": None})
+                      "notes": ["no --pem supplied; use a real PEM (the old spec example is not a valid certificate)"], "parsed": None})
         return finish()
 
     with open(args.pem, encoding="utf-8") as fh:
         pem = fh.read()
     if "BEGIN CERTIFICATE" not in pem:
         steps.append({"step": "install CA certificate", "method": "PUT",
-                      "path": f"/cloud/caCertificates/{name}", "status": None,
+                      "path": "/cloud/caCertificates", "status": None,
                       "ms": None, "verdict": "SKIP", "response_preview": None,
                       "notes": [f"{args.pem} does not look like a PEM certificate"],
                       "parsed": None})
         return finish()
 
-    # The spec marks only `content` as required and says `name` is MQTT-only,
-    # so send the path-parameter form first, then retry with `name` in the body.
-    install = record(f"install CA certificate '{name}' (content only)", "PUT",
-                     f"/cloud/caCertificates/{name}", json={"content": pem})
-    if install["verdict"] == "FAIL":
-        install["notes"].append("retrying with `name` included in the body")
-        record(f"install CA certificate '{name}' (name + content)", "PUT",
-               f"/cloud/caCertificates/{name}",
-               json={"name": name, "content": pem})
+    # Collection path with name in the body. `{caname}` returns 404 on 5.0.7.
+    # GET lists names with a `.crt` suffix; DELETE must use the install name without it.
+    install = record(f"install CA certificate '{name}'", "PUT",
+                     "/cloud/caCertificates", json={"name": name, "content": pem})
 
     after = record("list CA certificates (after install)", "GET", "/cloud/caCertificates")
-    if isinstance(after.get("parsed"), list):
-        if name in after["parsed"]:
-            after["notes"].append(f"'{name}' is present — install confirmed")
+    listed = after.get("parsed")
+    listed_name = f"{name}.crt"
+    if isinstance(listed, list):
+        if listed_name in listed or name in listed:
+            after["notes"].append(f"'{listed_name}' is present — install confirmed")
         else:
             after["verdict"] = "FAIL"
             after["notes"].append(
-                f"'{name}' absent after a successful install call — the reader "
+                f"'{listed_name}' absent after a successful install call — the reader "
                 "accepted the request but did not persist the certificate, or it "
                 "stored it under a different name")
 
     if args.keep:
         steps.append({"step": "delete CA certificate", "method": "DELETE",
-                      "path": f"/cloud/caCertificates/{name}", "status": None,
+                      "path": "/cloud/caCertificates", "status": None,
                       "ms": None, "verdict": "SKIP", "response_preview": None,
                       "notes": ["--keep set; leaving the certificate installed"],
                       "parsed": None})
         return finish()
 
-    record(f"delete CA certificate '{name}'", "DELETE", f"/cloud/caCertificates/{name}")
+    record(f"delete CA certificate '{name}'", "DELETE", "/cloud/caCertificates",
+           json={"name": name})
     final = record("list CA certificates (after delete)", "GET", "/cloud/caCertificates")
     if isinstance(final.get("parsed"), list):
-        if name in final["parsed"]:
+        if listed_name in final["parsed"] or name in final["parsed"]:
             final["verdict"] = "FAIL"
             final["notes"].append(f"'{name}' still present after DELETE")
         else:

@@ -6,7 +6,7 @@ Stable `command_id`: `req-set-timeZone`
 
 | File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/time_zone.json` | request | `time_zone` | `cloud-timezone/PUT/time_zone.json` | Set time zone UTC |
-| `response/success.json` | response | `success` | `—` | Command succeeded |
-
-NEED LIVE TEST: short PUT name vs long GET display string.
+| `request/utc.json` | request | `utc` | `cloud-timezone/PUT/utc.json` | Set `UTC` |
+| `request/kolkata.json` | request | `kolkata` | `cloud-timezone/PUT/kolkata.json` | Set `Kolkata` |
+| `request/pacific.json` | request | `pacific` | `cloud-timezone/PUT/pacific.json` | Set `Pacific Time (US & Canada)` |
+| `response/success.json` | response | `success` | `—` | Empty payload on success |

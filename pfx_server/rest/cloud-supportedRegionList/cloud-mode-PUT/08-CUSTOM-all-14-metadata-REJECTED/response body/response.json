@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "\"set_mode\" Failed to apply. Description: unsuccessful rc response: Failure: tagMetaData value (READER_LOCATION) not recognized"
+}

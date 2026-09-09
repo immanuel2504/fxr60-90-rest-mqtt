@@ -1,0 +1,10 @@
+app-led 01 - spec example "app_led": amber, flashing, 60 seconds
+RESULT: accepted, HTTP 200, empty body
+
+GET /cloud/app-led before: {"status":"DEFAULT"}
+GET /cloud/app-led after:  {"status":"NON_DEFAULT"}
+
+The GET only reports DEFAULT / NON_DEFAULT. It does NOT return the colour, the
+flash flag or the remaining duration, so the only thing verifiable over the API
+is that *some* non-default LED state is active. Which colour is actually lit
+cannot be confirmed without physical access to the reader.

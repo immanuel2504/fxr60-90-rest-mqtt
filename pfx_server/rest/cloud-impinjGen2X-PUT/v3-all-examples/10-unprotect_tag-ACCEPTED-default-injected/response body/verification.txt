@@ -1,0 +1,18 @@
+tagProtect 10 - spec example "unprotect_tag"
+RESULT: HTTP 200, stored - with a field the request did not contain
+
+  sent:   {"tagProtect":{"action":"disableTagProtection","password":"77777777",
+           "tagID":"e2801191a5030069073b426d"}}
+  stored: {"tagProtect":{"action":"disableTagProtection","enableShortRange":false,
+           "password":"77777777","tagID":"e2801191a5030069073b426d"}}
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^ not sent
+
+FINDING: the reader INJECTS enableShortRange:false when the field is omitted.
+
+Harmless here, and arguably a sensible default. But worth documenting, because a
+client doing read-modify-write on this config will see a field it never set, and
+a client comparing sent-vs-stored to confirm a write will see a spurious
+difference. The schema does not declare a default for enableShortRange.
+
+Same injection observed on tests 11 and 12 (the visibility actions), so it
+applies to every tagProtect action, not just this one.

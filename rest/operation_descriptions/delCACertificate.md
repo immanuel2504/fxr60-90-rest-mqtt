@@ -1,12 +1,10 @@
 ## 1. Description
 
-The `DELETE /cloud/caCertificates/{caname}` REST endpoint removes an installed CA (Certificate Authority) root certificate from the reader. When you call this endpoint, the CA certificate identified by the `{caname}` path parameter is permanently deleted from the reader's CA certificate store.
+The `DELETE /cloud/caCertificates` REST endpoint removes an installed CA certificate.
 
-Use this endpoint to:
+This endpoint requires:
 
-- Remove a CA certificate that is no longer trusted or has been compromised
-- Clean up the CA store before installing a replacement with `PUT /cloud/caCertificates/{caname}`
-- Rotate PKI trust anchors on the reader as part of a certificate lifecycle policy
+- `name` — the name you sent at install, without `.crt`
 
 ## 2. Endpoint Details
 
@@ -14,19 +12,17 @@ Use this endpoint to:
 |---|---|
 | MQTT Command | `del_CACertificate` |
 | Pattern Name | CA Certificate Deletion |
-| REST Endpoint | `DELETE /cloud/caCertificates/{caname}` |
+| REST Endpoint | `DELETE /cloud/caCertificates` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Path Parameter | `caname` (the CA certificate name to delete) |
-| Supported Operations | Delete an installed CA certificate |
+| Content-Type | `application/json` |
+| Required Request Fields | `name` |
 
 ## 3. Before You Begin
 
-Confirm the CA certificate is safe to remove before sending this request. Deleting a CA that is actively used for TLS verification will cause all TLS connections that depend on it to fail.
+Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| CA certificate name | The exact name of the CA certificate to delete, supplied as the `{caname}` path parameter, as returned by `GET /cloud/caCertificates`. The name is case-sensitive. |
-| Active use check | Identify all MQTT or HTTPS endpoints whose server or client certificates are issued by this CA. Remove those dependencies or install a replacement CA before deleting. |
-| Irreversible action | Deletion is permanent. If the CA is still needed, reinstall it with `PUT /cloud/caCertificates/{caname}` and its original PEM content. |
+| `name` | Install name, without the `.crt` suffix that `GET /cloud/caCertificates` returns. |

@@ -1,19 +1,15 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a custom request or data payload to a user application running on the reader.
+The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a request to a running user application.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- The target user application through `userapp`
-- The command or data payload to deliver through `command`
+- `{appname}` — installed name in the URL
+- `userapp` — same installed name in the JSON body
 
-The `{appname}` path parameter is required for local REST. MQTT uses the payload `userapp` field instead.
+Optional:
 
-Use this endpoint to:
-
-- Invoke custom logic in an installed user application
-- Pass structured data or control commands to the application layer
-- Integrate third-party processing running directly on the reader
+- `command` — object the application accepts
 
 ## 2. Endpoint Details
 
@@ -26,15 +22,15 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Path Parameter | `appname` (the target application; local REST) |
+| Path Parameter | `appname` |
 | Required Request Fields | `userapp` |
 
 ## 3. Before You Begin
 
-Confirm the target user application is installed and running before sending this request. A request to a stopped or missing application will fail.
+Confirm the application is running. Use the JSON field names below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Application name | The exact name from `GET /cloud/apps`. On REST send it as `{appname}` in the path **and** as `userapp` in the body. MQTT uses payload `userapp` only. |
-| Command or data | Optional `command` object to pass to the user application (for example, `command.message`). The expected structure is defined by the user application, not by the reader API. |
-| Application state | Use `GET /cloud/apps` to confirm the target application is running (`runningStatus: true`) before sending. A stopped application may not be able to process the request. |
+| `appname` | Installed name from `GET /cloud/apps`. URL path. |
+| `userapp` | Same installed name. |
+| `command` | Optional. Object the application accepts, for example `command.message`. |

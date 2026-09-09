@@ -2,9 +2,15 @@
 
 The `PUT /cloud/preSelection` REST endpoint enables or disables the rxSawFilter pre-selection feature on the reader.
 
-This endpoint allows you to configure:
+The request uses a **boolean**. `GET /cloud/preSelection` returns a **string** (`enabled` / `disabled`).
 
-- The rxSawFilter (receive SAW filter pre-selection) state through `preSelection`
+```json
+{ "preSelection": true }
+```
+
+| Field | Type | Values |
+|---|---|---|
+| `preSelection` | boolean | `true` enables the filter, `false` disables it |
 
 Use this endpoint to:
 
@@ -23,11 +29,11 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Request Fields | `preSelection` |
+| Request field | `preSelection` (boolean) |
 
 ## 3. Before You Begin
 
-Determine the appropriate rxSawFilter state for the deployment environment before sending this request. Use `GET /cloud/preSelection` to check the current state before changing it.
+Determine the appropriate rxSawFilter state for the deployment environment before sending this request. Use `GET /cloud/preSelection` to check the current state (`enabled` / `disabled`) before changing it.
 
 | What You Need | Details |
 |---|---|

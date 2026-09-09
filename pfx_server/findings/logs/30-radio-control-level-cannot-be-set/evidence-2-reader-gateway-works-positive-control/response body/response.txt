@@ -1,0 +1,1 @@
+all eight returned HTTP 200 and each read back correctly

@@ -1,0 +1,25 @@
+=== Evidence: PUT /cloud/mode hangs on FXR90 app 5.0.7 ===
+captured: 2026-09-08T09:01:32Z
+
+--- GET /cloud/version ---
+{"availableOsUpgrades":{},"cloudAgentApplication":"0.6.2.64","model":"FXR90","radioControlApplication":"0.2.58.7","radioFirmware":"2.1.70.0","readerApplication":"5.0.7","revertBackFirmware":{},"serialNumber":"25289523070378"}
+
+--- GET /cloud/mode  (works) ---
+{"antennas":[5,6],"transmitPower":[30,30],"type":"CUSTOM"}
+HTTP 200 t=0.048096
+
+--- GET /cloud/status radio+mode (works) ---
+radioActivity: inactive
+operatingMode: None
+
+--- PUT /cloud/stop (works) ---
+{"code":1,"message":"RFID inventory is not running"}
+HTTP 422 t=0.048269
+
+--- PUT /cloud/impinjGen2X (works) ---
+{"message":"Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features."}
+HTTP 200 t=0.055183
+
+--- PUT /cloud/mode {"type":"SIMPLE"} (HANGS) ---
+
+HTTP 000 t=45.000983

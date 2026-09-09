@@ -7,7 +7,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `gpo_status` |
-| **Summary title** | `Current GPO pin states` |
+| **Summary title** | `All pins LOW` |
 
 ---
 

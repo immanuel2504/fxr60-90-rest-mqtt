@@ -1,12 +1,10 @@
 ## 1. Description
 
-The `PUT /cloud/apps/{appname}/stop` REST endpoint stops a running user application on the reader. The application is identified by the `{appname}` path parameter.
+The `PUT /cloud/apps/{appname}/stop` REST endpoint stops a running user application.
 
-Use this endpoint to:
+This endpoint requires:
 
-- Halt a user app before uninstalling or updating
-- Free CPU/memory resources on the reader
-- Pause application logic during maintenance
+- `{appname}` — installed name in the URL
 
 ## 2. Endpoint Details
 
@@ -18,13 +16,13 @@ Use this endpoint to:
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Path Parameter | `appname` (the running application to stop) |
-| Request Body | None (the app name is supplied as the `{appname}` path parameter) |
+| Path Parameter | `appname` |
+| Request Body | None |
 
 ## 3. Before You Begin
 
-Confirm the application is running before stopping it. Use `GET /cloud/apps` to verify the exact `appname` and its current running status.
+Confirm the application is running. Use the JSON field name below.
 
-| What You Need | Details |
+| Field | What to set |
 |---|---|
-| Application name | The exact name of the running application, supplied as the `{appname}` path parameter, as returned by `GET /cloud/apps`. |
+| `appname` | Installed name from `GET /cloud/apps`. URL path. |

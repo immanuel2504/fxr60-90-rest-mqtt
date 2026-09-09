@@ -1,0 +1,79 @@
+{
+  "method": "PUT",
+  "url": "/cloud/logs",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential.",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "_note": "eight separate requests, one per documented level. See verification.txt.",
+    "_probes": [
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "OFF"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "FATAL"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "ERROR"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "WARNING"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "DEBUG"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "INFO"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "TRACE"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "componentName": "reader_gateway",
+            "level": "EXTRA"
+          }
+        ]
+      }
+    ]
+  }
+}

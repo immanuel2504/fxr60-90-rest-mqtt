@@ -17,11 +17,11 @@ The **path and operatingMode object are the same**. Nested **port** enums are FX
 
 ## What is happening
 
-No new request keys. Ours constrains GPI / antenna-stop **port** to `1`–`4`. Developer leaves those as unconstrained integers.
+No new request keys. Spec 12 GPI / antenna-stop **port** is `1`–`4` (`enum: 1, 2, 3, 4`). RestDeveloperfile matches.
 
 Same nested fields as [GET `/cloud/mode`](GET-cloud-mode.md).
 
-`tagMetaData`: our docs include **`READER_LOCATION`**; developer spec does not. Same questions as GET `/cloud/mode` — see [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
+`tagMetaData`: spec 12 added **`READERLOCATION`** (no underscore). Live firmware rejected `READER_LOCATION`. Docs use **`READERLOCATION`**.
 
 ---
 
@@ -57,4 +57,4 @@ operatingMode
 
 ## Docs work
 
-**Keep docs.** Ports 1–4 and `READER_LOCATION` stay until the developer replies. Same questions as GET `/cloud/mode` — copy-paste in [DISCUSS-AND-FINALIZE.md](DISCUSS-AND-FINALIZE.md).
+**Final (spec 12).** Ports 1–4 and `READERLOCATION`. Same as GET `/cloud/mode`.

@@ -2,13 +2,9 @@
 
 ## GET responses
 
-### `GET/download.json`
+### `GET/rc_log.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `download` |
-| **Summary title** | `RC log archive` |
-
-## NEED LIVE TEST
-
-Confirm on a real reader that the response includes non-empty `binary` (Base64) and a `filename` (sample Base64 is a placeholder).
+| **Example name** | `rc_log` |
+| **Summary title** | `rcLog.tar.gz archive` |

@@ -1,44 +1,10 @@
 # `/cloud/networkInterfaces`
 
-- **GET** - Retrieves network interfaces (`getNetworkinterfaces`)
+- **GET** — Network interface names (`get_networkInterfaces`)
 
-1 example(s) exported from the spec, 0 proposed.
+## GET examples
 
-## Method folders
-
-Examples are split by HTTP method:
-
-```
-cloud-networkinterfaces/
-  GET/     # GET request/response examples
-  PUT/     # PUT request/response examples
-  DELETE/  # when present
-```
-| File | Method | Direction | Example name | Origin | Valid | Summary |
-|---|---|---|---|---|---|---|
-| `GET/application_json.json` | GET | response 200 | `application/json` | in-spec | yes |  |
-
-## Trying these against a reader
-
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X GET "https://$READER/cloud/networkInterfaces" \
-  -H "Authorization: Bearer $TOKEN"
-
-```
-
-## Folding a file back into the spec
-
-Add under the operation `examples:` map in `FXR90-rest-api.yaml`:
-
-```yaml
-      examples:
-        <example_name>:
-          summary: <summary from the table>
-          value:
-            # contents of the .json file
-```
-
-Then run `python ../validate_pack.py cloud-networkinterfaces`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/with_uap0.json` | response 200 | `with_uap0` | `eth0`, `mlan0`, `bnep0`, `blescan`, `uap0` |
+| `GET/with_wan0.json` | response 200 | `with_wan0` | `eth0`, `mlan0`, `bnep0`, `wan0` |

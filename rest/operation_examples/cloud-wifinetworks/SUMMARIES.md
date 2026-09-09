@@ -1,8 +1,10 @@
 # Example summary titles — `/cloud/wifiNetworks`
 
-### `GET/wifi_networks.json`
+## GET responses
+
+### `GET/visible_networks.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `wifi_networks` |
-| **Summary title** | `Available Wi-Fi networks` |
+| **Example name** | `visible_networks` |
+| **Summary title** | `Visible access points with essid and signalStrength` |

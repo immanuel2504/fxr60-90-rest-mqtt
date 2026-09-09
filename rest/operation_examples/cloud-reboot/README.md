@@ -1,15 +1,9 @@
 # `/cloud/reboot`
 
-- **PUT** - Restarts reader (`reboot`)
+- **PUT** — Restarts the reader (`reboot`). No request body.
 
-## Reviewed PUT
+## PUT examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `PUT/success.json` | `success` | Empty string on success |
-
-No request body.
-
-## NEED LIVE TEST
-
-Confirm empty-string success before the reader disconnects. Plan 1–3 minutes downtime.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `PUT/success.json` | response 200 | `success` | Empty string on success |

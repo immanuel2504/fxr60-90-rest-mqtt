@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `full_configuration` |
-| **Summary title** | `Full configuration with GPIO-LED and xml profile` |
+| **Summary title** | `Full configuration (MQTT endpoints, GPIO-LED unset)` |
 
 ### `GET/gpio_led_not_configured.json`
 
@@ -40,7 +40,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `data_azure` |
-| **Summary title** | `Tag events over Azure IoT Hub (not live-tested)` |
+| **Summary title** | `Azure IoT Hub` |
 
 ### `PUT/data_http_post.json`
 
@@ -61,7 +61,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `data_websocket` |
-| **Summary title** | `WebSocket (accepted)` |
+| **Summary title** | `WebSocket` |
 
 ### `PUT/clear_data.json`
 

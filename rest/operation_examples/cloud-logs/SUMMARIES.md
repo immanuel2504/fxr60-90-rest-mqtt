@@ -1,5 +1,16 @@
 # Example summary titles — `/cloud/logs`
 
+## GET responses
+
+### `GET/info_packet_off.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `info_packet_off` |
+| **Summary title** | `radio_control INFO, reader_gateway INFO, radioPacketLog off` |
+
+---
+
 ## PUT request
 
 ### `PUT/logs.json`
@@ -7,7 +18,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `logs` |
-| **Summary title** | `Set reader_gateway DEBUG and enable radioPacketLog` |
+| **Summary title** | `reader_gateway DEBUG and radioPacketLog on` |
 
 ### `PUT/radioPacketLog_on.json`
 

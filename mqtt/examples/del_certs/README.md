@@ -2,11 +2,11 @@
 
 REST: `DELETE /cloud/certificates/{certname}` → `cloud-certificates-certname/`
 
+MQTT command key: `del_certificate`
+
 Stable `command_id`: `req-del-certs`
 
-| File | Direction | Example | REST mapping | Summary |
+| File | Direction | Example | REST source | Summary |
 |---|---|---|---|---|
-| `request/del_certs.json` | request | `del_certs` | path `certname` + body `{ "type" }` | Delete client certificate |
-| `response/success.json` | response | `success` | `""` | Command succeeded |
-
-Name and type are both in the MQTT payload (`name` ↔ REST path, `type` ↔ REST **request body**). Server certificates cannot be deleted.
+| `request/delete_client.json` | request | `delete_client` | `cloud-certificates-certname/DELETE/delete_client.json` | Delete `type` client |
+| `response/success.json` | response | `success` | `—` | Empty payload on success |

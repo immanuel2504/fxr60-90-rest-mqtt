@@ -1,16 +1,17 @@
 ## 1. Description
 
-The `PUT /cloud/cableLossCompensation` REST endpoint configures cable loss compensation values for each antenna read point on the reader.
+The `PUT /cloud/cableLossCompensation` REST endpoint sets cable length and cable loss per hundred feet for antenna read points.
 
-This endpoint allows you to configure:
+Send one of these body shapes:
 
-- Cable length and loss-per-hundred-feet for read points `1` through `8`
+- **All read points** — top-level `cableLength` and `cableLossPerHundredFt` (applied to every available read point)
+- **Per read point** — keys `"1"` through `"8"`, each with `cableLength` and `cableLossPerHundredFt`
 
 Use this endpoint to:
 
-- Compensate for signal attenuation caused by long antenna cable runs
-- Tune compensation independently per port for multi-antenna deployments with different cable lengths
-- Improve read range accuracy by accounting for passive cable loss in the RF path
+- Compensate for signal attenuation on long antenna cable runs
+- Set different length and loss values per port
+- Apply the same length and loss to all ports in one request
 
 ## 2. Endpoint Details
 
@@ -27,11 +28,9 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Measure the physical cable runs for each antenna port before sending this request. Incorrect values will produce inaccurate compensation and may reduce read range.
-
 | What You Need | Details |
 |---|---|
-| Read point keys | Use numeric string keys `"1"` through `"8"` in the request body. Only include keys for ports that have physical cables attached. |
-| Cable length | The length of the antenna cable in the unit expected by the reader (feet). Measure the actual cable run from the reader port to the antenna. |
-| Cable loss per hundred feet | The attenuation rating of the cable type in dB per 100 feet. This value is specified by the cable manufacturer. |
-| Available read points | Use `GET /cloud/readPoints` to confirm which read point IDs are available on this reader before sending. |
+| Body shape | All-ports object, or per-port keys `"1"`–`"8"`. Include only ports that have cables attached. |
+| Cable length | Antenna cable length in feet. |
+| Cable loss per hundred feet | Cable attenuation in dB per 100 feet (from the cable manufacturer). |
+| Available read points | Use `GET /cloud/readPoints` to see which read point IDs this reader has. |

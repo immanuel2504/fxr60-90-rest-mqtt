@@ -1,13 +1,9 @@
 # `/cloud/logs/RgWarningLog`
 
-- **GET** - Retrieve RgWarningLog
+- **GET** — Reader-gateway warning log archive (`get_logs_rgWarningLog`)
 
-## Reviewed GET
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/download.json` | `download` | RG warning log archive |
-
-## NEED LIVE TEST
-
-Confirm live reader returns non-empty `binary` + `filename`.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/rg_warning.json` | response 200 | `rg_warning` | rgWarningLog.tar.gz archive |

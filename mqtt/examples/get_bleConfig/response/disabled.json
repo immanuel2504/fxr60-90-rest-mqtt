@@ -3,14 +3,27 @@
   "command_id": "req-get-bleConfig",
   "payload": {
     "ble": {
+      "additionalFilters": {},
       "enable": false,
-      "scanIntervalSec": 5,
       "protocols": {
+        "altBeacon": {
+          "enabled": true,
+          "filters": []
+        },
+        "eddystone": {
+          "enabled": true,
+          "filters": []
+        },
+        "generic": {
+          "enabled": true,
+          "filters": []
+        },
         "iBeacon": {
-          "enabled": true
+          "enabled": true,
+          "filters": []
         }
       },
-      "additionalFilters": {}
+      "scanIntervalSec": 1
     }
   },
   "response": "success"

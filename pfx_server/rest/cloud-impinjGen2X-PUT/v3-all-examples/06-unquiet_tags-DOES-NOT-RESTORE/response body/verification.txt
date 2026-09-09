@@ -1,0 +1,44 @@
+tagQuieting 06 - spec example "unquiet_tags"
+RESULT: HTTP 200, stored - but it does NOT restore visibility
+
+  stored: {"tagQuieting":{"basic":{"action":"unquiet",
+           "tagIDs":["e2801191a5030069073b426d"]}}}
+  after start: status.impinjGen2X = {"feature":"tagQuieting","isActive":true}
+
+*** FINDING: unquiet hides the tag, same as quiet ***
+
+Tested with the real EPC e2806894000040017790ac71 over 5 trials, alongside the
+quiet trials in ../05-quiet_tags-WORKS-PROVEN/:
+
+  PLAIN start (no Gen2X)          5/5 visible
+  QUIET   + applyImpinjGen2X      0/5 visible
+  UNQUIET + applyImpinjGen2X      0/5 visible     <-- expected to restore
+
+If unquiet reversed quieting, the third row should look like the first. It looks
+like the second.
+
+HOW THE TAG ACTUALLY RECOVERS: clear the Gen2X configuration entirely and run a
+plain inventory.
+
+  PUT /cloud/impinjGen2X {"fastID":{"enabled":false}}
+  PUT /cloud/start {}                       (no applyImpinjGen2X)
+  -> target VISIBLE again
+
+So visibility returns by NOT applying tagQuieting at all, not by applying
+unquiet. Confirmed twice, including as the final post-test check.
+
+INTERPRETATION, offered cautiously: applying ANY tagQuieting configuration
+appears to run a pre-select that silences the listed tags for that session, and
+the quiet/unquiet action does not invert it in the way the naming implies. The
+underlying Gen2 mechanism is session-flag manipulation, so "unquiet" may require
+the tag to already be in the asserted state from a prior session - which does
+not survive, since quieting is session-scoped (test 05).
+
+NOT ESTABLISHED: whether unquiet works when the target genuinely IS in a quieted
+state within the SAME session. Testing that needs quiet and unquiet applied
+inside one inventory session, which this API cannot express - each Gen2X config
+change requires a stop/start cycle, and that ends the session.
+
+ASK: what is the intended use of basic unquiet, given quieting does not persist
+across sessions? If it only has meaning within a session, the API cannot reach
+that state.

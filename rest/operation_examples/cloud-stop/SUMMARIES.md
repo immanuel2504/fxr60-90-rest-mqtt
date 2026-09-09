@@ -9,23 +9,23 @@
 | **Example name** | `stop_RFID_default` |
 | **Summary title** | `Stop RFID (default)` |
 
-### `PUT/stop_Global_RFID_only.json`
+### `PUT/stop_RFID_explicit.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `stop_Global_RFID_only` |
-| **Summary title** | `Global RFID only` |
+| **Example name** | `stop_RFID_explicit` |
+| **Summary title** | `Stop RFID (explicit)` |
 
-### `PUT/stop_Global_BLE_only.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `stop_Global_BLE_only` |
-| **Summary title** | `Global BLE only` |
-
-### `PUT/stop_Global_BLE_and_RFID.json`
+### `PUT/stop_BLE_only.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `stop_Global_BLE_and_RFID` |
-| **Summary title** | `Global BLE and RFID` |
+| **Example name** | `stop_BLE_only` |
+| **Summary title** | `Stop BLE only` |
+
+### `PUT/stop_BLE_and_RFID.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `stop_BLE_and_RFID` |
+| **Summary title** | `Stop BLE and RFID` |

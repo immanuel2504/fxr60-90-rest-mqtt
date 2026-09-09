@@ -1,0 +1,19 @@
+{
+  "command": "get_userapps",
+  "command_id": "req-get-user-apps",
+  "payload": [
+    {
+      "appname": "sampleNew",
+      "autostart": true,
+      "metadata": "APP_TYPE: DA",
+      "runningStatus": false
+    },
+    {
+      "appname": "sampleAntenna",
+      "autostart": false,
+      "metadata": "APP_TYPE: DA",
+      "runningStatus": false
+    }
+  ],
+  "response": "success"
+}

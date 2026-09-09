@@ -1,0 +1,42 @@
+fastID 01 - spec example "enable_fastID"
+RESULT: HTTP 200, stored, activates - BUT no observable effect on tag data
+
+  stored:  {"fastID":{"enabled":true}}
+  after start {"applyImpinjGen2X":true}:
+           status.impinjGen2X = {"feature":"fastID","isActive":true}
+
+*** THE DOCUMENTED EFFECT WAS NOT OBSERVED ***
+
+FastID is described as embedding the tag TID alongside the EPC in every inventory
+response, removing the need for a separate TID read. Tested A/B with tag data
+captured off the local MQTT broker, in a plain CUSTOM mode with NO accesses (so
+any TID present could only come from FastID):
+
+  FastID ON   tag events=22   events carrying a tid field= 0
+  FastID OFF  tag events=23   events carrying a tid field= 0
+
+  data keys, both runs: ['antenna','eventNum','format','idHex','peakRssi']
+
+Identical field sets. No TID appears either way.
+
+Also tried requesting it explicitly - tagMetaData accepts "TID" (HTTP 200):
+
+  PUT /cloud/mode {"type":"CUSTOM","antennas":[1],"transmitPower":30,
+                   "tagMetaData":["ANTENNA","RSSI","TID"]}   -> 200
+
+  ...then FastID ON + apply: 22 tag events, still no tid field. Sample event:
+  {"antenna":1,"eventNum":3995,"format":"epc",
+   "idHex":"e2806894000040017790ac71","peakRssi":-45}
+
+So the config is accepted, stored and reported active, and the tag payload is
+unchanged.
+
+NOT ESTABLISHED: whether FastID is genuinely inactive, or active but the TID is
+not surfaced into the data endpoint payload. Distinguishing those needs either
+Zebra confirming which field should carry it, or a throughput comparison
+(FastID's other benefit is fewer operations, which a read-rate measurement might
+show). Both are open.
+
+The tags in range ARE Impinj-capable of this - a separate TID read via
+accesses returns e2806894200040017790ac71 for this same tag, so the TID exists
+and is readable by other means.

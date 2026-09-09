@@ -1,22 +1,40 @@
 # Example summary titles — `/cloud/certificates`
 
-### `GET/installed.json`
+## GET responses
+
+### `GET/lab_client_and_server.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `installed` |
-| **Summary title** | `Installed certificates` |
+| **Example name** | `lab_client_and_server` |
+| **Summary title** | `Client FXR60-LAB-CLIENT and Server` |
 
-### `PUT/basic_https.json`
+---
 
-| Field | Value |
-|---|---|
-| **Example name** | `basic_https` |
-| **Summary title** | `Install client PFX over HTTPS with BASIC` |
+## PUT request
 
-### `PUT/mtls_optional.json`
+### `PUT/https_basic.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `mtls_optional` |
-| **Summary title** | `Install client PFX over HTTPS with BASIC and CA` |
+| **Example name** | `https_basic` |
+| **Summary title** | `HTTPS BASIC download` |
+
+### `PUT/mtls.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mtls` |
+| **Summary title** | `HTTPS BASIC with installed client cert and CA` |
+
+---
+
+## PUT response
+
+### `PUT/success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `success` |
+| **Summary title** | `Empty string on success` |
+| **HTTP status** | `200` |

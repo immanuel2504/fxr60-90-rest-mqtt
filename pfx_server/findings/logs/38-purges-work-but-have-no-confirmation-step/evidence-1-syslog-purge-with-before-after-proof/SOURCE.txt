@@ -1,0 +1,5 @@
+Copied verbatim from:
+  rest/cloud-logs-syslog-DELETE/01-purge-SUCCESS
+
+That folder is the canonical record of this test; this is a copy kept
+beside the finding so the evidence travels with it.

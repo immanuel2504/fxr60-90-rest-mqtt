@@ -1,0 +1,9 @@
+displayConfig 03 - a single field, omitting "enable"
+RESULT: rejected, HTTP 422
+{"code":3,"message":"CS:'setDisplayConfig' failed, Reason: Missing required parameters"}
+
+State before and after was identical, so the rejection changed nothing.
+
+This initially looked like "partial updates are not supported". That reading was
+WRONG - see test 05, where a two-field partial update succeeds. The actual cause
+is the missing "enable" field, which test 04 identifies as the only mandatory one.

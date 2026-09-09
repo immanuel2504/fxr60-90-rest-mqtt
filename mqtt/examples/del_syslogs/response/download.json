@@ -1,9 +1,0 @@
-{
-  "command": "del_logs_syslog",
-  "command_id": "req-del-syslogs",
-  "payload": {
-    "binary": "<base64 gzip>",
-    "filename": "syslog.tar.gz"
-  },
-  "response": "success"
-}

@@ -1,16 +1,19 @@
 # `/cloud/timeZone`
 
-- **GET** - Current time zone
-- **PUT** - Set time zone
+- **GET** — Current time zone (`get_timeZone`)
+- **PUT** — Set time zone (`set_timeZone`)
 
-## Reviewed
+## GET examples
 
-| File | Example name | Summary |
-|---|---|---|
-| `GET/time_zone.json` | `time_zone` | Current time zone |
-| `PUT/time_zone.json` | `time_zone` | Set time zone UTC |
-| `PUT/success.json` | `success` | Empty string on success |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/utc.json` | response 200 | `utc` | `timeZone` UTC |
 
-## NEED LIVE TEST
+## PUT examples
 
-Confirm short PUT names vs long GET display strings on a real reader.
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `PUT/utc.json` | request | `utc` | Set `UTC` |
+| `PUT/kolkata.json` | request | `kolkata` | Set `Kolkata` |
+| `PUT/pacific.json` | request | `pacific` | Set `Pacific Time (US & Canada)` |
+| `PUT/success.json` | response 200 | `success` | Empty string on success |

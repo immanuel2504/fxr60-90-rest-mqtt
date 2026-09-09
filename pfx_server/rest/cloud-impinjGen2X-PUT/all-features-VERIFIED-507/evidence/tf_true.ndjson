@@ -1,0 +1,2 @@
+{"data":{"antenna":5,"eventNum":101,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-25,"reads":1},"timestamp":"2026-09-08T09:27:31.113+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":102,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-29,"reads":1},"timestamp":"2026-09-08T09:27:31.114+0000","type":"CUSTOM"}

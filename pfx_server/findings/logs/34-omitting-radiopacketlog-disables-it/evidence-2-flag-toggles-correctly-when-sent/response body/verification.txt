@@ -1,0 +1,20 @@
+logs PUT 06 - radioPacketLog toggle
+RESULT: works correctly in both directions, verified by read-back
+
+  PUT {"radioPacketLog":true}   -> 200, read back radioPacketLog=true
+  PUT {"radioPacketLog":false}  -> 200, read back radioPacketLog=false
+  PUT {"radioPacketLog":true}   -> 200, read back radioPacketLog=true
+
+Sent with no "components" key at all - accepted, and the existing component
+levels were left untouched. So this field can be set independently.
+
+The flag also genuinely controls log generation, not just a stored boolean. Proven
+end to end in ../cloud-logs-radioPacketLog-GET/03-repopulates-after-enable/:
+with radioPacketLog=true, an inventory regenerated 65 KB of packet log from an
+empty state.
+
+Type checking works: {"radioPacketLog":"true"} (string) is rejected with
+{"code":1,"message":"Invalid payload fields"}.
+
+CAUTION - see 07-omitting-radiopacketlog-resets-it-to-false. Omitting this field
+from a components-only request silently turns it OFF.

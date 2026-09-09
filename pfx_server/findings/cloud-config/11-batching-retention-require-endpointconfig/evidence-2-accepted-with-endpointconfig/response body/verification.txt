@@ -1,0 +1,9 @@
+CONFIRMED WORKING - this is the corrected form of the rejected test 02b.
+
+batching [{maxPayloadSizePerReport: 8192, reportingInterval: 1000}] and
+retention [{maxEventRetentionTimeInMin: 120, maxNumEvents: 50000, throttle: 200}]
+accepted with HTTP 200 when sent ALONGSIDE endpointConfig.
+
+The identical values were REJECTED when sent without endpointConfig (see 02b). The reader counts batching/retention objects against the endpoints present in the same request, so endpointConfig is effectively mandatory whenever either is used - contradicting the schema's 'at least one of' wording.
+
+Verified applied via GET /cloud/config in the earlier equivalent run: batching and retention both stored with the sent values.

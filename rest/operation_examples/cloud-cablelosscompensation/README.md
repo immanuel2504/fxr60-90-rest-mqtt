@@ -1,40 +1,16 @@
 # `/cloud/cableLossCompensation`
 
-- **GET** - Retrieves the cableLossCompensation (`getCablelosscompensation`)
-- **PUT** - Sets the cableLossCompensation (`setCablelosscompensation`)
+- **GET** — Retrieves cable loss compensation (`getCablelosscompensation`)
+- **PUT** — Sets cable loss compensation (`setCablelosscompensation`)
 
-## Reviewed PUT
+## GET examples
 
 | File | Example name | Summary |
 |---|---|---|
-| `PUT/cable_loss.json` | `cable_loss` | Ports 1–4 with per-port cable length and loss |
-| `PUT/success.json` | `success` | Empty string on success |
+| `GET/configured_cable_loss.json` | `configured_cable_loss` | Configured cable loss |
 
-## Method folders
+## PUT examples
 
-```
-cloud-cablelosscompensation/
-  GET/     # GET response examples
-  PUT/     # PUT request/response examples
-```
-
-| File | Method | Direction | Example name | Origin | Valid | Summary |
-|---|---|---|---|---|---|---|
-| `PUT/cable_loss.json` | PUT | request | `cable_loss` | reviewed | yes | Ports 1–4 with per-port cable length and loss |
-| `PUT/success.json` | PUT | response | `success` | reviewed | yes | Empty string on success |
-| `GET/inline.json` | GET | response 200 | `inline` | in-spec | yes |  |
-
-## Trying these against a reader
-
-```bash
-READER=10.0.0.42
-TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r .message)
-
-curl -sk -X GET "https://$READER/cloud/cableLossCompensation" \
-  -H "Authorization: Bearer $TOKEN"
-
-curl -sk -X PUT "https://$READER/cloud/cableLossCompensation" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @PUT/cable_loss.json
-```
+| File | Example name | Summary |
+|---|---|---|
+| `PUT/set_cable_loss.json` | `set_cable_loss` | Per-port cable length and loss |

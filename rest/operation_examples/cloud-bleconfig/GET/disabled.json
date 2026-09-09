@@ -1,0 +1,25 @@
+{
+  "ble": {
+    "additionalFilters": {},
+    "enable": false,
+    "protocols": {
+      "altBeacon": {
+        "enabled": true,
+        "filters": []
+      },
+      "eddystone": {
+        "enabled": true,
+        "filters": []
+      },
+      "generic": {
+        "enabled": true,
+        "filters": []
+      },
+      "iBeacon": {
+        "enabled": true,
+        "filters": []
+      }
+    },
+    "scanIntervalSec": 1
+  }
+}

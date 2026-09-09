@@ -1,0 +1,16 @@
+{"data":{"antenna":5,"eventNum":195,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-25,"reads":1},"timestamp":"2026-09-08T09:30:49.722+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":196,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-30,"reads":1},"timestamp":"2026-09-08T09:30:49.723+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":197,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-25,"reads":1},"timestamp":"2026-09-08T09:30:51.279+0000","type":"CUSTOM"}
+{"data":{"antenna":6,"eventNum":198,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-23,"reads":1},"timestamp":"2026-09-08T09:30:51.299+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":199,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-25,"reads":1},"timestamp":"2026-09-08T09:30:52.841+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":200,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-29,"reads":1},"timestamp":"2026-09-08T09:30:52.941+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":201,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-24,"reads":1},"timestamp":"2026-09-08T09:30:54.407+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":202,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-30,"reads":1},"timestamp":"2026-09-08T09:30:54.608+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":203,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-23,"reads":1},"timestamp":"2026-09-08T09:30:55.990+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":204,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-34,"reads":1},"timestamp":"2026-09-08T09:30:56.283+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":205,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-23,"reads":1},"timestamp":"2026-09-08T09:30:57.516+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":206,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-39,"reads":1},"timestamp":"2026-09-08T09:30:57.907+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":207,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-24,"reads":1},"timestamp":"2026-09-08T09:30:59.083+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":208,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-35,"reads":1},"timestamp":"2026-09-08T09:30:59.569+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":209,"format":"epc","idHex":"e28011b0a5050076c4d7530a","peakRssi":-22,"reads":1},"timestamp":"2026-09-08T09:31:00.642+0000","type":"CUSTOM"}
+{"data":{"antenna":5,"eventNum":210,"format":"epc","idHex":"e28011b0a505007698ca0895","peakRssi":-32,"reads":1},"timestamp":"2026-09-08T09:31:01.224+0000","type":"CUSTOM"}

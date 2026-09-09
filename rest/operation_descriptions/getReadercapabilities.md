@@ -8,6 +8,8 @@ This endpoint returns (all fields nested under a top-level `capabilities` object
 - Whether LLRP is supported
 - Supported endpoint types for data and management
 - API versions accepted by the reader
+- Impinj Gen2X features through `capabilities.gen2xFeaturesSupported`
+- Whether a stack LED is present through `capabilities.stackLED`
 
 No request body is required.
 
@@ -40,6 +42,8 @@ Key fields to check in the response:
 | `capabilities.numGPIs` | How many GPI pins are available? | Limits how many external input triggers (sensors, beam breaks) can be wired. |
 | `capabilities.numGPOs` | How many GPO pins are available? | Limits how many external output devices (lights, gates) can be driven. |
 | `capabilities.llrpSupported` | Is LLRP supported? | Determines whether the reader can be managed via LLRP-based tools. |
-| `capabilities.endpointTypesSupported` | Which endpoint types are supported? | Governs which data delivery options can be configured in `PUT /cloud/config`. |
+| `capabilities.endpointTypesSupported` | Which endpoint types are supported? | Governs which data and management endpoint types can be configured. |
 | `capabilities.apiSupported.versions` | Which API versions are accepted? | Ensures the management application targets a compatible API version. |
-| `capabilities.supportedPowerSource` | Which power sources does this model support? | Values may be `DC`, `POE`, `POE+`, `POWERBRICK`, and `BATTERY`. FXR60/FXR90 typically report `POWERBRICK`, `POE`, and `POE+`. |
+| `capabilities.supportedPowerSource` | Which power sources does this model support? | `DC`, `POE`, `POE+`, `POWERBRICK`, `BATTERY`. |
+| `capabilities.gen2xFeaturesSupported` | Which Impinj Gen2X features does this model support? | `FASTID`, `TAGFOCUS`, `TAGQUIETING`, `PROTECTEDMODE`. |
+| `capabilities.stackLED` | Is a stack LED present? | FXR60 reports `supported: true` and colors. FXR90 reports `supported: false`. |

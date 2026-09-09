@@ -1,12 +1,12 @@
 ## 1. Description
 
-The `GET /cloud/caCertificates` REST endpoint retrieves the list of CA (Certificate Authority) certificates installed on the reader.
+The `GET /cloud/caCertificates` REST endpoint retrieves the CA certificates installed on the reader.
 
 This endpoint returns:
 
-- An array of installed CA certificate names
+- an array of CA names
 
-No request body is required.
+Listed names include a `.crt` suffix. Delete with the name you installed, without that suffix.
 
 ## 2. Endpoint Details
 
@@ -18,19 +18,10 @@ No request body is required.
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Operations | Retrieve the list of installed CA certificate names |
+| Supported Operations | Retrieve installed CA certificate names |
 
 ## 3. When to Use This Endpoint
 
 Use `GET /cloud/caCertificates` to:
 
-- Confirm which CA certificates are installed before configuring a TLS endpoint that must trust them
-- Audit the reader's CA trust store across a fleet of readers
-- Verify a CA certificate was installed after `PUT /cloud/caCertificates/{caname}`, or removed after `DELETE /cloud/caCertificates/{caname}`
-- Reconcile the reader's trust anchors against your organization's PKI
-
-Key fields to check in the response:
-
-| Field | What to Check | Why It Matters |
-|---|---|---|
-| CA certificate name | Is the expected CA certificate name present in the returned array? | Confirms the reader trusts the CA that issued your broker or endpoint TLS certificates. |
+- Read CA names after `PUT /cloud/caCertificates` or `DELETE /cloud/caCertificates`

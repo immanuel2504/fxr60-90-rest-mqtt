@@ -1,0 +1,1 @@
+all four returned HTTP 200; radio_control stayed INFO throughout

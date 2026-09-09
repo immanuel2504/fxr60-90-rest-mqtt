@@ -1,0 +1,49 @@
+RcLog GET - retrieve the log
+RESULT: HTTP 200, 621823 bytes
+
+RESPONSE SHAPE - undocumented, and identical across all four log GETs:
+
+  {"binary": "<base64>", "filename": "rcLog.tar.gz"}
+
+The spec defines NO response schema for this operation - it documents only the
+path, the operationId and a summary. The shape above is the observed response.
+
+VERIFIED: the base64 decodes to a valid gzip (magic bytes 1f8b) and opens as a
+tar archive containing:
+
+    radio_control.log  95132 bytes
+    radio_control.log.5  5243170 bytes
+    radio_control.log.3  5242952 bytes
+
+The radio-control component log, and the largest of the four (608 KB
+compressed, ~10.5 MB uncompressed). Three members: the live log plus two rotated
+generations, each ~5 MB, so rotation is at ~5 MB per file. First line of the live
+log:
+
+  2026-09-03T13:44:33.270Z INFO requests.cpp Response: Success
+
+Note the level prefix is INFO, matching radio_control's configured level - the one
+level that cannot be changed through the API
+(../cloud-logs-PUT/03-radio-control-level-never-changes/).
+
+There is NO DELETE for this path: DELETE /cloud/logs/RcLog returns HTTP 405
+{"message":"DELETE not a valid METHOD for Req :/logs/RcLog"}. Only syslog and
+radioPacketLog are purgeable.
+
+HOW TO EXTRACT:
+
+  curl -sk -H "Authorization: Bearer $TOKEN" \
+    https://10.233.48.36/cloud/logs/RcLog \
+  | python3 -c "
+import sys,json,base64
+d=json.load(sys.stdin)
+open(d['filename'],'wb').write(base64.b64decode(d['binary']))
+print('wrote', d['filename'])"
+  tar tzf rcLog.tar.gz
+
+Auth is enforced - HTTP 401 without a bearer token.
+
+NOTE ON PARAMETERS: the spec declares none for this operation, and none were
+found. There is no documented way to filter by time range, severity or line
+count, or to page through a large log - RcLog returns ~10.5 MB uncompressed as a
+single response.

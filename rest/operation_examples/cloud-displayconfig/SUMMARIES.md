@@ -13,12 +13,26 @@
 
 ## PUT request
 
-### `PUT/display_config.json`
+### `PUT/landscape_japanese.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `display_config` |
-| **Summary title** | `Enable display with landscape 1920x1080` |
+| **Example name** | `landscape_japanese` |
+| **Summary title** | `Landscape, Japanese, 1920x1080` |
+
+### `PUT/portrait_german.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `portrait_german` |
+| **Summary title** | `Portrait, German, 1280x720` |
+
+### `PUT/flipped_orientation.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `flipped_orientation` |
+| **Summary title** | `Enable and flip orientation` |
 
 ---
 

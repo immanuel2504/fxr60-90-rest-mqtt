@@ -1,0 +1,7 @@
+Tested with BOTH private key formats - PKCS#1 (BEGIN RSA PRIVATE KEY, as AWS issues) and PKCS#8 (BEGIN PRIVATE KEY, converted with openssl). Rejected identically both times, and also on port 8883 and 443.
+
+CAUSE: CACertificateFileContent, privateKeyFileContent and publicKeyFileContent do not exist in ANY of the nine security schemas in FXR_60-90_rest_api.yaml. Only the *FileLocation variants and installedCertificateName/Type are defined. The fields belong to a DIFFERENT schema (SetUpdatecertificateRequest, used by the cert-download commands).
+
+SPEC BUG: the spec's own mqtt_aws_all_channels example uses these *FileContent fields in the cloudConfig security object - the example contradicts the schema it is documenting.
+
+The key-format theory was a red herring: the field names were never valid here regardless of format.

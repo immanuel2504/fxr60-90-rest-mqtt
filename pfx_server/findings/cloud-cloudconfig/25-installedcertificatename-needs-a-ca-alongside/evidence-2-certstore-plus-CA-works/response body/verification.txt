@@ -1,0 +1,13 @@
+CONFIRMED WORKING - this is the fix for test 04.
+
+Identical to test 04, with ONE field added to each security block:
+  "CACertificateFileLocation": "/data/apps/lab-ca.crt"
+
+Result: connected immediately, no TLS errors. Broker log:
+  New client connected from 10.233.48.36 as fxr60-lab-mevents (u'FXR60-LAB-CLIENT')
+  New client connected from 10.233.48.36 as fxr60-lab-data    (u'FXR60-LAB-CLIENT')
+get_status over mTLS returned full reader status.
+
+CONCLUSION: installedCertificateName/Type supplies only the reader's own client identity. It does NOT provide a trust anchor. When verifyPeer is true, it must be paired with CACertificateFileLocation (or the broker must use a CA the reader already trusts).
+
+The spec does not state this. Its own data_mqtt_tls_installed_cert example uses installedCertificateName with verifyPeer: true and NO CA field - which, per this test, cannot work against a privately-signed broker.

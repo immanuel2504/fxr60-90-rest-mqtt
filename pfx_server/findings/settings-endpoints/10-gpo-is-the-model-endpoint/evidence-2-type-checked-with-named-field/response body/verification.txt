@@ -1,0 +1,5 @@
+gpo 08 - state as the string "true" instead of the boolean true
+RESULT: rejected, HTTP 422, {"code":1,"message":"state (expected boolean)"}
+
+Types are checked and the message names the field and expected type. No silent
+string-to-boolean coercion.

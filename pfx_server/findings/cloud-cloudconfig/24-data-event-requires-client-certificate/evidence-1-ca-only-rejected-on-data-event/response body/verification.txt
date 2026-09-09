@@ -1,0 +1,9 @@
+Only DATA config: event was named. The identical CA-only security block was accepted on control.commandResponse, management.event and management.commandResponse.
+
+Cause: the data.event channel REQUIRES a client certificate - either privateKeyFileLocation + publicKeyFileLocation, or installedCertificateName + installedCertificateType. CA-only (server-auth-only TLS) is not accepted there.
+
+Confirmed by the spec's own examples: every data.event example supplies a full client identity (mqtt_tls_all_channels uses the file-path trio; data_mqtt_tls_installed_cert uses installedCertificateName). No example gives data.event a CA-only block.
+
+The schema does NOT express this: it is identical for all four channels and specifies required: None on each.
+
+Consequence: server-auth-only TLS cannot be configured for tag-data delivery; mutual TLS is effectively mandatory on that channel.

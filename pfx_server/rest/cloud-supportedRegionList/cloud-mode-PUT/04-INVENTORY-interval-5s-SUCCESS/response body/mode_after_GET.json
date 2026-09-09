@@ -1,0 +1,1 @@
+{"antennaStopCondition":{"type":"DURATION","value":100},"antennas":[1],"delayBetweenAntennaCycles":{"duration":0,"type":"DISABLED"},"modeSpecificSettings":{"interval":{"unit":"seconds","value":5}},"query":{"tagPopulation":256},"tagMetaData":["ANTENNA","RSSI","CHANNEL","SEEN_COUNT"],"transmitPower":[30],"type":"INVENTORY"}

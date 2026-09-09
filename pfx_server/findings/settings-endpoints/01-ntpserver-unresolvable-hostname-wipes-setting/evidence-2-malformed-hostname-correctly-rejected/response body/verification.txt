@@ -1,0 +1,11 @@
+ntpServer 06 - malformed hostname
+RESULT: rejected, HTTP 422
+{"code":3,"message":"CS:'setNTPServerRsp' failed,Reason: SNTP_INVALID_SERVER_FORMAT"}
+
+Server address format IS validated, and by the Core Service (code 3) rather than
+the REST layer (code 1), so the request reached the NTP subsystem.
+
+Also tested: {"server":""} -> code 3, "INVALID JSON".
+
+Which makes test 02 more striking: an explicitly malformed hostname is caught,
+but the documented 'server1' key silently produces an empty setting.

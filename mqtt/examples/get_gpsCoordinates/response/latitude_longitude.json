@@ -1,0 +1,11 @@
+{
+  "command": "get_gpsCoordinates",
+  "command_id": "req-get-gpsCoordinates",
+  "payload": {
+    "lastReportedTime": "1712141936",
+    "latitude": "12.970366417",
+    "longitude": "77.710113533",
+    "satellitesUsed": 0
+  },
+  "response": "success"
+}

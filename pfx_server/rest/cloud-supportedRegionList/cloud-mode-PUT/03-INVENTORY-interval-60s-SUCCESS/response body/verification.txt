@@ -1,0 +1,45 @@
+MODE TEST - reference tags
+  e2806894000040017790e471   the strongest tag in the field
+  e2806894000040017790ac71   the second strongest
+
+Both were chosen from a baseline inventory because they read reliably in every
+mode, which makes them a usable constant across tests. Tag data was routed to
+the local MQTT broker (10.117.229.18:1883, topic fxr60-lab/tevents) for the
+duration of this testing so reads could actually be observed - the reader's
+normal AWS endpoint cannot be read back. It was restored afterwards.
+
+INVENTORY 03 - the spec's inventory_with_interval example (interval 60 s)
+RESULT: ACCEPTED, HTTP 200 - and the interval is demonstrably enforced
+
+Changes from the spec example: antennas [1,2] -> [1] and transmitPower [27,27]
+-> [30], to match the one connected antenna and keep power comparable across
+tests.
+
+TAG RESULT over 20s:
+  unique tags  30
+  total reads  30
+  reference tags:
+    e2806894000040017790e471  reads=1  rssi=-38..-38  ant=[1]
+    e2806894000040017790ac71  reads=1  rssi=-45..-45  ant=[1]
+
+*** unique == total reads. Every tag reported EXACTLY ONCE. ***
+
+That is the whole point of INVENTORY mode: modeSpecificSettings.interval sets how
+often each tag may be re-reported, and at 60 s no tag can appear twice inside a
+20s window. Both reference tags read exactly once.
+
+Compare 04-INVENTORY-interval-5s-SUCCESS/, which is the identical config with
+interval dropped to 5 s and produces multiple reads per tag - that A/B pair is
+what proves the field is honoured rather than merely stored.
+
+METADATA IS BACK:
+
+    antenna, channel, eventNum, format, idHex, peakRssi, reads
+
+The example's tagMetaData [ANTENNA, RSSI, SEEN_COUNT, CHANNEL] is respected -
+antenna, peakRssi and channel all appear. Note SEEN_COUNT surfaces as the field
+name "reads", not "seenCount"; see 08-CUSTOM-13-of-14-metadata-fields/ for the
+full name mapping.
+
+Reference tag RSSI here (-38, -45) is stronger than the 17 dBm baseline
+(-46, -52), consistent with the power increase.

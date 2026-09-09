@@ -1,0 +1,26 @@
+ACCEPTED (HTTP 200) AND STORED. The action did not fire during THIS test, but a later test proved the feature works - so this result is INCONCLUSIVE, not a failure.
+
+WHAT WAS OBSERVED HERE:
+  before inventory : {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}
+  PUT /cloud/start : HTTP 200, radioActivity confirmed 'active'
+  during inventory : {"1":"LOW","2":"LOW","3":"LOW","4":"LOW"}  <-- unchanged
+RADIO_START was stored with a GPO HIGH action on pin 1, confirmed via GET /cloud/config, yet the pin never changed.
+
+*** CORRECTED BY TEST 15 ***
+
+This test was originally recorded as proof that the GPIO-LED engine is a silent no-op on reader app 5.0.7. THAT CONCLUSION WAS WRONG.
+
+Test 15 (GPIO-LED sent together with READER-GATEWAY) fired correctly:
+  RADIO_START -> GPO pin 2 LOW -> HIGH
+  RADIO_STOP  -> GPO pin 2 HIGH -> LOW
+reproduced over two consecutive start/stop cycles.
+
+Two follow-ups isolated the variables and cleared both suspicions:
+  1. GPIO-LED sent ALONE, no READER-GATEWAY: pin 2 fired. So the presence of READER-GATEWAY is NOT required.
+  2. GPO pin 1 on RADIO_START, alone, exactly as this test used: pin 1 fired LOW -> HIGH -> LOW. So pin 1 is NOT the problem either.
+
+Both candidate explanations are therefore eliminated, and the GPIO-LED engine demonstrably works on this firmware.
+
+WHY THIS TEST DID NOT FIRE - not established. Most likely something transient: the engine may need a settling period after a config write before it acts on events, and this test started the inventory shortly after the write. Later tests happened to allow more time. Not confirmed, so recorded as unknown rather than guessed at.
+
+LESSON: a single negative observation was over-generalised into a firmware defect. Isolating one variable at a time - which tests 15 and its follow-ups did - disproved it.

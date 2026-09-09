@@ -1,18 +1,11 @@
 # `/cloud/localRestLogin`
 
-- **GET only** — Reader login (HTTP Basic Auth → bearer token)
-- REST-only (no MQTT equivalent)
+- **GET** — Reader login (HTTP Basic Auth)
 
-## GET example (single)
+REST only. There is no MQTT command.
 
-| File | Example name | Summary title |
-|---|---|---|
-| `GET/login_success.json` | `login_success` | Bearer token returned |
+## GET examples
 
-See **`SUMMARIES.md`**.
-
-## Rebuild
-
-```bash
-py -3 rest/scripts/FXR_60-90_api_rest_api.py
-```
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `GET/login_success.json` | response 200 | `login_success` | `code` `0` and bearer token in `message` |

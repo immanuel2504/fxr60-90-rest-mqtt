@@ -1,0 +1,134 @@
+{
+  "method": "PUT",
+  "url": "/cloud/config",
+  "reader": "10.233.48.36 (reader app 5.0.7)",
+  "headers": {
+    "Authorization": "Bearer <admin JWT>",
+    "Content-Type": "application/json",
+    "_tokenSource": "Minted via GET /cloud/localRestLogin with admin:Zebra@123. Not stored - live credential."
+  },
+  "body": {
+    "GPIO-LED": {
+      "GPODefaults": {
+        "1": "LOW",
+        "2": "LOW",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "LEDDefaults": {
+        "1": "RED",
+        "2": "GREEN",
+        "3": "GREEN"
+      },
+      "RADIO_START": [
+        {
+          "type": "LED",
+          "led": 1,
+          "color": "AMBER"
+        },
+        {
+          "type": "GPO",
+          "pin": 1,
+          "state": "HIGH"
+        }
+      ],
+      "RADIO_STOP": [
+        {
+          "type": "LED",
+          "led": 1,
+          "color": "RED"
+        },
+        {
+          "type": "GPO",
+          "pin": 1,
+          "state": "LOW"
+        }
+      ],
+      "TAG_READ": [
+        {
+          "type": "LED",
+          "led": 1,
+          "color": "GREEN",
+          "postActionColor": "AMBER",
+          "blink": {
+            "ON": 100,
+            "OFF": 100,
+            "DURATION": 300
+          },
+          "conditions": [
+            "IS_RADIO_ONGOING"
+          ]
+        }
+      ],
+      "CLOUD_CONNECT": [
+        {
+          "type": "LED",
+          "led": 2,
+          "color": "GREEN"
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH",
+          "postActionState": "LOW",
+          "blink": {
+            "ON": 200,
+            "OFF": 200,
+            "DURATION": 1000
+          }
+        }
+      ],
+      "CLOUD_DISCONNECT": [
+        {
+          "type": "LED",
+          "led": 2,
+          "color": "RED",
+          "blink": {
+            "ON": 500,
+            "OFF": 500,
+            "DURATION": 0
+          }
+        },
+        {
+          "type": "GPO",
+          "pin": 2,
+          "state": "HIGH"
+        }
+      ],
+      "GPI_1_H": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "GREEN",
+          "postActionColor": "RED",
+          "blink": {
+            "ON": 250,
+            "OFF": 250,
+            "DURATION": 2000
+          }
+        }
+      ],
+      "GPI_1_L": [
+        {
+          "type": "LED",
+          "led": 3,
+          "color": "RED"
+        }
+      ],
+      "GPI_2_H": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "HIGH"
+        }
+      ],
+      "GPI_2_L": [
+        {
+          "type": "GPO",
+          "pin": 3,
+          "state": "LOW"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+ACCEPTED, AND basicAuthentication DOES WORK - correcting an earlier conclusion.
+
+Placement: basicAuthentication {username, password} goes inside options.additional - matching the reader's own get_config output, NOT inside options as the spec's mqtt-Azure example shows. Confirmed stored correctly via GET /cloud/config after sending.
+
+PROOF IT WORKS - the auth broker logged the reader connecting WITH the username on four separate occasions:
+  New client connected from 10.233.48.36 as fxr60-lab-mcmd (u'fxr60user')
+  New client connected from 10.233.48.36 as fxr60-lab-data (u'fxr60user')
+The 'u'fxr60user'' field is mosquitto recording the authenticated username.
+
+BUT it is INTERMITTENT. In the same session other attempts were rejected:
+  Sending CONNACK to 10.233.48.36 (0, 5)      <- MQTT return code 5 = not authorised
+  Client <unknown> disconnected, not authorised.
+'<unknown>' means the client was rejected before its ID was registered - i.e. it connected WITHOUT credentials on those attempts.
+Reader-side: connectionError 'connection initialization failed with return code (255), retry count (0)'.
+
+The broker credentials themselves are valid throughout - mosquitto_pub with fxr60user/Fxr60-Mqtt-2026! succeeds every time.
+
+So the reader sometimes sends the stored credentials and sometimes does not. Cause not established. Worth reporting: intermittent credential presentation is worse than an outright failure, because it looks like a broker problem.
+
+CORRECTION: this test was previously recorded as 'unresolved - not confirmed working in either placement'. That was wrong. The additional placement does work; it is just unreliable.

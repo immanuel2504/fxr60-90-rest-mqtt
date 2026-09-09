@@ -1,20 +1,14 @@
 ## 1. Description
 
-The `PUT /cloud/updatePassword` REST endpoint allows you to edit the `admin` and `rfidadm` password.
+The `PUT /cloud/updatePassword` REST endpoint changes the reader login password for `admin` or `rfidadm`.
 
-Only the password is changed. `userName` selects **which** of the two accounts to update — it does not rename an account, and it cannot create one.
+`userName` selects which of those two accounts to update. It does not rename an account, and it cannot create one.
 
-This endpoint allows you to configure:
+This endpoint requires:
 
-- Which account to change through `userName` (`admin` or `rfidadm`)
-- That account's existing password through `currentPassword`
-- The new password to set through `newPassword`
-
-Use this endpoint to:
-
-- Rotate reader credentials as part of a security policy
-- Set a new password during initial reader provisioning
-- Respond to a credential exposure or security incident
+- `userName` — `admin` or `rfidadm`
+- `currentPassword` — the account's existing password
+- `newPassword` — the password to set
 
 ## 2. Endpoint Details
 
@@ -31,10 +25,10 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Confirm the current password and the target account before sending this request. Using the wrong current password will cause the request to fail.
+The current password must be correct or the request fails.
 
 | What You Need | Details |
 |---|---|
-| Account | Which account to change, supplied in `userName`: `admin` or `rfidadm`. This selects the account only — the account itself is not renamed. |
-| Current password | The account's existing password. Required for authentication - the request will fail if this is incorrect. |
-| New password | The new password to set. Apply your organization's password policy (minimum length, complexity requirements). |
+| Account | `admin` or `rfidadm`. |
+| Current password | The account's existing password. |
+| New password | The password to set. |

@@ -1,0 +1,4 @@
+{
+  "code": 3,
+  "message": "Invalid Cloud Config File Schema - DATA config: event - invalid configuration (invalid \"security\" JSON object)"
+}

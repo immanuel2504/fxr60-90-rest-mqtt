@@ -35,3 +35,20 @@ Checked every Excel row against spec 11 **before** updating our docs.
 **Not in spec 11 despite “updated schema”:** #2 GPI max 2, #3 `READER_LOCATION`, #20 timeZone enums.
 
 **Left open on purpose:** #6, #12, #13 (developer will not change, or will retest).
+
+---
+
+## Spec 12 follow-up (8 September 2026)
+
+Developer YAML: `rest/openAPISpec 12.yaml`. Applied only the rows they actually changed. Unfixed rows stay on our live-tested keys.
+
+| # | Topic | In spec 12? | Our docs |
+|---|---|---|---|
+| 2 | GPI ports 1–4 on mode start/stop | **Yes** — `gpi.v1.port` `1`–`4` | Updated to match |
+| 3 | Location in `tagMetaData` | **Yes** — `READERLOCATION` (no underscore) | Updated to `READERLOCATION`. Live rejected `READER_LOCATION` |
+| 4 leftover | `802_1xEAP` examples | Still 2 leftovers | Keep `802_1XEAP` |
+| 11 | `supportedPowerSource` | Still `POWERBRICK` | Unchanged |
+| 12–13 | certs / OS credentials | Still `options` | Keep `authenticationOptions` |
+| 20 | timeZone GET IANA | Still GMT names | Unchanged |
+
+Also in spec 12 (applied): `wordCount` (already in our docs), BLE generic `address`/`addressType`/`name`/`alias` (already in our docs), BLE PUT text (all four `ble` fields required; empty objects for nested), Impinj PUT text (exactly one feature; combining rejected). Impinj schema still has no `maxProperties: 1`; we keep ours because live 422.

@@ -1,0 +1,97 @@
+{
+  "read_seconds": 18,
+  "unique_tags": 11,
+  "total_reads": 11,
+  "reference_tags": {
+    "e2806894000040017790e471": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        null
+      ],
+      "rssi_min": null,
+      "rssi_max": null,
+      "fields_present": [
+        "eventNum",
+        "format",
+        "idHex"
+      ]
+    },
+    "e2806894000040017790ac71": {
+      "seen": true,
+      "reads": 1,
+      "antennas": [
+        null
+      ],
+      "rssi_min": null,
+      "rssi_max": null,
+      "fields_present": [
+        "eventNum",
+        "format",
+        "idHex"
+      ]
+    }
+  },
+  "all_tags": {
+    "e2806894000040017790e471": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790ac71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790c471": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790cc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790dc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017790bc71": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000040017790d871": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806d120000000246f8fbf3": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e28011b0a504007f647aee94": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e2806894000050017794f071": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    },
+    "e28068900000000016cbc093": {
+      "reads": 1,
+      "rssi_min": null,
+      "rssi_max": null
+    }
+  },
+  "sample_event": {
+    "eventNum": 411,
+    "format": "epc",
+    "idHex": "e2806894000040017790e471"
+  }
+}

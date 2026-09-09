@@ -2,39 +2,53 @@
 
 ## GET responses
 
-### `GET/profiles_present.json`
+### `GET/gnd1_gnd2.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `profiles_present` |
-| **Summary title** | `Two profiles` |
+| **Example name** | `gnd1_gnd2` |
+| **Summary title** | `Profiles gnd1 and gnd2` |
 
-## PUT requests
+---
 
-### `PUT/eSimConfig_enable.json`
+## PUT request
 
-| Field | Value |
-|---|---|
-| **Example name** | `eSimConfig_enable` |
-| **Summary title** | `eSimConfig enable` |
-
-### `PUT/eSimConfig_disable.json`
+### `PUT/enable_profile.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `eSimConfig_disable` |
-| **Summary title** | `eSimConfig disable` |
+| **Example name** | `enable_profile` |
+| **Summary title** | `operation enable` |
 
-### `PUT/eSimConfig_add.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `eSimConfig_add` |
-| **Summary title** | `eSimConfig add` |
-
-### `PUT/eSimConfig_delete.json`
+### `PUT/disable_profile.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `eSimConfig_delete` |
-| **Summary title** | `eSimConfig delete` |
+| **Example name** | `disable_profile` |
+| **Summary title** | `operation disable` |
+
+### `PUT/add_profile.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `add_profile` |
+| **Summary title** | `operation add with activationID` |
+
+### `PUT/delete_profile.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `delete_profile` |
+| **Summary title** | `operation delete` |
+
+---
+
+## PUT response
+
+### `PUT/success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `success` |
+| **Summary title** | `Empty string on success` |
+| **HTTP status** | `200` |

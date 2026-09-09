@@ -1,0 +1,15 @@
+tagQuieting 08 - spec example "advanced_unquiet_tags"
+RESULT: HTTP 200, stored VERBATIM, activates
+
+The mirror of test 07, with the inverse actions and masks:
+
+  preSelect[0]: action=DEASSERTSL_NOTHING   (vs ASSERTSL_NOTHING)
+  preSelect[1]: action=INVA_INVB            (vs INVB_INVA)
+  tagQuietMasks: ["SL_DEASSERT","S2A"]      (vs SL_ASSERT, S2B)
+  stateAwareAction: DEASSERTSL_ASSERTSL     (vs ASSERTSL_DEASSERTSL)
+
+All stored exactly as sent. Together tests 07 and 08 cover eight distinct enum
+values across four different enum fields, all accepted.
+
+Same caveat as test 07: the masks match no tag in our field, so the radio-level
+effect is unverified. Acceptance and exact round-trip are what is confirmed.

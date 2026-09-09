@@ -29,7 +29,7 @@ PUT body sent (same as [PUT/Network_bluetooth.json](PUT/Network_bluetooth.json))
 }
 ```
 
-GET `{ "interface": "bnep0" }` after that PUT (same as [GET/Bluetooth.json](GET/Bluetooth.json)):
+GET `{ "interface": "bnep0" }` after that PUT (`bnep0` is also in [GET/all_interfaces.json](GET/all_interfaces.json)):
 
 ```json
 {
@@ -230,6 +230,5 @@ When Ethernet or Wi-Fi works, use that path. Optionally stop new pairings:
 
 | File | What it is |
 |---|---|
-| [PUT/Network_bluetooth.json](PUT/Network_bluetooth.json) | Enable Bluetooth PAN (this live PUT) |
-| [GET/request_bnep0.json](GET/request_bnep0.json) | GET filter `{ "interface": "bnep0" }` |
-| [GET/Bluetooth.json](GET/Bluetooth.json) | Live GET response from `FXR609BE34A` |
+| [PUT/Network_bluetooth.json](PUT/Network_bluetooth.json) | Enable Bluetooth PAN |
+| [GET/all_interfaces.json](GET/all_interfaces.json) | GET response including `bnep0` |
