@@ -32,6 +32,17 @@
     footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
              color: var(--muted); font-size: 13.5px; }
     footer a { color: var(--accent); }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink:#ffffff; --muted:#ffffff; --line:#5b6478; --accent:#ffffff; }
+      html { color-scheme: dark; }
+      body { background: #1b1f2a; color: #ffffff; }
+      .card { background: #232836; }
+      .card p, .sub, .alt, footer, footer a, .tag, h1, h2, code {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff;
+      }
+      .tag { background: #4a2d63; }
+    }
   </style>
 </head>
 <body>

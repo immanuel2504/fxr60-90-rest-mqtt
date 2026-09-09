@@ -3,61 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title>FXR60 / FXR90 MQTT API Documentation</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css" />
-  <style>
+  <style id="fxr-dark-mode">
     body { margin: 0; background: #fafafa; }
     @media (prefers-color-scheme: dark) {
-      html { color-scheme: dark; }
-      body { background: #1b1f2a; }
+      html { color-scheme: dark; background: #1b1f2a; }
+      body,
+      #swagger-ui,
       .swagger-ui,
-      .swagger-ui .info,
-      .swagger-ui .info .title,
-      .swagger-ui .info p,
-      .swagger-ui .info li,
-      .swagger-ui .info h1,
-      .swagger-ui .info h2,
-      .swagger-ui .info h3,
+      .swagger-ui .wrapper,
+      .swagger-ui .scheme-container,
+      .swagger-ui .information-container,
+      .swagger-ui .opblock,
+      .swagger-ui .opblock-body,
+      .swagger-ui .opblock-description-wrapper,
+      .swagger-ui .opblock-section-header,
+      .swagger-ui .responses-inner,
+      .swagger-ui .model-box,
+      .swagger-ui .model-container {
+        background: #1b1f2a !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        forced-color-adjust: none;
+      }
+      .swagger-ui,
+      .swagger-ui *,
+      .swagger-ui *::before,
+      .swagger-ui *::after {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        forced-color-adjust: none;
+      }
+      .swagger-ui table,
+      .swagger-ui table thead,
+      .swagger-ui table tbody,
+      .swagger-ui table tr,
+      .swagger-ui table th,
+      .swagger-ui table td,
       .swagger-ui .markdown,
       .swagger-ui .markdown p,
       .swagger-ui .markdown li,
+      .swagger-ui .markdown strong,
       .swagger-ui .renderedMarkdown,
       .swagger-ui .renderedMarkdown p,
       .swagger-ui .renderedMarkdown li,
-      .swagger-ui .opblock-description,
-      .swagger-ui .opblock-description-wrapper p,
-      .swagger-ui .opblock-description-wrapper li,
-      .swagger-ui .opblock .opblock-section-header h4,
-      .swagger-ui .opblock .opblock-summary-description,
-      .swagger-ui .opblock-title_normal,
-      .swagger-ui .parameter__name,
-      .swagger-ui .parameter__type,
-      .swagger-ui .parameter__deprecated,
-      .swagger-ui .parameter__in,
-      .swagger-ui .tab li,
-      .swagger-ui label,
-      .swagger-ui .model-title,
-      .swagger-ui .model,
-      .swagger-ui .prop-type,
-      .swagger-ui .response-col_status,
-      .swagger-ui .response-col_description,
-      .swagger-ui .response-col_links,
-      .swagger-ui table thead tr th,
-      .swagger-ui table tbody tr td,
-      .swagger-ui .markdown table td,
-      .swagger-ui .markdown table th,
-      .swagger-ui .renderedMarkdown table td,
-      .swagger-ui .renderedMarkdown table th {
-        color: #e8eaed !important;
-        background: transparent !important;
-        border-color: #3d4454 !important;
+      .swagger-ui .renderedMarkdown strong {
+        background: #1b1f2a !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        border-color: #5b6478 !important;
       }
-      .swagger-ui .opblock-section-header {
-        background: #232836;
+      .swagger-ui code,
+      .swagger-ui .markdown code,
+      .swagger-ui .renderedMarkdown code {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background: #4a2d63 !important;
       }
-      .swagger-ui .scheme-container,
-      .swagger-ui .wrapper {
-        background: transparent;
+      .swagger-ui input,
+      .swagger-ui select,
+      .swagger-ui textarea {
+        background: #232836 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        border-color: #5b6478 !important;
       }
     }
   </style>
@@ -78,6 +89,8 @@
         ],
         layout: "StandaloneLayout"
       });
+      var dark = document.getElementById("fxr-dark-mode");
+      if (dark) document.head.appendChild(dark);
     };
   </script>
 </body>

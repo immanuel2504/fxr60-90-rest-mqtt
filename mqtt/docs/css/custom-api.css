@@ -1746,3 +1746,39 @@ blockquote p { margin-bottom: 0; }
  transform: translateY(0);
 }
 #back-to-top:hover { background: var(--color-primary-hover); }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1f2a;
+    --color-surface: #232836;
+    --color-surface-hover: #2c3344;
+    --color-border: #5b6478;
+    --color-border-light: #5b6478;
+    --color-text: #ffffff;
+    --color-text-secondary: #ffffff;
+    --color-text-muted: #ffffff;
+    --color-primary: #ffffff;
+    --color-primary-hover: #ffffff;
+    --color-primary-bg: #2c3344;
+    --color-code-inline-bg: #4a2d63;
+    --color-code-inline-border: #6b4a88;
+    --color-input-border: #5b6478;
+    --color-table-row-alt: #232836;
+    --color-table-row-hover: #2c3344;
+  }
+  html { color-scheme: dark; background: #1b1f2a; }
+  body,
+  body * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border-color: #5b6478;
+  }
+  body {
+    background: #1b1f2a !important;
+  }
+  code, .markdown code {
+    background: #4a2d63 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}
