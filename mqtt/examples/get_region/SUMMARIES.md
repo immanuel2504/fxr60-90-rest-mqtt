@@ -1,15 +1,17 @@
 # Example summary titles — `get_region`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_region request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/region.json`
+### `response/us_canada_fcc_15.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `region` |
+| **Example name** | `us_canada_fcc_15` |
 | **Summary title** | `United States/Canada, US_FCC_15` |

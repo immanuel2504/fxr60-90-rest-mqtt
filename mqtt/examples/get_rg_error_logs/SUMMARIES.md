@@ -1,15 +1,17 @@
 # Example summary titles — `get_rg_error_logs`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_logs_rgErrorLog request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/rg_error.json`
+### `response/download.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `rg_error` |
+| **Example name** | `download` |
 | **Summary title** | `rgErrorLog.tar.gz archive` |

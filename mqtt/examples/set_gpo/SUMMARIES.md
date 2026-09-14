@@ -1,15 +1,17 @@
 # Example summary titles — `set_gpo`
 
-### `request/gpo.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/port3_high.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `gpo` |
+| **Example name** | `port3_high` |
 | **Summary title** | `Port 3 HIGH` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

@@ -2,7 +2,7 @@
 
 - **PUT** - Start RFID Inventory or BLE scan (`startInventory`)
 
-`scanType` is an array of `ble` and/or `rfid`. These six examples match the published schema and the live 6 Sep 2026 start tests.
+`scanType` is an array of `ble` and/or `rfid`. These six examples match the published schema.
 
 | File | Example name | Summary |
 |---|---|---|

@@ -1,22 +1,36 @@
 # Example summary titles — `set_update_cert`
 
-### `request/https_basic.json`
+### `request/https_basic_authentication.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `https_basic` |
-| **Summary title** | `HTTPS BASIC download` |
+| **Example name** | `https_basic_authentication` |
+| **Summary title** | `HTTPS BASIC authentication` |
 
-### `request/mtls.json`
+### `request/https_with_headers.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `mtls` |
-| **Summary title** | `HTTPS BASIC with installed client cert and CA` |
+| **Example name** | `https_with_headers` |
+| **Summary title** | `HTTPS with headers` |
+
+### `request/sftp_certificate_download.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `sftp_certificate_download` |
+| **Summary title** | `SFTP certificate download` |
+
+### `request/https_mtls.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `https_mtls` |
+| **Summary title** | `HTTPS mTLS` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

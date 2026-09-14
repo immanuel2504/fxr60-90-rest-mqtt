@@ -1,0 +1,22 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "radio_control": {
+      "status": "running",
+      "cpu": 0.2,
+      "ram": 0.4
+    },
+    "reader_gateway": {
+      "cpu": 0.4,
+      "ram": 0.5
+    },
+    "system": {
+      "hostName": "FXR609BE34A",
+      "systemtime": "08/09/2026 04:40"
+    },
+    "userapps": []
+  }
+}

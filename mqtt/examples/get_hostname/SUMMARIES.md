@@ -1,15 +1,17 @@
 # Example summary titles — `get_hostname`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_hostname.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_hostName request` |
+| **Example name** | `get_hostname` |
+| **Summary title** | `Get hostname` |
 
-### `response/configured.json`
+### `response/hostname.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `configured` |
-| **Summary title** | `Current hostname` |
+| **Example name** | `hostname` |
+| **Summary title** | `Hostname FXR609BE34A` |

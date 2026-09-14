@@ -1,7 +1,5 @@
 # Example summary titles — `/cloud/gpo`
 
-## GET responses
-
 ### `GET/gpo_status.json`
 
 | Field | Value |
@@ -9,20 +7,12 @@
 | **Example name** | `gpo_status` |
 | **Summary title** | `All pins LOW` |
 
----
-
-## PUT request
-
-### `PUT/gpo.json`
+### `PUT/port3_high.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `gpo` |
+| **Example name** | `port3_high` |
 | **Summary title** | `Port 3 HIGH` |
-
----
-
-## PUT response
 
 ### `PUT/success.json`
 
@@ -30,4 +20,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

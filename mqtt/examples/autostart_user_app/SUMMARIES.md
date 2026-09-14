@@ -1,26 +1,22 @@
 # Example summary titles — `autostart_user_app`
 
-## PUT request
-
 ### `request/autostart_true.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `autostart_true` |
-| **Summary title** | `autostart true` |
+| **Summary title** | `Autostart true` |
 
 ### `request/autostart_false.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `autostart_false` |
-| **Summary title** | `autostart false` |
-
-## PUT response
+| **Summary title** | `Autostart false` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

@@ -6,17 +6,17 @@
 
 | File | Example name | Summary |
 |---|---|---|
-| `PUT/mqtt_all_channels.json` | `mqtt_all_channels` | All channels over MQTT, port 1883 |
-| `PUT/mqtt_tls_all_channels.json` | `mqtt_tls_all_channels` | All channels over MQTT mTLS file paths, port 8884 |
-| `PUT/data_mqtt_tls_installed_cert.json` | `data_mqtt_tls_installed_cert` | MQTT mTLS via cert store plus CA, port 8884 |
-| `PUT/mqtt_aws_all_channels.json` | `mqtt_aws_all_channels` | AWS IoT FileLocation, port 443 |
-| `PUT/mqtt_aws_installed_cert.json` | `mqtt_aws_installed_cert` | AWS IoT installed cert, port 443 |
-| `PUT/mqtt_azure_all_channels.json` | `mqtt_azure_all_channels` | All channels over Azure IoT Hub |
-| `PUT/data_http_post.json` | `data_http_post` | HTTP POST |
-| `PUT/data_tcpip_server.json` | `data_tcpip_server` | TCP/IP server |
-| `PUT/data_websocket.json` | `data_websocket` | WebSocket |
-| `PUT/management_cmd_mqtt.json` | `management_cmd_mqtt` | Management command/response over MQTT |
-| `PUT/management_event_mqtt.json` | `management_event_mqtt` | Management events over MQTT |
-| `PUT/clear_data.json` | `clear_data` | Clear all data connections |
+| `PUT/clear_data_connections.json` | `clear_data_connections` | Clear data connections |
+| `PUT/http_post_data_endpoint.json` | `http_post_data_endpoint` | HTTP POST data endpoint |
+| `PUT/mqtt_mtls_all_channels_installed_certificate.json` | `mqtt_mtls_all_channels_installed_certificate` | MQTT mTLS all channels (installed certificate) |
+| `PUT/tcpip_server_data_endpoint.json` | `tcpip_server_data_endpoint` | TCP/IP server data endpoint |
+| `PUT/websocket_data_endpoint.json` | `websocket_data_endpoint` | WebSocket data endpoint |
+| `PUT/mqtt_management_command_response.json` | `mqtt_management_command_response` | MQTT management command/response |
+| `PUT/mqtt_management_events.json` | `mqtt_management_events` | MQTT management events |
+| `PUT/mqtt_all_channels.json` | `mqtt_all_channels` | MQTT all channels |
+| `PUT/aws_iot_all_channels_certificate_files.json` | `aws_iot_all_channels_certificate_files` | AWS IoT all channels (certificate files) |
+| `PUT/aws_iot_all_channels_installed_certificate.json` | `aws_iot_all_channels_installed_certificate` | AWS IoT all channels (installed certificate) |
+| `PUT/azure_iot_all_channels.json` | `azure_iot_all_channels` | Azure IoT Hub all channels |
+| `PUT/mqtt_mtls_all_channels_certificate_files.json` | `mqtt_mtls_all_channels_certificate_files` | MQTT mTLS all channels (certificate files) |
 
 See **`SUMMARIES.md`**.

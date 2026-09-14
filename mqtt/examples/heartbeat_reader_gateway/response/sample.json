@@ -1,0 +1,70 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "reader_gateway": {
+      "cpu": 0.4,
+      "dataPathStatistics": [
+        {
+          "noLockQDepth": 0,
+          "numDataMessagesDropped": 0,
+          "numDataMessagesRetained": 0,
+          "numDataMessagesRxed": 0,
+          "numDataMessagesTxed": 0
+        }
+      ],
+      "interfaceConnectionStatus": {
+        "control": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "Control cmd/rsp through AWS IoT Core",
+            "interface": "CTRL_AWS",
+            "stats": {
+              "commands_received": 0,
+              "responses_failed": 0,
+              "responses_sent": 0
+            }
+          }
+        ],
+        "data": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "AWS IoT data endpoint",
+            "interface": "DATA_AWS_CLOUD_EVENTS"
+          }
+        ],
+        "management": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "Management cmd/rsp through AWS IoT Core",
+            "interface": "MGMT_CMD_AWS",
+            "stats": {
+              "commands_received": 0,
+              "responses_failed": 0,
+              "responses_sent": 0
+            }
+          }
+        ],
+        "managementEvent": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "Management event endpoint",
+            "interface": "MGMT_EV_UA2"
+          }
+        ]
+      },
+      "numDataMessagesRxedFromExt": 0,
+      "numErrors": 0,
+      "numManagementEventsTxed": 12,
+      "numWarnings": 0,
+      "ram": 0.5,
+      "uptime": "0:01:10"
+    }
+  }
+}

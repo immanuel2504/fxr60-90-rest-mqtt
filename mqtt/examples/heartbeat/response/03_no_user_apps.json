@@ -1,0 +1,15 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "radio_control": {
+      "status": "running"
+    },
+    "system": {
+      "hostName": "FXR609BE34A"
+    },
+    "userapps": []
+  }
+}

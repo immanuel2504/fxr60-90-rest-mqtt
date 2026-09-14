@@ -1,15 +1,17 @@
 # Example summary titles — `get_inputOutputDevices`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_inputOutputDevices request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/devices.json`
+### `response/monitor_only.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `devices` |
-| **Summary title** | `Monitor connected; keyboard, mouse, and touch disconnected` |
+| **Example name** | `monitor_only` |
+| **Summary title** | `Monitor connected only` |

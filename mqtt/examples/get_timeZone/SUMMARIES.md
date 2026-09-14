@@ -1,15 +1,17 @@
 # Example summary titles — `get_timeZone`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_timeZone request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/utc.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `utc` |
-| **Summary title** | `timeZone UTC` |
+| **Summary title** | `UTC` |

@@ -1,15 +1,17 @@
 # Example summary titles — `get_ntpServer`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_ntpServer request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/pool_ntp_org.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `pool_ntp_org` |
-| **Summary title** | `server pool.ntp.org` |
+| **Summary title** | `pool.ntp.org` |

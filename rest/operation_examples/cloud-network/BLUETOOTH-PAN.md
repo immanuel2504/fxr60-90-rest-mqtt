@@ -11,7 +11,7 @@ Ethernet (`eth0`) and Wi-Fi client (`mlan0`) remain the normal day-to-day paths.
 
 ---
 
-## Live capture (FXR60 `FXR609BE34A`)
+## Example request and response (FXR60)
 
 PUT body sent (same as [PUT/Network_bluetooth.json](PUT/Network_bluetooth.json)):
 
@@ -63,7 +63,7 @@ What this means on this reader:
 | `ipAddress: "192.168.227.74"` | Open **`https://192.168.227.74`** after you pair |
 | Laptop will get | An address in `192.168.0.2`–`192.168.0.10` — that is the laptop, not the reader |
 
-PUT succeeded: GET echoed the same pool, PIN, and flags. The two GET bodies above are the same capture twice.
+After a successful PUT, GET echoes the same pool, PIN, and flags. The two GET bodies above are identical.
 
 ---
 
@@ -109,14 +109,14 @@ Authorization: Bearer <token>
 Content-Type: application/json
 ```
 
-Use the live body in [Live capture](#live-capture-fxr60-fxr609be34a). Success body is an empty string (`""`). Confirm with GET.
+Use the body in [Example request and response](#example-request-and-response-fxr60). Success body is an empty string (`""`). Confirm with GET.
 
 | PUT field | Meaning |
 |---|---|
 | `enable` | Bluetooth network on or off |
 | `discoverable` | Visible in a phone or laptop Bluetooth scan |
 | `pairable` | Accept new pairings |
-| `usePassKey` | `true` = require the PIN. Live capture used `false` (no PIN prompt) |
+| `usePassKey` | `true` = require the PIN. The example uses `false` (no PIN prompt) |
 | `passKey` | PIN (send the field even when `usePassKey` is `false`) |
 | `dhcpStartAddress` / `dhcpEndAddress` | Address pool for **the laptop**, not the building LAN |
 
@@ -136,7 +136,7 @@ The laptop is now on a small private network that the reader is serving.
 
 ### 3. Get the address to open in the browser
 
-On this live reader the address is already known from GET: **`192.168.227.74`**.
+The address is available from GET, for example **`192.168.227.74`**.
 
 **Way A — you already have Ethernet or Wi-Fi to the reader**
 

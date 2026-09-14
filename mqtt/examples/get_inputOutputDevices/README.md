@@ -1,12 +1,6 @@
 # `get_inputOutputDevices`
 
-REST: `GET /cloud/inputOutputDevices` → `cloud-inputoutputdevices/`
-
-FXR60 only.
-
-Stable `command_id`: `req-get-inputOutputDevices`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_inputOutputDevices request |
-| `response/devices.json` | response | `devices` | `cloud-inputoutputdevices/GET/devices.json` | Monitor connected; keyboard, mouse, and touch disconnected |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/get_configuration.json` | request | `get_configuration` | Get configuration |
+| `response/monitor_only.json` | response | `monitor_only` | Monitor connected only |

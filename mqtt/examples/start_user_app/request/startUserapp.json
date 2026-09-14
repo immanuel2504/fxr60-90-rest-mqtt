@@ -1,7 +1,0 @@
-{
-  "command": "set_startUserapp",
-  "command_id": "req-start-user-app",
-  "payload": {
-    "appname": "mylogger"
-  }
-}

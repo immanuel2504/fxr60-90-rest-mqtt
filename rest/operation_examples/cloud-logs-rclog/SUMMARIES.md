@@ -1,10 +1,8 @@
-# Example summary titles — `/cloud/logs/RcLog`
+# Example summary titles — `cloud-logs-rclog`
 
-## GET responses
-
-### `GET/rc_log.json`
+### `GET/download.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `rc_log` |
+| **Example name** | `download` |
 | **Summary title** | `rcLog.tar.gz archive` |

@@ -1,6 +1,6 @@
 ## 1. Description
 
-The `GET /cloud/localRestLogin` REST endpoint returns a bearer token.
+The `GET /cloud/localRestLogin` endpoint authenticates with the reader and returns a Bearer token for subsequent API requests.
 
 This endpoint returns:
 
@@ -22,4 +22,4 @@ Send the token as `Authorization: Bearer <token>` on other REST calls.
 
 ## 3. Before You Begin
 
-Use HTTP Basic Auth with the reader admin username and password.
+Use HTTP Basic Auth with the reader admin username and password. In the API docs viewer, enter the credentials in the **Authorize** dialog and click **Authorize** before calling this endpoint.

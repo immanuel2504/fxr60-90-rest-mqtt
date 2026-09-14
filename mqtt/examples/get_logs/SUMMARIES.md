@@ -1,15 +1,17 @@
 # Example summary titles — `get_logs`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_logs request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/info_packet_off.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `info_packet_off` |
 | **Summary title** | `radio_control INFO, reader_gateway INFO, radioPacketLog off` |

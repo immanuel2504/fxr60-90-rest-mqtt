@@ -1,0 +1,24 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-heartbeat-userapps",
+  "payload": {
+    "READER-GATEWAY": {
+      "managementEventConfig": {
+        "heartbeat": {
+          "fields": {
+            "userapps": [
+              "STATUS",
+              "CPU",
+              "RAM",
+              "UPTIME",
+              "NUM_DATA_MESSAGES_RXED",
+              "NUM_DATA_MESSAGES_TXED",
+              "INCOMING_DATA_BUFFER_PERCENTAGE_REMAINING",
+              "OUTGOING_DATA_BUFFER_PERCENTAGE_REMAINING"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

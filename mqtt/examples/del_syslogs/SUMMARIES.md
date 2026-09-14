@@ -1,15 +1,17 @@
 # Example summary titles — `del_syslogs`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty del_logs_syslog request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

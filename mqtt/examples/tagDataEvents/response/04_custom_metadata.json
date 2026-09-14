@@ -1,0 +1,19 @@
+{
+  "type": "CUSTOM",
+  "timestamp": "2026-09-07T12:30:28.390+0000",
+  "data": {
+    "CRC": "f3b3",
+    "PC": "3000",
+    "accessResults": [
+      "e280689420004001"
+    ],
+    "antenna": 1,
+    "channel": 908.25,
+    "eventNum": 4828,
+    "format": "epc",
+    "idHex": "e2806894000040017790e471",
+    "peakRssi": -37,
+    "phase": 14.029969215393066,
+    "reads": 1
+  }
+}

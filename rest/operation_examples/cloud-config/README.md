@@ -8,29 +8,26 @@
 | File | Example name | Summary |
 |---|---|---|
 | `GET/full_configuration.json` | `full_configuration` | Full configuration (MQTT endpoints, GPIO-LED unset) |
-| `GET/gpio_led_not_configured.json` | `gpio_led_not_configured` | GPIO-LED not configured (empty object) |
 
-## PUT examples (17)
+## PUT examples (15)
 
 | File | Example name | Summary |
 |---|---|---|
-| `PUT/data_mqtt.json` | `data_mqtt` | MQTT data endpoint (tags delivered) |
-| `PUT/data_mqtt_batching.json` | `data_mqtt_batching` | MQTT with batching and retention arrays |
-| `PUT/data_aws.json` | `data_aws` | AWS IoT Core (port 443 + ALPN) |
-| `PUT/data_azure.json` | `data_azure` | Azure IoT Hub |
-| `PUT/data_http_post.json` | `data_http_post` | HTTP POST (tags delivered) |
-| `PUT/data_tcpip_server.json` | `data_tcpip_server` | TCP/IP server (tags received) |
-| `PUT/data_websocket.json` | `data_websocket` | WebSocket |
-| `PUT/clear_data.json` | `clear_data` | Clear all data connections |
+| `PUT/clear_data_configuration.json` | `clear_data_configuration` | Clear data connections |
+| `PUT/aws_data_endpoint.json` | `aws_data_endpoint` | AWS IoT Core data endpoint |
+| `PUT/azure_data_endpoint.json` | `azure_data_endpoint` | Azure IoT Hub data endpoint |
+| `PUT/http_post_data_endpoint.json` | `http_post_data_endpoint` | HTTP POST data endpoint |
+| `PUT/mqtt_data_endpoint.json` | `mqtt_data_endpoint` | MQTT data endpoint |
+| `PUT/mqtt_data_endpoint_with_batching.json` | `mqtt_data_endpoint_with_batching` | MQTT data endpoint with batching |
+| `PUT/tcpip_server_data_endpoint.json` | `tcpip_server_data_endpoint` | TCP/IP server data endpoint |
+| `PUT/websocket_data_endpoint.json` | `websocket_data_endpoint` | WebSocket data endpoint |
+| `PUT/cloud_event_gpio_led.json` | `cloud_event_gpio_led` | GPIO-LED for cloud connect/disconnect |
+| `PUT/conditional_gpio_led.json` | `conditional_gpio_led` | GPIO-LED actions with conditions |
 | `PUT/gpio_led_defaults.json` | `gpio_led_defaults` | GPIO-LED defaults only |
-| `PUT/gpio_led_tag_radio.json` | `gpio_led_tag_radio` | GPIO-LED for tag read and radio start/stop |
-| `PUT/gpio_led_cloud.json` | `gpio_led_cloud` | GPIO-LED for cloud connect/disconnect |
-| `PUT/gpio_led_gpi.json` | `gpio_led_gpi` | GPIO-LED for GPI high/low events |
-| `PUT/gpio_led_conditions.json` | `gpio_led_conditions` | GPIO-LED actions with conditions |
-| `PUT/combined_mqtt_gpio.json` | `combined_mqtt_gpio` | MQTT data plus GPIO-LED |
-| `PUT/combined_http_gpio.json` | `combined_http_gpio` | HTTP POST plus conditional GPIO-LED |
-| `PUT/combined_clear_gpio.json` | `combined_clear_gpio` | Clear data endpoint and keep GPIO-LED |
-| `PUT/combined_aws_cloud_gpio.json` | `combined_aws_cloud_gpio` | AWS data plus cloud-event GPIO-LED |
+| `PUT/gpi_event_gpio_led.json` | `gpi_event_gpio_led` | GPIO-LED for GPI high/low events |
+| `PUT/tag_and_radio_event_gpio_led.json` | `tag_and_radio_event_gpio_led` | GPIO-LED for tag read and radio start/stop |
+| `PUT/rfid_xml_profile.json` | `rfid_xml_profile` | RFID XML profile |
+| `PUT/combined_configuration.json` | `combined_configuration` | MQTT data plus GPIO-LED |
 
 ## Trying these against a reader
 
@@ -41,5 +38,5 @@ TOKEN=$(curl -sk -u admin:PASSWORD https://$READER/cloud/localRestLogin | jq -r 
 curl -sk -X PUT "https://$READER/cloud/config" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
-  -d @PUT/data_mqtt.json
+  -d @PUT/mqtt_data_endpoint.json
 ```

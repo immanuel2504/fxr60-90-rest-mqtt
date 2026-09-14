@@ -1,10 +1,8 @@
 # Example summary titles — `/cloud/inputOutputDevices`
 
-## GET responses
-
-### `GET/devices.json`
+### `GET/monitor_only.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `devices` |
-| **Summary title** | `Monitor connected; keyboard, mouse, and touch disconnected` |
+| **Example name** | `monitor_only` |
+| **Summary title** | `Monitor connected only` |

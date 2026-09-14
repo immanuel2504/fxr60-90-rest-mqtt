@@ -1,0 +1,9 @@
+{
+  "type": "userapp",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "sample",
+  "eventNum": 56,
+  "data": {
+    "event": "door-controller: badge 4471 accepted"
+  }
+}

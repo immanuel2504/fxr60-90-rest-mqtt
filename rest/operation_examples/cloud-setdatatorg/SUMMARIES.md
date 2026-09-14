@@ -1,15 +1,11 @@
 # Example summary titles — `/cloud/setdataToRG`
 
-## PUT request
-
-### `PUT/dataToRG.json`
+### `PUT/send_data_to_reader_gateway.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `dataToRG` |
-| **Summary title** | `Empty object` |
-
-## PUT response
+| **Example name** | `send_data_to_reader_gateway` |
+| **Summary title** | `Send data to Reader Gateway` |
 
 ### `PUT/success.json`
 
@@ -17,4 +13,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

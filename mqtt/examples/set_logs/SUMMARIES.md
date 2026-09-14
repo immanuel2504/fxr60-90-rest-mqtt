@@ -1,22 +1,24 @@
 # Example summary titles — `set_logs`
 
-### `request/logs.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/rg_debug_packet_on.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `logs` |
+| **Example name** | `rg_debug_packet_on` |
 | **Summary title** | `reader_gateway DEBUG and radioPacketLog on` |
 
-### `request/radioPacketLog_on.json`
+### `request/radio_packet_log_on.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `radioPacketLog_on` |
+| **Example name** | `radio_packet_log_on` |
 | **Summary title** | `Enable radioPacketLog` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

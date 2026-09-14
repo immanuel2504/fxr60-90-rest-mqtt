@@ -1,5 +1,7 @@
 # MQTT operation examples
 
+Example naming standard: [EXAMPLE_NAMING.md](EXAMPLE_NAMING.md) (scenario-based names).
+
 ```text
 examples/
   set_appled/

@@ -1,61 +1,53 @@
 # Example summary titles — `/cloud/bleConfig`
 
-## GET response
-
-### `GET/disabled.json`
+### `GET/all_protocols_and_filters.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `disabled` |
-| **Summary title** | `ble.enable false` |
-| **HTTP status** | `200` |
-
-### `GET/all_protocols.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `all_protocols` |
+| **Example name** | `all_protocols_and_filters` |
 | **Summary title** | `All protocols and filters` |
-| **HTTP status** | `200` |
 
-## PUT request
-
-### `PUT/enable_ble.json`
+### `GET/ble_disabled.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `enable_ble` |
-| **Summary title** | `ble.enable true, interval 0` |
-
-### `PUT/enable_with_interval.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `enable_with_interval` |
-| **Summary title** | `Interval 5` |
-
-### `PUT/enable_with_rssi_filter.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `enable_with_rssi_filter` |
-| **Summary title** | `additionalFilters.rssi -70` |
-
-### `PUT/enable_with_protocols.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `enable_with_protocols` |
-| **Summary title** | `All protocols and filters` |
+| **Example name** | `ble_disabled` |
+| **Summary title** | `BLE disabled` |
 
 ### `PUT/disable_ble.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `disable_ble` |
-| **Summary title** | `ble.enable false` |
+| **Summary title** | `Disable BLE` |
 
-## PUT response
+### `PUT/enable_ble.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `enable_ble` |
+| **Summary title** | `Enable BLE` |
+
+### `PUT/enable_ble_with_interval.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `enable_ble_with_interval` |
+| **Summary title** | `Enable BLE with scan interval` |
+
+### `PUT/enable_all_protocols.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `enable_all_protocols` |
+| **Summary title** | `Enable all BLE protocols` |
+
+### `PUT/enable_ble_with_rssi_filter.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `enable_ble_with_rssi_filter` |
+| **Summary title** | `Enable BLE with RSSI filter` |
 
 ### `PUT/success.json`
 
@@ -63,4 +55,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

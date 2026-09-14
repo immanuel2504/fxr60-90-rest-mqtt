@@ -1,12 +1,9 @@
 # `set_region`
 
-REST: `PUT /cloud/region` → `cloud-region/`
-
-Stable `command_id`: `req-set-region`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/us_fcc_15.json` | request | `us_fcc_15` | `cloud-region/PUT/us_fcc_15.json` | United States/Canada, US_FCC_15 |
-| `request/us_fcc_a.json` | request | `us_fcc_a` | `cloud-region/PUT/us_fcc_a.json` | United States/Canada, US_FCC_A |
-| `request/us_fcc_c.json` | request | `us_fcc_c` | `cloud-region/PUT/us_fcc_c.json` | United States/Canada, US_FCC_C |
-| `response/success.json` | response | `success` | `—` | Empty payload on success |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/us_fcc_15.json` | request | `us_fcc_15` | United States/Canada, US_FCC_15 |
+| `request/us_fcc_a.json` | request | `us_fcc_a` | United States/Canada, US_FCC_A |
+| `request/us_fcc_c.json` | request | `us_fcc_c` | United States/Canada, US_FCC_C |
+| `request/canada_fcc_15.json` | request | `canada_fcc_15` | Canada, CANADA_FCC_15 |
+| `response/success.json` | response | `success` | Command succeeded |

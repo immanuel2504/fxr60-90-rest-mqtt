@@ -1,0 +1,21 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "userapps": [
+      {
+        "name": "sample",
+        "status": "running",
+        "cpu": 0.2,
+        "ram": 4.9,
+        "uptime": "0:00:20",
+        "numDataMessagesRxed": 0,
+        "numDataMessagesTxed": 0,
+        "incomingDataBufferPercentageRemaining": 99,
+        "outgoingDataBufferPercentageRemaining": 99
+      }
+    ]
+  }
+}

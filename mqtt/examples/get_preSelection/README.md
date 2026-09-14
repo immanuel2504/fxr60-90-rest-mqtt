@@ -6,7 +6,7 @@ Stable `command_id`: `req-get-preSelection`
 
 GET returns a string: `"enabled"` or `"disabled"`. PUT uses a boolean.
 
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_preSelection request |
-| `response/disabled.json` | response | `disabled` | `cloud-preselection/GET/disabled.json` | preSelection disabled |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/get_configuration.json` | request | `get_configuration` | Get configuration |
+| `response/preselection_disabled.json` | response | `preselection_disabled` | Preselection disabled |

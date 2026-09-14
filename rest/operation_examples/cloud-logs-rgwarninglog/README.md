@@ -1,9 +1,5 @@
-# `/cloud/logs/RgWarningLog`
+# `cloud-logs-rgwarninglog`
 
-- **GET** — Reader-gateway warning log archive (`get_logs_rgWarningLog`)
-
-## GET examples
-
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `GET/rg_warning.json` | response 200 | `rg_warning` | rgWarningLog.tar.gz archive |
+| File | Example name | Summary |
+|---|---|---|
+| `GET/download.json` | `download` | rgWarningLog.tar.gz archive |

@@ -1,9 +1,5 @@
-# `/cloud/logs/RgErrorLog`
+# `cloud-logs-rgerrorlog`
 
-- **GET** — Reader-gateway error log archive (`get_logs_rgErrorLog`)
-
-## GET examples
-
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `GET/rg_error.json` | response 200 | `rg_error` | rgErrorLog.tar.gz archive |
+| File | Example name | Summary |
+|---|---|---|
+| `GET/download.json` | `download` | rgErrorLog.tar.gz archive |

@@ -1,8 +1,0 @@
-{
-  "command": "del_certificate",
-  "command_id": "req-del-certs",
-  "payload": {
-    "name": "mqtt-client-cert",
-    "type": "client"
-  }
-}

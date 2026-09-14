@@ -1,26 +1,22 @@
 # Example summary titles — `get_user_apps`
 
-## GET request
+### `request/get_installed_apps.json`
 
-### `request/default.json`
-
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_userapps request` |
-
-## GET response
+| **Example name** | `get_installed_apps` |
+| **Summary title** | `Get installed apps` |
 
 ### `response/none_installed.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `none_installed` |
 | **Summary title** | `No user applications` |
 
-### `response/sampleNew_sampleAntenna.json`
+### `response/installed_apps.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `sampleNew_sampleAntenna` |
-| **Summary title** | `sampleNew and sampleAntenna` |
+| **Example name** | `installed_apps` |
+| **Summary title** | `Installed apps` |

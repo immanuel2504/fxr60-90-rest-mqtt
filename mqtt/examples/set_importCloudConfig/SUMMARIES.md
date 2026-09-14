@@ -1,92 +1,94 @@
 # Example summary titles — `set_importCloudConfig`
 
+Scenario-based names.
+
+### `request/clear_data_connections.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `clear_data_connections` |
+| **Summary title** | `Clear data connections` |
+
+### `request/http_post_data_endpoint.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `http_post_data_endpoint` |
+| **Summary title** | `HTTP POST data endpoint` |
+
+### `request/mqtt_mtls_all_channels_installed_certificate.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `mqtt_mtls_all_channels_installed_certificate` |
+| **Summary title** | `MQTT mTLS all channels (installed certificate)` |
+
+### `request/tcpip_server_data_endpoint.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `tcpip_server_data_endpoint` |
+| **Summary title** | `TCP/IP server data endpoint` |
+
+### `request/websocket_data_endpoint.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `websocket_data_endpoint` |
+| **Summary title** | `WebSocket data endpoint` |
+
+### `request/mqtt_management_command_response.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `mqtt_management_command_response` |
+| **Summary title** | `MQTT management command/response` |
+
+### `request/mqtt_management_events.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `mqtt_management_events` |
+| **Summary title** | `MQTT management events` |
+
 ### `request/mqtt_all_channels.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `mqtt_all_channels` |
-| **Summary title** | `All channels over MQTT, port 1883` |
+| **Summary title** | `MQTT all channels` |
 
-### `request/mqtt_tls_all_channels.json`
+### `request/aws_iot_all_channels_certificate_files.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `mqtt_tls_all_channels` |
-| **Summary title** | `All channels over MQTT mTLS file paths, port 8884` |
+| **Example name** | `aws_iot_all_channels_certificate_files` |
+| **Summary title** | `AWS IoT all channels (certificate files)` |
 
-### `request/data_mqtt_tls_installed_cert.json`
+### `request/aws_iot_all_channels_installed_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `data_mqtt_tls_installed_cert` |
-| **Summary title** | `MQTT mTLS via cert store plus CA, port 8884` |
+| **Example name** | `aws_iot_all_channels_installed_certificate` |
+| **Summary title** | `AWS IoT all channels (installed certificate)` |
 
-### `request/mqtt_aws_all_channels.json`
+### `request/azure_iot_all_channels.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `mqtt_aws_all_channels` |
-| **Summary title** | `AWS IoT FileLocation, port 443` |
+| **Example name** | `azure_iot_all_channels` |
+| **Summary title** | `Azure IoT Hub all channels` |
 
-### `request/mqtt_aws_installed_cert.json`
+### `request/mqtt_mtls_all_channels_certificate_files.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `mqtt_aws_installed_cert` |
-| **Summary title** | `AWS IoT installed cert, port 443` |
-
-### `request/mqtt_azure_all_channels.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `mqtt_azure_all_channels` |
-| **Summary title** | `All channels over Azure IoT Hub` |
-
-### `request/data_tcpip_server.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_tcpip_server` |
-| **Summary title** | `TCP/IP server` |
-
-### `request/data_websocket.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_websocket` |
-| **Summary title** | `WebSocket` |
-
-### `request/data_http_post.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_http_post` |
-| **Summary title** | `HTTP POST` |
-
-### `request/management_cmd_mqtt.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `management_cmd_mqtt` |
-| **Summary title** | `Management command/response over MQTT` |
-
-### `request/management_event_mqtt.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `management_event_mqtt` |
-| **Summary title** | `Management events over MQTT` |
-
-### `request/clear_data.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `clear_data` |
-| **Summary title** | `Clear all data connections` |
+| **Example name** | `mqtt_mtls_all_channels_certificate_files` |
+| **Summary title** | `MQTT mTLS all channels (certificate files)` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Command succeeded` |

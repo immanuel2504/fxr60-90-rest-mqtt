@@ -1,31 +1,29 @@
-# Example summary titles — `/cloud/pass-through`
-
-### `PUT/status.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `status` |
-| **Summary title** | `RC status command` |
+# Example summary titles — `cloud-pass-through`
 
 ### `PUT/mode.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mode` |
-| **Summary title** | `RC mode command` |
+| **Summary title** | `Passthrough mode query` |
 
-### `PUT/status_success.json`
+### `PUT/status.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `status_success` |
-| **Summary title** | `RC status reply` |
-| **HTTP status** | `200` |
+| **Example name** | `status` |
+| **Summary title** | `Passthrough status query` |
 
 ### `PUT/mode_success.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mode_success` |
-| **Summary title** | `RC mode reply` |
-| **HTTP status** | `200` |
+| **Summary title** | `Mode response` |
+
+### `PUT/status_success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `status_success` |
+| **Summary title** | `Status response` |

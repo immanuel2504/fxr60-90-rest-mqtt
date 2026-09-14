@@ -1,0 +1,46 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "system": {
+      "GPI": {
+        "1": "HIGH",
+        "2": "HIGH",
+        "3": "HIGH",
+        "4": "HIGH"
+      },
+      "GPO": {
+        "1": "HIGH",
+        "2": "HIGH",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "cpu": {
+        "system": 0,
+        "user": 67
+      },
+      "flash": null,
+      "hostName": "FXR609BE34A",
+      "macAddress": "88:BC:AC:9B:E3:4A",
+      "ntp": {
+        "offset": 0.021233,
+        "reach": 377
+      },
+      "powerNegotiation": "POE+",
+      "powerSource": "PWR_BRICK",
+      "ram": {
+        "free": 69,
+        "total": 100,
+        "used": 31
+      },
+      "systemtime": "08/09/2026 04:40",
+      "temperature": {
+        "ambient": 33,
+        "pa": 30
+      },
+      "uptime": "4D14H49M14S"
+    }
+  }
+}

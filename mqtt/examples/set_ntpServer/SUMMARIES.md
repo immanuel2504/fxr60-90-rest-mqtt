@@ -1,29 +1,38 @@
 # Example summary titles — `set_ntpServer`
 
-### `request/time1_time2.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/primary_and_backup.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `time1_time2` |
-| **Summary title** | `server and server2` |
+| **Example name** | `primary_and_backup` |
+| **Summary title** | `Primary and backup servers` |
 
-### `request/server1.json`
+### `request/legacy_primary_and_backup.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `server1` |
-| **Summary title** | `Legacy server1` |
+| **Example name** | `legacy_primary_and_backup` |
+| **Summary title** | `Legacy primary and backup` |
 
-### `request/time_google.json`
+### `request/primary_only.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `time_google` |
-| **Summary title** | `server only` |
+| **Example name** | `primary_only` |
+| **Summary title** | `Primary server only` |
+
+### `request/legacy_primary_only.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `legacy_primary_only` |
+| **Summary title** | `Legacy primary only` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

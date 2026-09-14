@@ -27,12 +27,15 @@ import sys
 from collections import OrderedDict
 from pathlib import Path
 
-PACKAGE_DIR = Path(__file__).resolve().parent.parent  # FXR60-90/mqtt
-ROOT = PACKAGE_DIR.parent.parent  # repo root (display only)
+PACKAGE_DIR = Path(__file__).resolve().parent.parent  # mqtt/
+REPO_ROOT = PACKAGE_DIR.parent
+ROOT = REPO_ROOT  # display alias
 BASE_OPENAPI = PACKAGE_DIR / "openapi_md.json"
 EXAMPLES_DIR = PACKAGE_DIR / "examples"
 FINAL_OUT = PACKAGE_DIR / "FXR_60-90_mqtt_api.json"
 DOCS_OPENAPI = PACKAGE_DIR / "docs" / "openapi_md.json"
+TAG_CONFIG = PACKAGE_DIR / "tag_config.json"
+EVENT_DESC_SYNC = REPO_ROOT / "_sync_mqtt_event_descs.py"
 
 
 def normalize_mqtt_example(value):
@@ -164,6 +167,60 @@ def apply_mqtt_pack_examples(openapi: dict, examples_dir: Path):
     return patched, missing
 
 
+def apply_tag_config(openapi: dict, tag_config_path: Path) -> int:
+    """Merge ``tag_config.json`` navigation (groups, order, subgroups, path tags)."""
+    if not tag_config_path.is_file():
+        print(f"  WARNING: missing tag config {tag_config_path}")
+        return 0
+
+    with tag_config_path.open("r", encoding="utf-8-sig") as fh:
+        tag_config = json.load(fh, object_pairs_hook=OrderedDict)
+
+    tag_groups = tag_config.get("tag_groups") or {}
+    openapi["x-tagGroups"] = [
+        OrderedDict([("name", name), ("tags", tags)])
+        for name, tags in tag_groups.items()
+    ]
+
+    if tag_config.get("operation_order"):
+        openapi["x-operationOrder"] = tag_config["operation_order"]
+    if tag_config.get("operation_subgroups"):
+        openapi["x-operationSubgroups"] = tag_config["operation_subgroups"]
+
+    op_tags = tag_config.get("operation_tags") or {}
+    paths = openapi.get("paths") or {}
+    excluded = set(tag_config.get("excluded_operations") or [])
+    for op_name in list(excluded):
+        path_key = f"/{op_name}"
+        if path_key in paths:
+            del paths[path_key]
+            print(f"  Removed excluded path {path_key}")
+
+    retagged = 0
+    for path_key, methods in paths.items():
+        op_name = path_key.lstrip("/")
+        if op_name in excluded:
+            continue
+        tag = op_tags.get(op_name)
+        if not tag:
+            continue
+        for op in methods.values():
+            if isinstance(op, dict):
+                op["tags"] = [tag]
+                retagged += 1
+
+    existing = {t.get("name") for t in openapi.get("tags") or [] if isinstance(t, dict)}
+    tags_list = openapi.setdefault("tags", [])
+    for tags in tag_groups.values():
+        for tag_name in tags:
+            if tag_name not in existing:
+                tags_list.append(OrderedDict([("name", tag_name)]))
+                existing.add(tag_name)
+
+    print(f"  Applied tag config from {tag_config_path.name} ({retagged} path tags updated)")
+    return retagged
+
+
 def main() -> int:
     if not BASE_OPENAPI.is_file():
         print(f"Missing base OpenAPI: {BASE_OPENAPI}", file=sys.stderr)
@@ -187,6 +244,24 @@ def main() -> int:
     print(f"Base OpenAPI    : {base_disp}")
     print(f"Example packs   : {packs} under {ex_disp}")
 
+    print("\n=== Sync management event descriptions ===")
+    if EVENT_DESC_SYNC.is_file():
+        import subprocess
+
+        result = subprocess.run(
+            [sys.executable, str(EVENT_DESC_SYNC)],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            text=True,
+        )
+        if result.stdout:
+            print(result.stdout.rstrip())
+        if result.returncode != 0:
+            print(result.stderr or "event description sync failed", file=sys.stderr)
+            return result.returncode
+    else:
+        print(f"  WARNING: missing {EVENT_DESC_SYNC.name}")
+
     print("\n=== Load base OpenAPI ===")
     with BASE_OPENAPI.open("r", encoding="utf-8-sig") as fh:
         openapi = json.load(fh, object_pairs_hook=OrderedDict)
@@ -194,6 +269,9 @@ def main() -> int:
 
     print("\n=== Overlay examples ===")
     apply_mqtt_pack_examples(openapi, EXAMPLES_DIR)
+
+    print("\n=== Apply tag config ===")
+    apply_tag_config(openapi, TAG_CONFIG)
 
     info = openapi.setdefault("info", OrderedDict())
     info["title"] = "IoT Connector MQTT API (FXR readers)"

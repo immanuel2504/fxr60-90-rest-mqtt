@@ -1,22 +1,36 @@
 # Example summary titles — `refresh-cert`
 
-### `request/refresh_client.json`
+### `request/refresh_client_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `refresh_client` |
-| **Summary title** | `Refresh client mqtt-test-cert-1` |
+| **Example name** | `refresh_client_certificate` |
+| **Summary title** | `Refresh named client certificate` |
 
-### `request/refresh_server.json`
+### `request/refresh_server_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `refresh_server` |
-| **Summary title** | `Refresh Server` |
+| **Example name** | `refresh_server_certificate` |
+| **Summary title** | `Refresh named server certificate` |
+
+### `request/refresh_client_by_type.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `refresh_client_by_type` |
+| **Summary title** | `Refresh client certificate by type` |
+
+### `request/refresh_server_by_type.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `refresh_server_by_type` |
+| **Summary title** | `Refresh server certificate by type` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

@@ -1,9 +1,5 @@
-# `/cloud/logs/RcLog`
+# `cloud-logs-rclog`
 
-- **GET** — Radio-control log archive (`get_logs_rcLog`)
-
-## GET examples
-
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `GET/rc_log.json` | response 200 | `rc_log` | rcLog.tar.gz archive |
+| File | Example name | Summary |
+|---|---|---|
+| `GET/download.json` | `download` | rcLog.tar.gz archive |

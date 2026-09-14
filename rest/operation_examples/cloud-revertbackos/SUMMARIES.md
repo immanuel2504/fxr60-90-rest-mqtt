@@ -1,15 +1,11 @@
 # Example summary titles — `/cloud/revertbackOS`
 
-## PUT request
-
-### `PUT/revertbackOS.json`
+### `PUT/revert_to_previous_os.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `revertbackOS` |
-| **Summary title** | `Empty object` |
-
-## PUT response
+| **Example name** | `revert_to_previous_os` |
+| **Summary title** | `Revert to previous OS` |
 
 ### `PUT/success.json`
 
@@ -17,4 +13,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

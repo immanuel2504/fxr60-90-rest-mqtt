@@ -1,7 +1,0 @@
-{
-  "command": "del_CACertificate",
-  "command_id": "req-del-CACertificate",
-  "payload": {
-    "name": "ZebraExampleRootCA"
-  }
-}

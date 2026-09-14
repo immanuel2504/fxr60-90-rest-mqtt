@@ -1,42 +1,39 @@
 # Example summary titles — `/cloud/ntpServer`
 
-## GET responses
-
 ### `GET/pool_ntp_org.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `pool_ntp_org` |
-| **Summary title** | `server pool.ntp.org` |
+| **Summary title** | `pool.ntp.org` |
 
----
-
-## PUT request
-
-### `PUT/time1_time2.json`
+### `PUT/primary_and_backup.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `time1_time2` |
-| **Summary title** | `server and server2` |
+| **Example name** | `primary_and_backup` |
+| **Summary title** | `Primary and backup servers` |
 
-### `PUT/server1.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `server1` |
-| **Summary title** | `Legacy server1` |
-
-### `PUT/time_google.json`
+### `PUT/legacy_primary_and_backup.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `time_google` |
-| **Summary title** | `server only` |
+| **Example name** | `legacy_primary_and_backup` |
+| **Summary title** | `Legacy primary and backup` |
 
----
+### `PUT/primary_only.json`
 
-## PUT response
+| Field | Value |
+|---|---|
+| **Example name** | `primary_only` |
+| **Summary title** | `Primary server only` |
+
+### `PUT/legacy_primary_only.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `legacy_primary_only` |
+| **Summary title** | `Legacy primary only` |
 
 ### `PUT/success.json`
 
@@ -44,4 +41,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

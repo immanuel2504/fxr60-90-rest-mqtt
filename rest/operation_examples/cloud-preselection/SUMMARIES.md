@@ -2,23 +2,23 @@
 
 ## GET responses
 
-### `GET/disabled.json`
+### `GET/preselection_disabled.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `disabled` |
-| **Summary title** | `preSelection disabled` |
+| **Example name** | `preselection_disabled` |
+| **Summary title** | `Preselection disabled` |
 
 ---
 
 ## PUT request
 
-### `PUT/enable.json`
+### `PUT/enable_preselection.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `enable` |
-| **Summary title** | `Enable preSelection` |
+| **Example name** | `enable_preselection` |
+| **Summary title** | `Enable preselection` |
 
 ---
 

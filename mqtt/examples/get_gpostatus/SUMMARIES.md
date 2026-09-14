@@ -1,15 +1,17 @@
 # Example summary titles — `get_gpostatus`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_gpoStatus request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/gpo_status.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `gpo_status` |
 | **Summary title** | `All pins LOW` |

@@ -1,0 +1,5 @@
+{
+  "command": "set_revertbackOS",
+  "command_id": "req-set-revertbackOS-revert-to-previous-os",
+  "payload": {}
+}

@@ -1,22 +1,22 @@
 # `/cloud/bleConfig`
 
-- **GET** — BLE scanner configuration (`get_bleConfig`)
-- **PUT** — Set BLE scanner configuration (`set_bleConfig`)
+- **GET** — `get_bleConfig`
+- **PUT** — `set_bleConfig`
 
 ## GET examples
 
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `GET/disabled.json` | response 200 | `disabled` | `ble.enable` false |
-| `GET/all_protocols.json` | response 200 | `all_protocols` | All protocols and filters |
+| File | Example name | Summary |
+|---|---|---|
+| `GET/all_protocols_and_filters.json` | `all_protocols_and_filters` | All protocols and filters |
+| `GET/ble_disabled.json` | `ble_disabled` | BLE disabled |
 
 ## PUT examples
 
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `PUT/enable_ble.json` | request | `enable_ble` | `ble.enable` true, interval `0` |
-| `PUT/enable_with_interval.json` | request | `enable_with_interval` | Interval `5` |
-| `PUT/enable_with_rssi_filter.json` | request | `enable_with_rssi_filter` | `additionalFilters.rssi` `-70` |
-| `PUT/enable_with_protocols.json` | request | `enable_with_protocols` | All protocols and filters |
-| `PUT/disable_ble.json` | request | `disable_ble` | `ble.enable` false |
-| `PUT/success.json` | response 200 | `success` | Empty string on success |
+| File | Example name | Summary |
+|---|---|---|
+| `PUT/disable_ble.json` | `disable_ble` | Disable BLE |
+| `PUT/enable_ble.json` | `enable_ble` | Enable BLE |
+| `PUT/enable_ble_with_interval.json` | `enable_ble_with_interval` | Enable BLE with scan interval |
+| `PUT/enable_all_protocols.json` | `enable_all_protocols` | Enable all BLE protocols |
+| `PUT/enable_ble_with_rssi_filter.json` | `enable_ble_with_rssi_filter` | Enable BLE with RSSI filter |
+| `PUT/success.json` | `success` | Empty string on success |

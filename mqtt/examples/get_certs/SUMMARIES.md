@@ -1,15 +1,15 @@
 # Example summary titles — `get_certs`
 
-### `request/default.json`
+### `request/get_certificates.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_certificates request` |
+| **Example name** | `get_certificates` |
+| **Summary title** | `Get certificates` |
 
-### `response/lab_client_and_server.json`
+### `response/installed_certificates.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `lab_client_and_server` |
-| **Summary title** | `Client FXR60-LAB-CLIENT and Server` |
+| **Example name** | `installed_certificates` |
+| **Summary title** | `Installed certificates` |

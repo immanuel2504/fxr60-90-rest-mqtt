@@ -1,17 +1,11 @@
-# Example summary titles — `/cloud/logs/syslog`
+# Example summary titles — `cloud-logs-syslog`
 
-## GET responses
-
-### `GET/syslog.json`
+### `GET/download.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `syslog` |
+| **Example name** | `download` |
 | **Summary title** | `syslog.tar.gz archive` |
-
----
-
-## DELETE response
 
 ### `DELETE/success.json`
 
@@ -19,4 +13,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

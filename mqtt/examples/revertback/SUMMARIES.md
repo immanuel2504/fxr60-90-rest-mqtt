@@ -1,15 +1,15 @@
 # Example summary titles — `revertback`
 
-### `request/revertbackOS.json`
+### `request/revert_to_previous_os.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `revertbackOS` |
-| **Summary title** | `Empty payload` |
+| **Example name** | `revert_to_previous_os` |
+| **Summary title** | `Revert to previous OS` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

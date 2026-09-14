@@ -1,17 +1,11 @@
-# Example summary titles — `/cloud/logs/radioPacketLog`
+# Example summary titles — `cloud-logs-radiopacketlog`
 
-## GET responses
-
-### `GET/radio_packet.json`
+### `GET/download.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `radio_packet` |
+| **Example name** | `download` |
 | **Summary title** | `radioPktLog.tar.gz archive` |
-
----
-
-## DELETE response
 
 ### `DELETE/success.json`
 
@@ -19,4 +13,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

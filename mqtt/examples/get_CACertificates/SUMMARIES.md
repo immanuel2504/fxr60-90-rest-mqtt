@@ -1,22 +1,15 @@
 # Example summary titles — `get_CACertificates`
 
-### `request/default.json`
+### `request/get_ca_certificates.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_CACertificates request` |
+| **Example name** | `get_ca_certificates` |
+| **Summary title** | `Get CA certificates` |
 
-### `response/empty_list.json`
+### `response/installed_ca_certificates.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `empty_list` |
-| **Summary title** | `No CA certificates` |
-
-### `response/ca_list.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `ca_list` |
-| **Summary title** | `CA names with .crt` |
+| **Example name** | `installed_ca_certificates` |
+| **Summary title** | `Installed CA certificates` |

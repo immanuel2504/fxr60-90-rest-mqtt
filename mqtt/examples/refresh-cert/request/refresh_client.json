@@ -1,8 +1,0 @@
-{
-  "command": "set_refreshCertificate",
-  "command_id": "req-refresh-cert-client",
-  "payload": {
-    "name": "mqtt-test-cert-1",
-    "type": "client"
-  }
-}

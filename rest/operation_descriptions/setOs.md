@@ -12,7 +12,7 @@ When `authenticationType` is `BASIC`, also send `authenticationOptions` — `use
 Optional:
 
 - `verifyPeer`, `verifyHost`
-- `retry`, `timeouts` — HTTPS only
+- `retry` — `count` and `delayInSec`
 
 ## 2. Endpoint Details
 
@@ -38,5 +38,4 @@ Decide the download URL and authentication. Use the JSON field names below.
 | `authenticationOptions` | `username` and `password` when `authenticationType` is `BASIC`. If `authenticationOptions` is not accepted, send `options`. |
 | `verifyPeer` | Optional. `true` to check the file server certificate. |
 | `verifyHost` | Optional. `true` to check the file server hostname. |
-| `retry` | Optional. HTTPS only. `type` `randomWait` with `policy.retries` and `wait.min` / `wait.max`. |
-| `timeouts` | Optional. HTTPS only. `connection` and `read` in seconds. |
+| `retry` | Optional. `count` and `delayInSec`. |

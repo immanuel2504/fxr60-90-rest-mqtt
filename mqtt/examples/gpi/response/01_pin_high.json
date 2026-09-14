@@ -1,0 +1,10 @@
+{
+  "type": "gpi",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 56,
+  "data": {
+    "pin": 1,
+    "state": "HIGH"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "firmwareUpdateProgress",
+  "timestamp": "2019-08-24T14:15:22Z",
+  "component": "RG",
+  "eventNum": 1,
+  "data": {
+    "status": "started",
+    "imageDownloadProgress": 10,
+    "overallUpdateProgress": 1,
+    "updateProgressDetails": {
+      "os": 1,
+      "rootFileSystem": 1,
+      "applications": 3,
+      "radioFirmware": 1,
+      "platform": 1
+    }
+  }
+}

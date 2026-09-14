@@ -1,85 +1,85 @@
 # Example summary titles — `/cloud/cloudConfig`
 
+### `PUT/clear_data_connections.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `clear_data_connections` |
+| **Summary title** | `Clear data connections` |
+
+### `PUT/http_post_data_endpoint.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `http_post_data_endpoint` |
+| **Summary title** | `HTTP POST data endpoint` |
+
+### `PUT/mqtt_mtls_all_channels_installed_certificate.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mqtt_mtls_all_channels_installed_certificate` |
+| **Summary title** | `MQTT mTLS all channels (installed certificate)` |
+
+### `PUT/tcpip_server_data_endpoint.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `tcpip_server_data_endpoint` |
+| **Summary title** | `TCP/IP server data endpoint` |
+
+### `PUT/websocket_data_endpoint.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `websocket_data_endpoint` |
+| **Summary title** | `WebSocket data endpoint` |
+
+### `PUT/mqtt_management_command_response.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mqtt_management_command_response` |
+| **Summary title** | `MQTT management command/response` |
+
+### `PUT/mqtt_management_events.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mqtt_management_events` |
+| **Summary title** | `MQTT management events` |
+
 ### `PUT/mqtt_all_channels.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `mqtt_all_channels` |
-| **Summary title** | `All channels over MQTT, port 1883` |
+| **Summary title** | `MQTT all channels` |
 
-### `PUT/mqtt_tls_all_channels.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `mqtt_tls_all_channels` |
-| **Summary title** | `All channels over MQTT mTLS file paths, port 8884` |
-
-### `PUT/data_mqtt_tls_installed_cert.json`
+### `PUT/aws_iot_all_channels_certificate_files.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_mqtt_tls_installed_cert` |
-| **Summary title** | `MQTT mTLS via cert store plus CA, port 8884` |
+| **Example name** | `aws_iot_all_channels_certificate_files` |
+| **Summary title** | `AWS IoT all channels (certificate files)` |
 
-### `PUT/mqtt_aws_all_channels.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `mqtt_aws_all_channels` |
-| **Summary title** | `AWS IoT FileLocation, port 443` |
-
-### `PUT/mqtt_aws_installed_cert.json`
+### `PUT/aws_iot_all_channels_installed_certificate.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `mqtt_aws_installed_cert` |
-| **Summary title** | `AWS IoT installed cert, port 443` |
+| **Example name** | `aws_iot_all_channels_installed_certificate` |
+| **Summary title** | `AWS IoT all channels (installed certificate)` |
 
-### `PUT/mqtt_azure_all_channels.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `mqtt_azure_all_channels` |
-| **Summary title** | `All channels over Azure IoT Hub` |
-
-### `PUT/data_tcpip_server.json`
+### `PUT/azure_iot_all_channels.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_tcpip_server` |
-| **Summary title** | `TCP/IP server` |
+| **Example name** | `azure_iot_all_channels` |
+| **Summary title** | `Azure IoT Hub all channels` |
 
-### `PUT/data_websocket.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_websocket` |
-| **Summary title** | `WebSocket` |
-
-### `PUT/data_http_post.json`
+### `PUT/mqtt_mtls_all_channels_certificate_files.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_http_post` |
-| **Summary title** | `HTTP POST` |
-
-### `PUT/management_cmd_mqtt.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `management_cmd_mqtt` |
-| **Summary title** | `Management command/response over MQTT` |
-
-### `PUT/management_event_mqtt.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `management_event_mqtt` |
-| **Summary title** | `Management events over MQTT` |
-
-### `PUT/clear_data.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `clear_data` |
-| **Summary title** | `Clear all data connections` |
+| **Example name** | `mqtt_mtls_all_channels_certificate_files` |
+| **Summary title** | `MQTT mTLS all channels (certificate files)` |

@@ -1,0 +1,10 @@
+{
+  "type": "gpo",
+  "timestamp": "2026-09-07T12:21:53.635+0000",
+  "component": "RG",
+  "eventNum": 9,
+  "data": {
+    "pin": 1,
+    "state": "HIGH"
+  }
+}

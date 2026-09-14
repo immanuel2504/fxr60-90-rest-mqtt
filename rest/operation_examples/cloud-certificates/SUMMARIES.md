@@ -1,35 +1,39 @@
 # Example summary titles — `/cloud/certificates`
 
-## GET responses
-
-### `GET/lab_client_and_server.json`
+### `GET/installed_certificates.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `lab_client_and_server` |
-| **Summary title** | `Client FXR60-LAB-CLIENT and Server` |
+| **Example name** | `installed_certificates` |
+| **Summary title** | `Installed certificates` |
 
----
-
-## PUT request
-
-### `PUT/https_basic.json`
+### `PUT/https_basic_authentication.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `https_basic` |
-| **Summary title** | `HTTPS BASIC download` |
+| **Example name** | `https_basic_authentication` |
+| **Summary title** | `HTTPS BASIC authentication` |
 
-### `PUT/mtls.json`
+### `PUT/https_with_headers.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `mtls` |
-| **Summary title** | `HTTPS BASIC with installed client cert and CA` |
+| **Example name** | `https_with_headers` |
+| **Summary title** | `HTTPS with headers` |
 
----
+### `PUT/sftp_certificate_download.json`
 
-## PUT response
+| Field | Value |
+|---|---|
+| **Example name** | `sftp_certificate_download` |
+| **Summary title** | `SFTP certificate download` |
+
+### `PUT/https_mtls.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `https_mtls` |
+| **Summary title** | `HTTPS mTLS` |
 
 ### `PUT/success.json`
 
@@ -37,4 +41,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

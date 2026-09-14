@@ -1,7 +1,0 @@
-{
-  "command": "set_uninstallUserapp",
-  "command_id": "req-uninstall-user-app",
-  "payload": {
-    "appname": "mylogger"
-  }
-}

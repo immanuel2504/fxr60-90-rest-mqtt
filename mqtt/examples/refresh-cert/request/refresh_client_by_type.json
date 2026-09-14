@@ -1,0 +1,7 @@
+{
+  "command": "set_refreshCertificate",
+  "command_id": "req-refresh-cert-refresh-client-by-type",
+  "payload": {
+    "type": "client"
+  }
+}

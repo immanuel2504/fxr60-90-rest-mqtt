@@ -1,65 +1,36 @@
 # Example summary titles — `/cloud/caCertificates`
 
-## GET responses
-
-### `GET/empty_list.json`
+### `GET/installed_ca_certificates.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `empty_list` |
-| **Summary title** | `No CA certificates` |
-| **HTTP status** | `200` |
+| **Example name** | `installed_ca_certificates` |
+| **Summary title** | `Installed CA certificates` |
 
-### `GET/ca_list.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `ca_list` |
-| **Summary title** | `CA names with .crt` |
-| **HTTP status** | `200` |
-
----
-
-## PUT request
-
-### `PUT/install_ca.json`
+### `PUT/install_ca_certificate.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `install_ca` |
-| **Summary title** | `Install a CA` |
+| **Example name** | `install_ca_certificate` |
+| **Summary title** | `Install CA certificate` |
 
----
+### `PUT/install_named_ca_certificate.json`
 
-## PUT response
+| Field | Value |
+|---|---|
+| **Example name** | `install_named_ca_certificate` |
+| **Summary title** | `Install named CA certificate` |
 
-### `PUT/success.json`
+### `DELETE/delete_ca_certificate.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `delete_ca_certificate` |
+| **Summary title** | `Delete CA certificate` |
+
+### `PUT/success.json` / `DELETE/success.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |
-
----
-
-## DELETE request
-
-### `DELETE/delete_ca.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `delete_ca` |
-| **Summary title** | `Delete by install name, without .crt` |
-
----
-
-## DELETE response
-
-### `DELETE/success.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `success` |
-| **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

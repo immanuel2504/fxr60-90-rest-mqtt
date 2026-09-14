@@ -1,12 +1,9 @@
 # `revertback`
 
+MQTT command: `set_revertbackOS`  
 REST: `PUT /cloud/revertbackOS` → `cloud-revertbackos/`
 
-MQTT command key: `set_revertbackOS`
-
-Stable `command_id`: `req-revertback`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/revertbackOS.json` | request | `revertbackOS` | `cloud-revertbackos/PUT/revertbackOS.json` | Empty payload |
-| `response/success.json` | response | `success` | `—` | Empty payload on success |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/revert_to_previous_os.json` | request | `revert_to_previous_os` | Revert to previous OS |
+| `response/success.json` | response | `success` | Command succeeded |

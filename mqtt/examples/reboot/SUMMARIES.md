@@ -1,15 +1,17 @@
 # Example summary titles — `reboot`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/reboot.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty reboot request` |
+| **Example name** | `reboot` |
+| **Summary title** | `Reboot reader` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Command succeeded` |

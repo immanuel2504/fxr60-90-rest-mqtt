@@ -1,11 +1,11 @@
-# Example summary titles — `/cloud/hostName`
+# Example summary titles — `cloud-hostname`
 
-### `GET/configured.json`
+### `GET/hostname.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `configured` |
-| **Summary title** | `Current hostname` |
+| **Example name** | `hostname` |
+| **Summary title** | `Hostname FXR609BE34A` |
 
 ### `PUT/hostName.json`
 
@@ -13,3 +13,10 @@
 |---|---|
 | **Example name** | `hostName` |
 | **Summary title** | `Set hostname` |
+
+### `PUT/success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `success` |
+| **Summary title** | `Empty string on success` |

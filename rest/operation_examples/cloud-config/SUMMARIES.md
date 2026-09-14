@@ -7,68 +7,75 @@
 | **Example name** | `full_configuration` |
 | **Summary title** | `Full configuration (MQTT endpoints, GPIO-LED unset)` |
 
-### `GET/gpio_led_not_configured.json`
+### `PUT/clear_data_configuration.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `gpio_led_not_configured` |
-| **Summary title** | `GPIO-LED not configured (empty object)` |
+| **Example name** | `clear_data_configuration` |
+| **Summary title** | `Clear data connections` |
 
-### `PUT/data_mqtt.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_mqtt` |
-| **Summary title** | `MQTT data endpoint (tags delivered)` |
-
-### `PUT/data_mqtt_batching.json`
+### `PUT/aws_data_endpoint.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_mqtt_batching` |
-| **Summary title** | `MQTT with batching and retention arrays` |
+| **Example name** | `aws_data_endpoint` |
+| **Summary title** | `AWS IoT Core data endpoint` |
 
-### `PUT/data_aws.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_aws` |
-| **Summary title** | `AWS IoT Core (port 443 + ALPN)` |
-
-### `PUT/data_azure.json`
+### `PUT/azure_data_endpoint.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_azure` |
-| **Summary title** | `Azure IoT Hub` |
+| **Example name** | `azure_data_endpoint` |
+| **Summary title** | `Azure IoT Hub data endpoint` |
 
-### `PUT/data_http_post.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_http_post` |
-| **Summary title** | `HTTP POST (tags delivered)` |
-
-### `PUT/data_tcpip_server.json`
+### `PUT/http_post_data_endpoint.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `data_tcpip_server` |
-| **Summary title** | `TCP/IP server (tags received)` |
+| **Example name** | `http_post_data_endpoint` |
+| **Summary title** | `HTTP POST data endpoint` |
 
-### `PUT/data_websocket.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `data_websocket` |
-| **Summary title** | `WebSocket` |
-
-### `PUT/clear_data.json`
+### `PUT/mqtt_data_endpoint.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `clear_data` |
-| **Summary title** | `Clear all data connections` |
+| **Example name** | `mqtt_data_endpoint` |
+| **Summary title** | `MQTT data endpoint` |
+
+### `PUT/mqtt_data_endpoint_with_batching.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `mqtt_data_endpoint_with_batching` |
+| **Summary title** | `MQTT data endpoint with batching` |
+
+### `PUT/tcpip_server_data_endpoint.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `tcpip_server_data_endpoint` |
+| **Summary title** | `TCP/IP server data endpoint` |
+
+### `PUT/websocket_data_endpoint.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `websocket_data_endpoint` |
+| **Summary title** | `WebSocket data endpoint` |
+
+### `PUT/cloud_event_gpio_led.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `cloud_event_gpio_led` |
+| **Summary title** | `GPIO-LED for cloud connect/disconnect` |
+
+### `PUT/conditional_gpio_led.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `conditional_gpio_led` |
+| **Summary title** | `GPIO-LED actions with conditions` |
 
 ### `PUT/gpio_led_defaults.json`
 
@@ -77,58 +84,30 @@
 | **Example name** | `gpio_led_defaults` |
 | **Summary title** | `GPIO-LED defaults only` |
 
-### `PUT/gpio_led_tag_radio.json`
+### `PUT/gpi_event_gpio_led.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `gpio_led_tag_radio` |
-| **Summary title** | `GPIO-LED for tag read and radio start/stop` |
-
-### `PUT/gpio_led_cloud.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `gpio_led_cloud` |
-| **Summary title** | `GPIO-LED for cloud connect/disconnect` |
-
-### `PUT/gpio_led_gpi.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `gpio_led_gpi` |
+| **Example name** | `gpi_event_gpio_led` |
 | **Summary title** | `GPIO-LED for GPI high/low events` |
 
-### `PUT/gpio_led_conditions.json`
+### `PUT/tag_and_radio_event_gpio_led.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `gpio_led_conditions` |
-| **Summary title** | `GPIO-LED actions with conditions` |
+| **Example name** | `tag_and_radio_event_gpio_led` |
+| **Summary title** | `GPIO-LED for tag read and radio start/stop` |
 
-### `PUT/combined_mqtt_gpio.json`
+### `PUT/rfid_xml_profile.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `combined_mqtt_gpio` |
+| **Example name** | `rfid_xml_profile` |
+| **Summary title** | `RFID XML profile` |
+
+### `PUT/combined_configuration.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `combined_configuration` |
 | **Summary title** | `MQTT data plus GPIO-LED` |
-
-### `PUT/combined_http_gpio.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `combined_http_gpio` |
-| **Summary title** | `HTTP POST plus conditional GPIO-LED` |
-
-### `PUT/combined_clear_gpio.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `combined_clear_gpio` |
-| **Summary title** | `Clear data endpoint and keep GPIO-LED` |
-
-### `PUT/combined_aws_cloud_gpio.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `combined_aws_cloud_gpio` |
-| **Summary title** | `AWS data plus cloud-event GPIO-LED` |

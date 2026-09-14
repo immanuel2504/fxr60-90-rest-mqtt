@@ -1,7 +1,5 @@
 # Example summary titles — `/cloud/supportedRegionList`
 
-## GET responses
-
 ### `GET/united_states_canada.json`
 
 | Field | Value |

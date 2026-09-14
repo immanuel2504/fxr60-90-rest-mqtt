@@ -1,13 +1,11 @@
 # Example summary titles — `/cloud/stop`
 
-## PUT request
-
-### `PUT/stop_RFID_default.json`
+### `PUT/stop_RFID.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `stop_RFID_default` |
-| **Summary title** | `Stop RFID (default)` |
+| **Example name** | `stop_RFID` |
+| **Summary title** | `Stop RFID` |
 
 ### `PUT/stop_RFID_explicit.json`
 

@@ -1,4 +1,4 @@
-# Example summary titles — `/cloud/reboot`
+# Example summary titles — `cloud-reboot`
 
 ### `PUT/success.json`
 
@@ -6,4 +6,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

@@ -1,29 +1,25 @@
 # Example summary titles — `/cloud/os`
 
-## PUT request
-
-### `PUT/https_none.json`
+### `PUT/https_basic_authentication.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `https_none` |
-| **Summary title** | `authenticationType NONE` |
+| **Example name** | `https_basic_authentication` |
+| **Summary title** | `HTTPS with BASIC authentication` |
 
-### `PUT/https_basic.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `https_basic` |
-| **Summary title** | `authenticationType BASIC` |
-
-### `PUT/https_basic_retry.json`
+### `PUT/https_basic_authentication_with_retry.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `https_basic_retry` |
-| **Summary title** | `BASIC with retry and timeouts` |
+| **Example name** | `https_basic_authentication_with_retry` |
+| **Summary title** | `HTTPS BASIC authentication with retry` |
 
-## PUT response
+### `PUT/https_no_authentication.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `https_no_authentication` |
+| **Summary title** | `HTTPS with no authentication` |
 
 ### `PUT/success.json`
 
@@ -31,4 +27,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

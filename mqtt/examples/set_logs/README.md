@@ -1,11 +1,7 @@
 # `set_logs`
 
-REST: `PUT /cloud/logs` → `cloud-logs/`
-
-Stable `command_id`: `req-set-logs`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/logs.json` | request | `logs` | `cloud-logs/PUT/logs.json` | reader_gateway DEBUG and radioPacketLog on |
-| `request/radioPacketLog_on.json` | request | `radioPacketLog_on` | `cloud-logs/PUT/radioPacketLog_on.json` | Enable radioPacketLog |
-| `response/success.json` | response | `success` | `—` | Empty payload on success |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/rg_debug_packet_on.json` | request | `rg_debug_packet_on` | reader_gateway DEBUG and radioPacketLog on |
+| `request/radio_packet_log_on.json` | request | `radio_packet_log_on` | Enable radioPacketLog |
+| `response/success.json` | response | `success` | Command succeeded |

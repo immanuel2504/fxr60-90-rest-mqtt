@@ -1,0 +1,8 @@
+{
+  "command": "del_certificate",
+  "command_id": "req-del-certs-delete-client-certificate",
+  "payload": {
+    "name": "mqtt-client-cert",
+    "type": "client"
+  }
+}

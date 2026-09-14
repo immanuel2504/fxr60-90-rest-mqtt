@@ -1,17 +1,10 @@
 # Example summary titles — `/cloud/mode`
 
 GET request examples are `verbose_false` and `verbose_true`.
-GET responses are named by mode (SIMPLE, INVENTORY, PORTAL, CONVEYOR, CUSTOM)
-and also include `verbose_false` / `verbose_true` (same bodies as CUSTOM / INVENTORY).
+GET responses are named by mode (SIMPLE, INVENTORY, PORTAL, CONVEYOR)
+and also include `verbose_false` / `verbose_true`.
 
 PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
-
-### `GET/CUSTOM.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `CUSTOM` |
-| **Summary title** | `Response: CUSTOM mode (verbose false — configured values only)` |
 
 ### `GET/INVENTORY.json`
 
@@ -67,81 +60,88 @@ PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
 | Field | Value |
 |---|---|
 | **Example name** | `CONVEYOR` |
-| **Summary title** | `Response: CONVEYOR mode after live PUT` |
+| **Summary title** | `Response: CONVEYOR mode` |
 
-### `PUT/SIMPLE.json`
+### `PUT/simple_baseline.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `SIMPLE` |
+| **Example name** | `simple_baseline` |
 | **Summary title** | `SIMPLE mode baseline` |
 
-### `PUT/INVENTORY.json`
+### `PUT/inventory_report_interval.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `INVENTORY` |
+| **Example name** | `inventory_report_interval` |
 | **Summary title** | `INVENTORY mode with report interval` |
 
-### `PUT/PORTAL.json`
+### `PUT/portal_gpi_trigger.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `PORTAL` |
+| **Example name** | `portal_gpi_trigger` |
 | **Summary title** | `PORTAL mode with GPI start trigger` |
 
-### `PUT/CONVEYOR.json`
+### `PUT/conveyor_baseline.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `CONVEYOR` |
+| **Example name** | `conveyor_baseline` |
 | **Summary title** | `CONVEYOR mode baseline` |
 
-### `PUT/CUSTOM_filter.json`
+### `PUT/filter_by_prefix.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `CUSTOM_filter` |
-| **Summary title** | `CUSTOM filter` |
+| **Example name** | `filter_by_prefix` |
+| **Summary title** | `Filter tags by prefix` |
 
-### `PUT/CUSTOM_query.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `CUSTOM_query` |
-| **Summary title** | `CUSTOM query` |
-
-### `PUT/CUSTOM_selects.json`
+### `PUT/custom_query.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `CUSTOM_selects` |
-| **Summary title** | `CUSTOM selects` |
+| **Example name** | `custom_query` |
+| **Summary title** | `Custom query` |
 
-### `PUT/CUSTOM_accesses.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `CUSTOM_accesses` |
-| **Summary title** | `CUSTOM accesses` |
-
-### `PUT/CUSTOM_report_filter.json`
+### `PUT/tag_selection.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `CUSTOM_report_filter` |
-| **Summary title** | `CUSTOM report filter` |
+| **Example name** | `tag_selection` |
+| **Summary title** | `Tag selection` |
 
-### `PUT/CUSTOM_metadata.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `CUSTOM_metadata` |
-| **Summary title** | `CUSTOM metadata` |
-
-### `PUT/CUSTOM_radio_stop.json`
+### `PUT/access_operations.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `CUSTOM_radio_stop` |
-| **Summary title** | `CUSTOM radio stop` |
+| **Example name** | `access_operations` |
+| **Summary title** | `Run access operations` |
+
+### `PUT/write_access_password.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `write_access_password` |
+| **Summary title** | `Assign an access password (WRITE to RESERVED bank)` |
+
+### `PUT/report_filter.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `report_filter` |
+| **Summary title** | `Report filter` |
+
+### `PUT/tag_metadata.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `tag_metadata` |
+| **Summary title** | `Tag metadata` |
+
+### `PUT/radio_stop_duration.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `radio_stop_duration` |
+| **Summary title** | `Radio stop duration` |

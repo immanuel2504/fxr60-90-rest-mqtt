@@ -7357,48 +7357,12 @@ paths:
                     type: string
                 retry:
                   type: object
-                  description: Optional backoff retry for HTTPS OS download. Firmware updates are always asynchronous. Do not send this for scp://, sftp://, or ftps://.
+                  description: Retry configuration for the download operation.
                   properties:
-                    type:
-                      type: string
-                      enum:
-                        - randomWait
-                      example: randomWait
-                    policy:
-                      type: object
-                      properties:
-                        retries:
-                          type: integer
-                          minimum: 1
-                          maximum: 50
-                          example: 3
-                        wait:
-                          type: object
-                          properties:
-                            min:
-                              type: integer
-                              minimum: 0
-                              maximum: 3600
-                              example: 10
-                            max:
-                              type: integer
-                              minimum: 1
-                              maximum: 3600
-                              example: 30
-                timeouts:
-                  type: object
-                  description: Transfer timeouts for HTTPS OS download. Do not send this for scp://, sftp://, or ftps://.
-                  properties:
-                    connection:
+                    count:
                       type: integer
-                      minimum: 1
-                      maximum: 3600
-                      example: 5
-                    read:
+                    delayInSec:
                       type: integer
-                      minimum: 1
-                      maximum: 3600
-                      example: 20
             examples:
               set_os:
                 value:
@@ -7410,15 +7374,8 @@ paths:
                   verifyPeer: false
                   verifyHost: false
                   retry:
-                    type: randomWait
-                    policy:
-                      retries: 3
-                      wait:
-                        min: 10
-                        max: 30
-                  timeouts:
-                    connection: 5
-                    read: 20
+                    count: 3
+                    delayInSec: 10
       responses:
         '200':
           description: OK
@@ -7776,8 +7733,6 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - userapp
               properties:
                 command:
                   type: object
@@ -7789,7 +7744,7 @@ paths:
                       example: Hello World!!!
                 userapp:
                   type: string
-                  description: Name of the target user application.
+                  description: Name of the target user application. Not required for local REST, where the application is identified by the `{appname}` path parameter. Required for the MQTT API, which has no path parameter.
                   example: mylogger
             examples:
               set_reqToUserapp:
@@ -7987,7 +7942,7 @@ paths:
                     $ref: '#/components/schemas/impinjTagQuieting.v1'
               examples:
                 fastID_disabled:
-                  summary: Last saved FastID, enabled false (live 8 Sep 2026)
+                  summary: Last saved FastID, enabled false
                   value:
                     fastID:
                       enabled: false
@@ -8056,7 +8011,7 @@ paths:
       tags:
         - ImpinjGen2X
       summary: Set Impinj Gen2X configuration
-      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). Exactly one feature object (fastID, tagProtect, tagFocus, or tagQuieting) must be provided per request; combining any two or more features is rejected. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations. The flag is per inventory session.
+      description: MQTT API :- set_impinjGen2X <br> Configures Impinj Gen2X proprietary features (FastID, TagProtect, TagFocus, TagQuieting). Exactly one feature object (fastID, tagProtect, tagFocus, or tagQuieting) must be provided per request; combining any two or more features is rejected. Note - start command with applyImpinjGen2X flag should be used to start the Gen2X operations.
       operationId: setImpinjGen2X
       requestBody:
         required: true
@@ -8171,17 +8126,17 @@ paths:
                   $ref: '#/components/schemas/impinjTagQuieting.v1'
             examples:
               enable_fastID:
-                summary: Enable FastID (live 6 Sep 2026)
+                summary: Enable FastID
                 value:
                   fastID:
                     enabled: true
               disable_fastID:
-                summary: Disable FastID (live 6 Sep 2026)
+                summary: Disable FastID
                 value:
                   fastID:
                     enabled: false
               protect_tag:
-                summary: Protect tag (live 6 Sep 2026)
+                summary: Protect tag
                 value:
                   tagProtect:
                     action: enableTagProtection
@@ -8189,36 +8144,36 @@ paths:
                     tagID: 'e2801191a5030069073b426d'
                     enableShortRange: true
               unprotect_tag:
-                summary: Unprotect tag (live 6 Sep 2026)
+                summary: Unprotect tag
                 value:
                   tagProtect:
                     action: disableTagProtection
                     password: '77777777'
                     tagID: 'e2801191a5030069073b426d'
               enable_protect_read:
-                summary: Enable protected-tag visibility (live 6 Sep 2026)
+                summary: Enable protected-tag visibility
                 value:
                   tagProtect:
                     action: enableTagVisibility
                     password: '77777777'
               disable_protect_read:
-                summary: Disable protected-tag visibility (live 6 Sep 2026)
+                summary: Disable protected-tag visibility
                 value:
                   tagProtect:
                     action: disableTagVisibility
                     password: '77777777'
               enable_tagFocus:
-                summary: Enable TagFocus (live 6 Sep 2026)
+                summary: Enable TagFocus
                 value:
                   tagFocus:
                     enabled: true
               disable_tagFocus:
-                summary: Disable TagFocus (live 6 Sep 2026)
+                summary: Disable TagFocus
                 value:
                   tagFocus:
                     enabled: false
               quiet_tags:
-                summary: Quiet tags by EPC list (live 6 Sep 2026)
+                summary: Quiet tags by EPC list
                 value:
                   tagQuieting:
                     basic:
@@ -8227,7 +8182,7 @@ paths:
                         - 'e2801191a5030069073b426d'
                         - 'e2801191a5030069073b426e'
               unquiet_tags:
-                summary: Unquiet tags by EPC list (accepted 6 Sep 2026)
+                summary: Unquiet tags by EPC list
                 value:
                   tagQuieting:
                     basic:
@@ -8235,7 +8190,7 @@ paths:
                       tagIDs:
                         - 'e2801191a5030069073b426d'
               advanced_quiet_tags:
-                summary: Advanced quiet tags (live 6 Sep 2026)
+                summary: Advanced quiet tags
                 value:
                   tagQuieting:
                     advanced:
@@ -8260,7 +8215,7 @@ paths:
                       target: SL
                       stateAwareAction: ASSERTSL_DEASSERTSL
               advanced_unquiet_tags:
-                summary: Advanced unquiet tags (live 6 Sep 2026)
+                summary: Advanced unquiet tags
                 value:
                   tagQuieting:
                     advanced:

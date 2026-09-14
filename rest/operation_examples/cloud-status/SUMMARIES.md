@@ -1,4 +1,4 @@
-# Example summary titles — `/cloud/status`
+# Example summary titles — `cloud-status`
 
 ### `GET/status.json`
 

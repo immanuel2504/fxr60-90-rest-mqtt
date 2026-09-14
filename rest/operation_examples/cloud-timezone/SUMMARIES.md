@@ -1,17 +1,11 @@
 # Example summary titles — `/cloud/timeZone`
 
-## GET responses
-
 ### `GET/utc.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `utc` |
-| **Summary title** | `timeZone UTC` |
-
----
-
-## PUT request
+| **Summary title** | `UTC` |
 
 ### `PUT/utc.json`
 
@@ -34,14 +28,9 @@
 | **Example name** | `pacific` |
 | **Summary title** | `Set Pacific Time (US & Canada)` |
 
----
-
-## PUT response
-
 ### `PUT/success.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

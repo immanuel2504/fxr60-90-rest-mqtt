@@ -1,0 +1,9 @@
+{
+  "type": "SIMPLE",
+  "timestamp": "2026-09-07T12:50:36.194+0000",
+  "data": {
+    "eventNum": 5036,
+    "format": "epc",
+    "idHex": "e2806894000040017790e471"
+  }
+}

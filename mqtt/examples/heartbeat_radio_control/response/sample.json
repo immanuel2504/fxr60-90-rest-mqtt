@@ -1,0 +1,37 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "radio_control": {
+      "antennas": {
+        "1": "connected",
+        "2": "disconnected",
+        "3": "disconnected",
+        "4": "disconnected",
+        "5": "connected",
+        "6": "connected"
+      },
+      "cpu": 0.2,
+      "numDataMessagesTxed": 5158,
+      "numErrors": 9,
+      "numRadioPacketsRxed": 284644,
+      "numTagReads": 5214,
+      "numTagReadsPerAntenna": {
+        "1": 5214,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      },
+      "numWarnings": 0,
+      "radioActivity": "inactive",
+      "radioConnection": "connected",
+      "ram": 0.4,
+      "status": "running",
+      "uptime": "59:32:43"
+    }
+  }
+}

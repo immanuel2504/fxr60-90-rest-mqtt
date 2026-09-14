@@ -1,0 +1,30 @@
+{
+  "authenticationType": "BASIC",
+  "authenticationOptions": {
+    "username": "demo-user",
+    "password": "demo-password"
+  },
+  "name": "demo-certificate",
+  "pfxPassword": "demo-pfx-password",
+  "type": "app",
+  "url": "https://example.com/certificates/sample.pfx",
+  "verifyHost": false,
+  "verifyPeer": false,
+  "headers": {
+    "Authorization": "Bearer demo-token"
+  },
+  "retry": {
+    "type": "randomWait",
+    "policy": {
+      "retries": 3,
+      "wait": {
+        "min": 10,
+        "max": 30
+      }
+    }
+  },
+  "timeouts": {
+    "connection": 5,
+    "read": 20
+  }
+}

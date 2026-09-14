@@ -1,12 +1,6 @@
 # `get_hostname`
 
-REST: `GET /cloud/hostName` → `cloud-hostname/`
-
-MQTT command key: `get_hostName`
-
-Stable `command_id`: `req-get-hostname`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_hostName request |
-| `response/configured.json` | response | `configured` | `cloud-hostname/GET/configured.json` | Current hostname |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/get_hostname.json` | request | `get_hostname` | Get hostname |
+| `response/hostname.json` | response | `hostname` | Hostname FXR609BE34A |

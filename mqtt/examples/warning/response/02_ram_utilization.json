@@ -1,0 +1,9 @@
+{
+  "type": "warning",
+  "timestamp": "2026-09-08T04:13:46.484+0000",
+  "component": "RG",
+  "eventNum": 31,
+  "data": {
+    "message": "RAM utilization @ 31%"
+  }
+}

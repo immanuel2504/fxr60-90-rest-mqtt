@@ -1,0 +1,5 @@
+{
+  "command": "get_network",
+  "command_id": "req-get-network",
+  "payload": {}
+}

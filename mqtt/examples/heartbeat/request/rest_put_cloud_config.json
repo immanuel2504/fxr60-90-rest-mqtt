@@ -1,0 +1,33 @@
+{
+  "READER-GATEWAY": {
+    "managementEventConfig": {
+      "heartbeat": {
+        "interval": 60,
+        "fields": {
+          "radio_control": [
+            "STATUS",
+            "CPU",
+            "RAM"
+          ],
+          "reader_gateway": [
+            "CPU",
+            "RAM",
+            "INTERFACE_CONNECTION_STATUS"
+          ],
+          "system": [
+            "HOSTNAME",
+            "SYSTEMTIME",
+            "CPU",
+            "RAM"
+          ],
+          "userapps": [
+            "STATUS",
+            "CPU",
+            "RAM",
+            "UPTIME"
+          ]
+        }
+      }
+    }
+  }
+}

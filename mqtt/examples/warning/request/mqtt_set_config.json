@@ -1,0 +1,37 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-warning-events",
+  "payload": {
+    "READER-GATEWAY": {
+      "managementEventConfig": {
+        "warnings": {
+          "cpu": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "database": true,
+          "flash": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "ntp": true,
+          "radio_api": true,
+          "radio_control": true,
+          "ram": {
+            "reportIntervalInSec": 1800,
+            "threshold": 80
+          },
+          "reader_gateway": true,
+          "temperature": {
+            "ambient": 75,
+            "pa": 105
+          },
+          "userApp": {
+            "reportIntervalInSec": 1800,
+            "threshold": 60
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
 # Example summary titles — `del_certs`
 
-### `request/delete_client.json`
+### `request/delete_client_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `delete_client` |
-| **Summary title** | `Delete type client` |
+| **Example name** | `delete_client_certificate` |
+| **Summary title** | `Delete client certificate` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

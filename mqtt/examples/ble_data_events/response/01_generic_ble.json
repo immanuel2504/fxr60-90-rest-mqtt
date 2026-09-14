@@ -1,0 +1,20 @@
+{
+  "type": "BLE_DATA",
+  "timestamp": "2026-09-07T12:53:07.519+00:00",
+  "eventNum": 1902,
+  "data": {
+    "Adapter": "/org/bluez/hci0",
+    "Address": "0B:34:82:E1:91:8B",
+    "AddressType": "random",
+    "Alias": "0B-34-82-E1-91-8B",
+    "Blocked": false,
+    "Connected": false,
+    "LegacyPairing": false,
+    "Paired": false,
+    "RSSI": -53,
+    "ServicesResolved": false,
+    "Trusted": false,
+    "UUIDs": [],
+    "beaconType": "GENERIC_BLE"
+  }
+}

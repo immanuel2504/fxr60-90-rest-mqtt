@@ -1,0 +1,29 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-heartbeat-radio-control",
+  "payload": {
+    "READER-GATEWAY": {
+      "managementEventConfig": {
+        "heartbeat": {
+          "fields": {
+            "radio_control": [
+              "ANTENNAS",
+              "RADIO_ACTIVITY",
+              "RADIO_CONNECTION",
+              "CPU",
+              "RAM",
+              "UPTIME",
+              "NUM_ERRORS",
+              "NUM_WARNINGS",
+              "NUM_TAG_READS",
+              "NUM_TAG_READS_PER_ANTENNA",
+              "NUM_DATA_MESSAGES_TXED",
+              "NUM_RADIO_PACKETS_RXED",
+              "STATUS"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

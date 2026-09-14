@@ -11,18 +11,8 @@
       "Authorization": "Bearer @1T@uT0dud3"
     },
     "retry": {
-      "type": "randomWait",
-      "policy": {
-        "retries": 3,
-        "wait": {
-          "min": 10,
-          "max": 30
-        }
-      }
-    },
-    "timeouts": {
-      "connection": 5,
-      "read": 20
+      "count": 3,
+      "delayInSec": 10
     }
   }
 }

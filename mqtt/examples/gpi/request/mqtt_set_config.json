@@ -1,0 +1,11 @@
+{
+  "command": "set_config",
+  "command_id": "req-set-config-gpi-events",
+  "payload": {
+    "READER-GATEWAY": {
+      "managementEventConfig": {
+        "gpiEvents": true
+      }
+    }
+  }
+}

@@ -10,8 +10,6 @@ On a reader that has **never** had Gen2X configured, GET returns HTTP 200 with a
 
 No request body is required.
 
-Live-tested 8 September 2026 on FXR60 and FXR90, reader application 5.0.7: after a FastID PUT, both readers returned `{"fastID":{"enabled":false}}`.
-
 ## 2. Endpoint Details
 
 | Property | Value |

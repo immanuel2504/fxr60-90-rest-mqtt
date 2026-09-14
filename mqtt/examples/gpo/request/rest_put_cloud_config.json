@@ -1,0 +1,7 @@
+{
+  "READER-GATEWAY": {
+    "managementEventConfig": {
+      "gpoEvents": true
+    }
+  }
+}

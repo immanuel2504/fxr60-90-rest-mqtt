@@ -6,16 +6,9 @@ The `GET /cloud/inputOutputDevices` REST endpoint retrieves the connection statu
 
 This endpoint returns:
 
-- `keyboard.status` — `connected` or `disconnected`
-- `keyboard.keyboardLayout` — `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, or `Japanese`
-- `mouse.status` — `connected` or `disconnected`
-- `touch.status` — `connected` or `disconnected`
-- `monitor.status` — `connected` or `disconnected`
-- `manufacturer`, `model` — monitor hardware (in `monitor.details[]`)
-- `currentResolution` — active `WidthxHeight`
-- `supportedResolutions` — modes the hardware allows
-- `orientation` — `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`
-- `screenActive` — `true` if the panel is awake, `false` if blanked by screen timeout
+- Connection status for the attached keyboard, mouse, touch panel, and monitor
+- The active keyboard layout
+- Monitor hardware details, current and supported resolutions, orientation, and whether the panel is awake
 
 ## 2. Endpoint Details
 

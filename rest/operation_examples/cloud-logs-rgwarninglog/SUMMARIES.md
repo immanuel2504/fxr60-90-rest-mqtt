@@ -1,10 +1,8 @@
-# Example summary titles — `/cloud/logs/RgWarningLog`
+# Example summary titles — `cloud-logs-rgwarninglog`
 
-## GET responses
-
-### `GET/rg_warning.json`
+### `GET/download.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `rg_warning` |
+| **Example name** | `download` |
 | **Summary title** | `rgWarningLog.tar.gz archive` |

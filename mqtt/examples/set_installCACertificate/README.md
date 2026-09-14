@@ -2,11 +2,8 @@
 
 REST: `PUT /cloud/caCertificates` → `cloud-cacertificates/`
 
-MQTT command key: `set_InstallCACertificate`
-
-Stable `command_id`: `req-set-installCACertificate`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/install_ca.json` | request | `install_ca` | `cloud-cacertificates/PUT/install_ca.json` | Install a CA (`name` + PEM `content`) |
-| `response/success.json` | response | `success` | `—` | Empty payload on success |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/install_ca_certificate.json` | request | `install_ca_certificate` | Install CA certificate |
+| `request/install_named_ca_certificate.json` | request | `install_named_ca_certificate` | Install named CA certificate |
+| `response/success.json` | response | `success` | Command succeeded |

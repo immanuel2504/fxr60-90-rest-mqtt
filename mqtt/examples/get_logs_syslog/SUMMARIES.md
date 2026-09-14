@@ -1,15 +1,17 @@
 # Example summary titles — `get_logs_syslog`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_logs_syslog request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/syslog.json`
+### `response/download.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `syslog` |
+| **Example name** | `download` |
 | **Summary title** | `syslog.tar.gz archive` |

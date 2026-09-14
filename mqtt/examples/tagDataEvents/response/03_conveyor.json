@@ -1,0 +1,10 @@
+{
+  "type": "CONVEYOR",
+  "timestamp": "2026-09-07T12:51:29.949+0000",
+  "data": {
+    "antenna": 1,
+    "eventNum": 5113,
+    "format": "epc",
+    "idHex": "e2806894000040017790e471"
+  }
+}

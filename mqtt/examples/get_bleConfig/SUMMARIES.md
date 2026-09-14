@@ -1,26 +1,22 @@
 # Example summary titles — `get_bleConfig`
 
-## GET request
+### `request/get_configuration.json`
 
-### `request/default.json`
-
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_bleConfig request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-## GET response
+### `response/all_protocols_and_filters.json`
 
-### `response/disabled.json`
-
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `disabled` |
-| **Summary title** | `ble.enable false` |
-
-### `response/all_protocols.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `all_protocols` |
+| **Example name** | `all_protocols_and_filters` |
 | **Summary title** | `All protocols and filters` |
+
+### `response/ble_disabled.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `ble_disabled` |
+| **Summary title** | `BLE disabled` |

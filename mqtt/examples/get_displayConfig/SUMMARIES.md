@@ -1,15 +1,17 @@
 # Example summary titles — `get_displayConfig`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_displayConfig request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/enabled.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `enabled` |
 | **Summary title** | `Display enabled at 1920x1080` |

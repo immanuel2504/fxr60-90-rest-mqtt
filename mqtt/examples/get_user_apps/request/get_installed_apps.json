@@ -1,0 +1,5 @@
+{
+  "command": "get_userapps",
+  "command_id": "req-get-user-apps-get-installed-apps",
+  "payload": {}
+}

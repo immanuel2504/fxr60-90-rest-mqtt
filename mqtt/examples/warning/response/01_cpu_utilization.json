@@ -1,0 +1,9 @@
+{
+  "type": "warning",
+  "timestamp": "2026-09-08T04:13:46.483+0000",
+  "component": "RG",
+  "eventNum": 30,
+  "data": {
+    "message": "CPU utilization @ 18%"
+  }
+}

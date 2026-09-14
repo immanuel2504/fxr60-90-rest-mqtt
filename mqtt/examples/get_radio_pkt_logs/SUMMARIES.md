@@ -1,15 +1,17 @@
 # Example summary titles — `get_radio_pkt_logs`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_logs_radioPacketLog request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/radio_packet.json`
+### `response/download.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `radio_packet` |
+| **Example name** | `download` |
 | **Summary title** | `radioPktLog.tar.gz archive` |

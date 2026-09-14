@@ -1,7 +1,5 @@
 # Example summary titles — `/cloud/apps/install`
 
-## PUT request
-
 ### `PUT/app-install-none.json`
 
 | Field | Value |
@@ -37,7 +35,12 @@
 | **Example name** | `sftp_basic` |
 | **Summary title** | `SFTP BASIC` |
 
-## PUT response
+### `PUT/installUserapp_async.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `installUserapp_async` |
+| **Summary title** | `Async install` |
 
 ### `PUT/success.json`
 
@@ -45,4 +48,3 @@
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
-| **HTTP status** | `200` |

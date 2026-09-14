@@ -1,15 +1,22 @@
 # Example summary titles — `set_installCACertificate`
 
-### `request/install_ca.json`
+### `request/install_ca_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `install_ca` |
-| **Summary title** | `Install a CA` |
+| **Example name** | `install_ca_certificate` |
+| **Summary title** | `Install CA certificate` |
+
+### `request/install_named_ca_certificate.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `install_named_ca_certificate` |
+| **Summary title** | `Install named CA certificate` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

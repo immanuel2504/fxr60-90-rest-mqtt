@@ -1,10 +1,10 @@
 # `/cloud/revertbackOS`
 
-- **PUT** — Revert to previous OS (`set_revertbackOS`)
+- **PUT** — `set_revertbackOS` / `revertback`
 
 ## PUT examples
 
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `PUT/revertbackOS.json` | request | `revertbackOS` | Empty object |
-| `PUT/success.json` | response 200 | `success` | Empty string on success |
+| File | Example name | Summary |
+|---|---|---|
+| `PUT/revert_to_previous_os.json` | `revert_to_previous_os` | Revert to previous OS |
+| `PUT/success.json` | `success` | Empty string on success |

@@ -1,15 +1,15 @@
 # Example summary titles — `del_CACertificate`
 
-### `request/delete_ca.json`
+### `request/delete_ca_certificate.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `delete_ca` |
-| **Summary title** | `Delete by install name, without .crt` |
+| **Example name** | `delete_ca_certificate` |
+| **Summary title** | `Delete CA certificate` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

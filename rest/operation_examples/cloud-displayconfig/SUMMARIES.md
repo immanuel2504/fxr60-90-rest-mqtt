@@ -1,17 +1,11 @@
 # Example summary titles — `/cloud/displayConfig`
 
-## GET responses
-
 ### `GET/enabled.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `enabled` |
 | **Summary title** | `Display enabled at 1920x1080` |
-
----
-
-## PUT request
 
 ### `PUT/landscape_japanese.json`
 
@@ -34,14 +28,9 @@
 | **Example name** | `flipped_orientation` |
 | **Summary title** | `Enable and flip orientation` |
 
----
-
-## PUT response
-
 ### `PUT/success.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty object on success` |
-| **HTTP status** | `200` |

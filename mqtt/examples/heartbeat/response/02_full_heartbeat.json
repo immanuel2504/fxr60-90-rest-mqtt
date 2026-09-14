@@ -1,0 +1,138 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "radio_control": {
+      "antennas": {
+        "1": "connected",
+        "2": "disconnected",
+        "3": "disconnected",
+        "4": "disconnected",
+        "5": "connected",
+        "6": "connected"
+      },
+      "cpu": 0.2,
+      "numDataMessagesTxed": 5158,
+      "numErrors": 9,
+      "numRadioPacketsRxed": 284644,
+      "numTagReads": 5214,
+      "numTagReadsPerAntenna": {
+        "1": 5214,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      },
+      "numWarnings": 0,
+      "radioActivity": "inactive",
+      "radioConnection": "connected",
+      "ram": 0.4,
+      "status": "running",
+      "uptime": "59:32:43"
+    },
+    "reader_gateway": {
+      "cpu": 0.4,
+      "dataPathStatistics": [
+        {
+          "noLockQDepth": 0,
+          "numDataMessagesDropped": 0,
+          "numDataMessagesRetained": 0,
+          "numDataMessagesRxed": 0,
+          "numDataMessagesTxed": 0
+        }
+      ],
+      "interfaceConnectionStatus": {
+        "control": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "Control cmd/rsp through AWS IoT Core",
+            "interface": "CTRL_AWS",
+            "stats": {
+              "commands_received": 0,
+              "responses_failed": 0,
+              "responses_sent": 0
+            }
+          }
+        ],
+        "data": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "AWS IoT data endpoint, paired with CLOUD_CONNECT/DISCONNECT GPIO",
+            "interface": "DATA_AWS_CLOUD_EVENTS"
+          }
+        ],
+        "management": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "Management cmd/rsp through AWS IoT Core",
+            "interface": "MGMT_CMD_AWS",
+            "stats": {
+              "commands_received": 0,
+              "responses_failed": 0,
+              "responses_sent": 0
+            }
+          }
+        ],
+        "managementEvent": [
+          {
+            "connectionError": "",
+            "connectionStatus": "connected",
+            "description": "userapps capture",
+            "interface": "MGMT_EV_UA2"
+          }
+        ]
+      },
+      "numDataMessagesRxedFromExt": 0,
+      "numErrors": 0,
+      "numManagementEventsTxed": 12,
+      "numWarnings": 0,
+      "ram": 0.5,
+      "uptime": "0:01:10"
+    },
+    "system": {
+      "GPI": {
+        "1": "HIGH",
+        "2": "HIGH",
+        "3": "HIGH",
+        "4": "HIGH"
+      },
+      "GPO": {
+        "1": "HIGH",
+        "2": "HIGH",
+        "3": "LOW",
+        "4": "LOW"
+      },
+      "cpu": {
+        "system": 0,
+        "user": 67
+      },
+      "flash": null,
+      "hostName": "FXR609BE34A",
+      "macAddress": "88:BC:AC:9B:E3:4A",
+      "ntp": {
+        "offset": 0.021233,
+        "reach": 377
+      },
+      "powerNegotiation": "POE+",
+      "powerSource": "PWR_BRICK",
+      "ram": {
+        "free": 69,
+        "total": 100,
+        "used": 31
+      },
+      "systemtime": "08/09/2026 04:40",
+      "temperature": {
+        "ambient": 33,
+        "pa": 30
+      },
+      "uptime": "4D14H49M14S"
+    },
+    "userapps": []
+  }
+}

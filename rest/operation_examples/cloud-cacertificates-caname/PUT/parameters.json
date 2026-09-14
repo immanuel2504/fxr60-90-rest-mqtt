@@ -1,0 +1,9 @@
+{
+  "caname": {
+    "in": "path",
+    "required": true,
+    "type": "string",
+    "enum": null,
+    "example": "AmazonRootCA1"
+  }
+}

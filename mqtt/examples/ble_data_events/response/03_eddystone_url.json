@@ -1,0 +1,21 @@
+{
+  "type": "BLE_DATA",
+  "timestamp": "2026-09-07T12:53:07.628+00:00",
+  "eventNum": 1909,
+  "data": {
+    "Adapter": "/org/bluez/hci0",
+    "Address": "CE:69:03:63:BF:7F",
+    "AddressType": "random",
+    "Alias": "CE-69-03-63-BF-7F",
+    "RSSI": -69,
+    "UUIDs": [
+      "0000feaa-0000-1000-8000-00805f9b34fb"
+    ],
+    "beaconType": "EDDYSTONE_URL",
+    "eddystone": {
+      "frameType": "URL",
+      "txPower": -70,
+      "url": "https://www.zebra.com"
+    }
+  }
+}

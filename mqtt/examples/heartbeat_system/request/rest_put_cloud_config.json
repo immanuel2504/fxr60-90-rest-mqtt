@@ -1,0 +1,25 @@
+{
+  "READER-GATEWAY": {
+    "managementEventConfig": {
+      "heartbeat": {
+        "fields": {
+          "system": [
+            "CPU",
+            "FLASH",
+            "NTP",
+            "RAM",
+            "SYSTEMTIME",
+            "TEMPERATURE",
+            "UPTIME",
+            "GPO",
+            "GPI",
+            "POWER_NEGOTIATION",
+            "POWER_SOURCE",
+            "MAC_ADDRESS",
+            "HOSTNAME"
+          ]
+        }
+      }
+    }
+  }
+}

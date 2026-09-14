@@ -1,12 +1,9 @@
 # `set_ntpServer`
 
-REST: `PUT /cloud/ntpServer` → `cloud-ntpserver/`
-
-Stable `command_id`: `req-set-ntpServer`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/time1_time2.json` | request | `time1_time2` | `cloud-ntpserver/PUT/time1_time2.json` | `server` and `server2` |
-| `request/server1.json` | request | `server1` | `cloud-ntpserver/PUT/server1.json` | Legacy `server1` |
-| `request/time_google.json` | request | `time_google` | `cloud-ntpserver/PUT/time_google.json` | `server` only |
-| `response/success.json` | response | `success` | `—` | Empty payload on success |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/primary_and_backup.json` | request | `primary_and_backup` | Primary and backup servers |
+| `request/legacy_primary_and_backup.json` | request | `legacy_primary_and_backup` | Legacy primary and backup |
+| `request/primary_only.json` | request | `primary_only` | Primary server only |
+| `request/legacy_primary_only.json` | request | `legacy_primary_only` | Legacy primary only |
+| `response/success.json` | response | `success` | Command succeeded |

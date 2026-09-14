@@ -1,0 +1,16 @@
+{
+  "command": "set_bleConfig",
+  "command_id": "req-set-bleConfig-enable-ble-with-interval",
+  "payload": {
+    "ble": {
+      "enable": true,
+      "scanIntervalSec": 5,
+      "protocols": {
+        "iBeacon": {
+          "enabled": true
+        }
+      },
+      "additionalFilters": {}
+    }
+  }
+}

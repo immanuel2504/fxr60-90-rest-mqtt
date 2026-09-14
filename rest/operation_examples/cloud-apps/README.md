@@ -1,10 +1,10 @@
 # `/cloud/apps`
 
-- **GET** — List user applications (`get_userapps`)
+- **GET** — `get_user_apps`
 
 ## GET examples
 
-| File | Direction | Example name | Summary |
-|---|---|---|---|
-| `GET/none_installed.json` | response 200 | `none_installed` | No user applications |
-| `GET/sampleNew_sampleAntenna.json` | response 200 | `sampleNew_sampleAntenna` | `sampleNew` and `sampleAntenna` |
+| File | Example name | Summary |
+|---|---|---|
+| `GET/none_installed.json` | `none_installed` | No user applications |
+| `GET/installed_apps.json` | `installed_apps` | Installed apps |

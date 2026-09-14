@@ -7,6 +7,6 @@ GET and PUT use different types for the same setting. That is the published sche
 
 | File | Example name | Summary |
 |---|---|---|
-| `GET/disabled.json` | `disabled` | Current preSelection state (`disabled`) |
-| `PUT/enable.json` | `enable` | Enable preSelection (`true`) |
+| `GET/preselection_disabled.json` | `preselection_disabled` | Preselection disabled |
+| `PUT/enable_preselection.json` | `enable_preselection` | Enable preselection |
 | `PUT/success.json` | `success` | Empty string on success |

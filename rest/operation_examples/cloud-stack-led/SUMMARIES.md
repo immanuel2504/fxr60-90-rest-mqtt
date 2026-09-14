@@ -1,7 +1,5 @@
 # Example summary titles — `/cloud/stack-led`
 
-## GET responses
-
 ### `GET/default_state.json`
 
 | Field | Value |
@@ -23,10 +21,6 @@
 | **Example name** | `red_flash_countdown` |
 | **Summary title** | `Red flash with countdown` |
 
----
-
-## PUT request
-
 ### `PUT/red_high_flash.json`
 
 | Field | Value |
@@ -47,3 +41,10 @@
 |---|---|
 | **Example name** | `amber_med_flash` |
 | **Summary title** | `Amber, med, flashing` |
+
+### `PUT/success.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `success` |
+| **Summary title** | `Empty string on success` |

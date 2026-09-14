@@ -1,29 +1,31 @@
 # Example summary titles — `set_passthru`
 
-### `request/status.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `status` |
-| **Summary title** | `RC status command` |
+Scenario-based names.
 
 ### `request/mode.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `mode` |
-| **Summary title** | `RC mode command` |
+| **Summary title** | `Passthrough mode query` |
 
-### `response/status_success.json`
+### `request/status.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `status_success` |
-| **Summary title** | `RC status reply` |
+| **Example name** | `status` |
+| **Summary title** | `Passthrough status query` |
 
 ### `response/mode_success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `mode_success` |
-| **Summary title** | `RC mode reply` |
+| **Summary title** | `Mode response` |
+
+### `response/status_success.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `status_success` |
+| **Summary title** | `Status response` |

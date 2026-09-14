@@ -10027,7 +10027,6 @@ components:
                   - PERMALOCK_USER_BANK
                   - WRITE_LOCK_USER_BANK
                   - WRITE_UNLOCK_USER_BANK
-                  - WRITE_UNLOCK_USER_BANK
                   - WRITE_LOCK_TID_BANK
                   - WRITE_UNLOCK_TID_BANK
                   - PERMALOCK_EPC_BANK
@@ -10143,10 +10142,9 @@ components:
           - ANTENNA
           - RSSI
       items:
-        type:
-          - string
-          - object
-        enum:
+        oneOf:
+        - type: string
+          enum:
           - RSSI
           - PHASE
           - SEEN_COUNT
@@ -10161,29 +10159,31 @@ components:
           - MAC
           - HOSTNAME
           - READERLOCATION
-        properties:
-          userDefined:
-            type: string
-            description: A user defined field to report each time a tag is reported
-          antennaNames:
-            type: array
-            description: |-
-              Used to give antenna ports descriptive names
-              Length of array must match the number of antenna ports on the device
-            items:
+        - type: object
+          properties:
+            userDefined:
               type: string
-          gpsCoordinates:
-            type: object
-            description: GPS coordinates metadata reported with each tag event when location metadata is enabled.
-            properties:
-              latitude:
-                type: number
-                nullable: true
-                description: Latitude in decimal degrees.
-              longitude:
-                type: number
-                nullable: true
-                description: Longitude in decimal degrees.
+              description: A user defined field to report each time a tag is reported
+            antennaNames:
+              type: array
+              description: 'Used to give antenna ports descriptive names
+
+                Length of array must match the number of antenna ports on the device'
+              items:
+                type: string
+            gpsCoordinates:
+              type: object
+              description: GPS coordinates metadata reported with each tag event when location
+                metadata is enabled.
+              properties:
+                latitude:
+                  type: number
+                  nullable: true
+                  description: Latitude in decimal degrees.
+                longitude:
+                  type: number
+                  nullable: true
+                  description: Longitude in decimal degrees.
     radioStartConditions.v1:
       title: radioStartConditions
       type: object
@@ -11884,7 +11884,6 @@ components:
             - Caracas
             - Atlantic Time (Canada)
             - Georgetown
-            - La Paz
             - San Juan
             - Santiago
             - Manaus
@@ -12048,8 +12047,6 @@ components:
             - (GMT) Monrovia, Reykjavik
             - (GMT) Casablanca
             - (UTC) Coordinated Universal Time
-            - UTC
-            - Universal
             - (GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague
             - (GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb
             - (GMT+01:00) Brussels, Copenhagen, Madrid, Paris

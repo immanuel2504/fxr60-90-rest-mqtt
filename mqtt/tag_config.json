@@ -24,6 +24,9 @@
     ],
     "Tag Data Events": [
       "Tag-data-events"
+    ],
+    "BLE Data Events": [
+      "Ble-data-events"
     ]
   },
   "operation_tags": {
@@ -95,8 +98,12 @@
     "set_impinjGen2X": "ImpinjGen2X",
     "set_bleConfig": "Ble",
     "get_bleConfig": "Ble",
-    "async-events": "Management-events",
     "heartbeat": "Management-events",
+    "heartbeat_radio_control": "Management-events",
+    "heartbeat_reader_gateway": "Management-events",
+    "heartbeat_system": "Management-events",
+    "heartbeat_userapps": "Management-events",
+    "heartbeat_interval": "Management-events",
     "firmwareUpdateProgress": "Management-events",
     "gpi": "Management-events",
     "gpo": "Management-events",
@@ -109,7 +116,7 @@
     "inventory_tag_data_events": "Tag-data-events",
     "conveyor_tag_data_events": "Tag-data-events",
     "custom_tag_data_events": "Tag-data-events",
-    "ble_data_events": "Tag-data-events",
+    "ble_data_events": "Ble-data-events",
     "get_supportedStandardList": "Region",
     "get_CACertificates": "Certificate",
     "set_installCACertificate": "Certificate",
@@ -220,22 +227,22 @@
       "set_bleConfig"
     ],
     "Management-events": [
-      "async-events",
       "heartbeat",
-      "firmwareUpdateProgress",
+      "heartbeat_radio_control",
+      "heartbeat_reader_gateway",
+      "heartbeat_system",
+      "heartbeat_userapps",
       "gpi",
       "gpo",
+      "userapp_event",
       "error",
       "warning",
-      "userapp_event"
+      "firmwareUpdateProgress"
     ],
     "Tag-data-events": [
-      "tagDataEvents",
-      "mode_tag_data_events",
-      "simple_tag_data_events",
-      "inventory_tag_data_events",
-      "conveyor_tag_data_events",
-      "custom_tag_data_events",
+      "tagDataEvents"
+    ],
+    "Ble-data-events": [
       "ble_data_events"
     ],
     "Display": [
@@ -267,10 +274,59 @@
           "set_preSelection"
         ]
       }
-    ]
+    ],
+    "Management-events": [
+      {
+        "name": "Heartbeats",
+        "operations": [
+          "heartbeat",
+          "heartbeat_radio_control",
+          "heartbeat_reader_gateway",
+          "heartbeat_system",
+          "heartbeat_userapps"
+        ]
+      },
+      {
+        "name": "GPIO Events",
+        "operations": [
+          "gpi",
+          "gpo"
+        ]
+      },
+      {
+        "name": "User App Events",
+        "operations": [
+          "userapp_event"
+        ]
+      },
+      {
+        "name": "Alerts",
+        "operations": [
+          "error",
+          "warning"
+        ]
+      },
+      {
+        "name": "Firmware Events",
+        "operations": [
+          "firmwareUpdateProgress"
+        ]
+      }
+    ],
+    "Tag-data-events": [],
+    "Ble-data-events": []
   },
+  "nav_excluded_operations": [
+    "heartbeat_interval",
+    "mode_tag_data_events",
+    "simple_tag_data_events",
+    "inventory_tag_data_events",
+    "conveyor_tag_data_events",
+    "custom_tag_data_events"
+  ],
   "excluded_operations": [
-    "localrest_login"
+    "localrest_login",
+    "async-events"
   ],
   "display_name_aliases": {
     "get_supportedStandardList": "get_SupportedStandardlist"
@@ -292,10 +348,14 @@
     "get_gpsCoordinates": "Get GPS Coordinates",
     "set_dataToRG": "Set Data to RG",
     "set_region": "Set Reader Region Configuration",
-    "async-events": "Async Events",
     "heartbeat": "Heartbeat",
-    "error": "Error Event",
-    "warning": "Warning Event",
+    "heartbeat_radio_control": "Radio Control",
+    "heartbeat_reader_gateway": "Reader Gateway",
+    "heartbeat_system": "System",
+    "heartbeat_userapps": "User Apps",
+    "heartbeat_interval": "Heartbeat Interval",
+    "error": "Error Events",
+    "warning": "Warning Events",
     "firmwareUpdateProgress": "Firmware Update Progress",
     "tagDataEvents": "Tag Data Events",
     "mode_tag_data_events": "Mode Tag Data Events",
@@ -304,12 +364,14 @@
     "conveyor_tag_data_events": "CONVEYOR Tag Data Events",
     "custom_tag_data_events": "CUSTOM Tag Data Events",
     "ble_data_events": "BLE Data Events",
-    "userapp_event": "User App Event",
+    "userapp_event": "Custom User App Event",
     "gpi": "GPI Event",
     "gpo": "GPO Event",
     "get_displayConfig": "Get Display Configuration",
     "set_displayConfig": "Set Display Configuration",
     "get_inputOutputDevices": "Get Input/Output Devices"
   },
-  "tag_descriptions": {}
+  "tag_descriptions": {
+    "Management-events": "Management events are asynchronous events published by the reader on the management-event channel.\n\nThe `data` payload depends on the event `type`. Always read `type` before parsing `data`.\n\n## Configure Management Events\n\nManagement events use two configuration layers:\n\n| Layer | Command / Endpoint | JSON path | Purpose |\n|---|---|---|---|\n| Destination | `set_importCloudConfig` / `PUT /cloud/cloudConfig` | `endpointConfig.management.event` | Sets where management events are published. |\n| Event configuration | `set_config` / `PUT /cloud/config` | `READER-GATEWAY.managementEventConfig` | Enables events, sets thresholds, and configures heartbeat fields. |\n\nConfigure the destination first. Then configure the required event type.\n\n## Event Types\n\n| Event | `type` | Configured in |\n|---|---|---|\n| Heartbeat | `heartbeat` | `managementEventConfig.heartbeat` |\n| GPI Event | `gpi` | `managementEventConfig.gpiEvents` |\n| GPO Event | `gpo` | `managementEventConfig.gpoEvents` |\n| Custom User App Event | `userapp` | `managementEventConfig.userappEvents` |\n| Error Events | `error` | `managementEventConfig.errors` |\n| Warning Events | `warning` | `managementEventConfig.warnings` |\n| Firmware Update Progress | `firmwareUpdateProgress` | Not configurable. Published during `set_os`. |"
+  }
 }

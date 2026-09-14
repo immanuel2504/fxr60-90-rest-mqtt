@@ -40,7 +40,7 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-Decide which Gen2X feature to configure before sending this request. Send **exactly one** of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting`. An empty body or any combination of two or more features is rejected. To apply the saved configuration during inventory, send `PUT /cloud/start` with `applyImpinjGen2X: true`. After `PUT /cloud/stop`, send the flag again on the next start — apply is per inventory session.
+Decide which Gen2X feature to configure before sending this request. Send **exactly one** of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting`. An empty body or any combination of two or more features is rejected. To apply the saved configuration during inventory, send `PUT /cloud/start` with `applyImpinjGen2X: true`.
 
 ### Access Password for TagProtect
 
@@ -64,7 +64,7 @@ Do not use `00000000` — Gen2 treats that as no password, so Protected Mode can
 | TagFocus | Whether to enable or disable the feature. TagFocus targets session S1. |
 | TagQuieting | For basic: provide `action` (`quiet`/`unquiet`) and the `tagIDs` EPC array (maximum 31 tag IDs per request). For advanced: provide the `preSelect` array, `tagQuietMasks`, `target`, and `stateAwareAction`. |
 | Inventory state | Configure Gen2X before starting inventory. Stop any active inventory first with `PUT /cloud/stop`. |
-| Activation | PUT only saves the configuration. Start with `applyImpinjGen2X: true` to apply it. After stop, a plain start does not re-apply it — send the flag on every start that should use Gen2X. |
+| Activation | PUT only saves the configuration. Start with `applyImpinjGen2X: true` to apply it. |
 
 ## 4. Choosing a Gen2X Feature
 
@@ -190,5 +190,3 @@ Content-Type: application/json
 |---|---|---|
 | `422 Unprocessable Entity` | Validation error | Empty body, mutually exclusive features sent together, invalid enum value, or constraint violation. |
 | `500 Internal Server Error` | Reader-side failure | Internal reader error while persisting the configuration. |
-
-> Persistence: The last saved configuration is kept across reboots. It is applied only for the inventory session started with `applyImpinjGen2X: true`. After `PUT /cloud/stop`, status returns to `feature: none`. A later start without the flag does not re-apply Gen2X.

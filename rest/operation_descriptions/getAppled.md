@@ -4,7 +4,7 @@ The `GET /cloud/app-led` REST endpoint retrieves whether the application LED is 
 
 This endpoint returns:
 
-- `status` — `DEFAULT` or `NON_DEFAULT`
+- `status` — `DEFAULT` means the LED reflects the reader's normal LED status (reader-controlled). `NON_DEFAULT` means a prior `PUT /cloud/app-led` set the LED to an explicit color, flash, and duration, overriding the normal status.
 
 ## 2. Endpoint Details
 

@@ -1,22 +1,24 @@
 # Example summary titles — `get_readerCapabilities`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_readerCapabilities request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/fxr60.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `fxr60` |
 | **Summary title** | `FXR60 capabilities` |
 
 ### `response/fxr90.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `fxr90` |
 | **Summary title** | `FXR90 capabilities` |

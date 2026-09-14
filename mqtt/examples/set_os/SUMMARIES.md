@@ -1,29 +1,29 @@
 # Example summary titles — `set_os`
 
-### `request/https_none.json`
+### `request/https_basic_authentication.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `https_none` |
-| **Summary title** | `authenticationType NONE` |
+| **Example name** | `https_basic_authentication` |
+| **Summary title** | `HTTPS with BASIC authentication` |
 
-### `request/https_basic.json`
+### `request/https_basic_authentication_with_retry.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `https_basic` |
-| **Summary title** | `authenticationType BASIC` |
+| **Example name** | `https_basic_authentication_with_retry` |
+| **Summary title** | `HTTPS BASIC authentication with retry` |
 
-### `request/https_basic_retry.json`
+### `request/https_no_authentication.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `https_basic_retry` |
-| **Summary title** | `BASIC with retry and timeouts` |
+| **Example name** | `https_no_authentication` |
+| **Summary title** | `HTTPS with no authentication` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

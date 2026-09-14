@@ -1,0 +1,24 @@
+{
+  "READER-GATEWAY": {
+    "managementEventConfig": {
+      "heartbeat": {
+        "fields": {
+          "reader_gateway": [
+            "NUM_DATA_MESSAGES_RXED",
+            "NUM_MANAGEMENT_EVENTS_TXED",
+            "NUM_DATA_MESSAGES_TXED",
+            "NUM_DATA_MESSAGES_RETAINED",
+            "NUM_DATA_MESSAGES_DROPPED",
+            "CPU",
+            "RAM",
+            "UPTIME",
+            "NUM_ERRORS",
+            "NUM_WARNINGS",
+            "INTERFACE_CONNECTION_STATUS",
+            "NOLOCKQ_DEPTH"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -49,13 +49,13 @@ Key fields to check in the response:
 | `radioConnection` | Is the value `connected`? | Inventory cannot run if the radio is disconnected. |
 | `radioActivity` | Is it `active` or `inactive`? | Confirms whether an inventory session is currently in progress. |
 | `temperature` | Is the value within safe operating range? | Excessive temperature can cause throttling or hardware faults. |
-| `antennas` | Are expected ports `connected`? Only ports present on this reader are listed — not every reader has 8 antennas. | A `disconnected` antenna port means tags on that port will not be read. |
+| `antennas` | Are expected ports `connected`? | A `disconnected` antenna port means tags on that port will not be read. |
 | `ntp.offset` | Is the offset near zero? | A large NTP offset means event timestamps may be inaccurate. |
-| `ble.scanState` | Is the value `running`? | Confirms whether the BLE scanner is currently active (`running`) or `stopped`. |
+| `ble.scanState` | Is the scan running? | Confirms whether the BLE scanner is currently active (`running`) or `stopped`. |
 | `ble.scanStartTime` | When did the current scan start? | ISO 8601 timestamp marking when BLE scanning last started. |
 | `ble.beaconCounts` | Are advertisements being seen? | Per-protocol counts (`iBeacon`, `altBeacon`, `eddystone`, `generic`, `total`) confirm beacons are being detected in the current scan window. |
-| `impinjGen2X.feature` | Which Gen2X object is loaded (`fastID`, `tagProtect`, `tagFocus`, `tagQuieting`, or `none`)? | Names the last saved feature. `none` after stop or when Gen2X is not running. |
-| `impinjGen2X.isActive` | Is a Gen2X config running in this inventory session? | `true` means Gen2X was applied on this start. It does **not** mean FastID or TagFocus is switched on. `{"fastID":{"enabled":false}}` can still show `feature: fastID` and `isActive: true`. Use `GET /cloud/impinjGen2X` to read `enabled`. |
+| `impinjGen2X.feature` | Which Gen2X feature is active (`fastID`, `tagProtect`, `tagFocus`, `tagQuieting`, or `none`)? | Names the currently running feature. `none` when Gen2X is not running. |
+| `impinjGen2X.isActive` | Is a Gen2X feature running in this inventory session? | These two fields show the runtime state of Gen2X. When Gen2X is running, `feature` names the running feature and `isActive` is `true`. When it is not running, `feature` is `none` and `isActive` is `false`. Use `GET /cloud/impinjGen2X` to read the saved configuration. |
 
 ## 4. BLE Status Fields
 

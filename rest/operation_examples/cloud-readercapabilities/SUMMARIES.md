@@ -1,4 +1,4 @@
-# Example summary titles — `/cloud/readerCapabilities`
+# Example summary titles — `cloud-readercapabilities`
 
 ### `GET/fxr60.json`
 

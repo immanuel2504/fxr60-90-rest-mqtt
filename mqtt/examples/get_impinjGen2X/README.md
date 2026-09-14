@@ -2,16 +2,15 @@
 
 REST: `GET /cloud/impinjGen2X` → `cloud-impinjgen2x/`
 
-Stable `command_id`: `req-get-impinjGen2X`
+GET returns the last saved feature only. Never-configured returns an empty body.
 
-GET returns the last saved feature only. Never-configured is an empty HTTP body, not `{}` — that case is not published as a JSON example.
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_impinjGen2X request |
-| `response/fastID_disabled.json` | response | `fastID_disabled` | `cloud-impinjgen2x/GET/fastID_disabled.json` | Live 8 Sep 2026, FXR60 and FXR90 5.0.7 |
-| `response/fastID_configured.json` | response | `fastID_configured` | `cloud-impinjgen2x/GET/fastID_configured.json` | Last PUT was FastID enabled |
-| `response/tagFocus_configured.json` | response | `tagFocus_configured` | `cloud-impinjgen2x/GET/tagFocus_configured.json` | Last PUT was TagFocus |
-| `response/tagProtect_configured.json` | response | `tagProtect_configured` | `cloud-impinjgen2x/GET/tagProtect_configured.json` | Last PUT was TagProtect |
-| `response/tagQuieting_basic_configured.json` | response | `tagQuieting_basic_configured` | `cloud-impinjgen2x/GET/tagQuieting_basic_configured.json` | Last PUT was basic quieting |
-| `response/tagQuieting_advanced_configured.json` | response | `tagQuieting_advanced_configured` | `cloud-impinjgen2x/GET/tagQuieting_advanced_configured.json` | Last PUT was advanced quieting |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/get_configuration.json` | request | `get_configuration` | Get configuration |
+| `response/never_configured.json` | response | `never_configured` | Never configured |
+| `response/fastID_disabled.json` | response | `fastID_disabled` | FastID disabled |
+| `response/fastID_configured.json` | response | `fastID_configured` | FastID enabled |
+| `response/tagFocus_configured.json` | response | `tagFocus_configured` | TagFocus configured |
+| `response/tagProtect_configured.json` | response | `tagProtect_configured` | TagProtect configured |
+| `response/tagQuieting_basic_configured.json` | response | `tagQuieting_basic_configured` | Basic tag quieting |
+| `response/tagQuieting_advanced_configured.json` | response | `tagQuieting_advanced_configured` | Advanced tag quieting |

@@ -1,0 +1,15 @@
+{
+  "type": "heartbeat",
+  "timestamp": "2026-09-08T04:41:55.710+0000",
+  "component": "RG",
+  "eventNum": 13,
+  "data": {
+    "radio_control": {
+      "status": "running",
+      "uptime": "59:32:43"
+    },
+    "system": {
+      "uptime": "4D14H49M14S"
+    }
+  }
+}

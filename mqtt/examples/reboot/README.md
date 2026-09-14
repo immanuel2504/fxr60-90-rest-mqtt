@@ -1,10 +1,6 @@
 # `reboot`
 
-REST: `PUT /cloud/reboot` → `cloud-reboot/`
-
-Stable `command_id`: `req-reboot`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty reboot request |
-| `response/success.json` | response | `success` | `cloud-reboot/PUT/success.json` | Command succeeded |
+| File | Direction | Example name | Summary title |
+|---|---|---|---|
+| `request/reboot.json` | request | `reboot` | Reboot reader |
+| `response/success.json` | response | `success` | Command succeeded |

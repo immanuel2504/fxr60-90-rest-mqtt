@@ -1,15 +1,17 @@
 # Example summary titles — `set_cableLossCompensation`
 
+Scenario-based names.
+
 ### `request/set_cable_loss.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `set_cable_loss` |
-| **Summary title** | `Per-port cable length and loss` |
+| **Summary title** | `Set cable loss compensation` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Command succeeded` |

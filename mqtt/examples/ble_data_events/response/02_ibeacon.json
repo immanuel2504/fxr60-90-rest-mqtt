@@ -1,0 +1,20 @@
+{
+  "type": "BLE_DATA",
+  "timestamp": "2026-09-07T12:53:07.549+00:00",
+  "eventNum": 1905,
+  "data": {
+    "Adapter": "/org/bluez/hci0",
+    "Address": "D0:B5:44:6B:47:82",
+    "AddressType": "random",
+    "Alias": "D0-B5-44-6B-47-82",
+    "RSSI": -70,
+    "UUIDs": [],
+    "beaconType": "IBEACON",
+    "iBeacon": {
+      "uuid": "B2BD2812-7351-4440-49F4-5BD3666DCACB",
+      "major": 33548,
+      "minor": 43593,
+      "txPower": -74
+    }
+  }
+}

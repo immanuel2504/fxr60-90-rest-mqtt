@@ -1,15 +1,17 @@
 # Example summary titles — `get_supportedRegionList`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_supportedRegionList request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/united_states_canada.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `united_states_canada` |
 | **Summary title** | `United States/Canada` |

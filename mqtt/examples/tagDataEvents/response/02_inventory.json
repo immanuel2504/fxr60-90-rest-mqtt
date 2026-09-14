@@ -1,0 +1,12 @@
+{
+  "type": "INVENTORY",
+  "timestamp": "2026-09-07T12:50:55.513+0000",
+  "data": {
+    "antenna": 1,
+    "eventNum": 5059,
+    "format": "epc",
+    "idHex": "e2806894000040017790e471",
+    "peakRssi": -37,
+    "reads": 1
+  }
+}

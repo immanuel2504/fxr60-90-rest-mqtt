@@ -1,15 +1,17 @@
 # Example summary titles — `get_rc_log`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_logs_rcLog request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
-### `response/rc_log.json`
+### `response/download.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `rc_log` |
+| **Example name** | `download` |
 | **Summary title** | `rcLog.tar.gz archive` |

@@ -1,22 +1,24 @@
 # Example summary titles — `get_appled`
 
-### `request/default.json`
+Scenario-based names.
 
-| Field | Value |
+### `request/get_configuration.json`
+
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_appled request` |
+| **Example name** | `get_configuration` |
+| **Summary title** | `Get configuration` |
 
 ### `response/default_state.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `default_state` |
 | **Summary title** | `Reader controls LED` |
 
 ### `response/non_default_state.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `non_default_state` |
 | **Summary title** | `App controls LED` |

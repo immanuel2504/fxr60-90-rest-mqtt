@@ -1,29 +1,31 @@
 # Example summary titles — `set_timeZone`
 
+Scenario-based names.
+
 ### `request/utc.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `utc` |
 | **Summary title** | `Set UTC` |
 
 ### `request/kolkata.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `kolkata` |
 | **Summary title** | `Set Kolkata` |
 
 ### `request/pacific.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `pacific` |
 | **Summary title** | `Set Pacific Time (US & Canada)` |
 
 ### `response/success.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
 | **Example name** | `success` |
-| **Summary title** | `Empty payload on success` |
+| **Summary title** | `Command succeeded` |

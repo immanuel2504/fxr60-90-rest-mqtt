@@ -1,8 +1,4 @@
-# `/cloud/readerCapabilities`
-
-- **GET** — Retrieves reader hardware and software capabilities (`getReadercapabilities`)
-
-## GET examples
+# `cloud-readercapabilities`
 
 | File | Example name | Summary |
 |---|---|---|

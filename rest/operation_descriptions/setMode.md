@@ -1,6 +1,6 @@
 ## 1. Description
 
-The `PUT /cloud/mode` REST endpoint configures the reader's operating mode. The request body is an `operatingMode.v1` object.
+The `PUT /cloud/mode` REST endpoint configures the reader's operating mode.
 
 This call **replaces the entire mode configuration**. Fields you omit are not kept from the previous mode — send the full object you want the reader to use.
 

@@ -1,0 +1,8 @@
+{
+  "command": "set_eSimConfig",
+  "command_id": "req-set-eSimConfig",
+  "payload": {
+    "operation": "disable",
+    "profileNickName": "gnd1"
+  }
+}
