@@ -7,7 +7,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `with_uap0` |
-| **Summary title** | `eth0 mlan0 bnep0 blescan uap0` |
+| **Summary title** | `eth0 mlan0 bnep0 uap0` |
 
 ### `GET/with_wan0.json`
 

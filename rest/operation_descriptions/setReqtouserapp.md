@@ -2,14 +2,12 @@
 
 The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a request to a running user application.
 
-This endpoint requires:
+For local REST, no JSON body fields are required — the `{appname}` path parameter identifies the application.
 
-- `{appname}` — installed name in the URL
-
-Optional:
+Optional body fields:
 
 - `command` — object the application accepts
-- `userapp` — same installed name in the JSON body. Not required for local REST; the `{appname}` path parameter identifies the application. The MQTT API requires it, because it has no path parameter.
+- `userapp` — same installed name in the JSON body. Not required for local REST. Required by the MQTT API because it has no path parameter.
 
 ## 2. Endpoint Details
 

@@ -6,9 +6,5 @@
     "password": "@1T@uT0dud3"
   },
   "verifyPeer": false,
-  "verifyHost": false,
-  "retry": {
-    "count": 3,
-    "delayInSec": 10
-  }
+  "verifyHost": false
 }

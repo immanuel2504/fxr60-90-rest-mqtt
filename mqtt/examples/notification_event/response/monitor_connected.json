@@ -1,0 +1,11 @@
+{
+  "component": "RG",
+  "data": {
+    "monitor": {
+      "status": "connected"
+    }
+  },
+  "eventNum": 8,
+  "timestamp": "2026-08-17T11:24:54.749+0000",
+  "type": "notification"
+}

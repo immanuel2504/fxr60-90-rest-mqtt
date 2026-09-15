@@ -4,8 +4,8 @@ Generated from REST `operation_examples` into MQTT `examples`.
 
 | REST file | MQTT file | Kind |
 |---|---|---|
-| `cloud-app-led/GET/default_state.json` | `get_appled/response/default_state.json` | response payload |
-| `cloud-app-led/GET/non_default_state.json` | `get_appled/response/non_default_state.json` | response payload |
+| `cloud-app-led/GET/reader_controls_led.json` | `get_appled/response/reader_controls_led.json` | response payload |
+| `cloud-app-led/GET/app_controls_led.json` | `get_appled/response/app_controls_led.json` | response payload |
 | `cloud-app-led/PUT/amber_flash_60s.json` | `set_appled/request/amber_flash_60s.json` | request payload |
 | `cloud-app-led/PUT/green_solid_10s.json` | `set_appled/request/green_solid_10s.json` | request payload |
 | `cloud-app-led/PUT/off.json` | `set_appled/request/off.json` | request payload |
@@ -20,7 +20,6 @@ Generated from REST `operation_examples` into MQTT `examples`.
 | `cloud-apps-install/PUT/app-install-mtls.json` | `install_user_app/request/app-install-mtls.json` | request payload |
 | `cloud-apps-install/PUT/app-install-none.json` | `install_user_app/request/app-install-none.json` | request payload |
 | `cloud-apps-install/PUT/sftp_basic.json` | `install_user_app/request/sftp_basic.json` | request payload |
-| `cloud-apps-install/PUT/installUserapp_async.json` | `install_user_app/request/installUserapp_async.json` | request payload |
 | `cloud-bleconfig/GET/all_protocols_and_filters.json` | `get_bleConfig/response/all_protocols_and_filters.json` | response payload |
 | `cloud-bleconfig/GET/ble_disabled.json` | `get_bleConfig/response/ble_disabled.json` | response payload |
 | `cloud-bleconfig/PUT/disable_ble.json` | `set_bleConfig/request/disable_ble.json` | request payload |
@@ -129,15 +128,13 @@ Generated from REST `operation_examples` into MQTT `examples`.
 | `cloud-mode/PUT/access_operations.json` | `set_mode/request/access_operations.json` | request payload |
 | `cloud-mode/PUT/write_access_password.json` | `set_mode/request/write_access_password.json` | request payload |
 | `cloud-mode/PUT/filter_by_prefix.json` | `set_mode/request/filter_by_prefix.json` | request payload |
-| `cloud-mode/PUT/tag_metadata.json` | `set_mode/request/tag_metadata.json` | request payload |
-| `cloud-mode/PUT/custom_query.json` | `set_mode/request/custom_query.json` | request payload |
+| `cloud-mode/PUT/custom_comprehensive.json` | `set_mode/request/custom_comprehensive.json` | request payload |
 | `cloud-mode/PUT/radio_stop_duration.json` | `set_mode/request/radio_stop_duration.json` | request payload |
 | `cloud-mode/PUT/report_filter.json` | `set_mode/request/report_filter.json` | request payload |
-| `cloud-mode/PUT/tag_selection.json` | `set_mode/request/tag_selection.json` | request payload |
 | `cloud-network/GET/all_interfaces.json` | `get_network/response/all_interfaces.json` | response payload |
 | `cloud-network/GET/Hotspot.json` | `get_network/response/Hotspot.json` | response payload |
-| `cloud-network/GET/request_all.json` | `get_network/request/default.json` | request payload |
-| `cloud-network/GET/request_eth0.json` | `get_network/request/request_eth0.json` | request payload |
+| `cloud-network/GET/query_all_interfaces.json` | `get_network/request/all_interfaces.json` | request payload |
+| `cloud-network/GET/interface_eth0.json` | `get_network/request/interface_eth0.json` | request payload |
 | `cloud-network/GET/WAN.json` | `get_network/response/WAN.json` | response payload |
 | `cloud-network/GET/WiFi.json` | `get_network/response/WiFi.json` | response payload |
 | `cloud-network/PUT/Network_bluetooth.json` | `set_network/request/Network_bluetooth.json` | request payload |
@@ -166,7 +163,6 @@ Generated from REST `operation_examples` into MQTT `examples`.
 | `cloud-ntpserver/PUT/legacy_primary_and_backup.json` | `set_ntpServer/request/legacy_primary_and_backup.json` | request payload |
 | `cloud-ntpserver/PUT/primary_only.json` | `set_ntpServer/request/primary_only.json` | request payload |
 | `cloud-os/PUT/https_basic_authentication.json` | `set_os/request/https_basic_authentication.json` | request payload |
-| `cloud-os/PUT/https_basic_authentication_with_retry.json` | `set_os/request/https_basic_authentication_with_retry.json` | request payload |
 | `cloud-os/PUT/https_no_authentication.json` | `set_os/request/https_no_authentication.json` | request payload |
 | `cloud-pass-through/PUT/mode.json` | `set_passthru/request/mode.json` | request payload |
 | `cloud-pass-through/PUT/status.json` | `set_passthru/request/status.json` | request payload |
@@ -186,7 +182,7 @@ Generated from REST `operation_examples` into MQTT `examples`.
 | `cloud-region/PUT/us_fcc_c.json` | `set_region/request/us_fcc_c.json` | request payload |
 | `cloud-revertbackos/PUT/revert_to_previous_os.json` | `revertback/request/revert_to_previous_os.json` | request payload |
 | `cloud-setdatatorg/PUT/send_data_to_reader_gateway.json` | `set_dataToRG/request/send_data_to_reader_gateway.json` | request payload |
-| `cloud-stack-led/GET/default_state.json` | `get_stackled/response/default_state.json` | response payload |
+| `cloud-stack-led/GET/reader_controls_led.json` | `get_stackled/response/reader_controls_led.json` | response payload |
 | `cloud-stack-led/GET/green_med_solid.json` | `get_stackled/response/green_med_solid.json` | response payload |
 | `cloud-stack-led/GET/red_flash_countdown.json` | `get_stackled/response/red_flash_countdown.json` | response payload |
 | `cloud-stack-led/PUT/amber_med_flash.json` | `set_stackled/request/amber_med_flash.json` | request payload |
@@ -211,4 +207,4 @@ Generated from REST `operation_examples` into MQTT `examples`.
 | `cloud-updatepassword/PUT/set_password.json` | `set_password/request/set_password.json` | request payload |
 | `cloud-updatepassword/PUT/set_password_rfidadm.json` | `set_password/request/set_password_rfidadm.json` | request payload |
 | `cloud-version/GET/version.json` | `get_version/response/version.json` | response payload |
-| `cloud-wifinetworks/GET/visible_networks.json` | `get_availableWifiNetworks/response/visible_networks.json` | response payload |
+| `cloud-wifinetworks/GET/wifi_networks.json` | `get_availableWifiNetworks/response/wifi_networks.json` | response payload |

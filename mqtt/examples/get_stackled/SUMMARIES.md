@@ -1,7 +1,5 @@
 # Example summary titles — `get_stackled`
 
-Scenario-based names.
-
 ### `request/get_configuration.json`
 
 | Property | Value |
@@ -9,11 +7,11 @@ Scenario-based names.
 | **Example name** | `get_configuration` |
 | **Summary title** | `Get configuration` |
 
-### `response/default_state.json`
+### `response/reader_controls_led.json`
 
 | Property | Value |
 |---|---|
-| **Example name** | `default_state` |
+| **Example name** | `reader_controls_led` |
 | **Summary title** | `Reader controls LED` |
 
 ### `response/green_med_solid.json`
@@ -21,7 +19,7 @@ Scenario-based names.
 | Property | Value |
 |---|---|
 | **Example name** | `green_med_solid` |
-| **Summary title** | `Green, med, solid` |
+| **Summary title** | `Green medium solid override` |
 
 ### `response/red_flash_countdown.json`
 

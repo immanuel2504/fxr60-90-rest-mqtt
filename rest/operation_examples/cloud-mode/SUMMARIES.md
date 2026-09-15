@@ -97,19 +97,12 @@ PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
 | **Example name** | `filter_by_prefix` |
 | **Summary title** | `Filter tags by prefix` |
 
-### `PUT/custom_query.json`
+### `PUT/custom_comprehensive.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `custom_query` |
-| **Summary title** | `Custom query` |
-
-### `PUT/tag_selection.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `tag_selection` |
-| **Summary title** | `Tag selection` |
+| **Example name** | `custom_comprehensive` |
+| **Summary title** | `CUSTOM mode with query, selects, and tag metadata` |
 
 ### `PUT/access_operations.json`
 
@@ -131,13 +124,6 @@ PUT refreshed from `FXR-Series/examples/mode_testing/PUT_cloud_mode`.
 |---|---|
 | **Example name** | `report_filter` |
 | **Summary title** | `Report filter` |
-
-### `PUT/tag_metadata.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `tag_metadata` |
-| **Summary title** | `Tag metadata` |
 
 ### `PUT/radio_stop_duration.json`
 

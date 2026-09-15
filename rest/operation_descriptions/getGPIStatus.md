@@ -2,9 +2,14 @@
 
 The `GET /cloud/gpi` REST endpoint retrieves the current input state of each GPI pin.
 
-This endpoint returns:
+This endpoint returns one property per pin. Each pin number maps to its current input level:
 
-- `1`, `2`, `3`, `4` — `HIGH` or `LOW`
+| Pin | State |
+|---|---|
+| `1` | `HIGH` or `LOW` |
+| `2` | `HIGH` or `LOW` |
+| `3` | `HIGH` or `LOW` |
+| `4` | `HIGH` or `LOW` |
 
 GPI pins are inputs. This call does not change them.
 

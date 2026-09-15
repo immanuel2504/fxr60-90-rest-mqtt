@@ -1,15 +1,15 @@
 # Example summary titles — `get_availableWifiNetworks`
 
-### `request/default.json`
+### `request/get_wifi_networks.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_availableWifiNetworks request` |
+| **Example name** | `get_wifi_networks` |
+| **Summary title** | `Get Wi-Fi networks` |
 
-### `response/visible_networks.json`
+### `response/wifi_networks.json`
 
-| Field | Value |
+| Property | Value |
 |---|---|
-| **Example name** | `visible_networks` |
+| **Example name** | `wifi_networks` |
 | **Summary title** | `Visible access points with essid and signalStrength` |

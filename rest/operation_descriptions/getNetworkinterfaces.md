@@ -6,7 +6,7 @@ This endpoint returns:
 
 - `availableNetworkInterfaces` — names such as `eth0`, `mlan0`, `bnep0`, `uap0`
 
-`wan0` is present on FXR90 only.
+Cellular interface `wan0` appears in this list on FXR90 only. It is not present on FXR60.
 
 ## 2. Endpoint Details
 

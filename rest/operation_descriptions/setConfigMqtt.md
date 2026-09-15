@@ -1,8 +1,8 @@
 ## 1. Description
 
-The `PUT /cloud/config` REST endpoint updates GPIO/LED behavior and the data-plane reader-gateway configuration.
+The `PUT /cloud/config` REST endpoint updates reader configuration. Accepts one or more of the following top-level keys: `xml` (string), `GPIO-LED` (object), `READER-GATEWAY` (object).
 
-Send at least one of `GPIO-LED` or `READER-GATEWAY`. Both can be sent in the same request.
+When multiple keys are sent, each included section is applied. `GPIO-LED` replaces the entire GPIO/LED object. `READER-GATEWAY` updates the data-plane reader-gateway configuration.
 
 This call configures **data** connections only (`endpointConfig.data`). Use `PUT /cloud/cloudConfig` for control and management plane endpoints.
 
@@ -28,11 +28,11 @@ Use this endpoint to:
 
 ## 3. Before You Begin
 
-A misconfigured data endpoint can stop tag reporting. Read the current config with `GET /cloud/config` first — especially `GPIO-LED`, which is replaced wholesale.
+Read the current config with `GET /cloud/config` before changing data endpoints or GPIO/LED behavior.
 
 | What You Need | Details |
 |---|---|
-| Configuration scope | At least one of `GPIO-LED` or `READER-GATEWAY`. |
-| GPIO/LED | The full desired `GPIO-LED` object. GPO defaults are `HIGH`/`LOW`. LED colors are `GREEN`/`RED`/`AMBER`. |
-| Data endpoint | Connection type, host/port or URL, and TLS material if needed (see `GET /cloud/certificates`). |
-| Batching / retention | Send as arrays, and only together with `endpointConfig`. |
+| Top-level keys | One or more of `xml`, `GPIO-LED`, and `READER-GATEWAY`. |
+| `GPIO-LED` | Send the full desired object. Omitted sub-fields are not merged — the object replaces the previous GPIO/LED configuration. |
+| Data endpoint | Connection type, host/port or URL, and TLS certificate references when needed (see `GET /cloud/certificates`). |
+| Batching / retention | `batching` and `retention` may be sent as a single object applied globally, or as arrays with one entry per data connection. Arrays apply per endpoint; objects apply globally. Send them together with `endpointConfig`. |

@@ -2,9 +2,14 @@
 
 The `GET /cloud/gpo` REST endpoint retrieves the current output state of each GPO pin.
 
-This endpoint returns:
+This endpoint returns one property per pin. Each pin number maps to its current output level:
 
-- `1`, `2`, `3`, `4` — `HIGH` or `LOW`
+| Pin | State |
+|---|---|
+| `1` | `HIGH` or `LOW` |
+| `2` | `HIGH` or `LOW` |
+| `3` | `HIGH` or `LOW` |
+| `4` | `HIGH` or `LOW` |
 
 ## 2. Endpoint Details
 

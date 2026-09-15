@@ -2,6 +2,8 @@
 
 The `PUT /cloud/certificates` REST endpoint installs a certificate from a download URL.
 
+> Authentication type NONE and authentication with certificates are currently not supported.
+
 This endpoint requires:
 
 - `name` — name stored on the reader
@@ -17,6 +19,8 @@ Also send:
 Optional:
 
 - `verifyPeer`, `verifyHost`
+
+> Protocol is inferred from the `url` scheme. HTTPS download retry and timeout options are not supported on FXR60/FXR90.
 
 ## 2. Endpoint Details
 

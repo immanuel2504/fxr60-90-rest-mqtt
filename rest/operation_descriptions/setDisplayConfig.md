@@ -9,7 +9,7 @@ This endpoint sends:
 - `enable` — `true` turns the display on, `false` turns it off
 - `enableOnscreenKeyboard` — on-screen keyboard
 - `startUrl` — URL opened when the display is enabled
-- `resolution` — `WidthxHeight`
+- `resolution` — display size as `<width>x<height>`
 - `screenTimeoutSec` — idle timeout in seconds (`0` keeps the screen on; maximum `3600`)
 - `orientation` — `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`
 - `keyboardLayout` — `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, or `Japanese`
@@ -37,8 +37,7 @@ Decide the display settings to send. Use the JSON field names below.
 | `enable` | `true` to turn the display on, `false` to turn it off. |
 | `enableOnscreenKeyboard` | `true` to show the on-screen keyboard, `false` to hide it. |
 | `startUrl` | Page the display opens, for example `https://localhost/`. |
-| `resolution` | Size as `WidthxHeight`, for example `1920x1080`. Use `GET /cloud/inputOutputDevices` to see supported modes. |
+| `resolution` | Confirms whether the resolution string matches the expected `<width>x<height>` dimensions, for example `1920x1080`. Use `GET /cloud/inputOutputDevices` to read supported values. |
 | `screenTimeoutSec` | Idle time in seconds before the screen sleeps. `0` keeps it on. Maximum `3600`. |
 | `orientation` | `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`. |
 | `keyboardLayout` | `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, or `Japanese`. |
-

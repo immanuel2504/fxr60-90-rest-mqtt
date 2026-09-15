@@ -35,13 +35,6 @@
 | **Example name** | `sftp_basic` |
 | **Summary title** | `SFTP BASIC` |
 
-### `request/installUserapp_async.json`
-
-| Property | Value |
-|---|---|
-| **Example name** | `installUserapp_async` |
-| **Summary title** | `Async install` |
-
 ### `response/success.json`
 
 | Property | Value |

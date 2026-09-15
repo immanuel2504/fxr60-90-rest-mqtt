@@ -1,10 +1,12 @@
 {
   "type": "CUSTOM",
   "antennas": [
-    1
+    1,
+    2
   ],
   "transmitPower": [
-    30
+    27,
+    27
   ],
   "query": {
     "sel": "NOT_SL",
@@ -21,5 +23,10 @@
       "length": 24,
       "mask": "800600"
     }
+  ],
+  "tagMetaData": [
+    "ANTENNA",
+    "RSSI",
+    "READERLOCATION"
   ]
 }

@@ -3,9 +3,5 @@
   "filename": "sampleAntenna_1.0.4.deb",
   "authenticationType": "NONE",
   "verifyPeer": false,
-  "verifyHost": false,
-  "retry": {
-    "count": 3,
-    "delayInSec": 10
-  }
+  "verifyHost": false
 }

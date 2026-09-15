@@ -37,19 +37,12 @@ Scenario-based names: the example name describes what the example demonstrates.
 | **Example name** | `filter_by_prefix` |
 | **Summary title** | `Filter tags by prefix` |
 
-### `request/custom_query.json`
+### `request/custom_comprehensive.json`
 
 | Property | Value |
 |---|---|
-| **Example name** | `custom_query` |
-| **Summary title** | `Custom query` |
-
-### `request/tag_selection.json`
-
-| Property | Value |
-|---|---|
-| **Example name** | `tag_selection` |
-| **Summary title** | `Tag selection` |
+| **Example name** | `custom_comprehensive` |
+| **Summary title** | `CUSTOM mode with query, selects, and tag metadata` |
 
 ### `request/access_operations.json`
 
@@ -71,13 +64,6 @@ Scenario-based names: the example name describes what the example demonstrates.
 |---|---|
 | **Example name** | `report_filter` |
 | **Summary title** | `Report filter` |
-
-### `request/tag_metadata.json`
-
-| Property | Value |
-|---|---|
-| **Example name** | `tag_metadata` |
-| **Summary title** | `Tag metadata` |
 
 ### `request/radio_stop_duration.json`
 

@@ -1,11 +1,11 @@
 # Example summary titles — `get_gpsCoordinates`
 
-### `request/default.json`
+### `request/get_gps_coordinates.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_gpsCoordinates request` |
+| **Example name** | `get_gps_coordinates` |
+| **Summary title** | `Get GPS coordinates` |
 
 ### `response/latitude_longitude.json`
 

@@ -1,8 +1,8 @@
 ## 1. Description
 
-The `PUT /cloud/cloudConfig` REST endpoint imports cloud endpoint configuration onto the reader: data events, control command-response, and management channels.
+The `PUT /cloud/cloudConfig` REST endpoint imports the cloud endpoint configuration (control, data, management, and management-event endpoints) into the reader.
 
-Send `endpointConfig`. Only the sections you include are updated; omitted sections are left unchanged. This call does not set GPIO-LED or `managementEventConfig` — use `PUT /cloud/config` for those.
+Only the `endpointConfig` sections you include are updated; omitted sections are left unchanged. This call does not set GPIO-LED or `managementEventConfig` — use `PUT /cloud/config` for those.
 
 This endpoint allows you to configure:
 
@@ -10,13 +10,13 @@ This endpoint allows you to configure:
 - Control command-response through `endpointConfig.control.commandResponse`
 - Management events through `endpointConfig.management.event`
 - Management command-response through `endpointConfig.management.commandResponse`
-- Batching and retention per connection through `additionalOptions`
+- Per-connection batching and retention through `additionalOptions`
 
 Use this endpoint to:
 
 - Provision MQTT, HTTP POST, WebSocket, TCP/IP, Azure IoT Hub, or AWS IoT Core endpoints
 - Configure control and management channels alongside data delivery
-- Set tag-data retention and batching
+- Set tag-data retention and batching on data connections
 - Clear data connections with an empty `connections` array
 
 ## 2. Endpoint Details
@@ -44,5 +44,6 @@ Gather endpoint details before sending this request. An incorrect hostname, port
 | Host, port, and topics | For MQTT: `hostName`, `port`, `protocol`, `publishTopic`, and `subscribeTopic` (command-response channels). |
 | TLS and certificates | Reference an installed certificate, or provide certificate file paths (see `GET /cloud/certificates`). |
 | MQTT client settings | `clientId`, `keepAlive`, `qos`, `cleanSession`, `reconnectDelay`, and `reconnectDelayMax`. |
-| Retention and batching | For data events: `retention.maxNumEvents`, `retention.maxEventRetentionTimeInMin`, and `retention.throttle`. |
-| Local REST | For control channels: `enableLocalRest: true` keeps local REST available alongside cloud connectivity. |
+| Retention and batching | Under `additionalOptions` on data connections: retention — `maxNumEvents`, `maxEventRetentionTimeInMin`, `throttle`; batching — `maxPayloadSizePerReport`, `reportingInterval`. |
+
+> Local REST is always enabled on FXR60/FXR90 and is not configurable through this endpoint.

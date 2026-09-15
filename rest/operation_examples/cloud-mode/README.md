@@ -27,12 +27,10 @@ GET request examples are `verbose_false` and `verbose_true`. GET responses inclu
 | `PUT/portal_gpi_trigger.json` | `portal_gpi_trigger` | PORTAL mode with GPI start trigger |
 | `PUT/conveyor_baseline.json` | `conveyor_baseline` | CONVEYOR mode baseline |
 | `PUT/filter_by_prefix.json` | `filter_by_prefix` | Filter tags by prefix |
-| `PUT/custom_query.json` | `custom_query` | Custom query |
-| `PUT/tag_selection.json` | `tag_selection` | Tag selection |
+| `PUT/custom_comprehensive.json` | `custom_comprehensive` | CUSTOM mode with query, selects, and tag metadata |
 | `PUT/access_operations.json` | `access_operations` | Run access operations |
 | `PUT/write_access_password.json` | `write_access_password` | Assign an access password (WRITE to RESERVED bank) |
 | `PUT/report_filter.json` | `report_filter` | Report filter |
-| `PUT/tag_metadata.json` | `tag_metadata` | Tag metadata |
 | `PUT/radio_stop_duration.json` | `radio_stop_duration` | Radio stop duration |
 
 ## Notes
@@ -43,6 +41,6 @@ GET request examples are `verbose_false` and `verbose_true`. GET responses inclu
 - `radioStartConditions` / `radioStopConditions` are not for PORTAL
 - SIMPLE mode baseline does not include `tagMetaData`
 - Prefix `filter` should not be combined with `query` / `selects`
-- Tag metadata location is `READERLOCATION` (not `READER_LOCATION`)
+- Tag metadata location is `READERLOCATION`
 - Access word length is `wordCount` (not `wordCounter`)
 - `transmitPower` is 0–30 dBm

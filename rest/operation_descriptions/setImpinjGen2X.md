@@ -33,9 +33,7 @@ Use this endpoint to:
 | Supported TagProtect Actions | `enableTagProtection`, `disableTagProtection`, `enableTagVisibility`, `disableTagVisibility` |
 | Supported TagQuieting Modes | `basic` (quiet/unquiet by EPC list), `advanced` (pre-select with mask) |
 | Supported TagQuieting Basic Actions | `quiet`, `unquiet` |
-| Supported Gen2 Memory Banks | EPC, TID, USER, RESERVED |
-| Supported Select Targets | S0, S1, S2, S3, SL |
-| Supported Tag Quiet Masks | S0A, S0B, S2A, S2B, S3A, S3B, SL_ASSERT, SL_DEASSERT |
+| Advanced tagQuieting only | Select targets (`S0`, `S1`, `S2`, `S3`, `SL`) and tag quiet masks (`S0A`, `S0B`, `S2A`, `S2B`, `S3A`, `S3B`, `SL_ASSERT`, `SL_DEASSERT`) apply only to `tagQuieting` with `"mode": "advanced"`. Basic tagQuieting uses an EPC list only. |
 | Mutually Exclusive Features | `fastID`, `tagProtect`, `tagFocus`, `tagQuieting` (exactly one feature object per request) |
 
 ## 3. Before You Begin
@@ -51,6 +49,31 @@ To store a password on the tag:
 1. `PUT /cloud/mode` — WRITE 8 hex characters to `RESERVED` at `wordPointer: 2`. Add a `filter` for that tag's EPC so other tags are not written.
 2. `PUT /cloud/start` — inventory must run for the write to take effect.
 3. `PUT /cloud/impinjGen2X` — send the same 8 characters in `tagProtect.password`.
+
+Example — write the Access Password to `RESERVED` words 2–3 for one tag, then start inventory so the write takes effect:
+
+```json
+{
+  "type": "CUSTOM",
+  "antennas": [1],
+  "transmitPower": 30,
+  "filter": {
+    "value": "e28011b0a5050076c4d7530a",
+    "match": "prefix",
+    "operation": "include"
+  },
+  "accesses": [
+    {
+      "type": "WRITE",
+      "config": {
+        "membank": "RESERVED",
+        "wordPointer": 2,
+        "data": "A1B2C3D4"
+      }
+    }
+  ]
+}
+```
 
 Do not use `00000000` — Gen2 treats that as no password, so Protected Mode cannot apply. A password mismatch still returns HTTP 200 and leaves the tag unprotected.
 
@@ -108,6 +131,12 @@ TagQuieting silences tags from being reported during inventory. Choose between *
 ### Advanced TagQuieting
 
 Advanced quieting uses Gen2 select pre-conditions to silence tags based on memory content and state, instead of explicit EPC lists.
+
+Supported select targets: `S0`, `S1`, `S2`, `S3`, `SL`.
+
+Supported tag quiet masks: `S0A`, `S0B`, `S2A`, `S2B`, `S3A`, `S3B`, `SL_ASSERT`, `SL_DEASSERT`.
+
+Supported Gen2 memory banks for `preSelect[].mask.bank`: `EPC`, `TID`, `USER`, `RESERVED`.
 
 | Field | What It Controls |
 |---|---|

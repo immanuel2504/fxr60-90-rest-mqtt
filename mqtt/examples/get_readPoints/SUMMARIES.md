@@ -1,11 +1,11 @@
 # Example summary titles — `get_readPoints`
 
-### `request/default.json`
+### `request/get_read_points.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `default` |
-| **Summary title** | `Empty get_readPoints request` |
+| **Example name** | `get_read_points` |
+| **Summary title** | `Get read points` |
 
 ### `response/read_points.json`
 

@@ -6,9 +6,5 @@
   "verifyHost": false,
   "headers": {
     "Authorization": "Bearer @1T@uT0dud3"
-  },
-  "retry": {
-    "count": 3,
-    "delayInSec": 10
   }
 }

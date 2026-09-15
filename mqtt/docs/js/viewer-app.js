@@ -1836,8 +1836,10 @@ function render(spec) {
         navHtml += renderNavSubgroup(subgroup, spec);
       });
        html += '<div class="tag-section" id="tag-' + tagId + '">';
-       // Same redundancy rule for page heading when the group already names the section.
-       if (!hideNavTag) {
+       // Single-tag event groups use the nav group name (e.g. "Management Events").
+       if (hideNavTag) {
+         html += '<h2 class="tag-heading">' + escHtml(group.name) + '</h2>';
+       } else {
          html += '<h2 class="tag-heading">' + escHtml(tagLabel) + '</h2>';
        }
        if (tag.description) {
@@ -2270,10 +2272,16 @@ function fetchJson(url) {
     });
 }
 
+function fetchTagConfig() {
+  return fetchJson('tag_config.json').catch(function () {
+    return fetchJson('../tag_config.json').catch(function () { return {}; });
+  });
+}
+
 Promise.all([
   // Applied final MQTT OpenAPI (with example packs), mirrored as openapi_md.json
   fetchJson('openapi_md.json'),
-  fetchJson('../tag_config.json').catch(function () { return {}; })
+  fetchTagConfig()
 ])
   .then(function (results) {
     applyTagConfig(results[0], results[1] || {});

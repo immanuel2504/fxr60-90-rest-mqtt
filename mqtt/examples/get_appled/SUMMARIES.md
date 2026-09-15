@@ -1,7 +1,5 @@
 # Example summary titles — `get_appled`
 
-Scenario-based names.
-
 ### `request/get_configuration.json`
 
 | Property | Value |
@@ -9,16 +7,16 @@ Scenario-based names.
 | **Example name** | `get_configuration` |
 | **Summary title** | `Get configuration` |
 
-### `response/default_state.json`
+### `response/reader_controls_led.json`
 
 | Property | Value |
 |---|---|
-| **Example name** | `default_state` |
+| **Example name** | `reader_controls_led` |
 | **Summary title** | `Reader controls LED` |
 
-### `response/non_default_state.json`
+### `response/app_controls_led.json`
 
 | Property | Value |
 |---|---|
-| **Example name** | `non_default_state` |
+| **Example name** | `app_controls_led` |
 | **Summary title** | `App controls LED` |

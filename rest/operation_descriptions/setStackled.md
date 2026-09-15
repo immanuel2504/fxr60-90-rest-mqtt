@@ -2,7 +2,9 @@
 
 > **FXR60 Premium only.** The stack LED is not on other FXR60 variants. The FXR90 has no stack light.
 
-The `PUT /cloud/stack-led` REST endpoint sets the stack LED color, flash, and duration.
+The `PUT /cloud/stack-led` REST endpoint sets the stack LED to the specified color, flash pattern, brightness, and duration.
+
+Send a JSON object with the fields below. The reader applies the requested LED state immediately.
 
 This endpoint requires:
 
@@ -37,3 +39,12 @@ This endpoint requires:
 | Flash | `true` blinks. `false` is solid. |
 | Duration | Seconds to keep this state. Use `0` until the next `PUT /cloud/stack-led`. |
 | Brightness | Optional. `low`, `med`, or `high`. |
+
+## 4. Response
+
+On success:
+
+- **REST** — HTTP `200 OK` with an empty string body (`""`). There is no JSON response payload.
+- **MQTT** — `response: "success"` with an empty `payload` object. The command envelope is returned; the LED settings are not echoed back.
+
+After a successful call, `GET /cloud/stack-led` returns `status: "NON_DEFAULT"` with the active color, flash, brightness, and timer fields until the override ends.

@@ -110,6 +110,7 @@
     "error": "Management-events",
     "warning": "Management-events",
     "userapp_event": "Management-events",
+    "notification_event": "Management-events",
     "tagDataEvents": "Tag-data-events",
     "mode_tag_data_events": "Tag-data-events",
     "simple_tag_data_events": "Tag-data-events",
@@ -237,7 +238,8 @@
       "userapp_event",
       "error",
       "warning",
-      "firmwareUpdateProgress"
+      "firmwareUpdateProgress",
+      "notification_event"
     ],
     "Tag-data-events": [
       "tagDataEvents"
@@ -311,6 +313,12 @@
         "operations": [
           "firmwareUpdateProgress"
         ]
+      },
+      {
+        "name": "Display Events",
+        "operations": [
+          "notification_event"
+        ]
       }
     ],
     "Tag-data-events": [],
@@ -367,11 +375,12 @@
     "userapp_event": "Custom User App Event",
     "gpi": "GPI Event",
     "gpo": "GPO Event",
+    "notification_event": "Notification Event",
     "get_displayConfig": "Get Display Configuration",
     "set_displayConfig": "Set Display Configuration",
     "get_inputOutputDevices": "Get Input/Output Devices"
   },
   "tag_descriptions": {
-    "Management-events": "Management events are asynchronous events published by the reader on the management-event channel.\n\nThe `data` payload depends on the event `type`. Always read `type` before parsing `data`.\n\n## Configure Management Events\n\nManagement events use two configuration layers:\n\n| Layer | Command / Endpoint | JSON path | Purpose |\n|---|---|---|---|\n| Destination | `set_importCloudConfig` / `PUT /cloud/cloudConfig` | `endpointConfig.management.event` | Sets where management events are published. |\n| Event configuration | `set_config` / `PUT /cloud/config` | `READER-GATEWAY.managementEventConfig` | Enables events, sets thresholds, and configures heartbeat fields. |\n\nConfigure the destination first. Then configure the required event type.\n\n## Event Types\n\n| Event | `type` | Configured in |\n|---|---|---|\n| Heartbeat | `heartbeat` | `managementEventConfig.heartbeat` |\n| GPI Event | `gpi` | `managementEventConfig.gpiEvents` |\n| GPO Event | `gpo` | `managementEventConfig.gpoEvents` |\n| Custom User App Event | `userapp` | `managementEventConfig.userappEvents` |\n| Error Events | `error` | `managementEventConfig.errors` |\n| Warning Events | `warning` | `managementEventConfig.warnings` |\n| Firmware Update Progress | `firmwareUpdateProgress` | Not configurable. Published during `set_os`. |"
+    "Management-events": "Management events are asynchronous events published by the reader on the management-event channel.\n\nThe `data` payload depends on the event `type`. Always read `type` before parsing `data`.\n\n## Configure Management Events\n\nManagement events use two configuration layers:\n\n| Layer | Command / Endpoint | JSON path | Purpose |\n|---|---|---|---|\n| Destination | `set_importCloudConfig` / `PUT /cloud/cloudConfig` | `endpointConfig.management.event` | Sets where management events are published. |\n| Event configuration | `set_config` / `PUT /cloud/config` | `READER-GATEWAY.managementEventConfig` | Enables events, sets thresholds, and configures heartbeat fields. |\n\nConfigure the destination first. Then configure the required event type.\n\n## Event Types\n\n| Event | `type` | Configured in |\n|---|---|---|\n| Heartbeat | `heartbeat` | `managementEventConfig.heartbeat` |\n| GPI Event | `gpi` | `managementEventConfig.gpiEvents` |\n| GPO Event | `gpo` | `managementEventConfig.gpoEvents` |\n| Custom User App Event | `userapp` | `managementEventConfig.userappEvents` |\n| Error Events | `error` | `managementEventConfig.errors` |\n| Warning Events | `warning` | `managementEventConfig.warnings` |\n| Firmware Update Progress | `firmwareUpdateProgress` | Not configurable. Published during `set_os`. |\n| Notification Event | `notification` | Not configurable. Published when display peripheral status changes (FXR60). |"
   }
 }

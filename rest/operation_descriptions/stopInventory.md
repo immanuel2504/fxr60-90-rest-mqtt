@@ -2,9 +2,7 @@
 
 The `PUT /cloud/stop` REST endpoint stops RFID inventory, BLE scanning, or both.
 
-By default, if the request body is empty or `scanType` is not provided, the reader stops RFID inventory only.
-
-`scanType` is an **array** of scan types to stop. The array must be non-empty and must not contain duplicates.
+By default, if the request body is empty or `scanType` is not provided, the reader stops **RFID inventory only**.
 
 Use this endpoint to:
 
@@ -24,12 +22,20 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Request fields | `scanType` (array of `ble` / `rfid`) |
+| Request fields | `scanType` (array or MQTT targeted object) |
 | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |
 
-## 3. Stop Behavior
+## 3. Supported flags (summary)
+
+| Flag | Type | Purpose |
+|---|---|---|
+| `scanType` | array **or** object (MQTT targeted) | Choose which scan types to stop — globally or per data endpoint |
+
+## 4. Global stop (REST and MQTT)
 
 Omit `scanType` to stop RFID only (default).
+
+`scanType` as an **array** selects which scan types to stop globally. The array must be non-empty and must not contain duplicates.
 
 ```json
 { "scanType": ["ble"] }
@@ -44,11 +50,26 @@ Omit `scanType` to stop RFID only (default).
 
 Stop is **not** a no-op. Stopping a scan type that is not running returns **422** (`No scan is currently active`). Check `GET /cloud/status` first if you are not sure what is running.
 
-> Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
+**Firmware requirement:** BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
 
-## 4. Before You Begin
+## 5. Targeted stop (MQTT only)
+
+When multiple data endpoints are configured, MQTT accepts `scanType` as an **object** that maps each data-endpoint connection name to the scan types to stop on that endpoint:
+
+```json
+{
+  "scanType": {
+    "dataEndpoint1": ["ble", "rfid"],
+    "dataEndpoint2": ["rfid"]
+  }
+}
+```
+
+Each key is a connection `name` from `endpointConfig.data.event.connections`. Each value is an array of `"ble"` and/or `"rfid"` to stop for that endpoint only. Endpoints omitted from the object are not affected.
+
+## 6. Before You Begin
 
 | What You Need | Details |
 |---|---|
 | Current activity | Check `GET /cloud/status` if you need to confirm RFID or BLE activity before stopping. |
-| Target scan type | Choose `rfid`, `ble`, or both in `scanType`. Omit `scanType` only when you want the default RFID stop. |
+| Stop scope | Choose global array form, or MQTT targeted object form when stopping per data endpoint. |

@@ -7,8 +7,9 @@
 
 | File | Direction | Example name | Summary |
 |---|---|---|---|
-| `GET/request_all.json` | request | `request_all` | Empty body, all interfaces |
-| `GET/request_eth0.json` | request | `request_eth0` | `interface` eth0 |
+| `GET/query_all_interfaces.json` | request | `query_all_interfaces` | Empty body, all interfaces |
+| `GET/interface_eth0.json` | request | `interface_eth0` | `interface` eth0 |
+| `GET/interface_bnep0.json` | request | `interface_bnep0` | `interface` bnep0 |
 | `GET/all_interfaces.json` | response 200 | `all_interfaces` | `hostName` and `networkInterface` |
 | `GET/WiFi.json` | response 200 | `WiFi` | `mlan0` connected |
 | `GET/Hotspot.json` | response 200 | `Hotspot` | `uap0` enabled |

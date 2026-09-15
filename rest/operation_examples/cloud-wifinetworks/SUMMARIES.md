@@ -2,9 +2,9 @@
 
 ## GET responses
 
-### `GET/visible_networks.json`
+### `GET/wifi_networks.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `visible_networks` |
+| **Example name** | `wifi_networks` |
 | **Summary title** | `Visible access points with essid and signalStrength` |

@@ -24,6 +24,7 @@ EVENT_MAP = [
     ("error.md", "/error"),
     ("warning.md", "/warning"),
     ("firmwareUpdateProgress.md", "/firmwareUpdateProgress"),
+    ("notificationEvent.md", "/notification_event"),
     ("tagDataEvents.md", "/tagDataEvents"),
     ("bleDataEvents.md", "/ble_data_events"),
 ]
@@ -35,6 +36,13 @@ EVENT_PATH_SUMMARIES = {
     "/heartbeat_system": "System",
     "/heartbeat_userapps": "User Apps",
     "/heartbeat_interval": "Heartbeat Interval",
+    "/gpi": "GPI Event",
+    "/gpo": "GPO Event",
+    "/userapp_event": "Custom User App Event",
+    "/error": "Error Events",
+    "/warning": "Warning Events",
+    "/firmwareUpdateProgress": "Firmware Update Progress",
+    "/notification_event": "Notification Event",
     "/tagDataEvents": "Tag Data Events",
     "/ble_data_events": "BLE Data Events",
 }
@@ -62,7 +70,7 @@ def ensure_event_paths(paths: dict) -> int:
                                             "default",
                                             OrderedDict(
                                                 [
-                                                    ("description", "heartbeat event payload"),
+                                                    ("description", "event payload"),
                                                     (
                                                         "content",
                                                         OrderedDict(

@@ -169,7 +169,11 @@ def main():
         text = rest_to_mqtt(md)
         text = text.replace("| Path Parameter | `appname` |\n", "")
         text = text.replace(
-            "| Required Request Fields | `userapp` |",
+            "For local REST, no JSON body fields are required — the `{appname}` path parameter identifies the application.\n\nOptional body fields:",
+            "Optional payload fields:",
+        )
+        text = text.replace(
+            "| Required Request Fields | None |",
             "| Required Payload Fields | `userapp` |",
         )
         text = text.replace(
@@ -177,12 +181,8 @@ def main():
             "",
         )
         text = text.replace(
-            "- `{appname}` — installed name in the URL\n",
-            "",
-        )
-        text = text.replace(
-            "- `userapp` — same installed name in the JSON body\n",
-            "- `userapp` — installed name\n",
+            "| `userapp` | Optional for local REST. Same installed name. Required by the MQTT API. |\n",
+            "| `userapp` | Installed name from `get_userapps`. Required in the MQTT payload. |\n",
         )
         return text
 

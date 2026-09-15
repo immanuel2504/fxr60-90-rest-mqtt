@@ -2,7 +2,6 @@
   "endpointConfig": {
     "management": {
       "commandResponse": {
-        "enableLocalRest": true,
         "connections": [
           {
             "name": "MGMT_CMD_MQTT",

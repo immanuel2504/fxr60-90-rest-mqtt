@@ -9,7 +9,7 @@ This endpoint returns:
 - `enable` — whether the display is on
 - `enableOnscreenKeyboard` — whether the on-screen keyboard is on
 - `startUrl` — URL loaded on the display
-- `resolution` — active resolution (`WidthxHeight`)
+- `resolution` — active resolution string in `<width>x<height>` format
 - `screenTimeoutSec` — idle timeout in seconds
 - `orientation` — `landscape`, `portrait`, `landscape-flipped`, or `portrait-flipped`
 - `keyboardLayout` — `English-US`, `English-UK`, `German`, `Spanish`, `Italian`, `French`, `Brazilian`, `Swedish`, or `Japanese`

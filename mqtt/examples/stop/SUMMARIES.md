@@ -28,6 +28,13 @@
 | **Example name** | `stop_BLE_and_RFID` |
 | **Summary title** | `Stop BLE and RFID` |
 
+### `request/stop_targeted_mixed.json`
+
+| Property | Value |
+|---|---|
+| **Example name** | `stop_targeted_mixed` |
+| **Summary title** | `Targeted stop per data endpoint` |
+
 ### `response/success.json`
 
 | Property | Value |

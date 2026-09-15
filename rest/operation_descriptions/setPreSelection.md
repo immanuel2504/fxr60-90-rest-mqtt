@@ -2,8 +2,6 @@
 
 The `PUT /cloud/preSelection` REST endpoint enables or disables the rxSawFilter pre-selection feature on the reader.
 
-The request uses a **boolean**. `GET /cloud/preSelection` returns a **string** (`enabled` / `disabled`).
-
 ```json
 { "preSelection": true }
 ```

@@ -2,7 +2,7 @@
 
 The `GET /cloud/preSelection` REST endpoint retrieves the current rxSawFilter pre-selection state from the reader.
 
-The response is a string, not a boolean:
+The response is a string:
 
 ```json
 { "preSelection": "disabled" }
@@ -12,7 +12,7 @@ The response is a string, not a boolean:
 |---|---|---|
 | `preSelection` | string | `enabled` or `disabled` |
 
-To change the filter, use `PUT /cloud/preSelection` with a **boolean** (`true` / `false`). `GET /cloud/preSelection` always returns the string form.
+To change the filter, use `PUT /cloud/preSelection` with a boolean (`true` / `false`).
 
 No additional fields are required.
 

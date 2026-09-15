@@ -222,7 +222,7 @@ paths:
                               example: "landscape"
                             supportedResolutions:
                               type: array
-                              description: A list of all resolutions supported by the monitor hardware.
+                              description: List of resolutions supported by the monitor hardware.
                               items:
                                 type: string
                               example: ["1920x1080", "1600x900"]
@@ -309,26 +309,32 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: NON_DEFAULT
-                  color:
-                    type: string
-                    example: amber
-                  brightness:
-                    type: string
-                    example: high
-                  flash:
-                    type: boolean
-                    example: true
-                  seconds:
-                    type: integer
-                    example: 0
-                  seconds_remaining:
-                    type: integer
-                    example: 14
+                oneOf:
+                  - type: object
+                    required: [status]
+                    properties:
+                      status:
+                        type: string
+                        enum: [DEFAULT]
+                    additionalProperties: false
+                  - type: object
+                    required: [status, color, flash, seconds]
+                    properties:
+                      status:
+                        type: string
+                        enum: [NON_DEFAULT]
+                      color:
+                        type: string
+                        enum: [red, amber, green, blue, "off"]
+                      brightness:
+                        type: string
+                        enum: [low, med, high]
+                      flash:
+                        type: boolean
+                      seconds:
+                        type: integer
+                      seconds_remaining:
+                        type: integer
       security:
         - bearerAuth: []
     put:
@@ -5340,8 +5346,8 @@ paths:
               properties:
                 authenticationType:
                   type: string
-                  enum: [NONE, BASIC]
-                  description: Authentication method for fetching the certificate file.
+                  enum: [BASIC]
+                  description: Authentication method for fetching the certificate file. Authentication type NONE and certificate-based download authentication are not supported on FXR60/FXR90.
                 authenticationOptions:
                   type: object
                   description: Credentials object used when `authenticationType` is `BASIC`. The reader accepts this key. Spec 11 still names it `options`.
@@ -5375,13 +5381,6 @@ paths:
                     - pattern: '^ftps://.+'
                     - pattern: '^sftp://.+'
                   example: https://10.117.229.15/reader.pfx
-                transfer_protocol:
-                  type: string
-                  description: Optional explicit transfer protocol for certificate download. If omitted, protocol is inferred from the `url` scheme.
-                  enum:
-                    - HTTPS
-                    - FTPS
-                    - SFTP
                 verifyPeer:
                   type: boolean
                   description: Verify the server TLS peer certificate.
@@ -5410,13 +5409,6 @@ paths:
                   type: object
                   additionalProperties:
                     type: string
-                retry:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    delayInSec:
-                      type: integer
             examples:
               set_updateCertificate:
                 value:
@@ -7312,14 +7304,6 @@ paths:
                     - pattern: '^sftp://.+'
                     - pattern: '^ftps://.+'
                   example: https://10.17.231.168:8003/3_20_4
-                transfer_protocol:
-                  type: string
-                  description: Optional explicit transfer protocol for firmware download. If omitted, protocol is inferred from the `url` scheme.
-                  enum:
-                    - SCP
-                    - HTTPS
-                    - SFTP
-                    - FTPS
                 verifyPeer:
                   type: boolean
                   description: Verify the server TLS peer certificate. Defaults to true when omitted.
@@ -7355,14 +7339,6 @@ paths:
                   description: Optional HTTP headers to include in the download request (e.g. Authorization).
                   additionalProperties:
                     type: string
-                retry:
-                  type: object
-                  description: Retry configuration for the download operation.
-                  properties:
-                    count:
-                      type: integer
-                    delayInSec:
-                      type: integer
             examples:
               set_os:
                 value:
@@ -7373,9 +7349,6 @@ paths:
                     password: XXXX
                   verifyPeer: false
                   verifyHost: false
-                  retry:
-                    count: 3
-                    delayInSec: 10
       responses:
         '200':
           description: OK
@@ -7485,13 +7458,6 @@ paths:
                   description: Optional HTTP headers to include in the download request.
                   additionalProperties:
                     type: string
-                retry:
-                  type: object
-                  properties:
-                    count:
-                      type: integer
-                    delayInSec:
-                      type: integer
             examples:
               set_installUserapp:
                 value:
@@ -10652,14 +10618,6 @@ components:
             - pattern: '^sftp://.+'
             - pattern: '^ftps://.+'
           example: https://169.254.149.144:8000/firmware
-        transfer_protocol:
-          type: string
-          description: Optional explicit transfer protocol for firmware download. If omitted, protocol is inferred from the `url` scheme.
-          enum:
-            - SCP
-            - HTTPS
-            - SFTP
-            - FTPS
         authenticationType:
           type: string
           description: Type of authentication required to get OS image

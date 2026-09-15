@@ -1,7 +1,9 @@
 # `get_appled`
 
-| File | Direction | Example name | Summary title |
+REST: `GET /cloud/app-led` → `cloud-app-led/`
+
+| File | Direction | Example name | Summary |
 |---|---|---|---|
 | `request/get_configuration.json` | request | `get_configuration` | Get configuration |
-| `response/default_state.json` | response | `default_state` | Reader controls LED |
-| `response/non_default_state.json` | response | `non_default_state` | App controls LED |
+| `response/reader_controls_led.json` | response | `reader_controls_led` | Reader controls LED |
+| `response/app_controls_led.json` | response | `app_controls_led` | App controls LED |

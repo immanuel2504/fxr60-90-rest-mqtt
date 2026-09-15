@@ -1,18 +1,25 @@
 # Example summary titles — `get_network`
 
-### `request/default.json`
+### `request/all_interfaces.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `default` |
+| **Example name** | `all_interfaces` |
 | **Summary title** | `Empty payload all interfaces` |
 
-### `request/request_eth0.json`
+### `request/interface_eth0.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `request_eth0` |
+| **Example name** | `interface_eth0` |
 | **Summary title** | `interface eth0` |
+
+### `request/interface_bnep0.json`
+
+| Field | Value |
+|---|---|
+| **Example name** | `interface_bnep0` |
+| **Summary title** | `interface bnep0` |
 
 ### `response/all_interfaces.json`
 

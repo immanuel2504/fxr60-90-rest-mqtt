@@ -7,13 +7,6 @@
 | **Example name** | `https_basic_authentication` |
 | **Summary title** | `HTTPS with BASIC authentication` |
 
-### `request/https_basic_authentication_with_retry.json`
-
-| Property | Value |
-|---|---|
-| **Example name** | `https_basic_authentication_with_retry` |
-| **Summary title** | `HTTPS BASIC authentication with retry` |
-
 ### `request/https_no_authentication.json`
 
 | Property | Value |

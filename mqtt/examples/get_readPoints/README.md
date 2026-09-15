@@ -2,9 +2,7 @@
 
 REST: `GET /cloud/readPoints` → `cloud-readpoints/`
 
-Stable `command_id`: `req-get-readPoints`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_readPoints request |
-| `response/read_points.json` | response | `read_points` | `cloud-readpoints/GET/read_points.json` | `"1"` through `"6"` |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `request/get_read_points.json` | request | `get_read_points` | Get read points |
+| `response/read_points.json` | response | `read_points` | 1 through 6 |

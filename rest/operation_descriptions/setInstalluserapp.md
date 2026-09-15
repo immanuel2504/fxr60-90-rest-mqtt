@@ -14,8 +14,9 @@ Optional:
 
 - `verifyPeer`, `verifyHost`
 - `headers` — for example `Authorization`
-- `retry` — `count` and `delayInSec`
 - `installedCertificateName`, `installedCertificateType`
+
+> Sync/async install options and download retry or timeout settings are not supported on FXR60/FXR90.
 
 ## 2. Endpoint Details
 
@@ -43,6 +44,5 @@ Decide the download URL and authentication. Use the JSON field names below.
 | `verifyPeer` | Optional. `true` to check the file server certificate. |
 | `verifyHost` | Optional. `true` to check the file server hostname. |
 | `headers` | Optional. Extra download headers, for example `Authorization`. |
-| `retry` | Optional. `count` and `delayInSec`. |
 | `installedCertificateName` | Optional. Installed certificate name for the download. |
 | `installedCertificateType` | Optional. Installed certificate type for the download. |

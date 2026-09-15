@@ -2,11 +2,7 @@
 
 The `GET /cloud/caCertificates` REST endpoint retrieves the CA certificates installed on the reader.
 
-This endpoint returns:
-
-- an array of CA names
-
-Listed names include a `.crt` suffix. Delete with the name you installed, without that suffix.
+This endpoint returns an array of installed CA certificate names.
 
 ## 2. Endpoint Details
 
@@ -24,4 +20,5 @@ Listed names include a `.crt` suffix. Delete with the name you installed, withou
 
 Use `GET /cloud/caCertificates` to:
 
-- Read CA names after `PUT /cloud/caCertificates` or `DELETE /cloud/caCertificates`
+- List CA names currently installed on the reader
+- Verify a `PUT /cloud/caCertificates` request succeeded

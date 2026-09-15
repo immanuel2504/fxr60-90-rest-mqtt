@@ -4,11 +4,7 @@
 
 The `GET /cloud/inputOutputDevices` REST endpoint retrieves the connection status and capabilities of devices attached to the reader.
 
-This endpoint returns:
-
-- Connection status for the attached keyboard, mouse, touch panel, and monitor
-- The active keyboard layout
-- Monitor hardware details, current and supported resolutions, orientation, and whether the panel is awake
+Peripheral and monitor details are documented in the response schema and in the key fields table below.
 
 ## 2. Endpoint Details
 
@@ -26,6 +22,14 @@ This endpoint returns:
 
 Use `GET /cloud/inputOutputDevices` to:
 
-- Confirm which peripherals are connected
-- Read `supportedResolutions` before `PUT /cloud/displayConfig`
-- Check whether the panel is awake (`screenActive`)
+- Confirm which peripherals are connected before changing display settings
+- Read supported monitor resolutions before `PUT /cloud/displayConfig`
+
+Key fields to check in the response:
+
+| Field | What to Check | Why It Matters |
+|---|---|---|
+| `monitor.connected` | Is a monitor attached? | Display APIs apply only when a monitor is present. |
+| `monitor.supportedResolutions` | Which resolutions are supported? | List of resolutions supported by the monitor hardware. Use these values in `PUT /cloud/displayConfig`. |
+| `monitor.currentResolution` | What resolution is active? | Confirms the current `<width>x<height>` string. |
+| `monitor.screenActive` | Is the panel awake? | `true` when the display is on; `false` when sleeping. |

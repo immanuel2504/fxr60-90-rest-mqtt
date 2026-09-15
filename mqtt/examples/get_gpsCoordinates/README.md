@@ -2,9 +2,9 @@
 
 REST: `GET /cloud/readerLocation` → `cloud-readerlocation/`
 
-Stable `command_id`: `req-get-gpsCoordinates`
-
-| File | Direction | Example | REST source | Summary |
-|---|---|---|---|---|
-| `request/default.json` | request | `default` | `—` | Empty get_gpsCoordinates request |
-| `response/latitude_longitude.json` | response | `latitude_longitude` | `cloud-readerlocation/GET/latitude_longitude.json` | `latitude` 12.970366417, `longitude` 77.710113533 |
+| File | Direction | Example name | Summary |
+|---|---|---|---|
+| `request/get_gps_coordinates.json` | request | `get_gps_coordinates` | Get GPS coordinates |
+| `response/latitude_longitude.json` | response | `latitude_longitude` | latitude/longitude fix |
+| `response/fix_acquired.json` | response | `fix_acquired` | Fix acquired |
+| `response/no_fix.json` | response | `no_fix` | No fix |

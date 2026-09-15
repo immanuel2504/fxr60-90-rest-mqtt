@@ -1,0 +1,17 @@
+{
+  "component": "RG",
+  "data": {
+    "keyboard": {
+      "status": "connected"
+    },
+    "mouse": {
+      "status": "connected"
+    },
+    "touch": {
+      "status": "disconnected"
+    }
+  },
+  "eventNum": 11,
+  "timestamp": "2026-08-17T11:25:27.887+0000",
+  "type": "notification"
+}

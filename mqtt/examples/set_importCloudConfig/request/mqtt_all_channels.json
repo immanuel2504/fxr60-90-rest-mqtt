@@ -5,7 +5,6 @@
     "endpointConfig": {
       "control": {
         "commandResponse": {
-          "enableLocalRest": true,
           "connections": [
             {
               "name": "CTRL_MQTT",
@@ -109,7 +108,6 @@
           ]
         },
         "commandResponse": {
-          "enableLocalRest": true,
           "connections": [
             {
               "name": "MGMT_CMD_MQTT",

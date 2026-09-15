@@ -23,7 +23,7 @@
           "filters": []
         }
       },
-      "scanIntervalSec": 1
+      "scanIntervalSec": 5
     }
   },
   "response": "success"

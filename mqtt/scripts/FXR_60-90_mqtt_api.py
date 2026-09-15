@@ -34,6 +34,7 @@ BASE_OPENAPI = PACKAGE_DIR / "openapi_md.json"
 EXAMPLES_DIR = PACKAGE_DIR / "examples"
 FINAL_OUT = PACKAGE_DIR / "FXR_60-90_mqtt_api.json"
 DOCS_OPENAPI = PACKAGE_DIR / "docs" / "openapi_md.json"
+DOCS_TAG_CONFIG = PACKAGE_DIR / "docs" / "tag_config.json"
 TAG_CONFIG = PACKAGE_DIR / "tag_config.json"
 EVENT_DESC_SYNC = REPO_ROOT / "_sync_mqtt_event_descs.py"
 
@@ -295,6 +296,9 @@ def main() -> int:
     DOCS_OPENAPI.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(FINAL_OUT, DOCS_OPENAPI)
     print(f"  Copied to docs/{DOCS_OPENAPI.name}")
+    if TAG_CONFIG.is_file():
+        shutil.copyfile(TAG_CONFIG, DOCS_TAG_CONFIG)
+        print(f"  Copied to docs/{DOCS_TAG_CONFIG.name}")
 
     print(f"\nOutput (final)  : {FINAL_OUT.name}")
     print("Docs viewer     : docs/index.html")

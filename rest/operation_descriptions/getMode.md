@@ -1,6 +1,6 @@
 ## 1. Description
 
-The `GET /cloud/mode` REST endpoint retrieves the reader's current operating mode. The response uses the same `operatingMode.v1` object as `PUT /cloud/mode`.
+The `GET /cloud/mode` REST endpoint retrieves the reader's current operating mode. The response uses the same mode object shape as `PUT /cloud/mode`.
 
 This endpoint returns:
 
@@ -35,7 +35,7 @@ An empty body (`{}`) behaves the same as `verbose: false`.
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Request Schema | `{ "verbose": boolean }` (optional) |
-| Response Schema | `operatingMode.v1` |
+| Response Schema | Operating mode object (same fields as `PUT /cloud/mode`) |
 | Supported Mode Types | `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, `CUSTOM` |
 
 ## 4. When to Use This Endpoint

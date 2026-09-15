@@ -1,10 +1,10 @@
 # Example summary titles — `/cloud/stack-led`
 
-### `GET/default_state.json`
+### `GET/reader_controls_led.json`
 
 | Field | Value |
 |---|---|
-| **Example name** | `default_state` |
+| **Example name** | `reader_controls_led` |
 | **Summary title** | `Reader controls LED` |
 
 ### `GET/green_med_solid.json`
@@ -12,7 +12,7 @@
 | Field | Value |
 |---|---|
 | **Example name** | `green_med_solid` |
-| **Summary title** | `Green, med, solid` |
+| **Summary title** | `Green medium solid override` |
 
 ### `GET/red_flash_countdown.json`
 
@@ -21,30 +21,10 @@
 | **Example name** | `red_flash_countdown` |
 | **Summary title** | `Red flash with countdown` |
 
-### `PUT/red_high_flash.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `red_high_flash` |
-| **Summary title** | `Red, high, flashing` |
-
-### `PUT/green_solid.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `green_solid` |
-| **Summary title** | `Green solid` |
-
-### `PUT/amber_med_flash.json`
-
-| Field | Value |
-|---|---|
-| **Example name** | `amber_med_flash` |
-| **Summary title** | `Amber, med, flashing` |
-
-### `PUT/success.json`
+### `PUT/response_200_success.json`
 
 | Field | Value |
 |---|---|
 | **Example name** | `success` |
 | **Summary title** | `Empty string on success` |
+| **HTTP status** | `200` |

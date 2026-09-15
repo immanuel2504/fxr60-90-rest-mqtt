@@ -31,7 +31,6 @@ Use this endpoint to:
 | Applies To | FXR60 / FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Request Schema | `operatingMode.v1` |
 | Supported Mode Types | `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, `CUSTOM` |
 | Supported Environment Profiles | `LOW_INTERFERENCE`, `HIGH_INTERFERENCE`, `VERY_HIGH_INTERFERENCE`, `AUTO_DETECT`, `DEMO` |
 
@@ -45,11 +44,9 @@ Decide on your mode configuration before sending this request. Changing mode whi
 | Antenna ports and power | Which antenna ports to enable, and transmit power in **dBm** (0.0–30.0). |
 | Environment profile | Optional. Set to match the RF environment. Use `AUTO_DETECT` if unsure. Default is `HIGH_INTERFERENCE`. |
 | Mode-specific settings | Inventory interval for `INVENTORY`; GPI trigger (`port` 1–4) and stop interval for `PORTAL`. Include only the sub-object for the chosen type. |
-| Gen2 and reporting | Query, selects, optional accesses (`wordCount`, not `wordCounter`), metadata (`READERLOCATION`, not `READER_LOCATION`), report filter, RSSI filter, and radio start/stop conditions. |
+| Gen2 and reporting | Query, selects, optional accesses (`wordCount`, not `wordCounter`), metadata (`READERLOCATION`), report filter, RSSI filter, and radio start/stop conditions. |
 
 ## 4. Mode and field rules
-
-These rules match `operatingMode.v1`:
 
 | Rule | Detail |
 |---|---|
@@ -61,3 +58,5 @@ These rules match `operatingMode.v1`:
 | `reportFilter` and `accesses` | Cannot both be set. |
 | Memory-bank metadata | `accesses` cannot be combined with `tagMetaData` values `RESERVED`, `EPC`, `TID`, or `USER`. |
 | Array lengths | When `transmitPower`, `antennaStopCondition`, or `query` is an array, its length must match `antennas`. |
+
+See the `custom_comprehensive` request example for a CUSTOM mode payload that combines query, selects, and tag metadata.

@@ -9,5 +9,4 @@ REST: `PUT /cloud/apps/install` → `cloud-apps-install/`
 | `request/app-install-bearer.json` | request | `app-install-bearer` | HTTPS NONE with Authorization |
 | `request/app-install-mtls.json` | request | `app-install-mtls` | HTTPS BASIC with installed cert and CA |
 | `request/sftp_basic.json` | request | `sftp_basic` | SFTP BASIC |
-| `request/installUserapp_async.json` | request | `installUserapp_async` | Async install |
 | `response/success.json` | response | `success` | Command succeeded |

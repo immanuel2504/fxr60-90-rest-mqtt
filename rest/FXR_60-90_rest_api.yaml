@@ -133,7 +133,7 @@ paths:
 
         - `startUrl` — URL loaded on the display
 
-        - `resolution` — active resolution (`WidthxHeight`)
+        - `resolution` — active resolution string in `<width>x<height>` format
 
         - `screenTimeoutSec` — idle timeout in seconds
 
@@ -215,7 +215,7 @@ paths:
 
         - `startUrl` — URL opened when the display is enabled
 
-        - `resolution` — `WidthxHeight`
+        - `resolution` — display size as `<width>x<height>`
 
         - `screenTimeoutSec` — idle timeout in seconds (`0` keeps the screen on; maximum `3600`)
 
@@ -265,7 +265,7 @@ paths:
 
         | `startUrl` | Page the display opens, for example `https://localhost/`. |
 
-        | `resolution` | Size as `WidthxHeight`, for example `1920x1080`. Use `GET /cloud/inputOutputDevices` to see supported modes. |
+        | `resolution` | Confirms whether the resolution string matches the expected `<width>x<height>` dimensions, for example `1920x1080`. Use `GET /cloud/inputOutputDevices` to read supported values. |
 
         | `screenTimeoutSec` | Idle time in seconds before the screen sleeps. `0` keeps it on. Maximum `3600`. |
 
@@ -332,14 +332,7 @@ paths:
         The `GET /cloud/inputOutputDevices` REST endpoint retrieves the connection status and capabilities of devices attached to the reader.
 
 
-        This endpoint returns:
-
-
-        - Connection status for the attached keyboard, mouse, touch panel, and monitor
-
-        - The active keyboard layout
-
-        - Monitor hardware details, current and supported resolutions, orientation, and whether the panel is awake
+        Peripheral and monitor details are documented in the response schema and in the key fields table below.
 
 
         ## 2. Endpoint Details
@@ -370,11 +363,25 @@ paths:
         Use `GET /cloud/inputOutputDevices` to:
 
 
-        - Confirm which peripherals are connected
+        - Confirm which peripherals are connected before changing display settings
 
-        - Read `supportedResolutions` before `PUT /cloud/displayConfig`
+        - Read supported monitor resolutions before `PUT /cloud/displayConfig`
 
-        - Check whether the panel is awake (`screenActive`)
+
+        Key fields to check in the response:
+
+
+        | Field | What to Check | Why It Matters |
+
+        |---|---|---|
+
+        | `monitor.connected` | Is a monitor attached? | Display APIs apply only when a monitor is present. |
+
+        | `monitor.supportedResolutions` | Which resolutions are supported? | List of resolutions supported by the monitor hardware. Use these values in `PUT /cloud/displayConfig`. |
+
+        | `monitor.currentResolution` | What resolution is active? | Confirms the current `<width>x<height>` string. |
+
+        | `monitor.screenActive` | Is the panel awake? | `true` when the display is on; `false` when sleeping. |
 
         '
       operationId: getInputOutputDevices
@@ -472,14 +479,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetAppledResponse'
               examples:
-                default_state:
-                  summary: Reader controls LED
-                  value:
-                    status: DEFAULT
-                non_default_state:
+                app_controls_led:
                   summary: App controls LED
                   value:
                     status: NON_DEFAULT
+                reader_controls_led:
+                  summary: Reader controls LED
+                  value:
+                    status: DEFAULT
       security:
       - bearerAuth: []
     put:
@@ -550,31 +557,31 @@ paths:
               $ref: '#/components/schemas/SetAppledRequest'
             examples:
               amber_flash_60s:
-                summary: Amber flash 60 seconds
+                summary: amber flash 60s
                 value:
                   color: amber
                   flash: true
                   seconds: 60
               green_solid_10s:
-                summary: Green solid 10 seconds
+                summary: green solid 10s
                 value:
                   color: green
                   flash: false
                   seconds: 10
               "off":
-                summary: LED off
+                summary: "off"
                 value:
                   color: "off"
                   flash: false
                   seconds: 0
               red_flash_indefinite:
-                summary: Red flash indefinite
+                summary: red flash indefinite
                 value:
                   color: red
                   flash: true
                   seconds: 0
               success:
-                summary: Empty string on success
+                summary: success
                 value: ''
       responses:
         "200":
@@ -599,18 +606,32 @@ paths:
         The `GET /cloud/stack-led` REST endpoint retrieves the current stack LED state.
 
 
-        This endpoint returns:
+        ## 2. Status values
 
 
-        - `status` — `DEFAULT` or `NON_DEFAULT`
-
-        - `color`, `brightness`, `flash`, `seconds`, and `seconds_remaining` when the LED is `NON_DEFAULT`
+        The response always includes `status`. Additional fields appear only when the LED is under an active override.
 
 
-        When `status` is `DEFAULT`, the body is `{ "status": "DEFAULT" }`.
+        | `status` | Meaning | When returned | Response body |
+
+        |---|---|---|---|
+
+        | `DEFAULT` | The stack LED reflects the reader''s normal operating state (reader-controlled). No custom color, flash, or timer is active. | No prior `PUT /cloud/stack-led` override is in effect, or a timed override has expired and the LED returned to reader control. | `{ "status": "DEFAULT" }` only |
+
+        | `NON_DEFAULT` | An active custom LED pattern is in effect from a prior `PUT /cloud/stack-led`. | A `PUT /cloud/stack-led` set an explicit color, flash, brightness, and/or duration that is still active. | `status`, `color`, `brightness`, `flash`, `seconds`, and `seconds_remaining` |
 
 
-        ## 2. Endpoint Details
+        When `status` is `NON_DEFAULT`:
+
+
+        - `color`, `brightness`, and `flash` describe the active override
+
+        - `seconds` is the configured duration (`0` means until the next `PUT /cloud/stack-led`)
+
+        - `seconds_remaining` counts down on timed overrides
+
+
+        ## 3. Endpoint Details
 
 
         | Property | Value |
@@ -632,13 +653,15 @@ paths:
         | Supported Operations | Retrieve stack LED state |
 
 
-        ## 3. When to Use This Endpoint
+        ## 4. When to Use This Endpoint
 
 
         Use `GET /cloud/stack-led` to:
 
 
-        - Read `status`, color, brightness, and flash
+        - Check whether the LED is `DEFAULT` or `NON_DEFAULT`
+
+        - Read color, brightness, and flash on an active override
 
         - Check `seconds_remaining` on a timed override
 
@@ -654,12 +677,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetStackledResponse'
               examples:
-                default_state:
-                  summary: Reader controls LED
-                  value:
-                    status: DEFAULT
                 green_med_solid:
-                  summary: Green, med, solid
+                  summary: Green medium solid override
                   value:
                     status: NON_DEFAULT
                     color: green
@@ -667,6 +686,10 @@ paths:
                     flash: false
                     seconds: 0
                     seconds_remaining: 0
+                reader_controls_led:
+                  summary: Reader controls LED
+                  value:
+                    status: DEFAULT
                 red_flash_countdown:
                   summary: Red flash with countdown
                   value:
@@ -688,7 +711,10 @@ paths:
         > **FXR60 Premium only.** The stack LED is not on other FXR60 variants. The FXR90 has no stack light.
 
 
-        The `PUT /cloud/stack-led` REST endpoint sets the stack LED color, flash, and duration.
+        The `PUT /cloud/stack-led` REST endpoint sets the stack LED to the specified color, flash pattern, brightness, and duration.
+
+
+        Send a JSON object with the fields below. The reader applies the requested LED state immediately.
 
 
         This endpoint requires:
@@ -750,6 +776,20 @@ paths:
 
         | Brightness | Optional. `low`, `med`, or `high`. |
 
+
+        ## 4. Response
+
+
+        On success:
+
+
+        - **REST** — HTTP `200 OK` with an empty string body (`""`). There is no JSON response payload.
+
+        - **MQTT** — `response: "success"` with an empty `payload` object. The command envelope is returned; the LED settings are not echoed back.
+
+
+        After a successful call, `GET /cloud/stack-led` returns `status: "NON_DEFAULT"` with the active color, flash, brightness, and timer fields until the override ends.
+
         '
       operationId: setStackled
       requestBody:
@@ -759,28 +799,25 @@ paths:
               $ref: '#/components/schemas/SetStackledRequest'
             examples:
               amber_med_flash:
-                summary: Amber, med, flashing
+                summary: amber med flash
                 value:
                   color: amber
                   brightness: med
                   flash: true
                   seconds: 15
               green_solid:
-                summary: Green solid
+                summary: green solid
                 value:
                   color: green
                   flash: false
                   seconds: 0
               red_high_flash:
-                summary: Red, high, flashing
+                summary: red high flash
                 value:
                   color: red
                   brightness: high
                   flash: true
                   seconds: 30
-              success:
-                summary: Empty string on success
-                value: ''
       responses:
         "200":
           description: OK
@@ -788,6 +825,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetStackledResponse'
+              example: ''
       security:
       - bearerAuth: []
   /cloud/gpo:
@@ -801,10 +839,20 @@ paths:
         The `GET /cloud/gpo` REST endpoint retrieves the current output state of each GPO pin.
 
 
-        This endpoint returns:
+        This endpoint returns one property per pin. Each pin number maps to its current output level:
 
 
-        - `1`, `2`, `3`, `4` — `HIGH` or `LOW`
+        | Pin | State |
+
+        |---|---|
+
+        | `1` | `HIGH` or `LOW` |
+
+        | `2` | `HIGH` or `LOW` |
+
+        | `3` | `HIGH` or `LOW` |
+
+        | `4` | `HIGH` or `LOW` |
 
 
         ## 2. Endpoint Details
@@ -948,10 +996,20 @@ paths:
         The `GET /cloud/gpi` REST endpoint retrieves the current input state of each GPI pin.
 
 
-        This endpoint returns:
+        This endpoint returns one property per pin. Each pin number maps to its current input level:
 
 
-        - `1`, `2`, `3`, `4` — `HIGH` or `LOW`
+        | Pin | State |
+
+        |---|---|
+
+        | `1` | `HIGH` or `LOW` |
+
+        | `2` | `HIGH` or `LOW` |
+
+        | `3` | `HIGH` or `LOW` |
+
+        | `4` | `HIGH` or `LOW` |
 
 
         GPI pins are inputs. This call does not change them.
@@ -1667,7 +1725,7 @@ paths:
       description: '## 1. Description
 
 
-        The `GET /cloud/mode` REST endpoint retrieves the reader''s current operating mode. The response uses the same `operatingMode.v1` object as `PUT /cloud/mode`.
+        The `GET /cloud/mode` REST endpoint retrieves the reader''s current operating mode. The response uses the same mode object shape as `PUT /cloud/mode`.
 
 
         This endpoint returns:
@@ -1728,7 +1786,7 @@ paths:
 
         | Request Schema | `{ "verbose": boolean }` (optional) |
 
-        | Response Schema | `operatingMode.v1` |
+        | Response Schema | Operating mode object (same fields as `PUT /cloud/mode`) |
 
         | Supported Mode Types | `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, `CUSTOM` |
 
@@ -1997,8 +2055,6 @@ paths:
 
         | Content-Type | `application/json` |
 
-        | Request Schema | `operatingMode.v1` |
-
         | Supported Mode Types | `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, `CUSTOM` |
 
         | Supported Environment Profiles | `LOW_INTERFERENCE`, `HIGH_INTERFERENCE`, `VERY_HIGH_INTERFERENCE`, `AUTO_DETECT`, `DEMO` |
@@ -2022,13 +2078,10 @@ paths:
 
         | Mode-specific settings | Inventory interval for `INVENTORY`; GPI trigger (`port` 1–4) and stop interval for `PORTAL`. Include only the sub-object for the chosen type. |
 
-        | Gen2 and reporting | Query, selects, optional accesses (`wordCount`, not `wordCounter`), metadata (`READERLOCATION`, not `READER_LOCATION`), report filter, RSSI filter, and radio start/stop conditions. |
+        | Gen2 and reporting | Query, selects, optional accesses (`wordCount`, not `wordCounter`), metadata (`READERLOCATION`), report filter, RSSI filter, and radio start/stop conditions. |
 
 
         ## 4. Mode and field rules
-
-
-        These rules match `operatingMode.v1`:
 
 
         | Rule | Detail |
@@ -2050,6 +2103,9 @@ paths:
         | Memory-bank metadata | `accesses` cannot be combined with `tagMetaData` values `RESERVED`, `EPC`, `TID`, or `USER`. |
 
         | Array lengths | When `transmitPower`, `antennaStopCondition`, or `query` is an array, its length must match `antennas`. |
+
+
+        See the `custom_comprehensive` request example for a CUSTOM mode payload that combines query, selects, and tag metadata.
 
         '
       operationId: setMode
@@ -2112,18 +2168,32 @@ paths:
                   - RSSI
                   - SEEN_COUNT
                   - CHANNEL
-              custom_query:
-                summary: Custom query
+              custom_comprehensive:
+                summary: CUSTOM mode with query, selects, and tag metadata
                 value:
                   type: CUSTOM
                   antennas:
                   - 1
-                  transmitPower: 27
+                  - 2
+                  transmitPower:
+                  - 27
+                  - 27
                   query:
-                    sel: ALL
+                    sel: NOT_SL
                     session: S1
-                    tagPopulation: 256
+                    tagPopulation: 10
                     target: A
+                  selects:
+                  - target: S1
+                    action: INVB_NOTHING
+                    membank: TID
+                    pointer: 6
+                    length: 24
+                    mask: "800600"
+                  tagMetaData:
+                  - ANTENNA
+                  - RSSI
+                  - READERLOCATION
               filter_by_prefix:
                 summary: Filter tags by prefix
                 value:
@@ -2239,48 +2309,6 @@ paths:
                     target: AB
                   inventoryProtocol:
                     mode: GEN2
-              tag_metadata:
-                summary: Tag metadata
-                value:
-                  type: CUSTOM
-                  antennas:
-                  - 1
-                  transmitPower: 27
-                  tagMetaData:
-                  - ANTENNA
-                  - RSSI
-                  - PHASE
-                  - SEEN_COUNT
-                  - CHANNEL
-                  - PC
-                  - XPC
-                  - CRC
-                  - EPC
-                  - TID
-                  - USER
-                  - MAC
-                  - HOSTNAME
-                  - READERLOCATION
-              tag_selection:
-                summary: Tag selection
-                value:
-                  type: CUSTOM
-                  antennas:
-                  - 1
-                  transmitPower:
-                  - 30
-                  query:
-                    sel: NOT_SL
-                    session: S1
-                    tagPopulation: 10
-                    target: A
-                  selects:
-                  - target: S1
-                    action: INVB_NOTHING
-                    membank: TID
-                    pointer: 6
-                    length: 24
-                    mask: "800600"
               write_access_password:
                 summary: Assign an access password (WRITE to RESERVED bank)
                 value:
@@ -2312,143 +2340,8 @@ paths:
       tags:
       - Control
       summary: Start RFID Inventory or BLE scan
-      description: '## 1. Description
-
-
-        The `PUT /cloud/start` REST endpoint starts RFID inventory, BLE scanning, or both on the reader.
-
-
-        By default, an empty request body starts RFID inventory only. Use the flags below to start BLE, apply Gen2X, or control reboot persistence.
-
-
-        ## 2. Endpoint Details
-
-
-        | Property | Value |
-
-        |---|---|
-
-        | MQTT Command | `start` |
-
-        | Pattern Name | Scan Control - Start |
-
-        | REST Endpoint | `PUT /cloud/start` |
-
-        | Communication Type | Client to Device (HTTP request/response) |
-
-        | Applies To | FXR60 / FXR90 |
-
-        | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-
-        | Content-Type | `application/json` |
-
-        | Request fields | `scanType` (array of `ble` / `rfid`), `applyImpinjGen2X`, `doNotPersistState` |
-
-        | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |
-
-
-        ## 3. Before You Begin
-
-
-        Make sure the relevant scanners are configured before sending this request.
-
-
-        | What You Need | Details |
-
-        |---|---|
-
-        | HTTPS connectivity | The reader''s HTTPS endpoint must be reachable and a valid bearer token must be included in the `Authorization` header of every request. |
-
-        | RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or left at the default) before starting RFID inventory. |
-
-        | BLE configuration | If starting BLE, configure BLE first with `PUT /cloud/bleConfig` and `ble.enable: true`. The full `ble` object is required. |
-
-        | Gen2X configuration | If using `applyImpinjGen2X: true`, save the Gen2X configuration with `PUT /cloud/impinjGen2X` first. `applyImpinjGen2X` cannot be combined with a BLE-only scan (`scanType: ["ble"]`). |
-
-
-        ## 4. Supported flags
-
-
-        | Flag | What it does |
-
-        |---|---|
-
-        | `scanType` | Which scanners to start. Array of `ble` and/or `rfid`. |
-
-        | `applyImpinjGen2X` | Apply the Gen2X configuration saved with `PUT /cloud/impinjGen2X`. |
-
-        | `doNotPersistState` | Do not resume RFID inventory after reboot. RFID only — BLE never auto-resumes. |
-
-
-        ### `scanType`
-
-
-        `scanType` is an **array** of scan types. Omit it for RFID-only (default). The array must be non-empty and must not contain duplicates.
-
-
-        ```json
-
-        { "scanType": ["ble"] }
-
-        ```
-
-
-        | Request body | Behavior |
-
-        |---|---|
-
-        | omitted / `{}` | Starts RFID inventory only (default). |
-
-        | `["rfid"]` | Starts RFID inventory only. |
-
-        | `["ble"]` | Starts BLE scanning only. Requires BLE to be enabled first. |
-
-        | `["ble", "rfid"]` | Starts both scanners. |
-
-
-        > Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, omit `scanType`; `PUT /cloud/start` starts RFID inventory only. Check the installed build with `GET /cloud/version` (`readerApplication`).
-
-
-        ### `applyImpinjGen2X`
-
-
-        Send `applyImpinjGen2X: true` to apply the Gen2X features saved with `PUT /cloud/impinjGen2X` when RFID inventory starts.
-
-
-        | Value | Behavior |
-
-        |---|---|
-
-        | omitted / `false` | Start without applying Gen2X. A saved Gen2X config is ignored until this flag is true. |
-
-        | `true` | Apply the saved Gen2X config on **this** start only. After `PUT /cloud/stop`, send `true` again — activation does not persist across inventory sessions. Cannot be combined with `scanType: ["ble"]`. |
-
-
-        ```json
-
-        { "applyImpinjGen2X": true }
-
-        ```
-
-
-        ### Persistence across reboots (`doNotPersistState`)
-
-
-        `doNotPersistState` applies to RFID only.
-
-
-        | `doNotPersistState` | Behavior on reboot or reconnect |
-
-        |---|---|
-
-        | `false` (default) | The reader **remembers the running RFID inventory state** and automatically resumes it. |
-
-        | `true` | The running state is **not saved**. The reader stays idle until `PUT /cloud/start` is called again. |
-
-
-        > Use `doNotPersistState: true` for one-time or debugging sessions where automatic resume after reboot is not desired.
-
-        '
+      description: "## 1. Description\n\nThe `PUT /cloud/start` REST endpoint starts RFID inventory, BLE scanning, or both on the reader.\n\nBy default, an empty request body **starts RFID inventory only**. BLE does **not** autostart — you must include `scanType` with `\"ble\"` (and configure BLE first) to start BLE scanning.\n\n## 2. Endpoint Details\n\n| Property | Value |\n|---|---|\n| MQTT Command | `start` |\n| Pattern Name | Scan Control - Start |\n| REST Endpoint | `PUT /cloud/start` |\n| Communication Type | Client to Device (HTTP request/response) |\n| Applies To | FXR60 / FXR90 |\n| Authentication | Bearer token (`Authorization: Bearer <token>`) |\n| Content-Type | `application/json` |\n| Supported flags | `scanType`, `applyImpinjGen2X`, `doNotPersistState` |\n| Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |\n\n## 3. Supported flags (summary)\n\n| Flag | Type | Purpose |\n|---|---|---|\n| `scanType` | array **or** object (MQTT targeted) | Choose which scan types to start — globally or per data endpoint |\n| `applyImpinjGen2X` | boolean | Apply the Gen2X configuration saved with `PUT /cloud/impinjGen2X` when RFID inventory starts |\n| `doNotPersistState` | boolean | Control RFID auto-resume after reboot (RFID only) |\n\n## 4. Before You Begin\n\n| What You Need | Details |\n|---|---|\n| Bearer token | Include a valid bearer token in the `Authorization` header (`Authorization: Bearer <token>`). |\n| RFID mode | Configure the operating mode with `PUT /cloud/mode` before starting RFID, or use the reader default. |\n| BLE (optional) | To start BLE, configure `PUT /cloud/bleConfig` first with `ble.enable: true`, then include `\"ble\"` in `scanType`. |\n| Gen2X (optional) | To apply Gen2X on start, save the configuration with `PUT /cloud/impinjGen2X` and send `applyImpinjGen2X: true`. Cannot combine with BLE-only start. |\n\n## 5. `scanType`\n\nControls which scan types start. Omit `scanType` for RFID-only (default).\n\n### Global start (REST and MQTT)\n\n`scanType` is an **array** of `\"ble\"` and/or `\"rfid\"`. The array must be non-empty and must not contain duplicates.\n\n```json\n{ \"scanType\": [\"ble\"] }\n```\n\n| Request body | Behavior |\n|---|---|\n| omitted / `{}` | Starts **RFID inventory only** (default). BLE is not started. |\n| `[\"rfid\"]` | Starts RFID inventory only. |\n| `[\"ble\"]` | Starts BLE scanning only. Requires BLE to be enabled in `PUT /cloud/bleConfig`. |\n| `[\"ble\", \"rfid\"]` | Starts both. |\n\n**Firmware requirement:** BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, omit `scanType`; `PUT /cloud/start` starts RFID inventory only. Check the installed build with `GET /cloud/version` (`readerApplication`).\n\n### Targeted start (MQTT only)\n\nWhen multiple data endpoints are configured, MQTT accepts `scanType` as an **object** that maps each data-endpoint connection name to the scan types to start on that endpoint:\n\n```json\n{\n  \"scanType\": {\n    \"dataEndpoint1\": [\"ble\", \"rfid\"],\n    \"dataEndpoint2\": [\"rfid\"]\n  }\n}\n```\n\nEach key is a connection `name` from `endpointConfig.data.event.connections`. Each value is an array of `\"ble\"` and/or `\"rfid\"` for that endpoint only.\n\n## 6. `applyImpinjGen2X`\n\nSeparate from `scanType`. Send `applyImpinjGen2X: true` to apply the Gen2X features saved with `PUT /cloud/impinjGen2X` when RFID inventory starts.\n\n| Value | Behavior |\n|---|---|\n| omitted / `false` | Start without applying Gen2X. A saved Gen2X config is ignored until this flag is true. |\n| `true` | Apply the saved Gen2X config on **this** start only. After `PUT /cloud/stop`, send `true` again — activation does not persist across inventory sessions. Cannot be combined with `scanType: [\"ble\"]`. |\n\n```json\n{ \"applyImpinjGen2X\": true }\n```\n\n## 7. Persistence across reboots (`doNotPersistState`)\n\n`doNotPersistState` applies to **RFID only**. BLE never auto-resumes after reboot.\n\n| `doNotPersistState`\
+        \ | Behavior on reboot or reconnect |\n|---|---|\n| `false` (default) | The reader remembers the running RFID inventory state and automatically resumes it. |\n| `true` | The running state is not saved. The reader stays idle until `PUT /cloud/start` is called again. |\n\nUse `doNotPersistState: true` for one-time or debugging sessions where automatic resume after reboot is not desired.\n"
       operationId: startInventory
       requestBody:
         content:
@@ -2493,88 +2386,7 @@ paths:
       tags:
       - Control
       summary: Stop RFID Inventory or BLE scan
-      description: '## 1. Description
-
-
-        The `PUT /cloud/stop` REST endpoint stops RFID inventory, BLE scanning, or both.
-
-
-        By default, if the request body is empty or `scanType` is not provided, the reader stops RFID inventory only.
-
-
-        `scanType` is an **array** of scan types to stop. The array must be non-empty and must not contain duplicates.
-
-
-        ## 2. Endpoint Details
-
-
-        | Property | Value |
-
-        |---|---|
-
-        | MQTT Command | `stop` |
-
-        | Pattern Name | Scan Control - Stop |
-
-        | REST Endpoint | `PUT /cloud/stop` |
-
-        | Communication Type | Client to Device (HTTP request/response) |
-
-        | Applies To | FXR60 / FXR90 |
-
-        | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-
-        | Content-Type | `application/json` |
-
-        | Request fields | `scanType` (array of `ble` / `rfid`) |
-
-        | Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |
-
-
-        ## 3. Stop Behavior
-
-
-        Omit `scanType` to stop RFID only (default).
-
-
-        ```json
-
-        { "scanType": ["ble"] }
-
-        ```
-
-
-        | Request body | Result |
-
-        |---|---|
-
-        | `{}` | Stops RFID inventory only. This is the default behavior. |
-
-        | `{ "scanType": ["rfid"] }` | Stops RFID inventory. BLE scanning continues if active. |
-
-        | `{ "scanType": ["ble"] }` | Stops BLE scanning. RFID inventory continues if active. |
-
-        | `{ "scanType": ["ble", "rfid"] }` | Stops both. |
-
-
-        Stop is **not** a no-op. Stopping a scan type that is not running returns **422** (`No scan is currently active`). Check `GET /cloud/status` first if you are not sure what is running.
-
-
-        > Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
-
-
-        ## 4. Before You Begin
-
-
-        | What You Need | Details |
-
-        |---|---|
-
-        | Current activity | Check `GET /cloud/status` if you need to confirm RFID or BLE activity before stopping. |
-
-        | Target scan type | Choose `rfid`, `ble`, or both in `scanType`. Omit `scanType` only when you want the default RFID stop. |
-
-        '
+      description: "## 1. Description\n\nThe `PUT /cloud/stop` REST endpoint stops RFID inventory, BLE scanning, or both.\n\nBy default, if the request body is empty or `scanType` is not provided, the reader stops **RFID inventory only**.\n\n## 2. Endpoint Details\n\n| Property | Value |\n|---|---|\n| MQTT Command | `stop` |\n| Pattern Name | Scan Control - Stop |\n| REST Endpoint | `PUT /cloud/stop` |\n| Communication Type | Client to Device (HTTP request/response) |\n| Applies To | FXR60 / FXR90 |\n| Authentication | Bearer token (`Authorization: Bearer <token>`) |\n| Content-Type | `application/json` |\n| Request fields | `scanType` (array or MQTT targeted object) |\n| Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |\n\n## 3. Supported flags (summary)\n\n| Flag | Type | Purpose |\n|---|---|---|\n| `scanType` | array **or** object (MQTT targeted) | Choose which scan types to stop — globally or per data endpoint |\n\n## 4. Global stop (REST and MQTT)\n\nOmit `scanType` to stop RFID only (default).\n\n`scanType` as an **array** selects which scan types to stop globally. The array must be non-empty and must not contain duplicates.\n\n```json\n{ \"scanType\": [\"ble\"] }\n```\n\n| Request body | Result |\n|---|---|\n| `{}` | Stops RFID inventory only. This is the default behavior. |\n| `{ \"scanType\": [\"rfid\"] }` | Stops RFID inventory. BLE scanning continues if active. |\n| `{ \"scanType\": [\"ble\"] }` | Stops BLE scanning. RFID inventory continues if active. |\n| `{ \"scanType\": [\"ble\", \"rfid\"] }` | Stops both. |\n\nStop is **not** a no-op. Stopping a scan type that is not running returns **422** (`No scan is currently active`). Check `GET /cloud/status` first if you are not sure what is running.\n\n**Firmware requirement:** BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).\n\n## 5. Targeted stop (MQTT only)\n\nWhen multiple data endpoints are configured, MQTT accepts `scanType` as an **object** that maps each data-endpoint connection name to the scan types to stop on that endpoint:\n\n```json\n{\n  \"scanType\": {\n    \"dataEndpoint1\": [\"ble\", \"rfid\"],\n    \"dataEndpoint2\": [\"rfid\"]\n  }\n}\n```\n\nEach key is a connection `name` from `endpointConfig.data.event.connections`. Each value is an array of `\"ble\"` and/or `\"rfid\"` to stop for that endpoint only. Endpoints omitted from the object are not affected.\n\n## 6. Before You Begin\n\n| What You Need | Details |\n|---|---|\n| Current activity | Check `GET /cloud/status` if you need to confirm RFID or BLE activity before stopping. |\n| Stop scope | Choose global array form, or MQTT targeted object form when stopping per data endpoint. |\n"
       operationId: stopInventory
       requestBody:
         content:
@@ -3119,10 +2931,10 @@ paths:
       description: '## 1. Description
 
 
-        The `PUT /cloud/config` REST endpoint updates GPIO/LED behavior and the data-plane reader-gateway configuration.
+        The `PUT /cloud/config` REST endpoint updates reader configuration. Accepts one or more of the following top-level keys: `xml` (string), `GPIO-LED` (object), `READER-GATEWAY` (object).
 
 
-        Send at least one of `GPIO-LED` or `READER-GATEWAY`. Both can be sent in the same request.
+        When multiple keys are sent, each included section is applied. `GPIO-LED` replaces the entire GPIO/LED object. `READER-GATEWAY` updates the data-plane reader-gateway configuration.
 
 
         This call configures **data** connections only (`endpointConfig.data`). Use `PUT /cloud/cloudConfig` for control and management plane endpoints.
@@ -3155,20 +2967,20 @@ paths:
         ## 3. Before You Begin
 
 
-        A misconfigured data endpoint can stop tag reporting. Read the current config with `GET /cloud/config` first — especially `GPIO-LED`, which is replaced wholesale.
+        Read the current config with `GET /cloud/config` before changing data endpoints or GPIO/LED behavior.
 
 
         | What You Need | Details |
 
         |---|---|
 
-        | Configuration scope | At least one of `GPIO-LED` or `READER-GATEWAY`. |
+        | Top-level keys | One or more of `xml`, `GPIO-LED`, and `READER-GATEWAY`. |
 
-        | GPIO/LED | The full desired `GPIO-LED` object. GPO defaults are `HIGH`/`LOW`. LED colors are `GREEN`/`RED`/`AMBER`. |
+        | `GPIO-LED` | Send the full desired object. Omitted sub-fields are not merged — the object replaces the previous GPIO/LED configuration. |
 
-        | Data endpoint | Connection type, host/port or URL, and TLS material if needed (see `GET /cloud/certificates`). |
+        | Data endpoint | Connection type, host/port or URL, and TLS certificate references when needed (see `GET /cloud/certificates`). |
 
-        | Batching / retention | Send as arrays, and only together with `endpointConfig`. |
+        | Batching / retention | `batching` and `retention` may be sent as a single object applied globally, or as arrays with one entry per data connection. Arrays apply per endpoint; objects apply globally. Send them together with `endpointConfig`. |
 
         '
       operationId: setConfigMqtt
@@ -3734,10 +3546,10 @@ paths:
       description: '## 1. Description
 
 
-        The `PUT /cloud/cloudConfig` REST endpoint imports cloud endpoint configuration onto the reader: data events, control command-response, and management channels.
+        The `PUT /cloud/cloudConfig` REST endpoint imports the cloud endpoint configuration (control, data, management, and management-event endpoints) into the reader.
 
 
-        Send `endpointConfig`. Only the sections you include are updated; omitted sections are left unchanged. This call does not set GPIO-LED or `managementEventConfig` — use `PUT /cloud/config` for those.
+        Only the `endpointConfig` sections you include are updated; omitted sections are left unchanged. This call does not set GPIO-LED or `managementEventConfig` — use `PUT /cloud/config` for those.
 
 
         This endpoint allows you to configure:
@@ -3751,7 +3563,7 @@ paths:
 
         - Management command-response through `endpointConfig.management.commandResponse`
 
-        - Batching and retention per connection through `additionalOptions`
+        - Per-connection batching and retention through `additionalOptions`
 
 
         ## 2. Endpoint Details
@@ -3800,9 +3612,10 @@ paths:
 
         | MQTT client settings | `clientId`, `keepAlive`, `qos`, `cleanSession`, `reconnectDelay`, and `reconnectDelayMax`. |
 
-        | Retention and batching | For data events: `retention.maxNumEvents`, `retention.maxEventRetentionTimeInMin`, and `retention.throttle`. |
+        | Retention and batching | Under `additionalOptions` on data connections: retention — `maxNumEvents`, `maxEventRetentionTimeInMin`, `throttle`; batching — `maxPayloadSizePerReport`, `reportingInterval`. |
 
-        | Local REST | For control channels: `enableLocalRest: true` keeps local REST available alongside cloud connectivity. |
+
+        > Local REST is always enabled on FXR60/FXR90 and is not configurable through this endpoint.
 
         '
       operationId: setImportcloudconfig
@@ -3819,7 +3632,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_AWS
                           description: Control cmd/rsp through AWS IoT Core
@@ -3924,7 +3736,6 @@ paths:
                               verifyHostName: true
                               verifyPeer: true
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_AWS
                           description: Management cmd/rsp through AWS IoT Core
@@ -3963,7 +3774,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_AWS
                           description: Control cmd/rsp through AWS IoT Core
@@ -4070,7 +3880,6 @@ paths:
                               maxNumEvents: 150000
                               throttle: 500
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_AWS
                           description: Management cmd/rsp through AWS IoT Core
@@ -4108,7 +3917,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_AZURE
                           description: Control cmd/rsp through Azure IoT Hub
@@ -4218,7 +4026,6 @@ paths:
                               maxNumEvents: 150000
                               throttle: 500
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_AZURE
                           description: Management cmd/rsp through Azure IoT Hub
@@ -4285,7 +4092,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_MQTT
                           description: Control cmd/rsp (MQTT)
@@ -4360,7 +4166,6 @@ paths:
                             - fxr60-lab/mevents
                             subscribeTopic: []
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_MQTT
                           description: Management cmd/rsp (MQTT)
@@ -4389,7 +4194,6 @@ paths:
                   endpointConfig:
                     management:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_MQTT
                           description: Management cmd/rsp (MQTT)
@@ -4445,7 +4249,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_MQTT_MTLS
                           description: Control cmd/rsp (MQTT_MTLS)
@@ -4544,7 +4347,6 @@ paths:
                               verifyHostName: true
                               verifyPeer: true
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_MQTT_MTLS
                           description: Management cmd/rsp (MQTT_MTLS)
@@ -4581,7 +4383,6 @@ paths:
                   endpointConfig:
                     control:
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: CTRL_MQTT_MTLS
                           description: Control cmd/rsp (MQTT_MTLS)
@@ -4680,7 +4481,6 @@ paths:
                               verifyPeer: true
                               CACertificateFileLocation: /data/apps/lab-ca.crt
                       commandResponse:
-                        enableLocalRest: true
                         connections:
                         - name: MGMT_CMD_MQTT_MTLS
                           description: Management cmd/rsp (MQTT_MTLS)
@@ -5443,7 +5243,7 @@ paths:
         The `GET /cloud/preSelection` REST endpoint retrieves the current rxSawFilter pre-selection state from the reader.
 
 
-        The response is a string, not a boolean:
+        The response is a string:
 
 
         ```json
@@ -5460,7 +5260,7 @@ paths:
         | `preSelection` | string | `enabled` or `disabled` |
 
 
-        To change the filter, use `PUT /cloud/preSelection` with a **boolean** (`true` / `false`). `GET /cloud/preSelection` always returns the string form.
+        To change the filter, use `PUT /cloud/preSelection` with a boolean (`true` / `false`).
 
 
         No additional fields are required.
@@ -5531,9 +5331,6 @@ paths:
 
 
         The `PUT /cloud/preSelection` REST endpoint enables or disables the rxSawFilter pre-selection feature on the reader.
-
-
-        The request uses a **boolean**. `GET /cloud/preSelection` returns a **string** (`enabled` / `disabled`).
 
 
         ```json
@@ -5786,13 +5583,10 @@ paths:
         - `components` — optional array of `componentName` and `level`
 
 
-        To change a component level, send `reader_gateway` (or `RG`).
+        To set a component level, send `reader_gateway` or `radio_control` as the component name (`RG` is also accepted as an alias for `reader_gateway`). Send one of the valid levels — `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`.
 
 
-        `level` is `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`.
-
-
-        Omitted `radioPacketLog` returns to `false`.
+        If `radioPacketLog` is omitted, the reader defaults it to `false`.
 
 
         ## 2. Endpoint Details
@@ -5827,9 +5621,9 @@ paths:
 
         |---|---|
 
-        | `radioPacketLog` | `true` to capture radio packets, `false` to stop. Send this on every `PUT /cloud/logs`. |
+        | `radioPacketLog` | `true` to capture radio packets, `false` to stop. Include this field on every `PUT /cloud/logs` request. |
 
-        | `componentName` | `reader_gateway` or `RG`. |
+        | `componentName` | `reader_gateway`, `radio_control`, or `RG` (alias for `reader_gateway`). |
 
         | `level` | `OFF`, `FATAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`, `TRACE`, or `EXTRA`. |
 
@@ -5872,15 +5666,15 @@ paths:
       description: '## 1. Description
 
 
-        The `GET /cloud/logs/syslog` REST endpoint retrieves the system log archive.
+        The `GET /cloud/logs/syslog` REST endpoint retrieves the reader''s current active system log.
 
 
         This endpoint returns:
 
 
-        - `filename` — archive name, for example `syslog.tar.gz`
+        - `filename` — log archive name, for example `syslog.tar.gz`
 
-        - `binary` — Base64-encoded `.tar.gz`
+        - `binary` — a standard Base64-encoded string representing the raw `.tar.gz` byte stream
 
 
         ## 2. Endpoint Details
@@ -5902,7 +5696,7 @@ paths:
 
         | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 
-        | Supported Operations | Retrieve the system log archive |
+        | Supported Operations | Retrieve the current active system log |
 
 
         ## 3. When to Use This Endpoint
@@ -5911,7 +5705,9 @@ paths:
         Use `GET /cloud/logs/syslog` to:
 
 
-        - Download OS events as `filename` + `binary`
+        - Download the current system log as `filename` and `binary`
+
+        - Collect diagnostics while the reader is running
 
         '
       operationId: getLogsSyslog
@@ -6699,6 +6495,9 @@ paths:
         The `PUT /cloud/certificates` REST endpoint installs a certificate from a download URL.
 
 
+        > Authentication type NONE and authentication with certificates are currently not supported.
+
+
         This endpoint requires:
 
 
@@ -6723,6 +6522,9 @@ paths:
 
 
         - `verifyPeer`, `verifyHost`
+
+
+        > Protocol is inferred from the `url` scheme. HTTPS download retry and timeout options are not supported on FXR60/FXR90.
 
 
         ## 2. Endpoint Details
@@ -6871,16 +6673,6 @@ paths:
                   verifyPeer: false
                   headers:
                     Authorization: Bearer demo-token
-                  retry:
-                    type: randomWait
-                    policy:
-                      retries: 3
-                      wait:
-                        min: 10
-                        max: 30
-                  timeouts:
-                    connection: 5
-                    read: 20
               sftp_certificate_download:
                 summary: SFTP certificate download
                 value:
@@ -7098,13 +6890,7 @@ paths:
         The `GET /cloud/caCertificates` REST endpoint retrieves the CA certificates installed on the reader.
 
 
-        This endpoint returns:
-
-
-        - an array of CA names
-
-
-        Listed names include a `.crt` suffix. Delete with the name you installed, without that suffix.
+        This endpoint returns an array of installed CA certificate names.
 
 
         ## 2. Endpoint Details
@@ -7135,7 +6921,9 @@ paths:
         Use `GET /cloud/caCertificates` to:
 
 
-        - Read CA names after `PUT /cloud/caCertificates` or `DELETE /cloud/caCertificates`
+        - List CA names currently installed on the reader
+
+        - Verify a `PUT /cloud/caCertificates` request succeeded
 
         '
       operationId: getCACertificates
@@ -7559,17 +7347,17 @@ paths:
                         securityType: WPA2Personal
                         ssid: VULCAN_HOTSPOT
                         ssidPassword: "12345678"
-                request_all:
-                  summary: Empty body all interfaces
-                  value: {}
-                request_bnep0:
-                  summary: request bnep0
+                interface_bnep0:
+                  summary: interface bnep0
                   value:
                     interface: bnep0
-                request_eth0:
+                interface_eth0:
                   summary: interface eth0
                   value:
                     interface: eth0
+                query_all_interfaces:
+                  summary: Empty body, all interfaces
+                  value: {}
                 WAN:
                   summary: wan0
                   value:
@@ -7739,7 +7527,7 @@ paths:
               $ref: '#/components/schemas/UpdateNetworkRequest'
             examples:
               Network_bluetooth:
-                summary: bnep0
+                summary: Network bluetooth
                 value:
                   bnep0:
                     dhcpEndAddress: 192.168.0.10
@@ -7750,7 +7538,7 @@ paths:
                     usePassKey: false
                     enable: true
               Network_ethernet_dhcp:
-                summary: eth0 DHCP
+                summary: Network ethernet dhcp
                 value:
                   eth0:
                     IPV4:
@@ -7759,7 +7547,7 @@ paths:
                       dhcp: true
                     enable: true
               Network_ethernet_dhcp_8021x_peap_mschapv2:
-                summary: eth0 PEAP MSCHAPV2
+                summary: Network ethernet dhcp 8021x peap mschapv2
                 value:
                   eth0:
                     enable: true
@@ -7771,7 +7559,7 @@ paths:
                         username: testuser1
                         password: X!k78@rH0nL1
               Network_ethernet_dhcp_8021x_tls:
-                summary: eth0 802.1X TLS DHCP
+                summary: Network ethernet dhcp 8021x tls
                 value:
                   eth0:
                     enable: true
@@ -7782,7 +7570,7 @@ paths:
                         innerAuthentication: ''
                         certificate: COMMON
               Network_ethernet_dhcp_8021x_ttls_mschapv2:
-                summary: eth0 TTLS MSCHAPV2
+                summary: Network ethernet dhcp 8021x ttls mschapv2
                 value:
                   eth0:
                     enable: true
@@ -7794,7 +7582,7 @@ paths:
                         username: testuser1
                         password: X!k78@rH0nL1
               Network_ethernet_static:
-                summary: eth0 static
+                summary: Network ethernet static
                 value:
                   eth0:
                     IPV4:
@@ -7813,7 +7601,7 @@ paths:
                       prefix: 64
                     enable: true
               Network_ethernet_static_8021x_tls:
-                summary: eth0 802.1X TLS static
+                summary: Network ethernet static 8021x tls
                 value:
                   eth0:
                     IPV4:
@@ -7838,7 +7626,7 @@ paths:
                         innerAuthentication: ''
                         certificate: COMMON
               Network_hotspot:
-                summary: uap0
+                summary: Network hotspot
                 value:
                   uap0:
                     ssid: FXR90Hotspot
@@ -7848,7 +7636,7 @@ paths:
                     isHidden: false
                     enable: true
               Network_wan:
-                summary: wan0 psim
+                summary: Network wan
                 value:
                   wan0:
                     enable: true
@@ -7858,7 +7646,7 @@ paths:
                       preferredNetworkType: AUTO
                       enableIPv6: true
               Network_wan_esim:
-                summary: wan0 esim
+                summary: Network wan esim
                 value:
                   wan0:
                     enable: true
@@ -7868,7 +7656,7 @@ paths:
                       preferredNetworkType: AUTO
                       enableIPv6: true
               Network_wifi_dhcp:
-                summary: mlan0 DHCP
+                summary: Network wifi dhcp
                 value:
                   mlan0:
                     accesspoint:
@@ -7880,7 +7668,7 @@ paths:
                           password: "12345678"
                     enable: true
               Network_wifi_security_wpa2_personal:
-                summary: mlan0 WPA2Personal
+                summary: Network wifi security wpa2 personal
                 value:
                   mlan0:
                     accesspoint:
@@ -7892,7 +7680,7 @@ paths:
                           password: "12345678"
                     enable: true
               Network_wifi_security_wpa3_personal:
-                summary: mlan0 WPA3Personal
+                summary: Network wifi security wpa3 personal
                 value:
                   mlan0:
                     enable: true
@@ -7905,7 +7693,7 @@ paths:
                         WPA3Personal:
                           password: krishna1234567
               Network_wifi_static:
-                summary: mlan0 static
+                summary: Network wifi static
                 value:
                   mlan0:
                     IPV4:
@@ -7931,7 +7719,7 @@ paths:
                         WPA2Personal:
                           password: "12345678"
               Network_wifi_wpa2_enterprise_peap_tls:
-                summary: mlan0 WPA2Enterprise PEAP TLS
+                summary: Network wifi wpa2 enterprise peap tls
                 value:
                   mlan0:
                     enable: true
@@ -7946,7 +7734,7 @@ paths:
                           innerAuthentication: TLS
                           certificate: COMMON
               Network_wifi_wpa2_enterprise_tls:
-                summary: mlan0 WPA2Enterprise TLS
+                summary: Network wifi wpa2 enterprise tls
                 value:
                   mlan0:
                     enable: true
@@ -7961,7 +7749,7 @@ paths:
                           innerAuthentication: ''
                           certificate: COMMON
               Network_wifi_wpa2_enterprise_ttls_tls:
-                summary: mlan0 WPA2Enterprise TTLS TLS
+                summary: Network wifi wpa2 enterprise ttls tls
                 value:
                   mlan0:
                     enable: true
@@ -7976,7 +7764,7 @@ paths:
                           innerAuthentication: TLS
                           certificate: COMMON
               Network_wifi_wpa3_enterprise_peap_mschapv2:
-                summary: mlan0 WPA3Enterprise PEAP MSCHAPV2
+                summary: Network wifi wpa3 enterprise peap mschapv2
                 value:
                   mlan0:
                     enable: true
@@ -7992,7 +7780,7 @@ paths:
                           username: testuser1
                           password: X!k78@rH0nL1
               Network_wifi_wpa3_enterprise_ttls_mschapv2:
-                summary: mlan0 WPA3Enterprise TTLS MSCHAPV2
+                summary: Network wifi wpa3 enterprise ttls mschapv2
                 value:
                   mlan0:
                     enable: true
@@ -8007,6 +7795,9 @@ paths:
                           innerAuthentication: MSCHAPV2
                           username: testuser1
                           password: X!k78@rH0nL1
+              success:
+                summary: success
+                value: ''
       responses:
         "200":
           description: OK
@@ -8014,7 +7805,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNetworkResponse'
-              example: ''
       security:
       - bearerAuth: []
   /cloud/wifiNetworks:
@@ -8097,191 +7887,96 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAvailablewifinetworksResponse'
-              examples:
-                visible_networks:
-                  summary: Visible access points with essid and signalStrength
-                  value:
-                    availableWifiNetworks:
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: true
-                        security:
-                          details:
-                            password: '********'
-                          type: WPA2Personal
-                      essid: VULCAN_2.4_5_WPA2
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_WPA3
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_5_ENT_802.1x
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_FAST_ROAMING_24
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_WPA2
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_5_ENT_SHA256
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_2_4_ENT_802.1x
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_ENT_SHA256
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA3-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_WPA3_ENT_SUITE192
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA3
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_5_WPA3
-                      signalStrength: 85%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_FAST_ROAMING_5
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_5_WPA2
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_5_ENT_802.1x
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_5_ENT_SHA256
-                      signalStrength: 69%
-                wifi_networks:
-                  summary: wifi networks
-                  value:
-                    availableWifiNetworks:
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: true
-                        security:
-                          details:
-                            password: '********'
-                          type: WPA2Personal
-                      essid: VULCAN_2.4_5_WPA2
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_WPA3
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_5_ENT_802.1x
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_FAST_ROAMING_24
-                      signalStrength: 89%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_WPA2
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_5_ENT_SHA256
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_2_4_ENT_802.1x
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_24_ENT_SHA256
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA3-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_WPA3_ENT_SUITE192
-                      signalStrength: 87%
-                    - capabilities:
-                      - WPA3
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_2.4_5_WPA3
-                      signalStrength: 85%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_FAST_ROAMING_5
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2
-                      configuration:
-                        autoConnect: false
-                      essid: VULCAN_5_WPA2
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_5_ENT_802.1x
-                      signalStrength: 69%
-                    - capabilities:
-                      - WPA2-802.1X
-                      configuration:
-                        autoConnect: false
-                      essid: Vulcan_WPA2_5_ENT_SHA256
-                      signalStrength: 69%
+              example:
+                availableWifiNetworks:
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: true
+                    security:
+                      details:
+                        password: '********'
+                      type: WPA2Personal
+                  essid: VULCAN_2.4_5_WPA2
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_2.4_WPA3
+                  signalStrength: 89%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_5_ENT_802.1x
+                  signalStrength: 89%
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_FAST_ROAMING_24
+                  signalStrength: 89%
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_2.4_WPA2
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_5_ENT_SHA256
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_2_4_ENT_802.1x
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_24_ENT_SHA256
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA3-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_WPA3_ENT_SUITE192
+                  signalStrength: 87%
+                - capabilities:
+                  - WPA3
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_2.4_5_WPA3
+                  signalStrength: 85%
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_FAST_ROAMING_5
+                  signalStrength: 69%
+                - capabilities:
+                  - WPA2
+                  configuration:
+                    autoConnect: false
+                  essid: VULCAN_5_WPA2
+                  signalStrength: 69%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_5_ENT_802.1x
+                  signalStrength: 69%
+                - capabilities:
+                  - WPA2-802.1X
+                  configuration:
+                    autoConnect: false
+                  essid: Vulcan_WPA2_5_ENT_SHA256
+                  signalStrength: 69%
       security:
       - bearerAuth: []
   /cloud/networkInterfaces:
@@ -8301,7 +7996,7 @@ paths:
         - `availableNetworkInterfaces` — names such as `eth0`, `mlan0`, `bnep0`, `uap0`
 
 
-        `wan0` is present on FXR90 only.
+        Cellular interface `wan0` appears in this list on FXR90 only. It is not present on FXR60.
 
 
         ## 2. Endpoint Details
@@ -8351,7 +8046,6 @@ paths:
                     - eth0
                     - mlan0
                     - bnep0
-                    - blescan
                     - uap0
                 fxr90:
                   summary: fxr90
@@ -8362,13 +8056,12 @@ paths:
                     - bnep0
                     - wan0
                 with_uap0:
-                  summary: eth0 mlan0 bnep0 blescan uap0
+                  summary: eth0 mlan0 bnep0 uap0
                   value:
                     availableNetworkInterfaces:
                     - eth0
                     - mlan0
                     - bnep0
-                    - blescan
                     - uap0
                 with_wan0:
                   summary: eth0 mlan0 bnep0 wan0
@@ -8436,25 +8129,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReadpointsResponse'
-              examples:
-                inline:
-                  summary: inline
-                  value:
-                  - "1"
-                  - "2"
-                  - "3"
-                  - "4"
-                  - "5"
-                  - "6"
-                read_points:
-                  summary: 1 through 6
-                  value:
-                  - "1"
-                  - "2"
-                  - "3"
-                  - "4"
-                  - "5"
-                  - "6"
+              example:
+              - "1"
+              - "2"
+              - "3"
+              - "4"
+              - "5"
+              - "6"
       security:
       - bearerAuth: []
   /cloud/readerLocation:
@@ -8791,7 +8472,8 @@ paths:
 
         - `verifyPeer`, `verifyHost`
 
-        - `retry` — `count` and `delayInSec`
+
+        > Protocol is inferred from the `url` scheme. HTTPS download retry and timeout options are not supported on FXR60/FXR90.
 
 
         ## 2. Endpoint Details
@@ -8838,8 +8520,6 @@ paths:
 
         | `verifyHost` | Optional. `true` to check the file server hostname. |
 
-        | `retry` | Optional. `count` and `delayInSec`. |
-
         '
       operationId: setOs
       requestBody:
@@ -8858,20 +8538,6 @@ paths:
                     password: '@1T@uT0dud3'
                   verifyPeer: false
                   verifyHost: false
-                  retry:
-                    count: 3
-                    delayInSec: 10
-              https_basic_authentication_with_retry:
-                summary: HTTPS BASIC authentication with retry
-                value:
-                  authenticationType: BASIC
-                  authenticationOptions:
-                    username: demo-user
-                    password: demo-password
-                  url: https://example.com/firmware/reader-os.tar.bz2
-                  retry:
-                    count: 3
-                    delayInSec: 10
               https_no_authentication:
                 summary: HTTPS with no authentication
                 value:
@@ -8990,9 +8656,10 @@ paths:
 
         - `headers` — for example `Authorization`
 
-        - `retry` — `count` and `delayInSec`
-
         - `installedCertificateName`, `installedCertificateType`
+
+
+        > Sync/async install options and download retry or timeout settings are not supported on FXR60/FXR90.
 
 
         ## 2. Endpoint Details
@@ -9043,8 +8710,6 @@ paths:
 
         | `headers` | Optional. Extra download headers, for example `Authorization`. |
 
-        | `retry` | Optional. `count` and `delayInSec`. |
-
         | `installedCertificateName` | Optional. Installed certificate name for the download. |
 
         | `installedCertificateType` | Optional. Installed certificate type for the download. |
@@ -9068,9 +8733,6 @@ paths:
                     password: '@1T@uT0dud3'
                   verifyPeer: false
                   verifyHost: false
-                  retry:
-                    count: 3
-                    delayInSec: 10
               app-install-bearer:
                 summary: HTTPS NONE with Authorization
                 value:
@@ -9081,9 +8743,6 @@ paths:
                   verifyHost: false
                   headers:
                     Authorization: Bearer @1T@uT0dud3
-                  retry:
-                    count: 3
-                    delayInSec: 10
               app-install-mtls:
                 summary: HTTPS BASIC with installed cert and CA
                 value:
@@ -9140,9 +8799,6 @@ paths:
                     -----END CERTIFICATE-----'
                   installedCertificateType: client
                   installedCertificateName: scenario-basic
-                  retry:
-                    count: 3
-                    delayInSec: 10
               app-install-none:
                 summary: HTTPS NONE
                 value:
@@ -9151,21 +8807,6 @@ paths:
                   authenticationType: NONE
                   verifyPeer: false
                   verifyHost: false
-                  retry:
-                    count: 3
-                    delayInSec: 10
-              installUserapp_async:
-                summary: Async install
-                value:
-                  authenticationType: BASIC
-                  filename: sample-app.deb
-                  options:
-                    username: demo-user
-                    password: demo-password
-                  url: https://example.com/packages/sample-app.deb
-                  retry:
-                    count: 3
-                    delayInSec: 10
               sftp_basic:
                 summary: SFTP BASIC
                 value:
@@ -9585,18 +9226,15 @@ paths:
         The `PUT /cloud/apps/{appname}/pass-through` REST endpoint sends a request to a running user application.
 
 
-        This endpoint requires:
+        For local REST, no JSON body fields are required — the `{appname}` path parameter identifies the application.
 
 
-        - `{appname}` — installed name in the URL
-
-
-        Optional:
+        Optional body fields:
 
 
         - `command` — object the application accepts
 
-        - `userapp` — same installed name in the JSON body. Not required for local REST; the `{appname}` path parameter identifies the application. The MQTT API requires it, because it has no path parameter.
+        - `userapp` — same installed name in the JSON body. Not required for local REST. Required by the MQTT API because it has no path parameter.
 
 
         ## 2. Endpoint Details
@@ -10037,9 +9675,10 @@ paths:
       tags:
       - ImpinjGen2X
       summary: Set Impinj Gen2X configuration
-      description: "## 1. Description\n\nThe `PUT /cloud/impinjGen2X` REST endpoint configures Impinj Gen2X proprietary RFID features on the reader.\n\nThis endpoint allows you to configure:\n\n- FastID tag TID embedding through `fastID`\n- Tag protection and visibility control through `tagProtect`\n- TagFocus session suppression through `tagFocus`\n- Tag quieting (basic or advanced) through `tagQuieting`\n\n## 2. Endpoint Details\n\n| Property | Value |\n|---|---|\n| MQTT Command | `set_impinjGen2X` |\n| Pattern Name | Impinj Gen2X Configuration |\n| REST Endpoint | `PUT /cloud/impinjGen2X` |\n| Communication Type | Client to Device (HTTP request/response) |\n| Applies To | FXR60 / FXR90 |\n| Authentication | Bearer token (`Authorization: Bearer <token>`) |\n| Content-Type | `application/json` |\n| Success Response | `200 OK` |\n| Error Responses | `422 Unprocessable Entity`, `500 Internal Server Error` |\n| Supported Features | `fastID`, `tagProtect`, `tagFocus`, `tagQuieting` |\n| Supported TagProtect Actions | `enableTagProtection`, `disableTagProtection`, `enableTagVisibility`, `disableTagVisibility` |\n| Supported TagQuieting Modes | `basic` (quiet/unquiet by EPC list), `advanced` (pre-select with mask) |\n| Supported TagQuieting Basic Actions | `quiet`, `unquiet` |\n| Supported Gen2 Memory Banks | EPC, TID, USER, RESERVED |\n| Supported Select Targets | S0, S1, S2, S3, SL |\n| Supported Tag Quiet Masks | S0A, S0B, S2A, S2B, S3A, S3B, SL_ASSERT, SL_DEASSERT |\n| Mutually Exclusive Features | `fastID`, `tagProtect`, `tagFocus`, `tagQuieting` (exactly one feature object per request) |\n\n## 3. Before You Begin\n\nDecide which Gen2X feature to configure before sending this request. Send **exactly one** of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting`. An empty body or any combination of two or more features is rejected. To apply the saved configuration during inventory, send `PUT /cloud/start` with `applyImpinjGen2X: true`.\n\n### Access Password for TagProtect\n\n`PUT /cloud/impinjGen2X` does **not** write a password onto the tag. `tagProtect.password` must be the 32-bit Access Password already stored in the tag's Gen2 `RESERVED` bank (words 2–3).\n\nTo store a password on the tag:\n\n1. `PUT /cloud/mode` — WRITE 8 hex characters to `RESERVED` at `wordPointer: 2`. Add a `filter` for that tag's EPC so other tags are not written.\n2. `PUT /cloud/start` — inventory must run for the write to take effect.\n3. `PUT /cloud/impinjGen2X` — send the same 8 characters in `tagProtect.password`.\n\nDo not use `00000000` — Gen2 treats that as no password, so Protected Mode cannot apply. A password mismatch still returns HTTP 200 and leaves the tag unprotected.\n\n| What You Need | Details |\n|---|---|\n| Feature selection | Exactly one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` per request. An empty body or two features together is rejected. `tagProtect` cannot be combined with the others. |\n| FastID | Decide whether to enable or disable TID embedding. |\n| TagProtect action | Choose one of: `enableTagProtection` (protect a specific tag), `disableTagProtection` (remove protection from a tag), `enableTagVisibility` (allow reading protected tags), `disableTagVisibility` (block reading protected tags). |\n| TagProtect password | Exactly 8 hex characters. Must match the Access Password already on the tag (`RESERVED` words 2–3). Not `00000000`. TagProtect does not create this password — write it first with `PUT /cloud/mode`. A mismatch returns 200 and does not protect the tag. |\n| TagProtect tag EPC | `tagID` (hex EPC) is required for `enableTagProtection` and `disableTagProtection`. It must be omitted for `enableTagVisibility` and `disableTagVisibility`. |\n| TagFocus | Whether to enable or disable the feature. TagFocus targets session S1. |\n| TagQuieting | For basic: provide `action` (`quiet`/`unquiet`) and the `tagIDs` EPC array (maximum 31 tag IDs per request). For advanced: provide the `preSelect` array, `tagQuietMasks`, `target`, and `stateAwareAction`. |\n| Inventory state | Configure Gen2X before starting inventory.\
-        \ Stop any active inventory first with `PUT /cloud/stop`. |\n| Activation | PUT only saves the configuration. Start with `applyImpinjGen2X: true` to apply it. |\n\n## 4. Choosing a Gen2X Feature\n\nThe Gen2X feature you select determines the reader's behavior during inventory. Choose based on your operational goal.\n\n| Feature | Description | Scope |\n|---|---|---|\n| `fastID` | Returns the EPC and TID together in a single read, eliminating the need for a separate TID read. Best for applications that require chip-level identity (anti-counterfeit, authentication). | Reader-scoped |\n| `tagProtect` | Password-protects individual tags or controls reader visibility of protected tags. Use for securing sensitive items or restricting access. | Tag-scoped |\n| `tagFocus` | Silences already-read tags so the reader focuses only on new tags entering the field. Ideal for portal and conveyor applications. | Reader-scoped |\n| `tagQuieting` (basic) | Silences a specific list of tag EPCs from being reported during inventory. Use when you know exactly which tags to suppress. | Reader-scoped |\n| `tagQuieting` (advanced) | Uses Gen2 select pre-conditions (mask + state-aware action) to silence tags based on memory content or session state. Use for complex filtering in dense environments. | Reader-scoped |\n\n> Mutually exclusive: only one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` per request. Combining any two returns HTTP 422.\n\n## 5. Choosing TagProtect Actions\n\nTagProtect operations either lock/unlock individual tags or temporarily allow the reader to see already-protected tags. Each action has specific field requirements.\n\n| Action | What It Does | Required Fields | Key Constraints |\n|---|---|---|---|\n| `enableTagProtection` | Permanently protects a tag; the tag becomes invisible to standard reads until unprotected. Protection lives on the tag, not in reader filtering. | `password`, `tagID` | `password` must match the tag Access Password (8 hex, not `00000000`). Optional `enableShortRange` reduces read range during protection. If omitted, the reader stores `false`. A wrong password still returns 200 and the tag stays visible. |\n| `disableTagProtection` | Removes protection from a previously protected tag, restoring normal visibility. | `password`, `tagID` | `password` must match the tag's existing access password exactly. |\n| `enableTagVisibility` | Temporarily allows the reader to read protected tags during this session. Does not change the tag's protection state. | `password` | Reader-scoped; affects all protected tags in field. |\n| `disableTagVisibility` | Restores the default behavior where protected tags are hidden from the reader. | `password` | Reverts the effect of `enableTagVisibility`. |\n\n> Important: `enableTagProtection` and `disableTagProtection` are tag-specific (require `tagID`). `enableTagVisibility` and `disableTagVisibility` are reader-wide visibility toggles.\n\n## 6. Choosing TagQuieting Strategy\n\nTagQuieting silences tags from being reported during inventory. Choose between **basic** (EPC-list based) and **advanced** (Gen2 select mask based) depending on your filtering complexity.\n\n### Basic TagQuieting\n\n| Field | What It Controls |\n|---|---|\n| `action: quiet` | Silences the listed tags from being reported in future inventories. |\n| `action: unquiet` | Intended to restore reporting for listed tags. Quieting is session-scoped; starting without `applyImpinjGen2X` is what makes a quieted tag visible again. |\n| `tagIDs` | Array of EPCs (hex strings) to quiet or unquiet. Maximum **31 EPCs** per request. |\n\n### Advanced TagQuieting\n\nAdvanced quieting uses Gen2 select pre-conditions to silence tags based on memory content and state, instead of explicit EPC lists.\n\n| Field | What It Controls |\n|---|---|\n| `preSelect[]` | Array of Gen2 select operations applied **before** quieting. Each entry contains `target`, `action`, and `mask`. |\n| `preSelect[].target` | The session flag or SL to act upon (`S0`, `S1`, `S2`, `S3`, `SL`). |\n| `preSelect[].action` | The state-aware action\
-        \ to take on match/mismatch. SL targets use ASSERTSL / DEASSERTSL / NEGATESL pairs (e.g., `ASSERTSL_NOTHING`, `NEGATESL_NOTHING`). Session targets use INVA / INVB / FLIPAB pairs (e.g., `INVB_INVA`, `FLIPAB_NOTHING`). |\n| `preSelect[].mask` | The memory mask: `bank` (EPC/TID/USER/RESERVED), `pointer` (bit offset), `length` (bits), `value` (hex). |\n| `tagQuietMasks` | Array of session-flag combinations defining the quieted state (`S0A`, `S2B`, `SL_ASSERT`, `SL_DEASSERT`, etc.). |\n| `target` | The target session/flag used for the actual quieting operation. |\n| `stateAwareAction` | Same enum as `preSelect[].action` (e.g., `ASSERTSL_DEASSERTSL`, `DEASSERTSL_ASSERTSL`, `NEGATESL_NOTHING`, `FLIPAB_NOTHING`). |\n\n> Important: Use `basic` when you have a discrete list of EPCs. Use `advanced` when filtering by memory content, session state, or complex multi-step Gen2 select conditions.\n\n## 7. Choosing FastID and TagFocus\n\n`fastID` and `tagFocus` each use an `enabled` flag. Neither can be sent in the same request as any other Gen2X feature.\n\n### `fastID`\n\n| Field | What It Controls |\n|---|---|\n| `enabled: true` | On Gen2X-capable tags, inventory events use `format: \"fastID\"` and `idHex` is 48 hex characters (24 EPC + 24 TID). There is no separate `tid` field. Non-Gen2X tags stay `format: \"epc\"` with EPC-only `idHex`. |\n| `enabled: false` | Standard EPC-only reads (`format: \"epc\"`). |\n\n**Use FastID when:** Your application needs TID for every tag (e.g., authentication, chip-level traceability) and you want to avoid the extra round-trip of a separate TID read. Parse `idHex` by length, or key off `format == \"fastID\"`. A client that treats `idHex` as always the EPC will read a 48-character value as one long EPC.\n\n### `tagFocus`\n\n| Field | What It Controls |\n|---|---|\n| `enabled: true` | Once a tag is read, it is silenced for the rest of the inventory cycle. The reader focuses only on new tags entering the field. TagFocus targets session S1. |\n| `enabled: false` | Standard inventory behavior; tags can be reported multiple times. |\n\nTo measure TagFocus, set `reportFilter.duration` to `0` on the mode. The reader's default report filter de-duplicates to one event per tag, which hides the repeat-read drop.\n\n**Use TagFocus when:** You operate portals, conveyors, or other scenarios with many duplicate reads of the same tag set and want unique-tag reporting.\n\n## 8. Applying the Configuration\n\nCalling this endpoint only **saves** the configuration on the reader; it is not active until inventory is started with the activation flag.\n\n### REST Workflow\n\n```text\nPUT  /cloud/stop                 -> stop any active inventory\nPUT  /cloud/impinjGen2X          -> save the configuration\nGET  /cloud/impinjGen2X          -> verify the saved configuration\nPUT  /cloud/start                -> body: { \"applyImpinjGen2X\": true }\n```\n\n### Request Format\n\nEvery request to this endpoint follows this structure:\n\n```http\nPUT /cloud/impinjGen2X HTTP/1.1\nHost: <reader-address>\nAuthorization: Bearer <token>\nContent-Type: application/json\n\n{\n  // exactly one Gen2X feature object\n}\n```\n\n### Success Response (`200 OK`)\n\n```http\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{\n  \"message\": \"Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features.\"\n}\n```\n\n### Error Responses\n\n| Status Code | Meaning | When It Occurs |\n|---|---|---|\n| `422 Unprocessable Entity` | Validation error | Empty body, mutually exclusive features sent together, invalid enum value, or constraint violation. |\n| `500 Internal Server Error` | Reader-side failure | Internal reader error while persisting the configuration. |\n"
+      description: "## 1. Description\n\nThe `PUT /cloud/impinjGen2X` REST endpoint configures Impinj Gen2X proprietary RFID features on the reader.\n\nThis endpoint allows you to configure:\n\n- FastID tag TID embedding through `fastID`\n- Tag protection and visibility control through `tagProtect`\n- TagFocus session suppression through `tagFocus`\n- Tag quieting (basic or advanced) through `tagQuieting`\n\n## 2. Endpoint Details\n\n| Property | Value |\n|---|---|\n| MQTT Command | `set_impinjGen2X` |\n| Pattern Name | Impinj Gen2X Configuration |\n| REST Endpoint | `PUT /cloud/impinjGen2X` |\n| Communication Type | Client to Device (HTTP request/response) |\n| Applies To | FXR60 / FXR90 |\n| Authentication | Bearer token (`Authorization: Bearer <token>`) |\n| Content-Type | `application/json` |\n| Success Response | `200 OK` |\n| Error Responses | `422 Unprocessable Entity`, `500 Internal Server Error` |\n| Supported Features | `fastID`, `tagProtect`, `tagFocus`, `tagQuieting` |\n| Supported TagProtect Actions | `enableTagProtection`, `disableTagProtection`, `enableTagVisibility`, `disableTagVisibility` |\n| Supported TagQuieting Modes | `basic` (quiet/unquiet by EPC list), `advanced` (pre-select with mask) |\n| Supported TagQuieting Basic Actions | `quiet`, `unquiet` |\n| Advanced tagQuieting only | Select targets (`S0`, `S1`, `S2`, `S3`, `SL`) and tag quiet masks (`S0A`, `S0B`, `S2A`, `S2B`, `S3A`, `S3B`, `SL_ASSERT`, `SL_DEASSERT`) apply only to `tagQuieting` with `\"mode\": \"advanced\"`. Basic tagQuieting uses an EPC list only. |\n| Mutually Exclusive Features | `fastID`, `tagProtect`, `tagFocus`, `tagQuieting` (exactly one feature object per request) |\n\n## 3. Before You Begin\n\nDecide which Gen2X feature to configure before sending this request. Send **exactly one** of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting`. An empty body or any combination of two or more features is rejected. To apply the saved configuration during inventory, send `PUT /cloud/start` with `applyImpinjGen2X: true`.\n\n### Access Password for TagProtect\n\n`PUT /cloud/impinjGen2X` does **not** write a password onto the tag. `tagProtect.password` must be the 32-bit Access Password already stored in the tag's Gen2 `RESERVED` bank (words 2–3).\n\nTo store a password on the tag:\n\n1. `PUT /cloud/mode` — WRITE 8 hex characters to `RESERVED` at `wordPointer: 2`. Add a `filter` for that tag's EPC so other tags are not written.\n2. `PUT /cloud/start` — inventory must run for the write to take effect.\n3. `PUT /cloud/impinjGen2X` — send the same 8 characters in `tagProtect.password`.\n\nExample — write the Access Password to `RESERVED` words 2–3 for one tag, then start inventory so the write takes effect:\n\n```json\n{\n  \"type\": \"CUSTOM\",\n  \"antennas\": [1],\n  \"transmitPower\": 30,\n  \"filter\": {\n    \"value\": \"e28011b0a5050076c4d7530a\",\n    \"match\": \"prefix\",\n    \"operation\": \"include\"\n  },\n  \"accesses\": [\n    {\n      \"type\": \"WRITE\",\n      \"config\": {\n        \"membank\": \"RESERVED\",\n        \"wordPointer\": 2,\n        \"data\": \"A1B2C3D4\"\n      }\n    }\n  ]\n}\n```\n\nDo not use `00000000` — Gen2 treats that as no password, so Protected Mode cannot apply. A password mismatch still returns HTTP 200 and leaves the tag unprotected.\n\n| What You Need | Details |\n|---|---|\n| Feature selection | Exactly one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` per request. An empty body or two features together is rejected. `tagProtect` cannot be combined with the others. |\n| FastID | Decide whether to enable or disable TID embedding. |\n| TagProtect action | Choose one of: `enableTagProtection` (protect a specific tag), `disableTagProtection` (remove protection from a tag), `enableTagVisibility` (allow reading protected tags), `disableTagVisibility` (block reading protected tags). |\n| TagProtect password | Exactly 8 hex characters. Must match the Access Password already on the tag (`RESERVED` words 2–3). Not `00000000`. TagProtect does not create this password — write it first with `PUT /cloud/mode`.\
+        \ A mismatch returns 200 and does not protect the tag. |\n| TagProtect tag EPC | `tagID` (hex EPC) is required for `enableTagProtection` and `disableTagProtection`. It must be omitted for `enableTagVisibility` and `disableTagVisibility`. |\n| TagFocus | Whether to enable or disable the feature. TagFocus targets session S1. |\n| TagQuieting | For basic: provide `action` (`quiet`/`unquiet`) and the `tagIDs` EPC array (maximum 31 tag IDs per request). For advanced: provide the `preSelect` array, `tagQuietMasks`, `target`, and `stateAwareAction`. |\n| Inventory state | Configure Gen2X before starting inventory. Stop any active inventory first with `PUT /cloud/stop`. |\n| Activation | PUT only saves the configuration. Start with `applyImpinjGen2X: true` to apply it. |\n\n## 4. Choosing a Gen2X Feature\n\nThe Gen2X feature you select determines the reader's behavior during inventory. Choose based on your operational goal.\n\n| Feature | Description | Scope |\n|---|---|---|\n| `fastID` | Returns the EPC and TID together in a single read, eliminating the need for a separate TID read. Best for applications that require chip-level identity (anti-counterfeit, authentication). | Reader-scoped |\n| `tagProtect` | Password-protects individual tags or controls reader visibility of protected tags. Use for securing sensitive items or restricting access. | Tag-scoped |\n| `tagFocus` | Silences already-read tags so the reader focuses only on new tags entering the field. Ideal for portal and conveyor applications. | Reader-scoped |\n| `tagQuieting` (basic) | Silences a specific list of tag EPCs from being reported during inventory. Use when you know exactly which tags to suppress. | Reader-scoped |\n| `tagQuieting` (advanced) | Uses Gen2 select pre-conditions (mask + state-aware action) to silence tags based on memory content or session state. Use for complex filtering in dense environments. | Reader-scoped |\n\n> Mutually exclusive: only one of `fastID`, `tagProtect`, `tagFocus`, or `tagQuieting` per request. Combining any two returns HTTP 422.\n\n## 5. Choosing TagProtect Actions\n\nTagProtect operations either lock/unlock individual tags or temporarily allow the reader to see already-protected tags. Each action has specific field requirements.\n\n| Action | What It Does | Required Fields | Key Constraints |\n|---|---|---|---|\n| `enableTagProtection` | Permanently protects a tag; the tag becomes invisible to standard reads until unprotected. Protection lives on the tag, not in reader filtering. | `password`, `tagID` | `password` must match the tag Access Password (8 hex, not `00000000`). Optional `enableShortRange` reduces read range during protection. If omitted, the reader stores `false`. A wrong password still returns 200 and the tag stays visible. |\n| `disableTagProtection` | Removes protection from a previously protected tag, restoring normal visibility. | `password`, `tagID` | `password` must match the tag's existing access password exactly. |\n| `enableTagVisibility` | Temporarily allows the reader to read protected tags during this session. Does not change the tag's protection state. | `password` | Reader-scoped; affects all protected tags in field. |\n| `disableTagVisibility` | Restores the default behavior where protected tags are hidden from the reader. | `password` | Reverts the effect of `enableTagVisibility`. |\n\n> Important: `enableTagProtection` and `disableTagProtection` are tag-specific (require `tagID`). `enableTagVisibility` and `disableTagVisibility` are reader-wide visibility toggles.\n\n## 6. Choosing TagQuieting Strategy\n\nTagQuieting silences tags from being reported during inventory. Choose between **basic** (EPC-list based) and **advanced** (Gen2 select mask based) depending on your filtering complexity.\n\n### Basic TagQuieting\n\n| Field | What It Controls |\n|---|---|\n| `action: quiet` | Silences the listed tags from being reported in future inventories. |\n| `action: unquiet` | Intended to restore reporting for listed tags. Quieting is session-scoped; starting without `applyImpinjGen2X` is what makes\
+        \ a quieted tag visible again. |\n| `tagIDs` | Array of EPCs (hex strings) to quiet or unquiet. Maximum **31 EPCs** per request. |\n\n### Advanced TagQuieting\n\nAdvanced quieting uses Gen2 select pre-conditions to silence tags based on memory content and state, instead of explicit EPC lists.\n\nSupported select targets: `S0`, `S1`, `S2`, `S3`, `SL`.\n\nSupported tag quiet masks: `S0A`, `S0B`, `S2A`, `S2B`, `S3A`, `S3B`, `SL_ASSERT`, `SL_DEASSERT`.\n\nSupported Gen2 memory banks for `preSelect[].mask.bank`: `EPC`, `TID`, `USER`, `RESERVED`.\n\n| Field | What It Controls |\n|---|---|\n| `preSelect[]` | Array of Gen2 select operations applied **before** quieting. Each entry contains `target`, `action`, and `mask`. |\n| `preSelect[].target` | The session flag or SL to act upon (`S0`, `S1`, `S2`, `S3`, `SL`). |\n| `preSelect[].action` | The state-aware action to take on match/mismatch. SL targets use ASSERTSL / DEASSERTSL / NEGATESL pairs (e.g., `ASSERTSL_NOTHING`, `NEGATESL_NOTHING`). Session targets use INVA / INVB / FLIPAB pairs (e.g., `INVB_INVA`, `FLIPAB_NOTHING`). |\n| `preSelect[].mask` | The memory mask: `bank` (EPC/TID/USER/RESERVED), `pointer` (bit offset), `length` (bits), `value` (hex). |\n| `tagQuietMasks` | Array of session-flag combinations defining the quieted state (`S0A`, `S2B`, `SL_ASSERT`, `SL_DEASSERT`, etc.). |\n| `target` | The target session/flag used for the actual quieting operation. |\n| `stateAwareAction` | Same enum as `preSelect[].action` (e.g., `ASSERTSL_DEASSERTSL`, `DEASSERTSL_ASSERTSL`, `NEGATESL_NOTHING`, `FLIPAB_NOTHING`). |\n\n> Important: Use `basic` when you have a discrete list of EPCs. Use `advanced` when filtering by memory content, session state, or complex multi-step Gen2 select conditions.\n\n## 7. Choosing FastID and TagFocus\n\n`fastID` and `tagFocus` each use an `enabled` flag. Neither can be sent in the same request as any other Gen2X feature.\n\n### `fastID`\n\n| Field | What It Controls |\n|---|---|\n| `enabled: true` | On Gen2X-capable tags, inventory events use `format: \"fastID\"` and `idHex` is 48 hex characters (24 EPC + 24 TID). There is no separate `tid` field. Non-Gen2X tags stay `format: \"epc\"` with EPC-only `idHex`. |\n| `enabled: false` | Standard EPC-only reads (`format: \"epc\"`). |\n\n**Use FastID when:** Your application needs TID for every tag (e.g., authentication, chip-level traceability) and you want to avoid the extra round-trip of a separate TID read. Parse `idHex` by length, or key off `format == \"fastID\"`. A client that treats `idHex` as always the EPC will read a 48-character value as one long EPC.\n\n### `tagFocus`\n\n| Field | What It Controls |\n|---|---|\n| `enabled: true` | Once a tag is read, it is silenced for the rest of the inventory cycle. The reader focuses only on new tags entering the field. TagFocus targets session S1. |\n| `enabled: false` | Standard inventory behavior; tags can be reported multiple times. |\n\nTo measure TagFocus, set `reportFilter.duration` to `0` on the mode. The reader's default report filter de-duplicates to one event per tag, which hides the repeat-read drop.\n\n**Use TagFocus when:** You operate portals, conveyors, or other scenarios with many duplicate reads of the same tag set and want unique-tag reporting.\n\n## 8. Applying the Configuration\n\nCalling this endpoint only **saves** the configuration on the reader; it is not active until inventory is started with the activation flag.\n\n### REST Workflow\n\n```text\nPUT  /cloud/stop                 -> stop any active inventory\nPUT  /cloud/impinjGen2X          -> save the configuration\nGET  /cloud/impinjGen2X          -> verify the saved configuration\nPUT  /cloud/start                -> body: { \"applyImpinjGen2X\": true }\n```\n\n### Request Format\n\nEvery request to this endpoint follows this structure:\n\n```http\nPUT /cloud/impinjGen2X HTTP/1.1\nHost: <reader-address>\nAuthorization: Bearer <token>\nContent-Type: application/json\n\n{\n  // exactly one Gen2X feature object\n}\n```\n\n### Success Response (`200 OK`)\n\n```http\nHTTP/1.1 200 OK\n\
+        Content-Type: application/json\n\n{\n  \"message\": \"Success: Gen2X configured. Use applyImpinjGen2X flag in start command to apply features.\"\n}\n```\n\n### Error Responses\n\n| Status Code | Meaning | When It Occurs |\n|---|---|---|\n| `422 Unprocessable Entity` | Validation error | Empty body, mutually exclusive features sent together, invalid enum value, or constraint violation. |\n| `500 Internal Server Error` | Reader-side failure | Internal reader error while persisting the configuration. |\n"
       operationId: setImpinjGen2X
       requestBody:
         required: true
@@ -10522,7 +10161,7 @@ paths:
                         iBeacon:
                           enabled: true
                           filters: []
-                      scanIntervalSec: 1
+                      scanIntervalSec: 5
       security:
       - bearerAuth: []
 components:
@@ -12541,7 +12180,7 @@ components:
                     - portrait-flipped
                   supportedResolutions:
                     type: array
-                    description: A list of all resolutions supported by the monitor hardware.
+                    description: List of resolutions supported by the monitor hardware.
                     items:
                       type: string
     GetAppledResponse:
@@ -12578,20 +12217,47 @@ components:
       type: string
       description: Returns an empty string on success.
     GetStackledResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        color:
-          type: string
-        brightness:
-          type: string
-        flash:
-          type: boolean
-        seconds:
-          type: integer
-        seconds_remaining:
-          type: integer
+      oneOf:
+      - type: object
+        required:
+        - status
+        properties:
+          status:
+            type: string
+            enum:
+            - DEFAULT
+        additionalProperties: false
+      - type: object
+        required:
+        - status
+        - color
+        - flash
+        - seconds
+        properties:
+          status:
+            type: string
+            enum:
+            - NON_DEFAULT
+          color:
+            type: string
+            enum:
+            - red
+            - amber
+            - green
+            - blue
+            - "off"
+          brightness:
+            type: string
+            enum:
+            - low
+            - med
+            - high
+          flash:
+            type: boolean
+          seconds:
+            type: integer
+          seconds_remaining:
+            type: integer
     SetStackledRequest:
       type: object
       required:
@@ -15163,9 +14829,8 @@ components:
         authenticationType:
           type: string
           enum:
-          - NONE
           - BASIC
-          description: Authentication method for fetching the certificate file.
+          description: Authentication method for fetching the certificate file. Authentication type NONE and certificate-based download authentication are not supported on FXR60/FXR90.
         authenticationOptions:
           type: object
           description: Credentials object used when `authenticationType` is `BASIC`. The reader accepts this key. Spec 11 still names it `options`.
@@ -15198,13 +14863,6 @@ components:
           - pattern: ^https://.+
           - pattern: ^ftps://.+
           - pattern: ^sftp://.+
-        transfer_protocol:
-          type: string
-          description: Optional explicit transfer protocol for certificate download. If omitted, protocol is inferred from the `url` scheme.
-          enum:
-          - HTTPS
-          - FTPS
-          - SFTP
         verifyPeer:
           type: boolean
           description: Verify the server TLS peer certificate.
@@ -15233,13 +14891,6 @@ components:
           type: object
           additionalProperties:
             type: string
-        retry:
-          type: object
-          properties:
-            count:
-              type: integer
-            delayInSec:
-              type: integer
     SetRefreshcertificateRequest:
       type: object
       required:
@@ -16182,14 +15833,6 @@ components:
           - pattern: ^https://.+
           - pattern: ^sftp://.+
           - pattern: ^ftps://.+
-        transfer_protocol:
-          type: string
-          description: Optional explicit transfer protocol for firmware download. If omitted, protocol is inferred from the `url` scheme.
-          enum:
-          - SCP
-          - HTTPS
-          - SFTP
-          - FTPS
         verifyPeer:
           type: boolean
           description: Verify the server TLS peer certificate. Defaults to true when omitted.
@@ -16225,14 +15868,6 @@ components:
           description: Optional HTTP headers to include in the download request (e.g. Authorization).
           additionalProperties:
             type: string
-        retry:
-          type: object
-          description: Retry configuration for the download operation.
-          properties:
-            count:
-              type: integer
-            delayInSec:
-              type: integer
     SetOsResponse:
       type: string
       description: Returns an empty string on success.
@@ -16300,13 +15935,6 @@ components:
           description: Optional HTTP headers to include in the download request.
           additionalProperties:
             type: string
-        retry:
-          type: object
-          properties:
-            count:
-              type: integer
-            delayInSec:
-              type: integer
     SetInstalluserappResponse:
       type: string
       description: Returns an empty string on success.
