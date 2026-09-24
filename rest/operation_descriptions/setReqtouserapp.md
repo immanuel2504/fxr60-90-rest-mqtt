@@ -6,7 +6,7 @@ For local REST, no JSON body fields are required — the `{appname}` path parame
 
 Optional body fields:
 
-- `command` — object the application accepts
+- `command` — object the application accepts, for example `{ "message": "..." }`. A string `command` is not in the FXR REST schema.
 - `userapp` — same installed name in the JSON body. Not required for local REST. Required by the MQTT API because it has no path parameter.
 
 ## 2. Endpoint Details
@@ -31,4 +31,4 @@ Confirm the application is running. Use the JSON field names below.
 |---|---|
 | `appname` | Installed name from `GET /cloud/apps`. URL path. |
 | `userapp` | Optional for local REST. Same installed name. Required by the MQTT API. |
-| `command` | Optional. Object the application accepts, for example `command.message`. |
+| `command` | Optional. Object the application accepts, for example `command.message`. String form is not in the FXR REST schema. |

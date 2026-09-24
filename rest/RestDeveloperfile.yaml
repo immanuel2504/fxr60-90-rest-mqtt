@@ -1876,7 +1876,11 @@ paths:
                                 properties:
                                   enableLocalRest:
                                     type: boolean
-                                    description: When true, local REST API is enabled for the management plane.
+                                    deprecated: true
+                                    description: >-
+                                      Not a switch on FXR60/FXR90. Local REST is always enabled.
+                                      If this field is present it may be stored, but it does not
+                                      enable or disable local REST.
                                   connections:
                                     type: array
                                     description: List of management plane cloud connections for command/response.
@@ -3505,10 +3509,11 @@ paths:
                                   type: mqtt
                             enableLocalRest:
                               type: boolean
+                              deprecated: true
                               description: >-
-                                When true, local REST API is enabled for sending control commands.
-                                Setting this via set_importCloudConfig persists the value to the
-                                cloud configuration file.
+                                Not a switch on FXR60/FXR90. Local REST is always enabled.
+                                If this field is present it may be stored in the cloud
+                                configuration file, but it does not enable or disable local REST.
                               example: true
                     data:
                       type: object
@@ -3949,10 +3954,11 @@ paths:
                                   type: mqtt
                             enableLocalRest:
                               type: boolean
+                              deprecated: true
                               description: >-
-                                When true, local REST API is enabled for management plane commands.
-                                Setting this via set_importCloudConfig persists the value to the
-                                cloud configuration file.
+                                Not a switch on FXR60/FXR90. Local REST is always enabled.
+                                If this field is present it may be stored in the cloud
+                                configuration file, but it does not enable or disable local REST.
                               example: true
                         event:
                           type: object
@@ -7485,20 +7491,6 @@ paths:
       summary: Start user application
       description: MQTT API :-  set_startUserapp <br> Starts a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStartuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_startUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7523,20 +7515,6 @@ paths:
       summary: Stop user application
       description: MQTT API :-  set_stopUserapp <br> Stops a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setStopuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_stopUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK
@@ -7569,10 +7547,6 @@ paths:
               required:
                 - autostart
               properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
                 autostart:
                   type: boolean
                   description: Set to true to enable automatic startup of the user application on boot, or false to disable autostart.
@@ -7580,11 +7554,9 @@ paths:
             examples:
               set_autostartUserapp:
                 value:
-                  appname: mylogger
                   autostart: true
               set_autostartUserapp-false:
                 value:
-                  appname: mylogger
                   autostart: false
       responses:
         '200':
@@ -7741,20 +7713,6 @@ paths:
       summary: Uninstall User Application
       description: MQTT API :-  set_uninstallUserapp <br> Uninstalls a user application. For local REST, the app name is specified via the `{appname}` path parameter. For MQTT, `appname` must be provided in the request payload.
       operationId: setUninstalluserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                appname:
-                  type: string
-                  description: Required for MQTT API. Not needed for local REST (use path parameter instead).
-                  example: mylogger
-            examples:
-              set_uninstallUserapp:
-                value:
-                  appname: mylogger
       responses:
         '200':
           description: OK

@@ -6,6 +6,8 @@ When multiple keys are sent, each included section is applied. `GPIO-LED` replac
 
 This call configures **data** connections only (`endpointConfig.data`). Use `PUT /cloud/cloudConfig` for control and management plane endpoints.
 
+> Local REST is always enabled on FXR60/FXR90. Do not use `enableLocalRest` as an on/off setting. Keep `dataAck` when documenting end-to-end data acknowledgement.
+
 Use this endpoint to:
 
 - Set GPO and LED defaults and event-triggered actions

@@ -2882,11 +2882,17 @@ paths:
         - GPIO and LED trigger configuration (`GPIO-LED`), including GPO and LED defaults;
         returned as an empty object `{}` when unset (not the string `"NOT_CONFIGURED"`)
 
-        - Reader-gateway settings including tag data retention, batching, and endpoint
-        configuration
+        - RFID reader XML profile (`xml`) when the reader returns it
+
+        - Reader-gateway settings including tag data retention, batching, endpoint
+        configuration, and `dataAck`
 
 
         No request body is required.
+
+
+        > Local REST is always enabled on FXR60/FXR90. `enableLocalRest` in a config
+        body is not a switch.
 
 
         ## 2. Endpoint Details
@@ -3213,6 +3219,10 @@ paths:
 
         This call configures **data** connections only (`endpointConfig.data`). Use
         `PUT /cloud/cloudConfig` for control and management plane endpoints.
+
+
+        > Local REST is always enabled on FXR60/FXR90. Do not use `enableLocalRest`
+        as an on/off setting. Keep `dataAck` when documenting end-to-end data acknowledgement.
 
 
         ## 2. Endpoint Details
@@ -3919,9 +3929,12 @@ paths:
         retention — `maxNumEvents`, `maxEventRetentionTimeInMin`, `throttle`; batching
         — `maxPayloadSizePerReport`, `reportingInterval`. |
 
+        | Data acknowledgement | Under `additionalOptions.dataAck` on data connections:
+        `enable`, `responseTopic`, and `correlationFieldName`. |
+
 
         > Local REST is always enabled on FXR60/FXR90 and is not configurable through
-        this endpoint.
+        this endpoint. `enableLocalRest` is not a switch.
 
         '
       operationId: setImportcloudconfig
@@ -9307,11 +9320,6 @@ paths:
 
         '
       operationId: setStartuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetStartuserappRequest'
       responses:
         "200":
           description: OK
@@ -9383,11 +9391,6 @@ paths:
 
         '
       operationId: setStopuserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetStopuserappRequest'
       responses:
         "200":
           description: OK
@@ -9475,12 +9478,10 @@ paths:
               autostart_false:
                 summary: autostart false
                 value:
-                  appname: mylogger
                   autostart: false
               autostart_true:
                 summary: autostart true
                 value:
-                  appname: mylogger
                   autostart: true
       responses:
         "200":
@@ -9662,7 +9663,8 @@ paths:
         Optional body fields:
 
 
-        - `command` — object the application accepts
+        - `command` — object the application accepts, for example `{ "message": "..."
+        }`. A string `command` is not in the FXR REST schema.
 
         - `userapp` — same installed name in the JSON body. Not required for local
         REST. Required by the MQTT API because it has no path parameter.
@@ -9710,7 +9712,7 @@ paths:
         MQTT API. |
 
         | `command` | Optional. Object the application accepts, for example `command.message`.
-        |
+        String form is not in the FXR REST schema. |
 
         '
       operationId: setReqtouserapp
@@ -9794,11 +9796,6 @@ paths:
 
         '
       operationId: setUninstalluserapp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetUninstalluserappRequest'
       responses:
         "200":
           description: OK
@@ -14029,8 +14026,10 @@ components:
                       properties:
                         enableLocalRest:
                           type: boolean
-                          description: When true, local REST API is enabled for the
-                            management plane.
+                          deprecated: true
+                          description: Not a switch on FXR60/FXR90. Local REST is
+                            always enabled. If this field is present it may be stored,
+                            but it does not enable or disable local REST.
                         connections:
                           type: array
                           description: List of management plane cloud connections
@@ -15121,9 +15120,11 @@ components:
                               tcpip-server, keyboard-emulation.'
                     enableLocalRest:
                       type: boolean
-                      description: When true, local REST API is enabled for sending
-                        control commands. Setting this via set_importCloudConfig persists
-                        the value to the cloud configuration file.
+                      deprecated: true
+                      description: Not a switch on FXR60/FXR90. Local REST is always
+                        enabled. If this field is present it may be stored in the
+                        cloud configuration file, but it does not enable or disable
+                        local REST.
             data:
               type: object
               description: Data plane endpoint configuration. Replaces the existing
@@ -15473,9 +15474,11 @@ components:
                               tcpip-server, keyboard-emulation.'
                     enableLocalRest:
                       type: boolean
-                      description: When true, local REST API is enabled for management
-                        plane commands. Setting this via set_importCloudConfig persists
-                        the value to the cloud configuration file.
+                      deprecated: true
+                      description: Not a switch on FXR60/FXR90. Local REST is always
+                        enabled. If this field is present it may be stored in the
+                        cloud configuration file, but it does not enable or disable
+                        local REST.
                 event:
                   type: object
                   description: Management async event endpoint (publishes heartbeat,
@@ -17261,23 +17264,9 @@ components:
     SetInstalluserappResponse:
       type: string
       description: Returns an empty string on success.
-    SetStartuserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path
-            parameter instead).
     SetStartuserappResponse:
       type: string
       description: Returns an empty string on success.
-    SetStopuserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path
-            parameter instead).
     SetStopuserappResponse:
       type: string
       description: Returns an empty string on success.
@@ -17286,10 +17275,6 @@ components:
       required:
       - autostart
       properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path
-            parameter instead).
         autostart:
           type: boolean
           description: Set to true to enable automatic startup of the user application
@@ -17356,13 +17341,6 @@ components:
       type: object
       description: Response payload returned by the user application. Structure is
         application-defined and not fixed.
-    SetUninstalluserappRequest:
-      type: object
-      properties:
-        appname:
-          type: string
-          description: Required for MQTT API. Not needed for local REST (use path
-            parameter instead).
     SetUninstalluserappResponse:
       type: string
       description: Returns an empty string on success.

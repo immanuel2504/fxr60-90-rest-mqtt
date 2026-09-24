@@ -5,9 +5,12 @@ The `GET /cloud/config` REST endpoint retrieves the reader's full configuration,
 This endpoint returns:
 
 - GPIO and LED trigger configuration (`GPIO-LED`), including GPO and LED defaults; returned as an empty object `{}` when unset (not the string `"NOT_CONFIGURED"`)
-- Reader-gateway settings including tag data retention, batching, and endpoint configuration
+- RFID reader XML profile (`xml`) when the reader returns it
+- Reader-gateway settings including tag data retention, batching, endpoint configuration, and `dataAck`
 
 No request body is required.
+
+> Local REST is always enabled on FXR60/FXR90. `enableLocalRest` in a config body is not a switch.
 
 ## 2. Endpoint Details
 

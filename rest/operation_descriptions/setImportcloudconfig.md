@@ -45,5 +45,6 @@ Gather endpoint details before sending this request. An incorrect hostname, port
 | TLS and certificates | Reference an installed certificate, or provide certificate file paths (see `GET /cloud/certificates`). |
 | MQTT client settings | `clientId`, `keepAlive`, `qos`, `cleanSession`, `reconnectDelay`, and `reconnectDelayMax`. |
 | Retention and batching | Under `additionalOptions` on data connections: retention — `maxNumEvents`, `maxEventRetentionTimeInMin`, `throttle`; batching — `maxPayloadSizePerReport`, `reportingInterval`. |
+| Data acknowledgement | Under `additionalOptions.dataAck` on data connections: `enable`, `responseTopic`, and `correlationFieldName`. |
 
-> Local REST is always enabled on FXR60/FXR90 and is not configurable through this endpoint.
+> Local REST is always enabled on FXR60/FXR90 and is not configurable through this endpoint. `enableLocalRest` is not a switch.
