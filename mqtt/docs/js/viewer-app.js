@@ -2096,7 +2096,14 @@ function render(spec) {
    function revealActiveNavLink(activeLink) {
      if (!activeLink || activeLink === lastActiveNavLink) return;
      lastActiveNavLink = activeLink;
-     activeLink.scrollIntoView({ block: 'nearest' });
+     // Scroll only the sidebar; scrollIntoView can also move the document.
+     var viewport = nav.getBoundingClientRect();
+     var linkRect = activeLink.getBoundingClientRect();
+     if (linkRect.top < viewport.top) {
+       nav.scrollTop += linkRect.top - viewport.top;
+     } else if (linkRect.bottom > viewport.bottom) {
+       nav.scrollTop += linkRect.bottom - viewport.bottom;
+     }
    }
  
    function updateActiveNavState() {
