@@ -1,6 +1,24 @@
 (function() {
 'use strict';
 
+/* Storage may be unavailable in embedded browsers or privacy-restricted contexts. */
+function readPreference(storageName, key) {
+  try {
+    return window[storageName].getItem(key);
+  } catch (err) {
+    return null;
+  }
+}
+
+function writePreference(storageName, key, value) {
+  try {
+    window[storageName].setItem(key, value);
+  } catch (err) {
+    // Preferences are optional; keep the viewer usable without persistence.
+  }
+}
+
+
 var CATEGORY_LABELS = {
   login: 'Login',
   system: 'System',
@@ -1870,7 +1888,7 @@ function render(spec) {
        var children = document.querySelector('.nav-group-children[data-group-children="' + groupName + '"]');
        var indicator = group.querySelector('.nav-group-indicator');
        if (!children || !indicator) return;
-       var stored = sessionStorage.getItem('nav-group-' + groupName);
+       var stored = readPreference('sessionStorage', 'nav-group-' + groupName);
        var hasActive = children.querySelector('.nav-op.active, .nav-tag.active');
        var isCollapsed = (stored === 'collapsed') || (!stored && !hasActive);
        if (isCollapsed) {
@@ -1883,7 +1901,7 @@ function render(spec) {
        group.addEventListener('click', function() {
          var collapsed = children.classList.toggle('collapsed');
          indicator.textContent = collapsed ? '+' : '−';
-         sessionStorage.setItem('nav-group-' + groupName, collapsed ? 'collapsed' : 'expanded');
+         writePreference('sessionStorage', 'nav-group-' + groupName, collapsed ? 'collapsed' : 'expanded');
        });
      });
    }
@@ -1923,7 +1941,7 @@ function render(spec) {
            var children = document.querySelector('.nav-group-children[data-group-children="' + groupName + '"]');
            var indicator = group.querySelector('.nav-group-indicator');
            if (!children || !indicator) return;
-           var stored = sessionStorage.getItem('nav-group-' + groupName);
+           var stored = readPreference('sessionStorage', 'nav-group-' + groupName);
            if (stored === 'collapsed') {
              children.classList.add('collapsed');
              indicator.textContent = '+';
@@ -2059,7 +2077,7 @@ function render(spec) {
          groupChildren.classList.remove('collapsed');
          var ind = gEl.querySelector('.nav-group-indicator');
          if (ind) ind.textContent = '−';
-         sessionStorage.setItem('nav-group-' + gName, 'expanded');
+         writePreference('sessionStorage', 'nav-group-' + gName, 'expanded');
        }
      }
      var top = target.getBoundingClientRect().top + window.pageYOffset - TOPBAR_H - 8;
@@ -2187,7 +2205,7 @@ function render(spec) {
              var activeIndicator = activeGroupEl.querySelector('.nav-group-indicator');
              if (activeIndicator) activeIndicator.textContent = '−';
            }
-           if (activeGroupName) sessionStorage.setItem('nav-group-' + activeGroupName, 'expanded');
+           if (activeGroupName) writePreference('sessionStorage', 'nav-group-' + activeGroupName, 'expanded');
          }
          /* Breadcrumb update */
          var breadcrumb = document.getElementById('sidebar-breadcrumb');
@@ -2318,14 +2336,14 @@ Promise.all([
  
 var BASE_FONT_PX = 15;
 var STEP = 0.05, MIN = 0.5, MAX = 2.0, KEY = 'mqtt-font-scale';
-var saved = parseFloat(localStorage.getItem(KEY));
+var saved = parseFloat(readPreference('localStorage', KEY));
 var scale = (saved >= MIN && saved <= MAX) ? saved : 1;
 var display = document.getElementById('font-scale-value');
 function applyScale() {
    scale = Math.round(scale * 100) / 100;
    document.documentElement.style.fontSize = (BASE_FONT_PX * scale) + 'px';
    display.textContent = Math.round(scale * 100) + '%';
-   localStorage.setItem(KEY, scale);
+   writePreference('localStorage', KEY, scale);
 }
 applyScale();
 document.getElementById('font-scale-up').addEventListener('click', function () { if (scale < MAX) { scale += STEP; applyScale(); } });
