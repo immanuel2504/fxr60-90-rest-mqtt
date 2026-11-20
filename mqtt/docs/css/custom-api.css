@@ -1882,5 +1882,5 @@ blockquote p { margin-bottom: 0; }
 
 /* Keep native fragment navigation clear of the fixed header as well. */
 #content [id] {
-  scroll-margin-top: calc(var(--topbar-height) + 24px);
+  scroll-margin-top: calc(var(--topbar-height) + 48px);
 }
