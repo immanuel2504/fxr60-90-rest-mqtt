@@ -2288,6 +2288,29 @@ Promise.all([
     loadDisplayNameConfig({}, results[1] || {});
     applyOperationSummaries(results[0]);
     render(results[0]);
+    // Fragment targets only exist after the asynchronous spec has rendered.
+    // Wait for fonts too, so text reflow does not move the target afterwards.
+    var fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function () {
+      requestAnimationFrame(function () {
+        var id;
+        try {
+          id = decodeURIComponent(window.location.hash.slice(1));
+        } catch (err) {
+          return;
+        }
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        var topbar = document.getElementById('topbar');
+        var offset = topbar ? topbar.offsetHeight : 52;
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.pageYOffset - offset - 8,
+          behavior: 'instant'
+        });
+        window.dispatchEvent(new Event('scroll'));
+      });
+    });
   })
   .catch(function (err) {
     document.getElementById('content').innerHTML = '<p class="error-msg">Error loading spec: ' + escHtml(err.message) + '</p>';
