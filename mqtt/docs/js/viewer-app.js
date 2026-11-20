@@ -1489,9 +1489,7 @@ function wireTopbarSearch(spec) {
      var targetId = item.isTag ? 'tag-' + item.id : 'op-' + item.id;
      var target = document.getElementById(targetId);
      if (target) {
-       var topbarH = document.getElementById('topbar') ? document.getElementById('topbar').offsetHeight : 52;
-       var top = target.getBoundingClientRect().top + window.pageYOffset - topbarH - 12;
-       window.scrollTo({ top: top, behavior: 'smooth' });
+       scrollToDocumentationTarget(target, 'smooth');
        target.classList.add('search-highlight');
        setTimeout(function () { target.classList.remove('search-highlight'); }, 2200);
      }
@@ -2080,8 +2078,7 @@ function render(spec) {
          writePreference('sessionStorage', 'nav-group-' + gName, 'expanded');
        }
      }
-     var top = target.getBoundingClientRect().top + window.pageYOffset - TOPBAR_H - 8;
-     window.scrollTo({ top: top, behavior: 'smooth' });
+     scrollToDocumentationTarget(target, 'smooth');
      history.pushState(null, '', '#' + id);
      updateActiveNavState();
    });
@@ -2261,6 +2258,15 @@ function render(spec) {
 
 }
 
+
+function scrollToDocumentationTarget(target, behavior) {
+  var topbar = document.getElementById('topbar');
+  var headerBottom = topbar ? topbar.getBoundingClientRect().bottom : 52;
+  // Leave space above the whole command card, including its border and padding.
+  var top = target.getBoundingClientRect().top + window.pageYOffset - headerBottom - 48;
+  window.scrollTo({ top: Math.max(0, top), behavior: behavior });
+}
+
 function wireBackToTop() {
   var btn = document.getElementById('back-to-top');
   if (!btn || btn.getAttribute('data-wired')) return;
@@ -2327,12 +2333,7 @@ Promise.all([
         if (!id) return;
         var target = document.getElementById(id);
         if (!target) return;
-        var topbar = document.getElementById('topbar');
-        var offset = topbar ? topbar.offsetHeight : 52;
-        window.scrollTo({
-          top: target.getBoundingClientRect().top + window.pageYOffset - offset - 8,
-          behavior: 'instant'
-        });
+        scrollToDocumentationTarget(target, 'instant');
         window.dispatchEvent(new Event('scroll'));
       });
     });
