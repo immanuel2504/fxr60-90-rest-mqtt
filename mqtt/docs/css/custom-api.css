@@ -59,7 +59,6 @@
 html {
  font-size: 15px;
  -webkit-text-size-adjust: 100%;
- scroll-padding-bottom: calc(var(--floating-tools-height) + var(--sp-4));
 }
 body {
  font-family: var(--font-sans);
@@ -273,14 +272,18 @@ a:hover { text-decoration: underline; }
  padding-bottom: var(--sp-4);
 }
 #main {
- margin-left: var(--sidebar-width);
- margin-top: var(--topbar-height);
+ position: fixed;
+ inset: var(--topbar-height) 0 0 var(--sidebar-width);
+ overflow: auto;
+ overscroll-behavior: contain;
+ scroll-padding-top: var(--sp-4);
+ scroll-padding-bottom: calc(var(--floating-tools-height) + var(--sp-4));
+ background: var(--color-bg);
  padding:
   var(--sp-4)
   calc(var(--sp-5) + var(--floating-tools-width))
   calc(var(--sp-6) + var(--floating-tools-height))
   var(--sp-5);
- min-height: 100vh;
  box-sizing: border-box;
 }
 #content { width: 100%; max-width: 100%; box-sizing: border-box; }
@@ -1528,11 +1531,9 @@ blockquote p { margin-bottom: 0; }
 .error-msg { color: var(--color-danger); font-weight: 600; }
 /* ── Responsive ────────────────────────────────────────────────── */
  @media (max-width: 768px) {
- #sidebar { display: none; }
  #topbar { left: 0; }
  #main {
-  margin-left: 0;
-  margin-top: var(--topbar-height);
+  left: 0;
   padding:
    var(--sp-3)
    calc(var(--sp-4) + var(--floating-tools-width))
@@ -1725,13 +1726,13 @@ blockquote p { margin-bottom: 0; }
 @media (max-width: 768px) {
  #sidebar-toggle { display: flex; }
  #sidebar {
+   visibility: hidden;
    transform: translateX(-100%);
    transition: transform 0.25s ease;
    z-index: 10;
  }
- #sidebar.open { transform: translateX(0); }
+ #sidebar.open { visibility: visible; transform: translateX(0); }
  #topbar { left: 0; padding: 0 var(--sp-3); }
- #main { margin-left: 0; padding: var(--sp-3); }
  #topbar-search-wrap { width: min(200px, 38vw); }
 }
 
@@ -1880,7 +1881,8 @@ blockquote p { margin-bottom: 0; }
   }
 }
 
-/* Keep native fragment navigation clear of the fixed header as well. */
-#content [id] {
-  scroll-margin-top: calc(var(--topbar-height) + 48px);
+/* Keep the full reference available in the browser's print view. */
+@media print {
+  #topbar, #sidebar, #sidebar-overlay, #floating-tools { display: none; }
+  #main { position: static; overflow: visible; padding: 0; }
 }

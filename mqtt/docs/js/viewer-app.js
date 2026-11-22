@@ -2056,13 +2056,12 @@ function render(spec) {
      });
    });
  
-   /* ── Offset anchor scroll for fixed topbar ──────────────── */
-   var TOPBAR_H = document.getElementById('topbar') ? document.getElementById('topbar').offsetHeight : 52;
    document.addEventListener('click', function (e) {
+     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
      var anchor = e.target.closest('a[href^="#"]');
      if (!anchor) return;
-     var id = anchor.getAttribute('href').slice(1);
-     var target = document.getElementById(id);
+     var fragment = anchor.getAttribute('href');
+     var target = documentationTarget(fragment);
      if (!target) return;
      e.preventDefault();
      /* If clicked link is inside a collapsed group, expand it */
@@ -2079,7 +2078,7 @@ function render(spec) {
        }
      }
      scrollToDocumentationTarget(target, 'smooth');
-     history.pushState(null, '', '#' + id);
+     if (window.location.hash !== fragment) history.pushState(null, '', fragment);
      updateActiveNavState();
    });
  
@@ -2104,12 +2103,13 @@ function render(spec) {
    }
  
    function updateActiveNavState() {
-     var threshold = TOPBAR_H + 12;
+     var paneBounds = documentationPane.getBoundingClientRect();
+     var threshold = paneBounds.top + 12;
      var bestOp = null;
      var bestDistance = Infinity;
      operationSections.forEach(function(op) {
        var rect = op.getBoundingClientRect();
-       var isVisible = rect.bottom > threshold && rect.top < window.innerHeight;
+       var isVisible = rect.bottom > threshold && rect.top < paneBounds.bottom;
        if (!isVisible) return;
        var distance = Math.abs(rect.top - threshold);
        if (distance < bestDistance) {
@@ -2227,18 +2227,9 @@ function render(spec) {
      revealActiveNavLink(activeNavLink);
    }
  
-   window.addEventListener('scroll', updateActiveNavState);
+   documentationPane.addEventListener('scroll', updateActiveNavState, { passive: true });
    window.addEventListener('hashchange', function () {
-     // A link opened in an existing tab uses native fragment navigation.
-     // Correct it after the browser jump, just like a freshly loaded deep link.
-     requestAnimationFrame(function () {
-       var id;
-       try { id = decodeURIComponent(window.location.hash.slice(1)); }
-       catch (err) { return; }
-       var target = id ? document.getElementById(id) : null;
-       if (target) scrollToDocumentationTarget(target, 'instant');
-       updateActiveNavState();
-     });
+     requestAnimationFrame(scrollToCurrentFragment);
    });
    updateActiveNavState();
  
@@ -2251,12 +2242,10 @@ function render(spec) {
      function openSidebar() {
        sidebar.classList.add('open');
        overlay.classList.add('visible');
-       document.body.style.overflow = 'hidden';
      }
      function closeSidebar() {
        sidebar.classList.remove('open');
        overlay.classList.remove('visible');
-       document.body.style.overflow = '';
      }
      toggle.addEventListener('click', openSidebar);
      overlay.addEventListener('click', closeSidebar);
@@ -2270,23 +2259,39 @@ function render(spec) {
 }
 
 
+var documentationPane = document.getElementById('main');
+
+function documentationTarget(fragment) {
+  if (!fragment || fragment === '#') return null;
+  var id;
+  try {
+    id = decodeURIComponent(fragment.slice(1));
+  } catch (err) {
+    return null;
+  }
+  var target = document.getElementById(id);
+  return target && documentationPane.contains(target) ? target : null;
+}
+
 function scrollToDocumentationTarget(target, behavior) {
-  var topbar = document.getElementById('topbar');
-  var headerBottom = topbar ? topbar.getBoundingClientRect().bottom : 52;
-  // Leave space above the whole command card, including its border and padding.
-  var top = target.getBoundingClientRect().top + window.pageYOffset - headerBottom - 48;
-  window.scrollTo({ top: Math.max(0, top), behavior: behavior });
+  // The documentation pane starts below the header and sets the anchor spacing in CSS.
+  target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: behavior });
+}
+
+function scrollToCurrentFragment() {
+  var target = documentationTarget(window.location.hash);
+  if (target) scrollToDocumentationTarget(target, 'instant');
 }
 
 function wireBackToTop() {
   var btn = document.getElementById('back-to-top');
   if (!btn || btn.getAttribute('data-wired')) return;
   btn.setAttribute('data-wired', '1');
-  window.addEventListener('scroll', function () {
-    btn.classList.toggle('visible', window.scrollY > 420);
+  documentationPane.addEventListener('scroll', function () {
+    btn.classList.toggle('visible', documentationPane.scrollTop > 420);
   }, { passive: true });
   btn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    documentationPane.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
@@ -2330,23 +2335,10 @@ Promise.all([
     loadDisplayNameConfig({}, results[1] || {});
     applyOperationSummaries(results[0]);
     render(results[0]);
-    // Fragment targets only exist after the asynchronous spec has rendered.
-    // Wait for fonts too, so text reflow does not move the target afterwards.
+    // The fragment becomes available after rendering. Allow fonts to finish reflowing.
     var fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
     fontsReady.then(function () {
-      requestAnimationFrame(function () {
-        var id;
-        try {
-          id = decodeURIComponent(window.location.hash.slice(1));
-        } catch (err) {
-          return;
-        }
-        if (!id) return;
-        var target = document.getElementById(id);
-        if (!target) return;
-        scrollToDocumentationTarget(target, 'instant');
-        window.dispatchEvent(new Event('scroll'));
-      });
+      requestAnimationFrame(scrollToCurrentFragment);
     });
   })
   .catch(function (err) {
