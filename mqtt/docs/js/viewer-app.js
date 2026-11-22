@@ -2228,7 +2228,18 @@ function render(spec) {
    }
  
    window.addEventListener('scroll', updateActiveNavState);
-   window.addEventListener('hashchange', updateActiveNavState);
+   window.addEventListener('hashchange', function () {
+     // A link opened in an existing tab uses native fragment navigation.
+     // Correct it after the browser jump, just like a freshly loaded deep link.
+     requestAnimationFrame(function () {
+       var id;
+       try { id = decodeURIComponent(window.location.hash.slice(1)); }
+       catch (err) { return; }
+       var target = id ? document.getElementById(id) : null;
+       if (target) scrollToDocumentationTarget(target, 'instant');
+       updateActiveNavState();
+     });
+   });
    updateActiveNavState();
  
    /* ── FIX 11 — Wire mobile sidebar ── */
